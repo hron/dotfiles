@@ -28,12 +28,20 @@
 
 ;;; Code:
 
-(setq tramp-backup-directory-alist backup-directory-alist)
+(setq tramp-default-method "sshx")
 
-(setq tramp-auto-save-directory "~/.emacs.d/tramp-auto-save")
-(setq tramp-shell-prompt-pattern shell-prompt-pattern)
+(setq tramp-shell-prompt-pattern shell-prompt-pattern
+      tramp-backup-directory-alist backup-directory-alist
+      tramp-auto-save-directory "~/.emacs.d/tramp-auto-save")
 
-;; (add-to-list 'tramp-default-proxies-alist
-;; 	     '("\\.*\\'" "\\`root\\'" "/sshx:%h:"))
+
+(unless (string-match "22\\." (version))
+    (progn
+      (setq tramp-default-proxies-alist nil)
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "10.9.2.4" nil "/sshx:fw3.warecorp.com:"))
+      (add-to-list 'tramp-default-proxies-alist
+		   '( nil "root" "/sshx:%h:"))
+      ))
 
 ;;; emacs-rc-tramp.el ends here
