@@ -48,11 +48,5 @@
 
 ;; Color theme choosing
 (require 'color-theme)
-;; (color-theme-sitaramv-nt)
-;; (color-theme-arjen)
-(color-theme-jsc-dark)
-;; (color-theme-dark-laptop)
-;; (color-theme-hober)
-;; (color-theme-lawrence)
-;; (color-theme-lethe)
-;; (color-theme-oswald)
+(color-theme-clarity)
+
