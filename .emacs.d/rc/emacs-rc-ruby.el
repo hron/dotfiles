@@ -31,7 +31,6 @@
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 (add-hook 'ruby-mode-hook (lambda ()
-                            (ruby-electric-mode 1)
 			    (inf-ruby-keys)
                             (local-set-key [f1] 'ri)
 			    (local-set-key [?\C->] 'rct-complete-symbol--anything)))

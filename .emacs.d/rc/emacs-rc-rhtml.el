@@ -29,9 +29,10 @@
 ;;; Code:
 
 
-(add-to-list 'load-path "~/.emacs.d/packages/rinari-rhtml/")
+(add-to-list 'load-path "~/.emacs.d/packages/rhtml-mode/")
 
-(require 'rails)
+(add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
+
 (require 'rhtml-mode)
 
 (add-hook 'rhtml-ruby-hook

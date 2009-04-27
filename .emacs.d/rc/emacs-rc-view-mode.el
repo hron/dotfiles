@@ -28,7 +28,7 @@
 
 ;;; Code:
 
-(add-hook 'view-mode-hook
-	  '(lambda ()
-	      (ruby-electric-mode 0)))
+;; (add-hook 'view-mode-hook
+;; 	  '(lambda ()
+;; 	      (ruby-electric-mode 0)))
 ;;; emacs-rc-view-mode.el ends here
