@@ -62,7 +62,7 @@
 (load "~/.emacs.d/rc/emacs-rc-server")
 ;; (load "~/.emacs.d/rc/emacs-rc-php")
 (load "~/.emacs.d/rc/emacs-rc-gdb")
-;; (load "~/.emacs.d/rc/emacs-rc-git")
+(load "~/.emacs.d/rc/emacs-rc-git")
 (load "~/.emacs.d/rc/emacs-rc-ruby")
 (load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
 ;; (load "~/.emacs.d/rc/emacs-rc-rails")
@@ -82,7 +82,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((encoding . koi8-r)))))
+ '(safe-local-variable-values (quote ((sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.

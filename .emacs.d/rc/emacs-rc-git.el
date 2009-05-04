@@ -27,6 +27,6 @@
 ;; 
 
 ;;; Code:
-(load "/usr/share/emacs/site-lisp/git/git")
+(load "/usr/share/doc/git-core/contrib/emacs/git")
 
 ;;; emacs-rc-git.el ends here

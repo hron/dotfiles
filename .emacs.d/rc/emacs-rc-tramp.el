@@ -39,7 +39,9 @@
     (progn
       (setq tramp-default-proxies-alist nil)
       (add-to-list 'tramp-default-proxies-alist
-		   '( "10.9.2.4" nil "/sshx:fw3.warecorp.com:"))
+		   '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "localhost" "root" nil))
       (add-to-list 'tramp-default-proxies-alist
 		   '( nil "root" "/sshx:%h:"))
       ))

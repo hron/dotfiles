@@ -1,3 +1,12 @@
+-- TODO:
+--
+--  * clientprops tables, possibility to specify window exactyle with
+--     class, instance, name, role combination.
+--
+--  * windows' placementing. current state is ugly: dialog windows show
+--     on top-left side on top of the awesome panel
+
+
 -- Standard awesome library
 require("awful")
 -- Theme handling library
@@ -8,10 +17,35 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+-- {{{Global settings
+local settings = {}
+
+-- show some debugging infos with naughty
+settings.debug = false
+
+-- Transparency settings (make unfocussed clients transparent)
+settings.focus_trans = true
+settings.opacity_normal = 0.8
+settings.opacity_focus = 1
+settings.opacity_toggle = 0.6
+settings.opacity_step = 0.05
+
+-- Define if we want to use titlebar on all applications.
+settings.use_titlebar = false
+settings.dialogs_titlebar = true
+
+-- Define if we want new clients to become master windows.
+settings.master_new_clients = false
+
+-- Shall size hints be respected?
+-- If you want to drop the gaps between windows, set this to false.
+settings.honor_size_hints = false
+-- }}}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- The default is a dark theme
-theme_path = awful.util.getdir("config") .. "/themes/default/theme.lua"
+theme_path = awful.util.getdir("config") .. "/themes/hron/theme.lua"
 -- Uncommment this for a lighter theme
 -- theme_path = "/usr/share/awesome/themes/sky/theme.lua"
 
@@ -55,6 +89,9 @@ floatapps =
     ["MPlayer"] = true,
     ["pinentry"] = true,
     ["gimp"] = true,
+    ["stardict"] = true,
+    ["pidgin"] = true,
+    ["skype"] = true,
     -- by instance
     ["mocp"] = true
 }
@@ -66,10 +103,6 @@ apptags =
     -- ["Firefox"] = { screen = 1, tag = 2 },
     -- ["mocp"] = { screen = 2, tag = 4 },
 }
-
--- Define if we want to use titlebar on all applications.
-use_titlebar = false
--- }}}
 
 -- {{{ Tags
 -- Define tags table.
@@ -151,7 +184,10 @@ for s = 1, screen.count() do
                                               end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = wibox({ position = "top", fg = beautiful.fg_normal, bg = beautiful.bg_normal })
+    mywibox[s] = wibox({ position = "top",
+			 height = 21,
+			 fg = beautiful.fg_normal,
+			 bg = beautiful.bg_normal })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = { mylayoutbox[s],
                            mytaglist[s],
@@ -326,10 +362,10 @@ end)
 -- Hook function to execute when the mouse enters a client.
 awful.hooks.mouse_enter.register(function (c)
     -- Sloppy focus, but disabled for magnifier layout
-    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
-        client.focus = c
-    end
+    -- if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+    --     and awful.client.focus.filter(c) then
+    --     client.focus = c
+    -- end
 end)
 
 -- Hook function to execute when a new client appears.
@@ -338,13 +374,9 @@ awful.hooks.manage.register(function (c, startup)
     -- move it to the screen where the mouse is.
     -- We only do it for filtered windows (i.e. no dock, etc).
     if not startup and awful.client.focus.filter(c) then
-        c.screen = mouse.screen
+       c.screen = mouse.screen
     end
 
-    if use_titlebar then
-        -- Add a titlebar
-        awful.titlebar.add(c, { modkey = modkey })
-    end
     -- Add mouse bindings
     c:buttons(awful.util.table.join(
         awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
@@ -385,10 +417,10 @@ awful.hooks.manage.register(function (c, startup)
 
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- awful.client.setslave(c)
+    awful.client.setslave(c)
 
     -- Honor size hints: if you want to drop the gaps between windows, set this to false.
-    -- c.size_hints_honor = false
+    c.size_hints_honor = false
 end)
 
 -- Hook function to execute when arranging the screen.
