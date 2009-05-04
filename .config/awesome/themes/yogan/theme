@@ -1,0 +1,87 @@
+---------------------------
+-- yogans awesome theme --
+---------------------------
+
+font                    = Sans 8
+
+bg_normal               = #1010119a
+bg_focus                = #0033409a
+bg_urgent               = #ff45009a
+
+fg_normal               = #b0b0b0
+fg_focus                = #20c0fc
+fg_urgent               = #111111
+
+# dmenu
+dmenu_font              = -*-clean-medium-r-*-*-12-*-*-*-*-*-*-*
+dmenu_bg                = #101011
+dmenu_fg                = #b0b0b0
+dmenu_sel_bg            = #003340
+dmenu_sel_fg            = #20c0fc
+
+# borders for clients and wiboxes
+border_width            = 1
+border_normal           = #4f555a
+border_focus            = #20c0fc
+border_marked_normal    = #88201a
+border_marked_focus     = #ff3020
+border_ontop_normal     = #20603a
+border_ontop_focus      = #16e070
+
+# There are another variables sets
+# overriding the default one when
+# defined, the sets are:
+# [taglist|tasklist]_[bg|fg]_[focus|urgent]
+# titlebar_[bg|fg]_[normal|focus]
+# Example:
+#taglist_bg_focus = #ff0000
+#
+# Display the taglist squares
+# taglist_squares_sel = /home/yogan/.config/awesome/themes/yogan/taglist/squarefg.png
+# taglist_squares_unsel = /home/yogan/.config/awesome/themes/yogan/taglist/squareg.png
+
+# tasklist_floating_icon = /usr/share/awesome/themes/default/tasklist/floatingw.png
+
+# Variables set for theming menu
+# menu_[bg|fg]_[normal|focus]
+# menu_[border_color|border_width]
+# menu_submenu_icon = /usr/share/awesome/themes/default/submenu.png
+menu_height   = 15
+menu_width    = 100
+
+# You can add as many variables as
+# you wish and access them by using
+# beautiful.variable in your rc.lua
+#bg_widget    = #cc0000
+
+# Colors for the mail widget
+mail_notify_fg_header = #20c0fc
+mail_notify_fg_text   = #b0b0b0
+mail_notify_fg_bar    = #003340
+
+
+# Define the image to load
+# titlebar_close_button_normal = /usr/share/awesome/themes/default/titlebar/close.png
+# titlebar_close_button_focus = /usr/share/awesome/themes/default/titlebar/closer.png
+
+# # You can use your own layout icons like this:
+# layout_dwindle = /home/yogan/.config/awesome/themes/yogan/layouts/dwindleg.png
+# layout_floating = /home/yogan/.config/awesome/themes/yogan/layouts/floatingg.png
+# layout_magnifier = /home/yogan/.config/awesome/themes/yogan/layouts/magnifierg.png
+# layout_max = /home/yogan/.config/awesome/themes/yogan/layouts/maxg.png
+# layout_spiral = /home/yogan/.config/awesome/themes/yogan/layouts/spiralg.png
+# layout_tilebottom = /home/yogan/.config/awesome/themes/yogan/layouts/tilebottomg.png
+# layout_tileleft = /home/yogan/.config/awesome/themes/yogan/layouts/tileleftg.png
+# layout_tile = /home/yogan/.config/awesome/themes/yogan/layouts/tileg.png
+# layout_tiletop = /home/yogan/.config/awesome/themes/yogan/layouts/tiletopg.png
+# # FIXME
+# layout_fairh = /usr/share/awesome/themes/default/layouts/fairhw.png
+# layout_fairv = /usr/share/awesome/themes/default/layouts/fairvw.png
+
+# awesome_icon = /usr/share/awesome/icons/awesome16.png
+
+# You can use your own command to set your wallpaper
+# wallpaper_cmd = nitrogen --restore
+
+
+# vim: ft=config
