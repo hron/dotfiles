@@ -243,7 +243,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "b", function () awful.util.spawn("conkeror") end),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("editor") end),
-    awful.key({ modkey,           }, "q", function () awful.util.spawn("sh -c 'stardict `xclip -o`'") end),
+    awful.key({ modkey,           }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
