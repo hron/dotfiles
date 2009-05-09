@@ -6,15 +6,15 @@ theme = {}
 
 theme.font          = "sans 10"
 
-theme.bg_normal     = "#0a0a0a"
+theme.bg_normal     = "#444444"
 theme.bg_focus      = "#483d8b"
 theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_minimize   = "#0a0a0a"
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#ffffff"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_minimize   = "#aaaaaa"
 
 theme.border_width  = "1"
 theme.border_normal = "#4d4d4d"
