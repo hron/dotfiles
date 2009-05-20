@@ -40,6 +40,14 @@
       (setq tramp-default-proxies-alist nil)
       (add-to-list 'tramp-default-proxies-alist
 		   '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
+      ;; Zanby farm
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "^\\(main2\\|mail-\\(00\\|01\\)\\|http-[0-9]\\)+$" nil "/sshx:fw2.zanby.com:"))
+
+      ;; ATZ farm
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "^atz-\\(nfs\\|mail\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+      
       (add-to-list 'tramp-default-proxies-alist
 		   '( "localhost" "root" nil))
       (add-to-list 'tramp-default-proxies-alist

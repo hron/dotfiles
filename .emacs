@@ -1,6 +1,6 @@
 ;;; ~/.emacs
 
-;; Copyright (C) 2004, 2005, 2006, 2007, 2008  Aleksei Gusev <ag@aichyna.com>
+;; Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009  Aleksei Gusev <aleksei.gusev@gmail.com>
 
 ;; Started: 1 June 2004
 ;; Version: $Id$
@@ -8,19 +8,8 @@
 ;; Add some dirs to load-path
 (setq load-path (cons "~/.emacs.d/packages" load-path))
 
-;; (load-library "fvwm")
-;; (load-library "fetchmail-mode")
-;; (load-library "clone-line")
-;; ;;(load-library "freq-mode")
-;; (load-library "procmail-mode")
-;; ;; (load-library "rpm-spec-mode")
-;; ;; (load-library "syslog-mode")
 (load-library "smarty-mode")
 (load-library "crontab-mode")
-;; (load-library "anything-config")
-;; (load-library "rcodetools")
-;; (load-library "anything-rcodetools")
-;; (load-library "flymake-php")
 
 (load "~/.emacs.d/rc/emacs-rc-autotyping")
 ;; (load "~/.emacs.d/rc/emacs-rc-anything")
@@ -45,6 +34,7 @@
 (load "~/.emacs.d/rc/emacs-rc-octave")
 (load "~/.emacs.d/rc/emacs-rc-prog-misc")
 (load "~/.emacs.d/rc/emacs-rc-sh-scripts")
+(load "~/.emacs.d/rc/emacs-rc-smtpmail")
 (load "~/.emacs.d/rc/emacs-rc-tex")
 (load "~/.emacs.d/rc/emacs-rc-text")
 (load "~/.emacs.d/rc/emacs-rc-user-info")
@@ -73,8 +63,9 @@
 (load "~/.emacs.d/rc/emacs-rc-hippie-exp.el")
 ;; (load "~/.emacs.d/rc/emacs-rc-icicles.el")
 
-;; (gnus)                                  ; ;(
 
+(load-library "color-theme-dark-hron")
+(color-theme-dark-hron)
 
 (put 'scroll-left 'disabled nil)
 (custom-set-variables
@@ -82,6 +73,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(canlock-password "e6a803bd4bbe7baa935108fb943f3df19651b148")
  '(safe-local-variable-values (quote ((sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.

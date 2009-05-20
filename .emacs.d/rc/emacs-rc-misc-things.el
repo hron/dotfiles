@@ -34,6 +34,7 @@
 ;; По умолчанию комментарии "#"
 (setq-default comment-start "#")
 
+(mouse-avoidance-mode 'none)
 ;; Allows updating the copyright year and above mentioned GPL version manually
 ;; or when saving a file.  Do (add-hook 'write-file-hooks 'copyright-update).
 ;; (add-hook 'write-file-hooks 'copyright-update)

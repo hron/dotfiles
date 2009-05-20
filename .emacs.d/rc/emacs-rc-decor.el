@@ -47,6 +47,7 @@
 (show-paren-mode 1)
 
 ;; Color theme choosing
-(require 'color-theme)
-(color-theme-clarity)
+;; (require 'color-theme)
+;; (color-theme-dark-hron)
+;; (color-theme-clarity)
 

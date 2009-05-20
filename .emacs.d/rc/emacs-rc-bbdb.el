@@ -30,8 +30,8 @@
 
 (require 'message)
 
-(add-hook 'message-setup-hook
-	  (local-set-key [tab] 'bbdb-complete-name))
+;; (add-hook 'message-setup-hook
+;; 	  (local-set-key [tab] 'bbdb-complete-name))
 
 
 (provide 'emacs-rc-bbdb)

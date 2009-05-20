@@ -61,8 +61,7 @@
 ;; To change the behavior of `hippie-expand', remove, change the order
 ;; of, or insert functions in this list.
 (setq hippie-expand-try-functions-list
-      '(try-complete-abbrev
-	try-complete-file-name-partially
+      '(try-complete-file-name-partially
 	try-complete-file-name
 	try-expand-all-abbrevs
 	try-expand-dabbrev
