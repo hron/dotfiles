@@ -3,7 +3,7 @@ require("awful")
 -- Theme handling library
 require("beautiful")
 -- Notification library
-require("naughty")
+-- require("naughty")
 
 --{{{ dbg function
 function dbg(vars)
@@ -50,7 +50,7 @@ layouts =
 
 --custom
 config = {}
-config.terminal = "terminator"
+config.terminal = "xterm"
 
 -- step for scrolling
 config.step = 15
@@ -64,7 +64,8 @@ config.scroll_offset = 2
 
 --{{{ vars / shifty / config.tags
 shifty.config.tags = {
-   ["1"] = { postition = 0, init = true }
+   ["1"] = { postition = 0, init = true },
+   ["9:mail"] = { position = 9, init = true }
 }
 --}}}
 
@@ -83,23 +84,41 @@ shifty.config.apps = {
    },
 
    { match = { "stardict",
-	       "Skype",
 	       "gcolor2",
-	       "Conkeror",
 	       "Evolution",
+	       "Gnome-rdp",
+	       "totem",
 	       "Update Manager"},
      float = true, },
+
+   { match = { "gtkvncviewer.py", },
+     float = true,
+     geometry = { 190, 120, 800, 600 }, },
+   
+   { match = { ".* - Conkeror" },
+     float = true,
+     slave = false,
+     geometry = { 90, 80, 1024, 650 } },
+
+   { match = { "Gnus" },
+     tag = "9:mail" },
+
+   { match = { "Emacs" },
+     slave = false, },
 
    { match = { "conversation" },
      float = true,
      sticky = true },
    
-   { match = { "buddy_list" },
+   { match = { "buddy_list", "Gajim.py" },
      float = true,
-     titlebar = false,
      smart_placement = false,
+     sticky = true,
      honorsizehints = true, },
-    
+
+   { match = { "Skype" },
+     float = true,
+     smart_placement = false },
 }
 --}}}
 
@@ -117,20 +136,20 @@ shifty.init()
 
 --{{{ vars / naughty
 
---  naughty settings
-naughty.config.border_color = 'black'
-naughty.config.font = 'Monospace 7.5'
-naughty.config.icon_size = 32
-naughty.config.width = 300
-naughty.config.position = "top_left"
-naughty.config.spacing = 3
-naughty.config.padding = 5
-naughty.config.margin = 5
-naughty.config.presets.normal.height = 16
---naughty.config.timeout = 0
---naughty.config.hover_timeout = 0.2
-naughty.config.screen = LCD
---}}}
+-- --  naughty settings
+-- naughty.config.border_color = 'black'
+-- naughty.config.font = 'Monospace 7.5'
+-- naughty.config.icon_size = 32
+-- naughty.config.width = 300
+-- naughty.config.position = "top_left"
+-- naughty.config.spacing = 3
+-- naughty.config.padding = 5
+-- naughty.config.margin = 5
+-- naughty.config.presets.normal.height = 16
+-- --naughty.config.timeout = 0
+-- --naughty.config.hover_timeout = 0.2
+-- naughty.config.screen = LCD
+-- --}}}
 
 --}}}
 
@@ -737,7 +756,7 @@ clientkeys = {
 	 if awful.client.floating.get(c) then
 	    awful.titlebar.remove(c)
 	 else
-	    awful.titlebar.add( c, { modkey = modkey })
+	    awful.titlebar.add( c, { modkey = modkey,  height = 16})
 	 end
 	 awful.client.floating.toggle( c)
       end),
@@ -746,7 +765,7 @@ clientkeys = {
 	 if c.titlebar then
 	    awful.titlebar.remove( c)
 	 else
-	    awful.titlebar.add( c, { modkey = modkey })
+	    awful.titlebar.add( c, { modkey = modkey, height = 16 })
 	 end
       end),
   key({ modkey }, "Return",
@@ -831,7 +850,7 @@ awful.hooks.manage.register(function (c, startup)
 
     if use_titlebar then
         -- Add a titlebar
-        awful.titlebar.add(c, { modkey = modkey })
+        awful.titlebar.add(c, { modkey = modkey, height = 16 })
     end
     -- Add mouse bindings
     c:buttons({
@@ -885,11 +904,11 @@ end)
 -- }}}
 
 --{{{ hooks / timers
-awful.hooks.timer.register(1, hook_1s)
-awful.hooks.timer.register(30, hook_1m)
-awful.hooks.timer.register(3, hook_3s)
-awful.hooks.timer.register(5, hook_5s)
-awful.hooks.timer.register(600, hook_10m)
+-- awful.hooks.timer.register(1, hook_1s)
+-- awful.hooks.timer.register(30, hook_1m)
+-- awful.hooks.timer.register(3, hook_3s)
+-- awful.hooks.timer.register(5, hook_5s)
+-- awful.hooks.timer.register(600, hook_10m)
 -- }}}
 
 -- }}}

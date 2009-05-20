@@ -413,7 +413,7 @@ function match(c, startup)
           if a.dockable ~= nil then awful.client.dockable.set(c, a.dockable) end
           if a.urgent ~= nil then c.urgent = a.urgent end
           if a.opacity ~= nil then c.opacity = a.opacity end
-          if a.titlebar ~= nil then awful.titlebar.add(c, { modkey = modkey }) end
+          if a.titlebar ~= nil then awful.titlebar.add(c, { modkey = modkey, height = 16 }) end
           if a.run ~= nil then run = a.run end
           if a.sticky ~= nil then  c.sticky = a.sticky end
           if a.wfact ~= nil then wfact = a.wfact end
@@ -429,7 +429,7 @@ function match(c, startup)
   -- set properties of floating clients
   if awful.client.floating.get(c) then
     if config.defaults.floatBars then       -- add a titlebar if requested in config.defaults
-      awful.titlebar.add( c, { modkey = modkey } )
+      awful.titlebar.add( c, { modkey = modkey, height = 16 } )
     end
     if smart_placement then
        awful.placement.centered(c)
