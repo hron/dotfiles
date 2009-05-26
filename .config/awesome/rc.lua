@@ -88,6 +88,7 @@ shifty.config.apps = {
 	       "Evolution",
 	       "Gnome-rdp",
 	       "totem",
+	       "Celetania.*",
 	       "Update Manager"},
      float = true, },
 
@@ -417,11 +418,15 @@ lidclosed = islidclosed()
 --}}}
 
 --{{{ widgets / prompt
-mypromptbox = widget({ type = "textbox", name = "mypromptbox", align = "left" })
+mypromptbox = widget({ type = "textbox",
+		       name = "mypromptbox",
+		       align = "left" })
 --}}}
 
 --{{{ widgets / systray
-mysystray = widget({ type = "systray", name = "mysystray", align = "right" })
+mysystray = widget({ type = "systray",
+		     name = "mysystray",
+		     align = "right" })
 --}}}
 
 --{{{ widgets / layoutbox
@@ -470,7 +475,14 @@ mytasklist.buttons = { button({ }, 1, function (c)
                                           client.focus = c
                                           c:raise()
                                       end),
-		       button({ }, 3, function () if instance then instance:hide() instance = nil else instance = awful.menu.clients({ width=250 }) end end),
+		       button({ }, 3,
+			      function ()
+				 if instance then
+				    instance:hide() instance = nil
+				 else
+				    instance = awful.menu.clients({ width=250 })
+				 end
+			      end),
                        button({ }, 4, function ()
                                           awful.client.focus.byidx(1)
                                           if client.focus then client.focus:raise() end
@@ -520,6 +532,17 @@ end
 --}}}
 
 -- {{{ bindings 
+
+-- {{{ bindings / menus
+menukeys = {}
+menukeys.down = "j"
+menukeys.up = "k"
+menukeys.exec = "Return"
+menukeys.back = "h"
+menukeys.close = "Escape"
+
+awful.menu.setkeys( menukeys)
+-- }}}
 
 -- {{{ bindings / global
 globalkeys = {
@@ -604,6 +627,13 @@ globalkeys = {
 	 end
       end),
 
+  key({ modkey }, "\\",
+      function ()
+	 m = awful.menu.clients()
+	 m:hide()
+	 m:show( true)
+      end),
+	 
   key({ modkey }, "u", awful.client.urgent.jumpto),
 
 -- Standard program

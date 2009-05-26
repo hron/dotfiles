@@ -47,7 +47,14 @@
       ;; ATZ farm
       (add-to-list 'tramp-default-proxies-alist
 		   '( "^atz-\\(nfs\\|mail\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
-      
+
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
+
+      ;; Soapblox
+      (add-to-list 'tramp-default-proxies-alist
+		   '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-00.warecorp.com:"))
+
       (add-to-list 'tramp-default-proxies-alist
 		   '( "localhost" "root" nil))
       (add-to-list 'tramp-default-proxies-alist
