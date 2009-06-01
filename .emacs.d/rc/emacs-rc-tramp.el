@@ -29,36 +29,43 @@
 ;;; Code:
 
 (setq tramp-default-method "sshx")
+(setq tramp-default-host "localhost")
 
 (setq tramp-shell-prompt-pattern shell-prompt-pattern
       tramp-backup-directory-alist backup-directory-alist
       tramp-auto-save-directory "~/.emacs.d/tramp-auto-save")
 
 
+(setq tramp-default-method-alist
+			'(("localhost" "root" "sudo")))
+
 (unless (string-match "22\\." (version))
     (progn
       (setq tramp-default-proxies-alist nil)
+
       (add-to-list 'tramp-default-proxies-alist
-		   '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
+									 '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
+
       ;; Zanby farm
       (add-to-list 'tramp-default-proxies-alist
-		   '( "^\\(main2\\|mail-\\(00\\|01\\)\\|http-[0-9]\\)+$" nil "/sshx:fw2.zanby.com:"))
+									 '( "^\\(main2\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\)+$" nil "/sshx:fw2.zanby.com:"))
 
       ;; ATZ farm
       (add-to-list 'tramp-default-proxies-alist
-		   '( "^atz-\\(nfs\\|mail\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "^atz-\\(nfs\\|mail\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       (add-to-list 'tramp-default-proxies-alist
-		   '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       ;; Soapblox
       (add-to-list 'tramp-default-proxies-alist
-		   '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       (add-to-list 'tramp-default-proxies-alist
-		   '( "localhost" "root" nil))
+									 '( nil "root" "/sshx:%h:"))
+
       (add-to-list 'tramp-default-proxies-alist
-		   '( nil "root" "/sshx:%h:"))
+									 '( "localhost" "root" nil))
       ))
 
 ;;; emacs-rc-tramp.el ends here

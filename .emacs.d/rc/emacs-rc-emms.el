@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2005  Aleksei Gusev <aleksei.gusev@tut.by>
 
-;; Author: Aleksei Gusev <aleksei.gusev@tut.by>
-;; Created: 26 Aug 2005
+;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
+;; Created: Fri May 29 14:00:35 EEST 2009
 ;; Version: $Id$
 ;; Keywords: 
 
@@ -28,55 +28,37 @@
 
 ;;; Code:
 
-(require 'emms)
-(require 'emms-player-simple)
-(require 'emms-source-file)
-(require 'emms-pbi-popup)
-(require 'emms-pbi-popup-vertically)
+(require 'emms-setup)
 
-(define-emms-simple-player play "\\.wav$" "play")
+;; -- Function: emms-all
+;;     An Emms setup script.  Everything included in the `emms-standard'
+;;     setup and adds all the stable features which come with the Emms
+;;     distribution.
+(emms-all)
 
-;; (define-emms-player "emms-player-mpd"
-;;   :start 'emms-player-mpd-start
-;;   :stop 'emms-player-mpd-stop
-;;   :playable 'emms-player-mpd-playable-p
-;;   :regex "[Oo][Gg][Gg]\\|[Mm][Pp]3")
+(require 'emms-player-mpd)
 
-;; (defun emms-player-mpd-start ()
-  
-  
-(setq emms-player-list '(emms-player-mpg321
-			 emms-player-ogg123
-			 emms-player-mplayer)
-      emms-show-format "NP: %s"
-      emms-pbi-load-info-async t
-      emms-track-description-function 'fc-emms-track-description
-;;       emms-pbi-playlist-entry-max-length 37
-      emms-pbi-popup-vertically-default-height 15
-      emms-playlist-shuffle-function 'identity
-      emms-play-all-preparation-function 'emms-play-all-shuffle
-      emms-source-list '((emms-source-directory-tree "~/mp3/")))
+(setq emms-player-mpd-server-name "localhost")
+(setq emms-player-mpd-server-port "6600")
 
-(global-set-key (kbd "<f3>") 'emms-pbi-popup-vertically-playlist)
+;; (add-to-list 'emms-info-functions 'emms-info-mpd)
 
-;; (keydef "C-c m w" emms-show)
-;; (global-set-key [(control ?c) ?m ?w] 'emms-show)
-;; (global-set-key [(control ?c) ?m ?n] 'emms-next)
-;; (global-set-key [(control ?c) ?m ?p] 'emms-previous)
-;; (global-set-key [(control ?c) ?m ?s] 'emms-stop)
-;; (global-set-key [(control ?c) ?m ?i] 'fc-emms-insert)
 
-(defun fc-emms-insert ()
-  "Insert a Playing MPEG stream from ... string."
-  (interactive)
-  (let ((emms-show-format "Playing MPEG stream from %s ..."))
-    (emms-show 'insert)))
+;; The default directory to look for media files.
+(setq emms-source-file-default-directory "~/Music/")
 
-(defun fc-emms-track-description (track)
-  "Return a nice description of TRACK."
-  (let ((desc (emms-track-description track)))
-    (if (string-match "^/home/aleksei/mp3/\\(.*\\)" desc)
-	(match-string 1 desc)
-      desc)))
+(setq emms-player-list '(emms-player-mpd))
+
+;; A function to call that searches in a given directory all files
+;; that match a given regex. DIR and REGEX are the only arguments
+;; passed to this function.  You have two build-in options:
+;; `emms-source-file-directory-tree-internal' will work always, but
+;; might be slow.  `emms-source-file-directory-tree-find' will work
+;; only if you have GNU find, but it's faster.
+(setq emms-source-file-directory-tree-function
+			'emms-source-file-directory-tree-find)
+
+(setq emms-playlist-default-major-mode 'emms-playlist-mode)
+
 
 ;;; emacs-rc-emms.el ends here

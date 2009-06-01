@@ -40,7 +40,7 @@
 (load "~/.emacs.d/rc/emacs-rc-user-info")
 (load "~/.emacs.d/rc/emacs-rc-w3")
 (load "~/.emacs.d/rc/emacs-rc-woman")
-;; (load "~/.emacs.d/rc/emacs-rc-emms")
+(load "~/.emacs.d/rc/emacs-rc-emms")
 (load "~/.emacs.d/rc/emacs-rc-tramp")
 (load "~/.emacs.d/rc/emacs-rc-bbdb")
 ;; (load "~/.emacs.d/rc/emacs-rc-lsdb")
@@ -81,3 +81,5 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+(put 'set-goal-column 'disabled nil)

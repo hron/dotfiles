@@ -3,9 +3,6 @@
 ;; Bind `F2' to call shell
 (global-set-key [f5] 'eshell)
 
-;; Bind `F4' to toggle truncation lines
-(global-set-key [f4] 'ecb-minor-mode)
-
 ;; Bind `F6' to toggle truncation lines
 (global-set-key [f6] 'toggle-truncate-lines)
 
@@ -17,10 +14,6 @@
 
 ;; Bind `C-x C-b' to more convenience
 (global-set-key "\C-x\C-b" 'bs-show)
-
-;; I think it is more conveniently to switch to the `other-buffer'
-;; immediately on press `C-x b'
-(global-set-key "\C-xb" 'switch-to-other-buffer)
 
 ;; and to kill too..
 (global-set-key "\C-xk" 'kill-this-buffer)

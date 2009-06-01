@@ -154,6 +154,8 @@ shifty.init()
 
 --}}}
 
+awful.util.spawn( "killall gnome-panel")
+
 --{{{ functions
 
 --{{{ functions / run
@@ -552,6 +554,7 @@ globalkeys = {
   key({ modkey }, "b", function () awful.util.spawn("conkeror") end),
   key({ modkey }, "e", function () awful.util.spawn("editor") end),
   key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
+  key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),
   key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
 -- }}}
 

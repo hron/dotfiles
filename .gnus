@@ -13,6 +13,11 @@
 		(nnimap-stream tls))))
 
 ;; Splitting mail
+
+;; If non-`nil', do crossposting if several split methods match the
+;; mail.  If `nil', the first match in `nnimap-split-rule' found will
+;; be used.
+(setq nnimap-split-crosspost nil)
 (setq nnimap-split-inbox '("INBOX"))
 (setq nnimap-split-rule
       '(( "wmail" ( ".*"
@@ -25,6 +30,7 @@
 		     ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
 		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
 		     ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
+				 ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
 		     ("INBOX.Lists.Global" "^List-Id:.*global.warecorp.com"))))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)

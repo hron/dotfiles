@@ -33,12 +33,9 @@
 (add-hook 'ruby-mode-hook (lambda ()
 			    (inf-ruby-keys)
                             (local-set-key [f1] 'ri)
-			    (local-set-key [?\C->] 'rct-complete-symbol--anything)))
-
-;; (add-hook 'ruby-mode-hook (lambda ()
-;;                             (local-set-key 'f1 'ri)
-;;                             (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
-;;                             (local-set-key 'f4 'ri-ruby-show-args)
-;;                             ))
+			    (local-set-key [?\C->] 'rct-complete-symbol--anything)
+			    (font-lock-add-keywords nil
+						    '(("\\<\\(FIXME\\):" 1 font-lock-warning-face t)))
+			    ))
 
 ;;; emacs-rc-ruby.el ends here
