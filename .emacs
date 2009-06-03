@@ -49,6 +49,7 @@
 (load "~/.emacs.d/rc/emacs-rc-liece")
 ;; (load "~/.emacs.d/rc/emacs-rc-semantic")
 (load "~/.emacs.d/rc/emacs-rc-view-mode")
+(load "~/.emacs.d/rc/emacs-rc-vc")
 (load "~/.emacs.d/rc/emacs-rc-server")
 ;; (load "~/.emacs.d/rc/emacs-rc-php")
 (load "~/.emacs.d/rc/emacs-rc-gdb")

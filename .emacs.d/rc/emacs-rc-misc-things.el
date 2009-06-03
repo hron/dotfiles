@@ -25,7 +25,8 @@
 (windmove-default-keybindings)
 
 ;; Между предложениями _один_, а не два пробела.
-(setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
+;; (setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
+(setq sentence-end-double-space nil)
 
 (setq default-tab-width 2)
 

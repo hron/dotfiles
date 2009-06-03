@@ -201,8 +201,6 @@
      (iswitchb-virtual-matches ((t (:foreground "LightSteelBlue"))))
      (italic ((t (:italic t :slant italic))))
      (lazy-highlight ((t (:background "dark blue"))))
-     (link ((t (:foreground "cyan" :underline t))))
-     (link-visited ((t (:underline t :foreground "violet"))))
      (match ((t (:background "RoyalBlue3"))))
      (menu ((t (nil))))
      (message-cited-text ((t (:foreground "LightPink1"))))
