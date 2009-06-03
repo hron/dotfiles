@@ -28,12 +28,26 @@
 
 ;;; Code:
 
-;;    The variable `vc-follow-symlinks' controls what to do when a
-;; symbolic link points to a version-controlled file. If it is `nil',
-;; VC only displays a warning message. If it is `t', VC automatically
-;; follows the link, and visits the real file instead, telling you
-;; about this in the echo area. If the value is `ask' (the default),
-;; VC asks you each time whether to follow the link.
-(setq vc-follow-symlinks t)
+(setq
+ ;; Emacs normally  does not save  backup files for source  files that
+ ;; are maintained  with version control.  If you want to  make backup
+ ;; files even  for files that  use version control, set  the variable
+ ;; `vc-make-backup-files' to a non-`nil' value.
+ vc-make-backup-files t
+
+ ;;    The variable  `vc-follow-symlinks' controls  what to do  when a
+ ;; symbolic link points to a version-controlled file. If it is `nil',
+ ;; VC only displays a warning message. If it is `t', VC automatically
+ ;; follows the  link, and visits  the real file instead,  telling you
+ ;; about this in the echo area.  If the value is `ask' (the default),
+ ;; VC asks you each time whether to follow the link.
+ vc-follow-symlinks t
+
+ ;;    VC mode does much of its work by running the shell commands for
+ ;; RCS,  CVS  and SCCS.  If  `vc-command-messages'  is non-`nil',  VC
+ ;; displays messages  to indicate which  shell commands it  runs, and
+ ;; additional messages when the commands finish.
+ vc-command-messages t
+ )
 
 ;;; emacs-rc-vc.el ends here
