@@ -11,6 +11,9 @@
 (load-library "smarty-mode")
 (load-library "crontab-mode")
 
+(setq load-path (cons "~/.emacs.d/packages/gentoo-syntax" load-path))
+(load-library "gentoo-syntax")
+
 (load "~/.emacs.d/rc/emacs-rc-autotyping")
 ;; (load "~/.emacs.d/rc/emacs-rc-anything")
 (load "~/.emacs.d/rc/emacs-rc-apache")
