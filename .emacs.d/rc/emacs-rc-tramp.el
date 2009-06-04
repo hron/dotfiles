@@ -28,16 +28,15 @@
 
 ;;; Code:
 
-(setq tramp-default-method "sshx")
-(setq tramp-default-host "localhost")
 
 (setq tramp-shell-prompt-pattern shell-prompt-pattern
       tramp-backup-directory-alist backup-directory-alist
       tramp-auto-save-directory "~/.emacs.d/tramp-auto-save")
 
-
+(setq tramp-default-host "localhost")
 (setq tramp-default-method-alist
-			'(("localhost" "root" "sudo")))
+			'(( nil "root" "sudo")
+				( nil nil "sshx")))
 
 (unless (string-match "22\\." (version))
     (progn

@@ -61,8 +61,9 @@
 (load "~/.emacs.d/rc/emacs-rc-ri")
 (load "~/.emacs.d/rc/emacs-rc-yaml")
 (load "~/.emacs.d/rc/emacs-rc-sql")
-(load "~/.emacs.d/rc/emacs-rc-hippie-exp.el")
+(load "~/.emacs.d/rc/emacs-rc-hippie-exp")
 ;; (load "~/.emacs.d/rc/emacs-rc-icicles.el")
+(load "~/.emacs.d/rc/emacs-rc-uniquify")
 
 
 (load-library "color-theme-dark-hron")
