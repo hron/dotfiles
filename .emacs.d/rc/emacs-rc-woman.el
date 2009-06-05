@@ -35,5 +35,16 @@
 ;; frames, in which case the default value is non-`nil'.
 (setq woman-use-own-frame nil)
 
+(defun woman-reformat-last-file-with-toggle-fill-frame ()
+	"Reformat last file, e.g. after changing fill column after toggling
+fill frame option."
+	(interactive)
+	(woman-toggle-fill-frame)
+	(woman-reformat-last-file))
+
+(add-hook 'woman-mode-hook
+               '(lambda ()
+                  (define-key woman-mode-map "R"
+                  'woman-reformat-last-file-with-toggle-fill-frame)))
 
 ;;; emacs-rc-woman.el ends here
