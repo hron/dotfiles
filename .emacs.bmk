@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("emacs"
-	(front-context-string . "\n32.3 Tags Table")
-	(rear-context-string . "aining:: > Tags\n")
-	(position . 98456)
+	(front-context-string . "\n38 The Calendar")
+	(rear-context-string . " Calendar/Diary\n")
+	(position . 1320)
 	(filename . "/usr/share/info/emacs-snapshot/emacs")
-	(info-node . "Tags")
+	(info-node . "Calendar/Diary")
 	(handler . Info-bookmark-jump)))
