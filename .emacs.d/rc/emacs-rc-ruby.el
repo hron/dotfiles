@@ -30,12 +30,17 @@
 
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
-(add-hook 'ruby-mode-hook (lambda ()
-			    (inf-ruby-keys)
-                            (local-set-key [f1] 'ri)
-			    (local-set-key [?\C->] 'rct-complete-symbol--anything)
-			    (font-lock-add-keywords nil
-						    '(("\\<\\(FIXME\\):" 1 font-lock-warning-face t)))
-			    ))
+(add-hook 'ruby-mode-hook
+					(lambda ()
+						(inf-ruby-keys)
+						(local-set-key [f1] 'ri)
+						(local-set-key [?\C->] 'rct-complete-symbol--anything)
+						(font-lock-add-keywords nil
+																		'(("\\<\\(FIXME\\|TODO\\):" 1 font-lock-warning-face t)))
+						))
+
+(add-hook 'ruby-mode-hook
+					'(lambda ()
+						 (auto-fill-mode 1)))
 
 ;;; emacs-rc-ruby.el ends here
