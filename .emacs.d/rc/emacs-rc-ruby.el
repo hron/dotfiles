@@ -28,6 +28,11 @@
 
 ;;; ruby-mode site-lisp configuration
 
+(add-to-list 'auto-mode-alist
+						 '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist
+						 '("Capfile" . ruby-mode))
+
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 (add-hook 'ruby-mode-hook

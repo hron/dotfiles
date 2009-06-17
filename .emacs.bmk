@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("emacs"
-	(front-context-string . "\n38 The Calendar")
-	(rear-context-string . " Calendar/Diary\n")
-	(position . 1320)
+	(front-context-string . "\n57.1 Minor Mode")
+	(rear-context-string . ": > Minor Modes\n")
+	(position . 195107)
 	(filename . "/usr/share/info/emacs-snapshot/emacs")
-	(info-node . "Calendar/Diary")
+	(info-node . "Minor Modes")
 	(handler . Info-bookmark-jump)))

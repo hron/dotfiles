@@ -40,7 +40,9 @@
       calendar-longitude 27.5
       calendar-location-name "Minsk, BY")
 
-(setq european-calendar-style t)
+(setq calendar-time-display-form
+			'(24-hours ":" minutes
+								 (if time-zone " (") time-zone (if time-zone ")")))
 
 
 ;;; emacs-rc-calendar.el ends here

@@ -1,9 +1,26 @@
 ;;; ~/.emacs
 
-;; Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009  Aleksei Gusev <aleksei.gusev@gmail.com>
+;; Copyright (C) 2004, 2005, 2006, 
+;;               2007, 2008, 2009 Aleksei Gusev <aleksei.gusev@gmail.com>
 
 ;; Started: 1 June 2004
 ;; Version: $Id$
+
+;; TODO:
+;; 
+;;  * Reconfigure emacsclient:
+;; 
+;;     - there is a new option '-c' for creating new frame without
+;;       using existing (as I remember I use some elisp code to
+;;       achieve this behaviour).
+;;
+;;     - make openning a new frame by 'Win-E' without '~/src' in
+;;       buffer and with --no-wait option.
+;;
+;;  * Deleting files in trash.
+;;  * Shadow copies of files do not work with tramp.
+;;  * Status of remote executed grep still 'running' forever.
+
 
 ;; Add some dirs to load-path
 (setq load-path (cons "~/.emacs.d/packages" load-path))

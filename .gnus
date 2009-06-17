@@ -25,7 +25,7 @@
 		      "^X-Spam-Status: Yes")
 		     ("INBOX.Robots"
 		      "^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@warecorp.com\\)")
-		     ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\)@.*")
+		     ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
 		     ("INBOX.jobs@warecorp.com" "^To:.*jobs@warecorp.com")
 		     ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
 		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
@@ -44,20 +44,20 @@
 
 ;; A three pane layout, Group buffer on the left, summary buffer
 ;; top-right, article buffer bottom-right:
-(gnus-add-configuration
- '(article
-   (horizontal 1.0
-	       (vertical 60
-			 (group 1.0))
-	       (vertical 1.0
-			 (summary 0.25 point)
-			 (article 1.0)))))
-(gnus-add-configuration
- '(summary
-   (horizontal 1.0
-	       (vertical 60
-			 (group 1.0))
-	       (vertical 1.0
-			 (summary 1.0 point)))))
+;; (gnus-add-configuration
+;;  '(article
+;;    (horizontal 1.0
+;; 	       (vertical 60
+;; 			 (group 1.0))
+;; 	       (vertical 1.0
+;; 			 (summary 0.25 point)
+;; 			 (article 1.0)))))
+;; (gnus-add-configuration
+;;  '(summary
+;;    (horizontal 1.0
+;; 	       (vertical 60
+;; 			 (group 1.0))
+;; 	       (vertical 1.0
+;; 			 (summary 1.0 point)))))
 
 ;; (setq gnus-summary-line-format "%B%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")

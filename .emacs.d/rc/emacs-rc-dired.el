@@ -45,6 +45,19 @@
 ;; `insert-directory' in `ls-lisp.el' for more details."
 (setq dired-listing-switches "-ahl")
 
+;; If you change the variable DIRED-ISEARCH-FILENAMES to `t', then the
+;; usual search commands also limit themselves to the file names; for
+;; instance, `C-s' behaves like `M-s f C-s'
+(setq dired-isearch-filenames t)
+
+;;    On some systems, there is a facility called the "Trash" or
+;; "Recycle Bin", but Emacs does _not_ use it by default. Thus, when
+;; you delete a file in Dired, it is gone forever. However, you can
+;; tell Emacs to use the Trash for file deletion, by changing the
+;; variable `delete-by-moving-to-trash' to `t'. *Note Misc File Ops::,
+;; for more information about the Trash.
+(setq delete-by-moving-to-trash t)
+
 (add-hook 'dired-mode-hook
 	  (lambda ()
 	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
