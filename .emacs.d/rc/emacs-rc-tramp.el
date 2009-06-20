@@ -64,7 +64,7 @@
 									 '( nil "root" "/sshx:%h:"))
 
       (add-to-list 'tramp-default-proxies-alist
-									 '( "localhost" "root" nil))
+									 '( "crystal\\|localhost" "root" nil))
       ))
 
 ;;; emacs-rc-tramp.el ends here

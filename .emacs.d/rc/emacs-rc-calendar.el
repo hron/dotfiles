@@ -45,4 +45,13 @@
 								 (if time-zone " (") time-zone (if time-zone ")")))
 
 
+(require 'timeclock)
+
+(define-key ctl-x-map "ti" 'timeclock-in)
+(define-key ctl-x-map "to" 'timeclock-out)
+(define-key ctl-x-map "tc" 'timeclock-change)
+(define-key ctl-x-map "tr" 'timeclock-reread-log)
+(define-key ctl-x-map "tu" 'timeclock-update-modeline)
+(define-key ctl-x-map "tw" 'timeclock-when-to-leave-string)
+
 ;;; emacs-rc-calendar.el ends here

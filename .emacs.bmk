@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("emacs"
-	(front-context-string . "\n57.1 Minor Mode")
-	(rear-context-string . ": > Minor Modes\n")
-	(position . 195107)
+	(front-context-string . "\n57.4.6 Rebindin")
+	(rear-context-string . " Init Rebinding\n")
+	(position . 258834)
 	(filename . "/usr/share/info/emacs-snapshot/emacs")
-	(info-node . "Minor Modes")
+	(info-node . "Init Rebinding")
 	(handler . Info-bookmark-jump)))

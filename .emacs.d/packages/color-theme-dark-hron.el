@@ -225,7 +225,7 @@
      (proced-mark ((t (:foreground "Aquamarine"))))
      (proced-marked ((t (:bold t :weight bold :foreground "Pink"))))
      (proced-sort-header ((t (:foreground "Cyan1"))))
-     (query-replace ((t (:foreground "brown4" :background "palevioletred2"))))
+     (query-replace ((t (:background "dark blue" :bold t))))
      (rcirc-bright-nick ((t (:foreground "Aquamarine"))))
      (rcirc-dim-nick ((t (:family "Terminus" :foundry "xos4" :width normal :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "white" :background "black" :stipple nil :height 106))))
      (rcirc-keyword ((t (:background "darkolivegreen"))))
