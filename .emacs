@@ -28,44 +28,46 @@
 ;; Add some dirs to load-path
 (setq load-path (cons "~/.emacs.d/packages" load-path))
 
-(setq load-path (cons "~/.emacs.d/packages/gentoo-syntax" load-path))
-(load-library "gentoo-syntax")
-
+;; loading alternative git client.
 (load "/usr/share/doc/git-core/contrib/emacs/git")
 
-(add-to-list 'auto-mode-alist '(".*/etc/apache.*" . apache-mode))
-
+;; Emacs core customization
 (load "~/.emacs.d/rc/emacs-rc-calendar")
 (load "~/.emacs.d/rc/emacs-rc-decor")
 (load "~/.emacs.d/rc/emacs-rc-dired")
-(load "~/.emacs.d/rc/emacs-rc-emms")
-(load "~/.emacs.d/rc/emacs-rc-eudc")
-(load "~/.emacs.d/rc/emacs-rc-gdb")
 (load "~/.emacs.d/rc/emacs-rc-hippie-exp")
-(load "~/.emacs.d/rc/emacs-rc-kbd")
-(load "~/.emacs.d/rc/emacs-rc-ldap")
-(load "~/.emacs.d/rc/emacs-rc-lisp")
-(load "~/.emacs.d/rc/emacs-rc-misc-things")
+(load "~/.emacs.d/rc/emacs-rc-gdb")
 (load "~/.emacs.d/rc/emacs-rc-mule")
-(load "~/.emacs.d/rc/emacs-rc-octave")
+(load "~/.emacs.d/rc/emacs-rc-misc-things")
+(load "~/.emacs.d/rc/emacs-rc-tramp")
+(load "~/.emacs.d/rc/emacs-rc-woman")
+(load "~/.emacs.d/rc/emacs-rc-user-info")
+(load "~/.emacs.d/rc/emacs-rc-vc")
+(load "~/.emacs.d/rc/emacs-rc-ldap")
+(load "~/.emacs.d/rc/emacs-rc-eudc")
+(load "~/.emacs.d/rc/emacs-rc-kbd")
+(load "~/.emacs.d/rc/emacs-rc-smtpmail")
+
+;; EMMS
+(load "~/.emacs.d/rc/emacs-rc-emms")
+
+;; Mode specific configurations
+(load "~/.emacs.d/rc/emacs-rc-sh-scripts")
+(load "~/.emacs.d/rc/emacs-rc-lisp")
+(load "~/.emacs.d/rc/emacs-rc-text")
+(load "~/.emacs.d/rc/emacs-rc-sql")
 (load "~/.emacs.d/rc/emacs-rc-php")
+(load "~/.emacs.d/rc/emacs-rc-tex")
+
+;; Ruby, Rails and all, all, all.. ;]
 (load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
 (load "~/.emacs.d/rc/emacs-rc-rhtml")
 (load "~/.emacs.d/rc/emacs-rc-ri")
 (load "~/.emacs.d/rc/emacs-rc-ruby")
-(load "~/.emacs.d/rc/emacs-rc-sh-scripts")
-(load "~/.emacs.d/rc/emacs-rc-smtpmail")
-(load "~/.emacs.d/rc/emacs-rc-sql")
-(load "~/.emacs.d/rc/emacs-rc-tex")
-(load "~/.emacs.d/rc/emacs-rc-text")
-(load "~/.emacs.d/rc/emacs-rc-tramp")
-(load "~/.emacs.d/rc/emacs-rc-user-info")
-(load "~/.emacs.d/rc/emacs-rc-vc")
-(load "~/.emacs.d/rc/emacs-rc-woman")
 (load "~/.emacs.d/rc/emacs-rc-yaml")
 
-
-(load-library "color-theme-dark-hron")
+;; Color theme loading, must be the last.
+(load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)
 
 (put 'scroll-left 'disabled nil)
@@ -75,7 +77,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(canlock-password "e6a803bd4bbe7baa935108fb943f3df19651b148")
- '(safe-local-variable-values (quote ((sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
+ '(safe-local-variable-values (quote ((folded-file . t) (folding-internal-margins) (sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
