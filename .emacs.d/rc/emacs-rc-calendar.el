@@ -26,6 +26,8 @@
 
 ;;; Code:
 
+(require 'calendar)
+
 ;; *Name of the file in which one's personal diary of dates is kept.
 (setq diary-file "~/var/lib/emacs/diary")
 

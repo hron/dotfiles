@@ -47,7 +47,7 @@
                           (all-completions he-search-string 'tags-complete-tag) 'string-lessp)))
   (while (and he-expand-list
               (he-string-member (car he-expand-list) he-tried-table))
-              (setq he-expand-list (cdr he-expand-list)))
+		(setq he-expand-list (cdr he-expand-list)))
   (if (null he-expand-list)
       (progn
         (when old (he-reset-string))
@@ -62,13 +62,13 @@
 ;; of, or insert functions in this list.
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-all-abbrevs
-	try-expand-dabbrev
-	try-expand-dabbrev-all-buffers
-	try-expand-dabbrev-from-kill
-	try-expand-list try-expand-line 
-	try-complete-lisp-symbol-partially
-	try-complete-lisp-symbol))
+				try-complete-file-name
+				try-expand-all-abbrevs
+				try-expand-dabbrev
+				try-expand-dabbrev-all-buffers
+				try-expand-dabbrev-from-kill
+				try-expand-list try-expand-line 
+				try-complete-lisp-symbol-partially
+				try-complete-lisp-symbol))
 
 ;;; emacs-rc-hippie-exp.el ends here

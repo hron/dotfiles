@@ -33,11 +33,8 @@
 (add-to-list 'auto-mode-alist
 						 '("Capfile" . ruby-mode))
 
-(add-hook 'ruby-mode-hook 'inf-ruby-keys)
-
 (add-hook 'ruby-mode-hook
 					(lambda ()
-						(inf-ruby-keys)
 						(local-set-key [f1] 'ri)
 						(local-set-key [?\C->] 'rct-complete-symbol--anything)
 						(font-lock-add-keywords nil

@@ -26,6 +26,8 @@
 
 ;;; Code:
 
+(require 'dired)
+
 ;; The variable `dired-recursive-deletes' controls whether the delete
 ;; command will delete non-empty directories (including their contents).
 ;; The default is to delete only empty directories.
