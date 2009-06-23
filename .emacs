@@ -31,23 +31,6 @@
 ;; loading alternative git client.
 (load "/usr/share/doc/git-core/contrib/emacs/git")
 
-;; Emacs core customization
-(load "~/.emacs.d/rc/emacs-rc-calendar")
-(load "~/.emacs.d/rc/emacs-rc-decor")
-(load "~/.emacs.d/rc/emacs-rc-dired")
-(load "~/.emacs.d/rc/emacs-rc-hippie-exp")
-(load "~/.emacs.d/rc/emacs-rc-gdb")
-(load "~/.emacs.d/rc/emacs-rc-mule")
-(load "~/.emacs.d/rc/emacs-rc-misc-things")
-(load "~/.emacs.d/rc/emacs-rc-tramp")
-(load "~/.emacs.d/rc/emacs-rc-woman")
-(load "~/.emacs.d/rc/emacs-rc-user-info")
-(load "~/.emacs.d/rc/emacs-rc-vc")
-(load "~/.emacs.d/rc/emacs-rc-ldap")
-(load "~/.emacs.d/rc/emacs-rc-eudc")
-(load "~/.emacs.d/rc/emacs-rc-kbd")
-(load "~/.emacs.d/rc/emacs-rc-smtpmail")
-
 ;; EMMS
 (load "~/.emacs.d/rc/emacs-rc-emms")
 
@@ -65,6 +48,23 @@
 (load "~/.emacs.d/rc/emacs-rc-ri")
 (load "~/.emacs.d/rc/emacs-rc-ruby")
 (load "~/.emacs.d/rc/emacs-rc-yaml")
+
+;; Emacs core customization
+(load "~/.emacs.d/rc/emacs-rc-calendar")
+(load "~/.emacs.d/rc/emacs-rc-decor")
+(load "~/.emacs.d/rc/emacs-rc-dired")
+(load "~/.emacs.d/rc/emacs-rc-hippie-exp")
+(load "~/.emacs.d/rc/emacs-rc-gdb")
+(load "~/.emacs.d/rc/emacs-rc-mule")
+(load "~/.emacs.d/rc/emacs-rc-misc-things")
+(load "~/.emacs.d/rc/emacs-rc-tramp")
+(load "~/.emacs.d/rc/emacs-rc-woman")
+(load "~/.emacs.d/rc/emacs-rc-user-info")
+(load "~/.emacs.d/rc/emacs-rc-vc")
+(load "~/.emacs.d/rc/emacs-rc-ldap")
+(load "~/.emacs.d/rc/emacs-rc-eudc")
+(load "~/.emacs.d/rc/emacs-rc-kbd")
+(load "~/.emacs.d/rc/emacs-rc-smtpmail")
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
