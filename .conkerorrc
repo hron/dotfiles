@@ -1,0 +1,36 @@
+require("new-tabs.js");
+require("page-modes/gmail.js")
+
+add_delicious_webjumps ("hron");
+
+
+// Download buffers are opened automatically whenever you start a
+// download, and whenever you use the download-show command. Those
+// buffers can be opened in a new window, or in a new buffer in the
+// current window. The default is to open them in a new window. This
+// is controlled by the variable,
+// download_buffer_automatic_open_target, which can either be a single
+// target, or an array of two targets. When it is an array, the second
+// target given will be used by download-show when it is called with
+// universal-argument. The default is [OPEN_NEW_WINDOW,
+// OPEN_NEW_BUFFER_BACKGROUND]. A popular alternative is to reverse
+// the order of the two targets:
+download_buffer_automatic_open_target = [OPEN_NEW_WINDOW, OPEN_NEW_BUFFER_BACKGROUND ];
+cwd = '/home/gusev/Downloads';
+
+// Boolean Default is false. Controls whether urls in the browse
+// history will be included in the completion list when prompting the
+// user for an url, for example, with the open-url command.
+// 
+// Due to a Mozilla bug, this value is currently mutually exclusive
+// with url_completion_use_bookmarks. Refer to
+// http://bugs.conkeror.org/issue10 for details.
+url_completion_use_history = true;
+url_completion_use_bookmarks = false;
+
+editor_shell_command = '/usr/bin/emacsclient -a emacs -c $@';
+		
+session_pref("signon.rememberSignons", true);
+session_pref("signon.expireMasterPassword", false);
+session_pref("signon.SignonFileName", "signons.txt");
+Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);

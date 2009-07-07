@@ -5,6 +5,10 @@ require("beautiful")
 -- Notification library
 -- require("naughty")
 
+-- TODO:
+--
+--  * replace xterm with something more robust and light (urxvt)
+
 --{{{ dbg function
 function dbg(vars)
     local a = nil
@@ -50,7 +54,7 @@ layouts =
 
 --custom
 config = {}
-config.terminal = "xterm"
+config.terminal = "gnome-terminal --hide-menubar "
 
 -- step for scrolling
 config.step = 15
@@ -555,7 +559,7 @@ globalkeys = {
   key({ modkey }, "e", function () awful.util.spawn("emacsclient -nc") end),
   key({ modkey }, "q",
 			function ()
-				 awful.util.spawn( "stardict " .. selection())
+				 awful.util.spawn( "stardict '" .. selection() .. "'")
 			end),
   -- key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
   key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),

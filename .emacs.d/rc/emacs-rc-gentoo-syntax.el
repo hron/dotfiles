@@ -31,4 +31,7 @@
 (setq load-path (cons "~/.emacs.d/packages/gentoo-syntax" load-path))
 (load-library "gentoo-syntax")
 
+(add-to-list 'auto-mode-alist
+						 '("/etc/conf.d/" . sh-mode))
+
 ;;; emacs-rc-gentoo-syntax.el ends here
