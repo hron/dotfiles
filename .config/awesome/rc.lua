@@ -5,6 +5,10 @@ require("beautiful")
 -- Notification library
 -- require("naughty")
 
+-- TODO:
+--
+--  * replace xterm with something more robust and light (urxvt)
+
 --{{{ dbg function
 function dbg(vars)
     local a = nil
@@ -539,8 +543,12 @@ globalkeys = {
 -- {{{ bindings / global / spawns
   key({ modkey }, "t", function () terminal() end),
   key({ modkey }, "b", function () awful.util.spawn("conkeror") end),
-  key({ modkey }, "e", function () awful.util.spawn("editor") end),
-  key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
+  key({ modkey }, "e", function () awful.util.spawn("emacsclient -nc") end),
+  key({ modkey }, "q",
+			function ()
+				 awful.util.spawn( "stardict '" .. selection() .. "'")
+			end),
+  -- key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
   key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),
   key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
 -- }}}

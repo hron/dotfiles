@@ -49,22 +49,36 @@
       (add-to-list 'tramp-default-proxies-alist
 									 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\)+$" nil "/sshx:fw2.zanby.com:"))
 
+			;; Local zanby farm
+      (add-to-list 'tramp-default-proxies-alist
+									 '( "^\\(lzdb\\|lzmail-\\(00\\|01\\)\\|lzhttp-0[0-9]\\)+$" nil "/sshx:lzfw1.garage.bogus:"))
+
       ;; ATZ farm
       (add-to-list 'tramp-default-proxies-alist
-									 '( "^atz-\\(nfs\\|mail\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "^atz-\\(nfs\\|mail\\|http\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+
+			;; CPP farm
+			(add-to-list 'tramp-default-proxies-alist
+									 '( "cpp-db-00" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       (add-to-list 'tramp-default-proxies-alist
 									 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       ;; Soapblox
       (add-to-list 'tramp-default-proxies-alist
-									 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-01.warecorp.com:"))
+
+
+      (add-to-list 'tramp-default-proxies-alist
+									 '( "\\(crystal\\|localhost\\)" "root" nil))
 
       (add-to-list 'tramp-default-proxies-alist
 									 '( nil "root" "/sshx:%h:"))
 
-      (add-to-list 'tramp-default-proxies-alist
-									 '( "crystal\\|localhost" "root" nil))
+			;; Old soapblox boxes (direct login with root)
+			(add-to-list 'tramp-default-proxies-alist
+									 '( ".*.soapblox.net" "root" nil))
+
       ))
 
 ;;; emacs-rc-tramp.el ends here

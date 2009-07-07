@@ -32,7 +32,6 @@
 (setq ldap-ldapsearch-args (quote ("-tt" "-LLL" "-x")))
 
 (require 'eudc)
-
 (setq eudc-default-return-attributes nil
       eudc-strict-return-matches nil)
 

@@ -6,11 +6,11 @@
 
 (setq gnus-secondary-select-methods
       '((nnimap "wmail"
-		(nnimap-address "imap.warecorp.com")
-		(nnimap-stream tls))
-	(nnimap "gmail"
-		(nnimap-address "imap.gmail.com")
-		(nnimap-stream tls))))
+								(nnimap-address "imap.warecorp.com")
+								(nnimap-stream tls))
+				(nnimap "gmail"
+								(nnimap-address "imap.gmail.com")
+								(nnimap-stream tls))))
 
 ;; Splitting mail
 
@@ -21,26 +21,26 @@
 (setq nnimap-split-inbox '("INBOX"))
 (setq nnimap-split-rule
       '(( "wmail" ( ".*"
-		    (("INBOX.Junk"
-		      "^X-Spam-Status: Yes")
-		     ("INBOX.Robots"
-		      "^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@warecorp.com\\)")
-		     ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
-		     ("INBOX.jobs@warecorp.com" "^To:.*jobs@warecorp.com")
-		     ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
-		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
-		     ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
-				 ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
-		     ("INBOX.Lists.Global" "^List-Id:.*global.warecorp.com"))))))
+										(("INBOX.Junk"
+											"^X-Spam-Status: Yes")
+										 ("INBOX.Robots"
+											"^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@warecorp.com\\)")
+										 ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
+										 ("INBOX.jobs@warecorp.com" "^To:.*jobs@warecorp.com")
+										 ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
+										 ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
+										 ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
+										 ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
+										 ("INBOX.Lists.Global" "^List-Id:.*global.warecorp.com"))))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
 (setq gnus-posting-styles
       '((".*"
-	 (signature
-	  (concat "WBR, Aleksei Gusev\n"
-		  "Director of IT Services Department\n"
-		  "Warecorp, http://www.warecorp.com")))))
+				 (signature
+					(concat "WBR, Aleksei Gusev\n"
+									"Director of IT Services Department\n"
+									"Warecorp, http://www.warecorp.com")))))
 
 ;; A three pane layout, Group buffer on the left, summary buffer
 ;; top-right, article buffer bottom-right:
@@ -60,4 +60,7 @@
 ;; 	       (vertical 1.0
 ;; 			 (summary 1.0 point)))))
 
-;; (setq gnus-summary-line-format "%B%U%R%z%I%(%[%4L: %-23,23f%]%) %s\n")
+;; (setq gnus-summary-line-format "%B%U%R%z%I%(%[%4L: %-23,23f%]%) ;; %s\n")
+
+(setq smtpmail-smtp-server "smtp.warecorp.com"
+			smtpmail-debug-info t)

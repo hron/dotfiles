@@ -56,23 +56,6 @@
     (boxquote-region (region-beginning) (region-end))
     (boxquote-title title)))
 
-;; А с помощью этой можно обрамлять некую шелловую команду.
-;; Оказывается такая функция уже есть - `boxquote-shell-command'.. :)
-
-;; (defun GAU:box-shell-command-whith-title ()
-;;   (interactive)
-;;   (let ((command (read-from-minibuffer "Shell command: "
-;;                                         nil nil nil 'shell-command-history)))
-;;     (save-restriction
-;;       (save-excursion
-;;      (let ((begin (point)))
-;;            (shell-command command 1)
-;;            (let ((end (mark t)))
-;;                  (boxquote-region begin end)
-;;                  (boxquote-title command))
-;;            )))
-;;     ))
-
 (icomplete-mode 1)
 
 ;;    If you set `set-mark-command-repeat-pop' to non-`nil', then
@@ -114,3 +97,11 @@
 ;; currently doesn't work on text-only terminals.)
 (setq default-indicate-empty-lines t)
 
+(setq browse-url-generic-program "conkeror")
+(setq browse-url-browser-function 'browse-url-generic)
+(setq browse-url-new-window-flag 1)
+
+(require 'uniquify)
+
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+			uniquify-strip-common-suffix t)

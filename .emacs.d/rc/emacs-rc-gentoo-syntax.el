@@ -1,11 +1,11 @@
-;;;emacs-rc-doxymacs.el --- doxymacs customization.
+;;;emacs-rc-gentoo-syntax.el --- gentoo-syntax customization.
 
-;; Copyright (C) 2007, 2008  Aleksei Gusev <aleksei.gusev@gmail.com>
+;; Copyright (C) 2009  Aleksei Gusev <aleksei.gusev@warecorp.com>
 
-;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Created: 11 Сен 2007
+;; Author: Aleksei Gusev <aleksei.gusev@warecorp.com>
+;; Created: 24 Jun 2009
 ;; Version: $Id$
-;; Keywords:
+;; Keywords: 
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,23 +24,14 @@
 
 ;;; Commentary:
 
-;;
+;; 
 
 ;;; Code:
 
-;; FIXME: make detection of host, not just that it is debian
-;; distribution.
-(unless (string-match "Debian" (version))
-  (require 'doxymacs)
+(setq load-path (cons "~/.emacs.d/packages/gentoo-syntax" load-path))
+(load-library "gentoo-syntax")
 
-  (add-hook 'c-mode-common-hook 'doxymacs-mode)
+(add-to-list 'auto-mode-alist
+						 '("/etc/conf.d/" . sh-mode))
 
-  ;; This will add the Doxygen keywords to c-mode and c++-mode only.
-  (defun my-doxymacs-font-lock-hook ()
-    (if (or (eq major-mode 'c-mode)
-	    (eq major-mode 'c++-mode)
-	    (eq major-mode 'php-mode))
-        (doxymacs-font-lock)))
-  (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook))
-
-;;; emacs-rc-doxymacs.el ends here
+;;; emacs-rc-gentoo-syntax.el ends here

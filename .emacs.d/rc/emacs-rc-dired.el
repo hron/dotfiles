@@ -26,6 +26,8 @@
 
 ;;; Code:
 
+(require 'dired)
+
 ;; The variable `dired-recursive-deletes' controls whether the delete
 ;; command will delete non-empty directories (including their contents).
 ;; The default is to delete only empty directories.
@@ -49,6 +51,13 @@
 ;; usual search commands also limit themselves to the file names; for
 ;; instance, `C-s' behaves like `M-s f C-s'
 (setq dired-isearch-filenames t)
+
+;; Directory for `move-file-to-trash' to move files and directories
+;; to. This directory is only used when the function
+;; `system-move-file-to-trash' is not defined. Relative paths are
+;; interpreted relative to `default-directory'. See also
+;; `delete-by-moving-to-trash'.
+(setq trash-directory "~/.local/share/Trash/files/")
 
 ;;    On some systems, there is a facility called the "Trash" or
 ;; "Recycle Bin", but Emacs does _not_ use it by default. Thus, when

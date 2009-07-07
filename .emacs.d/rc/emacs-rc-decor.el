@@ -13,9 +13,6 @@
 ;; Отключаем дебильный звонок
 (setq visible-bell t)
 
-;; Удалять выделенный текст по нажатию клавиши
-(delete-selection-mode t)
-
 ;; Фишковое переключение между буферами
 (if (string-match "22.\\|23." (version))
     (iswitchb-mode 1)
@@ -34,9 +31,6 @@
 
 ;; Подсказки тоже отключим
 (tooltip-mode nil)
-
-;(set-frame-width (selected-frame) 87)
-;(set-frame-height (selected-frame) 50)
 
 ;; Hе заворачиваем строки, длина которых превышает ширину окна
 (setq-default truncate-lines t)
