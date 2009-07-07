@@ -29,12 +29,12 @@
 ;; The variable `dired-recursive-deletes' controls whether the delete
 ;; command will delete non-empty directories (including their contents).
 ;; The default is to delete only empty directories.
-(setq dired-recursive-deletes t)
+(setq dired-recursive-deletes 'top)
 
 ;; The variable `dired-recursive-copies' controls whether
 ;; directories are copied recursively.  The default is to not copy
 ;; recursively, which means that directories cannot be copied.
-(setq dired-recursive-copies t)
+(setq dired-recursive-copies 'always)
 
 ;;   "*Switches passed to `ls' for Dired.  MUST contain the `l'
 ;; option.  May contain all other options that don't contradict `-l';

@@ -50,7 +50,7 @@ layouts =
 
 --custom
 config = {}
-config.terminal = "xterm"
+config.terminal = "gnome-terminal --hide-menubar "
 
 -- step for scrolling
 config.step = 15
@@ -403,19 +403,6 @@ function widgettext(label, value, labelcolor, valuecolor)
 end
 --}}}
 
---{{{ functions / islidclosed
-function islidclosed()
-   local f = io.open("/proc/acpi/button/lid/LID/state")
-   state = f:read()
-   f:close()
-   if state:find("closed") then
-      return true
-   else
-      return false
-   end
-end
-lidclosed = islidclosed()
---}}}
 
 --}}}
 
