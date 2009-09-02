@@ -86,8 +86,10 @@ shifty.config.apps = {
 				"totem",
 				"Celetania.*",
 				"Shturman.exe",
-				"Update Manager"},
-     float = true, },
+				"Update Manager"
+				"Firefox Preferences",
+				"*VLC*"
+   }, float = true, },
 
 	 { match = { "il2fb.exe" },
 		 fullscreen = true, },
@@ -508,7 +510,7 @@ globalkeys = {
 			end),
   -- key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
   key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),
-  key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
+  key({ }, "Print", function () awful.util.spawn("gnome-screenshot -i") end),
 -- }}}
 
 -- {{{ bindings / global / tag manipulation
