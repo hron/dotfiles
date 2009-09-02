@@ -3,7 +3,6 @@ require("page-modes/gmail.js")
 
 add_delicious_webjumps ("hron");
 
-
 // Download buffers are opened automatically whenever you start a
 // download, and whenever you use the download-show command. Those
 // buffers can be opened in a new window, or in a new buffer in the
@@ -28,9 +27,11 @@ cwd = '/home/gusev/Downloads';
 url_completion_use_history = true;
 url_completion_use_bookmarks = false;
 
-editor_shell_command = '/usr/bin/emacsclient -a emacs -c $@';
+editor_shell_command = '/usr/bin/emacsclient -c $@';
 		
 session_pref("signon.rememberSignons", true);
 session_pref("signon.expireMasterPassword", false);
 session_pref("signon.SignonFileName", "signons.txt");
 Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
+
+define_mime_type_external_handler("application/x-bitorrent", "azureus");

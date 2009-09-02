@@ -6,8 +6,6 @@ require("beautiful")
 -- require("naughty")
 
 -- TODO:
---
---  * replace xterm with something more robust and light (urxvt)
 
 --{{{ dbg function
 function dbg(vars)
@@ -55,13 +53,6 @@ layouts =
 --custom
 config = {}
 config.terminal = "gnome-terminal --hide-menubar "
-
--- step for scrolling
-config.step = 15
-
--- screen offset it scrolls within
-config.scroll_offset = 2
-
 --}}}
 
 --{{{ vars / shifty
@@ -87,14 +78,19 @@ shifty.config.apps = {
    	button({ modkey }, 3, awful.mouse.client.resize ),},
    },
 
-   { match = { "stardict",
-	       "gcolor2",
-	       "Evolution",
-	       "Gnome-rdp",
-	       "totem",
-	       "Celetania.*",
-	       "Update Manager"},
+   { match = {
+				"stardict",
+				"gcolor2",
+				"Evolution",
+				"Gnome-rdp",
+				"totem",
+				"Celetania.*",
+				"Shturman.exe",
+				"Update Manager"},
      float = true, },
+
+	 { match = { "il2fb.exe" },
+		 fullscreen = true, },
 
    { match = { "gtkvncviewer.py", },
      float = true,
@@ -124,6 +120,7 @@ shifty.config.apps = {
    { match = { "Skype" },
      float = true,
      smart_placement = false },
+
 }
 --}}}
 
@@ -214,45 +211,6 @@ function match (table1, table2)
       end
    end
    return true
-end
---}}}
-
---{{{ functions / scrollclient
--- scrolling clients bigger than workspace
-function scrollclient()
-   local c = client.focus
-   if not c then return end
-
-   local ss = screen[c.screen].geometry
-   local ws = screen[c.screen].workarea
-   local cc = c:geometry()
-   local mc = mouse.coords()
-   local step = 0
-
-   -- left edge
-   if mc.x < config.scroll_offset and cc.x < 0 then
-      step = math.min(config.step, -cc.x)
-      awful.client.moveresize(step,0,0,0,c)
-   end
-   
-   -- right edge
-   if mc.x > ws.width - config.scroll_offset and cc.x + cc.width > ws.width + 1 then
-      step = math.min(config.step, cc.x + cc.width-ws.width)
-      awful.client.moveresize(-step,0,0,0,c)
-   end
-
-   -- top edge
-   if mc.y < config.scroll_offset and cc.y < ss.height - ws.height then
-      step = math.min(config.step, ss.height - ws.height - cc.y - 1) -- FIXME: -1 is for the frame to hide under panels BROKEN
-      awful.client.moveresize(0,step,0,0,c)
-   end
-
-   -- bottom edge
-   if mc.y > ws.height - config.scroll_offset and cc.y + cc.height > ss.height then
-      step = math.min(config.step, cc.y + cc.height - ss.height)
-      awful.client.moveresize(0,-step,0,0,c)
-   end
-
 end
 --}}}
 
@@ -820,12 +778,6 @@ shifty.config.globalkeys = globalkeys
 
 -- {{{ hooks / focus
 awful.hooks.focus.register(function (c)
-  -- see if the client needs scrolling
-  local ws = screen[c.screen].workarea
-  local geom = c:geometry()
-  if geom.width > ws.width or geom.height > ws.height then
-    awful.hooks.timer.register(0.01, scrollclient)
-  end
   -- change border color
   if not awful.client.ismarked(c) then
     c.border_color = beautiful.border_focus
@@ -835,8 +787,6 @@ end)
 
 -- {{{ hooks / unfocus
 awful.hooks.unfocus.register(function (c)
-  -- kill scrolling timer
-  awful.hooks.timer.unregister(scrollclient)
   -- change border color
   if not awful.client.ismarked(c) then
     c.border_color = beautiful.border_normal
@@ -877,16 +827,17 @@ awful.hooks.manage.register(function (c, startup)
     end
 
     if use_titlebar then
-        -- Add a titlebar
-        awful.titlebar.add(c, { modkey = modkey, height = 16 })
+			 -- Add a titlebar
+			 awful.titlebar.add(c, { modkey = modkey, height = 16 })
     end
+		
     -- Add mouse bindings
     c:buttons({
         button({ }, 1, function (c) client.focus = c; c:raise() end),
 --        button({ modkey }, 1, awful.mouse.client.move),
 --        button({ modkey }, 3, awful.mouse.client.resize)
-	button({ "Mod1" }, 1, awful.mouse.client.move),
-	button({ "Mod1" }, 3, awful.mouse.client.resize)
+				button({ "Mod1" }, 1, awful.mouse.client.move),
+				button({ "Mod1" }, 3, awful.mouse.client.resize)
     })
     -- New client may not receive focus
     -- if they're not focusable, so set border anyway.
@@ -929,14 +880,6 @@ awful.hooks.arrange.register(function (screen)
         if c then client.focus = c end
     end
 end)
--- }}}
-
---{{{ hooks / timers
--- awful.hooks.timer.register(1, hook_1s)
--- awful.hooks.timer.register(30, hook_1m)
--- awful.hooks.timer.register(3, hook_3s)
--- awful.hooks.timer.register(5, hook_5s)
--- awful.hooks.timer.register(600, hook_10m)
 -- }}}
 
 -- }}}

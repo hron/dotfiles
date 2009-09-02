@@ -78,13 +78,19 @@
 ;;   identifying.
 ;; ANSWER is the command to use for the answer.  The default is 'privmsg.
 ;;   This last element is optional.
+;; (setq erc-nickserv-alist
+;;       (cons erc-nickserv-alist
+;; 	    '((IrcBy
+;; 	       "NickServ!NickServ@multiport."
+;; 	       "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
+;; 	       "NickServ"
+;; 	       "IDENTIFY" nil nil))))
 (setq erc-nickserv-alist
-      (cons erc-nickserv-alist
-	    '((irc_by
-	       "NickServ!NickServ@multiport."
-	       "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
-	       "NickServ"
-	       "IDENTIFY" nil nil))))
+			'((IrcBy
+				 "NickServ!NickServ@multiport."
+				 "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
+				 "NickServ"
+				 "IDENTIFY" nil nil)))
 ;;  Passwords used when identifying to NickServ automatically.
 ;; Example of use:
 ;;   (setq erc-nickserv-passwords
@@ -92,7 +98,7 @@
 ;;                      (\"nick-two\" . \"password\")))
 ;;           (DALnet ((\"nick\" . \"password\")))))
 (setq erc-nickserv-passwords
-      '((irc_by (("hron" . "aleks7771")))))
+			'((IrcBy (("hron" . "aleks7771")))))
 ;; Ask for the password when identifying to NickServ.
 (setq erc-prompt-for-nickserv-password t)
       
@@ -100,6 +106,9 @@
 ;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
 ;; 				    ("irc.by" "#linux" "#1182" "#velominsk")))
 (setq erc-autojoin-channels-alist '(("irc.by" "#1182")))
+
+(setq erc-server-flood-margin 9
+			erc-server-flood-penalty 4)
 
 ;; Finally, tell erc to connect to freenode.
 ;; (erc :server "irc.by" :port 6667

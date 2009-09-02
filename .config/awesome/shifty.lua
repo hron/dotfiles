@@ -417,7 +417,7 @@ function match(c, startup)
           if a.run ~= nil then run = a.run end
           if a.sticky ~= nil then  c.sticky = a.sticky end
           if a.wfact ~= nil then wfact = a.wfact end
-	  if a.smart_placement ~= nil then smart_placement = a.smart_placement end
+					if a.smart_placement ~= nil then smart_placement = a.smart_placement end
         end
       end
     end
