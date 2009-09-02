@@ -25,6 +25,7 @@
              (erc-completion-mode 1)))
 
 (require 'erc-fill)
+(setq erc-fill-column 70)
 (erc-fill-mode t)
 (require 'erc-ring)
 (erc-ring-mode t)

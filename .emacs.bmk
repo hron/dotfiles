@@ -2,4 +2,10 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-nil
+(("elisp"
+	(front-context-string . "\n1.3.7 Format of")
+	(rear-context-string . "of Descriptions\n")
+	(position . 79014)
+	(filename . "/usr/share/info/emacs-snapshot/elisp")
+	(info-node . "Format of Descriptions")
+	(handler . Info-bookmark-jump)))

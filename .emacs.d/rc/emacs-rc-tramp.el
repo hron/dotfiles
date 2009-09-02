@@ -75,9 +75,15 @@
       (add-to-list 'tramp-default-proxies-alist
 									 '( "\\(crystal\\|localhost\\)" "root" nil))
 
+			(add-to-list 'tramp-default-proxies-alist
+									 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
+
 			;; Old soapblox boxes (direct login with root)
 			(add-to-list 'tramp-default-proxies-alist
 									 '( ".*.soapblox.net" "root" nil))
+
+      (add-to-list 'tramp-default-proxies-alist
+									 '( "\\(localhost\\|crystal\\)" "root" nil))
 
       ))
 
