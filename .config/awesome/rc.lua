@@ -87,14 +87,17 @@ shifty.config.apps = {
    	button({ modkey }, 3, awful.mouse.client.resize ),},
    },
 
-   { match = { "stardict",
-	       "gcolor2",
-	       "Evolution",
-	       "Gnome-rdp",
-	       "totem",
-	       "Celetania.*",
-	       "Update Manager"},
-     float = true, },
+   { match = {
+				"stardict",
+				"gcolor2",
+				"Evolution",
+				"Gnome-rdp",
+				"totem",
+				"Celetania.*",
+				"Update Manager",
+				"Firefox Preferences",
+				"*VLC*"
+   }, float = true, },
 
    { match = { "gtkvncviewer.py", },
      float = true,
@@ -563,7 +566,7 @@ globalkeys = {
 			end),
   -- key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
   key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),
-  key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
+  key({ }, "Print", function () awful.util.spawn("gnome-screenshot -i") end),
 -- }}}
 
 -- {{{ bindings / global / tag manipulation

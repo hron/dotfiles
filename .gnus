@@ -21,8 +21,9 @@
 (setq nnimap-split-inbox '("INBOX"))
 (setq nnimap-split-rule
       '(( "wmail" ( ".*"
-										(("INBOX.Junk"
-											"^X-Spam-Status: Yes")
+										(
+										;; (("INBOX.Junk"
+										;; 	"^X-Spam-Status: Yes")
 										 ("INBOX.Robots"
 											"^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@warecorp.com\\)")
 										 ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
@@ -64,3 +65,7 @@
 
 (setq smtpmail-smtp-server "smtp.warecorp.com"
 			smtpmail-debug-info t)
+
+(gnus-demon-add-rescan)
+(gnus-demon-add-scanmail)
+(gnus-demon-add-disconnection)

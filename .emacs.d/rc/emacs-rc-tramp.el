@@ -59,25 +59,27 @@
 
 			;; CPP farm
 			(add-to-list 'tramp-default-proxies-alist
-									 '( "cpp-db-00" nil "/sshx:atz-fw-00.warecorp.com:"))
+									 '( "cpp-\\(db\\|http\\)-" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       (add-to-list 'tramp-default-proxies-alist
 									 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
       ;; Soapblox
       (add-to-list 'tramp-default-proxies-alist
-									 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-01.warecorp.com:"))
-
-
-      (add-to-list 'tramp-default-proxies-alist
-									 '( "\\(crystal\\|localhost\\)" "root" nil))
+									 '( "^10.101.0.1[012]$" nil "/sshx:atz-fw-01.warecorp.com:"))
 
       (add-to-list 'tramp-default-proxies-alist
 									 '( nil "root" "/sshx:%h:"))
 
+			(add-to-list 'tramp-default-proxies-alist
+									 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
+
 			;; Old soapblox boxes (direct login with root)
 			(add-to-list 'tramp-default-proxies-alist
 									 '( ".*.soapblox.net" "root" nil))
+
+      (add-to-list 'tramp-default-proxies-alist
+									 '( "\\(localhost\\|crystal\\)" "root" nil))
 
       ))
 
