@@ -45,10 +45,13 @@
 
 ;; Ruby, Rails and all, all, all.. ;]
 (load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
+;; (load "~/.emacs.d/rc/emacs-rc-rails")
 (load "~/.emacs.d/rc/emacs-rc-rhtml")
 (load "~/.emacs.d/rc/emacs-rc-ri")
 (load "~/.emacs.d/rc/emacs-rc-ruby")
 (load "~/.emacs.d/rc/emacs-rc-yaml")
+
+;; (load "~/.emacs.d/rc/emacs-rc-nxhtml")
 
 ;; Emacs core customization
 (load "~/.emacs.d/rc/emacs-rc-calendar")
