@@ -66,6 +66,7 @@
 (load "~/.emacs.d/rc/emacs-rc-eudc")
 (load "~/.emacs.d/rc/emacs-rc-kbd")
 (load "~/.emacs.d/rc/emacs-rc-smtpmail")
+(load "~/.emacs.d/rc/emacs-rc-ediff")
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
