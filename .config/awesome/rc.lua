@@ -86,7 +86,7 @@ shifty.config.apps = {
 				"totem",
 				"Celetania.*",
 				"Shturman.exe",
-				"Update Manager"
+				"Update Manager",
 				"Firefox Preferences",
 				"*VLC*"
    }, float = true, },
