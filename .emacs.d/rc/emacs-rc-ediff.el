@@ -1,0 +1,1 @@
+(setq ediff-setup-windows-function 'ediff-setup-windows-plain)
