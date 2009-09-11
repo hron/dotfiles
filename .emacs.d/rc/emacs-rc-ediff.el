@@ -1,1 +1,1 @@
-(setq ediff-setup-windows-function 'ediff-setup-windows-plain)
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
