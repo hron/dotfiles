@@ -42,6 +42,7 @@
 (load "~/.emacs.d/rc/emacs-rc-php")
 (load "~/.emacs.d/rc/emacs-rc-tex")
 (load "~/.emacs.d/rc/emacs-rc-gentoo-syntax")
+(load "~/.emacs.d/rc/emacs-rc-apache-mode")
 
 ;; Ruby, Rails and all, all, all.. ;]
 (load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
