@@ -41,6 +41,7 @@
 (load "~/.emacs.d/rc/emacs-rc-sql")
 (load "~/.emacs.d/rc/emacs-rc-php")
 (load "~/.emacs.d/rc/emacs-rc-tex")
+(load "~/.emacs.d/rc/emacs-rc-js2")
 (load "~/.emacs.d/rc/emacs-rc-gentoo-syntax")
 
 ;; Ruby, Rails and all, all, all.. ;]
@@ -82,7 +83,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(canlock-password "e6a803bd4bbe7baa935108fb943f3df19651b148")
- '(safe-local-variable-values (quote ((c-hanging-comment-ender-p) (folded-file . t) (folding-internal-margins) (sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
+ '(safe-local-variable-values (quote ((js2-strict-missing-semi-warning) (js2-strict-missing-semi-warning . 100) (c-hanging-comment-ender-p) (folded-file . t) (folding-internal-margins) (sgml-omittag . t) (sgml-shorttag . t) (sgml-minimize-attributes) (sgml-always-quote-attributes . t) (sgml-indent-step . 2) (sgml-indent-data . t) (sgml-parent-document) (sgml-default-dtd-file) (sgml-exposed-tags) (sgml-local-catalogs) (sgml-local-ecat-files) (encoding . koi8-r)))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
