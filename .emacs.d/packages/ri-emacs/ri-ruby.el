@@ -115,7 +115,7 @@
 	  (goto-char (point-min))
 	  (cond ((not (looking-at "READY.*\n"))
 		 (delete-process ri-ruby-process)
-		 (error "Couldn't start ruby script"))))
+		 (error 'io-error "couldn't start ruby script"))))
       (set-process-filter ri-ruby-process t)
       (kill-buffer ri-ruby-process-buffer))))
 
@@ -124,7 +124,7 @@
       (let ((output (with-current-buffer buffer
                       (buffer-substring (point-min)
                                         (point-max)))))
-	(error "Process is not running.\n" output))))
+	(error 'io-error "Process is not running.\n" output))))
 
 (defun ri-ruby-process-get-expr (cmd param)
   (ri-ruby-get-process)
@@ -195,9 +195,7 @@
     (list keyw class)))
 
 (defun ri-ruby-method-with-class (meth classes)
-  (if (null classes)
-      meth
-    (concat meth " [" (mapconcat 'car classes ", ") "]")))
+  (concat meth " [" (mapconcat 'car classes ", ") "]"))
 
 (defun ri-ruby-complete-symbol ()
   "Completion on ruby-mode."
@@ -207,7 +205,8 @@
  	 (classes (ri-ruby-process-get-expr "CLASS_LIST_WITH_FLAG" keyw))
          (completion (try-completion curr 'ri-ruby-complete-method nil)))
     (cond ((eq completion t)
-           (message "%s" (ri-ruby-method-with-class curr classes)))
+           (message "%s" (ri-ruby-method-with-class curr classes))
+           )
 	  ((null completion)
 	   (message "Can't find completion for \"%s\"" curr)
 	   (ding))
@@ -216,12 +215,14 @@
                           (point))
 	   (insert completion)
            (setq classes (ri-ruby-process-get-expr "CLASS_LIST_WITH_FLAG" completion))
-           (message "%s" (ri-ruby-method-with-class completion classes)))
+           (message "%s" (ri-ruby-method-with-class completion classes))
+           )
 	  (t
 	   (message "Making completion list...")
 	   (with-output-to-temp-buffer "*Completions*"
  	     (display-completion-list
-              (all-completions curr 'ri-ruby-complete-method)))
+              (all-completions curr 'ri-ruby-complete-method)
+             ))
            (message "%s" (ri-ruby-method-with-class completion classes))))))
 
 (defun test-ri-ruby-complete-symbol ()
@@ -243,7 +244,8 @@ printf
   (let* ((method (current-word))
          (info (ri-ruby-process-get-lines "DISPLAY_ARGS" method)))
     (when info
-      (message "%s" info))))
+      (message "%s" info)))
+  )
 
 (defun ri (keyw &optional class)
   "Execute `ri'."
