@@ -44,6 +44,7 @@
 (load "~/.emacs.d/rc/emacs-rc-js2")
 (load "~/.emacs.d/rc/emacs-rc-gentoo-syntax")
 (load "~/.emacs.d/rc/emacs-rc-javascript")
+(load "~/.emacs.d/rc/emacs-rc-apache-mode")
 
 ;; Ruby, Rails and all, all, all.. ;]
 (load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
