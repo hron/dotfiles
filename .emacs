@@ -11,7 +11,8 @@
 ;;  * Deleting files in trash.
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
-
+;;  * Moved session files somewhere.
+;;  
 ;; Done:
 ;; 
 ;;  * Reconfigure emacsclient:
@@ -29,7 +30,7 @@
 (setq load-path (cons "~/.emacs.d/packages" load-path))
 
 ;; loading alternative git client.
-(load "/usr/share/doc/git-core/contrib/emacs/git")
+;; (load "/usr/share/doc/git-core/contrib/emacs/git")
 
 ;; EMMS
 (load "~/.emacs.d/rc/emacs-rc-emms")

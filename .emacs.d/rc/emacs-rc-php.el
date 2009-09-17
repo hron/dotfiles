@@ -28,24 +28,29 @@
 
 ;;; Code:
 
+(setq load-path
+      (cons (expand-file-name "~/.emacs.d/packages/php_repl/data")
+	    load-path))
+
 (require 'php-mode)
 (require 'flymake-php)
+(require 'php-repl)
 
 (load-library "php-electric")
 (add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
 
 (setq php-manual-path "/usr/share/doc/php-docs-20071125-r2/ru"
       php-manual-url (concat "file://" php-manual-path))
-	
+
+(setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
+
 (defun my-php-mode-common-hook ()
-  (semantic-show-unmatched-syntax-mode 0)
   (c-toggle-auto-newline -1)
   (flymake-php-load)
   (setq c-basic-offset 4
-	tab-width 4
-	indent-tabs-mode nil))
+				tab-width 4
+				indent-tabs-mode nil))
 
 (add-hook 'php-mode-hook 'my-php-mode-common-hook)
-
 
 ;;; emacs-rc-php.el ends here
