@@ -1,0 +1,8 @@
+export LANG=ru_RU.UTF-8
+export LC_NUMERIC=C
+export LC_COLLATE=C
+export LC_MESSAGES=C
+
+export GEM_HOME=$HOME/.rubygems
+export PATH=$HOME/bin:$HOME/.rubygems/bin:/sbin:/usr/sbin:$PATH
+export EDITOR=emacsclient
