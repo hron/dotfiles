@@ -59,7 +59,8 @@ config.terminal = "gnome-terminal --hide-menubar "
 
 --{{{ vars / shifty / config.tags
 shifty.config.tags = {
-   ["1"] = { postition = 0, init = true },
+   ["1"] 			= { postition = 0, init = true },
+	 ["8:p2p"] 	= { postition = 8, init = true },
    ["9:mail"] = { position = 9, init = true }
 }
 --}}}
@@ -88,7 +89,7 @@ shifty.config.apps = {
 				"Shturman.exe",
 				"Update Manager",
 				"Firefox Preferences",
-				"*VLC*"
+				"*VLC"
    }, float = true, },
 
 	 { match = { "il2fb.exe" },
@@ -105,6 +106,9 @@ shifty.config.apps = {
 
    { match = { "Gnus" },
      tag = "9:mail" },
+
+	 { match = { "Vuze" },
+		 tag = "8:p2p" },
 
    { match = { "Emacs" },
      slave = false, },
