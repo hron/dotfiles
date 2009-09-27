@@ -33,8 +33,9 @@
 	    load-path))
 
 (require 'php-mode)
-(require 'flymake-php)
 (require 'php-repl)
+(require 'flymake-php)
+(require 'phpunit)
 
 (load-library "php-electric")
 (add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
@@ -46,7 +47,7 @@
 
 (defun my-php-mode-common-hook ()
   (c-toggle-auto-newline -1)
-  (flymake-php-load)
+  ;; (flymake-php-load)
   (setq c-basic-offset 4
 				tab-width 4
 				indent-tabs-mode nil))

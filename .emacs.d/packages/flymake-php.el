@@ -42,11 +42,11 @@
   "Regexp matching PHP error messages")
 
 (defun flymake-php-init ()
-  (let* ((temp-file       (flymake-init-create-temp-buffer-copy
-			   'flymake-create-temp-inplace))
-	 (local-file  (file-relative-name
-		       temp-file
-		       (file-name-directory buffer-file-name))))
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+										 'flymake-create-temp-inplace))
+				 (local-file  (file-relative-name
+											 temp-file
+											 (file-name-directory buffer-file-name))))
     (list "php" (list "-f" local-file "-l"))))
 
 (defun flymake-php-load ()
