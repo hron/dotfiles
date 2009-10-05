@@ -12,6 +12,7 @@
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
 ;;  * Moved session files somewhere.
+;;  * Add smarty-mode.
 ;;  
 ;; Done:
 ;; 
@@ -74,6 +75,31 @@
 (load "~/.emacs.d/rc/emacs-rc-kbd")
 (load "~/.emacs.d/rc/emacs-rc-smtpmail")
 (load "~/.emacs.d/rc/emacs-rc-ediff")
+
+;; Control use of local variables in files you visit.
+;; The value can be t, nil, :safe, :all, or something else.
+;; 
+;; A value of t means file local variables specifications are obeyed
+;; if all the specified variable values are safe; if any values are
+;; not safe, Emacs queries you, once, whether to set them all.
+;; (When you say yes to certain values, they are remembered as safe.)
+;; 
+;; :safe means set the safe variables, and ignore the rest.
+;; :all means set all variables, whether safe or not.
+;;  (Don't set it permanently to :all.)
+;; A value of nil means always ignore the file local variables.
+;; 
+;; Any other value means always query you once whether to set them all.
+;; (When you say yes to certain values, they are remembered as safe, but
+;; this has no effect when `enable-local-variables' is "something else".)
+;; 
+;; This variable also controls use of major modes specified in
+;; a -*- line.
+;; 
+;; The command M-x normal-mode, when used interactively,
+;; always obeys file local variable specifications and the -*- line,
+;; and ignores this variable.
+(setq enable-local-variables :all)
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
