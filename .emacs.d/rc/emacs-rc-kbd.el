@@ -7,7 +7,7 @@
 (global-set-key [f6] 'toggle-truncate-lines)
 
 ;; Bind `F9' to compile function
-;; (global-set-key [f9] 'GAU:Compile)
+(global-set-key [f9] 'compile)
 
 (global-set-key [f11] 'speedbar)
 (global-set-key [f12] 'align-string)

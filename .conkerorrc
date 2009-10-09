@@ -1,6 +1,19 @@
+// -*- espresson-mode -*-
+
 require("new-tabs.js");
 require("page-modes/gmail.js")
 
+// http://delicious.com/search?p=xul&chk=&fr=del_icio_us&lc=1&atags=&rtags=&context=userposts%7Chron%7C&context=all%7C%7C
+function add_delicious_webjumps (username)
+{
+    define_webjump("delicious", "http://del.icio.us/" + username);
+    define_webjump("adelicious", "javascript:location.href='http://del.icio.us/"+username+
+                   "?v=2&url='+encodeURIComponent(location.href)+'&title='+"+
+                   "encodeURIComponent(document.title);");
+    define_webjump("sdelicious", "http://delicious.com/search?p=%s" +
+                   "&chk=&context=userposts%7C"+username+"%7C&fr=del_icio_us&lc=1");
+    define_webjump("sadelicious", "http://del.icio.us/search/all?search=%s");
+}
 add_delicious_webjumps ("hron");
 
 // Download buffers are opened automatically whenever you start a

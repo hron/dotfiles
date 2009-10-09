@@ -45,7 +45,7 @@
 ;; such as MS-DOS and MS-Windows, which use `ls' emulation in Lisp,
 ;; some of the `ls' switches are not supported; see the doc string of
 ;; `insert-directory' in `ls-lisp.el' for more details."
-(setq dired-listing-switches "-ahl")
+(setq dired-listing-switches "-ahl --group-directories-first")
 
 ;; If you change the variable DIRED-ISEARCH-FILENAMES to `t', then the
 ;; usual search commands also limit themselves to the file names; for

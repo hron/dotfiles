@@ -33,9 +33,6 @@
 	    load-path))
 
 (require 'php-mode)
-(require 'php-repl)
-(require 'flymake-php)
-(require 'phpunit)
 
 (load-library "php-electric")
 (add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
@@ -43,15 +40,26 @@
 (setq php-manual-path "/usr/share/doc/php-docs-20071125-r2/ru"
       php-manual-url (concat "file://" php-manual-path))
 
-(setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
-
 (defun my-php-mode-common-hook ()
   (c-toggle-auto-newline -1)
-  ;; (flymake-php-load)
   (setq c-basic-offset 4
 				tab-width 4
 				indent-tabs-mode nil))
 
 (add-hook 'php-mode-hook 'my-php-mode-common-hook)
+
+(require 'php-repl)
+(setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
+
+(require 'phpunit)
+;; Make clickalabe of standard PHP fatals too.
+(setq phpunit-regexp-alist (append phpunit-regexp-alist
+																	 '(php)))
+
+(require 'flymake-php)
+
+(defun my-php-mode-flymake-hook ()
+	(flymake-php-load))
+(add-hook 'php-mode-hook 'my-php-mode-flymake-hook)
 
 ;;; emacs-rc-php.el ends here

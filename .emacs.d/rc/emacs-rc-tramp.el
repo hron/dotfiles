@@ -47,7 +47,7 @@
 
       ;; Zanby farm
       (add-to-list 'tramp-default-proxies-alist
-									 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\|wc-backup-00\\)+$" nil "/sshx:fw2.zanby.com:"))
+									 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\|wc-backup-00\\)+$" nil "/sshx:fw1.zanby.com:"))
 
 			;; Local zanby farm
       (add-to-list 'tramp-default-proxies-alist
