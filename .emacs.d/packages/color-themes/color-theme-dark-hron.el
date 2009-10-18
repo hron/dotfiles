@@ -244,7 +244,7 @@
      (link-visited ((t (:underline t :foreground "violet"))))
      (match ((t (:background "RoyalBlue3"))))
      (menu ((t (nil))))
-		 (magit-item-highlight ((t (:background "gray7"))))
+		 (magit-item-highlight ((t (:background "gray17"))))
      (message-cited-text ((t (:foreground "LightPink1"))))
      (message-header-cc ((t (:bold t :foreground "chartreuse1" :weight bold))))
      (message-header-name ((t (:foreground "green"))))
