@@ -1,6 +1,3 @@
-[submodule ".emacs.d/packages/emacs-rails-reloaded"]
-	path = .emacs.d/packages/emacs-rails-reloaded
-	url = git://github.com/dima-exe/emacs-rails-reloaded.git
 [submodule ".emacs.d/packages/rhtml-mode"]
 	path = .emacs.d/packages/rhtml-mode
 	url = git://github.com/eschulte/rhtml.git
