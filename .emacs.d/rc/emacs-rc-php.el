@@ -32,6 +32,10 @@
       (cons (expand-file-name "~/.emacs.d/packages/php_repl/data")
 	    load-path))
 
+(setq load-path
+      (cons (expand-file-name "~/.emacs.d/packages/php-mode")
+	    load-path))
+
 (require 'php-mode)
 
 (load-library "php-electric")
