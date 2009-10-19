@@ -1,0 +1,9 @@
+[submodule ".emacs.d/site-lisp/rhtml-mode"]
+	path = .emacs.d/site-lisp/rhtml-mode
+	url = git://github.com/eschulte/rhtml.git
+[submodule ".emacs.d/site-lisp/php_repl"]
+	path = .emacs.d/site-lisp/php_repl
+	url = git://github.com/ieure/php_repl.git
+[submodule ".emacs.d/site-lisp/emacs-rails-reloaded"]
+	path = .emacs.d/site-lisp/emacs-rails-reloaded
+	url = git://github.com/hron/emacs-rails-reloaded.git
