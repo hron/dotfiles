@@ -29,7 +29,7 @@
 ;;; Code:
 
 (setq load-path
-      (cons (expand-file-name "~/.emacs.d/packages/emacs-rails-reloaded")
+      (cons (expand-file-name "~/.emacs.d/site-lisp/emacs-rails-reloaded")
 	    load-path))
 (require 'rails-autoload)
 

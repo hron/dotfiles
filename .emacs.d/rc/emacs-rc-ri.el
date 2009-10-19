@@ -27,8 +27,8 @@
 ;;; Code:
 
 (setq ri-ruby-progres "/usr/bin/ruby")
-(setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/packages/ri-emacs/ri-emacs.rb"))
-(autoload 'ri "~/.emacs.d/packages/ri-emacs/ri-ruby.el" nil t)
+(setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
+(autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
 
 (defalias 'rails-search-doc 'ri)
 

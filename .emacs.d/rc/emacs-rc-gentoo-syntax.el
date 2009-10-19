@@ -28,7 +28,7 @@
 
 ;;; Code:
 
-(setq load-path (cons "~/.emacs.d/packages/gentoo-syntax" load-path))
+(setq load-path (cons "~/.emacs.d/site-lisp/gentoo-syntax" load-path))
 (load-library "gentoo-syntax")
 
 (add-to-list 'auto-mode-alist

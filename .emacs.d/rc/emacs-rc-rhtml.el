@@ -29,7 +29,7 @@
 ;;; Code:
 
 
-(add-to-list 'load-path "~/.emacs.d/packages/rhtml-mode/")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/rhtml-mode/")
 
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
 

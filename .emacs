@@ -28,7 +28,7 @@
 
 
 ;; Add some dirs to load-path
-(setq load-path (cons "~/.emacs.d/packages" load-path))
+(setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
 ;; loading alternative git client.
 ;; (load "/usr/share/doc/git-core/contrib/emacs/git")
