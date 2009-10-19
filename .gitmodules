@@ -1,9 +1,0 @@
-[submodule ".emacs.d/packages/rhtml-mode"]
-	path = .emacs.d/packages/rhtml-mode
-	url = git://github.com/eschulte/rhtml.git
-[submodule ".emacs.d/packages/php_repl"]
-	path = .emacs.d/packages/php_repl
-	url = git://github.com/ieure/php_repl.git
-[submodule ".emacs.d/packages/emacs-rails-reloaded"]
-	path = .emacs.d/packages/emacs-rails-reloaded
-	url = git://github.com/hron/emacs-rails-reloaded.git
