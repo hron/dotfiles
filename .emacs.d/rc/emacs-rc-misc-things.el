@@ -37,8 +37,6 @@
 ;; (setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 
-(setq default-tab-width 2)
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; По умолчанию комментарии "#"

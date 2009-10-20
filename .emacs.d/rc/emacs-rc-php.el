@@ -47,7 +47,6 @@
 (defun my-php-mode-common-hook ()
   (c-toggle-auto-newline -1)
   (setq c-basic-offset 4
-				tab-width 4
 				indent-tabs-mode nil))
 
 (add-hook 'php-mode-hook 'my-php-mode-common-hook)
