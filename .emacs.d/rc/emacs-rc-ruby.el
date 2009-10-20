@@ -34,15 +34,21 @@
 						 '("Capfile" . ruby-mode))
 
 (add-hook 'ruby-mode-hook
-					(lambda ()
-						(local-set-key [f1] 'ri)
-						(local-set-key [?\C->] 'rct-complete-symbol--anything)
-						(font-lock-add-keywords nil
-																		'(("\\<\\(FIXME\\|TODO\\):" 1 font-lock-warning-face t)))
-						))
-
-(add-hook 'ruby-mode-hook
 					'(lambda ()
 						 (auto-fill-mode 1)))
+
+;; Ri-Emacs
+(setq ri-ruby-progres "/usr/bin/ruby")
+(setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
+(autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
+
+(defalias 'rails-search-doc 'ri)
+
+(add-hook 'ruby-mode-hook
+					(lambda ()
+						(local-set-key [f1] 'ri)))
+
+
+(provide 'emacs-rc-ruby)
 
 ;;; emacs-rc-ruby.el ends here

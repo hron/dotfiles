@@ -56,4 +56,6 @@
 (define-key ctl-x-map "tu" 'timeclock-update-modeline)
 (define-key ctl-x-map "tw" 'timeclock-when-to-leave-string)
 
+(provide 'emacs-rc-calendar)
+
 ;;; emacs-rc-calendar.el ends here

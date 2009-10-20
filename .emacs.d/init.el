@@ -1,4 +1,4 @@
-;;; ~/.emacs
+;;; ~/.emacs.d/init.el
 
 ;; Copyright (C) 2004, 2005, 2006, 
 ;;               2007, 2008, 2009 Aleksei Gusev <aleksei.gusev@gmail.com>
@@ -8,10 +8,8 @@
 
 ;; TODO:
 ;; 
-;;  * Deleting files in trash.
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
-;;  * Moved session files somewhere.
 ;;  * Add smarty-mode.
 ;;  
 ;; Done:
@@ -24,43 +22,81 @@
 ;;
 ;;     - make openning a new frame by 'Win-E' without '~/src' in
 ;;       buffer and with --no-wait option.
+;; 
+;;  * Deleting files in trash.
+;;  * Moved session files somewhere.
 ;;
 
 
 ;; Add some dirs to load-path
-(setq load-path (cons "~/.emacs.d/site-lisp" load-path))
+(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+    (let* ((my-lisp-dir "~/.emacs.d/site-lisp/")
+           (default-directory my-lisp-dir))
+      (progn
+        (setq load-path (cons my-lisp-dir load-path))
+        (normal-top-level-add-subdirs-to-load-path))))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/rc"))
 
-;; loading alternative git client.
-;; (load "/usr/share/doc/git-core/contrib/emacs/git")
+;; Tramp
+(setq shell-prompt-pattern "^.*[#$%>] *")
 
-;; EMMS
-(load "~/.emacs.d/rc/emacs-rc-emms")
+;; Shell
+(add-hook 'sh-mode-hook '(lambda ()
+													 (turn-on-auto-fill)))
 
-;; Mode specific configurations
-(load "~/.emacs.d/rc/emacs-rc-sh-scripts")
-(load "~/.emacs.d/rc/emacs-rc-lisp")
-(load "~/.emacs.d/rc/emacs-rc-text")
-(load "~/.emacs.d/rc/emacs-rc-sql")
-(load "~/.emacs.d/rc/emacs-rc-php")
-(load "~/.emacs.d/rc/emacs-rc-tex")
-(load "~/.emacs.d/rc/emacs-rc-js2")
-(load "~/.emacs.d/rc/emacs-rc-gentoo-syntax")
-(load "~/.emacs.d/rc/emacs-rc-javascript")
-(load "~/.emacs.d/rc/emacs-rc-apache-mode")
-(load "~/.emacs.d/rc/emacs-rc-textile")
+;; Emacs-Lisp
+(add-hook 'emacs-lisp-mode-hook '(lambda ()
+																	 (turn-on-auto-fill)))
 
-;; Ruby, Rails and all, all, all.. ;]
-(load "~/.emacs.d/rc/emacs-rc-rails-reloaded")
-;; (load "~/.emacs.d/rc/emacs-rc-rails")
-(load "~/.emacs.d/rc/emacs-rc-rhtml")
-(load "~/.emacs.d/rc/emacs-rc-ri")
-(load "~/.emacs.d/rc/emacs-rc-ruby")
-(load "~/.emacs.d/rc/emacs-rc-yaml")
+;; Text
+(add-hook 'text-mode-hook '(lambda ()
+														 (turn-on-auto-fill)
+														 (turn-on-flyspell)))
 
-;; (load "~/.emacs.d/rc/emacs-rc-nxhtml")
+;; PHP
+(require 'emacs-rc-php)
 
+;; TeX
+(require 'emacs-rc-tex)
+
+;; Gentoo Syntax (ebuild, init.d-scripts and etc)
+(require 'gentoo-syntax)
+
+(add-to-list 'auto-mode-alist
+						 '("/etc/conf.d/" . sh-mode))
+
+;; Javascript
+(require 'emacs-rc-javascript)
+
+;; Apache
+(add-to-list 'auto-mode-alist '(".*/etc/apache.*" . apache-mode))
+
+;; Textile
+(require 'emacs-rc-textile)
+
+;; Emacs Rails Reloaded
+;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
+;; to load path explicity...
+(setq load-path (cons (expand-file-name
+											 "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
+(require 'rails-autoload)
+
+;; RHTML
+(require 'rhtml-mode)
+(add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
+
+;; Ruby
+(require 'emacs-rc-ruby)
+
+;; YAML
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+					'(lambda ()
+						 (setq indent-tabs-mode nil)))
+							
 ;; Emacs core customization
-(load "~/.emacs.d/rc/emacs-rc-calendar")
+(require 'emacs-rc-calendar)
 (load "~/.emacs.d/rc/emacs-rc-decor")
 (load "~/.emacs.d/rc/emacs-rc-dired")
 (load "~/.emacs.d/rc/emacs-rc-hippie-exp")
@@ -76,6 +112,16 @@
 (load "~/.emacs.d/rc/emacs-rc-kbd")
 (load "~/.emacs.d/rc/emacs-rc-smtpmail")
 (load "~/.emacs.d/rc/emacs-rc-ediff")
+
+;;----------------------------------------------------------------------------
+;; Delete the current file
+;;----------------------------------------------------------------------------
+(defun delete-this-file ()
+  (interactive)
+  (or (buffer-file-name) (error "no file is currently being edited"))
+  (when (yes-or-no-p "Really delete this file?")
+    (delete-file (buffer-file-name))
+    (kill-this-buffer)))
 
 ;;----------------------------------------------------------------------------
 ;; Desktop saving

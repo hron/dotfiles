@@ -28,29 +28,19 @@
 
 ;;; Code:
 
-(setq load-path
-      (cons (expand-file-name "~/.emacs.d/site-lisp/php_repl/data")
-	    load-path))
-
-(setq load-path
-      (cons (expand-file-name "~/.emacs.d/site-lisp/php-mode")
-	    load-path))
+(add-to-list 'load-path
+						 (expand-file-name "~/.emacs.d/site-lisp/php_repl/data"))
 
 (require 'php-mode)
-
-(load-library "php-electric")
-(add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
 
 (setq php-manual-path "/usr/share/doc/php-docs-20071125-r2/ru"
       php-manual-url (concat "file://" php-manual-path))
 
-(defun my-php-mode-common-hook ()
-  (c-toggle-auto-newline -1)
-  (setq c-basic-offset 4
-				tab-width 4
-				indent-tabs-mode nil))
-
-(add-hook 'php-mode-hook 'my-php-mode-common-hook)
+(add-hook 'php-mode-hook '(lambda ()
+														(progn
+															(c-toggle-auto-newline -1)
+															(setq c-basic-offset 4
+																		indent-tabs-mode nil))))
 
 (require 'php-repl)
 (setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
@@ -61,9 +51,10 @@
 																	 '(php)))
 
 (require 'flymake-php)
+(add-hook 'php-mode-hook '(lambda () (flymake-mode t)))
 
-(defun my-php-mode-flymake-hook ()
-	(flymake-php-load))
-(add-hook 'php-mode-hook 'my-php-mode-flymake-hook)
+(require 'php-electric)
+(add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
 
+(provide 'emacs-rc-php)
 ;;; emacs-rc-php.el ends here
