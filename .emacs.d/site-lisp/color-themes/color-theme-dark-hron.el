@@ -1,5 +1,7 @@
 (require 'color-theme)
 
+
+
 (defun color-theme-dark-hron ()
   "Color theme by Aleksei Gusev, created 2009-05-20."
   (interactive)
@@ -242,6 +244,7 @@
      (link-visited ((t (:underline t :foreground "violet"))))
      (match ((t (:background "RoyalBlue3"))))
      (menu ((t (nil))))
+		 (magit-item-highlight ((t (:background "gray17"))))
      (message-cited-text ((t (:foreground "LightPink1"))))
      (message-header-cc ((t (:bold t :foreground "chartreuse1" :weight bold))))
      (message-header-name ((t (:foreground "green"))))

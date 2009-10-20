@@ -26,7 +26,7 @@
 
 ;;; Code:
 
-(setq load-path (cons "~/.emacs.d/packages/emacs-rails" load-path))
+(setq load-path (cons "~/.emacs.d/site-lisp/emacs-rails" load-path))
 (require 'rails)
 
 ;; fixing bug 

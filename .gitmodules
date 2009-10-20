@@ -1,9 +1,9 @@
-[submodule ".emacs.d/packages/emacs-rails-reloaded"]
-	path = .emacs.d/packages/emacs-rails-reloaded
-	url = git://github.com/dima-exe/emacs-rails-reloaded.git
-[submodule ".emacs.d/packages/rhtml-mode"]
-	path = .emacs.d/packages/rhtml-mode
+[submodule ".emacs.d/site-lisp/rhtml-mode"]
+	path = .emacs.d/site-lisp/rhtml-mode
 	url = git://github.com/eschulte/rhtml.git
-[submodule ".emacs.d/packages/php_repl"]
-	path = .emacs.d/packages/php_repl
+[submodule ".emacs.d/site-lisp/php_repl"]
+	path = .emacs.d/site-lisp/php_repl
 	url = git://github.com/ieure/php_repl.git
+[submodule ".emacs.d/site-lisp/emacs-rails-reloaded"]
+	path = .emacs.d/site-lisp/emacs-rails-reloaded
+	url = git://github.com/hron/emacs-rails-reloaded.git

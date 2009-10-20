@@ -29,7 +29,11 @@
 ;;; Code:
 
 (setq load-path
-      (cons (expand-file-name "~/.emacs.d/packages/php_repl/data")
+      (cons (expand-file-name "~/.emacs.d/site-lisp/php_repl/data")
+	    load-path))
+
+(setq load-path
+      (cons (expand-file-name "~/.emacs.d/site-lisp/php-mode")
 	    load-path))
 
 (require 'php-mode)
