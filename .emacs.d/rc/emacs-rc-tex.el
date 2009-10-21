@@ -42,19 +42,19 @@
 (add-hook 'TeX-mode-hook
           '(lambda ()
              (local-set-key "\\" 'TeX-electric-macro)
-	     (local-set-key "\C-cc" 'my-reftex-citation)
-	     (auto-fill-mode 1)
-	     (flyspell-mode 1)
-	     (reftex-mode 1)))
+						 (local-set-key "\C-cc" 'my-reftex-citation)
+						 (auto-fill-mode 1)
+						 (flyspell-mode 1)
+						 (reftex-mode 1)))
 
 (setq TeX-view-style '(("^a4\\(?:dutch\\|paper\\|wide\\)?\\|sem-a4$" "xdvi %d -paper a4")
-		       ("^a5\\(?:comb\\|paper\\)?$" "xdvi %d -paper a5")
-		       ("^b5paper$" "xdvi %d -paper b5")
-		       ("^letterpaper$" "xdvi %d -paper us")
-		       ("^legalpaper$" "xdvi %d -paper legal")
-		       ("^executivepaper$" "xdvi %d -paper 7.25x10.5in")
-		       ("^landscape$" "xdvi %d -paper a4r -s 4")
-		       ("." "xdvi %d -paper a4")))
+											 ("^a5\\(?:comb\\|paper\\)?$" "xdvi %d -paper a5")
+											 ("^b5paper$" "xdvi %d -paper b5")
+											 ("^letterpaper$" "xdvi %d -paper us")
+											 ("^legalpaper$" "xdvi %d -paper legal")
+											 ("^executivepaper$" "xdvi %d -paper 7.25x10.5in")
+											 ("^landscape$" "xdvi %d -paper a4r -s 4")
+											 ("." "xdvi %d -paper a4")))
 
 (defun my-reftex-citation (&optional page-ref)
   (interactive "p")
@@ -62,11 +62,13 @@
   (reftex-citation)
   (save-excursion
     (let ((page-prefix "стр.~")
-	  (page-number))
+					(page-number))
       (progn
-	(setq page-number (read-from-minibuffer "Enter page number: " page-prefix))
-	(search-backward "{")
-	(insert (concat "[" page-number "]"))))))
+				(setq page-number (read-from-minibuffer "Enter page number: " page-prefix))
+				(search-backward "{")
+				(insert (concat "[" page-number "]"))))))
 
+
+(provide 'emacs-rc-tex)
 
 ;;; emacs-rc-tex.el ends here
