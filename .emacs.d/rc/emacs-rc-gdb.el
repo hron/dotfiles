@@ -53,4 +53,6 @@
 
 ;; (setq gud-minor-mode t)
 
+(provide 'emacs-rc-gdb)
+
 ;;; emacs-rc-gdb.el ends here

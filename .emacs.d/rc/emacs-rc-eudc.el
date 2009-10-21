@@ -70,4 +70,5 @@
 (eval-after-load "post"
   '(define-key post-mode-map (kbd "TAB") 'enz-eudc-expand-inline))
 
+(provide 'emacs-rc-eudc)
 ;;; emacs-rc-eudc.el ends here

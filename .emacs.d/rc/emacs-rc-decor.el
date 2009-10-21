@@ -44,3 +44,4 @@
 ;; (color-theme-dark-hron)
 ;; (color-theme-clarity)
 
+(provide 'emacs-rc-decor)
