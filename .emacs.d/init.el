@@ -50,6 +50,9 @@
 														 (turn-on-auto-fill)
 														 (turn-on-flyspell)))
 
+;; Octave
+(require 'emacs-rc-octave)
+
 ;; PHP
 (require 'emacs-rc-php)
 

@@ -60,5 +60,7 @@
 (add-to-list 'auto-mode-alist
 						 '( "\\.tpl" . smarty-mode))
 
+(autoload 'geben "geben" "PHP Debugger on Emacs" t)
+
 (provide 'emacs-rc-php)
 ;;; emacs-rc-php.el ends here
