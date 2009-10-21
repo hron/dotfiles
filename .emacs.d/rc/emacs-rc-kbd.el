@@ -12,7 +12,7 @@
 (global-set-key [f12] 'align-string)
 
 ;; Bind `C-x C-b' to more convenience
-(global-set-key "\C-x\C-b" 'bs-show)
+(global-set-key "\C-x\C-b" 'ibuffer)
 
 ;; and to kill too..
 (global-set-key "\C-xk" 'kill-this-buffer)
