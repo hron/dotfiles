@@ -41,6 +41,9 @@
 
 (mouse-avoidance-mode 'none)
 
+;; Non-nil if Size-Indication mode is enabled.
+(size-indication-mode 1)
+
 ;; Allows updating the copyright year and above mentioned GPL version manually
 ;; or when saving a file.  Do (add-hook 'write-file-hooks 'copyright-update).
 ;; (add-hook 'write-file-hooks 'copyright-update)
