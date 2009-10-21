@@ -39,6 +39,7 @@
 (add-hook 'php-mode-hook '(lambda ()
 			    (progn
 			      (c-toggle-auto-newline -1)
+						(highlight-parentheses-mode 1)
 			      (setq c-basic-offset 4
 				    indent-tabs-mode nil))))
 

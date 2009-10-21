@@ -37,18 +37,31 @@
         (normal-top-level-add-subdirs-to-load-path))))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/rc"))
 
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+		(load
+		 (expand-file-name "~/.emacs.d/elpa/package.el"))
+	(package-initialize))
+
 ;; Shell
 (add-hook 'sh-mode-hook '(lambda ()
-													 (turn-on-auto-fill)))
+													 (turn-on-auto-fill)
+													 (highlight-parentheses-mode 1))
 
 ;; Emacs-Lisp
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
-																	 (turn-on-auto-fill)))
+																	 (turn-on-auto-fill)
+																	 (highlight-parentheses-mode 1)))
 
 ;; Text
 (add-hook 'text-mode-hook '(lambda ()
 														 (turn-on-auto-fill)
-														 (turn-on-flyspell)))
+														 (turn-on-flyspell)
+														 (highlight-parentheses-mode 1)))
 
 ;; Octave
 (require 'emacs-rc-octave)
@@ -93,10 +106,13 @@
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
 					'(lambda ()
-						 (setq indent-tabs-mode nil)))
+						 (setq indent-tabs-mode nil)
+						 (highlight-parentheses-mode 1)))
 
 ;; Magit
 (global-set-key [f11] 'magit-status)
+
+(global-set-key "\M-\C-y" 'kill-ring-search)
 
 ;; Emacs core customization
 (require 'emacs-rc-calendar)
@@ -115,15 +131,3 @@
 ;; Everything else...
 (require 'emacs-rc-misc-things)
 
-
-
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-		(load
-		 (expand-file-name "~/.emacs.d/elpa/package.el"))
-	(package-initialize))

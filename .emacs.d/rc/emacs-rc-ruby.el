@@ -35,7 +35,8 @@
 
 (add-hook 'ruby-mode-hook
 					'(lambda ()
-						 (auto-fill-mode 1)))
+						 (auto-fill-mode 1)
+						 (highlight-parentheses-mode 1)))
 
 ;; Ri-Emacs
 (setq ri-ruby-progres "/usr/bin/ruby")
