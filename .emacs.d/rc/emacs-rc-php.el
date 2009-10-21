@@ -56,5 +56,9 @@
 (require 'php-electric)
 (add-hook 'php-mode-hook '(lambda () (php-electric-mode)))
 
+(require 'smarty-mode)
+(add-to-list 'auto-mode-alist
+						 '( "\\.tpl" . smarty-mode))
+
 (provide 'emacs-rc-php)
 ;;; emacs-rc-php.el ends here
