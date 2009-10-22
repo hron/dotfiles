@@ -2,9 +2,6 @@
 (if (fboundp 'auto-compression-mode)
     (auto-compression-mode t))
 
-;; Включаем по умолчанию adaptive-fill mode.
-;; (setq-default adaptive-fill-mode t)
-
 ;; Делать резервные копии для файлов?
 ;(setq make-backup-files nil)
 
@@ -43,6 +40,10 @@
 (setq-default comment-start "#")
 
 (mouse-avoidance-mode 'none)
+
+;; Non-nil if Size-Indication mode is enabled.
+(size-indication-mode 1)
+
 ;; Allows updating the copyright year and above mentioned GPL version manually
 ;; or when saving a file.  Do (add-hook 'write-file-hooks 'copyright-update).
 ;; (add-hook 'write-file-hooks 'copyright-update)
@@ -103,3 +104,140 @@
 
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets
 			uniquify-strip-common-suffix t)
+
+(setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(require 'smtpmail)
+
+;; Function used to send the current buffer as mail.  The default is
+;; `message-send-mail-with-sendmail', or `smtpmail-send-it' according
+;; to the system.  Other valid values include
+;; `message-send-mail-with-mailclient', `message-send-mail-with-mh',
+;; `message-send-mail-with-qmail', `message-smtpmail-send-it' and
+;; `feedmail-send-it'.
+;; 
+;; The function `message-send-mail-with-sendmail' pipes your article
+;; to the `sendmail' binary for further queuing and sending.  When
+;; your local system is not configured for sending mail using
+;; `sendmail', and you have access to a remote SMTP server, you can
+;; set `message-send-mail-function' to `smtpmail-send-it' and make
+;; sure to setup the `smtpmail' package correctly.  An example:
+;; 
+;; (setq message-send-mail-function 'smtpmail-send-it
+;;       smtpmail-default-smtp-server "YOUR SMTP HOST")
+;; 
+;; To the thing similar to this, there is `message-smtpmail-send-it'.
+;; It is useful if your ISP requires the POP-before-SMTP
+;; authentication.  *Note POP before SMTP: (gnus)POP before SMTP.
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-default-smtp-server "smtp.warecorp.com")
+
+;; 
+;; VC
+;; 
+(setq
+ ;; Emacs normally  does not save  backup files for source  files that
+ ;; are maintained  with version control.  If you want to  make backup
+ ;; files even  for files that  use version control, set  the variable
+ ;; `vc-make-backup-files' to a non-`nil' value.
+ vc-make-backup-files t
+
+ ;;    The variable  `vc-follow-symlinks' controls  what to do  when a
+ ;; symbolic link points to a version-controlled file. If it is `nil',
+ ;; VC only displays a warning message. If it is `t', VC automatically
+ ;; follows the  link, and visits  the real file instead,  telling you
+ ;; about this in the echo area.  If the value is `ask' (the default),
+ ;; VC asks you each time whether to follow the link.
+ vc-follow-symlinks t
+
+ ;;    VC mode does much of its work by running the shell commands for
+ ;; RCS,  CVS  and SCCS.  If  `vc-command-messages'  is non-`nil',  VC
+ ;; displays messages  to indicate which  shell commands it  runs, and
+ ;; additional messages when the commands finish.
+ vc-command-messages t
+ )
+
+;;----------------------------------------------------------------------------
+;; Delete the current file
+;;----------------------------------------------------------------------------
+(defun delete-this-file ()
+  (interactive)
+  (or (buffer-file-name) (error "no file is currently being edited"))
+  (when (yes-or-no-p "Really delete this file?")
+    (delete-file (buffer-file-name))
+    (kill-this-buffer)))
+
+;;----------------------------------------------------------------------------
+;; Desktop saving
+;;----------------------------------------------------------------------------
+;; save a list of open files in ~/.emacs.d/.emacs.desktop
+;; save the desktop file automatically if it already exists
+(setq desktop-path '("~/.emacs.d"))
+(setq desktop-save 'if-exists)
+(desktop-save-mode 1)
+
+
+;;----------------------------------------------------------------------------
+;; Restore histories and registers after saving
+;;----------------------------------------------------------------------------
+(require 'session)
+(setq session-save-file (expand-file-name "~/.emacs.d/.session"))
+(add-hook 'after-init-hook 'session-initialize)
+
+;; save a bunch of variables to the desktop file
+;; for lists specify the len of the maximal saved data also
+(setq desktop-globals-to-save
+      (append '((extended-command-history . 30)
+                (file-name-history        . 100)
+                (ido-last-directory-list  . 100)
+                (ido-work-directory-list  . 100)
+                (ido-work-file-list       . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (shell-command-history    . 50)
+                tags-file-name
+                register-alist)))
+
+
+;; Control use of local variables in files you visit.
+;; The value can be t, nil, :safe, :all, or something else.
+;; 
+;; A value of t means file local variables specifications are obeyed
+;; if all the specified variable values are safe; if any values are
+;; not safe, Emacs queries you, once, whether to set them all.
+;; (When you say yes to certain values, they are remembered as safe.)
+;; 
+;; :safe means set the safe variables, and ignore the rest.
+;; :all means set all variables, whether safe or not.
+;;  (Don't set it permanently to :all.)
+;; A value of nil means always ignore the file local variables.
+;; 
+;; Any other value means always query you once whether to set them all.
+;; (When you say yes to certain values, they are remembered as safe, but
+;; this has no effect when `enable-local-variables' is "something else".)
+;; 
+;; This variable also controls use of major modes specified in
+;; a -*- line.
+;; 
+;; The command M-x normal-mode, when used interactively,
+;; always obeys file local variable specifications and the -*- line,
+;; and ignores this variable.
+(setq enable-local-variables :all)
+
+;;----------------------------------------------------------------------------
+;; Variables configured via the interactive 'customize' interface
+;;----------------------------------------------------------------------------
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+;; Color theme loading, must be the last.
+(load-library "color-themes/color-theme-dark-hron")
+(color-theme-dark-hron)
+
+(provide 'emacs-rc-misc-things)

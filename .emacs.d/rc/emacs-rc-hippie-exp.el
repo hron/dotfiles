@@ -71,4 +71,6 @@
 				try-complete-lisp-symbol-partially
 				try-complete-lisp-symbol))
 
+(provide 'emacs-rc-hippie-exp)
+
 ;;; emacs-rc-hippie-exp.el ends here

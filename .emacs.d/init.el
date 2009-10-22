@@ -37,21 +37,34 @@
         (normal-top-level-add-subdirs-to-load-path))))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/rc"))
 
-;; Tramp
-(setq shell-prompt-pattern "^.*[#$%>] *")
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+		(load
+		 (expand-file-name "~/.emacs.d/elpa/package.el"))
+	(package-initialize))
 
 ;; Shell
 (add-hook 'sh-mode-hook '(lambda ()
-													 (turn-on-auto-fill)))
+													 (turn-on-auto-fill)
+													 (highlight-parentheses-mode 1))
 
 ;; Emacs-Lisp
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
-																	 (turn-on-auto-fill)))
+																	 (turn-on-auto-fill)
+																	 (highlight-parentheses-mode 1)))
 
 ;; Text
 (add-hook 'text-mode-hook '(lambda ()
 														 (turn-on-auto-fill)
-														 (turn-on-flyspell)))
+														 (turn-on-flyspell)
+														 (highlight-parentheses-mode 1)))
+
+;; Octave
+(require 'emacs-rc-octave)
 
 ;; PHP
 (require 'emacs-rc-php)
@@ -93,106 +106,28 @@
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
 					'(lambda ()
-						 (setq indent-tabs-mode nil)))
-							
+						 (setq indent-tabs-mode nil)
+						 (highlight-parentheses-mode 1)))
+
+;; Magit
+(global-set-key [f11] 'magit-status)
+
+(global-set-key "\M-\C-y" 'kill-ring-search)
+
 ;; Emacs core customization
 (require 'emacs-rc-calendar)
-(load "~/.emacs.d/rc/emacs-rc-decor")
-(load "~/.emacs.d/rc/emacs-rc-dired")
-(load "~/.emacs.d/rc/emacs-rc-hippie-exp")
-(load "~/.emacs.d/rc/emacs-rc-gdb")
-(load "~/.emacs.d/rc/emacs-rc-mule")
-(load "~/.emacs.d/rc/emacs-rc-misc-things")
-(load "~/.emacs.d/rc/emacs-rc-tramp")
-(load "~/.emacs.d/rc/emacs-rc-woman")
-(load "~/.emacs.d/rc/emacs-rc-user-info")
-(load "~/.emacs.d/rc/emacs-rc-vc")
-(load "~/.emacs.d/rc/emacs-rc-ldap")
-(load "~/.emacs.d/rc/emacs-rc-eudc")
-(load "~/.emacs.d/rc/emacs-rc-kbd")
-(load "~/.emacs.d/rc/emacs-rc-smtpmail")
-(load "~/.emacs.d/rc/emacs-rc-ediff")
+(require 'emacs-rc-decor)
+(require 'emacs-rc-dired)
+(require 'emacs-rc-hippie-exp)
+(require 'emacs-rc-gdb)
+(require 'emacs-rc-mule)
+(require 'emacs-rc-tramp)
+(require 'emacs-rc-woman)
+(require 'emacs-rc-user-info)
+(require 'emacs-rc-ldap)
+(require 'emacs-rc-eudc)
+(require 'emacs-rc-kbd)
 
-;;----------------------------------------------------------------------------
-;; Delete the current file
-;;----------------------------------------------------------------------------
-(defun delete-this-file ()
-  (interactive)
-  (or (buffer-file-name) (error "no file is currently being edited"))
-  (when (yes-or-no-p "Really delete this file?")
-    (delete-file (buffer-file-name))
-    (kill-this-buffer)))
-
-;;----------------------------------------------------------------------------
-;; Desktop saving
-;;----------------------------------------------------------------------------
-;; save a list of open files in ~/.emacs.d/.emacs.desktop
-;; save the desktop file automatically if it already exists
-(setq desktop-path '("~/.emacs.d"))
-(setq desktop-save 'if-exists)
-(desktop-save-mode 1)
-
-
-;;----------------------------------------------------------------------------
-;; Restore histories and registers after saving
-;;----------------------------------------------------------------------------
-(require 'session)
-(setq session-save-file (expand-file-name "~/.emacs.d/.session"))
-(add-hook 'after-init-hook 'session-initialize)
-
-;; save a bunch of variables to the desktop file
-;; for lists specify the len of the maximal saved data also
-(setq desktop-globals-to-save
-      (append '((extended-command-history . 30)
-                (file-name-history        . 100)
-                (ido-last-directory-list  . 100)
-                (ido-work-directory-list  . 100)
-                (ido-work-file-list       . 100)
-                (grep-history             . 30)
-                (compile-history          . 30)
-                (minibuffer-history       . 50)
-                (query-replace-history    . 60)
-                (read-expression-history  . 60)
-                (regexp-history           . 60)
-                (regexp-search-ring       . 20)
-                (search-ring              . 20)
-                (shell-command-history    . 50)
-                tags-file-name
-                register-alist)))
-
-
-;; Control use of local variables in files you visit.
-;; The value can be t, nil, :safe, :all, or something else.
-;; 
-;; A value of t means file local variables specifications are obeyed
-;; if all the specified variable values are safe; if any values are
-;; not safe, Emacs queries you, once, whether to set them all.
-;; (When you say yes to certain values, they are remembered as safe.)
-;; 
-;; :safe means set the safe variables, and ignore the rest.
-;; :all means set all variables, whether safe or not.
-;;  (Don't set it permanently to :all.)
-;; A value of nil means always ignore the file local variables.
-;; 
-;; Any other value means always query you once whether to set them all.
-;; (When you say yes to certain values, they are remembered as safe, but
-;; this has no effect when `enable-local-variables' is "something else".)
-;; 
-;; This variable also controls use of major modes specified in
-;; a -*- line.
-;; 
-;; The command M-x normal-mode, when used interactively,
-;; always obeys file local variable specifications and the -*- line,
-;; and ignores this variable.
-(setq enable-local-variables :all)
-
-;;----------------------------------------------------------------------------
-;; Variables configured via the interactive 'customize' interface
-;;----------------------------------------------------------------------------
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
-;; Color theme loading, must be the last.
-(load-library "color-themes/color-theme-dark-hron")
-(color-theme-dark-hron)
+;; Everything else...
+(require 'emacs-rc-misc-things)
 

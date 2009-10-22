@@ -72,4 +72,6 @@
 	  (lambda ()
 	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
 
+(provide 'emacs-rc-dired)
+
 ;;; emacs-rc-dired.el ends here

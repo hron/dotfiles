@@ -9,4 +9,5 @@
 
 ;; (setq user-mail-address "ag@aichyna.com")
 
+(provide 'emacs-rc-user-info)
 ;; emacs-rc-user-info.el

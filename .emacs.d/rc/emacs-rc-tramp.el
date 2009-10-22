@@ -28,6 +28,7 @@
 
 ;;; Code:
 
+(setq shell-prompt-pattern "^.*[#$%>] *")
 
 (setq tramp-shell-prompt-pattern shell-prompt-pattern
       tramp-backup-directory-alist backup-directory-alist
@@ -89,5 +90,7 @@
 									 '( "\\(localhost\\|crystal\\)" "root" nil))
 
       ))
+
+(provide 'emacs-rc-tramp)
 
 ;;; emacs-rc-tramp.el ends here

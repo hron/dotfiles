@@ -7,6 +7,7 @@
 
 (add-hook 'textile-mode-hook '(lambda ()
 																(turn-off-auto-fill)
-																(turn-on-visual-line-mode)))
+																(turn-on-visual-line-mode)
+																(highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-textile)

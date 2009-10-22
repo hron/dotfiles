@@ -47,4 +47,5 @@ fill frame option."
                   (define-key woman-mode-map "R"
                   'woman-reformat-last-file-with-toggle-fill-frame)))
 
+(provide 'emacs-rc-woman)
 ;;; emacs-rc-woman.el ends here

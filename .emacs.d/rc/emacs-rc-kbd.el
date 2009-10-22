@@ -9,11 +9,10 @@
 ;; Bind `F9' to compile function
 (global-set-key [f9] 'compile)
 
-(global-set-key [f11] 'speedbar)
 (global-set-key [f12] 'align-string)
 
 ;; Bind `C-x C-b' to more convenience
-(global-set-key "\C-x\C-b" 'bs-show)
+(global-set-key "\C-x\C-b" 'ibuffer)
 
 ;; and to kill too..
 (global-set-key "\C-xk" 'kill-this-buffer)
@@ -55,4 +54,5 @@
 (global-set-key "\C-cb" 'GAU:box-region-with-title)
 (global-set-key "\C-ce" 'boxquote-shell-command)
 
+(provide 'emacs-rc-kbd)
 ;; emacs-rc-kbd.el

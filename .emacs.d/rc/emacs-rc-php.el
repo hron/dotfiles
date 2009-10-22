@@ -39,6 +39,7 @@
 (add-hook 'php-mode-hook '(lambda ()
 			    (progn
 			      (c-toggle-auto-newline -1)
+						(highlight-parentheses-mode 1)
 			      (setq c-basic-offset 4
 				    indent-tabs-mode nil))))
 
@@ -59,6 +60,8 @@
 (require 'smarty-mode)
 (add-to-list 'auto-mode-alist
 						 '( "\\.tpl" . smarty-mode))
+
+(autoload 'geben "geben" "PHP Debugger on Emacs" t)
 
 (provide 'emacs-rc-php)
 ;;; emacs-rc-php.el ends here

@@ -42,4 +42,5 @@
 
 (autoload 'octave-help "octave-hlp" nil t)
 
+(provide 'emacs-rc-octave)
 ;;; emacs-rc-octave.el ends here

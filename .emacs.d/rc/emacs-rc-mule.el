@@ -25,4 +25,6 @@
 (define-key isearch-mode-map russian-layout-key '(lambda () (interactive) (if current-input-method
 								 (isearch-update) (isearch-toggle-input-method))))
 
+(provide 'emacs-rc-mule)
+
 ;;; emacs-rc-mule.el ends here
