@@ -43,25 +43,25 @@
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
 (when
-		(load
-		 (expand-file-name "~/.emacs.d/elpa/package.el"))
-	(package-initialize))
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
 
 ;; Shell
 (add-hook 'sh-mode-hook '(lambda ()
-													 (turn-on-auto-fill)
-													 (highlight-parentheses-mode 1))
+			   (turn-on-auto-fill)
+			   (highlight-parentheses-mode 1)))
 
-;; Emacs-Lisp
+;; ;; Emacs-Lisp
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
-																	 (turn-on-auto-fill)
-																	 (highlight-parentheses-mode 1)))
+				   (turn-on-auto-fill)
+				   (highlight-parentheses-mode 1)))
 
 ;; Text
 (add-hook 'text-mode-hook '(lambda ()
-														 (turn-on-auto-fill)
-														 (turn-on-flyspell)
-														 (highlight-parentheses-mode 1)))
+			     (turn-on-auto-fill)
+			     (turn-on-flyspell)
+			     (highlight-parentheses-mode 1)))
 
 ;; Octave
 (require 'emacs-rc-octave)
@@ -76,7 +76,7 @@
 (require 'gentoo-syntax)
 
 (add-to-list 'auto-mode-alist
-						 '("/etc/conf.d/" . sh-mode))
+	     '("/etc/conf.d/" . sh-mode))
 
 ;; Javascript
 (require 'emacs-rc-javascript)
@@ -91,7 +91,7 @@
 ;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
 ;; to load path explicity...
 (setq load-path (cons (expand-file-name
-											 "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
+		       "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
 (require 'rails-autoload)
 
 ;; RHTML
@@ -105,9 +105,9 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
-					'(lambda ()
-						 (setq indent-tabs-mode nil)
-						 (highlight-parentheses-mode 1)))
+	  '(lambda ()
+	     (setq indent-tabs-mode nil)
+	     (highlight-parentheses-mode 1)))
 
 ;; Magit
 (global-set-key [f11] 'magit-status)
