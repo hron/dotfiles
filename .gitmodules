@@ -7,3 +7,6 @@
 [submodule ".emacs.d/site-lisp/emacs-rails-reloaded"]
 	path = .emacs.d/site-lisp/emacs-rails-reloaded
 	url = git://github.com/hron/emacs-rails-reloaded.git
+[submodule ".emacs.d/site-lisp/haml"]
+	path = .emacs.d/site-lisp/haml
+	url = git://github.com/nex3/haml.git

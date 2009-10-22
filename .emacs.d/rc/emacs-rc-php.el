@@ -29,7 +29,7 @@
 ;;; Code:
 
 (add-to-list 'load-path
-						 (expand-file-name "~/.emacs.d/site-lisp/php_repl/data"))
+	     (expand-file-name "~/.emacs.d/site-lisp/php_repl/data"))
 
 (require 'php-mode)
 
@@ -37,11 +37,10 @@
       php-manual-url (concat "file://" php-manual-path))
 
 (add-hook 'php-mode-hook '(lambda ()
-			    (progn
-			      (c-toggle-auto-newline -1)
-						(highlight-parentheses-mode 1)
-			      (setq c-basic-offset 4
-				    indent-tabs-mode nil))))
+			    (flyspell-prog-mode)
+			    (c-toggle-auto-newline -1)
+			    (setq c-basic-offset 4
+				  indent-tabs-mode nil)))
 
 (require 'php-repl)
 (setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
@@ -49,7 +48,7 @@
 (require 'phpunit)
 ;; Make clickalabe of standard PHP fatals too.
 (setq phpunit-regexp-alist (append phpunit-regexp-alist
-																	 '(php)))
+				   '(php)))
 
 (require 'flymake-php)
 (add-hook 'php-mode-hook '(lambda () (flymake-mode t)))
@@ -59,9 +58,12 @@
 
 (require 'smarty-mode)
 (add-to-list 'auto-mode-alist
-						 '( "\\.tpl" . smarty-mode))
+	     '( "\\.tpl" . smarty-mode))
 
 (autoload 'geben "geben" "PHP Debugger on Emacs" t)
+
+(add-hook 'php-mode-hook '(lambda ()
+			    (highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-php)
 ;;; emacs-rc-php.el ends here

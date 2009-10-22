@@ -48,6 +48,8 @@
 ;; or when saving a file.  Do (add-hook 'write-file-hooks 'copyright-update).
 ;; (add-hook 'write-file-hooks 'copyright-update)
 
+(auto-insert-mode 1)
+
 ;; С помощью этой функции можно обрамлять регион в рамку с заголовком.
 (defun GAU:box-region-with-title ()
   (interactive)

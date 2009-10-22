@@ -47,14 +47,20 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
-;; Shell
-(add-hook 'sh-mode-hook '(lambda ()
-			   (turn-on-auto-fill)
-			   (highlight-parentheses-mode 1)))
+;;----------------------------------------------------------------------------
+;; Handier way to add modes to auto-mode-alist
+;;----------------------------------------------------------------------------
+(defun add-auto-mode (mode &rest patterns)
+  (dolist (pattern patterns)
+    (add-to-list 'auto-mode-alist (cons pattern mode))))
 
-;; ;; Emacs-Lisp
+;; Shell
+(require 'emacs-rc-sh)
+
+;; Emacs-Lisp
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
 				   (turn-on-auto-fill)
+				   (flyspell-prog-mode)
 				   (highlight-parentheses-mode 1)))
 
 ;; Text
@@ -87,6 +93,15 @@
 ;; Textile
 (require 'emacs-rc-textile)
 
+;; Markdown
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+
+;; Regex-tool
+(autoload 'regex-tool "regex-tool" "Mode for exploring regular expressions" t)
+
+;; Git
+(require 'emacs-rc-git)
+
 ;; Emacs Rails Reloaded
 ;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
 ;; to load path explicity...
@@ -97,6 +112,7 @@
 ;; RHTML
 (require 'rhtml-mode)
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
+(add-hook 'rhtml-mode-hook '(lambda () (flyspell-prog-mode)))
 
 ;; Ruby
 (require 'emacs-rc-ruby)
@@ -107,14 +123,18 @@
 (add-hook 'yaml-mode-hook
 	  '(lambda ()
 	     (setq indent-tabs-mode nil)
+	     (flyspell-prog-mode)
 	     (highlight-parentheses-mode 1)))
 
-;; Magit
-(global-set-key [f11] 'magit-status)
-
-(global-set-key "\M-\C-y" 'kill-ring-search)
+;; htmlize
+(dolist (sym
+         (list 'htmlize-file 'htmlize-region 'htmlize-buffer
+               'htmlize-many-files 'htmlize-many-files-dired))
+  (autoload sym "htmlize"))
 
 ;; Emacs core customization
+(require 'emacs-rc-flymake)
+;; (require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
 (require 'emacs-rc-decor)
 (require 'emacs-rc-dired)
@@ -123,9 +143,10 @@
 (require 'emacs-rc-mule)
 (require 'emacs-rc-tramp)
 (require 'emacs-rc-woman)
-(require 'emacs-rc-user-info)
 (require 'emacs-rc-ldap)
 (require 'emacs-rc-eudc)
+
+(require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)
 
 ;; Everything else...
