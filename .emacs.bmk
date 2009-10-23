@@ -2,10 +2,15 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("elisp"
-	(front-context-string . "\n1.3.7 Format of")
-	(rear-context-string . "of Descriptions\n")
-	(position . 79014)
-	(filename . "/usr/share/info/emacs-snapshot/elisp")
-	(info-node . "Format of Descriptions")
-	(handler . Info-bookmark-jump)))
+(("/sshx:greatbu5@greatbuyback.com:~/"
+  (filename . "/ssh:greatbu5@greatbuyback.com:/home2/greatbu5/")
+  (front-context-string . ".Xauthority\n  -r")
+  (rear-context-string . "30 Oct 22 08:33 ")
+  (position . 224))
+ ("elisp"
+  (front-context-string . "\n1.3.7 Format of")
+  (rear-context-string . "of Descriptions\n")
+  (position . 79014)
+  (filename . "/usr/share/info/emacs-snapshot/elisp")
+  (info-node . "Format of Descriptions")
+  (handler . Info-bookmark-jump)))
