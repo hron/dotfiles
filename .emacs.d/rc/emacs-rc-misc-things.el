@@ -20,6 +20,8 @@
 ;; `browse-url' to view it.
 (ffap-bindings)
 
+(setq ffap-machine-p-known 'accept)
+
 ;; Работа с буфером обмена также как и с внутренними кольцами копирования
 ;; и удаления.
 (setq x-select-enable-clipboard t)
