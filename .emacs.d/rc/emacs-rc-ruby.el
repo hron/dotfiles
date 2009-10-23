@@ -28,15 +28,22 @@
 
 ;;; ruby-mode site-lisp configuration
 
-(add-to-list 'auto-mode-alist
-						 '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist
-						 '("Capfile" . ruby-mode))
+(add-auto-mode 'ruby-mode
+	       "\\.rb$" "Rakefile$" "Capfile" "\.rake$"
+	       "\.rxml$" "\.rjs" ".irbrc" "\.builder")
 
 (add-hook 'ruby-mode-hook
-					'(lambda ()
-						 (auto-fill-mode 1)
-						 (highlight-parentheses-mode 1)))
+	  '(lambda ()
+	     (auto-fill-mode 1)
+	     (flyspell-prog-mode)
+	     (highlight-parentheses-mode 1)))
+
+;; Inferion ruby
+(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby"
+  "Set local key defs for inf-ruby in ruby-mode")
+
+(add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 ;; Ri-Emacs
 (setq ri-ruby-progres "/usr/bin/ruby")
@@ -46,10 +53,33 @@
 (defalias 'rails-search-doc 'ri)
 
 (add-hook 'ruby-mode-hook
-					(lambda ()
-						(local-set-key [f1] 'ri)))
+	  (lambda ()
+	    (local-set-key [f1] 'ri)))
 
+;;----------------------------------------------------------------------------
+;; Ruby - flymake
+;;----------------------------------------------------------------------------
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+;;----------------------------------------------------------------------------
+;; Ruby - Electric mode
+;;----------------------------------------------------------------------------
+(autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
+(add-hook 'ruby-mode-hook
+          (lambda () (ruby-electric-mode t)))
+
+;;----------------------------------------------------------------------------
+;; Ruby - haml & sass
+;;----------------------------------------------------------------------------
+(add-auto-mode 'haml-mode "\.haml$")
+(add-auto-mode 'sass-mode "\.sass$")
+(autoload 'haml-mode "haml-mode" "Mode for editing haml files" t)
+(autoload 'sass-mode "sass-mode" "Mode for editing sass files" t)
+
+(require 'flymake-haml)
+(add-hook 'haml-mode-hook 'flymake-haml-load)
+(add-hook 'sass-mode-hook 'flymake-sass-load)
 
 (provide 'emacs-rc-ruby)
-
 ;;; emacs-rc-ruby.el ends here

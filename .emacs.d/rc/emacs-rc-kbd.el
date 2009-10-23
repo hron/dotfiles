@@ -54,5 +54,18 @@
 (global-set-key "\C-cb" 'GAU:box-region-with-title)
 (global-set-key "\C-ce" 'boxquote-shell-command)
 
+;; Activate occur easily inside isearch
+(define-key isearch-mode-map (kbd "C-o")
+  (lambda () (interactive)
+    (let ((case-fold-search isearch-case-fold-search))
+      (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
+
+;; Magit
+(global-set-key [f11] 'magit-status)
+
+;; Kill-ring-search
+(global-set-key "\M-\C-y" 'kill-ring-search)
+
+
 (provide 'emacs-rc-kbd)
 ;; emacs-rc-kbd.el

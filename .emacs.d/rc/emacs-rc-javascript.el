@@ -8,7 +8,8 @@
 (autoload 'moz-minor-mode "chrome_content_moz" "Mozilla Minor and Inferior Mozilla Modes" t)
 
 (add-hook 'espresso-mode-hook '(lambda ()
-																 (moz-minor-mode 1)
-																 (highlight-parentheses-mode 1)))
+				 (flyspell-prog-mode)
+				 (moz-minor-mode 1)
+				 (highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-javascript)
