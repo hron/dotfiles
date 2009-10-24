@@ -148,6 +148,7 @@
 (require 'emacs-rc-woman)
 (require 'emacs-rc-ldap)
 (require 'emacs-rc-eudc)
+(require 'emacs-rc-view)
 
 (require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)
