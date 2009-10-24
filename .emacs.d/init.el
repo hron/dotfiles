@@ -132,6 +132,9 @@
                'htmlize-many-files 'htmlize-many-files-dired))
   (autoload sym "htmlize"))
 
+;; ERC
+(require 'emacs-rc-erc)
+
 ;; Emacs core customization
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
