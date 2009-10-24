@@ -10,7 +10,6 @@
 ;; 
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
-;;  * Add smarty-mode.
 ;;  
 ;; Done:
 ;; 
@@ -25,6 +24,7 @@
 ;; 
 ;;  * Deleting files in trash.
 ;;  * Moved session files somewhere.
+;;  * Add smarty-mode.
 ;;
 
 
