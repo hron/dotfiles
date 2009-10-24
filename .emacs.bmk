@@ -7,6 +7,11 @@
   (front-context-string . ".Xauthority\n  -r")
   (rear-context-string . "30 Oct 22 08:33 ")
   (position . 224))
+ ("greatbuyback.com"
+  (filename . "/ftp:greatbu5@greatbuyback.com:/")
+  (front-context-string . ".mysql_history\n ")
+  (rear-context-string . "40 Oct  7  2008 ")
+  (position . 1093))
  ("elisp"
   (front-context-string . "\n1.3.7 Format of")
   (rear-context-string . "of Descriptions\n")
