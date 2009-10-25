@@ -92,16 +92,13 @@
 	 "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
 	 "NickServ"
 	 "IDENTIFY" nil nil)))
-;;  Passwords used when identifying to NickServ automatically.
-;; Example of use:
-;;   (setq erc-nickserv-passwords
-;;         '((freenode ((\"nick-one\" . \"password\")
-;;                      (\"nick-two\" . \"password\")))
-;;           (DALnet ((\"nick\" . \"password\")))))
-(setq erc-nickserv-passwords
-      '((IrcBy (("hron" . "aleks7771")))))
+
 ;; Ask for the password when identifying to NickServ.
 (setq erc-prompt-for-nickserv-password t)
+
+;; Load authentication info from an external source.  Put sensitive
+;; passwords and the like in here.
+(load "~/.emacs.d/.erc-auth")
 
 ;; Join the #emacs and #erc channels whenever connecting to Freenode.
 ;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
