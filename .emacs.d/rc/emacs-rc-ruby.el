@@ -36,6 +36,7 @@
 	  '(lambda ()
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
+	     (turn-on-orgstruct)
 	     (highlight-parentheses-mode 1)))
 
 ;; Inferion ruby

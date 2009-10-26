@@ -31,6 +31,7 @@
 	    (abbrev-mode 1)
 	    (auto-fill-mode 1)
 	    (flyspell-prog-mode)
+	    (turn-on-orgstruct)
 	    (if (eq window-system 'x) (font-lock-mode 1))
 	    (local-set-key "\M-;" 'comment-dwim)
 	    (local-set-key "\C-m" (key-binding "\C-j"))

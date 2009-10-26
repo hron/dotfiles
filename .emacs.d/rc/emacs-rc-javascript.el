@@ -10,6 +10,7 @@
 (add-hook 'espresso-mode-hook '(lambda ()
 				 (flyspell-prog-mode)
 				 (moz-minor-mode 1)
+				 (turn-on-orgstruct)
 				 (highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-javascript)

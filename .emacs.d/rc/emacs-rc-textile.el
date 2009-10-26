@@ -6,8 +6,9 @@
 (add-to-list 'auto-mode-alist '("/tmp/.*redmine.*wiki" . textile-mode))
 
 (add-hook 'textile-mode-hook '(lambda ()
-																(turn-off-auto-fill)
-																(turn-on-visual-line-mode)
-																(highlight-parentheses-mode 1)))
+				(turn-off-auto-fill)
+				(turn-on-visual-line-mode)
+				(turn-on-orgstruct)
+				(highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-textile)

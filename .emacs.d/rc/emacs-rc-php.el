@@ -39,6 +39,7 @@
 (add-hook 'php-mode-hook '(lambda ()
 			    (flyspell-prog-mode)
 			    (c-toggle-auto-newline -1)
+			    (turn-on-orgstruct)
 			    (setq c-basic-offset 4
 				  indent-tabs-mode nil)))
 

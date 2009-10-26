@@ -26,6 +26,7 @@
 
 (add-hook 'sh-mode-hook '(lambda ()
 			   (turn-on-auto-fill)
+			   (turn-on-orgstruct)
 			   (flyspell-prog-mode)
 			   (highlight-parentheses-mode 1)))
 
