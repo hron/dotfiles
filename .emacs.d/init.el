@@ -135,10 +135,16 @@
 ;; ERC
 (require 'emacs-rc-erc)
 
+;; 
+;; Emacs core customization
+;;
+
 ;; Spelling
 (setq ispell-dictionary "en_US")
-      
-;; Emacs core customization
+
+;; Filladapt
+(setq-default filladapt-mode t)
+
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
