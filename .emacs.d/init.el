@@ -154,6 +154,9 @@
 ;; Filladapt
 (setq-default filladapt-mode t)
 
+;; Org-mode
+(require 'emacs-rc-org)
+
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
