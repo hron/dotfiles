@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("/sshx:greatbu5@greatbuyback.com:~/"
+(("org-mode"
+  (front-context-string . "et.  Otherwise i")
+  (rear-context-string . "ints to the targ")
+  (position . 107462)
+  (filename . "/usr/share/info/emacs-23/org")
+  (info-node . "Handling links")
+  (handler . Info-bookmark-jump))
+ ("/sshx:greatbu5@greatbuyback.com:~/"
   (filename . "/ssh:greatbu5@greatbuyback.com:/home2/greatbu5/")
   (front-context-string . ".Xauthority\n  -r")
   (rear-context-string . "30 Oct 22 08:33 ")
