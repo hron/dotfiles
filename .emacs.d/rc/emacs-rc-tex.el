@@ -44,6 +44,7 @@
              (local-set-key "\\" 'TeX-electric-macro)
 	     (local-set-key "\C-cc" 'my-reftex-citation)
 	     (turn-on-orgstruct)
+	     (turn-on-orgtbl)
 	     (auto-fill-mode 1)
 	     (flyspell-mode 1)
 	     (reftex-mode 1)))

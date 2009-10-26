@@ -40,6 +40,7 @@
 			    (flyspell-prog-mode)
 			    (c-toggle-auto-newline -1)
 			    (turn-on-orgstruct)
+			    (turn-on-orgtbl)
 			    (setq c-basic-offset 4
 				  indent-tabs-mode nil)))
 

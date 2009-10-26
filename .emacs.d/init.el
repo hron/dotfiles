@@ -62,6 +62,7 @@
 				   (turn-on-auto-fill)
 				   (flyspell-prog-mode)
 				   (turn-on-orgstruct)
+				   (turn-on-orgtbl)
 				   (highlight-parentheses-mode 1)))
 
 ;; Text
@@ -69,6 +70,7 @@
 			     (turn-on-auto-fill)
 			     (turn-on-flyspell)
 			     (turn-on-orgstruct)
+			     (turn-on-orgtbl)
 			     (highlight-parentheses-mode 1)))
 
 ;; Octave
@@ -116,7 +118,8 @@
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
 (add-hook 'rhtml-mode-hook '(lambda ()
 			      (flyspell-prog-mode)
-			      (turn-on-orgstruct)))
+			      (turn-on-orgstruct)
+			      (turn-on-orgtbl)))
 
 ;; Ruby
 (require 'emacs-rc-ruby)
@@ -129,6 +132,7 @@
 	     (setq indent-tabs-mode nil)
 	     (flyspell-prog-mode)
 	     (turn-on-orgstruct)
+	     (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
 ;; htmlize
