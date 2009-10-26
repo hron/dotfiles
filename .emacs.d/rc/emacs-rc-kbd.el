@@ -37,7 +37,7 @@
                     (woman))))
 
 ;; Bind `C-c l' to `locate' command
-(global-set-key "\C-cl" 'locate)
+(global-set-key "\C-co" 'locate)
 
 ;; Bind `C-c g' to `grep-find' command
 (global-set-key "\C-cg" 'rgrep)
@@ -54,7 +54,7 @@
 (global-set-key "\C-ct" 'GAU:box-region-with-title)
 (global-set-key "\C-ce" 'boxquote-shell-command)
 
-(global-set-key "\C-cs" 'org-store-link)
+(global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
