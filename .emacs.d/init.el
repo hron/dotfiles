@@ -17,9 +17,9 @@
 ;; 
 ;;     - there is a new option '-c' for creating new frame without
 ;;       using existing (as I remember I use some elisp code to
-;;       achieve this behaviour).
+;;       achieve this behavior).
 ;;
-;;     - make openning a new frame by 'Win-E' without '~/src' in
+;;     - make opening a new frame by 'Win-E' without '~/src' in
 ;;       buffer and with --no-wait option.
 ;; 
 ;;  * Deleting files in trash.
@@ -135,6 +135,9 @@
 ;; ERC
 (require 'emacs-rc-erc)
 
+;; Spelling
+(setq ispell-dictionary "en_US")
+      
 ;; Emacs core customization
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
