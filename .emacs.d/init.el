@@ -10,7 +10,6 @@
 ;; 
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
-;;  * Add smarty-mode.
 ;;  
 ;; Done:
 ;; 
@@ -25,6 +24,7 @@
 ;; 
 ;;  * Deleting files in trash.
 ;;  * Moved session files somewhere.
+;;  * Add smarty-mode.
 ;;
 
 
@@ -61,12 +61,16 @@
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
 				   (turn-on-auto-fill)
 				   (flyspell-prog-mode)
+				   (turn-on-orgstruct)
+				   (turn-on-orgtbl)
 				   (highlight-parentheses-mode 1)))
 
 ;; Text
 (add-hook 'text-mode-hook '(lambda ()
 			     (turn-on-auto-fill)
 			     (turn-on-flyspell)
+			     (turn-on-orgstruct)
+			     (turn-on-orgtbl)
 			     (highlight-parentheses-mode 1)))
 
 ;; Octave
@@ -112,7 +116,10 @@
 ;; RHTML
 (require 'rhtml-mode)
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
-(add-hook 'rhtml-mode-hook '(lambda () (flyspell-prog-mode)))
+(add-hook 'rhtml-mode-hook '(lambda ()
+			      (flyspell-prog-mode)
+			      (turn-on-orgstruct)
+			      (turn-on-orgtbl)))
 
 ;; Ruby
 (require 'emacs-rc-ruby)
@@ -124,6 +131,8 @@
 	  '(lambda ()
 	     (setq indent-tabs-mode nil)
 	     (flyspell-prog-mode)
+	     (turn-on-orgstruct)
+	     (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
 ;; htmlize
@@ -137,7 +146,22 @@
 ;;   '(load-library "sql-indent"))
 
 
+;; ERC
+(require 'emacs-rc-erc)
+
+;; 
 ;; Emacs core customization
+;;
+
+;; Spelling
+(setq ispell-dictionary "en_US")
+
+;; Filladapt
+(setq-default filladapt-mode t)
+
+;; Org-mode
+(require 'emacs-rc-org)
+
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
@@ -150,10 +174,10 @@
 (require 'emacs-rc-woman)
 (require 'emacs-rc-ldap)
 (require 'emacs-rc-eudc)
+(require 'emacs-rc-view)
 
 (require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)
 
 ;; Everything else...
 (require 'emacs-rc-misc-things)
-

@@ -1,4 +1,4 @@
-;;; emacs-rc-sh.el --- Shell customization.
+;;; emacs-rc-org.el --- Org-mode customization.
 
 ;; Copyright (C) 2009  Aleksei Gusev
 
@@ -24,18 +24,7 @@
 
 ;;; Code:
 
-(add-hook 'sh-mode-hook '(lambda ()
-			   (turn-on-auto-fill)
-			   (turn-on-orgstruct)
-			   (flyspell-prog-mode)
-			   (highlight-parentheses-mode 1)))
+(setq org-hide-leading-stars t)
 
-;; Automatically set execute perms on files if first line begins with '#!'
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-
-(autoload 'flymake-shell-load "flymake-shell"
-  "On-the-fly syntax checking of shell scripts" t)
-(add-hook 'sh-mode-hook 'flymake-shell-load)
-
-(provide 'emacs-rc-sh)
-;;; emacs-rc-sh.el ends here
+(provide 'emacs-rc-org)
+;;; emacs-rc-org.el ends here

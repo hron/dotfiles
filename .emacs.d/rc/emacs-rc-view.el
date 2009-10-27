@@ -1,4 +1,4 @@
-;;; emacs-rc-sh.el --- Shell customization.
+;;; emacs-rc-view.el --- view-mode customization.
 
 ;; Copyright (C) 2009  Aleksei Gusev
 
@@ -24,18 +24,17 @@
 
 ;;; Code:
 
-(add-hook 'sh-mode-hook '(lambda ()
-			   (turn-on-auto-fill)
-			   (turn-on-orgstruct)
-			   (flyspell-prog-mode)
-			   (highlight-parentheses-mode 1)))
+;; This function moves keybinding of view-mode to top to ensure we
+;; have no overriding some of them by other minor modes, which is very
+;; annoying at least for me. 
+(defun gau-move-view-mode-keymap-on-top ()
+  (setq minor-mode-map-alist
+	(sort minor-mode-map-alist '(lambda (a b)
+				      (if (eq (car a) 'view-mode)
+					  t
+					nil)))))
 
-;; Automatically set execute perms on files if first line begins with '#!'
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'view-mode-hook 'gau-move-view-mode-keymap-on-top)
 
-(autoload 'flymake-shell-load "flymake-shell"
-  "On-the-fly syntax checking of shell scripts" t)
-(add-hook 'sh-mode-hook 'flymake-shell-load)
-
-(provide 'emacs-rc-sh)
-;;; emacs-rc-sh.el ends here
+(provide 'emacs-rc-view)
+;;; emacs-rc-view.el ends here

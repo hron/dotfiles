@@ -144,10 +144,10 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 if [[ "$TERM" != "linux" ]]; then
     function precmd() {
-				print -nP "\033]2; zsh@%m:%~%# \007\033]1;%m:%~%#\007"
+	print -nP "\033]2; zsh@%m:%~%# \007\033]1;%m:%~%#\007"
     }
     function preexec() {
-				local s=${2//\\/\\\\}; s=${s//\%/%%};
-				print -nP -f "\033]2; %s:zsh@%s %-40s\007\033]1;%s %-20s\007" "%m:%~%#" $s "%m:%~%#" $s
+	local s=${2//\\/\\\\}; s=${s//\%/%%};
+	print -nP -f "\033]2; %s:zsh@%s %-40s\007\033]1;%s %-20s\007" "%m:%~%#" $s "%m:%~%#" $s
     }
 fi

@@ -61,8 +61,8 @@
 (setq erc-max-buffer-size 20000)
 (defvar erc-insert-post-hook)
 (require 'erc-truncate)
-;(add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
-;(setq erc-truncate-buffer-on-save t)
+					;(add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
+					;(setq erc-truncate-buffer-on-save t)
 
 ;; Nickserver identifying
 (require 'erc-services)
@@ -87,32 +87,39 @@
 ;; 	       "NickServ"
 ;; 	       "IDENTIFY" nil nil))))
 (setq erc-nickserv-alist
-			'((IrcBy
-				 "NickServ!NickServ@multiport."
-				 "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
-				 "NickServ"
-				 "IDENTIFY" nil nil)))
-;;  Passwords used when identifying to NickServ automatically.
-;; Example of use:
-;;   (setq erc-nickserv-passwords
-;;         '((freenode ((\"nick-one\" . \"password\")
-;;                      (\"nick-two\" . \"password\")))
-;;           (DALnet ((\"nick\" . \"password\")))))
-(setq erc-nickserv-passwords
-			'((IrcBy (("hron" . "aleks7771")))))
+      '((IrcBy
+	 "NickServ!NickServ@multiport."
+	 "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
+	 "NickServ"
+	 "IDENTIFY" nil nil)))
+
 ;; Ask for the password when identifying to NickServ.
 (setq erc-prompt-for-nickserv-password t)
-      
+
+;; Load authentication info from an external source.  Put sensitive
+;; passwords and the like in here.
+(load "~/.emacs.d/.erc-auth")
+
 ;; Join the #emacs and #erc channels whenever connecting to Freenode.
 ;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
 ;; 				    ("irc.by" "#linux" "#1182" "#velominsk")))
-(setq erc-autojoin-channels-alist '(("irc.by" "#1182")))
+(setq erc-autojoin-channels-alist '(("irc.by" "#1182" "#emacs"
+				     "#linux" "#unix" "#velominsk")
+				    ("bynets.org" "#emacs" "#unix")))
 
 (setq erc-server-flood-margin 9
-			erc-server-flood-penalty 4)
+      erc-server-flood-penalty 4)
 
 ;; Finally, tell erc to connect to freenode.
 ;; (erc :server "irc.by" :port 6667
 ;;      :nick "hron|erc" :full-name "Aleksei Gusev")
+(defun gau-erc ()
+  (interactive)
+  (erc :server "irc.by" :port 6667
+       :nick "hron" :full-name "Aleksei Gusev")
+  (erc :server "bynets.org"
+       :nick "hron2" :full-name "Aleksei Gusev"))
+
+(provide 'emacs-rc-erc)
 
 ;; emacs-rc-erc.el ends here
