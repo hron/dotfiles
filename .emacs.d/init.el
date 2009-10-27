@@ -132,6 +132,11 @@
                'htmlize-many-files 'htmlize-many-files-dired))
   (autoload sym "htmlize"))
 
+;; SQL
+;; (eval-after-load "sql"
+;;   '(load-library "sql-indent"))
+
+
 ;; Emacs core customization
 (require 'emacs-rc-flymake)
 ;; (require 'emacs-rc-ido)
