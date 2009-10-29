@@ -149,6 +149,9 @@
 ;; ERC
 (require 'emacs-rc-erc)
 
+;; Python
+(require 'emacs-rc-python)
+
 ;; 
 ;; Emacs core customization
 ;;
