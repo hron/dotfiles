@@ -36,14 +36,12 @@
 	  '(lambda ()
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
-	     (turn-on-orgstruct)
-	     (turn-on-orgtbl)
+	     ;; (turn-on-orgstruct)
+	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
 ;; Inferion ruby
-(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
+(defalias 'inferior-ruby-mode 'inf-ruby-mode)
 
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
