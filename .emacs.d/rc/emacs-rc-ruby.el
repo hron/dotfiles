@@ -42,7 +42,8 @@
 
 ;; Inferion ruby
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
-
+(defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
+(defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 ;; Ri-Emacs
