@@ -8,8 +8,8 @@
 (add-hook 'textile-mode-hook '(lambda ()
 				(turn-off-auto-fill)
 				(turn-on-visual-line-mode)
-				(turn-on-orgstruct)
-				(turn-on-orgtbl)
+				;; (turn-on-orgstruct)
+				;; (turn-on-orgtbl)
 				(highlight-parentheses-mode 1)))
 
 (provide 'emacs-rc-textile)
