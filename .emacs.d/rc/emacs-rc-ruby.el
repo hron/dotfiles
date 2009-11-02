@@ -41,10 +41,9 @@
 	     (highlight-parentheses-mode 1)))
 
 ;; Inferion ruby
-(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
-
+(defalias 'inferior-ruby-mode 'inf-ruby-mode)
+(defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
+(defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 ;; Ri-Emacs
