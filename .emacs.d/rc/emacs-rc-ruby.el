@@ -57,6 +57,13 @@
 	  (lambda ()
 	    (local-set-key [f1] 'ri)))
 
+;; ruby-compilation
+(add-hook 'ruby-mode-hook
+	  '(lambda ()
+	     (if (string-match "Capfile" (buffer-file-name))
+		 (local-set-key [f9] 'ruby-compilation-cap)
+	       (local-set-key [f9] 'ruby-compilation-rake))))
+
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
 ;;----------------------------------------------------------------------------
