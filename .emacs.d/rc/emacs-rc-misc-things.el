@@ -11,17 +11,6 @@
 (setq backup-directory-alist
       '(("/etc/.*" . "~/.emacs.d/backups")))
 
-;; FFAP mode replaces certain key bindings for finding files,
-;; including `C-x C-f', with commands that provide more sensitive
-;; defaults. These commands behave like the ordinary ones when given a
-;; prefix argument. Otherwise, they get the default file name or URL
-;; from the text around point. If what is found in the buffer has the
-;; form of a URL rather than a file name, the commands use
-;; `browse-url' to view it.
-(ffap-bindings)
-
-(setq ffap-machine-p-known 'accept)
-
 ;; Работа с буфером обмена также как и с внутренними кольцами копирования
 ;; и удаления.
 (setq x-select-enable-clipboard t)

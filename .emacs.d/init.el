@@ -166,7 +166,7 @@
 (require 'emacs-rc-org)
 
 (require 'emacs-rc-flymake)
-;; (require 'emacs-rc-ido)
+(require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
 (require 'emacs-rc-decor)
 (require 'emacs-rc-dired)
