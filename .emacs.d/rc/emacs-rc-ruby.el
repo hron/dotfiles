@@ -36,7 +36,7 @@
 	  '(lambda ()
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
-	     (setq fill-column 100)
+	     (setq-default fill-column 100)
 	     ;; (turn-on-orgstruct)
 	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
@@ -55,6 +55,10 @@
 (defalias 'rails-search-doc 'ri)
 
 (add-hook 'ruby-mode-hook
+	  (lambda ()
+	    (local-set-key [f1] 'ri)))
+
+(add-hook 'rhtml-mode-hook
 	  (lambda ()
 	    (local-set-key [f1] 'ri)))
 
