@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# This is a wrapper over rdoc and it forwards all the parameters to
+# it. Manual usage would require specifying Hanna as a template when
+# invoking RDoc on the command-line:
+
+rdoc -o doc --inline-source --format=html -T hanna lib/*.rb
