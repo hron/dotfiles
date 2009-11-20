@@ -53,7 +53,7 @@ layouts =
 --custom
 config = {}
 -- config.terminal = "gnome-terminal --hide-menubar "
-config.terminal = "xterm "
+config.terminal = "uxterm "
 --}}}
 
 --{{{ vars / shifty
