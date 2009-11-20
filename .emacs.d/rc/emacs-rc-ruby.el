@@ -36,6 +36,7 @@
 	  '(lambda ()
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
+	     (setq-default fill-column 100)
 	     ;; (turn-on-orgstruct)
 	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
@@ -54,6 +55,10 @@
 (defalias 'rails-search-doc 'ri)
 
 (add-hook 'ruby-mode-hook
+	  (lambda ()
+	    (local-set-key [f1] 'ri)))
+
+(add-hook 'rhtml-mode-hook
 	  (lambda ()
 	    (local-set-key [f1] 'ri)))
 
@@ -88,6 +93,8 @@
 (require 'flymake-haml)
 (add-hook 'haml-mode-hook 'flymake-haml-load)
 (add-hook 'sass-mode-hook 'flymake-sass-load)
+
+(require 'rdebug)
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here

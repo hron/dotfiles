@@ -271,5 +271,6 @@ printf
              (buffer-disable-undo)
              (erase-buffer)
              (insert info)
-             (goto-char 1)))
-         info)))
+             (goto-char 1)
+	     (view-mode-enable))
+         info))))

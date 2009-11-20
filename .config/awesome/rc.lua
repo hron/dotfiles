@@ -515,6 +515,7 @@ globalkeys = {
    -- key({ modkey }, "q", function () awful.util.spawn("sh -c 'stardict \"`xclip -o`\"'") end),
    key({ modkey }, "Backspace", function () awful.util.spawn("gmpc") end),
    key({ }, "Print", function () awful.util.spawn("gnome-screenshot -i") end),
+   key({ modkey }, "x", function () terminal("-x ncmpcpp") end),
    -- }}}
 
    -- {{{ bindings / global / tag manipulation

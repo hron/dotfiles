@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("Addison Wesley - The Rails Way.pdf"
-  (filename . "~/Документы/ruby-books/Addison-Wesley - The Rails Way.pdf")
-  (front-context-string . "%PDF-1.6\n%\342\343\317\323\n\n")
+  (filename . "~/Документы/ruby-books/Addison Wesley - The Rails Way.pdf")
+  (front-context-string . "%PDF-1.6%\342\343\317\323\n")
   (rear-context-string)
   (position . 1)
-  (page . 291)
+  (page . 314)
   (handler . doc-view-bookmark-jump))
  ("org-mode"
   (front-context-string . "et.  Otherwise i")
