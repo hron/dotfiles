@@ -28,7 +28,8 @@ add_delicious_webjumps ("hron");
 // OPEN_NEW_BUFFER_BACKGROUND]. A popular alternative is to reverse
 // the order of the two targets:
 download_buffer_automatic_open_target = [OPEN_NEW_WINDOW, OPEN_NEW_BUFFER_BACKGROUND ];
-cwd = '/home/gusev/Downloads';
+// cwd = '/home/gusev/Downloads';
+delete_temporary_files_for_command = false;
 
 // Boolean Default is false. Controls whether urls in the browse
 // history will be included in the completion list when prompting the
