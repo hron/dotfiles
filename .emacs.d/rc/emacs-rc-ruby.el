@@ -51,16 +51,15 @@
 (setq ri-ruby-progres "/usr/bin/ruby")
 (setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
 (autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
+(defun ri-bind-key ()
+  (local-set-key [f1] 'ri))
 
 (defalias 'rails-search-doc 'ri)
 
-(add-hook 'ruby-mode-hook
-	  (lambda ()
-	    (local-set-key [f1] 'ri)))
-
-(add-hook 'rhtml-mode-hook
-	  (lambda ()
-	    (local-set-key [f1] 'ri)))
+(add-hook 'ruby-mode-hook 'ri-bind-key)
+(add-hook 'rhtml-mode-hook 'ri-bind-key)
+(add-hook 'haml-mode-hook 'ri-bind-key)
+(add-hook 'sass-mode-hook 'ri-bind-key)
 
 ;; ruby-compilation
 (add-hook 'ruby-mode-hook
@@ -89,6 +88,7 @@
 (add-auto-mode 'sass-mode "\.sass$")
 (autoload 'haml-mode "haml-mode" "Mode for editing haml files" t)
 (autoload 'sass-mode "sass-mode" "Mode for editing sass files" t)
+(add-hook 'haml-mode-hook
 
 (require 'flymake-haml)
 (add-hook 'haml-mode-hook 'flymake-haml-load)

@@ -100,6 +100,8 @@
 ;; passwords and the like in here.
 (load "~/.emacs.d/.erc-auth")
 
+(require 'erc-speedbar)
+
 ;; Join the #emacs and #erc channels whenever connecting to Freenode.
 ;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
 ;; 				    ("irc.by" "#linux" "#1182" "#velominsk")))

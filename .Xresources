@@ -7,4 +7,5 @@ Xcursor.theme_core: true
 
 *VT100*foreground: gray90
 *VT100*background: black
+*VT100.eightBitInput: false
 *VT100.font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
