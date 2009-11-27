@@ -6,3 +6,6 @@ export LC_MESSAGES=C
 export GEM_HOME=$HOME/.rubygems
 export PATH=$HOME/bin:$HOME/.rubygems/bin:/sbin:/usr/sbin:$PATH
 export EDITOR=emacsclient
+
+export PGHOST=127.0.0.1
+export PGUSER=postgres

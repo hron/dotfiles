@@ -507,7 +507,7 @@ globalkeys = {
 
    -- {{{ bindings / global / spawns
    key({ modkey }, "t", function () terminal() end),
-   key({ modkey }, "b", function () awful.util.spawn("conkeror") end),
+   key({ modkey }, "b", function () awful.util.spawn_with_shell("conkeror") end),
    key({ modkey }, "e", function () awful.util.spawn("emacsclient -nc") end),
    key({ modkey }, "q",
        function ()
