@@ -1,0 +1,4 @@
+source /usr/share/byobu/keybindings/common
+
+# I like ^Qq
+escape ``
