@@ -16,8 +16,8 @@
 ;; Фишковое переключение между буферами
 (if (string-match "22.\\|23." (version))
     (iswitchb-mode 1)
-  (iswitchb-default-keybindings)
-  (setq iswitchb-default-method 'samewindow))
+  (iswitchb-default-keybindings))
+(setq iswitchb-default-method 'samewindow)
 
 ;; Скролинг по одной строке
 (setq scroll-step 1)

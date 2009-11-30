@@ -1,0 +1,5 @@
+escape ``
+
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+bind c screen $SHELL -c "$NEW_WINDOW"

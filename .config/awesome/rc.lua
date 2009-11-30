@@ -293,6 +293,10 @@ function terminal(args)
 end
 --}}}
 
+function run_in_terminal(command)
+   terminal(' -e ' .. command)
+end
+
 --{{{ functions / jointables
 -- join two tables 
 function jointables(t1,t2)
@@ -506,8 +510,9 @@ awful.menu.setkeys( menukeys)
 globalkeys = {
 
    -- {{{ bindings / global / spawns
-   key({ modkey }, "t", function () terminal() end),
-   key({ modkey }, "b", function () awful.util.spawn("conkeror") end),
+   key({ modkey }, "t", function () run_in_terminal("byobu -R") end),
+   key({ modkey, "Shift" }, "t", function () terminal() end),
+   key({ modkey }, "b", function () awful.util.spawn_with_shell("conkeror") end),
    key({ modkey }, "e", function () awful.util.spawn("emacsclient -nc") end),
    key({ modkey }, "q",
        function ()
