@@ -1,7 +1,7 @@
 arch=0
 battery=0
-cpu_count=0
-cpu_freq=0
+cpu_count=1
+cpu_freq=1
 date=0
 disk=1
 ec2_cost=0

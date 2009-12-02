@@ -32,7 +32,14 @@
 		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
 		     ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
 		     ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
-		     ("INBOX.Lists.Global" "^List-Id:.*global.warecorp.com"))))))
+		     ("INBOX.Lists.Global"
+		      "^List-Id:.*global.warecorp.com"))))
+	( "gmail" ( ".*"
+		    (
+		     ;; (("INBOX.Junk"
+		     ;; 	"^X-Spam-Status: Yes")
+		     ("INBOX.Robots"
+		      "^To:.*\\(apache\\|root\\)@"))))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
