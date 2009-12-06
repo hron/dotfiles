@@ -7,7 +7,7 @@
   (front-context-string . "%PDF-1.6%\342\343\317\323\n")
   (rear-context-string)
   (position . 1)
-  (page . 545)
+  (page . 604)
   (handler . doc-view-bookmark-jump))
  ("org-mode"
   (front-context-string . "et.  Otherwise i")
