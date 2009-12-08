@@ -97,5 +97,7 @@
 
 (require 'rdebug)
 
+(require 'feature-mode)
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
