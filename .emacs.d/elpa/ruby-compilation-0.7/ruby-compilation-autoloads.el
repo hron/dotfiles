@@ -5,9 +5,9 @@
 
 ;;;### (autoloads (ruby-compilation-this-buffer ruby-compilation-cap
 ;;;;;;  ruby-compilation-rake ruby-compilation-run pcomplete/cap
-;;;;;;  pcomplete/rake) "ruby-compilation" "ruby-compilation.el"
-;;;;;;  (19171 4118))
-;;; Generated autoloads from ruby-compilation.el
+;;;;;;  pcomplete/rake) "ruby-compilation" "../../../../../.emacs.d/elpa/ruby-compilation-0.7/ruby-compilation.el"
+;;;;;;  (19218 25128))
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/ruby-compilation-0.7/ruby-compilation.el
 
 (autoload 'pcomplete/rake "ruby-compilation" "\
 Not documented
@@ -41,8 +41,9 @@ Run the current buffer through Ruby compilation.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ruby-compilation-pkg.el") (19171 4118
-;;;;;;  792461))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/ruby-compilation-0.7/ruby-compilation-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/ruby-compilation-0.7/ruby-compilation.el")
+;;;;;;  (19218 25128 150551))
 
 ;;;***
 
