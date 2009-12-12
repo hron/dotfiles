@@ -29,7 +29,7 @@
 ;;; ruby-mode site-lisp configuration
 
 (add-auto-mode 'ruby-mode
-	       "\\.rb$" "Rakefile$" "Capfile" "\.rake$"
+	       "\\.rb$" "Rakefile$" "Capfile" "Gemfile" "Sitefile" "\.rake$"
 	       "\.rxml$" "\.rjs" ".irbrc" "\.builder")
 
 (add-hook 'ruby-mode-hook
