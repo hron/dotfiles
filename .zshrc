@@ -67,7 +67,7 @@ setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_SPACE
 
-WORDCHARS='*?_[]~=&;!#$%^(){}<>'
+WORDCHARS='*?[]~&;!#$%^(){}<>'
 
 # Set/unset  shell options
 setopt   notify globdots correct pushdtohome cdablevars
