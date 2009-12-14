@@ -4,6 +4,8 @@ export LC_COLLATE=C
 export LC_MESSAGES=C
 
 export GEM_HOME=$HOME/.rubygems
+export RDOCOPT='-S -f html -T hanna'
+
 export PATH=$HOME/bin:$HOME/.rubygems/bin:/sbin:/usr/sbin:$PATH
 export EDITOR=emacsclient
 

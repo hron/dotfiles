@@ -4,4 +4,4 @@
 # it. Manual usage would require specifying Hanna as a template when
 # invoking RDoc on the command-line:
 
-rdoc -o doc --inline-source --format=html -T hanna lib/*.rb
+~/.rubygems/bin/rdoc -o doc --inline-source --format=html -T hanna lib/*.rb
