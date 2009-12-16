@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("rspec"
-  (filename . "~/Documents/ruby-books/the-rspec-book_b10_0.pdf")
+  (filename . "~/Документы/ruby-books/the-rspec-book_b10_0.pdf")
   (front-context-string . "%PDF-1.3\n%\342\343\317\323\n1")
   (rear-context-string)
   (position . 1)
-  (page . 186)
+  (page . 239)
   (handler . doc-view-bookmark-jump))
  ("Addison Wesley - The Rails Way.pdf"
   (filename . "~/Документы/ruby-books/Addison Wesley - The Rails Way.pdf")
