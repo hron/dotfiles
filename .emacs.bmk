@@ -7,7 +7,7 @@
   (front-context-string . "%PDF-1.3\n%\342\343\317\323\n1")
   (rear-context-string)
   (position . 1)
-  (page . 239)
+  (page . 296)
   (handler . doc-view-bookmark-jump))
  ("Addison Wesley - The Rails Way.pdf"
   (filename . "~/Документы/ruby-books/Addison Wesley - The Rails Way.pdf")
