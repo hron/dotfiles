@@ -41,6 +41,8 @@
 	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
+(setq ruby-deep-indent-paren '(?\( t))
+
 ;; Inferion ruby
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
 (defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
@@ -94,6 +96,8 @@
 (require 'flymake-haml)
 (add-hook 'haml-mode-hook 'flymake-haml-load)
 (add-hook 'sass-mode-hook 'flymake-sass-load)
+
+(add-auto-mode 'rhtml-mode "\.erb$")
 
 (require 'rdebug)
 
