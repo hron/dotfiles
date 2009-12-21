@@ -1,4 +1,4 @@
-// -*- espresson-mode -*-
+// -*- espresso-mode -*-
 
 require("new-tabs.js");
 require("page-modes/gmail.js")
@@ -48,4 +48,4 @@ session_pref("signon.expireMasterPassword", false);
 session_pref("signon.SignonFileName", "signons.txt");
 Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
 
-define_mime_type_external_handler("application/x-bitorrent", "azureus");
+external_content_handlers.set("application/x-bittorrent", "vuze");
