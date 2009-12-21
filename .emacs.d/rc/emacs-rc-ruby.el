@@ -37,11 +37,12 @@
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
 	     (setq-default fill-column 100)
+	     (setq-default indent-tabs-mode nil)
 	     ;; (turn-on-orgstruct)
 	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
-(setq ruby-deep-indent-paren '(?\( t))
+(setq ruby-deep-indent-paren '())
 
 ;; Inferion ruby
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
