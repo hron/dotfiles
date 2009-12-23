@@ -224,7 +224,7 @@
 (setq enable-local-variables :all)
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
-(setq ispell-dictionary 'american)
+(setq ispell-dictionary "american")
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
