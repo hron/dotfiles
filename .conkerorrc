@@ -1,4 +1,4 @@
-// -*- espresso-mode -*-
+// -*- espresso -*-
 
 require("new-tabs.js");
 require("page-modes/gmail.js")
