@@ -17,29 +17,29 @@
 ;; If non-`nil', do crossposting if several split methods match the
 ;; mail.  If `nil', the first match in `nnimap-split-rule' found will
 ;; be used.
-(setq nnimap-split-crosspost nil)
-(setq nnimap-split-inbox '("INBOX"))
-(setq nnimap-split-rule
-      '(( "wmail" ( ".*"
-		    (
-		     ;; (("INBOX.Junk"
-		     ;; 	"^X-Spam-Status: Yes")
-		     ("INBOX.Robots"
-		      "^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@\\(warecorp.com\\|wc-snoop-00\\)\\)")
-		     ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
-		     ("INBOX.jobs@warecorp.com" "^To:.*jobs@warecorp.com")
-		     ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
-		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
-		     ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
-		     ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
-		     ("INBOX.Lists.Global"
-		      "^List-Id:.*global.warecorp.com"))))
-	( "gmail" ( ".*"
-		    (
-		     ;; (("INBOX.Junk"
-		     ;; 	"^X-Spam-Status: Yes")
-		     ("INBOX.Robots"
-		      "^To:.*\\(apache\\|root\\)@"))))))
+;; (setq nnimap-split-crosspost nil)
+;; (setq nnimap-split-inbox '("INBOX"))
+;; (setq nnimap-split-rule
+;;       '(( "wmail" ( ".*"
+;; 		    (
+;; 		     ;; (("INBOX.Junk"
+;; 		     ;; 	"^X-Spam-Status: Yes")
+;; 		     ("INBOX.Robots"
+;; 		      "^\\(To:.*\\(apache\\|root\\)@warecorp.com\\|From:.*nagios@\\(warecorp.com\\|wc-snoop-00\\)\\)")
+;; 		     ("INBOX.Robots" "From:.*\\(denyhosts\\|root\\|.*-owner\\)@.*")
+;; 		     ("INBOX.jobs@warecorp.com" "^To:.*jobs@warecorp.com")
+;; 		     ("INBOX.OTRS" "^From:.*otrs@.*warecorp.com")
+;; 		     ("INBOX.Lists.Projects.\\1" "^List-Id:.*project\\.\\([^\\.]+\\)")
+;; 		     ("INBOX.Lists.Office" "^List-Id:.*office.warecorp.com")
+;; 		     ("INBOX.Lists.Minsk" "^List-Id:.*minsk.warecorp.com")
+;; 		     ("INBOX.Lists.Global"
+;; 		      "^List-Id:.*global.warecorp.com"))))
+;; 	( "gmail" ( ".*"
+;; 		    (
+;; 		     ;; (("INBOX.Junk"
+;; 		     ;; 	"^X-Spam-Status: Yes")
+;; 		     ("INBOX.Robots"
+;; 		      "^To:.*\\(apache\\|root\\)@"))))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
