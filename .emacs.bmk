@@ -2,12 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("rspec"
+(("practice-fp-1-screen.pdf"
+  (filename . "~/Documents/practice-fp-1-screen.pdf")
+  (front-context-string . "%PDF-1.4\n%\344\360\355\370\n4")
+  (rear-context-string)
+  (position . 1)
+  (page . 8)
+  (handler . doc-view-bookmark-jump))
+ ("rspec"
   (filename . "~/Документы/ruby-books/the-rspec-book_b10_0.pdf")
   (front-context-string . "%PDF-1.3\n%\342\343\317\323\n1")
   (rear-context-string)
   (position . 1)
-  (page . 296)
+  (page . 396)
   (handler . doc-view-bookmark-jump))
  ("Addison Wesley - The Rails Way.pdf"
   (filename . "~/Документы/ruby-books/Addison Wesley - The Rails Way.pdf")
