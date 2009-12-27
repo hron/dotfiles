@@ -152,6 +152,9 @@
 ;; Python
 (require 'emacs-rc-python)
 
+;; ANSI colors
+(require 'emacs-rc-tty-format)
+
 ;; 
 ;; Emacs core customization
 ;;
