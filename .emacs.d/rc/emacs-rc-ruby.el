@@ -71,6 +71,9 @@
 		 (local-set-key [f9] 'ruby-compilation-cap)
 	       (local-set-key [f9] 'ruby-compilation-rake))))
 
+;; emacs-rails-reloaded
+(setq-default rails/disabled-list '(apidock))
+
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
 ;;----------------------------------------------------------------------------
@@ -103,6 +106,8 @@
 (require 'rdebug)
 
 (require 'feature-mode)
+
+(require 'autotest)
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
