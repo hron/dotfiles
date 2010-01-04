@@ -16,3 +16,6 @@
 [submodule ".emacs.d/site-lisp/autotest"]
 	path = .emacs.d/site-lisp/autotest
 	url = git://github.com/krick/autotest.el.git
+[submodule ".emacs.d/site-lisp/rinari"]
+	path = .emacs.d/site-lisp/rinari
+	url = git://github.com/eschulte/rinari.git
