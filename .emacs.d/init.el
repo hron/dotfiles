@@ -155,6 +155,12 @@
 ;; ANSI colors
 (require 'emacs-rc-tty-format)
 
+;; el4r
+;; (require 'emacs-rc-el4r)
+
+;; Anything
+(require 'emacs-rc-anything)
+
 ;; 
 ;; Emacs core customization
 ;;
@@ -187,3 +193,4 @@
 
 ;; Everything else...
 (require 'emacs-rc-misc-things)
+
