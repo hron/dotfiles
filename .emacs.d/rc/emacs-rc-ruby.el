@@ -29,8 +29,9 @@
 ;;; ruby-mode site-lisp configuration
 
 (add-auto-mode 'ruby-mode
-	       "\\.rb$" "Rakefile$" "Capfile" "Gemfile" "Sitefile" "\.rake$"
-	       "\.rxml$" "\.rjs" ".irbrc" "\.builder")
+	       "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
+               ".irbrc" "\.builder" "\.gemspec"
+               "Rakefile$" "Capfile" "Gemfile" "Sitefile")
 
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
@@ -72,7 +73,7 @@
 	       (local-set-key [f9] 'ruby-compilation-rake))))
 
 ;; emacs-rails-reloaded
-(setq-default rails/disabled-list '(apidock))
+(setq-default rails/bundles/disabled-list '(apidock))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
