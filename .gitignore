@@ -5,3 +5,7 @@
 /.emacs.d/.erc-auth
 /.emacs.d/url/cookies
 /.emacs.d/session.*
+/.xmonad/xmonad-i386-linux
+/.xmonad/xmonad.errors
+/.xmonad/xmonad.hi
+/.xmonad/xmonad.o

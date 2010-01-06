@@ -64,7 +64,7 @@ indeed be ordinary text."
             (format-decode-buffer 'ansi-colors))))))
 
 (add-hook 'find-file-hook 'tty-format-guess)
-
+(add-hook 'after-revert-hook 'tty-format-guess)
 
 (provide 'emacs-rc-tty-format)
 ;;; emacs-rc-tty-format.el ends here

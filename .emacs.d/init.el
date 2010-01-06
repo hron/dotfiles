@@ -161,6 +161,10 @@
 ;; Anything
 (require 'emacs-rc-anything)
 
+;; Jabber
+(add-to-list 'load-path (concat (getenv "HOME")
+                               "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
+
 ;; 
 ;; Emacs core customization
 ;;
