@@ -124,6 +124,9 @@ shifty.config.apps = {
      sticky = true,
      honorsizehints = true, },
 
+   { match = { ".*Firefox.*" },
+     nofocus = true, },
+
    { match = { "Skype" },
      float = true,
      smart_placement = false },
