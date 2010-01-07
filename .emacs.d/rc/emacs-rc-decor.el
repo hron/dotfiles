@@ -22,6 +22,7 @@
 ;; Скролинг по одной строке
 (setq scroll-step 1)
 (set-scroll-bar-mode 'right)
+(scroll-bar-mode 0)
 
 ;; Графические диалоговые окна тоже нахер.
 (setq use-dialog-box nil)
