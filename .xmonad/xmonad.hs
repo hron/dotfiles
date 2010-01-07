@@ -12,7 +12,6 @@ import XMonad.Actions.WindowMenu
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
 import XMonad.Util.XSelection
-import XMonad.Util.NamedScratchpad
 import XMonad.Prompt
 import XMonad.Prompt.Window
 import XMonad.Prompt.Workspace
@@ -22,8 +21,7 @@ import XMonad.Prompt.XMonad
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.CenteredMaster
-import XMonad.Layout.AutoMaster
-import XMonad.Layout.Grid
+import XMonad.Layout.Accordion
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -67,8 +65,7 @@ main = do
        , ("M-S-t", spawn "uxterm")
        , ("M-b",   spawn "/home/gusev/bin/conkeror")
        , ("M-e",   spawn "emacsclient -nc")
-       -- , ("M-q",   spawn "stardict ")
-       , ("M-q",   namedScratchpadAction scratchpads "stardict")
+       , ("M-q",   spawn "stardict ")
        -- WM actions
        , ("M-<Escape>", toggleWS)
        , ("M-S-g", goToSelected defaultGSConfig)
@@ -90,7 +87,7 @@ main = do
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff
-               (tiled ||| (Mirror tiled) ||| Full ||| layoutHook gnomeConfig)
+               (tiled ||| (Mirror tiled) ||| Full ||| Accordion ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -123,14 +120,6 @@ myHandleEventHook = restoreMinimizedEventHook
 
 -- http://www.haskell.org/pipermail/xmonad/2009-August/008365.html
 fullFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery doFullFloat f
-
-scratchpads = [
- -- run stardict, find it by class name, place it in the floating window
- -- 1/6 of screen width from the left, 1/6 of screen height
- -- from the top, 2/3 of screen width by 2/3 of screen height
-     NS "stardict" "stardict" (className =? "Stardict")
-         (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
- ]
 
 -- Local variables:
 -- compile-command: "xmonad --recompile && xmonad --restart"
