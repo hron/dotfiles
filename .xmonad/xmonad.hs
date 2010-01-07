@@ -21,7 +21,7 @@ import XMonad.Prompt.XMonad
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.CenteredMaster
-import XMonad.Layout.Accordion
+import XMonad.Layout.Grid
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -87,7 +87,7 @@ main = do
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff
-               (tiled ||| (Mirror tiled) ||| Full ||| Accordion ||| layoutHook gnomeConfig)
+               (tiled ||| (Mirror tiled) ||| Full ||| centerMaster Grid ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
