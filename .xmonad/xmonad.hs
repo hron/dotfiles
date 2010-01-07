@@ -22,6 +22,7 @@ import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.Cross
 import XMonad.Layout.NoBorders
+import XMonad.Layout.OneBig
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -87,7 +88,7 @@ main = do
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorders
-               (tiled ||| (Mirror tiled) ||| Full ||| simpleCross ||| layoutHook gnomeConfig)
+               (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -101,6 +102,8 @@ myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorde
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
+     -- OneBig + settings
+     onebig = OneBig (3/4) (3/4)
 
 myManageHook = composeAll
     [ className =? "Gimp"                 --> doFloat
