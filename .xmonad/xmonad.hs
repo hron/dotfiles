@@ -21,6 +21,7 @@ import XMonad.Prompt.XMonad
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.Cross
+import XMonad.Layout.NoBorders
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -85,7 +86,7 @@ main = do
             | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff
+myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorders
                (tiled ||| (Mirror tiled) ||| Full ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
