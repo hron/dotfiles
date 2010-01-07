@@ -20,8 +20,7 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
-import XMonad.Layout.CenteredMaster
-import XMonad.Layout.Grid
+import XMonad.Layout.Cross
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -87,7 +86,7 @@ main = do
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff
-               (tiled ||| (Mirror tiled) ||| Full ||| centerMaster Grid ||| layoutHook gnomeConfig)
+               (tiled ||| (Mirror tiled) ||| Full ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -110,11 +109,13 @@ myManageHook = composeAll
     , className =? "totem"                --> doFloat
     , className =? "Firefox Preferences"  --> doFloat
     , className =? "*VLC"                 --> doFloat
-    , className =? "Pidgin"               --> doFloat
     , className =? "Skype"                --> doFloat
+    , role  =? "buddy_list"               --> doFloat
+    , className =? "Pidgin"               --> doCenterFloat
     , isDialog                            --> doCenterFloat
     , isFullscreen                        --> doFullFloat
     ]
+    where role = stringProperty "WM_WINDOW_ROLE"
                
 myHandleEventHook = restoreMinimizedEventHook
 
