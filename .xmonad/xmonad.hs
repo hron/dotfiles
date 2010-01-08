@@ -6,10 +6,12 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.RestoreMinimized
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.InsertPosition
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowMenu
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Actions.WindowGo
+import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Util.XSelection
 import XMonad.Prompt
@@ -37,9 +39,10 @@ main = do
                       myManageHook <+>
                       manageHook gnomeConfig
        , layoutHook = myLayoutHook
+       , handleEventHook = mappend myHandleEventHook (handleEventHook gnomeConfig)
+       , terminal = "uxterm"
        -- Rebind Mod to the Windows key
        , modMask = mod4Mask
-       , handleEventHook = mappend myHandleEventHook (handleEventHook gnomeConfig)
        }
        `removeKeysP`
        [
@@ -61,7 +64,7 @@ main = do
          ("M-S-l", spawn "gnome-screensaver-command -l")
        , ("M-S-q", spawn "gnome-session-save --gui --logout-dialog")
        -- External applications
-       , ("M-t",   spawn "uxterm -e 'byobu -R'")
+       , ("M-t",   spawn "uxterm -e 'byobu -RR'")
        , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
        , ("M-S-t", spawn "uxterm")
        , ("M-b",   spawn "/home/gusev/bin/conkeror")
@@ -116,6 +119,7 @@ myManageHook = composeAll
     , className =? "Skype"                --> doFloat
     , role  =? "buddy_list"               --> doFloat
     , className =? "Pidgin"               --> doCenterFloat
+    , className =? "Firefox"              --> insertPosition End Older
     , isDialog                            --> doCenterFloat
     , isFullscreen                        --> doFullFloat
     ]
