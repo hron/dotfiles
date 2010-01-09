@@ -25,6 +25,7 @@ import XMonad.Layout.Minimize
 import XMonad.Layout.Cross
 import XMonad.Layout.NoBorders
 import XMonad.Layout.OneBig
+import XMonad.Layout.BoringWindows
 import qualified XMonad.Layout.Magnifier as Mag
     
 import qualified XMonad.StackSet as W
@@ -41,6 +42,7 @@ main = do
        , layoutHook = myLayoutHook
        , handleEventHook = mappend myHandleEventHook (handleEventHook gnomeConfig)
        , terminal = "uxterm"
+       , focusFollowsMouse = False
        -- Rebind Mod to the Windows key
        , modMask = mod4Mask
        }
@@ -90,7 +92,7 @@ main = do
             | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-myLayoutHook = minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorders
+myLayoutHook = boringAuto $ minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorders
                (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
@@ -123,7 +125,8 @@ myManageHook = composeAll
     , isDialog                            --> doCenterFloat
     , isFullscreen                        --> doFullFloat
     ]
-    where role = stringProperty "WM_WINDOW_ROLE"
+    where
+      role = stringProperty "WM_WINDOW_ROLE"
                
 myHandleEventHook = restoreMinimizedEventHook
 
