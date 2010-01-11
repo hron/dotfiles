@@ -69,7 +69,7 @@ main = do
        , ("M-t",   spawn "uxterm -e 'byobu -RR'")
        , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
        , ("M-S-t", spawn "uxterm")
-       , ("M-b",   spawn "/home/gusev/bin/conkeror")
+       , ("M-b",   spawn "conkeror")
        , ("M-e",   spawn "emacsclient -nc")
        , ("M-q",   spawn "stardict ")
        -- WM actions
