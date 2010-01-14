@@ -64,7 +64,7 @@ main = do
        [
        -- DE actions
          ("M-S-l", spawn "gnome-screensaver-command -l")
-       , ("M-S-q", spawn "gnome-session-save --gui --logout-dialog")
+       , ("M-S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-t",   spawn "uxterm -e 'byobu -RR'")
        , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
