@@ -100,6 +100,8 @@
 
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(setq-default fill-column 80)
+
 (require 'smtpmail)
 
 ;; Function used to send the current buffer as mail.  The default is

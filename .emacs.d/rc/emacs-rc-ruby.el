@@ -37,13 +37,13 @@
 	  '(lambda ()
 	     (auto-fill-mode 1)
 	     (flyspell-prog-mode)
-	     (setq-default fill-column 100)
-	     (setq-default indent-tabs-mode nil)
+	     (setq fill-column 100)
+	     (setq indent-tabs-mode nil)
 	     ;; (turn-on-orgstruct)
 	     ;; (turn-on-orgtbl)
 	     (highlight-parentheses-mode 1)))
 
-(setq ruby-deep-indent-paren '())
+(setq ruby-deep-indent-paren '(?\( t))
 
 ;; Inferion ruby
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
@@ -105,7 +105,8 @@
 (add-auto-mode 'rhtml-mode "\.erb$")
 
 (require 'rdebug)
-
+(add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
+ 
 (require 'feature-mode)
 
 (require 'autotest)
