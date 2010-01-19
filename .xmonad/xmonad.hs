@@ -121,6 +121,7 @@ myManageHook = composeAll
     , className =? "Skype"                --> doFloat
     , role  =? "buddy_list"               --> doFloat
     , className =? "Pidgin"               --> doCenterFloat
+    , className =? "Firefox"              --> doShift "5"
     , className =? "Firefox"              --> insertPosition End Older
     , isDialog                            --> doCenterFloat
     , isFullscreen                        --> doFullFloat
