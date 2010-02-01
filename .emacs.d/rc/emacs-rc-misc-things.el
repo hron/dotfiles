@@ -128,6 +128,8 @@
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-default-smtp-server "smtp.warecorp.com")
 
+(setq mail-user-agent 'gnus-user-agent)
+
 ;; 
 ;; VC
 ;; 
