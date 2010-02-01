@@ -29,6 +29,7 @@
 
 ;; По умолчанию комментарии "#"
 (setq-default comment-start "#")
+(setq-default comment-empty-lines t)
 
 (mouse-avoidance-mode 'none)
 
