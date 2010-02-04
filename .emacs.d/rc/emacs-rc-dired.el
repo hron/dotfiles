@@ -72,6 +72,11 @@
 	  (lambda ()
 	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
 
+(require 'dired-x)
+(setq dired-omit-files-p t)
+(setq dired-omit-files
+      (concat dired-omit-files "\\|^\\..+$"))
+
 (provide 'emacs-rc-dired)
 
 ;;; emacs-rc-dired.el ends here
