@@ -1,3 +1,5 @@
+(require 'nnir)
+
 ;; The `gnus-select-method' variable says where Gnus should look for news.
 ;; This variable should be a list where the first element says "how" and
 ;; the second element says "where".  This method is your native method.
@@ -7,7 +9,8 @@
 (setq gnus-secondary-select-methods
       '((nnimap "gmail"
 		(nnimap-address "imap.gmail.com")
-		(nnimap-stream tls))))
+		(nnimap-stream tls)
+		(nnir-search-engine imap))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
@@ -26,6 +29,4 @@
 ;; Default smtpmail.el configurations.
 (require 'smtpmail)
 
-(gnus-demon-add-rescan)
-(gnus-demon-add-scanmail)
-(gnus-demon-add-disconnection)
+(setq gnus-ignored-newsgroups "[:`'\"]\|^$")

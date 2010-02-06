@@ -29,6 +29,7 @@
 
 ;; По умолчанию комментарии "#"
 (setq-default comment-start "#")
+(setq-default comment-empty-lines t)
 
 (mouse-avoidance-mode 'none)
 
@@ -126,6 +127,8 @@
 ;; authentication.  *Note POP before SMTP: (gnus)POP before SMTP.
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-default-smtp-server "smtp.warecorp.com")
+
+(setq mail-user-agent 'gnus-user-agent)
 
 ;; 
 ;; VC

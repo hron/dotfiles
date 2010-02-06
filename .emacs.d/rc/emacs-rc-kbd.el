@@ -18,8 +18,11 @@
 (global-set-key "\C-xk" 'kill-this-buffer)
 
 (global-set-key [(control c) (i)] 'overwrite-mode)
-(global-set-key [(control c) (r)] 'revert-buffer)
-(global-set-key [(control c) (f)] 'font-lock-mode)
+(global-set-key [(control c) (r)] '(lambda (&optional arg)
+				     (interactive "*P")
+				     (if arg
+					(auto-revert-mode)
+				       (revert-buffer))))
 
 ;; `M-x hippie-expand' is a single command providing a variety of
 ;; completions and expansions.  Called repeatedly, it tries all possible

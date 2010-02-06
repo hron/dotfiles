@@ -1,7 +1,14 @@
 // -*- espresso -*-
 
 require("new-tabs.js");
+require("page-modes/gmane.js")
 require("page-modes/gmail.js")
+require("page-modes/google-maps.js")
+require("page-modes/google-video.js")
+require("page-modes/google-calendar.js")
+require("page-modes/google-reader.js")
+require("page-modes/google-search-result.js")
+require("page-modes/google-images.js")
 
 // http://delicious.com/search?p=xul&chk=&fr=del_icio_us&lc=1&atags=&rtags=&context=userposts%7Chron%7C&context=all%7C%7C
 function add_delicious_webjumps (username)

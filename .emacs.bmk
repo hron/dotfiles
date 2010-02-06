@@ -24,11 +24,11 @@
   (page . 666)
   (handler . doc-view-bookmark-jump))
  ("org-mode"
-  (front-context-string . "et.  Otherwise i")
-  (rear-context-string . "ints to the targ")
-  (position . 107462)
+  (front-context-string . "\n\n* Outlines::  ")
+  (rear-context-string . "cument.\n\n* Menu:")
+  (position . 26284)
   (filename . "/usr/share/info/emacs-23/org")
-  (info-node . "Handling links")
+  (info-node . "Document Structure")
   (handler . Info-bookmark-jump))
  ("/sshx:greatbu5@greatbuyback.com:~/"
   (filename . "/ssh:greatbu5@greatbuyback.com:/home2/greatbu5/")
