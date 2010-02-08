@@ -21,7 +21,7 @@
 (global-set-key [(control c) (r)] '(lambda (&optional arg)
 				     (interactive "*P")
 				     (if arg
-					(auto-revert-mode)
+					 (auto-revert-mode)
 				       (revert-buffer))))
 
 ;; `M-x hippie-expand' is a single command providing a variety of
@@ -44,6 +44,11 @@
 
 ;; Bind `C-c g' to `grep-find' command
 (global-set-key "\C-cg" 'rgrep)
+;; (global-set-key "\C-cg" (lambda ()
+;; 			  (interactive)
+;; 			  (if (vc-git-root default-directory)
+;; 			      (vc-git-grep)
+;; 			    (rgrep))))
 
 ;; Bind `C-c f' to `find-grep-dired' command
 (global-set-key "\C-cf" 'find-grep-dired)
