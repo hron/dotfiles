@@ -78,7 +78,7 @@ main = do
        , ("M-g", windowPromptGoto  defaultXPConfig)
        , ("M-s", sshPrompt defaultXPConfig)
        , ("M-r", shellPrompt amberXPConfig)
-       , ("M-u", focusUrgent)   -- FIXME: do not work
+       , ("M-u", focusUrgent)
        , ("M-o", windowMenu)
        , ("M-S-r", xmonadPrompt amberXPConfig)
        , ("M-f", fullFloatFocused)
@@ -92,7 +92,7 @@ main = do
             | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
-myLayoutHook = boringAuto $ minimize $ maximize $ avoidStruts $ Mag.magnifierOff $ smartBorders
+myLayoutHook = minimize $ maximize $ boringAuto $ avoidStruts $ Mag.magnifierOff $ smartBorders
                (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
