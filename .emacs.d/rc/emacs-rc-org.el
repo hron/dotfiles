@@ -29,5 +29,11 @@
 
 (setq org-hide-leading-stars t)
 
+(add-hook 'message-mode-hook 'turn-on-orgstruct)
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here

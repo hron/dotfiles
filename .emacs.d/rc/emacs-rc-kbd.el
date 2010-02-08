@@ -62,10 +62,6 @@
 (global-set-key "\C-ct" 'GAU:box-region-with-title)
 (global-set-key "\C-ce" 'boxquote-shell-command)
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
