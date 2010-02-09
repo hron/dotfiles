@@ -2,7 +2,9 @@
 
 ;; (setq-default line-number-mode t)            ; Line number displayed on modeline
 ;; (setq-default column-number-mode t)          ; Column number displayed on modeline
-(setq frame-title-format 'buffer-file-name)  ; set file name as frame title
+;; (setq frame-title-format 'buffer-file-name)  ; set file name as frame title
+;; set file name as frame title
+(setq frame-title-format "%b")
 
 ;; By default turn on colorization.
 (if (fboundp 'global-font-lock-mode)

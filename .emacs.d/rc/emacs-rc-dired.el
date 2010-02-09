@@ -72,9 +72,31 @@
 	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
 
 (require 'dired-x)
+
+(add-hook 'dired-load-hook
+	  (lambda ()
+	    (load "dired-x")
+	    ;; Set dired-x global variables here.  For example:
+	    ;; (setq dired-guess-shell-gnutar "gtar")
+	    ;; (setq dired-x-hands-off-my-keys nil)
+	    ))
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    ;; Set dired-x buffer-local variables here.  For example:
+	    (dired-omit-mode 1)
+	    ))
+
 (setq dired-omit-files-p t)
 (setq dired-omit-files
       (concat dired-omit-files "\\|^\\..+$"))
+
+(define-key global-map "\C-x\C-j" 'dired-jump)
+(define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
+
+;; Virtual dired
+(setq auto-mode-alist (cons '("[^/]\\.dired$" . dired-virtual-mode)
+			    auto-mode-alist))
+
 
 (provide 'emacs-rc-dired)
 
