@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n2.3.3.4 Meta-Ch")
-  (rear-context-string . "eta-Char Syntax\n")
-  (position . 107940)
+  (front-context-string . "\n2.4 Editing Typ")
+  (rear-context-string . "> Editing Types\n")
+  (position . 143418)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Meta-Char Syntax")
+  (info-node . "Editing Types")
   (handler . Info-bookmark-jump)))
