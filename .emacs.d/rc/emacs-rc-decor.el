@@ -15,12 +15,6 @@
 ;; Отключаем дебильный звонок
 (setq visible-bell t)
 
-;; Фишковое переключение между буферами
-(if (string-match "22.\\|23." (version))
-    (iswitchb-mode 1)
-  (iswitchb-default-keybindings))
-(setq iswitchb-default-method 'samewindow)
-
 ;; Скролинг по одной строке
 (setq scroll-step 1)
 (set-scroll-bar-mode 'right)
@@ -38,6 +32,8 @@
 
 ;; Hе заворачиваем строки, длина которых превышает ширину окна
 (setq-default truncate-lines t)
+(add-hook 'minibuffer-setup-hook '(lambda ()
+				    (set (make-local-variable 'truncate-lines) nil)))
 
 ;; When Show Paren mode is enabled, any matching parenthesis is highlighted
 ;; in `show-paren-style' after `show-paren-delay' seconds of Emacs idle time.
