@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n2.4 Editing Typ")
-  (rear-context-string . "> Editing Types\n")
-  (position . 143418)
+  (front-context-string . "\n5 Lists\n*******")
+  (rear-context-string . "p)Top:: > Lists\n")
+  (position . 240570)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Editing Types")
+  (info-node . "Lists")
   (handler . Info-bookmark-jump)))
