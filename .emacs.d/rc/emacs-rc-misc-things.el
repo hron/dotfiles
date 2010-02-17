@@ -130,6 +130,9 @@
 
 (setq mail-user-agent 'gnus-user-agent)
 
+(add-hook 'compilation-mode-hook '(lambda ()
+				    (ansi-color-for-comint-mode-on)))
+
 ;; 
 ;; VC
 ;; 
