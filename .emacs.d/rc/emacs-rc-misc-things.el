@@ -51,6 +51,14 @@
 
 (icomplete-mode 1)
 
+;; Фишковое переключение между буферами
+(iswitchb-mode 1)
+(iswitchb-default-keybindings)
+(setq iswitchb-default-method 'samewindow)
+(add-hook 'iswitchb-minibuffer-setup-hook
+	  '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
+
+
 ;;    If you set `set-mark-command-repeat-pop' to non-`nil', then
 ;; immediately after you type `C-u C-<SPC>', you can type `C-<SPC>'
 ;; instead of `C-u C-<SPC>' to cycle through the mark ring.  By
