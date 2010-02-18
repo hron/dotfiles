@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n6 Sequences, Ar")
-  (rear-context-string . " Arrays Vectors\n")
-  (position . 294914)
+  (front-context-string . "\n8 Symbols\n*****")
+  (rear-context-string . "Top:: > Symbols\n")
+  (position . 29668)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Sequences Arrays Vectors")
+  (info-node . "Symbols")
   (handler . Info-bookmark-jump)))
