@@ -55,4 +55,4 @@ session_pref("signon.expireMasterPassword", false);
 session_pref("signon.SignonFileName", "signons.txt");
 Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
 
-external_content_handlers.set("application/x-bittorrent", "vuze");
+external_content_handlers.set("application/x-bittorrent", "transmission");
