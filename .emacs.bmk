@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n10 Control Stru")
-  (rear-context-string . "trol Structures\n")
-  (position . 78776)
+  (front-context-string . "\n10.5.3.3 Writin")
+  (rear-context-string . "Handling Errors\n")
+  (position . 108853)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Control Structures")
+  (info-node . "Handling Errors")
   (handler . Info-bookmark-jump)))
