@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n10.5.3.3 Writin")
-  (rear-context-string . "Handling Errors\n")
-  (position . 108853)
+  (front-context-string)
+  (rear-context-string . "il' otherwise.\n\n")
+  (position . 127288)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Handling Errors")
+  (info-node . "Constant Variables")
   (handler . Info-bookmark-jump)))
