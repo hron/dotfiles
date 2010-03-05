@@ -19,6 +19,7 @@
 	 (signature
 	  (concat "WBR, Aleksei Gusev")))))
 
+(add-to-list 'gnus-buttonized-mime-types "multipart/alternative")
 
 (setq smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
