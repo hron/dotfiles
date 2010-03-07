@@ -213,7 +213,6 @@
                 tags-file-name
                 register-alist)))
 
-
 ;; Control use of local variables in files you visit.
 ;; The value can be t, nil, :safe, :all, or something else.
 ;; 
@@ -241,6 +240,9 @@
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
+
+;; Cleanup some blank problems in all buffer or at region.
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
