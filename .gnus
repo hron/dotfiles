@@ -19,7 +19,7 @@
 	 (signature
 	  (concat "WBR, Aleksei Gusev")))))
 
-(add-to-list 'gnus-buttonized-mime-types "multipart/alternative")
+;; (add-to-list 'gnus-buttonized-mime-types "multipart/alternative")
 
 (setq smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
@@ -31,3 +31,13 @@
 (require 'smtpmail)
 
 (setq gnus-ignored-newsgroups "[:`'\"]\|^$")
+
+(require 'gnus-network-manager)
+
+;; Add hooks for plugging/unplugging on network state change:
+(add-hook 'gnus-nm-connected-hook 'gnus-nm-agent-plug)
+(add-hook 'gnus-nm-disconnected-hook 'gnus-nm-agent-unplug)
+
+;; Add hooks for enabling/disabling integration on startup/shutdown:
+(add-hook 'gnus-started-hook 'gnus-nm-enable)
+(add-hook 'gnus-exit-gnus-hook 'gnus-nm-disable)
