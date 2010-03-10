@@ -119,17 +119,17 @@
 ;; `message-send-mail-with-mailclient', `message-send-mail-with-mh',
 ;; `message-send-mail-with-qmail', `message-smtpmail-send-it' and
 ;; `feedmail-send-it'.
-;; 
+;;
 ;; The function `message-send-mail-with-sendmail' pipes your article
 ;; to the `sendmail' binary for further queuing and sending.  When
 ;; your local system is not configured for sending mail using
 ;; `sendmail', and you have access to a remote SMTP server, you can
 ;; set `message-send-mail-function' to `smtpmail-send-it' and make
 ;; sure to setup the `smtpmail' package correctly.  An example:
-;; 
+;;
 ;; (setq message-send-mail-function 'smtpmail-send-it
 ;;       smtpmail-default-smtp-server "YOUR SMTP HOST")
-;; 
+;;
 ;; To the thing similar to this, there is `message-smtpmail-send-it'.
 ;; It is useful if your ISP requires the POP-before-SMTP
 ;; authentication.  *Note POP before SMTP: (gnus)POP before SMTP.
@@ -141,9 +141,9 @@
 (add-hook 'compilation-mode-hook '(lambda ()
 				    (ansi-color-for-comint-mode-on)))
 
-;; 
+;;
 ;; VC
-;; 
+;;
 (setq
  ;; Emacs normally  does not save  backup files for source  files that
  ;; are maintained  with version control.  If you want to  make backup
@@ -197,50 +197,27 @@
 ;; for lists specify the len of the maximal saved data also
 (setq desktop-globals-to-save
       (append '((extended-command-history . 30)
-                (file-name-history        . 100)
-                (ido-last-directory-list  . 100)
-                (ido-work-directory-list  . 100)
-                (ido-work-file-list       . 100)
-                (grep-history             . 30)
-                (compile-history          . 30)
-                (minibuffer-history       . 50)
-                (query-replace-history    . 60)
-                (read-expression-history  . 60)
-                (regexp-history           . 60)
-                (regexp-search-ring       . 20)
-                (search-ring              . 20)
-                (shell-command-history    . 50)
-                tags-file-name
-                register-alist)))
-
-
-;; Control use of local variables in files you visit.
-;; The value can be t, nil, :safe, :all, or something else.
-;; 
-;; A value of t means file local variables specifications are obeyed
-;; if all the specified variable values are safe; if any values are
-;; not safe, Emacs queries you, once, whether to set them all.
-;; (When you say yes to certain values, they are remembered as safe.)
-;; 
-;; :safe means set the safe variables, and ignore the rest.
-;; :all means set all variables, whether safe or not.
-;;  (Don't set it permanently to :all.)
-;; A value of nil means always ignore the file local variables.
-;; 
-;; Any other value means always query you once whether to set them all.
-;; (When you say yes to certain values, they are remembered as safe, but
-;; this has no effect when `enable-local-variables' is "something else".)
-;; 
-;; This variable also controls use of major modes specified in
-;; a -*- line.
-;; 
-;; The command M-x normal-mode, when used interactively,
-;; always obeys file local variable specifications and the -*- line,
-;; and ignores this variable.
-(setq enable-local-variables :all)
+		(file-name-history        . 100)
+		(ido-last-directory-list  . 100)
+		(ido-work-directory-list  . 100)
+		(ido-work-file-list       . 100)
+		(grep-history             . 30)
+		(compile-history          . 30)
+		(minibuffer-history       . 50)
+		(query-replace-history    . 60)
+		(read-expression-history  . 60)
+		(regexp-history           . 60)
+		(regexp-search-ring       . 20)
+		(search-ring              . 20)
+		(shell-command-history    . 50)
+		tags-file-name
+		register-alist)))
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
+
+;; Cleanup some blank problems in all buffer or at region.
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface

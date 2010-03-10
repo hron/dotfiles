@@ -71,7 +71,7 @@ main = do
        , ("M-S-t", spawn "uxterm")
        , ("M-b",   spawn "conkeror")
        , ("M-e",   spawn "emacsclient -nc")
-       , ("M-q",   promptSelection "stardict")
+       , ("M-q",   promptSelection "stardict ")
        -- WM actions
        , ("M-<Escape>", toggleWS)
        , ("M-S-g", goToSelected defaultGSConfig)
