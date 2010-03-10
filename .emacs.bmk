@@ -41,9 +41,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string)
-  (rear-context-string . "il' otherwise.\n\n")
-  (position . 127288)
+  (front-context-string . "File: elisp,  No")
+  (rear-context-string)
+  (position . 147973)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Constant Variables")
+  (info-node . "Edebug")
   (handler . Info-bookmark-jump)))
