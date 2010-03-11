@@ -30,8 +30,8 @@
 
 (add-auto-mode 'ruby-mode
 	       "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
-               ".irbrc" "\.builder" "\.gemspec"
-               "Rakefile$" "Capfile" "Gemfile" "Sitefile")
+	       ".irbrc" "\.builder" "\.gemspec"
+	       "Rakefile$" "Capfile" "Gemfile" "Sitefile")
 
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
@@ -68,7 +68,7 @@
 ;; ruby-compilation
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
-	     (if (string-match "Capfile" (buffer-file-name))
+	     (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
 		 (local-set-key [f9] 'ruby-compilation-cap)
 	       (local-set-key [f9] 'ruby-compilation-rake))))
 
@@ -86,7 +86,7 @@
 ;;----------------------------------------------------------------------------
 (autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
 (add-hook 'ruby-mode-hook
-          (lambda () (ruby-electric-mode t)))
+	  (lambda () (ruby-electric-mode t)))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - haml & sass
@@ -106,7 +106,7 @@
 
 (require 'rdebug)
 (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
- 
+
 (require 'feature-mode)
 
 (require 'autotest)
