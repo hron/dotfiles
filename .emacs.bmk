@@ -46,9 +46,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n17 Advising Ema")
-  (rear-context-string . "ising Functions\n")
-  (position . 89960)
+  (front-context-string . "File: elisp,  No")
+  (rear-context-string)
+  (position . 147973)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Advising Functions")
+  (info-node . "Edebug")
   (handler . Info-bookmark-jump)))
