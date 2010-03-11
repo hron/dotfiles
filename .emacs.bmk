@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("practice-fp-1-screen.pdf"
+(("root@62.129.144.211:/"
+  (filename . "/sudo:root@62.129.144.211:/")
+  (front-context-string . "lost+found\n  drw")
+  (rear-context-string . "6K Mar  1 14:23 ")
+  (position . 385))
+ ("practice-fp-1-screen.pdf"
   (filename . "~/Documents/practice-fp-1-screen.pdf")
   (front-context-string . "%PDF-1.4\n%\344\360\355\370\n4")
   (rear-context-string)
@@ -41,9 +46,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "\n10 Control Stru")
-  (rear-context-string . "trol Structures\n")
-  (position . 78776)
+  (front-context-string . "\n17 Advising Ema")
+  (rear-context-string . "ising Functions\n")
+  (position . 89960)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Control Structures")
+  (info-node . "Advising Functions")
   (handler . Info-bookmark-jump)))
