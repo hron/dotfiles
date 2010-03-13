@@ -27,12 +27,12 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.OneBig
 import XMonad.Layout.BoringWindows
 import qualified XMonad.Layout.Magnifier as Mag
-    
+
 import qualified XMonad.StackSet as W
 
 import System.IO
 import Data.Monoid
-    
+
 main = do
   xmonad $ withUrgencyHookC dzenUrgencyHook urgencyConfig { suppressWhen = Focused }
          $ gnomeConfig
@@ -64,6 +64,7 @@ main = do
        [
        -- DE actions
          ("M-S-l", spawn "gnome-screensaver-command -l")
+       , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
        , ("M-S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-t",   spawn "uxterm -e 'byobu -RR'")
@@ -128,7 +129,7 @@ myManageHook = composeAll
     ]
     where
       role = stringProperty "WM_WINDOW_ROLE"
-               
+
 myHandleEventHook = restoreMinimizedEventHook
 
 -- http://www.haskell.org/pipermail/xmonad/2009-August/008365.html
