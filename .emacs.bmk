@@ -46,9 +46,9 @@
   (rear-context-string . "40 Oct  7  2008 ")
   (position . 1093))
  ("elisp"
-  (front-context-string . "File: elisp,  No")
-  (rear-context-string)
-  (position . 147973)
+  (front-context-string . "          common")
+  (rear-context-string . "tions &optional\n")
+  (position . 281789)
   (filename . "/usr/share/info/emacs-23/elisp")
-  (info-node . "Edebug")
+  (info-node . "Completion Commands")
   (handler . Info-bookmark-jump)))
