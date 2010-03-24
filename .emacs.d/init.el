@@ -1,27 +1,27 @@
 ;;; ~/.emacs.d/init.el
 
-;; Copyright (C) 2004, 2005, 2006, 
+;; Copyright (C) 2004, 2005, 2006,
 ;;               2007, 2008, 2009 Aleksei Gusev <aleksei.gusev@gmail.com>
 
 ;; Started: 1 June 2004
 ;; Version: $Id$
 
 ;; TODO:
-;; 
+;;
 ;;  * Shadow copies of files do not work with tramp.
 ;;  * Status of remote executed grep still 'running' forever.
-;;  
+;;
 ;; Done:
-;; 
+;;
 ;;  * Reconfigure emacsclient:
-;; 
+;;
 ;;     - there is a new option '-c' for creating new frame without
 ;;       using existing (as I remember I use some elisp code to
 ;;       achieve this behaviour).
 ;;
 ;;     - make openning a new frame by 'Win-E' without '~/src' in
 ;;       buffer and with --no-wait option.
-;; 
+;;
 ;;  * Deleting files in trash.
 ;;  * Moved session files somewhere.
 ;;  * Add smarty-mode.
@@ -31,10 +31,10 @@
 ;; Add some dirs to load-path
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/site-lisp/")
-           (default-directory my-lisp-dir))
+	   (default-directory my-lisp-dir))
       (progn
-        (setq load-path (cons my-lisp-dir load-path))
-        (normal-top-level-add-subdirs-to-load-path))))
+	(setq load-path (cons my-lisp-dir load-path))
+	(normal-top-level-add-subdirs-to-load-path))))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/rc"))
 
 ;;; This was installed by package-install.el.
@@ -137,8 +137,8 @@
 
 ;; htmlize
 (dolist (sym
-         (list 'htmlize-file 'htmlize-region 'htmlize-buffer
-               'htmlize-many-files 'htmlize-many-files-dired))
+	 (list 'htmlize-file 'htmlize-region 'htmlize-buffer
+	       'htmlize-many-files 'htmlize-many-files-dired))
   (autoload sym "htmlize"))
 
 ;; SQL
@@ -163,9 +163,12 @@
 
 ;; Jabber
 (add-to-list 'load-path (concat (getenv "HOME")
-                               "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
+			       "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
 
-;; 
+;; ditz
+(require 'ditz)
+
+;;
 ;; Emacs core customization
 ;;
 
@@ -197,4 +200,3 @@
 
 ;; Everything else...
 (require 'emacs-rc-misc-things)
-
