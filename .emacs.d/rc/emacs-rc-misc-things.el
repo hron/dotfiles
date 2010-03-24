@@ -56,7 +56,7 @@
 (iswitchb-default-keybindings)
 (setq iswitchb-default-method 'samewindow)
 (add-hook 'iswitchb-minibuffer-setup-hook
-	  '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
+          '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
 
 
 ;;    If you set `set-mark-command-repeat-pop' to non-`nil', then
@@ -105,7 +105,7 @@
 (require 'uniquify)
 
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-			uniquify-strip-common-suffix t)
+                        uniquify-strip-common-suffix t)
 
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 
@@ -139,7 +139,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 
 (add-hook 'compilation-mode-hook '(lambda ()
-				    (ansi-color-for-comint-mode-on)))
+                                    (ansi-color-for-comint-mode-on)))
 
 ;;
 ;; VC
@@ -197,21 +197,21 @@
 ;; for lists specify the len of the maximal saved data also
 (setq desktop-globals-to-save
       (append '((extended-command-history . 30)
-		(file-name-history        . 100)
-		(ido-last-directory-list  . 100)
-		(ido-work-directory-list  . 100)
-		(ido-work-file-list       . 100)
-		(grep-history             . 30)
-		(compile-history          . 30)
-		(minibuffer-history       . 50)
-		(query-replace-history    . 60)
-		(read-expression-history  . 60)
-		(regexp-history           . 60)
-		(regexp-search-ring       . 20)
-		(search-ring              . 20)
-		(shell-command-history    . 50)
-		tags-file-name
-		register-alist)))
+                (file-name-history        . 100)
+                (ido-last-directory-list  . 100)
+                (ido-work-directory-list  . 100)
+                (ido-work-file-list       . 100)
+                (grep-history             . 30)
+                (compile-history          . 30)
+                (minibuffer-history       . 50)
+                (query-replace-history    . 60)
+                (read-expression-history  . 60)
+                (regexp-history           . 60)
+                (regexp-search-ring       . 20)
+                (search-ring              . 20)
+                (shell-command-history    . 50)
+                tags-file-name
+                register-alist)))
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
@@ -228,5 +228,7 @@
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)
+
+(setq split-width-threshold 90)
 
 (provide 'emacs-rc-misc-things)

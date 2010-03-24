@@ -29,19 +29,19 @@
 ;;; ruby-mode site-lisp configuration
 
 (add-auto-mode 'ruby-mode
-	       "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
-	       ".irbrc" "\.builder" "\.gemspec"
-	       "Rakefile$" "Capfile" "Gemfile" "Sitefile")
+               "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
+               ".irbrc" "\.builder" "\.gemspec"
+               "Rakefile$" "Capfile" "Gemfile" "Sitefile")
 
 (add-hook 'ruby-mode-hook
-	  '(lambda ()
-	     (auto-fill-mode 1)
-	     (flyspell-prog-mode)
-	     (setq fill-column 100)
-	     (setq indent-tabs-mode nil)
-	     ;; (turn-on-orgstruct)
-	     ;; (turn-on-orgtbl)
-	     (highlight-parentheses-mode 1)))
+          '(lambda ()
+             (auto-fill-mode 1)
+             (flyspell-prog-mode)
+             (setq fill-column 100)
+             (setq indent-tabs-mode nil)
+             ;; (turn-on-orgstruct)
+             ;; (turn-on-orgtbl)
+             (highlight-parentheses-mode 1)))
 
 (setq ruby-deep-indent-paren '(?\( t))
 
@@ -67,10 +67,10 @@
 
 ;; ruby-compilation
 (add-hook 'ruby-mode-hook
-	  '(lambda ()
-	     (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
-		 (local-set-key [f9] 'ruby-compilation-cap)
-	       (local-set-key [f9] 'ruby-compilation-rake))))
+          '(lambda ()
+             (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
+                 (local-set-key [f9] 'ruby-compilation-cap)
+               (local-set-key [f9] 'ruby-compilation-rake))))
 
 ;; emacs-rails-reloaded
 (setq-default rails/bundles/disabled-list '(apidock))
@@ -86,7 +86,7 @@
 ;;----------------------------------------------------------------------------
 (autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
 (add-hook 'ruby-mode-hook
-	  (lambda () (ruby-electric-mode t)))
+          (lambda () (ruby-electric-mode t)))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - haml & sass
@@ -110,6 +110,7 @@
 (require 'feature-mode)
 
 (require 'autotest)
+(setq autotest-command "export AUTOFEATURE=true; autospec")
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
