@@ -31,7 +31,8 @@
 (add-auto-mode 'ruby-mode
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
-               "Rakefile$" "Capfile" "Gemfile" "Sitefile")
+               "Rakefile$" "Capfile" "Gemfile" "Sitefile"
+               "\\.watchr")
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
