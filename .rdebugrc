@@ -1,0 +1,3 @@
+set autolist off
+set autoeval on
+set autoreload on
