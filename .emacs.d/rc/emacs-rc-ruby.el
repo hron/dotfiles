@@ -53,9 +53,12 @@
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 ;; Ri-Emacs
-(setq ri-ruby-progres "/usr/bin/ruby")
-(setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
-(autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
+;; (setq ri-ruby-progres "/usr/bin/ruby")
+;; (setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
+;; (autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/ri.el"))
+(require 'ri)
 (defun ri-bind-key ()
   (local-set-key [f1] 'ri))
 
