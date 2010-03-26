@@ -166,6 +166,8 @@
  vc-command-messages t
  )
 
+(setq tags-revert-without-query t)
+
 ;;----------------------------------------------------------------------------
 ;; Delete the current file
 ;;----------------------------------------------------------------------------
@@ -229,6 +231,6 @@
 (load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)
 
-(setq split-width-threshold 90)
+(setq split-width-threshold 120)
 
 (provide 'emacs-rc-misc-things)
