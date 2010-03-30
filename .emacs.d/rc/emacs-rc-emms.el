@@ -43,6 +43,7 @@
 
 (require 'emms-playing-time)
 (emms-playing-time 1)
+(emms-playing-time-disable-display)
 
 (let ((emms-lastfm-auth (expand-file-name "~/.emacs.d/.emms-lastfm-auth")))
   (when (file-exists-p emms-lastfm-auth)
