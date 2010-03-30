@@ -11,3 +11,4 @@
 /.xmonad/xmonad.o
 /.xmonad/history
 /.byobu/sed*
+/.emacs.d/.emms-lastfm-auth

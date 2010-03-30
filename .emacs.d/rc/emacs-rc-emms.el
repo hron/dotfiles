@@ -27,8 +27,10 @@
 (require 'emms-setup)
 (emms-all)
 
-(require 'emms-player-mpd)
+(require 'emms-browser)
+(require 'emms-tag-editor)
 
+(require 'emms-player-mpd)
 (setq emms-player-mpd-server-name "localhost"
       emms-player-mpd-server-port "6600")
 
@@ -39,7 +41,15 @@
 
 (emms-player-mpd-connect)
 
-(require 'emms-browser)
+(require 'emms-playing-time)
+(emms-playing-time 1)
+
+(let ((emms-lastfm-auth (expand-file-name "~/.emacs.d/.emms-lastfm-auth")))
+  (when (file-exists-p emms-lastfm-auth)
+    (require 'emms-lastfm)
+    (load emms-lastfm-auth)
+    (emms-lastfm-enable)
+    ))
 
 (provide 'emacs-rc-emms)
 ;;; emacs-rc-emms.el ends here
