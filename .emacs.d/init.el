@@ -31,10 +31,10 @@
 ;; Add some dirs to load-path
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir (expand-file-name "~/.emacs.d/site-lisp/"))
-           (default-directory my-lisp-dir))
+	   (default-directory my-lisp-dir))
       (progn
-        (setq load-path (cons my-lisp-dir load-path))
-        (normal-top-level-add-subdirs-to-load-path))))
+	(setq load-path (cons my-lisp-dir load-path))
+	(normal-top-level-add-subdirs-to-load-path))))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/rc"))
 
 ;;; This was installed by package-install.el.
@@ -59,19 +59,19 @@
 
 ;; Emacs-Lisp
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
-                                   (turn-on-auto-fill)
-                                   (flyspell-prog-mode)
-                                   ;; (turn-on-orgstruct)
-                                   ;; (turn-on-orgtbl)
-                                   (highlight-parentheses-mode 1)))
+				   (turn-on-auto-fill)
+				   (flyspell-prog-mode)
+				   ;; (turn-on-orgstruct)
+				   ;; (turn-on-orgtbl)
+				   (highlight-parentheses-mode 1)))
 
 ;; Text
 (add-hook 'text-mode-hook '(lambda ()
-                             (turn-on-auto-fill)
-                             (turn-on-flyspell)
-                             ;; (turn-on-orgstruct)
-                             ;; (turn-on-orgtbl)
-                             (highlight-parentheses-mode 1)))
+			     (turn-on-auto-fill)
+			     (turn-on-flyspell)
+			     ;; (turn-on-orgstruct)
+			     ;; (turn-on-orgtbl)
+			     (highlight-parentheses-mode 1)))
 
 ;; Octave
 (require 'emacs-rc-octave)
@@ -86,7 +86,7 @@
 (require 'gentoo-syntax)
 
 (add-to-list 'auto-mode-alist
-             '("/etc/conf.d/" . sh-mode))
+	     '("/etc/conf.d/" . sh-mode))
 
 ;; Javascript
 (require 'emacs-rc-javascript)
@@ -110,17 +110,17 @@
 ;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
 ;; to load path explicity...
 (setq load-path (cons (expand-file-name
-                       "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
+		       "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
 (require 'rails-autoload)
 
 ;; RHTML
 (require 'rhtml-mode)
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
 (add-hook 'rhtml-mode-hook '(lambda ()
-                              (flyspell-prog-mode)
-                              ;; (turn-on-orgstruct)
-                              ;; (turn-on-orgtbl)))
-                              ))
+			      (flyspell-prog-mode)
+			      ;; (turn-on-orgstruct)
+			      ;; (turn-on-orgtbl)))
+			      ))
 ;; Ruby
 (require 'emacs-rc-ruby)
 
@@ -128,17 +128,17 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-hook 'yaml-mode-hook
-          '(lambda ()
-             (setq indent-tabs-mode nil)
-             (flyspell-prog-mode)
-             ;; (turn-on-orgstruct)
-             ;; (turn-on-orgtbl)
-             (highlight-parentheses-mode 1)))
+	  '(lambda ()
+	     (setq indent-tabs-mode nil)
+	     (flyspell-prog-mode)
+	     ;; (turn-on-orgstruct)
+	     ;; (turn-on-orgtbl)
+	     (highlight-parentheses-mode 1)))
 
 ;; htmlize
 (dolist (sym
-         (list 'htmlize-file 'htmlize-region 'htmlize-buffer
-               'htmlize-many-files 'htmlize-many-files-dired))
+	 (list 'htmlize-file 'htmlize-region 'htmlize-buffer
+	       'htmlize-many-files 'htmlize-many-files-dired))
   (autoload sym "htmlize"))
 
 ;; SQL
@@ -163,10 +163,13 @@
 
 ;; Jabber
 (add-to-list 'load-path (concat (getenv "HOME")
-                               "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
+			       "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
 
 ;; ditz
 (require 'ditz)
+
+;; EMMS
+(require 'emacs-rc-emms)
 
 ;;
 ;; Emacs core customization
