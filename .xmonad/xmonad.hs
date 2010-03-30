@@ -35,10 +35,10 @@ import Data.Monoid
 
 main = do
   xmonad $ withUrgencyHookC dzenUrgencyHook urgencyConfig { suppressWhen = Focused }
-         $ gnomeConfig
+	 $ gnomeConfig
        { manageHook = manageDocks <+>
-                      myManageHook <+>
-                      manageHook gnomeConfig
+		      myManageHook <+>
+		      manageHook gnomeConfig
        , layoutHook = myLayoutHook
        , handleEventHook = mappend myHandleEventHook (handleEventHook gnomeConfig)
        , terminal = "uxterm"
@@ -48,7 +48,7 @@ main = do
        }
        `removeKeysP`
        [
-         ("M-S-<Return>")
+	 ("M-S-<Return>")
        , ("M-p")
        , ("M-S-p")
        -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
@@ -63,12 +63,13 @@ main = do
        `additionalKeysP`
        [
        -- DE actions
-         ("M-S-l", spawn "gnome-screensaver-command -l")
+	 ("M-S-l", spawn "gnome-screensaver-command -l")
        , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
        , ("M-S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-t",   spawn "uxterm -e 'byobu -RR'")
-       , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
+       -- , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
+       , ("M-x",   spawn "emacsclient -c -e '(emms-smart-browse)'")
        , ("M-S-t", spawn "uxterm")
        , ("M-b",   spawn "conkeror")
        , ("M-e",   spawn "emacsclient -nc")
@@ -90,11 +91,11 @@ main = do
        -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
        -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
        [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-            | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
+	    | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize $ maximize $ boringAuto $ avoidStruts $ Mag.magnifierOff $ smartBorders
-               (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross ||| layoutHook gnomeConfig)
+	       (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross ||| layoutHook gnomeConfig)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
