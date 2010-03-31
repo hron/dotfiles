@@ -12,3 +12,5 @@
 /.xmonad/history
 /.byobu/sed*
 /.emacs.d/.emms-lastfm-auth
+/.emacs.d/.emacs.desktop.lock
+/.emacs.d/.emacs.desktop
