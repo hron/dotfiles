@@ -1,27 +1,27 @@
 [submodule ".emacs.d/site-lisp/rhtml-mode"]
-	path = .emacs.d/site-lisp/rhtml-mode
-	url = git://github.com/eschulte/rhtml.git
+        path = .emacs.d/site-lisp/rhtml-mode
+        url = git://github.com/eschulte/rhtml.git
 [submodule ".emacs.d/site-lisp/php_repl"]
-	path = .emacs.d/site-lisp/php_repl
-	url = git://github.com/ieure/php_repl.git
+        path = .emacs.d/site-lisp/php_repl
+        url = git://github.com/ieure/php_repl.git
 [submodule ".emacs.d/site-lisp/emacs-rails-reloaded"]
-	path = .emacs.d/site-lisp/emacs-rails-reloaded
-	url = git://github.com/hron/emacs-rails-reloaded.git
+        path = .emacs.d/site-lisp/emacs-rails-reloaded
+        url = git://github.com/hron/emacs-rails-reloaded.git
 [submodule ".emacs.d/site-lisp/cucumber"]
-	path = .emacs.d/site-lisp/cucumber
-	url = git://github.com/michaelklishin/cucumber.el.git
+        path = .emacs.d/site-lisp/cucumber
+        url = git://github.com/michaelklishin/cucumber.el.git
 [submodule ".emacs.d/site-lisp/ri.el"]
-	path = .emacs.d/site-lisp/ri.el
-	url = git://github.com/hron/ri.el.git
+        path = .emacs.d/site-lisp/ri.el
+        url = git://github.com/hron/ri.el.git
 [submodule ".emacs.d/site-lisp/autotest"]
-	path = .emacs.d/site-lisp/autotest
-	url = git://github.com/krick/autotest.el.git
+        path = .emacs.d/site-lisp/autotest
+        url = git://github.com/hron/autotest.el.git
 [submodule ".emacs.d/site-lisp/rinari"]
-	path = .emacs.d/site-lisp/rinari
-	url = git://github.com/eschulte/rinari.git
+        path = .emacs.d/site-lisp/rinari
+        url = git://github.com/eschulte/rinari.git
 [submodule ".emacs.d/site-lisp/emacs-ditz"]
-	path = .emacs.d/site-lisp/emacs-ditz
-	url = git://github.com/hron/emacs-ditz.git
+        path = .emacs.d/site-lisp/emacs-ditz
+        url = git://github.com/hron/emacs-ditz.git
 [submodule ".emacs.d/site-lisp/nxhtml"]
-	path = .emacs.d/site-lisp/nxhtml
-	url = git://github.com/emacsmirror/nxhtml.git
+        path = .emacs.d/site-lisp/nxhtml
+        url = git://github.com/emacsmirror/nxhtml.git
