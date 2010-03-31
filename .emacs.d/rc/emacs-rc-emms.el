@@ -20,20 +20,39 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
-(require 'emms-player-mpd)
-
-(setq emms-player-mpd-server-name "localhost")
-(setq emms-player-mpd-server-port "6600")
-
-(add-to-list 'emms-info-functions 'emms-info-mpd)
-
-(add-to-list 'emms-player-list 'emms-player-mpd)
+(require 'emms-setup)
+(emms-all)
 
 (require 'emms-browser)
+(require 'emms-tag-editor)
+
+(require 'emms-player-mpd)
+(setq emms-player-mpd-server-name "localhost"
+      emms-player-mpd-server-port "6600")
+
+(setq emms-player-mpd-music-directory "~/Музыка")
+
+(add-to-list 'emms-info-functions 'emms-info-mpd)
+(add-to-list 'emms-player-list 'emms-player-mpd)
+
+(emms-player-mpd-connect)
+
+(require 'emms-playing-time)
+(emms-playing-time 1)
+(emms-playing-time-disable-display)
+
+(emms-mode-line-disable)
+
+(let ((emms-lastfm-auth (expand-file-name "~/.emacs.d/.emms-lastfm-auth")))
+  (when (file-exists-p emms-lastfm-auth)
+    (require 'emms-lastfm)
+    (load emms-lastfm-auth)
+    (emms-lastfm-enable)
+    ))
 
 (provide 'emacs-rc-emms)
 ;;; emacs-rc-emms.el ends here
