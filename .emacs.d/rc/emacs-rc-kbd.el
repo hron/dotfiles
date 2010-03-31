@@ -34,10 +34,10 @@
 ;; e.g. this key binding for `C-c w' runs WoMan on the topic at point
 ;; without seeking confirmation:
 (global-set-key "\C-cw"
-                (lambda ()
-                  (interactive)
-                  (let ((woman-topic-at-point t))
-                    (woman))))
+		(lambda ()
+		  (interactive)
+		  (let ((woman-topic-at-point t))
+		    (woman))))
 
 ;; Bind `C-c l' to `locate' command
 (global-set-key "\C-co" 'locate)
@@ -74,6 +74,10 @@
 ;; Kill-ring-search
 (global-set-key "\M-\C-y" 'kill-ring-search)
 
+;; etags-select
+(require 'etags-select)
+(global-set-key "\M-?" 'etags-select-find-tag-at-point)
+(global-set-key "\M-." 'etags-select-find-tag)
 
 (provide 'emacs-rc-kbd)
 ;; emacs-rc-kbd.el
