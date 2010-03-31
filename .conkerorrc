@@ -1,6 +1,7 @@
 // -*- espresso -*-
 
 require("new-tabs.js");
+require("block-content-focus-change.js");
 require("page-modes/gmane.js")
 require("page-modes/gmail.js")
 require("page-modes/google-maps.js")
@@ -40,7 +41,7 @@ delete_temporary_files_for_command = false;
 // Boolean Default is false. Controls whether urls in the browse
 // history will be included in the completion list when prompting the
 // user for an url, for example, with the open-url command.
-// 
+//
 // Due to a Mozilla bug, this value is currently mutually exclusive
 // with url_completion_use_bookmarks. Refer to
 // http://bugs.conkeror.org/issue10 for details.
@@ -48,7 +49,7 @@ url_completion_use_history = true;
 url_completion_use_bookmarks = false;
 
 editor_shell_command = '/usr/bin/emacsclient -c $@';
-		
+
 session_pref("signon.rememberSignons", true);
 session_pref("signon.expireMasterPassword", false);
 session_pref("signon.SignonFileName", "signons.txt");
