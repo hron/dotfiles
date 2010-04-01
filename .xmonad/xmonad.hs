@@ -86,6 +86,11 @@ main = do
        , ("M-f", fullFloatFocused)
        , ("M-v", withFocused $ windows . W.sink)
        , ("M-m", sendMessage Mag.Toggle)
+       -- MusicPlaerDaemon
+       , ("<XF86AudioPlay>", spawn "mpc toggle")
+       , ("<XF86AudioNext>", spawn "mpc next")
+       , ("<XF86AudioPrev>", spawn "mpc prev")
+       , ("<XF86AudioStop>", spawn "mpc stop")
        ]
        `additionalKeys`
        -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
