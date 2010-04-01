@@ -212,6 +212,17 @@
 (setq ispell-dictionary "american")
 
 ;; Cleanup some blank problems in all buffer or at region.
+(setq whitespace-style '(tabs
+			 spaces
+			 trailing
+			 lines
+			 space-before-tab
+			 newline
+			 empty
+			 space-after-tab
+			 space-mark
+			 tab-mark
+			 newline-mark))
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;----------------------------------------------------------------------------
