@@ -9,7 +9,7 @@
 ;; Bind `F9' to compile function
 (global-set-key [f9] 'compile)
 
-(global-set-key [f12] 'align-string)
+(global-set-key [f12] 'align-regexp)
 
 ;; Bind `C-x C-b' to more convenience
 (global-set-key "\C-x\C-b" 'ibuffer)
