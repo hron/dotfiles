@@ -73,3 +73,39 @@ add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
 require('eye-guide.js');
 define_key(content_buffer_normal_keymap, "space", "eye-guide-scroll-down");
 define_key(content_buffer_normal_keymap, "back_space", "eye-guide-scroll-up");
+
+// http://conkeror.org/Extensions
+user_pref("extensions.checkCompatibility", false);
+user_pref("extensions.checkUpdateSecurity", false);
+
+// Mozilla has a whitelist of domains which are allowed to install extensions.
+// By default, this whitelist allows only local URLs. Conkeror does not yet have
+// a user interface for adding to this whitelist. Therefore, to install an
+// extension, you must first save the xpi file locally, and then browse to the
+// xpi file in Conkeror. (You can press s (save) to save the xpi from a page
+// which links to it.)
+session_pref("xpinstall.whitelist.required", false);
+
+// MozRepl
+user_pref('extensions.mozrepl.autoStart', true);
+
+if ('@hyperstruct.net/mozlab/mozrepl;1' in Cc) {
+  let mozrepl = Cc['@hyperstruct.net/mozlab/mozrepl;1']
+    .getService(Ci.nsIMozRepl);
+  if (! mozrepl.isActive())
+    mozrepl.start(4242);
+}
+
+// http://conkeror.org/Tips#FirebugLite
+define_variable("firebug_url",
+    "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js");
+
+function firebug (I) {
+    var doc = I.buffer.document;
+    var script = doc.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', firebug_url);
+    script.setAttribute('onload', 'firebug.init();');
+    doc.body.appendChild(script);
+}
+interactive("firebug", "open firebug lite", firebug);
