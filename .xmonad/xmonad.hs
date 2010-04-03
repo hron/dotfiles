@@ -118,22 +118,25 @@ myLayoutHook = minimize $ maximize $ boringAuto $ avoidStruts $ Mag.magnifierOff
      onebig = OneBig (3/4) (3/4)
 
 myManageHook = composeAll
-    [ className =? "Gimp"                 --> doFloat
-    , className =? "Vncviewer"            --> doFloat
-    , className =? "stardict"             --> doFloat
-    , className =? "gcolor2"              --> doFloat
-    , className =? "totem"                --> doFloat
-    , className =? "Firefox Preferences"  --> doFloat
-    , className =? "*VLC"                 --> doFloat
-    , className =? "Skype"                --> doFloat
-    , role  =? "buddy_list"               --> doFloat
-    , className =? "Pidgin"               --> doCenterFloat
-    , className =? "Firefox"              --> doHideIgnore
-    , isDialog                            --> doCenterFloat
-    , isFullscreen                        --> doFullFloat
+    [ className =? "Gimp"                   --> doFloat
+    , className =? "Vncviewer"              --> doFloat
+    , className =? "stardict"               --> doFloat
+    , className =? "gcolor2"                --> doFloat
+    , className =? "totem"                  --> doFloat
+    , className =? "Firefox Preferences"    --> doFloat
+    , className =? "*VLC"                   --> doFloat
+    , className =? "Skype"                  --> doFloat
+    , role  =? "buddy_list"                 --> doFloat
+    , className =? "gdebi-gtk"              --> doFloat
+    , iconName =? "Параметры Google Chrome" --> doFloat
+    , className =? "Pidgin"                 --> doCenterFloat
+    , className =? "Firefox"                --> doHideIgnore
+    , isDialog                              --> doCenterFloat
+    , isFullscreen                          --> doFullFloat
     ]
     where
-      role = stringProperty "WM_WINDOW_ROLE"
+      role     = stringProperty "WM_WINDOW_ROLE"
+      iconName = stringProperty "WM_ICON_NAME"
 
 myHandleEventHook = restoreMinimizedEventHook
 
