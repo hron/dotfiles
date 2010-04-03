@@ -1,27 +1,30 @@
 // -*- espresso -*-
 
-require("new-tabs.js");
+// require("new-tabs.js");
+require("clicks-in-new-buffer.js");
 require("block-content-focus-change.js");
 require("page-modes/gmane.js")
 require("page-modes/gmail.js")
+require("page-modes/youtube.js")
 require("page-modes/google-maps.js")
 require("page-modes/google-video.js")
 require("page-modes/google-calendar.js")
 require("page-modes/google-reader.js")
 require("page-modes/google-images.js")
+require("page-modes/google-search-results.js");
+require("extensions/adblockplus.js");
 
-// http://delicious.com/search?p=xul&chk=&fr=del_icio_us&lc=1&atags=&rtags=&context=userposts%7Chron%7C&context=all%7C%7C
-function add_delicious_webjumps (username)
-{
-    define_webjump("delicious", "http://del.icio.us/" + username);
-    define_webjump("adelicious", "javascript:location.href='http://del.icio.us/"+username+
-                   "?v=2&url='+encodeURIComponent(location.href)+'&title='+"+
-                   "encodeURIComponent(document.title);");
-    define_webjump("sdelicious", "http://delicious.com/search?p=%s" +
-                   "&chk=&context=userposts%7C"+username+"%7C&fr=del_icio_us&lc=1");
-    define_webjump("sadelicious", "http://del.icio.us/search/all?search=%s");
-}
-add_delicious_webjumps ("hron");
+google_search_bind_number_shortcuts();
+
+// Webjump oneliners
+define_webjump("codesearch", "http://www.google.com/codesearch?q=%s");
+define_webjump("cpan", "http://search.cpan.org/search?query=%s&mode=all");
+define_webjump("twitter", "http://twitter.com/%s");
+define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+
+// Personalized Webjumps
+add_delicious_webjumps("hron");
+add_lastfm_webjumps("hron77");
 
 // Download buffers are opened automatically whenever you start a
 // download, and whenever you use the download-show command. Those
@@ -46,13 +49,23 @@ delete_temporary_files_for_command = false;
 // with url_completion_use_bookmarks. Refer to
 // http://bugs.conkeror.org/issue10 for details.
 url_completion_use_history = true;
-url_completion_use_bookmarks = false;
 
 editor_shell_command = '/usr/bin/emacsclient -c $@';
 
+// http://conkeror.org/PasswordManagement
 session_pref("signon.rememberSignons", true);
 session_pref("signon.expireMasterPassword", false);
 session_pref("signon.SignonFileName", "signons.txt");
 Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
 
+// MIME
 external_content_handlers.set("application/x-bittorrent", "transmission");
+
+// mode-line
+remove_hook("mode_line_hook", mode_line_adder(clock_widget));
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
+require('eye-guide.js');
+define_key(content_buffer_normal_keymap, "space", "eye-guide-scroll-down");
+define_key(content_buffer_normal_keymap, "back_space", "eye-guide-scroll-up");
