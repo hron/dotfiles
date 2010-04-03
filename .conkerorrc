@@ -52,6 +52,10 @@ url_completion_use_history = true;
 
 editor_shell_command = '/usr/bin/emacsclient -c $@';
 
+// When true, the view-source command will send its document to your external
+// editor. Default is false.
+view_source_use_external_editor = true;
+
 // http://conkeror.org/PasswordManagement
 session_pref("signon.rememberSignons", true);
 session_pref("signon.expireMasterPassword", false);
