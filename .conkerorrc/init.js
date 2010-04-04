@@ -22,6 +22,8 @@ define_webjump("cpan", "http://search.cpan.org/search?query=%s&mode=all");
 define_webjump("twitter", "http://twitter.com/%s");
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
 
+define_webjump("emacswiki", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
+
 // Personalized Webjumps
 add_delicious_webjumps("hron");
 add_lastfm_webjumps("hron77");
