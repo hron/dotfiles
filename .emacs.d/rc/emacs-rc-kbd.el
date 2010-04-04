@@ -9,6 +9,8 @@
 ;; Bind `F9' to compile function
 (global-set-key [f9] 'compile)
 
+(global-set-key [f10] 'anything)
+
 (global-set-key [f12] 'align-regexp)
 
 ;; Bind `C-x C-b' to more convenience
