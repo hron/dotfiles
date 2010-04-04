@@ -81,5 +81,7 @@
 (global-set-key "\M-?" 'etags-select-find-tag-at-point)
 (global-set-key "\M-." 'etags-select-find-tag)
 
+(global-unset-key (kbd "C-z"))
+
 (provide 'emacs-rc-kbd)
 ;; emacs-rc-kbd.el
