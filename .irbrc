@@ -73,6 +73,22 @@ tramp_require('rubygems') do
   end
 end
 
+# Simple benchmarking
+def time(times = 1)
+  require 'benchmark'
+
+  ret = nil
+  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
+  ret
+end
+
+# IRB configuration reloading
+def IRB.reload
+  load __FILE__
+end
+
+# Rails-specific
+
 # Вывод лога SQL-запросов в консоль – при работе с моделями ActiveRecord все запросы к БД будут
 # выводиться прямо на экран:
 # enable_log  # включаем логи
@@ -93,16 +109,7 @@ def hide_log
   #warn "SQL log disabled. Enter 'reload!' to reload all loaded ActiveRecord classes"
 end
 
-# Simple benchmarking
-def time(times = 1)
-  require 'benchmark'
-
-  ret = nil
-  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
-  ret
-end
-
-# IRB configuration reloading
-def IRB.reload
-  load __FILE__
+# SQL query execution
+def sql(query)
+  ActiveRecord::Base.connection.select_all(query)
 end
