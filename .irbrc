@@ -26,51 +26,50 @@ end
 # dirty-dirty-dirty hack.
 ENV['TERM'] = 'emacs' if ENV['EMACS']
 
-tramp_require('rubygems') do
+tramp_require('rubygems')
 
-  tramp_require('wirble') do
-    # start wirble (with color)
-    Wirble.init
-    Wirble.colorize
-  end
+tramp_require('wirble') do
+  # start wirble (with color)
+  Wirble.init
+  Wirble.colorize
+end
 
-  # awesome_print – позволяет выводить объекты на экран в удобном формате и с
-  # подсветкой.
+# awesome_print – позволяет выводить объекты на экран в удобном формате и с
+# подсветкой.
 
-  # ap(object, options = {})
-  #
-  # Default options:
-  #   :miltiline => true,
-  #   :plain  => false,
-  #   :indent => 4,
-  #   :colors => {
-  #     :array      => :white,
-  #     :bignum     => :blue,
-  #     :class      => :yellow,
-  #     :date       => :greenish,
-  #     :falseclass => :red,
-  #     :fixnum     => :blue,
-  #     :float      => :blue,
-  #     :hash       => :gray,
-  #     :nilclass   => :red,
-  #     :string     => :yellowish,
-  #     :symbol     => :cyanish,
-  #     :time       => :greenish,
-  #     :trueclass  => :green
-  #   }
-  #
-  # Supported color names:
-  #   :gray, :red, :green, :yellow, :blue, :purple, :cyan, :white
-  #   :black, :redish, :greenish, :yellowish, :blueish, :purpleish, :cyanish, :pale
-  tramp_require 'ap'
+# ap(object, options = {})
+#
+# Default options:
+#   :miltiline => true,
+#   :plain  => false,
+#   :indent => 4,
+#   :colors => {
+#     :array      => :white,
+#     :bignum     => :blue,
+#     :class      => :yellow,
+#     :date       => :greenish,
+#     :falseclass => :red,
+#     :fixnum     => :blue,
+#     :float      => :blue,
+#     :hash       => :gray,
+#     :nilclass   => :red,
+#     :string     => :yellowish,
+#     :symbol     => :cyanish,
+#     :time       => :greenish,
+#     :trueclass  => :green
+#   }
+#
+# Supported color names:
+#   :gray, :red, :green, :yellow, :blue, :purple, :cyan, :white
+#   :black, :redish, :greenish, :yellowish, :blueish, :purpleish, :cyanish, :pale
+tramp_require 'ap'
 
-  # looksee – позволяет посмотреть список методов объекта, разбитый по классам/модулям, из которых
-  # эти методы происходят. Очень удобно при исследовании внутренностей классов и модулей фреймворка
-  # при отладке или разработке плагинов.
-  tramp_require 'looksee/shortcuts' do
-    # purple
-    Looksee.styles.merge!(:undefined => "\e[1;34m%s\e[0m")
-  end
+# looksee – позволяет посмотреть список методов объекта, разбитый по классам/модулям, из которых
+# эти методы происходят. Очень удобно при исследовании внутренностей классов и модулей фреймворка
+# при отладке или разработке плагинов.
+tramp_require 'looksee/shortcuts' do
+  # purple
+  Looksee.styles.merge!(:undefined => "\e[1;34m%s\e[0m")
 end
 
 # Simple benchmarking
@@ -113,3 +112,5 @@ end
 def sql(query)
   ActiveRecord::Base.connection.select_all(query)
 end
+
+tramp_require 'hirb'
