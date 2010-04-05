@@ -63,4 +63,12 @@ tramp_require('rubygems') do
     #   :black, :redish, :greenish, :yellowish, :blueish, :purpleish, :cyanish, :pale
     tramp_require 'ap'
   end
+
+  # looksee – позволяет посмотреть список методов объекта, разбитый по классам/модулям, из которых
+  # эти методы происходят. Очень удобно при исследовании внутренностей классов и модулей фреймворка
+  # при отладке или разработке плагинов.
+  tramp_require 'looksee/shortcuts' do
+    # purple
+    Looksee.styles.merge!(:undefined => "\e[1;34m%s\e[0m")
+  end
 end
