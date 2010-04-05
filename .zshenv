@@ -10,3 +10,5 @@ export PGHOST=127.0.0.1
 export PGUSER=postgres
 
 export EL4R_ROOT=$HOME/src/el4r
+
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
