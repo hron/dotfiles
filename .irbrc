@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def tramp_require(what, &block)
   loaded, require_result = false, nil
 
@@ -14,6 +15,14 @@ def tramp_require(what, &block)
   require_result
 end
 
+def with_env(name, value)
+  old = ENV[name]
+  ENV[name] = value
+  yield
+ensure
+  ENV[name] = old
+end
+
 tramp_require('rubygems') do
 
   tramp_require('wirble') do
@@ -22,4 +31,36 @@ tramp_require('rubygems') do
     Wirble.colorize
   end
 
+  # this hack is for inf-ruby in emacs
+  with_env 'TERM', 'xterm' do
+    # awesome_print – позволяет выводить объекты на экран в удобном формате и с
+    # подсветкой.
+
+    # ap(object, options = {})
+    #
+    # Default options:
+    #   :miltiline => true,
+    #   :plain  => false,
+    #   :indent => 4,
+    #   :colors => {
+    #     :array      => :white,
+    #     :bignum     => :blue,
+    #     :class      => :yellow,
+    #     :date       => :greenish,
+    #     :falseclass => :red,
+    #     :fixnum     => :blue,
+    #     :float      => :blue,
+    #     :hash       => :gray,
+    #     :nilclass   => :red,
+    #     :string     => :yellowish,
+    #     :symbol     => :cyanish,
+    #     :time       => :greenish,
+    #     :trueclass  => :green
+    #   }
+    #
+    # Supported color names:
+    #   :gray, :red, :green, :yellow, :blue, :purple, :cyan, :white
+    #   :black, :redish, :greenish, :yellowish, :blueish, :purpleish, :cyanish, :pale
+    tramp_require 'ap'
+  end
 end
