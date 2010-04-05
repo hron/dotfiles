@@ -92,3 +92,17 @@ def hide_log
   change_log(nil)
   #warn "SQL log disabled. Enter 'reload!' to reload all loaded ActiveRecord classes"
 end
+
+# Simple benchmarking
+def time(times = 1)
+  require 'benchmark'
+
+  ret = nil
+  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
+  ret
+end
+
+# IRB configuration reloading
+def IRB.reload
+  load __FILE__
+end
