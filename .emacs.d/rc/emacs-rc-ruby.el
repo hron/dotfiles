@@ -47,10 +47,14 @@
 (setq ruby-deep-indent-paren '(?\( t))
 
 ;; Inferion ruby
+(require 'inf-ruby)
+(add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on)
+
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
 (defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
 (defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
+
 
 ;; Ri-Emacs
 ;; (setq ri-ruby-progres "/usr/bin/ruby")
