@@ -23,6 +23,7 @@ define_webjump("twitter", "http://twitter.com/%s");
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
 
 define_webjump("emacswiki", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
+define_webjump("github", "http://github.com/search?q=%s&type=Everything&repo=&langOverride=&start_value=1");
 
 // Personalized Webjumps
 add_delicious_webjumps("hron");
