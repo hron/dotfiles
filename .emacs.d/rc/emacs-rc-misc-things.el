@@ -185,7 +185,7 @@
 ;; save the desktop file automatically if it already exists
 (require 'desktop)
 (setq-default desktop-path '("." "~/.emacs.d"))
-(setq desktop-save 'if-exists)
+(setq desktop-save 'ask-if-new)
 (desktop-save-mode 1)
 
 ;; save a bunch of variables to the desktop file
