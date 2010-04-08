@@ -1,0 +1,3 @@
+#! /bin/zsh -f
+
+cd $HOME/.emacs.d/site-lisp/emacs-rails-reloaded && exec emacs

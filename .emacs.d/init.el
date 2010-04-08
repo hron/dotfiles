@@ -47,6 +47,8 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+(require 'server)
+
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
 ;;----------------------------------------------------------------------------
@@ -174,7 +176,8 @@
 (require 'ditz)
 
 ;; EMMS
-(require 'emacs-rc-emms)
+(when server-process
+  (require 'emacs-rc-emms))
 
 ;;
 ;; Emacs core customization
