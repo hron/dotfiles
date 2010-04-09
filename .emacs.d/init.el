@@ -190,7 +190,7 @@
 (setq-default filladapt-mode t)
 
 ;; comint-mode
-(setq comint-scroll-to-bottom-on-output others)
+(setq comint-scroll-to-bottom-on-output 'others)
 
 ;; Org-mode
 (require 'emacs-rc-org)
