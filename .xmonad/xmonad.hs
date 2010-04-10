@@ -34,12 +34,14 @@ import System.IO
 import Data.Monoid
 
 main = do
+  xmproc <- spawnPipe "xmobar"  -- start xmobar
   xmonad $ withUrgencyHookC dzenUrgencyHook urgencyConfig { suppressWhen = Focused }
 	 $ gnomeConfig
        { manageHook = manageDocks <+>
 		      myManageHook <+>
 		      manageHook gnomeConfig
        , layoutHook = myLayoutHook
+       , logHook = myLogHook xmproc
        , handleEventHook = mappend myHandleEventHook (handleEventHook gnomeConfig)
        , terminal = "uxterm"
        , focusFollowsMouse = False
@@ -143,6 +145,22 @@ myHandleEventHook = restoreMinimizedEventHook
 -- http://www.haskell.org/pipermail/xmonad/2009-August/008365.html
 fullFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery doFullFloat f
 
+-- logHook
+myLogHook :: Handle -> X ()
+myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
+
+customPP :: PP
+customPP = defaultPP {
+     	     ppHidden = xmobarColor "#00FF00" ""
+	   , ppCurrent = xmobarColor "#FF0000" "" . wrap "[" "]"
+	   , ppUrgent = xmobarColor "#FF0000" "" . wrap "*" "*"
+           , ppLayout = xmobarColor "#FF0000" ""
+           , ppTitle = xmobarColor "#00FF00" "" . shorten 80
+           , ppSep = "<fc=#0033FF> | </fc>"
+           }
+
+
+
 -- Local variables:
--- compile-command: "xmonad --recompile && xmonad --restart"
+-- compile-command: "pkill xmobar; xmonad --recompile && xmonad --restart"
 -- End:
