@@ -29,12 +29,14 @@ import XMonad.Layout.BoringWindows
 import XMonad.Layout.IM
 import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.GridVariants
 import qualified XMonad.Layout.Magnifier as Mag
 
 import qualified XMonad.StackSet as W
 
 import System.IO
 import Data.Monoid
+import Data.Ratio
 
 main = do
   xmproc <- spawnPipe "xmobar"  -- start xmobar
@@ -150,9 +152,9 @@ myLayoutHook = minimize
     onebig = OneBig (3/4) (3/4)
 
     -- for IM
-    -- pidginLayout = withIM (0.15) pidginRoster GridRatio(4/2)
-    goldenRatio  = 2/(1+sqrt(5)::Double);
-    pidginLayout = withIM (0.15) pidginRoster (GridRatio (1/5))
+    -- goldenRatio  = 2/(1+sqrt(5)::Double);
+    -- pidginLayout = withIM (0.15) pidginRoster (GridRatio (1/5))
+    pidginLayout = withIM (1%7) pidginRoster (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
     pidginRoster = And (ClassName "Pidgin") (Role "buddy_list")
 
 myWorkspaces = [ "1", "2", "3", "4" , "5", "6", "7.im", "8", "9" ]
