@@ -150,7 +150,9 @@ myLayoutHook = minimize
     onebig = OneBig (3/4) (3/4)
 
     -- for IM
-    pidginLayout = withIM (0.15) pidginRoster Grid
+    -- pidginLayout = withIM (0.15) pidginRoster GridRatio(4/2)
+    goldenRatio  = 2/(1+sqrt(5)::Double);
+    pidginLayout = withIM (0.15) pidginRoster (GridRatio (1/5))
     pidginRoster = And (ClassName "Pidgin") (Role "buddy_list")
 
 myWorkspaces = [ "1", "2", "3", "4" , "5", "6", "7.im", "8", "9" ]
