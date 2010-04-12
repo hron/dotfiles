@@ -74,11 +74,11 @@
 (add-hook 'sass-mode-hook 'ri-bind-key)
 
 ;; ruby-compilation
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
-                 (local-set-key [f9] 'ruby-compilation-cap)
-               (local-set-key [f9] 'ruby-compilation-rake))))
+;; (add-hook 'ruby-mode-hook
+;;           '(lambda ()
+;;              (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
+;;                  (local-set-key [f9] 'ruby-compilation-cap)
+;;                (local-set-key [f9] 'ruby-compilation-rake))))
 
 ;; emacs-rails-reloaded
 (setq-default rails/bundles/disabled-list '(apidock))
@@ -87,7 +87,9 @@
 ;; Ruby - flymake
 ;;----------------------------------------------------------------------------
 (require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook '(lambda ()
+                             (with-demoted-errors
+                               (flymake-ruby-load))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode

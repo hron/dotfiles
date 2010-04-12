@@ -3,7 +3,7 @@
 ;; Copyright (C) 2009  Aleksei Gusev
 
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,14 +20,18 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
-(add-to-list 'load-path (concat (getenv "HOME")
-                                "/src/el4r/data/emacs/site-lisp/"))
+;; (add-to-list 'load-path (concat (getenv "HOME")
+;;                                 "/src/el4r/data/emacs/site-lisp/"))
+;; (require 'el4r)
+
+;; (load "~/src/el4r/data/emacs/site-lisp/el4r.el")
 
 (require 'el4r)
+
 (el4r-boot)
 
 (provide 'emacs-rc-el4r)
