@@ -142,7 +142,7 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
 # ignore completion functions (until the _ignored completer)
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-if [[ "$TERM" != "linux" ]]; then
+if [[ "$TERM" != "linux" ]] && [[ "$TERM" != "eterm-color" ]]; then
     function precmd() {
 	print -nP "\033]2; zsh@%m:%~%# \007\033]1;%m:%~%#\007"
     }
