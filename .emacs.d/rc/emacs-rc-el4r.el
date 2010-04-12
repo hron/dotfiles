@@ -24,12 +24,6 @@
 
 ;;; Code:
 
-;; (add-to-list 'load-path (concat (getenv "HOME")
-;;                                 "/src/el4r/data/emacs/site-lisp/"))
-;; (require 'el4r)
-
-;; (load "~/src/el4r/data/emacs/site-lisp/el4r.el")
-
 (require 'el4r)
 
 (el4r-boot)

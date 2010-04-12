@@ -88,8 +88,10 @@
 ;;----------------------------------------------------------------------------
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook '(lambda ()
-                             (with-demoted-errors
-                               (flymake-ruby-load))))
+			     (condition-case err
+				 (flymake-ruby-load)
+			       (error (unless (string= "Invalid file-name" (cadr err))
+					(error err))))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode
