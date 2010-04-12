@@ -44,7 +44,7 @@
              ;; (turn-on-orgtbl)
              (highlight-parentheses-mode 1)))
 
-(setq ruby-deep-indent-paren '(?\( t))
+(setq ruby-deep-indent-paren '())
 
 ;; Inferion ruby
 (require 'inf-ruby)

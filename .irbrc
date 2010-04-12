@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 def tramp_require(what, &block)
   loaded, require_result = false, nil
 
@@ -23,8 +24,40 @@ ensure
   ENV[name] = old
 end
 
+# Include line numbers and indent levels:
+# IRB.conf[:PROMPT][:SHORT] = {
+#   :PROMPT_C=>"%03n:%i* ",
+#   :RETURN=>"%s\n",
+#   :PROMPT_I=>"%03n:%i> ",
+#   :PROMPT_N=>"%03n:%i> ",
+#   :PROMPT_S=>"%03n:%i%l "
+# }
+
+# IRB.conf[:PROMPT_MODE] = :SHORT
+# Adds readline functionality
+IRB.conf[:USE_READLINE] = true
+# Auto indents suites
+IRB.conf[:AUTO_INDENT] = true
+# Where history is saved
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+# How many lines to save
+IRB.conf[:SAVE_HISTORY] = 1000
+
 # dirty-dirty-dirty hack.
 ENV['TERM'] = 'emacs' if ENV['EMACS']
+
+# Print to yaml format with "y"
+tramp_require 'yaml'
+# Pretty printing
+tramp_require 'pp'
+# Tab completion
+tramp_require 'irb/completion'
+# Save irb sessions to history file
+tramp_require 'irb/ext/save-history'
+
+tramp_require 'ruby-debug' do
+  Debugger.settings[:autoeval] = true
+end
 
 tramp_require('rubygems')
 

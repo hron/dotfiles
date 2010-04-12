@@ -1,0 +1,10 @@
+Config { font = "xft:DejaVu Sans-9:bold"
+       , bgColor = "#E6DDD5"
+       , fgColor = "black"
+       , position = Top
+       , lowerOnStart = False
+       , commands = [ Run StdinReader ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader%"
+       }
