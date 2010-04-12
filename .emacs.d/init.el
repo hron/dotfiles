@@ -176,8 +176,7 @@
 (require 'ditz)
 
 ;; EMMS
-(when server-process
-  (require 'emacs-rc-emms))
+(require 'emacs-rc-emms)
 
 ;;
 ;; Emacs core customization
