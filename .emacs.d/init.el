@@ -182,6 +182,9 @@
 ;; Emacs core customization
 ;;
 
+;; EShell
+;; (setq eshell-term-name "eterm-color")
+
 ;; Spelling
 (setq ispell-dictionary "en_US")
 
