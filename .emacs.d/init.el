@@ -183,7 +183,8 @@
 ;;
 
 ;; EShell
-;; (setq eshell-term-name "eterm-color")
+(setq eshell-term-name "eterm-color")
+(add-to-list 'eshell-visual-commands "htop")
 
 ;; Spelling
 (setq ispell-dictionary "en_US")
