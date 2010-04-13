@@ -3,7 +3,7 @@
 ;; Copyright (C) 2004, 2008  Free Software Foundation, Inc.
 
 ;; Author: Aleksei Gusev <aleksei.gusev@tut.by>
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -72,6 +72,20 @@
 	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
 
 (require 'dired-x)
+
+(defun dired-smart-shell-command (command &optional output-buffer error-buffer)
+  "Like function `shell-command', but in the current Virtual Dired directory."
+  (interactive
+   (list
+    (read-shell-command "EShell command: " nil nil
+			(cond
+			 (buffer-file-name (file-relative-name buffer-file-name))
+			 ((eq major-mode 'dired-mode) (dired-get-filename t t))))
+    current-prefix-arg
+    shell-command-default-error-buffer))
+  (let ((default-directory (dired-default-directory)))
+    (eshell-command command output-buffer error-buffer)))
+
 
 (add-hook 'dired-load-hook
 	  (lambda ()

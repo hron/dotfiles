@@ -32,5 +32,7 @@
 
 (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
 
+(global-set-key (kbd "M-!") 'eshell-command)
+
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
