@@ -56,7 +56,7 @@
 (iswitchb-default-keybindings)
 (setq iswitchb-default-method 'samewindow)
 (add-hook 'iswitchb-minibuffer-setup-hook
-	  '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
+          '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
 
 
 ;;    If you set `set-mark-command-repeat-pop' to non-`nil', then
@@ -139,7 +139,7 @@
 (setq mail-user-agent 'gnus-user-agent)
 
 (add-hook 'compilation-mode-hook '(lambda ()
-				    (ansi-color-for-comint-mode-on)))
+                                    (ansi-color-for-comint-mode-on)))
 
 ;;
 ;; VC
@@ -213,16 +213,16 @@
 
 ;; Cleanup some blank problems in all buffer or at region.
 (setq whitespace-style '(tabs
-			 spaces
-			 trailing
-			 lines
-			 space-before-tab
-			 newline
-			 empty
-			 space-after-tab
-			 space-mark
-			 tab-mark
-			 newline-mark))
+                         spaces
+                         trailing
+                         lines
+                         space-before-tab
+                         newline
+                         empty
+                         space-after-tab
+                         space-mark
+                         tab-mark
+                         newline-mark))
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;----------------------------------------------------------------------------
@@ -235,6 +235,6 @@
 (load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)
 
-(setq split-width-threshold 120)
+(setq split-width-threshold 160)
 
 (provide 'emacs-rc-misc-things)
