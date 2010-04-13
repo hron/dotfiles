@@ -191,7 +191,7 @@ myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 customPP :: PP
 customPP = defaultPP {
              ppHidden = xmobarColor "black" ""
-           , ppCurrent = xmobarColor "#FF0000" "" . wrap "[" "]"
+           , ppCurrent = xmobarColor "#9F664D" "" . wrap "[" "]"
            , ppUrgent = xmobarColor "#FF0000" "" . wrap "*" "*"
            , ppLayout = xmobarColor "#6A6BD8" ""
            , ppTitle = xmobarColor "black" "" . shorten 80
