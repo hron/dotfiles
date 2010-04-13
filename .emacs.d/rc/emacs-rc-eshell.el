@@ -30,5 +30,7 @@
 (require 'em-term)
 (add-to-list 'eshell-visual-commands "htop")
 
+(add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
+
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
