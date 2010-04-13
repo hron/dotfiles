@@ -183,8 +183,7 @@
 ;;
 
 ;; EShell
-(setq eshell-term-name "eterm-color")
-(add-to-list 'eshell-visual-commands "htop")
+(require 'emacs-rc-eshell)
 
 ;; Spelling
 (setq ispell-dictionary "en_US")
