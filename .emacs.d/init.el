@@ -130,6 +130,7 @@
                               ))
 ;; Ruby
 (require 'emacs-rc-ruby)
+(require 'rvm)
 
 ;; YAML
 (require 'yaml-mode)
