@@ -138,8 +138,10 @@
 
 (setq mail-user-agent 'gnus-user-agent)
 
-(add-hook 'compilation-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'comint-mode-hook      'ansi-color-for-comint-mode-on)
+;; comint-mode
+(add-hook 'comint-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'comint-mode-hook '(lambda ()
+			       (local-set-key (kbd "C-c g") 'recompile)))
 
 ;;
 ;; VC
