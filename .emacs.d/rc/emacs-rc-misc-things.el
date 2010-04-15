@@ -235,6 +235,6 @@
 (load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)
 
-(setq split-width-threshold 160)
+(setq split-width-threshold 120)
 
 (provide 'emacs-rc-misc-things)
