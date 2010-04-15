@@ -180,6 +180,9 @@
 ;; EMMS
 (require 'emacs-rc-emms)
 
+;; C#
+(require 'csharp-mode)
+
 ;;
 ;; Emacs core customization
 ;;
