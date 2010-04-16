@@ -1,1 +1,2 @@
-alias ll ls -l
+alias gi gem install --verbose $*
+alias ll ls -l $*
