@@ -1,1 +1,4 @@
+alias gu gem uninstall --verbose $*
 alias ll ls -l
+alias gi gem install --verbose $*
+alias gsr gem search --verbose -r $*
