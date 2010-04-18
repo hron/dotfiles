@@ -85,12 +85,12 @@ main = do
        -- WM actions
        , ("M-<Escape>", toggleWS)
        , ("M-S-g", goToSelected defaultGSConfig)
-       , ("M-g", windowPromptGoto  defaultXPConfig)
-       , ("M-s", sshPrompt defaultXPConfig)
-       , ("M-r", shellPrompt amberXPConfig)
+       , ("M-g", windowPromptGoto  customXPConfig)
+       , ("M-s", sshPrompt customXPConfig)
+       , ("M-r", shellPrompt customXPConfig)
        , ("M-u", focusUrgent)
        , ("M-o", windowMenu)
-       , ("M-S-r", xmonadPrompt amberXPConfig)
+       , ("M-S-r", xmonadPrompt customXPConfig)
        , ("M-f", fullFloatFocused)
        , ("M-v", withFocused $ windows . W.sink)
        , ("M-m", sendMessage Mag.Toggle)
@@ -198,7 +198,13 @@ customPP = defaultPP {
            , ppSep = "<fc=#0033FF> | </fc>"
            }
 
-
+customXPConfig :: XPConfig
+customXPConfig = defaultXPConfig { font = "misc-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
+                                 , bgColor = "black"
+                                 , fgColor = "grey90"
+                                 , bgHLight = "black"
+                                 , fgHLight = "green"
+                                 , position = Top }
 
 -- Local variables:
 -- compile-command: "xmonad --recompile && xmonad --restart"
