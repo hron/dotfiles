@@ -37,6 +37,9 @@ import qualified XMonad.StackSet as W
 import System.IO
 import Data.Monoid
 import Data.Ratio
+import qualified Data.Map as M
+
+import Control.Arrow (first)
 
 main = do
   xmproc <- spawnPipe "xmobar"  -- start xmobar
@@ -199,12 +202,58 @@ customPP = defaultPP {
            }
 
 customXPConfig :: XPConfig
-customXPConfig = defaultXPConfig { font = "misc-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
-                                 , bgColor = "black"
-                                 , fgColor = "grey90"
-                                 , bgHLight = "black"
-                                 , fgHLight = "green"
-                                 , position = Top }
+customXPConfig = defaultXPConfig { font         = "misc-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
+                                 , bgColor      = "black"
+                                 , fgColor      = "grey90"
+                                 , bgHLight     = "black"
+                                 , fgHLight     = "green"
+                                 , position     = Top
+                                 , promptKeymap = customXPKeymap}
+
+-- Make sure we can use Alt.
+metaMask :: KeyMask
+metaMask = mod1Mask
+
+customXPKeymap :: M.Map (KeyMask,KeySym) (XP ())
+customXPKeymap = M.fromList $
+  map (first $ (,) controlMask) -- control + <key>
+  [ (xK_u, killBefore)
+  , (xK_k, killAfter)
+  , (xK_a, startOfLine)
+  , (xK_e, endOfLine)
+  , (xK_y, pasteString)
+  , (xK_c, copyString)
+  , (xK_Right, moveWord Next)
+  , (xK_Left, moveWord Prev)
+  , (xK_Delete, killWord Next)
+  , (xK_BackSpace, killWord Prev)
+  , (xK_w, killWord Prev)
+  , (xK_q, quit)
+  , (xK_p, moveHistory W.focusUp')
+  , (xK_n, moveHistory W.focusDown')
+  ] ++
+  map (first $ (,) metaMask) -- meta + <key>
+  [ (xK_b, moveWord Prev)
+  , (xK_f, moveWord Next)
+  , (xK_d, killWord Next)
+  , (xK_BackSpace, killWord Prev)
+  , (xK_m, startOfLine)
+  , (xK_p, moveHistory W.focusUp')
+  , (xK_n, moveHistory W.focusDown')
+  ] ++
+  map (first $ (,) 0)
+  [ (xK_Return, setSuccess True >> setDone True)
+  , (xK_KP_Enter, setSuccess True >> setDone True)
+  , (xK_BackSpace, deleteString Prev)
+  , (xK_Delete, deleteString Next)
+  , (xK_Left, moveCursor Prev)
+  , (xK_Right, moveCursor Next)
+  , (xK_Home, startOfLine)
+  , (xK_End, endOfLine)
+  , (xK_Down, moveHistory W.focusUp')
+  , (xK_Up, moveHistory W.focusDown')
+  , (xK_Escape, quit)
+  ]
 
 -- Local variables:
 -- compile-command: "xmonad --recompile && xmonad --restart"
