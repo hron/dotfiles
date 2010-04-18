@@ -25,11 +25,12 @@
 ;;; Code:
 
 (require 'eshell)
-(setq eshell-term-name "eterm-color")
+
 
 (require 'em-term)
-(mapc '(lambda (command)
-	 (add-to-list 'eshell-visual-commands command))
+(setq eshell-term-name "eterm-color")
+
+(mapc '(lambda (command) (add-to-list 'eshell-visual-commands command))
       '("htop" "iotop"))
 
 (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
