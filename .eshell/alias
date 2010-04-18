@@ -1,4 +1,6 @@
-alias gu gem uninstall --verbose $*
+alias cut cut -f1 --delimiter=" " $*
 alias ll ls -l
 alias gi gem install --verbose $*
-alias gsr gem search --verbose -r $*
+alias gu gem uninstall --verbose $*
+alias gs gem search --verbose -r $*
+alias gl gem list $*
