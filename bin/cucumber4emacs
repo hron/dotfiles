@@ -1,0 +1,3 @@
+#! /bin/zsh
+
+cd $HOME/src/cucumber4emacs && exec emacs
