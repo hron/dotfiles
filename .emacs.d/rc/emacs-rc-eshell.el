@@ -35,5 +35,10 @@
 
 (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
 
+(defun eshell/watchr (&rest args)	; all but first ignored
+  "Alias to call list watchr inside eshell"
+  (let ((script (car args)))
+    (watchr script)))
+
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
