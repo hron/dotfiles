@@ -75,10 +75,10 @@ main = do
        , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
        , ("M-S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
-       , ("M-t",   spawn "uxterm -e 'byobu -RR'")
+       , ("M-t",   spawn "uxterm -e 'screen -RR'")
+       , ("M-S-t", spawn "uxterm -e 'byobu -RR'")
        -- , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
        , ("M-x",   spawn "emacsclient -c -e '(emms-smart-browse)'")
-       , ("M-S-t", spawn "uxterm")
        , ("M-b",   spawn "conkeror")
        , ("M-e",   spawn "emacsclient -nc")
        , ("M-q",   promptSelection "stardict ")
