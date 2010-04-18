@@ -62,5 +62,11 @@
 	     (local-set-key (kbd "k") 'previous-line)))
 
 
+;; (if (eq window-system 'x)
+;;     (add-hook 'emms-player-started-hook
+;;        '(lambda ()
+;; 	  (shell-command (concat "notify-send -t 3000 "
+;; 				 "\"" (emms-show) "\"")))))
+
 (provide 'emacs-rc-emms)
 ;;; emacs-rc-emms.el ends here
