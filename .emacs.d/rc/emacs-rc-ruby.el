@@ -125,5 +125,11 @@
 (require 'autotest)
 (setq autotest-command "export AUTOFEATURE=true; autospec")
 
+(defun watchr (script)
+  "*Run watchr in autotest mode for SCRIPT."
+  (interactive "fWatchr script: ")
+  (let ((autotest-command (concat "watchr " script)))
+    (autotest)))
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
