@@ -11,10 +11,10 @@ require("page-modes/google-video.js")
 require("page-modes/google-calendar.js")
 require("page-modes/google-reader.js")
 require("page-modes/google-images.js")
-// require("page-modes/google-search-results.js");
 require("extensions/adblockplus.js");
 
-google_search_bind_number_shortcuts();
+// require("page-modes/google-search-results.js");
+// google_search_bind_number_shortcuts();
 
 // Webjump oneliners
 define_webjump("codesearch", "http://www.google.com/codesearch?q=%s");

@@ -164,7 +164,8 @@
 (require 'emacs-rc-tty-format)
 
 ;; el4r
-(require 'emacs-rc-el4r)
+(with-demoted-errors
+  (require 'emacs-rc-el4r))
 
 ;; Anything
 (require 'emacs-rc-anything)

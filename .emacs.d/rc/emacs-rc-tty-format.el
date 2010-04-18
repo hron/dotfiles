@@ -3,7 +3,7 @@
 ;; Copyright (C) 2009  Aleksei Gusev
 
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -50,7 +50,7 @@ indeed be ordinary text."
 
       (when (let ((case-fold-search t))
               (or (string-match "\\.txt\\'"  filename)
-		  (string-match "\\(cucumber\\|development\\|test\\)\\.log\\'"  filename)
+		  (string-match "\\(cucumber\\|development\\|test\\|delayed_job\\)\\.log\\'"  filename)
                   (string-match "/README\\'" filename)))
 
         (if (save-excursion

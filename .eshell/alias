@@ -1,2 +1,6 @@
+alias cut cut -f1 --delimiter=" " $*
+alias ll ls -l
 alias gi gem install --verbose $*
-alias ll ls -l $*
+alias gu gem uninstall --verbose $*
+alias gs gem search --verbose -r $*
+alias gl gem list $*
