@@ -56,9 +56,7 @@
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
 (setq inf-ruby-first-prompt-pattern "^>> *"
-      inf-ruby-prompt-pattern "^>> *")
-
-
+      inf-ruby-prompt-pattern inf-ruby-first-prompt-pattern)
 
 ;; Ri-Emacs
 ;; (setq ri-ruby-progres "/usr/bin/ruby")
