@@ -54,5 +54,13 @@
     (emms-lastfm-enable)
     ))
 
+(add-hook 'emms-browser-show-display-hook
+	  '(lambda ()
+	     (local-set-key (kbd "n") 'next-line)
+	     (local-set-key (kbd "j") 'next-line)
+	     (local-set-key (kbd "p") 'previous-line)
+	     (local-set-key (kbd "k") 'previous-line)))
+
+
 (provide 'emacs-rc-emms)
 ;;; emacs-rc-emms.el ends here
