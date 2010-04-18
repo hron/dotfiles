@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -36,16 +36,16 @@
 (setq woman-use-own-frame nil)
 
 (defun woman-reformat-last-file-with-toggle-fill-frame ()
-	"Reformat last file, e.g. after changing fill column after toggling
+  "Reformat last file, e.g. after changing fill column after toggling
 fill frame option."
-	(interactive)
-	(woman-toggle-fill-frame)
-	(woman-reformat-last-file))
+  (interactive)
+  (woman-toggle-fill-frame)
+  (woman-reformat-last-file))
 
 (add-hook 'woman-mode-hook
-               '(lambda ()
-                  (define-key woman-mode-map "R"
-                  'woman-reformat-last-file-with-toggle-fill-frame)))
+	  '(lambda ()
+	     (define-key woman-mode-map "R"
+	       'woman-reformat-last-file-with-toggle-fill-frame)))
 
 (provide 'emacs-rc-woman)
 ;;; emacs-rc-woman.el ends here
