@@ -47,12 +47,12 @@
 
 (emms-mode-line-disable)
 
-(let ((emms-lastfm-auth (expand-file-name "~/.emacs.d/.emms-lastfm-auth")))
-  (when (file-exists-p emms-lastfm-auth)
-    (require 'emms-lastfm)
-    (load emms-lastfm-auth)
-    (emms-lastfm-enable)
-    ))
+;; (let ((emms-lastfm-auth (expand-file-name "~/.emacs.d/.emms-lastfm-auth")))
+;;   (when (file-exists-p emms-lastfm-auth)
+;;     (require 'emms-lastfm)
+;;     (load emms-lastfm-auth)
+;;     (emms-lastfm-enable)
+;;     ))
 
 (add-hook 'emms-browser-show-display-hook
 	  '(lambda ()
