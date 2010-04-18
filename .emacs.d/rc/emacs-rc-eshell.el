@@ -40,5 +40,10 @@
   (let ((script (car args)))
     (watchr script)))
 
+(setq eshell-banner-message
+      '(concat (shell-command-to-string
+		"ruby --version || echo 'no ruby... :('")
+	       "\n\n"))
+
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
