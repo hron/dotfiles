@@ -3,7 +3,7 @@ export LC_NUMERIC=C
 export LC_COLLATE=C
 export LC_MESSAGES=C
 
-export PATH=$HOME/bin:$HOME/.gem/ruby/1.8/bin:/var/lib/gems/1.8/bin:/sbin:/usr/sbin:$PATH
+export PATH=$HOME/bin:$PATH:$HOME/.gem/ruby/1.8/bin:/var/lib/gems/1.8/bin:/sbin:/usr/sbin:
 export EDITOR=emacsclient
 
 export PGHOST=127.0.0.1
