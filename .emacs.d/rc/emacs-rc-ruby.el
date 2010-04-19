@@ -84,6 +84,7 @@
 
 ;; emacs-rails-reloaded
 (setq-default rails/bundles/disabled-list '(apidock))
+(setq rails/webserver-bundle/default-type "webrick")
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
