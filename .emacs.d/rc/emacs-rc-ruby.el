@@ -55,9 +55,6 @@
 (defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
-(setq inf-ruby-first-prompt-pattern "^>> *"
-      inf-ruby-prompt-pattern inf-ruby-first-prompt-pattern)
-
 ;; Ri-Emacs
 ;; (setq ri-ruby-progres "/usr/bin/ruby")
 ;; (setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
@@ -128,6 +125,12 @@
 
 (require 'autotest)
 (setq autotest-command "export AUTOFEATURE=true; autospec")
+
+(defun watchr (script)
+  "*Run watchr in autotest mode for SCRIPT."
+  (interactive "fWatchr script: ")
+  (let ((autotest-command (concat "watchr " script)))
+    (autotest)))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode

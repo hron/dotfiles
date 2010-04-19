@@ -35,5 +35,15 @@
 
 (add-hook 'eshell-mode-hook 'turn-on-eldoc-mode)
 
+(defun eshell/watchr (&rest args)	; all but first ignored
+  "Alias to call list watchr inside eshell"
+  (let ((script (car args)))
+    (watchr script)))
+
+(setq eshell-banner-message
+      '(concat (shell-command-to-string
+		"ruby --version || echo 'no ruby... :('")
+	       "\n\n"))
+
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
