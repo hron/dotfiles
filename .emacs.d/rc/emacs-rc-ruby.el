@@ -128,5 +128,9 @@
 (require 'autotest)
 (setq autotest-command "export AUTOFEATURE=true; autospec")
 
+;; rvm stuff
+(add-auto-mode 'compilation-mode
+	       "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
