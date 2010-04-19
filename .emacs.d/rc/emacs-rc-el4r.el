@@ -27,6 +27,7 @@
 (require 'el4r)
 
 (el4r-boot)
+(set-process-query-on-exit-flag el4r-process nil)
 
 (provide 'emacs-rc-el4r)
 ;;; emacs-rc-el4r.el ends here
