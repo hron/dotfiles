@@ -143,6 +143,8 @@
 (add-hook 'comint-mode-hook '(lambda ()
 			       (local-set-key (kbd "C-c g") 'recompile)))
 
+(setq grep-program "zgrep")
+
 ;;
 ;; VC
 ;;
