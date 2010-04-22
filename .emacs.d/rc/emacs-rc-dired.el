@@ -65,7 +65,7 @@
 ;; tell Emacs to use the Trash for file deletion, by changing the
 ;; variable `delete-by-moving-to-trash' to `t'. *Note Misc File Ops::,
 ;; for more information about the Trash.
-(setq delete-by-moving-to-trash t)
+(setq delete-by-moving-to-trash nil)
 
 (add-hook 'dired-mode-hook
 	  (lambda ()

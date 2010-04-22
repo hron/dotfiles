@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("root@62.129.144.211:/"
+(("pureweb"
+  (filename . "/sudo:root@83.133.127.122:/etc/")
+  (front-context-string . "hostname\n  -rw-r")
+  (rear-context-string . " 5 Mar 12 16:16 ")
+  (position . 5627))
+ ("root@62.129.144.211:/"
   (filename . "/sudo:root@62.129.144.211:/")
   (front-context-string . "lost+found\n  drw")
   (rear-context-string . "6K Mar  1 14:23 ")
