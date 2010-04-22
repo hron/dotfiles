@@ -34,3 +34,6 @@
 [submodule ".emacs.d/site-lisp/rvm"]
 	path = .emacs.d/site-lisp/rvm
 	url = git://github.com/hron/rvm.el.git
+[submodule ".emacs.d/site-lisp/ert"]
+	path = .emacs.d/site-lisp/ert
+	url = git://github.com/ohler/ert.git

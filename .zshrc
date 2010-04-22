@@ -18,16 +18,24 @@ alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'       # no spelling correction on cp
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias grep='egrep --color=auto'
-alias ll='ls -l -h'
-alias ls='ls --color=auto'
 alias rsync='/usr/bin/rsync -hav --progress'
 
+alias ll='ls -l -h'
+alias ls='ls --color=auto'
 # List only directories and symbolic
 # links that point to directories
 alias lsd='ls -ld *(-/DN)'
-
 # List only file beginning with "."
 alias lsa='ls -ld .*'
+
+# gem
+alias gi='gem install --verbose'
+alias gu='gem uninstall --verbose'
+alias gl='gem list'
+alias gs='gem search --remote'
+alias bi='bundle install'
+
+alias cut='cut -f1 --delimiter=" "'
 
 # Where to look for autoloaded function definitions
 #fpath=($fpath ~/.zfunc)
@@ -54,8 +62,8 @@ alias -g T='|tail'
 #hosts=(`hostname` ftp.math.gatech.edu prep.ai.mit.edu wuarchive.wustl.edu)
 
 # Set prompts
-PROMPT='%B%m%b%# '    # default prompt
-RPROMPT=' %~'     # prompt for right side of screen
+PROMPT='%B%m%b%# '		# default prompt
+RPROMPT=' %~'			# prompt for right side of screen
 
 HISTFILE=~/.zhistory
 SAVEHIST=1000
