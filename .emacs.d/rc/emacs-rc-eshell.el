@@ -41,9 +41,12 @@
     (watchr script)))
 
 (setq eshell-banner-message
-      '(concat (shell-command-to-string
-		"ruby --version || echo 'no ruby... :('")
-	       "\n\n"))
+      '(concat
+	"Welcome to Eshell!\n"
+	"  ruby: " (shell-command-to-string
+		    "ruby --version 2>/dev/null || echo 'no ruby... :('")
+	"  gems: " (shell-command-to-string
+		    "gem --version 2>/dev/null || echo 'no rubygems... :('")))
 
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
