@@ -33,7 +33,7 @@ end
 #   :PROMPT_S=>"%03n:%i%l "
 # }
 
-IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:PROMPT_MODE] = :DEFAULT
 # Adds readline functionality
 IRB.conf[:USE_READLINE] = true
 # Auto indents suites

@@ -1,7 +1,7 @@
-alias gu gem update $*
-alias bi bundle install $*
-alias gl gem list $*
-alias gs gem search --verbose -r $*
-alias gi gem install --verbose $*
+alias ll ls -l -h $*
 alias cut cut -f1 --delimiter=" " $*
-alias ll ls -l $*
+alias gi gem install --verbose $*
+alias gs gem search --verbose -r $*
+alias gl gem list $*
+alias bi bundle install $*
+alias gu gem update $*

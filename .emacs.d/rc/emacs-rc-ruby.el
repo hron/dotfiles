@@ -60,6 +60,8 @@
 (require 'ri)
 (defun ri-bind-key ()
   (local-set-key [f1] 'ri))
+(setq ri-repl-executable (expand-file-name
+			  "~/.emacs.d/site-lisp/ri.el/ri_repl"))
 
 (defalias 'rails-search-doc 'ri)
 
