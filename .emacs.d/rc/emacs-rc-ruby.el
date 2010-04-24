@@ -49,16 +49,12 @@
 ;; Inferion ruby
 (require 'inf-ruby)
 (add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
+;; these aliases is for emacs-rails-reloaded.
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
 (defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
 (defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
-(add-hook 'ruby-mode-hook 'inf-ruby-keys)
-
-;; Ri-Emacs
-;; (setq ri-ruby-progres "/usr/bin/ruby")
-;; (setq ri-ruby-script (concat (getenv "HOME") "/.emacs.d/site-lisp/ri-emacs/ri-emacs.rb"))
-;; (autoload 'ri "~/.emacs.d/site-lisp/ri-emacs/ri-ruby.el" nil t)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/ri.el"))
 (require 'ri)
