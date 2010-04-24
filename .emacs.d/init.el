@@ -199,7 +199,7 @@
 ;; comint-mode
 (setq comint-scroll-to-bottom-on-output 'others)
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
-(add-hook 'shell-mode-hook 'rdebug-track-minor-mode)
+(add-hook 'shell-mode-hook 'turn-on-rdebug-track-mode)
 
 ;; Org-mode
 (require 'emacs-rc-org)
