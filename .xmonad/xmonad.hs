@@ -238,8 +238,8 @@ customXPKeymap = M.fromList $
   , (xK_d, killWord Next)
   , (xK_BackSpace, killWord Prev)
   , (xK_m, startOfLine)
-  , (xK_p, moveHistory W.focusUp')
-  , (xK_n, moveHistory W.focusDown')
+  , (xK_n, moveHistory W.focusUp')
+  , (xK_p, moveHistory W.focusDown')
   ] ++
   map (first $ (,) 0)
   [ (xK_Return, setSuccess True >> setDone True)

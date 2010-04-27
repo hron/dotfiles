@@ -1,0 +1,3 @@
+#! /bin/zsh
+
+cd $HOME/src/yari && exec emacs
