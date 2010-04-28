@@ -183,6 +183,12 @@
 ;; C#
 (require 'csharp-mode)
 
+;; magit
+(require 'magit)
+
+;; twitter
+;; (require 'twit)
+
 ;;
 ;; Emacs core customization
 ;;
