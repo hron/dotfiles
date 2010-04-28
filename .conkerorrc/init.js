@@ -25,6 +25,8 @@ define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search
 define_webjump("emacswiki", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
 define_webjump("github", "http://github.com/search?q=%s&type=Everything&repo=&langOverride=&start_value=1");
 
+define_webjump("rubytoolbox", "http://www.ruby-toolbox.com/categories.html");
+
 // Personalized Webjumps
 add_delicious_webjumps("hron");
 add_lastfm_webjumps("hron77");
