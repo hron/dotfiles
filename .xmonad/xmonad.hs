@@ -157,8 +157,10 @@ myLayoutHook = minimize
     -- for IM
     -- goldenRatio  = 2/(1+sqrt(5)::Double);
     -- pidginLayout = withIM (0.15) pidginRoster (GridRatio (1/5))
-    pidginLayout = withIM (1%7) pidginRoster (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
-    pidginRoster = And (ClassName "Pidgin") (Role "buddy_list")
+    pidginLayout  = withIM (1%7) empathyRoster (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
+    rosters       = [pidginRoster, empathyRoster]
+    empathyRoster = And (ClassName "Empathy") (Role "contact_list")
+    pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
 
 myWorkspaces = [ "1", "2", "3", "4" , "5", "6", "7.im", "8", "9" ]
 
@@ -175,6 +177,7 @@ myManageHook = composeOne
                , iconName  =? "Параметры Google Chrome"         -?> doFloat
                , className =? "Firefox"                         -?> doHideIgnore
                , className =? "Pidgin"                          -?> doShift "7.im"
+               , className =? "Empathy"                         -?> doShift "7.im"
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
                ]
@@ -193,11 +196,11 @@ myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 
 customPP :: PP
 customPP = defaultPP {
-             ppHidden = xmobarColor "black" ""
+             ppHidden = xmobarColor "white" ""
            , ppCurrent = xmobarColor "#9F664D" "" . wrap "[" "]"
            , ppUrgent = xmobarColor "#FF0000" "" . wrap "*" "*"
            , ppLayout = xmobarColor "#6A6BD8" ""
-           , ppTitle = xmobarColor "black" "" . shorten 80
+           , ppTitle = xmobarColor "white" "" . shorten 80
            , ppSep = "<fc=#0033FF> | </fc>"
            }
 
