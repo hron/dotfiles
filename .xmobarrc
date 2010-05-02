@@ -1,6 +1,6 @@
 Config { font = "xft:DejaVu Sans-9:bold"
-       , bgColor = "#E6DDD5"
-       , fgColor = "black"
+       , bgColor = "#41403B"
+       , fgColor = "white"
        , position = Top
        , lowerOnStart = False
        , commands = [ Run StdinReader ]
