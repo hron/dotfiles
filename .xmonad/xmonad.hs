@@ -7,6 +7,7 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.RestoreMinimized
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.SetWMName
 import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowMenu
@@ -48,6 +49,7 @@ main = do
        { manageHook = manageDocks <+>
                       myManageHook <+>
                       manageHook gnomeConfig
+       , startupHook       = setWMName "LG3D"
        , layoutHook        = myLayoutHook
        , logHook           = myLogHook xmproc
        , handleEventHook   = mappend myHandleEventHook (handleEventHook gnomeConfig)
