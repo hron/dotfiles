@@ -52,11 +52,11 @@
 (icomplete-mode 1)
 
 ;; Фишковое переключение между буферами
-(iswitchb-mode 1)
-(iswitchb-default-keybindings)
-(setq iswitchb-default-method 'samewindow)
-(add-hook 'iswitchb-minibuffer-setup-hook
-          '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
+;; (iswitchb-mode 1)
+;; (iswitchb-default-keybindings)
+;; (setq iswitchb-default-method 'samewindow)
+;; (add-hook 'iswitchb-minibuffer-setup-hook
+;;           '(lambda () (set (make-local-variable 'max-mini-window-height) 7)))
 
 
 ;;    If you set `set-mark-command-repeat-pop' to non-`nil', then
