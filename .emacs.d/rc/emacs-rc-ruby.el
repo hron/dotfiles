@@ -56,19 +56,15 @@
 (defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
 (defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/ri.el"))
-(require 'ri)
-(defun ri-bind-key ()
-  (local-set-key [f1] 'ri))
-(setq ri-repl-executable (expand-file-name
-			  "~/.emacs.d/site-lisp/ri.el/ri_repl"))
+;; yari
+(defun yari-bind-key ()
+  (local-set-key [f1] 'yari))
 
-(defalias 'rails-search-doc 'ri)
-
-(add-hook 'ruby-mode-hook 'ri-bind-key)
-(add-hook 'rhtml-mode-hook 'ri-bind-key)
-(add-hook 'haml-mode-hook 'ri-bind-key)
-(add-hook 'sass-mode-hook 'ri-bind-key)
+(defalias 'rails-search-doc 'yari)
+(add-hook 'ruby-mode-hook 'yari-bind-key)
+(add-hook 'rhtml-mode-hook 'yari-bind-key)
+(add-hook 'haml-mode-hook 'yari-bind-key)
+(add-hook 'sass-mode-hook 'yari-bind-key)
 
 ;; ruby-compilation
 ;; (add-hook 'ruby-mode-hook
