@@ -160,9 +160,7 @@ myLayoutHook = minimize
     -- goldenRatio  = 2/(1+sqrt(5)::Double);
     -- pidginLayout = withIM (0.15) pidginRoster (GridRatio (1/5))
     pidginLayout  = withIM (1%7) empathyRoster (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
-    rosters       = [pidginRoster, empathyRoster]
     empathyRoster = And (ClassName "Empathy") (Role "contact_list")
-    pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
 
 myWorkspaces = [ "1", "2", "3", "4" , "5", "6", "7.im", "8", "9" ]
 
