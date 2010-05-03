@@ -191,7 +191,6 @@
 
 ;; Emacswiki
 (require 'yaoddmuse)
-(yaoddmuse-update-pagename t)
 
 ;;
 ;; Emacs core customization
