@@ -152,7 +152,7 @@
 ;; SQL
 ;; (eval-after-load "sql"
 ;;   '(load-library "sql-indent"))
-
+(setq sql-sqlite-program "sqlite3")
 
 ;; ERC
 (require 'emacs-rc-erc)
@@ -191,7 +191,9 @@
 
 ;; Emacswiki
 (require 'yaoddmuse)
-(yaoddmuse-update-pagename t)
+
+;; http://www.emacswiki.org/emacs/ToggleWindowSplit
+(require 'toggle-window-split)
 
 ;;
 ;; Emacs core customization
