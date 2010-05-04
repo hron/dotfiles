@@ -152,7 +152,7 @@
 ;; SQL
 ;; (eval-after-load "sql"
 ;;   '(load-library "sql-indent"))
-
+(setq sql-sqlite-program "sqlite3")
 
 ;; ERC
 (require 'emacs-rc-erc)
