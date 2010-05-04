@@ -1,7 +1,7 @@
 ;;; emacs-rc-kbd.el -- some bindings
 
 ;; Bind `F2' to call shell
-(global-set-key [f5] 'eshell)
+(global-set-key [f5] 'shell)
 
 ;; Bind `F6' to toggle truncation lines
 (global-set-key [f6] 'toggle-truncate-lines)
