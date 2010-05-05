@@ -213,6 +213,8 @@
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 (add-hook 'shell-mode-hook 'turn-on-rdebug-track-mode)
 
+(require 'emacs-rc-shell)
+
 ;; Org-mode
 (require 'emacs-rc-org)
 
