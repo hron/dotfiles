@@ -35,6 +35,8 @@ alias gl='gem list'
 alias gs='gem search --remote'
 alias bi='bundle install'
 alias bs='bundle show'
+alias bp='bundle package'
+alias be='bundle exec'
 
 alias cut='cut -f1 --delimiter=" "'
 
