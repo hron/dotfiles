@@ -195,6 +195,9 @@
 ;; http://www.emacswiki.org/emacs/ToggleWindowSplit
 (require 'toggle-window-split)
 
+(require 'install-elisp)
+(setq install-elisp-repository-directory "~/.emacs.d/site-lisp")
+
 ;;
 ;; Emacs core customization
 ;;
