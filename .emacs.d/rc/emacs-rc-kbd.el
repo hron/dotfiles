@@ -52,7 +52,13 @@
 		    (woman))))
 
 ;; Bind `C-c l' to `locate' command
-(global-set-key "\C-co" 'locate)
+;; (global-set-key "\C-co" 'locate)
+(global-set-key "\C-co" '(lambda ()
+			   (interactive)
+			   (anything-other-buffer
+			    '(anything-c-source-locate)
+			    " *anything-locate*")))
+
 
 ;; Bind `C-c g' to `grep-find' command
 (global-set-key "\C-cg" 'rgrep)

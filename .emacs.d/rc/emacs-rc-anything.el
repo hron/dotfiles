@@ -3,7 +3,7 @@
 ;; Copyright (C) 2010  Aleksei Gusev
 
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,11 +20,12 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
 (require 'anything)
+(require 'anything-config)
 
 ;; (add-hook 'anything-after-initialize-hook
 ;;           '(lambda ()
