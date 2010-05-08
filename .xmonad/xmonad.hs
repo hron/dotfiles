@@ -78,7 +78,7 @@ main = do
        -- DE actions
          ("M-S-l", spawn "gnome-screensaver-command -l")
        , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
-       , ("M-/ q", spawn "gnome-session-save --gui --shutdown-dialog")
+       , ("M-/ S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
        , ("M-/ S-t", spawn "uxterm -e 'byobu -RR'")
