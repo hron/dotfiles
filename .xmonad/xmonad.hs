@@ -78,26 +78,30 @@ main = do
        -- DE actions
          ("M-S-l", spawn "gnome-screensaver-command -l")
        , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
-       , ("M-S-q", spawn "gnome-session-save --gui --shutdown-dialog")
+       , ("M-/ S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
-       , ("M-t",   spawn "uxterm -e 'screen -RR'")
-       , ("M-S-t", spawn "uxterm -e 'byobu -RR'")
+       , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
+       , ("M-/ S-t", spawn "uxterm -e 'byobu -RR'")
        -- , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
-       , ("M-x",   spawn "emacsclient -c -e '(emms-smart-browse)'")
-       , ("M-b",   spawn "conkeror")
-       , ("M-e",   spawn "emacsclient -nc")
-       , ("M-q",   promptSelection "stardict ")
+       , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
+       , ("M-/ b",   spawn "conkeror")
+       , ("M-/ e",   spawn "emacsclient -nc")
+       , ("M-/ q",   promptSelection "stardict ")
+       , ("<XF86HomePage>",   spawn "conkeror")
+       , ("<XF86Tools>",   spawn "emacsclient -nc")
        -- WM actions
        , ("M-<Escape>", toggleWS)
-       , ("M-S-g", goToSelected defaultGSConfig)
-       , ("M-g", windowPromptGoto  customXPConfig)
-       , ("M-s", sshPrompt customXPConfig)
-       , ("M-r", shellPrompt customXPConfig)
+       , ("M-<Backspace>", toggleWS)
+       , ("M-S-]", kill)
+       , ("M-/ g", windowPromptGoto  customXPConfig)
+       , ("M-/ S-g", goToSelected defaultGSConfig)
+       , ("M-/ s", sshPrompt customXPConfig)
+       , ("M-/ r", shellPrompt customXPConfig)
+       , ("M-/ S-r", xmonadPrompt customXPConfig)
        , ("M-u", focusUrgent)
        , ("M-o", windowMenu)
-       , ("M-S-r", xmonadPrompt customXPConfig)
-       , ("M-f", fullFloatFocused)
-       , ("M-v", withFocused $ windows . W.sink)
+       , ("M-p", fullFloatFocused)
+       , ("M-i", withFocused $ windows . W.sink)
        , ("M-m", sendMessage Mag.Toggle)
        -- MusicPlaerDaemon
        , ("<XF86AudioPlay>", spawn "mpc toggle")
@@ -106,11 +110,19 @@ main = do
        , ("<XF86AudioStop>", spawn "mpc stop")
        ]
        `additionalKeys`
-       -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
-       -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
        [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
             | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+       `additionalKeys`
+       [((m, k), windows $ f i)
+            | (i, k) <- zip myWorkspaces numPadKeys
+       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
+-- Non-numeric num pad keys, sorted by number
+numPadKeys = [ xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
+             , xK_KP_Left, xK_KP_Begin, xK_KP_Right     -- 4, 5, 6
+             , xK_KP_Home, xK_KP_Up,    xK_KP_Page_Up   -- 7, 8, 9
+             , xK_KP_Insert] -- 0
 
 -- myLayoutHook = minimize $ maximize $ boringAuto $ avoidStruts $ Mag.magnifierOff $ smartBorders
 --             (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross  ||| onWorkspace "7" (withIM (0.15) (Role "buddy_list") Grid) ||| layoutHook gnomeConfig)

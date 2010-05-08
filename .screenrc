@@ -2,8 +2,6 @@ escape ``
 
 termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
-bind c screen $SHELL -c "$NEW_WINDOW"
-
 defscrollback 266570
 
 # emacs keybindings for navigation in copy mode
@@ -19,7 +17,7 @@ bindkey -m -k kP stuff Y
 bindkey -m -k kN stuff V
 
 # failed attempt to make C-space work in i-search too
-# bindkey -m ^@ eval "stuff \033" "stuff ^@" 
+# bindkey -m ^@ eval "stuff \033" "stuff ^@"
 
 # special hack for C-e, since it should go *past*
 # the last char. -m means this is for copy mode only.
