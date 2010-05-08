@@ -11,4 +11,6 @@ export PGUSER=postgres
 
 export EL4R_ROOT=$HOME/.emacs.d/site-lisp/el4r
 
+export HISTFILE=~/.zhistory
+
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
