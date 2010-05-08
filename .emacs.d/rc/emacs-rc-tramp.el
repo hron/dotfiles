@@ -5,7 +5,7 @@
 ;; Author: Aleksei Gusev <aleksei.gusev@tut.by>
 ;; Created: 26 Aug 2005
 ;; Version: $Id$
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -42,6 +42,10 @@
 (unless (string-match "22\\." (version))
   (progn
     (setq tramp-default-proxies-alist nil)
+
+    ;; Unigate
+    (add-to-list 'tramp-default-proxies-alist
+		 '( "^app02.i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
 
     (add-to-list 'tramp-default-proxies-alist
 		 '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
@@ -85,6 +89,7 @@
 
     (add-to-list 'tramp-default-proxies-alist
 		 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
+
 
     ;; Old soapblox boxes (direct login with root)
     (add-to-list 'tramp-default-proxies-alist
