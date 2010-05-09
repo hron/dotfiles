@@ -82,8 +82,8 @@ main = do
        -- External applications
        , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
        , ("M-/ S-t", spawn "uxterm -e 'byobu -RR'")
-       -- , ("M-x",   spawn "uxterm -e 'ncmpcpp'")
-       , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
+       -- , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
+       , ("M-/ m",   spawn "uxterm -e $SHELL -c 'ncmpcpp'")
        , ("M-/ b",   spawn "conkeror")
        , ("M-/ e",   spawn "emacsclient -nc")
        , ("M-/ q",   promptSelection "stardict ")
