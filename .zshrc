@@ -68,7 +68,6 @@ alias -g T='|tail'
 PROMPT='%B%m%b%# '		# default prompt
 RPROMPT=' %~'			# prompt for right side of screen
 
-HISTFILE=~/.zhistory
 SAVEHIST=1000
 HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS
