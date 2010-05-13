@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("pureweb"
+(("org-remember-last-stored"
+  (filename . "~/src/dotfiles/org/notes.org")
+  (front-context-string . "** Wed May  5 17")
+  (rear-context-string . "pendentScreens.\n")
+  (position . 861))
+ ("pureweb"
   (filename . "/sudo:root@83.133.127.122:/etc/")
   (front-context-string . "hostname\n  -rw-r")
   (rear-context-string . " 5 Mar 12 16:16 ")

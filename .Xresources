@@ -1,5 +1,7 @@
 Emacs*font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-1
+! Emacs*font: Dejavu Sans Mono -10
 Emacs*useXIM: false
+Emacs.FontBackend: xft
 
 Xcursor.size: 18
 Xcursor.theme: Human
@@ -25,7 +27,7 @@ urxvt*urllauncher:           firefox
 urxvt*matcher.button:        3
 urxvt*saveLines:              8192
 urxvt.perl-ext-common:         default,matcher,tabbed
-! black 
+! black
 urxvt*color0:      #222222
 urxvt*color8:      #666666
 ! red
@@ -52,3 +54,6 @@ urxvt*color15:      #FFFFFF
 
 urxvt*cursorColor:       #d8d8d8
 
+! Local variables:
+! compile-command: "xrdb ~/.Xresources"
+! End:
