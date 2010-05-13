@@ -213,6 +213,9 @@
 
 ;; comint-mode
 (setq comint-scroll-to-bottom-on-output 'others)
+;; for zsh extended history...
+(setq comint-input-ring-separator "\\(\n\\|:[[:space:]]+[[:digit:]]+:[[:digit:]]+;\\)")
+
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
 (add-hook 'shell-mode-hook 'turn-on-rdebug-track-mode)
 
