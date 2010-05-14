@@ -45,7 +45,8 @@
 ;; such as MS-DOS and MS-Windows, which use `ls' emulation in Lisp,
 ;; some of the `ls' switches are not supported; see the doc string of
 ;; `insert-directory' in `ls-lisp.el' for more details."
-(setq dired-listing-switches "-ahl --group-directories-first")
+;; (setq dired-listing-switches "-ahl --group-directories-first")
+(setq dired-listing-switches "-ahl")
 
 ;; If you change the variable DIRED-ISEARCH-FILENAMES to `t', then the
 ;; usual search commands also limit themselves to the file names; for
@@ -68,23 +69,23 @@
 (setq delete-by-moving-to-trash nil)
 
 (add-hook 'dired-mode-hook
-	  (lambda ()
-	    (define-key dired-mode-map "W" 'woman-dired-find-file)))
+          (lambda ()
+            (define-key dired-mode-map "W" 'woman-dired-find-file)))
 
 (require 'dired-x)
 
 (add-hook 'dired-load-hook
-	  (lambda ()
-	    (load "dired-x")
-	    ;; Set dired-x global variables here.  For example:
-	    ;; (setq dired-guess-shell-gnutar "gtar")
-	    ;; (setq dired-x-hands-off-my-keys nil)
-	    ))
+          (lambda ()
+            (load "dired-x")
+            ;; Set dired-x global variables here.  For example:
+            ;; (setq dired-guess-shell-gnutar "gtar")
+            ;; (setq dired-x-hands-off-my-keys nil)
+            ))
 (add-hook 'dired-mode-hook
-	  (lambda ()
-	    ;; Set dired-x buffer-local variables here.  For example:
-	    (dired-omit-mode 1)
-	    ))
+          (lambda ()
+            ;; Set dired-x buffer-local variables here.  For example:
+            (dired-omit-mode 1)
+            ))
 
 (setq dired-omit-files-p t)
 (setq dired-omit-files
@@ -95,7 +96,7 @@
 
 ;; Virtual dired
 (setq auto-mode-alist (cons '("[^/]\\.dired$" . dired-virtual-mode)
-			    auto-mode-alist))
+                            auto-mode-alist))
 
 
 (provide 'emacs-rc-dired)
