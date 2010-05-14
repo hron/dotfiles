@@ -105,7 +105,7 @@
 (require 'uniquify)
 
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-			uniquify-strip-common-suffix t)
+      uniquify-strip-common-suffix t)
 
 (setq-default ediff-window-setup-function 'ediff-setup-windows-plain)
 
@@ -141,7 +141,7 @@
 ;; comint-mode
 (add-hook 'comint-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-mode-hook '(lambda ()
-			       (local-set-key (kbd "C-c g") 'recompile)))
+                               (local-set-key (kbd "C-c g") 'recompile)))
 
 (setq grep-program "zgrep")
 
