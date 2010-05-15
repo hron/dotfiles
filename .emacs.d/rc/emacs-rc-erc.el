@@ -1,4 +1,4 @@
-;;; emacs-rc-erc.el --- 
+;;; emacs-rc-erc.el ---
 
 ;; Copyright (C) 2004, 2008 Aleksei Gusev <aleksei.gusev@gmail.com>
 ;;
@@ -25,7 +25,7 @@
              (erc-completion-mode 1)))
 
 (require 'erc-fill)
-(setq erc-fill-column 70)
+(setq erc-fill-column 60)
 (erc-fill-mode t)
 (require 'erc-ring)
 (erc-ring-mode t)
@@ -35,7 +35,15 @@
 (setq erc-timestamp-format "[%R-%m/%d]")
 (erc-button-mode nil)
 
-(setq erc-server-coding-system (quote (cp1251 . cp1251)))
+(setq erc-server-coding-system
+      '(lambda (target)
+	 (let ((server (car (split-string (buffer-name (erc-server-buffer)) ":"))))
+	   (cond ((string= "irc.by" server)
+		  (cons 'cp1251 'cp1251))
+		 ((string= "bynets.org" server)
+		  (cons 'cp1251 'cp1251))
+		 (t
+		  (cons 'utf-8 'utf-8))))))
 
 ;; logging:
 (setq erc-log-insert-log-on-open nil)
@@ -45,12 +53,12 @@
 (setq erc-hide-timestamps nil)
 
 ;; (defadvice save-buffers-kill-emacs (before save-logs (arg) activate)
-;;   (save-some-buffers t (lambda () 
+;;   (save-some-buffers t (lambda ()
 ;; 			 (when (and (eq major-mode 'erc-mode)
 ;; 				    (not (null buffer-file-name)))))))
 
 (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
-(add-hook 'erc-mode-hook '(lambda () 
+(add-hook 'erc-mode-hook '(lambda ()
 			    (when (not (featurep 'xemacs))
 			      (set (make-variable-buffer-local
 				    'coding-system-for-write)
@@ -117,6 +125,7 @@
 ;;      :nick "hron|erc" :full-name "Aleksei Gusev")
 (defun gau-erc ()
   (interactive)
+  (erc :server "127.0.0.1" :nick "hron" :full-name "Aleksei Gusev")
   (erc :server "irc.by" :port 6667
        :nick "hron" :full-name "Aleksei Gusev")
   (erc :server "bynets.org"
