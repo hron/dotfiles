@@ -9,14 +9,21 @@
 
 (autoload 'erc-select "erc" "IRC client." t)
 (require 'erc)
-(setq erc-auto-query t)
+(setq erc-auto-query 'frame)
 (add-hook 'erc-mode-hook 'erc-add-scroll-to-bottom)
 (require 'erc-match)
 (erc-autojoin-mode 1)
 (erc-match-mode)
 
 (require 'erc-track)
-;; (erc-track-modified-channels-mode t)
+(setq erc-track-visibility 'nil
+      erc-track-exclude-types  '("NICK" "JOIN" "QUIT" "PART" "333" "353")
+      erc-track-exclude-server-buffer t
+      erc-track-position-in-mode-line nil)
+(add-to-list 'mode-line-modes
+             '(when (eq major-mode 'erc-mode) erc-modified-channels-object))
+
+;; (require 'erc-nicklist)
 
 (add-hook 'erc-mode-hook
           '(lambda ()
@@ -37,13 +44,13 @@
 
 (setq erc-server-coding-system
       '(lambda (target)
-	 (let ((server (car (split-string (buffer-name (erc-server-buffer)) ":"))))
-	   (cond ((string= "irc.by" server)
-		  (cons 'cp1251 'cp1251))
-		 ((string= "bynets.org" server)
-		  (cons 'cp1251 'cp1251))
-		 (t
-		  (cons 'utf-8 'utf-8))))))
+         (let ((server (car (split-string (buffer-name (erc-server-buffer)) ":"))))
+           (cond ((string= "irc.by" server)
+                  (cons 'cp1251 'cp1251))
+                 ((string= "bynets.org" server)
+                  (cons 'cp1251 'cp1251))
+                 (t
+                  (cons 'utf-8 'utf-8))))))
 
 ;; logging:
 (setq erc-log-insert-log-on-open nil)
@@ -54,15 +61,15 @@
 
 ;; (defadvice save-buffers-kill-emacs (before save-logs (arg) activate)
 ;;   (save-some-buffers t (lambda ()
-;; 			 (when (and (eq major-mode 'erc-mode)
-;; 				    (not (null buffer-file-name)))))))
+;;                       (when (and (eq major-mode 'erc-mode)
+;;                                  (not (null buffer-file-name)))))))
 
 (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
 (add-hook 'erc-mode-hook '(lambda ()
-			    (when (not (featurep 'xemacs))
-			      (set (make-variable-buffer-local
-				    'coding-system-for-write)
-				   'emacs-mule))))
+                            (when (not (featurep 'xemacs))
+                              (set (make-variable-buffer-local
+                                    'coding-system-for-write)
+                                   'emacs-mule))))
 ;; end logging
 
 ;; Truncate buffers so they don't hog core.
@@ -89,20 +96,20 @@
 ;;   This last element is optional.
 ;; (setq erc-nickserv-alist
 ;;       (cons erc-nickserv-alist
-;; 	    '((IrcBy
-;; 	       "NickServ!NickServ@multiport."
-;; 	       "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
-;; 	       "NickServ"
-;; 	       "IDENTIFY" nil nil))))
-(setq erc-nickserv-alist
-      '((IrcBy
-	 "NickServ!NickServ@multiport."
-	 "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
-	 "NickServ"
-	 "IDENTIFY" nil nil)))
+;;          '((IrcBy
+;;             "NickServ!NickServ@multiport."
+;;             "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
+;;             "NickServ"
+;;             "IDENTIFY" nil nil))))
+(add-to-list 'erc-nickserv-alist
+             '(IrcBy
+               "NickServ!NickServ@multiport."
+               "/msg\\s-NickServ\\s-IDENTIFY\\s-<password>"
+               "NickServ"
+               "IDENTIFY" nil nil))
 
 ;; Ask for the password when identifying to NickServ.
-(setq erc-prompt-for-nickserv-password t)
+(setq erc-prompt-for-nickserv-password nil)
 
 ;; Load authentication info from an external source.  Put sensitive
 ;; passwords and the like in here.
@@ -112,13 +119,15 @@
 
 ;; Join the #emacs and #erc channels whenever connecting to Freenode.
 ;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
-;; 				    ("irc.by" "#linux" "#1182" "#velominsk")))
+;;                                  ("irc.by" "#linux" "#1182" "#velominsk")))
 (setq erc-autojoin-channels-alist '(("irc.by" "#1182" "#emacs"
-				     "#linux" "#unix" "#velominsk")
-				    ("bynets.org" "#emacs" "#unix")))
+                                     "#linux" "#unix" "#velominsk")
+                                    ("bynets.org" "#emacs" "#unix")))
 
 (setq erc-server-flood-margin 9
       erc-server-flood-penalty 4)
+
+(require 'erc-input-fill)
 
 ;; Finally, tell erc to connect to freenode.
 ;; (erc :server "irc.by" :port 6667
