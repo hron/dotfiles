@@ -191,6 +191,7 @@ myManageHook = composeOne
                , className =? "Firefox"                         -?> doHideIgnore
                , className =? "Pidgin"                          -?> doShift "7.im"
                , className =? "Empathy"                         -?> doShift "7.im"
+               , title     =? "ERC"                             -?> doShift "7.im"
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
                ]

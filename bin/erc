@@ -1,3 +1,3 @@
 #! /bin/sh
 
-emacs -e gau-erc
+emacs --no-desktop -T ERC -e gau-erc

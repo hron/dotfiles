@@ -9,7 +9,8 @@
 
 (autoload 'erc-select "erc" "IRC client." t)
 (require 'erc)
-(setq erc-auto-query 'frame)
+(setq erc-auto-query 'frame
+      erc-query-display 'frame)
 (add-hook 'erc-mode-hook 'erc-add-scroll-to-bottom)
 (require 'erc-match)
 (erc-autojoin-mode 1)
@@ -18,10 +19,7 @@
 (require 'erc-track)
 (setq erc-track-visibility 'nil
       erc-track-exclude-types  '("NICK" "JOIN" "QUIT" "PART" "333" "353")
-      erc-track-exclude-server-buffer t
-      erc-track-position-in-mode-line nil)
-(add-to-list 'mode-line-modes
-             '(when (eq major-mode 'erc-mode) erc-modified-channels-object))
+      erc-track-exclude-server-buffer t)
 
 ;; (require 'erc-nicklist)
 
@@ -32,7 +30,7 @@
              (erc-completion-mode 1)))
 
 (require 'erc-fill)
-(setq erc-fill-column 60)
+(setq erc-fill-column 66)
 (erc-fill-mode t)
 (require 'erc-ring)
 (erc-ring-mode t)
@@ -76,8 +74,11 @@
 (setq erc-max-buffer-size 20000)
 (defvar erc-insert-post-hook)
 (require 'erc-truncate)
-					;(add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
-					;(setq erc-truncate-buffer-on-save t)
+
+(setq erc-server-flood-margin 9
+      erc-server-flood-penalty 4)
+
+(require 'erc-input-fill)
 
 ;; Nickserver identifying
 (require 'erc-services)
@@ -115,23 +116,10 @@
 ;; passwords and the like in here.
 (load "~/.emacs.d/.erc-auth")
 
-(require 'erc-speedbar)
-
-;; Join the #emacs and #erc channels whenever connecting to Freenode.
-;; (setq erc-autojoin-channels-alist '(("freenode.net" "#emacs" "#erc" "#gentoo" "#conkeror" "#ruby" "#rubyonrails")
-;;                                  ("irc.by" "#linux" "#1182" "#velominsk")))
 (setq erc-autojoin-channels-alist '(("irc.by" "#1182" "#emacs"
                                      "#linux" "#unix" "#velominsk")
                                     ("bynets.org" "#emacs" "#unix")))
 
-(setq erc-server-flood-margin 9
-      erc-server-flood-penalty 4)
-
-(require 'erc-input-fill)
-
-;; Finally, tell erc to connect to freenode.
-;; (erc :server "irc.by" :port 6667
-;;      :nick "hron|erc" :full-name "Aleksei Gusev")
 (defun gau-erc ()
   (interactive)
   (erc :server "127.0.0.1" :nick "hron" :full-name "Aleksei Gusev")
