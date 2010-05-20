@@ -1,4 +1,4 @@
-Config { font = "xft:DejaVu Sans-9:bold"
+Config { font = "xft:DejaVu Sans-9:book"
        , bgColor = "#41403B"
        , fgColor = "white"
        , position = Top

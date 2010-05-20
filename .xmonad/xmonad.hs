@@ -210,12 +210,11 @@ myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 
 customPP :: PP
 customPP = defaultPP {
-             ppHidden = xmobarColor "white" ""
-           , ppCurrent = xmobarColor "#9F664D" "" . wrap "[" "]"
-           , ppUrgent = xmobarColor "#FF0000" "" . wrap "*" "*"
-           , ppLayout = xmobarColor "#6A6BD8" ""
-           , ppTitle = xmobarColor "white" "" . shorten 80
-           , ppSep = "<fc=#0033FF> | </fc>"
+             ppCurrent = xmobarColor "white" "#9F664D" . wrap "[" "]"
+           , ppUrgent = xmobarColor "white" "#FF0000" . wrap "*" "*"
+           , ppLayout = xmobarColor "white" "black"
+           , ppTitle = xmobarColor "white" ""
+           , ppSep = "   "
            }
 
 customXPConfig :: XPConfig
@@ -273,5 +272,5 @@ customXPKeymap = M.fromList $
   ]
 
 -- Local variables:
--- compile-command: "xmonad --recompile && xmonad --restart"
+-- compile-command: "pkill xmobar; xmonad --recompile && xmonad --restart"
 -- End:
