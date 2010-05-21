@@ -82,8 +82,8 @@ main = do
        -- External applications
        , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
        , ("M-/ S-t", spawn "uxterm -e 'byobu -RR'")
-       -- , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
-       , ("M-/ m",   spawn "uxterm -e $SHELL -c 'ncmpcpp'")
+       , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
+       , ("M-/ M",   spawn "uxterm -e $SHELL -c 'ncmpcpp'")
        , ("M-/ b",   spawn "conkeror")
        , ("M-/ e",   spawn "emacsclient -nc")
        , ("M-/ q",   promptSelection "stardict ")
@@ -106,6 +106,7 @@ main = do
        -- MusicPlaerDaemon
        , ("<XF86AudioPlay>", spawn "mpc toggle")
        , ("<XF86AudioNext>", spawn "mpc next")
+       , ("<XF86AudioMedia>", spawn "mpc next")
        , ("<XF86AudioPrev>", spawn "mpc prev")
        , ("<XF86AudioStop>", spawn "mpc stop")
        ]
