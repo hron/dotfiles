@@ -32,7 +32,7 @@
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
                "Rakefile$" "Capfile" "Gemfile" "Sitefile"
-	       "Vagrantfile"
+	       "Vagrantfile" "\\.autotest$"
                "\\.watchr")
 
 (add-hook 'ruby-mode-hook
