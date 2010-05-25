@@ -51,21 +51,21 @@
 ;; [[info:org:Setting%20up%20Remember][info:org:Setting up Remember]]
 (org-remember-insinuate)
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/journal.org"))
+(setq org-default-notes-file (concat org-directory "/journal.org.gpg"))
 (define-key global-map "\C-cR" 'org-remember)
 
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 (setq org-remember-templates
-     '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" "~/org/newgtd.org" "Задачи"))
+     '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" "~/org/newgtd.org.gpg" "Задачи"))
      )
 
 (setq org-deadline-warning-days 7)
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("birthday.org" "newgtd.org"))
+			  '("birthday.org.gpg" "newgtd.org.gpg"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
@@ -100,12 +100,12 @@
        (org-deadline-warning-days 0)))))
    ))
 
-(setq org-refile-targets (quote (("newgtd.org" :maxlevel . 1) ("someday.org" :level . 2))))
+(setq org-refile-targets (quote (("newgtd.org.gpg" :maxlevel . 1) ("someday.org.gpg" :level . 2))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (defun gtd ()
   (interactive)
-  (find-file (concat org-directory "newgtd.org")))
+  (find-file (concat org-directory "newgtd.org.gpg")))
 
 (global-set-key (kbd "C-c G") 'gtd)
 
