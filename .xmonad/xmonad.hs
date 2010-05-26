@@ -97,7 +97,8 @@ main = do
        , ("M-/ S-g", goToSelected defaultGSConfig)
        , ("M-/ s", sshPrompt customXPConfig)
        , ("M-/ r", shellPrompt customXPConfig)
-       , ("M-/ S-r", xmonadPrompt customXPConfig)
+       -- , ("M-/ R", xmonadPrompt customXPConfig)
+       , ("M-/ S-r", spawn "emacsclient -e '(remember-other-frame)'")
        , ("M-u", focusUrgent)
        , ("M-o", windowMenu)
        , ("M-p", fullFloatFocused)
@@ -273,5 +274,5 @@ customXPKeymap = M.fromList $
   ]
 
 -- Local variables:
--- compile-command: "pkill xmobar; xmonad --recompile && xmonad --restart"
+-- compile-command: "xmonad --recompile && xmonad --restart"
 -- End:
