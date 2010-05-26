@@ -3,7 +3,7 @@
 ;; Copyright (C) 2009  Aleksei Gusev
 
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -44,15 +44,70 @@
 
 ;; The most basic logging is to keep track of _when_ a certain TODO item
 ;; was finished.  This is achieved with(1).
-;; 
+;;
 ;; [[info:org:Closing%20items][info:org:Closing items]]
 (setq org-log-done 'time)
 
 ;; [[info:org:Setting%20up%20Remember][info:org:Setting up Remember]]
 (org-remember-insinuate)
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/journal.org.gpg"))
 (define-key global-map "\C-cR" 'org-remember)
+
+(setq remember-annotation-functions '(org-remember-annotation))
+(setq remember-handler-functions '(org-remember-handler))
+(add-hook 'remember-mode-hook 'org-remember-apply-template)
+(setq org-remember-templates
+     '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" "~/org/newgtd.org.gpg" "Задачи"))
+     )
+
+(setq org-deadline-warning-days 7)
+
+(setq
+ org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
+			  '("birthday.org.gpg" "newgtd.org.gpg"))
+ org-agenda-ndays 7
+ org-agenda-repeating-timestamp-show-all nil
+ org-agenda-restore-windows-after-quit t
+ org-agenda-show-all-dates t
+ org-agenda-skip-deadline-if-done t
+ org-agenda-skip-scheduled-if-done t
+ org-agenda-sorting-strategy '((agenda time-up priority-down tag-up) (todo tag-up))
+ org-agenda-start-on-weekday nil
+ org-agenda-todo-ignore-deadlines t
+ org-agenda-todo-ignore-scheduled t
+ org-agenda-todo-ignore-with-date t
+
+ org-agenda-custom-commands
+ '(
+   ("P" "Projects"
+    ((tags "PROJECT")))
+
+   ("H" "Office and Home Lists"
+    ((agenda)
+     (tags-todo "OFFICE")
+     (tags-todo "HOME")
+     (tags-todo "COMPUTER")
+     (tags-todo "DVD")
+     (tags-todo "READING")))
+
+   ("D" "Daily Action List"
+    ((agenda
+      ""
+      ((org-agenda-ndays 1)
+       (org-agenda-sorting-strategy
+	(quote ((agenda time-up priority-down tag-up) )))
+       (org-deadline-warning-days 0)))))
+   ))
+
+(setq org-refile-targets (quote (("newgtd.org.gpg" :maxlevel . 1) ("someday.org.gpg" :level . 2))))
+(setq org-time-stamp-rounding-minutes '(0 5))
+
+(defun gtd ()
+  (interactive)
+  (find-file (concat org-directory "newgtd.org.gpg")))
+
+(global-set-key (kbd "C-c G") 'gtd)
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
