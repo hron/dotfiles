@@ -1,5 +1,6 @@
 ;; -*-coding: utf-8-emacs;-*-
 ;;; file-version: 6
-["Andrey" nil nil "Smart Systems" nil nil ("as@mltdmail.com") ((notes . "System Administrator") (creation-date . "2010-03-09") (timestamp . "2010-03-09")) nil]
+["Gusev" "Alexander" nil nil nil nil ("art-sonik@mail.ru") ((creation-date . "2010-05-25") (timestamp . "2010-05-25")) nil]
+["Andrey" nil nil "Smart Systems" nil nil ("as@mltdmail.com") ((notes . "System Administrator") (creation-date . "2010-03-09") (timestamp . "2010-05-25")) nil]
 ["Dima" "Ivanov" nil nil nil nil ("i-d-g@tut.by") ((creation-date . "2010-02-09") (timestamp . "2010-02-09")) nil]
 ["Габриель" "Павел" ("Pavel Gabriel") "Smart Sysmtems" nil nil ("alovak@gmail.com") ((creation-date . "2010-02-01") (timestamp . "2010-02-02")) nil]
