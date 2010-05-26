@@ -84,7 +84,7 @@
 (require 'emacs-rc-octave)
 
 ;; PHP
-(require 'emacs-rc-php)
+;; (require 'emacs-rc-php)
 
 ;; TeX
 (require 'emacs-rc-tex)
@@ -164,8 +164,8 @@
 (require 'emacs-rc-tty-format)
 
 ;; el4r
-(with-demoted-errors
-  (require 'emacs-rc-el4r))
+;; (with-demoted-errors
+;;   (require 'emacs-rc-el4r))
 
 ;; Anything
 (require 'emacs-rc-anything)
@@ -234,9 +234,9 @@
 (require 'emacs-rc-mule)
 (require 'emacs-rc-tramp)
 (require 'emacs-rc-woman)
-(require 'emacs-rc-ldap)
+(require 'emacs-rc-ldap nil t)
 (require 'emacs-rc-view)
-(require 'emacs-rc-bbdb)
+(require 'emacs-rc-bbdb nil t)
 
 (require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)

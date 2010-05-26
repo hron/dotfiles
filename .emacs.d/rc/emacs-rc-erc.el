@@ -114,7 +114,7 @@
 
 ;; Load authentication info from an external source.  Put sensitive
 ;; passwords and the like in here.
-(load "~/.emacs.d/.erc-auth")
+(load "~/.emacs.d/.erc-auth" t)
 
 (setq erc-autojoin-channels-alist '(("irc.by" "#1182" "#emacs"
                                      "#linux" "#unix" "#velominsk")
