@@ -39,7 +39,8 @@
 (add-to-list 'emms-info-functions 'emms-info-mpd)
 (add-to-list 'emms-player-list 'emms-player-mpd)
 
-(emms-player-mpd-connect)
+(with-demoted-errors
+  (emms-player-mpd-connect))
 
 (require 'emms-playing-time)
 (emms-playing-time 1)
