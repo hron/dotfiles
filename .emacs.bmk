@@ -8,10 +8,10 @@
   (rear-context-string . "ы для просмотра\n")
   (position . 139))
  ("org-remember-last-stored"
-  (filename . "~/src/dotfiles/org/newgtd.org")
-  (front-context-string . "** Робин Гуд				")
-  (rear-context-string . "5-25 Втр 22:55]\n")
-  (position . 979))
+  (filename . "~/Dropbox/src/dotfiles/org/someday.org.gpg")
+  (front-context-string . "*** Изучить Sunr")
+  (rear-context-string . "5-27 Чтв 09:00]\n")
+  (position . 1703))
  ("pureweb"
   (filename . "/sudo:root@83.133.127.122:/etc/")
   (front-context-string . "hostname\n  -rw-r")
