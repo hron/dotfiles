@@ -2,11 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-remember-last-stored"
-  (filename . "~/src/dotfiles/org/notes.org")
-  (front-context-string . "** Wed May  5 17")
-  (rear-context-string . "pendentScreens.\n")
-  (position . 861))
+(("org-refile-last-stored"
+  (filename . "~/src/dotfiles/org/someday.org.gpg")
+  (front-context-string . "** Сделать\n*** Й")
+  (rear-context-string . "ы для просмотра\n")
+  (position . 139))
+ ("org-remember-last-stored"
+  (filename . "~/src/dotfiles/org/newgtd.org")
+  (front-context-string . "** Робин Гуд				")
+  (rear-context-string . "5-25 Втр 22:55]\n")
+  (position . 979))
  ("pureweb"
   (filename . "/sudo:root@83.133.127.122:/etc/")
   (front-context-string . "hostname\n  -rw-r")
