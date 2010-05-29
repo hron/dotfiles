@@ -1,7 +1,10 @@
-(setq ido-enable-flex-matching t
+(setq ido-enable-flex-matching nil
       ido-use-filename-at-point 'guess
       ido-use-url-at-point t
       ido-everywhere t)
+
+(setq ido-default-file-method 'selected-window
+      ido-default-buffer-method 'selected-window
 
 (setq ido-auto-merge-work-directories-length 0)
 
