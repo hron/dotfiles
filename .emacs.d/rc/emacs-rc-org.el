@@ -57,9 +57,36 @@
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
-(setq org-remember-templates
-     '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" "~/org/newgtd.org.gpg" "Задачи"))
-     )
+
+(let ((someday-common-template (concat "* %^{Brief Description} %^g\n"
+				       "  :PROPERTIES:\n"
+				       "  :Added: %U\n"
+				       "  :END:\n"
+				       "  %?\n"))
+      (todo-template (concat "* TODO %^{Brief Description} %^g\n"
+			     "  :PROPERTIES:\n"
+			     "  :Added: %U\n"
+			     "  :END:\n"
+			     "  %?\n")))
+  (setq org-remember-templates '())
+  (add-to-list 'org-remember-templates (list "MaybeDo" ?d
+					     someday-common-template
+					     "someday.org.gpg" "Сделать"))
+  (add-to-list 'org-remember-templates (list "MaybeLearn" ?r
+					     someday-common-template
+					     "someday.org.gpg" "Изучить"))
+  (add-to-list 'org-remember-templates (list "MaybeBook" ?b
+					     someday-common-template
+					     "someday.org.gpg" "Книги для прочтения"))
+  (add-to-list 'org-remember-templates (list "MaybeProject" ?p
+					     someday-common-template
+					     "someday.org.gpg" "Новые проекты"))
+  (add-to-list 'org-remember-templates (list "MaybeDVD" ?f
+					     someday-common-template
+					     "someday.org.gpg" "Фильмы для просмотра"))
+  (add-to-list 'org-remember-templates (list "Todo" ?t
+					     todo-template
+					     "newgtd.org.gpg" "Задачи")))
 
 (setq org-deadline-warning-days 7)
 
