@@ -198,6 +198,9 @@
 (require 'install-elisp)
 (setq install-elisp-repository-directory "~/.emacs.d/site-lisp")
 
+;; Sunrise commander
+(require 'emacs-rc-sunrise-commander)
+
 ;;
 ;; Emacs core customization
 ;;
