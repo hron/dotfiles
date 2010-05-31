@@ -201,6 +201,9 @@
 ;; Sunrise commander
 (require 'emacs-rc-sunrise-commander)
 
+;; iBus
+;; (require 'emacs-rc-ibus)
+
 ;;
 ;; Emacs core customization
 ;;
