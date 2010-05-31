@@ -4,7 +4,7 @@
       ido-everywhere t)
 
 (setq ido-default-file-method 'selected-window
-      ido-default-buffer-method 'selected-window
+      ido-default-buffer-method 'selected-window)
 
 (setq ido-auto-merge-work-directories-length 0)
 
