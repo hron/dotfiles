@@ -217,6 +217,8 @@
 ;; Filladapt
 (setq-default filladapt-mode t)
 
+(require 'emacs-rc-compilation)
+
 ;; comint-mode
 (setq comint-scroll-to-bottom-on-output 'others)
 ;; for zsh extended history...
