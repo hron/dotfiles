@@ -46,3 +46,6 @@
 [submodule ".emacs.d/site-lisp/sunrise-x-loop"]
 	path = .emacs.d/site-lisp/sunrise-x-loop
 	url = git://github.com/emacsmirror/sunrise-x-loop.git
+[submodule ".emacs.d/site-lisp/ruby-test-mode"]
+	path = .emacs.d/site-lisp/ruby-test-mode
+	url = http://github.com/r0man/ruby-test-mode.git
