@@ -24,6 +24,8 @@
 
 ;;; Code:
 
+(setq compilation-error-regexp-alist '())
+
 (let ((compilation-regexps
        '((ruby-MRI
           "^[\t ]*\\(from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 2 3)
