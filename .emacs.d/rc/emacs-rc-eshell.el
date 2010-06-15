@@ -44,9 +44,15 @@
       '(concat
 	"Welcome to Eshell!\n"
 	"  ruby: " (shell-command-to-string
-		    "ruby --version 2>/dev/null || echo 'no ruby... :('")
+                    "ruby --version 2>/dev/null || echo 'no ruby... :('")
 	"  gems: " (shell-command-to-string
-		    "gem --version 2>/dev/null || echo 'no rubygems... :('")))
+                    "gem --version 2>/dev/null || echo 'no rubygems... :('")))
+
+(setq eshell-output-filter-functions
+      '(eshell-postoutput-scroll-to-bottom
+	eshell-handle-control-codes
+	eshell-handle-ansi-color
+	eshell-watch-for-password-prompt))
 
 (provide 'emacs-rc-eshell)
 ;;; emacs-rc-eshell.el ends here
