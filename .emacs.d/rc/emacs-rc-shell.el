@@ -37,6 +37,9 @@
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+(add-hook 'shell-mode-hook
+	  '(lambda ()
+	     (local-set-key (kbd "C-c q") 'gusev-clear-shell)))
 ;; (define-key 'shell-mode-map (kbd "C-c q") 'gusev-clear-shell)
 
 (provide 'emacs-rc-shell)
