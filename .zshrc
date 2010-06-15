@@ -38,6 +38,8 @@ alias bs='bundle show'
 alias bp='bundle package'
 alias be='bundle exec'
 
+alias autofeature='AUTOFEATURE=true autospec'
+
 alias cut='cut -f1 --delimiter=" "'
 
 # Where to look for autoloaded function definitions
