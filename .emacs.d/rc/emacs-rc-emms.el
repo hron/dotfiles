@@ -34,7 +34,7 @@
 (setq emms-player-mpd-server-name "localhost"
       emms-player-mpd-server-port "6600")
 
-(setq emms-player-mpd-music-directory "~/Музыка")
+(setq emms-player-mpd-music-directory "~/Music")
 
 (add-to-list 'emms-info-functions 'emms-info-mpd)
 (add-to-list 'emms-player-list 'emms-player-mpd)
