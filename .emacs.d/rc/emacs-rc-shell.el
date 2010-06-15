@@ -24,11 +24,20 @@
 
 ;;; Code:
 
+;; (require 'shell)
+
 (defun add-header-line-dirtrack ()
   (setq header-line-format
 	'(:propertize (" " default-directory " ") face dired-directory)))
 
 (add-hook 'shell-mode-hook 'add-header-line-dirtrack)
+
+(defun gusev-clear-shell ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
+;; (define-key 'shell-mode-map (kbd "C-c q") 'gusev-clear-shell)
 
 (provide 'emacs-rc-shell)
 ;;; emacs-rc-shell.el ends here
