@@ -21,6 +21,7 @@ define_webjump("codesearch", "http://www.google.com/codesearch?q=%s");
 define_webjump("cpan", "http://search.cpan.org/search?query=%s&mode=all");
 define_webjump("twitter", "http://twitter.com/%s");
 define_webjump("youtube", "http://www.youtube.com/results?search_query=%s&search=Search");
+define_webjump("wineappdb", "http://www.winehq.org/search?cx=partner-pub-0971840239976722%3Aw9sqbcsxtyf&cof=FORID%3A10&ie=UTF-8&q=%s#663");
 
 define_webjump("emacswiki", "http://www.google.com/cse?cx=004774160799092323420%3A6-ff2s0o6yi&q=%s&sa=Search");
 define_webjump("github", "http://github.com/search?q=%s&type=Everything&repo=&langOverride=&start_value=1");
@@ -59,7 +60,7 @@ editor_shell_command = '/usr/bin/emacsclient -c $@';
 
 // When true, the view-source command will send its document to your external
 // editor. Default is false.
-view_source_use_external_editor = true;
+view_source_use_external_editor = false;
 
 // http://conkeror.org/PasswordManagement
 session_pref("signon.rememberSignons", true);
