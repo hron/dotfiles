@@ -49,3 +49,6 @@
 [submodule ".emacs.d/site-lisp/ruby-test-mode"]
 	path = .emacs.d/site-lisp/ruby-test-mode
 	url = http://github.com/r0man/ruby-test-mode.git
+[submodule ".emacs.d/site-lisp/org-mode"]
+	path = .emacs.d/site-lisp/org-mode
+	url = git://github.com/emacsmirror/org-mode.git
