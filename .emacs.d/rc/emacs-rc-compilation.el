@@ -32,7 +32,7 @@
          (ruby-Test::Unit
           "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
          (cucumber
-          "\\(^cucumber\\|#\\) \\([^\(].*\\):\\([1-9][0-9]*\\)" 2 3))))
+          "\\(^cucumber\\( -p [^[:space:]]+\\)?\\|#\\)\\( \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 4 5))))
   (dolist (regexp compilation-regexps)
     (add-to-list 'compilation-error-regexp-alist (cdr regexp) t)))
 
