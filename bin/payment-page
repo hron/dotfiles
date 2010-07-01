@@ -1,0 +1,3 @@
+#! /bin/zsh
+
+cd $HOME/src/unigate-dev/certo-payment-page && exec emacs
