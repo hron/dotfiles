@@ -52,3 +52,6 @@
 [submodule ".emacs.d/site-lisp/org-mode"]
 	path = .emacs.d/site-lisp/org-mode
 	url = git://github.com/emacsmirror/org-mode.git
+[submodule ".emacs.d/site-lisp/jd-el"]
+	path = .emacs.d/site-lisp/jd-el
+	url = git://git.naquadah.org/~jd/jd-el.git
