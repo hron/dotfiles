@@ -17,3 +17,5 @@
 /.eshell/history
 /.eshell/lastdir
 /.emacs.d/.org-id-locations
+/.byobu/profile
+/.byobu/status
