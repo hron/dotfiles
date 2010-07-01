@@ -42,6 +42,8 @@ alias autofeature='AUTOFEATURE=true autospec'
 
 alias cut='cut -f1 --delimiter=" "'
 
+alias aptk='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
+
 # Where to look for autoloaded function definitions
 #fpath=($fpath ~/.zfunc)
 
