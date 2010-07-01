@@ -204,6 +204,9 @@
 ;; iBus
 ;; (require 'emacs-rc-ibus)
 
+;; http://julien.danjou.info/rainbow-mode.html
+(require 'rainbow-mode)
+
 ;;
 ;; Emacs core customization
 ;;
