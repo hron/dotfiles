@@ -1,0 +1,10 @@
+*\~
+\.*~
+\#*\#
+\.\#*
+TAGS
+*.orig
+*.rej
+\.dir-locals.el
+.emacs.desktop
+.emacs.desktop.lock

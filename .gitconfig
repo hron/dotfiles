@@ -1,0 +1,10 @@
+[user]
+	name = Aleksei Gusev
+	email = aleksei.gusev@gmail.com
+[core]
+	excludesfile = /home/gusev/.gitconfig_global_gitignore
+
+[color]
+	ui = true
+[push]
+	default = matching
