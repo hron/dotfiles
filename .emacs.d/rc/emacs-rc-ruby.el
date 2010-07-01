@@ -131,5 +131,9 @@
 (add-auto-mode 'compilation-mode
 	       "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
+;; Ruby test mode
+(require 'ruby-test-mode)
+(add-hook 'ruby-mode-hook 'ruby-test-mode)
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
