@@ -99,6 +99,7 @@
 (require 'emacs-rc-javascript)
 
 ;; Apache
+(require 'apache-mode)
 (add-to-list 'auto-mode-alist '(".*/etc/apache.*" . apache-mode))
 
 ;; Textile
