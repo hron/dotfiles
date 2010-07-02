@@ -1,6 +1,6 @@
 # -*- ruby -*-
 require 'autotest/restart'
-require 'autotest/timestamp'
+# require 'autotest/timestamp'
 
 module Autotest::GnomeNotify
   # Time notification will be displayed before disappearing automatically
@@ -27,16 +27,16 @@ module Autotest::GnomeNotify
   end
 end
 
-module Autotest::DefaultIgnores
-  Autotest.add_hook :initialize do |at|
-    ignore = [ '.git', '.gitignore' ]
-    ignore += %w(vendor/ log/ script/)
-    ignore += %w(rerun.txt Rakefile README.textile .gemspec)
-    ignore += %w(.emacs.desktop .emacs.desktop.lock)
-    ignore += %w(/capybara-.*/)
-    ignore += [ '.bundle' ]
-    ignore.each do |exception|
-      at.add_exception(exception)
-    end
-  end
-end
+# module Autotest::DefaultIgnores
+#   Autotest.add_hook :initialize do |at|
+#     ignore = [ '.git', '.gitignore' ]
+#     ignore += %w(vendor/ log/ script/)
+#     ignore += %w(rerun.txt Rakefile README.textile .gemspec)
+#     ignore += %w(.emacs.desktop .emacs.desktop.lock)
+#     ignore += %w(/capybara-.*/)
+#     ignore += [ '.bundle' ]
+#     ignore.each do |exception|
+#       at.add_exception(exception)
+#     end
+#   end
+# end
