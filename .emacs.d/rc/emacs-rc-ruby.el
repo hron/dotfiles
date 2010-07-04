@@ -59,7 +59,7 @@
 
 ;; yari
 (defun yari-bind-key ()
-  (local-set-key [f1] 'yari))
+  (local-set-key [f1] 'yari-anything))
 
 (defalias 'rails-search-doc 'yari)
 (add-hook 'ruby-mode-hook 'yari-bind-key)
