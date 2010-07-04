@@ -3,13 +3,14 @@
 ;;; Code:
 
 
-;;;### (autoloads (yari yari-anything) "yari" "yari.el" (19503 30398))
-;;; Generated autoloads from yari.el
+;;;### (autoloads (yari yari-anything) "yari" "../../../../../../.emacs.d/elpa/yari-0.3/yari.el"
+;;;;;;  (19504 38411))
+;;; Generated autoloads from ../../../../../../.emacs.d/elpa/yari-0.3/yari.el
 
 (autoload 'yari-anything "yari" "\
 Not documented
 
-\(fn)" t nil)
+\(fn &optional REHASH)" t nil)
 
 (autoload 'yari "yari" "\
 Look up Ruby documentation.
@@ -18,7 +19,9 @@ Look up Ruby documentation.
 
 ;;;***
 
-;;;### (autoloads nil nil ("yari-pkg.el") (19503 30398 223050))
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/yari-0.3/yari-pkg.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/yari-0.3/yari.el") (19504
+;;;;;;  38411 271785))
 
 ;;;***
 
