@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (yari yari-anything) "yari" "../../../../../../.emacs.d/elpa/yari-0.3/yari.el"
-;;;;;;  (19504 38411))
+;;;;;;  (19508 10733))
 ;;; Generated autoloads from ../../../../../../.emacs.d/elpa/yari-0.3/yari.el
 
 (autoload 'yari-anything "yari" "\
@@ -20,8 +20,8 @@ Look up Ruby documentation.
 ;;;***
 
 ;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/yari-0.3/yari-pkg.el"
-;;;;;;  "../../../../../../.emacs.d/elpa/yari-0.3/yari.el") (19504
-;;;;;;  38411 271785))
+;;;;;;  "../../../../../../.emacs.d/elpa/yari-0.3/yari.el") (19508
+;;;;;;  10734 130669))
 
 ;;;***
 
