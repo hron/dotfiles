@@ -8,3 +8,4 @@ TAGS
 \.dir-locals.el
 .emacs.desktop
 .emacs.desktop.lock
+capybara-*.html
