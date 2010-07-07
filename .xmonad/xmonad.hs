@@ -85,6 +85,7 @@ main = do
        , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
        , ("M-/ M",   spawn "uxterm -e $SHELL -c 'ncmpcpp'")
        , ("M-/ b",   spawn "conkeror")
+       , ("M-/ B",   spawn "conkeror --no-remote -P")
        , ("M-/ e",   spawn "emacsclient -nc")
        , ("M-/ q",   promptSelection "stardict ")
        , ("<XF86HomePage>",   spawn "conkeror")
