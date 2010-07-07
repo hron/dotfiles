@@ -179,7 +179,7 @@
 (require 'ditz)
 
 ;; EMMS
-(require 'emacs-rc-emms)
+;; (require 'emacs-rc-emms)
 
 ;; C#
 (require 'csharp-mode)
