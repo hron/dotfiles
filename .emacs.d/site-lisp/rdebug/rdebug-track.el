@@ -106,13 +106,13 @@ as gud-mode does for debugging C programs with gdb."
   "Activate or de arrow at beginning-of-line in current buffer."
   ;; This was derived/simplified from edebug-overlay-arrow
   (cond (activation
-	 (setq overlay-arrow-position (make-marker))
-	 (setq overlay-arrow-string "=>")
-	 (set-marker overlay-arrow-position (point) (current-buffer))
-	 (setq rdebug-track-is-tracking-p t))
+         (setq overlay-arrow-position (make-marker))
+         (setq overlay-arrow-string "=>")
+         (set-marker overlay-arrow-position (point) (current-buffer))
+         (setq rdebug-track-is-tracking-p t))
 	(rdebug-track-is-tracking-p
-	 (setq overlay-arrow-position nil)
-	 (setq rdebug-track-is-tracking-p nil))
+         (setq overlay-arrow-position nil)
+         (setq rdebug-track-is-tracking-p nil))
 	))
 
 (defun rdebug-track-track-stack-file (text)
@@ -156,19 +156,20 @@ at the beginning of the line."
               (setq target_lineno (car target))
               (setq target_buffer (cadr target))
               (setq target_fname (buffer-file-name target_buffer))
-	      (setq gud-last-frame (cons target_fname target_lineno))
-              (switch-to-buffer-other-window target_buffer)
+              (setq gud-last-frame (cons target_fname target_lineno))
+              ;; FIXME: we should do this optional
+              ;; (switch-to-buffer-other-window target_buffer)
               (goto-line target_lineno)
               (rdebug-debug-message "rdebug-track: line %s, file %s"
                                     target_lineno target_fname)
               (rdebug-track-overlay-arrow t)
-	      (rdebug-set-frame-top-arrow (current-buffer))
+              (rdebug-set-frame-top-arrow (current-buffer))
               (set (make-local-variable 'gud-comint-buffer) origbuf)
-	      (set (make-local-variable 'gud-delete-prompt-marker) 
-		   (make-marker))
+              (set (make-local-variable 'gud-delete-prompt-marker)
+                   (make-marker))
               (pop-to-buffer origbuf t)
-	      (rdebug-locring-add gud-last-frame 
-				  rdebug-source-location-ring))
+              (rdebug-locring-add gud-last-frame
+                                  rdebug-source-location-ring))
 
             ;; Delete processed annotations from buffer.
             (save-excursion
@@ -177,20 +178,20 @@ at the beginning of the line."
                 (goto-char block-start)
                 (while (re-search-forward
                         rdebug-annotation-start-regexp annotate-end t)
-		  (let* ((start (match-beginning 0))
-			 (end (match-end 0))
-			 (name (or (match-string 1) "source")))
-		    (cond ((string= name "prompt\n")
-			   (delete-region (- start 1) end))
-			  ((string= name "pre-prompt\n")
-			   (delete-region start end))
-			  ((string= name "error-begin\n")
-			   (delete-region start end))
-			  ((re-search-forward rdebug-annotation-end-regexp 
-					      annotate-end t)
-			   (delete-region start (point)))
-			  (t (forward-line)))))))
-	    ))))))
+                  (let* ((start (match-beginning 0))
+                         (end (match-end 0))
+                         (name (or (match-string 1) "source")))
+                    (cond ((string= name "prompt\n")
+                           (delete-region (- start 1) end))
+                          ((string= name "pre-prompt\n")
+                           (delete-region start end))
+                          ((string= name "error-begin\n")
+                           (delete-region start end))
+                          ((re-search-forward rdebug-annotation-end-regexp
+                                              annotate-end t)
+                           (delete-region start (point)))
+                          (t (forward-line)))))))
+            ))))))
 
 (defun rdebug-track-get-source-buffer (block-str)
   "Return line and buffer of code indicated by block-str's traceback text.
@@ -208,7 +209,7 @@ problem as best as we can determine."
     ;;else
     (let* ((filename (match-string rdebug-marker-regexp-file-group block-str))
            (lineno (string-to-number
-		    (match-string rdebug-marker-regexp-line-group block-str)))
+                    (match-string rdebug-marker-regexp-line-group block-str)))
            funcbuffer)
 
       (cond ((file-exists-p filename)
@@ -258,11 +259,11 @@ problem as best as we can determine."
     ;;else
     ;; missing or 0 is toggle, >0 turn on, <0 turn off
     (if (or (not arg)
-	    (zerop (setq arg (prefix-numeric-value arg))))
+            (zerop (setq arg (prefix-numeric-value arg))))
 	(setq rdebug-track-do-tracking-p (not rdebug-track-do-tracking-p))
       (setq rdebug-track-do-tracking-p (> arg 0)))
     (message "%sabled rdebug's rdebug-track"
-	     (if rdebug-track-do-tracking-p "En" "Dis"))))
+             (if rdebug-track-do-tracking-p "En" "Dis"))))
 
 
 ;;;###autoload
@@ -279,7 +280,7 @@ This function is designed to be added to hooks, for example:
   (set (make-local-variable 'gud-marker-filter) 'gud-rdebug-marker-filter)
   (set (make-local-variable 'gud-minor-mode) 'rdebug)
   (set (make-local-variable 'comint-prompt-regexp) (concat "^" rdebug-input-prompt-regexp))
-  
+
   (set (make-local-variable 'gud-find-file) 'gud-rdebug-find-file)
 
   (rdebug-command-initialization)
@@ -298,7 +299,7 @@ This function is designed to be added to hooks, for example:
   (while (not (ring-empty-p rdebug-source-location-ring))
     (ring-remove rdebug-source-location-ring))
   (remove-hook 'comint-output-filter-functions
-	       'rdebug-track-track-stack-file))
+               'rdebug-track-track-stack-file))
 
 
 ;; -----------------------------------------------
@@ -331,8 +332,8 @@ window layout is used."
     (rdebug-command-initialization)
 
     (when name
-      (if rename-shell 
-	  (rename-buffer (format "*rdebug-cmd-%s*" gud-target-name)))
+      (if rename-shell
+          (rename-buffer (format "*rdebug-cmd-%s*" gud-target-name)))
       (setq gud-target-name name)
       (setq gud-comint-buffer (current-buffer)))
 
@@ -341,18 +342,18 @@ window layout is used."
     (let ((process (get-buffer-process gud-comint-buffer)))
       (when process
 	(unless (equal rdebug-line-width 120)
-	  (gud-call (format "set width %d" rdebug-line-width)))
+          (gud-call (format "set width %d" rdebug-line-width)))
 	(set-process-sentinel process
-			      'rdebug-process-sentinel)))
-    
+                              'rdebug-process-sentinel)))
+
     (when gud-last-frame
       (setq gud-last-last-frame gud-last-frame))
 
     ;; Add the buffer-displaying commands to the Gud buffer,
-    ;; FIXME: combine with code in rdebug-track.el; make common 
+    ;; FIXME: combine with code in rdebug-track.el; make common
     ;; command buffer mode map.
     (let ((prefix-map (make-sparse-keymap))
-	  (map (current-local-map)))
+          (map (current-local-map)))
       (define-key map [M-down]   'rdebug-locring-newer)
       (define-key map [M-up]     'rdebug-locring-older)
       (define-key map [M-S-down] 'rdebug-locring-newest)
@@ -362,10 +363,10 @@ window layout is used."
       (define-key prefix-map "!" 'rdebug-goto-dollarbang-traceback-line)
 
       (rdebug-populate-secondary-buffer-map-plain prefix-map))
-    
+
     (rdebug-populate-common-keys (current-local-map))
     (rdebug-populate-debugger-menu (current-local-map))
-      
+
     (set (make-local-variable 'comint-prompt-regexp) (concat "^" rdebug-input-prompt-regexp))
     (setq paragraph-start comint-prompt-regexp)
 
