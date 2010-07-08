@@ -90,6 +90,7 @@
 (setq dired-omit-files-p t)
 (setq dired-omit-files
       (concat dired-omit-files "\\|^\\..+$"))
+(add-to-list 'dired-omit-extensions ".rbc")
 
 (define-key global-map "\C-x\C-j" 'dired-jump)
 (define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
