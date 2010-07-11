@@ -56,18 +56,20 @@
 ;;     ))
 
 (add-hook 'emms-browser-show-display-hook
-	  '(lambda ()
-	     (local-set-key (kbd "n") 'next-line)
-	     (local-set-key (kbd "j") 'next-line)
-	     (local-set-key (kbd "p") 'previous-line)
-	     (local-set-key (kbd "k") 'previous-line)))
+          '(lambda ()
+             (local-set-key (kbd "n") 'next-line)
+             (local-set-key (kbd "j") 'next-line)
+             (local-set-key (kbd "p") 'previous-line)
+             (local-set-key (kbd "k") 'previous-line)))
 
 
 ;; (if (eq window-system 'x)
+
+
 ;;     (add-hook 'emms-player-started-hook
 ;;        '(lambda ()
-;; 	  (shell-command (concat "notify-send -t 3000 "
-;; 				 "\"" (emms-show) "\"")))))
+;;        (shell-command (concat "notify-send -t 3000 "
+;;                               "\"" (emms-show) "\"")))))
 
 (provide 'emacs-rc-emms)
 ;;; emacs-rc-emms.el ends here
