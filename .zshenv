@@ -1,4 +1,6 @@
 export LANG=ru_RU.UTF-8
+export LANGUAGE=ru
+export LC_ALL=ru_RU.UTF-8
 export LC_NUMERIC=C
 export LC_COLLATE=C
 export LC_MESSAGES=C
