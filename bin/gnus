@@ -18,4 +18,4 @@
 # GNU General Public License for more details.
 #
 
-emacsclient -eval '(gnus-other-frame)'
+emacs -eval '(gnus)' --no-desktop
