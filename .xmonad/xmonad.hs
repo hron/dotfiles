@@ -87,7 +87,7 @@ main = do
        , ("M-/ b",   spawn "conkeror")
        , ("M-/ B",   spawn "conkeror --no-remote -P")
        , ("M-/ e",   spawn "emacsclient -nc")
-       , ("M-/ q",   promptSelection "stardict ")
+       , ("M-/ q",   safePromptSelection "stardict")
        , ("<XF86HomePage>",   spawn "conkeror")
        , ("<XF86Tools>",   spawn "emacsclient -nc")
        -- WM actions
