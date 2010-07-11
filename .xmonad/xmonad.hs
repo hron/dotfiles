@@ -153,7 +153,6 @@ myLayoutHook = minimize
 myManageHook = composeOne
                [ className =? "Gimp"                            -?> doFloat
                , className =? "Vncviewer"                       -?> doFloat
-               , className =? "stardict"                        -?> doFloat
                , className =? "gcolor2"                         -?> doFloat
                , className =? "totem"                           -?> doFloat
                , className =? "Firefox Preferences"             -?> doFloat
@@ -165,6 +164,7 @@ myManageHook = composeOne
                , className =? "Pidgin"                          -?> doShift "7.im"
                , className =? "Empathy"                         -?> doShift "7.im"
                , title     =? "ERC"                             -?> doShift "7.im"
+               , className =? "Stardict"                        -?> doCenterFloat
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
                ]
