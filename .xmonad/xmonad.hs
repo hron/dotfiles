@@ -116,20 +116,6 @@ myConfig = do
        , ("<XF86AudioPrev>", spawn "mpc prev")
        , ("<XF86AudioStop>", spawn "mpc stop")
        ]
-       -- `additionalKeys`
-       -- [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-       --      | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
-       -- , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-       -- `additionalKeys`
-       -- [((m, k), windows $ f i)
-       --      | (i, k) <- zip myWorkspaces numPadKeys
-       -- , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-
--- Non-numeric num pad keys, sorted by number
-numPadKeys = [ xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
-             , xK_KP_Left, xK_KP_Begin, xK_KP_Right     -- 4, 5, 6
-             , xK_KP_Home, xK_KP_Up,    xK_KP_Page_Up   -- 7, 8, 9
-             , xK_KP_Insert] -- 0
 
 myLayoutHook = minimize
                $ maximize
@@ -163,8 +149,6 @@ myLayoutHook = minimize
     imLayout  = withIM (1%6) pidginRoster (SplitGrid XMonad.Layout.GridVariants.L 2 3 (2/3) (16/10) (5/100))
     empathyRoster = And (ClassName "Empathy") (Role "contact_list")
     pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
-
-myWorkspaces = [ "1", "2", "3", "4" , "5", "6", "7.im", "8", "9" ]
 
 myManageHook = composeOne
                [ className =? "Gimp"                            -?> doFloat
