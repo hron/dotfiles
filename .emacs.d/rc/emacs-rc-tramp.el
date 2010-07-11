@@ -27,6 +27,7 @@
 ;;
 
 ;;; Code:
+(require 'tramp)
 
 (setq shell-prompt-pattern "^.*[#$%>] *")
 
@@ -99,6 +100,8 @@
 		 '( "\\(localhost\\|crystal\\)" "root" nil))
 
     ))
+
+(add-hook 'kill-emacs-hook 'tramp-cleanup-all-buffers)
 
 (provide 'emacs-rc-tramp)
 
