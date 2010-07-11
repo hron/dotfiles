@@ -161,9 +161,9 @@ myManageHook = composeOne
                , className =? "gdebi-gtk"                       -?> doFloat
                , iconName  =? "Параметры Google Chrome"         -?> doFloat
                , className =? "Firefox"                         -?> insertPosition End Older
-               , className =? "Pidgin"                          -?> doShift "7.im"
-               , className =? "Empathy"                         -?> doShift "7.im"
-               , title     =? "ERC"                             -?> doShift "7.im"
+               , className =? "Pidgin"                          -?> doShift "im"
+               , className =? "Empathy"                         -?> doShift "im"
+               , title     =? "ERC"                             -?> doShift "im"
                , className =? "Stardict"                        -?> doCenterFloat
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
