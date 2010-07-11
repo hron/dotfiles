@@ -24,15 +24,18 @@
 
 ;;; Code:
 
-(setq compilation-error-regexp-alist '())
+;; (setq compilation-error-regexp-alist '())
+
+(setq compilation-error-regexp-alist
+      (mapcar 'car compilation-error-regexp-alist-alist))
 
 (let ((compilation-regexps
-       '((ruby-MRI
-          "^[\t ]*\\(from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 2 3)
+       '((ruby
+          "^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
          (ruby-Test::Unit
           "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
          (cucumber
-          "\\(^cucumber\\( -p [^[:space:]]+\\)?\\|#\\)\\( \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 4 5))))
+          "\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2))))
   (dolist (regexp compilation-regexps)
     (add-to-list 'compilation-error-regexp-alist (cdr regexp) t)))
 
