@@ -136,5 +136,7 @@
 
 (global-set-key (kbd "C-c G") 'gtd)
 
+(setq org-clock-persist t)
+
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here

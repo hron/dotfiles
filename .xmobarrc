@@ -3,8 +3,14 @@ Config { font = "xft:DejaVu Sans-9:book"
        , fgColor = "white"
        , position = Top
        , lowerOnStart = False
-       , commands = [ Run StdinReader ]
+       , commands = [ Run StdinReader
+                    , Run Com "org-current-clockin" [ ] "" 60 ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader%"
+       , template = "%StdinReader% }{ | <fc=#ee9a00>%org-current-clockin%</fc>"
        }
+
+-- Local variables:
+-- mode: haskell
+-- compile-command: "pkill xmobar; xmonad --recompile && xmonad --restart"
+-- End:

@@ -123,7 +123,7 @@ myLayoutHook = minimize
                $ avoidStruts
                $ Mag.magnifierOff
                $ smartBorders
-               $ onWorkspace "im" imLayout
+               $ onWorkspace "im (2)" imLayout
                $ basicLayout
   where
     basicLayout = tiled ||| mirrorTiled ||| Full ||| onebig ||| simpleCross
@@ -161,9 +161,9 @@ myManageHook = composeOne
                , className =? "gdebi-gtk"                       -?> doFloat
                , iconName  =? "Параметры Google Chrome"         -?> doFloat
                , className =? "Firefox"                         -?> insertPosition End Older
-               , className =? "Pidgin"                          -?> doShift "im"
-               , className =? "Empathy"                         -?> doShift "im"
-               , title     =? "ERC"                             -?> doShift "im"
+               , className =? "Pidgin"                          -?> doShift "im (2)"
+               , className =? "Empathy"                         -?> doShift "im (2)"
+               , title     =? "ERC"                             -?> doShift "im (2)"
                , className =? "Stardict"                        -?> doCenterFloat
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
@@ -250,29 +250,29 @@ customXPKeymap = M.fromList $
 -- to work.
 myTopics :: [Topic]
 myTopics =
-    [ "dashboard" -- the first one
-    , "im", "music", "torrents", "mail/news", "conf"
+    [ "dashboard (1)" -- the first one
+    , "im (2)", "music (3)", "torrents (4)", "mail/news (5)", "conf (6)"
     , "unigate", "payment-page"
     ]
 
 myTopicConfig :: TopicConfig
 myTopicConfig = TopicConfig
                 { topicDirs = M.fromList $
-                              [ ("conf", "src/dotfiles")
-                              , ("dashboard", "src/")
-                              , ("music", "Music")
-                              , ("torrents", "/mnt/terrabyte/archiv/")
+                              [ ("conf (6)", "src/dotfiles")
+                              , ("dashboard (1)", "src/")
+                              , ("music (3)", "Music")
+                              , ("torrents (4)", "/mnt/terrabyte/archiv/")
                               , ("unigate", "src/unigate-dev/unigate")
                               , ("payment-page", "src/unigate-dev/certo-payment-page")
                               ]
                 , defaultTopicAction = const $ spawnShell >*> 3
-                , defaultTopic = "dashboard"
+                , defaultTopic = "dashboard (1)"
                 , topicActions = M.fromList $
-                                 [ ("conf", spawn "emacsclient -nc -e '(magit-status \"~/src/dotfiles/\")'")
-                                   , ("torrents", gnomeOpen "http://rutracker.org" >> spawn "transmission")
-                                   , ("im", spawn "pidgin")
-                                   , ("music", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
-                                   , ("mail/news", gnomeOpen "http://reader.google.com" >> spawn "gnus")
+                                 [ ("conf (6)", spawn "emacsclient -nc -e '(magit-status \"~/src/dotfiles/\")'")
+                                   , ("torrents (4)", gnomeOpen "http://rutracker.org" >> spawn "transmission")
+                                   , ("im (2)", spawn "pidgin")
+                                   , ("music (3)", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
+                                   , ("mail/news (5)", gnomeOpen "http://reader.google.com" >> spawn "gnus")
                                    , ("unigate", spawn "unigate")
                                    , ("payment-page", spawn "payment-page")
                                  ]
