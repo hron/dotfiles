@@ -251,7 +251,7 @@ customXPKeymap = M.fromList $
 myTopics :: [Topic]
 myTopics =
     [ "dashboard" -- the first one
-    , "im", "music", "transmission", "mail/news", "conf"
+    , "im", "music", "torrents", "mail/news", "conf"
     , "unigate", "payment-page"
     ]
 
@@ -261,14 +261,20 @@ myTopicConfig = TopicConfig
                               [ ("conf", "src/dotfiles")
                               , ("dashboard", "src/")
                               , ("music", "Music")
-                              , ("transmission", "/mnt/terrabyte/archiv/")
+                              , ("torrents", "/mnt/terrabyte/archiv/")
                               , ("unigate", "src/unigate-dev/unigate")
                               , ("payment-page", "src/unigate-dev/certo-payment-page")
                               ]
                 , defaultTopicAction = const $ spawnShell >*> 3
                 , defaultTopic = "dashboard"
                 , topicActions = M.fromList $
-                                 [ ("conf", spawnShell >> spawnShellIn "wd/ertai/private")
+                                 [ ("conf", spawn "emacsclient -nc -e '(magit-status \"~/src/dotfiles/\")'")
+                                   , ("torrents", gnomeOpen "http://rutracker.org" >> spawn "transmission")
+                                   , ("im", spawn "pidgin")
+                                   , ("music", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
+                                   , ("mail/news", gnomeOpen "http://reader.google.com" >> spawn "gnus")
+                                   , ("unigate", spawn "unigate")
+                                   , ("payment-page", spawn "payment-page")
                                  ]
                 }
 
@@ -276,7 +282,7 @@ spawnShell :: X ()
 spawnShell = currentTopicDir myTopicConfig >>= spawnShellIn
 
 spawnShellIn :: Dir -> X ()
-spawnShellIn dir = spawn $ "urxvt '(cd ''" ++ dir ++ "'' && " ++ "zsh" ++ " )'"
+spawnShellIn dir = spawn $ "urxvt '(cd ''" ++ dir ++ "'' && " ++ "$SHELL" ++ " )'"
 
 goto :: Topic -> X ()
 goto = switchTopic myTopicConfig
@@ -286,6 +292,9 @@ promptedGoto = workspacePrompt customXPConfig goto
 
 promptedShift :: X ()
 promptedShift = workspacePrompt customXPConfig $ windows . W.shift
+
+gnomeOpen :: String -> X ()
+gnomeOpen url = spawn $ "gnome-open '" ++ url ++ "'"
 
 -- Local variables:
 -- compile-command: "xmonad --recompile && xmonad --restart"
