@@ -12,6 +12,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.WindowMenu
 import XMonad.Actions.WindowGo
+import XMonad.Actions.TopicSpace
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Util.XSelection
@@ -42,10 +43,14 @@ import qualified Data.Map as M
 
 import Control.Arrow (first)
 
-main = do
+main :: IO ()
+main = xmonad =<< myConfig
+
+myConfig = do
+  checkTopicConfig myTopics myTopicConfig
   xmproc <- spawnPipe "xmobar"  -- start xmobar
-  xmonad $ withUrgencyHookC dzenUrgencyHook urgencyConfig { suppressWhen = Focused }
-         $ gnomeConfig
+  return $ withUrgencyHookC dzenUrgencyHook urgencyConfig { suppressWhen = Focused }
+       $ gnomeConfig
        { manageHook = manageDocks <+>
                       myManageHook <+>
                       manageHook gnomeConfig
@@ -55,7 +60,7 @@ main = do
        , handleEventHook   = mappend myHandleEventHook (handleEventHook gnomeConfig)
        , terminal          = "uxterm"
        , focusFollowsMouse = False
-       , workspaces        = myWorkspaces
+       , workspaces        = myTopics
        -- Rebind Mod to the Windows key
        , modMask           = mod4Mask
        }
@@ -94,11 +99,10 @@ main = do
        , ("M-<Escape>", toggleWS)
        , ("M-<Backspace>", toggleWS)
        , ("M-S-]", kill)
-       , ("M-/ g", windowPromptGoto  customXPConfig)
-       , ("M-/ S-g", goToSelected defaultGSConfig)
+       , ("M-/ g", promptedGoto)
+       , ("M-/ S-g", promptedShift)
        , ("M-/ s", sshPrompt customXPConfig)
        , ("M-/ r", shellPrompt customXPConfig)
-       -- , ("M-/ R", xmonadPrompt customXPConfig)
        , ("M-/ S-r", spawn "emacsclient -e '(remember-other-frame)'")
        , ("M-u", focusUrgent)
        , ("M-o", windowMenu)
@@ -112,14 +116,14 @@ main = do
        , ("<XF86AudioPrev>", spawn "mpc prev")
        , ("<XF86AudioStop>", spawn "mpc stop")
        ]
-       `additionalKeys`
-       [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-            | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
-       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-       `additionalKeys`
-       [((m, k), windows $ f i)
-            | (i, k) <- zip myWorkspaces numPadKeys
-       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+       -- `additionalKeys`
+       -- [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+       --      | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
+       -- , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+       -- `additionalKeys`
+       -- [((m, k), windows $ f i)
+       --      | (i, k) <- zip myWorkspaces numPadKeys
+       -- , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 -- Non-numeric num pad keys, sorted by number
 numPadKeys = [ xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
@@ -127,31 +131,13 @@ numPadKeys = [ xK_KP_End,  xK_KP_Down,  xK_KP_Page_Down -- 1, 2, 3
              , xK_KP_Home, xK_KP_Up,    xK_KP_Page_Up   -- 7, 8, 9
              , xK_KP_Insert] -- 0
 
--- myLayoutHook = minimize $ maximize $ boringAuto $ avoidStruts $ Mag.magnifierOff $ smartBorders
---             (tiled ||| (Mirror tiled) ||| Full ||| onebig ||| simpleCross  ||| onWorkspace "7" (withIM (0.15) (Role "buddy_list") Grid) ||| layoutHook gnomeConfig)
---   where
---      -- default tiling algorithm partitions the screen into two panes
---      tiled   = Tall nmaster delta ratio
---
---      -- The default number of windows in the master pane
---      nmaster = 1
---
---      -- Default proportion of screen occupied by master pane
---      ratio   = 1/2
---
---      -- Percent of screen to increment by when resizing panes
---      delta   = 3/100
---
---      -- OneBig + settings
---      onebig = OneBig (3/4) (3/4)
-
 myLayoutHook = minimize
                $ maximize
                $ boringAuto
                $ avoidStruts
                $ Mag.magnifierOff
                $ smartBorders
-               $ onWorkspace "7.im" imLayout
+               $ onWorkspace "im" imLayout
                $ basicLayout
   where
     basicLayout = tiled ||| mirrorTiled ||| Full ||| onebig ||| simpleCross
@@ -273,6 +259,49 @@ customXPKeymap = M.fromList $
   , (xK_Up, moveHistory W.focusDown')
   , (xK_Escape, quit)
   ]
+
+-- The list of all topics/workspaces of your xmonad configuration.
+-- The order is important, new topics must be inserted
+-- at the end of the list if you want hot-restarting
+-- to work.
+myTopics :: [Topic]
+myTopics =
+    [ "dashboard" -- the first one
+    , "im", "music", "transmission", "mail/news", "conf"
+    , "unigate", "payment-page"
+    ]
+
+myTopicConfig :: TopicConfig
+myTopicConfig = TopicConfig
+                { topicDirs = M.fromList $
+                              [ ("conf", "src/dotfiles")
+                              , ("dashboard", "src/")
+                              , ("music", "Music")
+                              , ("transmission", "/mnt/terrabyte/archiv/")
+                              , ("unigate", "src/unigate-dev/unigate")
+                              , ("payment-page", "src/unigate-dev/certo-payment-page")
+                              ]
+                , defaultTopicAction = const $ spawnShell >*> 3
+                , defaultTopic = "dashboard"
+                , topicActions = M.fromList $
+                                 [ ("conf", spawnShell >> spawnShellIn "wd/ertai/private")
+                                 ]
+                }
+
+spawnShell :: X ()
+spawnShell = currentTopicDir myTopicConfig >>= spawnShellIn
+
+spawnShellIn :: Dir -> X ()
+spawnShellIn dir = spawn $ "urxvt '(cd ''" ++ dir ++ "'' && " ++ "zsh" ++ " )'"
+
+goto :: Topic -> X ()
+goto = switchTopic myTopicConfig
+
+promptedGoto :: X ()
+promptedGoto = workspacePrompt customXPConfig goto
+
+promptedShift :: X ()
+promptedShift = workspacePrompt customXPConfig $ windows . W.shift
 
 -- Local variables:
 -- compile-command: "xmonad --recompile && xmonad --restart"
