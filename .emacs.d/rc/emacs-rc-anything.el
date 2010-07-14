@@ -32,5 +32,7 @@
 ;;              (local-set-key "M-}" 'anything-next-source)
 ;;              (local-set-key "M-{" 'anything-prev-source)))
 
+(global-set-key (kbd "M-C-%") 'anything-query-replace-regexp)
+
 (provide 'emacs-rc-anything)
 ;;; emacs-rc-anything.el ends here
