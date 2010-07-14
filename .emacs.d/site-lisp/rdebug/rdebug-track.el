@@ -158,7 +158,7 @@ at the beginning of the line."
               (setq target_fname (buffer-file-name target_buffer))
               (setq gud-last-frame (cons target_fname target_lineno))
               ;; FIXME: we should do this optional
-              ;; (switch-to-buffer-other-window target_buffer)
+              (switch-to-buffer-other-window target_buffer)
               (goto-line target_lineno)
               (rdebug-debug-message "rdebug-track: line %s, file %s"
                                     target_lineno target_fname)
