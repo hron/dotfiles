@@ -252,7 +252,13 @@ myTopics :: [Topic]
 myTopics =
     [ "dashboard (1)" -- the first one
     , "im (2)", "music (3)", "torrents (4)", "mail/news (5)", "conf (6)", "video (7)"
-    , "unigate", "payment-page", "odesk", "heroku-installer"
+    -- "dynamic"
+    , "unigate"
+    , "payment-page"
+    , "odesk"
+    , "heroku-installer"
+    , "unigate_deploy"
+    , "ci"
     ]
 
 myTopicConfig :: TopicConfig
@@ -281,6 +287,8 @@ myTopicConfig = TopicConfig
                                  , ("video (7)", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
                                  , ("odesk", gnomeOpen "http://odesk.com" >> spawn "emacsclient -nc")
                                  , ("heroku-installer", spawn "$SHELL -c 'cd $HOME/src/heroku-installer-dev && exec emacs'")
+                                 , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
+                                 , ("ci", gnomeOpen "http://localhost:3333")
                                  ]
                 }
 

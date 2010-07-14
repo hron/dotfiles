@@ -32,7 +32,7 @@
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
                "Rakefile$" "Capfile" "Gemfile" "Sitefile"
-	       "Vagrantfile" "\\.autotest$"
+               "Vagrantfile" "\\.autotest$"
                "\\.watchr")
 
 (add-hook 'ruby-mode-hook
@@ -83,9 +83,9 @@
 ;;----------------------------------------------------------------------------
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook '(lambda ()
-			     (condition-case err
-				 (flymake-ruby-load)
-			       (error (unless (string= "Invalid file-name" (cadr err))
+                             (condition-case err
+                                 (flymake-ruby-load)
+                               (error (unless (string= "Invalid file-name" (cadr err))
 					(error err))))))
 
 ;;----------------------------------------------------------------------------
@@ -104,8 +104,6 @@
 (add-auto-mode 'sass-mode "\.sass$")
 (autoload 'haml-mode "haml-mode" "Mode for editing haml files" t)
 (autoload 'sass-mode "sass-mode" "Mode for editing sass files" t)
-(add-hook 'haml-mode-hook 'ri-bind-key)
-(add-hook 'sass-mode-hook 'ri-bind-key)
 
 (require 'flymake-haml)
 (add-hook 'haml-mode-hook 'flymake-haml-load)
@@ -129,7 +127,7 @@
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
-	       "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
+               "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
 ;; Ruby test mode
 (require 'ruby-test-mode)
