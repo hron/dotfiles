@@ -114,6 +114,19 @@
 (require 'rdebug)
 (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
 
+;; Add binding to insert ruby debugger with F7.
+(defun GAU-insert-ruby-debug ()
+  (interactive)
+  (let ((ruby-debug-string "require 'ruby-debug'; debugger; stop_here = 1;\n"))
+    (insert ruby-debug-string))
+  (previous-line)
+  (ruby-indent-line))
+
+(defun GAU-bind-insert-ruby-debug-key ()
+  (local-set-key [f7] 'GAU-insert-ruby-debug))
+
+(add-hook 'ruby-mode-hook 'GAU-bind-insert-ruby-debug-key)
+
 (require 'feature-mode)
 
 (require 'autotest)
@@ -130,8 +143,8 @@
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
 ;; Ruby test mode
-(require 'ruby-test-mode)
-(add-hook 'ruby-mode-hook 'ruby-test-mode)
+;; (require 'ruby-test-mode)
+;; (add-hook 'ruby-mode-hook 'ruby-test-mode)
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
