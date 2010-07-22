@@ -123,7 +123,7 @@ myLayoutHook = minimize
                $ avoidStruts
                $ Mag.magnifierOff
                $ smartBorders
-               $ onWorkspace "im (2)" imLayout
+               $ onWorkspace "im#2" imLayout
                $ basicLayout
   where
     basicLayout = tiled ||| mirrorTiled ||| Full ||| onebig ||| simpleCross
@@ -161,9 +161,9 @@ myManageHook = composeOne
                , className =? "gdebi-gtk"                       -?> doFloat
                , iconName  =? "Параметры Google Chrome"         -?> doFloat
                , className =? "Firefox"                         -?> insertPosition End Older
-               , className =? "Pidgin"                          -?> doShift "im (2)"
-               , className =? "Empathy"                         -?> doShift "im (2)"
-               , title     =? "ERC"                             -?> doShift "im (2)"
+               , className =? "Pidgin"                          -?> doShift "im#2"
+               , className =? "Empathy"                         -?> doShift "im#2"
+               , title     =? "ERC"                             -?> doShift "im#2"
                , className =? "Stardict"                        -?> doCenterFloat
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
@@ -250,43 +250,46 @@ customXPKeymap = M.fromList $
 -- to work.
 myTopics :: [Topic]
 myTopics =
-    [ "dashboard (1)" -- the first one
-    , "im (2)", "music (3)", "torrents (4)", "mail/news (5)", "conf (6)", "video (7)"
+    [ "dashboard#1" -- the first one
+    , "im#2", "music#3", "torrents#4", "mail/news#5", "conf#6", "video#7"
     -- "dynamic"
     , "unigate"
     , "payment-page"
     , "odesk"
-    , "heroku-installer"
+    , "onheroku"
     , "unigate_deploy"
     , "ci"
+    , "rails"
     ]
 
 myTopicConfig :: TopicConfig
 myTopicConfig = TopicConfig
                 { topicDirs = M.fromList $
-                              [ ("conf (6)", "src/dotfiles")
-                              , ("dashboard (1)", "src/")
-                              , ("music (3)", "Music")
-                              , ("torrents (4)", "/mnt/terrabyte/archiv/")
-                              , ("video (7)", "Видео")
+                              [ ("conf#6", "src/dotfiles")
+                              , ("dashboard#1", "src/")
+                              , ("music#3", "Music")
+                              , ("torrents#4", "/mnt/terrabyte/archiv/")
+                              , ("video#7", "Видео")
                               , ("unigate", "src/unigate-dev/unigate")
                               , ("payment-page", "src/unigate-dev/certo-payment-page")
-                              , ("heroku-installer", "src/heroku-installer-dev/")
+                              , ("onheroku", "src/onheroku-dev/")
+                              , ("rails", "src/rails/")
                               ]
                 , defaultTopicAction = const $ spawnShell >*> 3
-                , defaultTopic = "dashboard (1)"
+                , defaultTopic = "dashboard#1"
                 , topicActions = M.fromList $
-                                 [ ("conf (6)", spawn "emacsclient -nc ~/org/newgtd.org.gpg" >>
+                                 [ ("conf#6", spawn "emacsclient -nc ~/org/newgtd.org.gpg" >>
                                               spawn "emacsclient -nc ~/.xmonad/xmonad.hs")
-                                 , ("torrents (4)", gnomeOpen "http://rutracker.org" >> spawn "transmission")
-                                 , ("im (2)", spawn "pidgin")
-                                 , ("music (3)", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
-                                 , ("mail/news (5)", gnomeOpen "http://reader.google.com" >> spawn "gnus")
+                                 , ("torrents#4", gnomeOpen "http://rutracker.org" >> spawn "transmission")
+                                 , ("im#2", spawn "pidgin")
+                                 , ("music#3", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
+                                 , ("mail/news#5", gnomeOpen "http://reader.google.com" >> spawn "gnus")
                                  , ("unigate", spawn "unigate")
                                  , ("payment-page", spawn "payment-page")
-                                 , ("video (7)", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
+                                 , ("video#7", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
                                  , ("odesk", gnomeOpen "http://odesk.com" >> spawn "emacsclient -nc")
-                                 , ("heroku-installer", spawn "$SHELL -c 'cd $HOME/src/heroku-installer-dev && exec emacs'")
+                                 , ("onheroku", spawn "$SHELL -c 'cd $HOME/src/onheroku-dev && exec emacs'")
+                                 , ("rails", spawn "$SHELL -c 'cd $HOME/src/rails && exec emacs'")
                                  , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
                                  , ("ci", gnomeOpen "http://localhost:3333")
                                  ]
