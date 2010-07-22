@@ -8,4 +8,5 @@ TAGS
 \.dir-locals.el
 .emacs.desktop
 .emacs.desktop.lock
+\.rspec
 capybara-*.html
