@@ -260,6 +260,7 @@ myTopics =
     , "unigate_deploy"
     , "ci"
     , "rails"
+    , "unigate_statements"
     ]
 
 myTopicConfig :: TopicConfig
@@ -287,10 +288,11 @@ myTopicConfig = TopicConfig
                                  , ("unigate", spawn "unigate")
                                  , ("payment-page", spawn "payment-page")
                                  , ("video#7", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
-                                 , ("odesk", gnomeOpen "http://odesk.com" >> spawn "emacsclient -nc")
+                                 , ("odesk", gnomeOpen "http://odesk.com" >> spawn "$SHELL -c 'cd $HOME/src/hms-dev/ && exec emacs'")
                                  , ("onheroku", spawn "$SHELL -c 'cd $HOME/src/onheroku-dev && exec emacs'")
                                  , ("rails", spawn "$SHELL -c 'cd $HOME/src/rails && exec emacs'")
                                  , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
+                                 , ("unigate_statements", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ss && exec emacs'")
                                  , ("ci", gnomeOpen "http://localhost:3333")
                                  ]
                 }
