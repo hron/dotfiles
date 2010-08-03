@@ -126,7 +126,8 @@ end
 # enable_log  # включаем логи
 # disable_log # выключаем логи
 def change_log(stream)
-  ActiveRecord::Base.logger = Logger.new(stream)
+  ActiveRecord::Base.logger   = Logger.new(stream)
+  ActiveResource::Base.logger = Logger.new(stream)
   ActiveRecord::Base.clear_active_connections!
   reload!
 end
