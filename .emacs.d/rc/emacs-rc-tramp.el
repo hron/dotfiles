@@ -44,60 +44,64 @@
   (progn
     (setq tramp-default-proxies-alist nil)
 
+    ;; BontiqueAir
+    (add-to-list 'tramp-default-proxies-alist
+                 '( "10.0.0.16" nil "/sshx:99.18.242.134:"))
+
     ;; Unigate
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^app02.i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
+                 '( "^app02.i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
+                 '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
 
     ;; Zanby farm
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\|wc-backup-00\\)+$" nil "/sshx:fw1.zanby.com:"))
+                 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\|wc-backup-00\\)+$" nil "/sshx:fw1.zanby.com:"))
 
     ;; Local zanby farm
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^\\(lzdb\\|lzmail-\\(00\\|01\\)\\|lzhttp-0[0-9]\\)+$" nil "/sshx:lzfw1.garage.bogus:"))
+                 '( "^\\(lzdb\\|lzmail-\\(00\\|01\\)\\|lzhttp-0[0-9]\\)+$" nil "/sshx:lzfw1.garage.bogus:"))
 
     ;; ATZ farm
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^atz-\\(nfs\\|mail\\|http\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+                 '( "^atz-\\(nfs\\|mail\\|http\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
     ;; Soapblox
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^sb-http-\\(00\\|01\\|02\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
+                 '( "^sb-http-\\(00\\|01\\|02\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
     ;; CPP farm
     (add-to-list 'tramp-default-proxies-alist
-		 '( "cpp-\\(db-00\\|mail-0[01]\\|http-0[01]\\)" nil "/sshx:atz-fw-00.warecorp.com:"))
+                 '( "cpp-\\(db-00\\|mail-0[01]\\|http-0[01]\\)" nil "/sshx:atz-fw-00.warecorp.com:"))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
+                 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
 
     ;; Soapblox
     (add-to-list 'tramp-default-proxies-alist
-		 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-01.warecorp.com:"))
+                 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-01.warecorp.com:"))
 
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( nil "root" "/sshx:%h:"))
+                 '( nil "root" "/sshx:%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "\\(crystal\\|localhost\\)" "root" nil))
+                 '( "\\(crystal\\|localhost\\)" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
+                 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
+                 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
 
 
     ;; Old soapblox boxes (direct login with root)
     (add-to-list 'tramp-default-proxies-alist
-		 '( ".*.soapblox.net" "root" nil))
+                 '( ".*.soapblox.net" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
-		 '( "\\(localhost\\|crystal\\)" "root" nil))
+                 '( "\\(localhost\\|crystal\\)" "root" nil))
 
     ))
 
