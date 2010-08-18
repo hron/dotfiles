@@ -28,8 +28,18 @@ define_webjump("github", "http://github.com/search?q=%s&type=Everything&repo=&la
 
 define_webjump("rubytoolbox", "http://www.ruby-toolbox.com/categories.html");
 
-// Personalized Webjumps
-add_delicious_webjumps("hron");
+function gusev_define_delicious_webjumps (username) {
+    define_webjump("delicious", "http://delicious.com/" + username + "/%s",
+                   $alternative = "http://delicious.com/" + username);
+    define_webjump("adelicious", "javascript:location.href='http://delicious.com/"+username+
+                   "?v=2&url='+encodeURIComponent(location.href)+'&title='+"+
+                   "encodeURIComponent(document.title);");
+    define_webjump("sdelicious", "http://delicious.com/search?p=%s&context=userposts%7C"+username+"%7C"+
+		   "&chk=&context=userposts&fr=del_icio_us&lc=1");
+    define_webjump("sadelicious", "http://delicious.com/search/all?search=%s");
+}
+gusev_define_delicious_webjumps("hron");
+
 add_lastfm_webjumps("hron77");
 
 // Download buffers are opened automatically whenever you start a
