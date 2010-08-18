@@ -91,11 +91,11 @@
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode
 ;;----------------------------------------------------------------------------
-(autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (unless (string= major-mode "el4r-mode")
-              (ruby-electric-mode t))))
+;; (autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (unless (string= major-mode "el4r-mode")
+;;               (ruby-electric-mode t))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - haml & sass
