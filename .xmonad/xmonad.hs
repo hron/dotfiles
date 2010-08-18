@@ -261,6 +261,7 @@ myTopics =
     , "ci"
     , "rails"
     , "unigate_statements"
+    , "accord"
     ]
 
 myTopicConfig :: TopicConfig
@@ -275,6 +276,7 @@ myTopicConfig = TopicConfig
                               , ("payment-page", "src/unigate-dev/certo-payment-page")
                               , ("onheroku", "src/onheroku-dev/")
                               , ("rails", "src/rails/")
+                              , ("accord", "src/accord-dev/")
                               ]
                 , defaultTopicAction = const $ spawnShell >*> 3
                 , defaultTopic = "dashboard#1"
@@ -294,6 +296,7 @@ myTopicConfig = TopicConfig
                                  , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
                                  , ("unigate_statements", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ss && exec emacs'")
                                  , ("ci", gnomeOpen "http://localhost:3333")
+                                 , ("accord", gnomeOpen "http://accord.basecamphq.com" >> spawn "$SHELL -c 'cd $HOME/src/accord-dev/ && exec emacs'")
                                  ]
                 }
 
