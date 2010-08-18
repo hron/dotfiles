@@ -286,7 +286,7 @@ myTopicConfig = TopicConfig
                                  , ("torrents#4", gnomeOpen "http://rutracker.org" >> spawn "transmission")
                                  , ("im#2", spawn "pidgin")
                                  , ("music#3", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
-                                 , ("mail/news#5", gnomeOpen "http://reader.google.com" >> spawn "gnus")
+                                 , ("mail/news#5", gnomeOpen "http://reader.google.com")
                                  , ("unigate", spawn "unigate")
                                  , ("payment-page", spawn "payment-page")
                                  , ("video#7", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
