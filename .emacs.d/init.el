@@ -208,6 +208,14 @@
 ;; http://julien.danjou.info/rainbow-mode.html
 (require 'rainbow-mode)
 
+;; Yasnippet
+(require 'yasnippet)
+(setq yas/snippet-dirs "~/.emacs.d/site-lisp/snippets")
+(yas/load-directory yas/snippet-dirs)
+(yas/minor-mode)
+
+
+
 ;;
 ;; Emacs core customization
 ;;
