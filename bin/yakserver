@@ -1,0 +1,4 @@
+#! /bin/zsh -f
+
+cd $HOME/src/dotfiles/yakserver
+exec ./yakserver.rb
