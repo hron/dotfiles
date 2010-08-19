@@ -255,7 +255,7 @@ myTopics =
     -- "dynamic"
     , "unigate"
     , "payment-page"
-    , "odesk"
+    , "hms"
     , "onheroku"
     , "unigate_deploy"
     , "ci"
@@ -286,11 +286,11 @@ myTopicConfig = TopicConfig
                                  , ("torrents#4", gnomeOpen "http://rutracker.org" >> spawn "transmission")
                                  , ("im#2", spawn "pidgin")
                                  , ("music#3", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
-                                 , ("mail/news#5", gnomeOpen "http://reader.google.com")
+                                 , ("mail/news#5", gnomeOpen "http://reader.google.com" >> gnomeOpen "http://gmail.com")
                                  , ("unigate", spawn "unigate")
                                  , ("payment-page", spawn "payment-page")
                                  , ("video#7", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
-                                 , ("odesk", gnomeOpen "http://odesk.com" >> spawn "$SHELL -c 'cd $HOME/src/hms-dev/ && exec emacs'")
+                                 , ("hms", spawn "google-chrome http://odesk.com http://hmsinc.unfuddle.com/" >> spawn "$SHELL -c 'cd $HOME/src/hms-dev/ && exec emacs'")
                                  , ("onheroku", spawn "$SHELL -c 'cd $HOME/src/onheroku-dev && exec emacs'")
                                  , ("rails", spawn "$SHELL -c 'cd $HOME/src/rails && exec emacs'")
                                  , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
