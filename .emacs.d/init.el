@@ -212,7 +212,7 @@
 (require 'yasnippet)
 (setq yas/snippet-dirs "~/.emacs.d/site-lisp/snippets")
 (yas/load-directory yas/snippet-dirs)
-(yas/global-mode)
+(yas/global-mode t)
 
 
 ;;
