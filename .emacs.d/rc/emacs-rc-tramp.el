@@ -46,11 +46,11 @@
 
     ;; BontiqueAir
     (add-to-list 'tramp-default-proxies-alist
-                 '( "10.0.0.16" nil "/sshx:99.18.242.134:"))
+                 '( "10.0.0.[0-9]+" nil "/sshx:aleksei@99.18.242.134:"))
 
     ;; Unigate
     (add-to-list 'tramp-default-proxies-alist
-                 '( "^app02.i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
+                 '( "^\\(app02\\|app01\\).i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
 
     (add-to-list 'tramp-default-proxies-alist
                  '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
@@ -85,6 +85,9 @@
 
     (add-to-list 'tramp-default-proxies-alist
                  '( nil "root" "/sshx:%h:"))
+
+    ;; (add-to-list 'tramp-default-proxies-alist
+    ;;              '( "hendrix" "project" "/sshx:gusev@%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
                  '( "\\(crystal\\|localhost\\)" "root" nil))
