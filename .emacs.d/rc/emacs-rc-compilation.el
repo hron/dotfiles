@@ -26,6 +26,13 @@
 
 ;; (setq compilation-error-regexp-alist '())
 
+;; This code is needed to prevent jump on the wrong lines when compilation was
+;; rerun in the same compilation buffer (watchr).
+(defadvice compilation-goto-error (before compilation-goto-error-forget-errors)
+  "Forget file structure every time"
+  (compilation-forget-errors))
+(ad-activate 'compilation-goto-error)
+
 (setq compilation-error-regexp-alist
       (mapcar 'car compilation-error-regexp-alist-alist))
 
