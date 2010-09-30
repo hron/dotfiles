@@ -86,22 +86,27 @@ myConfig = do
        , ("M-/ S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
+       , ("M-t",     spawn "uxterm -e 'screen -RR'")
        , ("M-/ S-t", spawn "uxterm -e 'byobu -RR'")
-       , ("M-/ m",   spawn "emacsclient -c -e '(emms-smart-browse)'")
-       , ("M-/ M",   spawn "uxterm -e $SHELL -c 'ncmpcpp'")
        , ("M-/ b",   spawn "google-chrome")
-       -- , ("M-/ B",   spawn "conkeror --no-remote -P")
+       , ("M-b",     spawn "google-chrome")
        , ("M-/ e",   spawn "emacsclient -nc")
+       , ("M-e",     spawn "emacsclient -nc")
        , ("M-/ q",   safePromptSelection "stardict")
+       , ("M-q",     safePromptSelection "stardict")
        , ("<XF86HomePage>",   spawn "google-chrome")
        , ("<XF86Tools>",   spawn "emacsclient -nc")
        -- WM actions
        , ("M-<Escape>", toggleWS)
        , ("M-<Backspace>", toggleWS)
        , ("M-S-]", kill)
+       , ("M-g", promptedGoto)
        , ("M-/ g", promptedGoto)
+       , ("M-S-g", promptedShift)
        , ("M-/ S-g", promptedShift)
+       , ("M-s", sshPrompt customXPConfig)
        , ("M-/ s", sshPrompt customXPConfig)
+       , ("M-r", shellPrompt customXPConfig)
        , ("M-/ r", shellPrompt customXPConfig)
        , ("M-/ S-r", spawn "emacsclient -e '(remember-other-frame)'")
        , ("M-u", focusUrgent)
@@ -110,12 +115,16 @@ myConfig = do
        , ("M-i", withFocused $ windows . W.sink)
        , ("M-m", sendMessage Mag.Toggle)
        -- MusicPlaerDaemon
-       , ("<XF86AudioPlay>", spawn "mpc toggle")
-       , ("<XF86AudioNext>", spawn "mpc next")
-       , ("<XF86AudioMedia>", spawn "mpc next")
-       , ("<XF86AudioPrev>", spawn "mpc prev")
-       , ("<XF86AudioStop>", spawn "mpc stop")
+       -- , ("<XF86AudioPlay>", spawn "mpc toggle")
+       -- , ("<XF86AudioNext>", spawn "mpc next")
+       -- , ("<XF86AudioMedia>", spawn "mpc next")
+       -- , ("<XF86AudioPrev>", spawn "mpc prev")
+       -- , ("<XF86AudioStop>", spawn "mpc stop")
        ]
+       `additionalKeys`
+       [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+            | (key, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
+       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myLayoutHook = minimize
                $ maximize
@@ -126,7 +135,7 @@ myLayoutHook = minimize
                $ onWorkspace "im#2" imLayout
                $ basicLayout
   where
-    basicLayout = tiled ||| mirrorTiled ||| Full ||| onebig ||| simpleCross
+    basicLayout = Full ||| tiled ||| mirrorTiled ||| onebig ||| simpleCross
 
     -- Tiled layout
     tiled = Tall nmaster delta ratio
@@ -285,17 +294,17 @@ myTopicConfig = TopicConfig
                                               spawn "emacsclient -nc ~/.xmonad/xmonad.hs")
                                  , ("torrents#4", gnomeOpen "http://rutracker.org" >> spawn "transmission")
                                  , ("im#2", spawn "pidgin")
-                                 , ("music#3", spawn "uxterm -e $SHELL -c 'ncmpcpp'")
-                                 , ("mail/news#5", gnomeOpen "http://reader.google.com" >> gnomeOpen "http://gmail.com")
+                                 , ("music#3", spawn "rhythmbox")
+                                 , ("mail/news#5", spawn "google-chrome --new-window http://gmail.com http://reader.google.com")
                                  , ("unigate", spawn "unigate")
                                  , ("payment-page", spawn "payment-page")
                                  , ("video#7", spawn "emacsclient -nc ~/Videos" >> spawn "smpalyer")
-                                 , ("hms", spawn "google-chrome http://odesk.com http://hmsinc.unfuddle.com/" >> spawn "$SHELL -c 'cd $HOME/src/hms-dev/ && exec emacs'")
+                                 , ("hms", spawn "google-chrome --new-window http://odesk.com http://hmsinc.unfuddle.com/" >> spawn "$SHELL -c 'cd $HOME/src/hms-dev/ && exec emacs'")
                                  , ("onheroku", spawn "$SHELL -c 'cd $HOME/src/onheroku-dev && exec emacs'")
                                  , ("rails", spawn "$SHELL -c 'cd $HOME/src/rails && exec emacs'")
                                  , ("unigate_deploy", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ && exec emacs'")
                                  , ("unigate_statements", spawn "$SHELL -c 'cd $HOME/src/unigate-dev/ss && exec emacs'")
-                                 , ("ci", gnomeOpen "http://localhost:3333")
+                                 , ("ci", gnomeOpen "http://192.168.66.3:3333")
                                  , ("accord", gnomeOpen "http://accord.basecamphq.com" >> spawn "$SHELL -c 'cd $HOME/src/accord-dev/ && exec emacs'")
                                  ]
                 }
