@@ -235,10 +235,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Color theme loading, must be the last.
-(load-library "color-themes/color-theme-dark-hron")
-(color-theme-dark-hron)
-
 (setq split-width-threshold 120)
+
+(require 'midnight)
+(setq clean-buffer-list-delay-general 1)
 
 (provide 'emacs-rc-misc-things)

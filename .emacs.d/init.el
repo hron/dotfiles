@@ -262,3 +262,7 @@
 
 ;; Everything else...
 (require 'emacs-rc-misc-things)
+
+;; Color theme loading, must be the last.
+(load-library "color-themes/color-theme-dark-hron")
+(color-theme-dark-hron)
