@@ -263,6 +263,8 @@
 ;; Everything else...
 (require 'emacs-rc-misc-things)
 
+(add-hook 'hs-minor-mode-hook 'hs-hide-all)
+
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
 (color-theme-dark-hron)

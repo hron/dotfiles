@@ -146,5 +146,12 @@
 ;; (require 'ruby-test-mode)
 ;; (add-hook 'ruby-mode-hook 'ruby-test-mode)
 
+(require 'hideshow)
+(add-to-list 'hs-special-modes-alist
+	     '(ruby-mode
+	       "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+	       (lambda (arg) (ruby-end-of-block)) nil))
+(add-hook 'ruby-mode-hook 'hs-minor-mode)
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
