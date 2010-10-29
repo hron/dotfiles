@@ -263,6 +263,7 @@
 ;; Everything else...
 (require 'emacs-rc-misc-things)
 
+(setq hs-allow-nesting t)
 (add-hook 'hs-minor-mode-hook 'hs-hide-all)
 
 ;; Color theme loading, must be the last.
