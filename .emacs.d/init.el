@@ -265,6 +265,9 @@
 
 (setq hs-allow-nesting t)
 (add-hook 'hs-minor-mode-hook 'hs-hide-all)
+(add-hook 'hs-minor-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-TAB") 'hs-toggle-hiding)))
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
