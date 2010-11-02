@@ -135,10 +135,13 @@
 (defun watchr (script)
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
-  (let* ((buffer-name (concat "*watchr*<" (file-name-nondirectory script) ">"))
+  (let* ((directory (file-name-directory script))
+	 (watchr-filename (file-name-nondirectory script))
+	 (buffer-name (concat "*watchr*<" watchr-filename ">"))
 	 (buffer (shell buffer-name)))
     (shell-cd (file-name-directory script))
-    (comint-send-string buffer (concat "watchr " script "\n"))))
+    (comint-send-string buffer (concat "cd " directory "; "
+				       "watchr " script "\n"))))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
