@@ -263,6 +263,8 @@
 ;; Everything else...
 (require 'emacs-rc-misc-things)
 
+(setq flyspell-use-meta-tab nil)
+
 (setq hs-allow-nesting t)
 (add-hook 'hs-minor-mode-hook 'hs-hide-all)
 (add-hook 'hs-minor-mode-hook
