@@ -129,9 +129,6 @@
 
 (require 'feature-mode)
 
-(require 'autotest)
-(setq autotest-command "export AUTOFEATURE=true; autospec")
-
 (defun watchr (script)
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
