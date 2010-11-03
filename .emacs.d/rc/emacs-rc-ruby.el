@@ -158,7 +158,8 @@
 	       (lambda (arg) (ruby-end-of-block)) nil))
 (add-hook 'ruby-mode-hook '(lambda ()
 			     (hs-minor-mode)
-			     (when (string-match "spec\.rb$" filename)
+			     (when (or (string-match "spec\.rb$" filename)
+				       (string-match "\.rake$" filename))
 			       (hs-hide-level 2))))
 
 (provide 'emacs-rc-ruby)
