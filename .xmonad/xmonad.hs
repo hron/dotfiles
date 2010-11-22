@@ -83,6 +83,8 @@ myConfig = do
        -- DE actions
          ("M-S-l", spawn "gnome-screensaver-command -l")
        , ("<XF86Launch1>", spawn "gnome-screensaver-command -l")
+       , ("<XF86Search>", spawn "kupfer")
+       , ("<XF86Favorites>", spawn "kupfer")
        , ("M-/ S-q", spawn "gnome-session-save --gui --shutdown-dialog")
        -- External applications
        , ("M-/ t",   spawn "uxterm -e 'screen -RR'")
@@ -171,9 +173,12 @@ myManageHook = composeOne
                , iconName  =? "Параметры Google Chrome"         -?> doFloat
                , className =? "Firefox"                         -?> insertPosition End Older
                , className =? "Pidgin"                          -?> doShift "im#2"
+               , className =? "Banshee"                         -?> doShift "music#3"
                , className =? "Empathy"                         -?> doShift "im#2"
                , title     =? "ERC"                             -?> doShift "im#2"
                , className =? "Stardict"                        -?> doCenterFloat
+               , className =? "Docky"                           -?> doIgnore
+               , resource  =? "Do"                              -?> doFloat
                , isDialog                                       -?> doCenterFloat
                , isFullscreen                                   -?> doFullFloat
                ]
