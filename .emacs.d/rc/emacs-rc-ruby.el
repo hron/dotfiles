@@ -98,7 +98,7 @@
 ;;               (ruby-electric-mode t))))
 
 ;;----------------------------------------------------------------------------
-;; Ruby - haml & sass
+;; Ruby - haml & sass & scss
 ;;----------------------------------------------------------------------------
 (add-auto-mode 'haml-mode "\.haml$")
 (add-auto-mode 'sass-mode "\.sass$")
@@ -110,6 +110,9 @@
 (add-hook 'sass-mode-hook 'flymake-sass-load)
 
 (add-auto-mode 'rhtml-mode "\.erb$")
+
+(require 'scss-mode)
+(setq scss-compile-at-save nil)
 
 (require 'rdebug)
 (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
@@ -133,31 +136,35 @@
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
   (let* ((directory (file-name-directory script))
-	 (watchr-filename (file-name-nondirectory script))
-	 (buffer-name (concat "*watchr*<" watchr-filename ">"))
-	 (buffer (shell buffer-name)))
-    (shell-cd (file-name-directory script))
-    (comint-send-string buffer (concat "cd " directory "; "
-				       "watchr " script "\n"))))
+         (watchr-filename (file-name-nondirectory script))
+         (buffer-name (concat "*watchr*<" watchr-filename ">"))
+         (buffer (shell buffer-name)))
+    (with-current-buffer buffer
+      (shell-cd directory)
+      (comint-send-string buffer (concat "cd " directory "; "
+                                         "watchr " script "\n")))))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
 ;; Ruby test mode
-;; (require 'ruby-test-mode)
-;; (add-hook 'ruby-mode-hook 'ruby-test-mode)
+(require 'ruby-test-mode)
+(add-hook 'ruby-mode-hook 'ruby-test-mode)
 
 (require 'hideshow)
 (add-to-list 'hs-special-modes-alist
-	     '(ruby-mode
-	       "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
-	       (lambda (arg) (ruby-end-of-block)) nil))
-(add-hook 'ruby-mode-hook '(lambda ()
-			     (hs-minor-mode)
-			     (when (or (string-match "spec\.rb$" filename)
-				       (string-match "\.rake$" filename))
-			       (hs-hide-level 2))))
+             '(ruby-mode
+               "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+               (lambda (arg) (ruby-end-of-block)) nil))
+
+;; TODO: `filename' should be a function returns filename of file associated with
+;; current buffer.
+;; (add-hook 'ruby-mode-hook '(lambda ()
+;;                           (hs-minor-mode)
+;;                           (when (or (string-match "spec\.rb$" filename)
+;;                                     (string-match "\.rake$" filename))
+;;                             (hs-hide-level 2))))
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here

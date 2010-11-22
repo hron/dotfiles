@@ -117,9 +117,9 @@
 ;; Emacs Rails Reloaded
 ;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
 ;; to load path explicity...
-(setq load-path (cons (expand-file-name
-                       "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
-(require 'rails-autoload)
+;; (setq load-path (cons (expand-file-name
+;;                        "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
+;; (require 'rails-autoload)
 
 ;; RHTML
 (require 'rhtml-mode)
@@ -132,6 +132,8 @@
 ;; Ruby
 (require 'emacs-rc-ruby)
 (require 'rvm)
+
+(require 'rinari)
 
 ;; YAML
 (require 'yaml-mode)
@@ -269,7 +271,7 @@
 (add-hook 'hs-minor-mode-hook 'hs-hide-all)
 (add-hook 'hs-minor-mode-hook
           '(lambda ()
-             (local-set-key (kbd "M-TAB") 'hs-toggle-hiding)))
+             (local-set-key (kbd "<C-tab>") 'hs-toggle-hiding)))
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
