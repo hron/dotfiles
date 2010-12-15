@@ -165,6 +165,15 @@
 ;;                           (when (or (string-match "spec\.rb$" filename)
 ;;                                     (string-match "\.rake$" filename))
 ;;                             (hs-hide-level 2))))
+(add-hook 'ruby-mode-hook '(lambda ()
+			     (hs-minor-mode)))
+
+(require 'haml-mode)
+(setq haml-mode-syntax-table
+      (let ((table (make-syntax-table)))
+	(modify-syntax-entry ?: "." table)
+	table))
+
 
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
