@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Dropbox/src/dotfiles/org/someday.org.gpg")
- (front-context-string . "** Новые проекты")
- (rear-context-string . "1:20]\n    :END:\n")
- (position . 1860))
+ (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
+ (front-context-string . "* Финансы\n  :PRO")
+ (rear-context-string . "3:25\n     :END:\n")
+ (position . 73667))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/someday.org.gpg")
  (front-context-string . "*** Изменить цве")
