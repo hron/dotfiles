@@ -134,6 +134,7 @@
 (require 'rvm)
 
 (require 'rinari)
+(add-to-list 'rinari-major-modes 'magit-mode-hook)
 
 ;; YAML
 (require 'yaml-mode)
