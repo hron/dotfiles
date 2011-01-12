@@ -166,3 +166,7 @@ if [[ "$TERM" != "linux" ]] &&
 	print -nP -f "\033]2; %s:zsh@%s %-40s\007\033]1;%s %-20s\007" "%m:%~%#" $s "%m:%~%#" $s
     }
 fi
+
+if [[ "$EMACS" == "t" ]]; then
+    stty columns 80;
+fi
