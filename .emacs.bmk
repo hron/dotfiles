@@ -3,15 +3,15 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
- (front-context-string . "* Финансы\n  :PRO")
- (rear-context-string . "3:25\n     :END:\n")
- (position . 73667))
-("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/someday.org.gpg")
- (front-context-string . "*** Изменить цве")
- (rear-context-string . "@home:computer:\n")
- (position . 1496))
+ (front-context-string)
+ (rear-context-string . " на FactoryGirl\n")
+ (position . 15141))
+("org-remember-last-stored"
+ (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
+ (front-context-string . "** TODO Разобрат")
+ (rear-context-string . "с понедельника)\n")
+ (position . 1900))
 ("pureweb"
  (filename . "/sudo:root@83.133.127.122:/etc/")
  (front-context-string . "hostname\n  -rw-r")
