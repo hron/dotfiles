@@ -52,6 +52,9 @@
 (add-hook 'inf-ruby-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'ruby-mode-hook 'inf-ruby-keys)
 
+(setq inf-ruby-first-prompt-pattern "^>> "
+      inf-ruby-prompt-pattern "^>> ")
+
 ;; these aliases is for emacs-rails-reloaded.
 (defalias 'inferior-ruby-mode 'inf-ruby-mode)
 (defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
@@ -135,14 +138,39 @@
 (defun watchr (script)
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
-  (let* ((directory (file-name-directory script))
-         (watchr-filename (file-name-nondirectory script))
-         (buffer-name (concat "*watchr*<" watchr-filename ">"))
-         (buffer (shell buffer-name)))
+  (let* ((dir (file-name-directory script))
+	 (watchr-filename (file-name-nondirectory script))
+	 (buffer-name (concat "*watchr*<" watchr-filename ">"))
+	 (command (concat "watchr " script)))
+    (gusev-shell-run dir command buffer-name)))
+
+(defun roetags (dir)
+  "*Run 'roetags build && roetags watch' DIR."
+  (interactive "DDirectory to run roetags in: ")
+  (gusev-shell-run dir "roetags build && roetags watch" "*roetags*"))
+
+(defun gusev-shell-run (dir command buffer-name)
+  (let* ((buffer (shell buffer-name)))
     (with-current-buffer buffer
-      (shell-cd directory)
-      (comint-send-string buffer (concat "cd " directory "; "
-                                         "watchr " script "\n")))))
+      (shell-cd dir)
+      (comint-send-string buffer (concat "cd " dir "; "
+					 command
+					 "\n")))))
+
+(defun watchr-all (dir)
+  "*Run all watchr files in DIR."
+  (interactive "DDirectory with scripts: ")
+  (let ((watchr-files (directory-files dir t "\.watchr$")))
+    (mapcar 'watchr watchr-files)))
+
+(require 'desktop)
+(add-hook 'desktop-after-read-hook
+	  '(lambda ()
+	     (watchr-all desktop-dirname)))
+
+(add-hook 'desktop-after-read-hook
+	  '(lambda ()
+	     (roetags desktop-dirname)))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
@@ -166,7 +194,7 @@
 ;;                                     (string-match "\.rake$" filename))
 ;;                             (hs-hide-level 2))))
 (add-hook 'ruby-mode-hook '(lambda ()
-			     (hs-minor-mode)))
+                             (hs-minor-mode)))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table
