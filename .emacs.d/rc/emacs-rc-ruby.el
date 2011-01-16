@@ -183,15 +183,13 @@
 (add-to-list 'auto-insert-alist
 	     '(("_spec\\.rb$" . "RSpec header")
 	       nil
-	       "require 'spec_helper'"\n
-	       \n
-	       "describe "
-	       (let* ((file-name (file-name-nondirectory buffer-file-name))
-		      (class-name-parts (butlast (split-string file-name "_"))))
-		 (mapconcat 'capitalize class-name-parts ""))
-	       " do"\n
-	       \n
-	       "end"
+	       "require 'spec_helper'
+
+describe " (let* ((file-name (file-name-nondirectory buffer-file-name))
+		  (class-name-parts (butlast (split-string file-name "_"))))
+	     (mapconcat 'capitalize class-name-parts "")) " do
+
+end"
 	       ))
 
 (require 'hideshow)
