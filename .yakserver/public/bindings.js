@@ -4,8 +4,10 @@ yak.functions.add({
     }
 });
 yak.bindings.add({
-    // I assume that most people who have gotten this far were raised on
-    // Netscape's behavior of Backspace = PageUp.
+    'l': {
+        exclude: yak.textElements,
+        onkeydown: yak.functions.goBack
+    },
     'F': {
         exclude: yak.textElements,
         onkeydown: yak.functions.goForward
