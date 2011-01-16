@@ -180,13 +180,16 @@
 (require 'ruby-test-mode)
 (add-hook 'ruby-mode-hook 'ruby-test-mode)
 
-;; TODO: implement insertion of ruby module name based on buffer-associated filename.
 (add-to-list 'auto-insert-alist
 	     '(("_spec\\.rb$" . "RSpec header")
 	       nil
 	       "require 'spec_helper'"\n
 	       \n
-	       "describe  do"\n
+	       "describe "
+	       (let* ((file-name (file-name-nondirectory buffer-file-name))
+		      (class-name-parts (butlast (split-string file-name "_"))))
+		 (mapconcat 'capitalize class-name-parts ""))
+	       " do"\n
 	       \n
 	       "end"
 	       ))
