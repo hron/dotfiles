@@ -197,7 +197,7 @@ end"
 (require 'hideshow)
 (add-to-list 'hs-special-modes-alist
              '(ruby-mode
-               "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+               "\\(class\\|module\\|def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
                (lambda (arg) (ruby-end-of-block)) nil))
 
 ;; TODO: `filename' should be a function returns filename of file associated with
