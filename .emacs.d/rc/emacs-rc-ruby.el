@@ -181,6 +181,7 @@
 (require 'ruby-test-mode)
 (add-hook 'ruby-mode-hook 'ruby-test-mode)
 
+(require 'autoinsert)
 (add-to-list 'auto-insert-alist
 	     '(("_spec\\.rb$" . "RSpec header")
 	       nil
