@@ -170,7 +170,8 @@
 
 (add-hook 'desktop-after-read-hook
 	  '(lambda ()
-	     (roetags desktop-dirname)))
+	     (when (file-exists-p (concat desktop-dirname "Gemfile"))
+	       (roetags desktop-dirname))))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
