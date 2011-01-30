@@ -114,21 +114,6 @@
 ;; Git
 (require 'emacs-rc-git)
 
-;; Emacs Rails Reloaded
-;; FIXME: I do not know why, but we have to add emacs-rails-reloaded
-;; to load path explicity...
-;; (setq load-path (cons (expand-file-name
-;;                        "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
-;; (require 'rails-autoload)
-
-;; RHTML
-(require 'rhtml-mode)
-(add-to-list 'auto-mode-alist '("\\.rhtml$" . rhtml-mode))
-(add-hook 'rhtml-mode-hook '(lambda ()
-                              (flyspell-prog-mode)
-                              ;; (turn-on-orgstruct)
-                              ;; (turn-on-orgtbl)))
-                              ))
 ;; Ruby
 (require 'emacs-rc-ruby)
 (require 'rvm)
@@ -217,6 +202,8 @@
 (yas/load-directory yas/snippet-dirs)
 (yas/global-mode t)
 
+;; nXhtml
+(load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
 
 ;;
 ;; Emacs core customization
