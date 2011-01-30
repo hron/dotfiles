@@ -113,8 +113,6 @@
 (add-hook 'haml-mode-hook 'flymake-haml-load)
 (add-hook 'sass-mode-hook 'flymake-sass-load)
 
-(add-auto-mode 'rhtml-mode "\.erb$")
-
 (require 'scss-mode)
 (setq scss-compile-at-save nil)
 
