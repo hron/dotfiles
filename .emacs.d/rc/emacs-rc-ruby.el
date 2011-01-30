@@ -61,14 +61,15 @@
 (defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
 
 ;; yari
-(defun yari-bind-key ()
-  (local-set-key [f1] 'yari-anything))
-
-(defalias 'rails-search-doc 'yari)
-(add-hook 'ruby-mode-hook 'yari-bind-key)
-(add-hook 'rhtml-mode-hook 'yari-bind-key)
-(add-hook 'haml-mode-hook 'yari-bind-key)
-(add-hook 'sass-mode-hook 'yari-bind-key)
+;; (defun yari-bind-key ()
+;;   (local-set-key [f1] 'yari-anything))
+;;
+;; (defalias 'rails-search-doc 'yari)
+;; (add-hook 'ruby-mode-hook 'yari-bind-key)
+;; (add-hook 'rhtml-mode-hook 'yari-bind-key)
+;; (add-hook 'haml-mode-hook 'yari-bind-key)
+;; (add-hook 'sass-mode-hook 'yari-bind-key)
+(global-set-key [f1] 'yari-anything)
 
 ;; ruby-compilation
 ;; (add-hook 'ruby-mode-hook
