@@ -193,11 +193,11 @@ describe " (let* ((file-name (file-name-nondirectory buffer-file-name))
 end"
 	       ))
 
-(require 'hideshow)
-(add-to-list 'hs-special-modes-alist
-             '(ruby-mode
-               "\\(class\\|module\\|def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
-               (lambda (arg) (ruby-end-of-block)) nil))
+;; (require 'hideshow)
+;; (add-to-list 'hs-special-modes-alist
+;;              '(ruby-mode
+;;                "\\(class\\|module\\|def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+;;                (lambda (arg) (ruby-end-of-block)) nil))
 
 ;; TODO: `filename' should be a function returns filename of file associated with
 ;; current buffer.
@@ -206,8 +206,8 @@ end"
 ;;                           (when (or (string-match "spec\.rb$" filename)
 ;;                                     (string-match "\.rake$" filename))
 ;;                             (hs-hide-level 2))))
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (hs-minor-mode)))
+;; (add-hook 'ruby-mode-hook '(lambda ()
+;;                              (hs-minor-mode)))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table
