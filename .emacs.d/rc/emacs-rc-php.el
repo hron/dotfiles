@@ -5,7 +5,7 @@
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
 ;; Created: 11 Апр 2007
 ;; Version: $Id$
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -47,10 +47,10 @@
 (require 'php-repl)
 (setq php-repl-program (concat (getenv "HOME") "/pear/php-repl"))
 
-(require 'phpunit)
+;; (require 'phpunit)
 ;; Make clickalabe of standard PHP fatals too.
-(setq phpunit-regexp-alist (append phpunit-regexp-alist
-				   '(php)))
+;; (setq phpunit-regexp-alist (append phpunit-regexp-alist
+;; 				   '(php)))
 
 (require 'flymake-php)
 (add-hook 'php-mode-hook '(lambda () (flymake-mode t)))
