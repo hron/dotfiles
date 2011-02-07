@@ -84,7 +84,7 @@
 (require 'emacs-rc-octave)
 
 ;; PHP
-;; (require 'emacs-rc-php)
+(require 'emacs-rc-php)
 
 ;; TeX
 (require 'emacs-rc-tex)
@@ -204,6 +204,8 @@
 
 ;; nXhtml
 (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
+;; This prevents activating nxhtml-mode for .html.haml files.
+(add-to-list 'auto-mode-alist '("\\.html\\.haml" . haml-mode))
 
 ;;
 ;; Emacs core customization
