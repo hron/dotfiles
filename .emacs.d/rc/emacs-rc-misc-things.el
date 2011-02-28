@@ -17,6 +17,8 @@
 
 ;; Undo и redo для конфигурации окон
 (winner-mode t)
+(global-set-key (kbd "<f2>") 'winner-undo)
+(global-set-key (kbd "<f3>") 'winner-redo)
 
 ;; Перемещение между окнами по Shift + стрелки
 (windmove-default-keybindings)
