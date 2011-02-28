@@ -140,7 +140,7 @@
   (let* ((dir (file-name-directory script))
 	 (watchr-filename (file-name-nondirectory script))
 	 (buffer-name (concat "*watchr*<" watchr-filename ">"))
-	 (command (concat "watchr " script)))
+	 (command (concat "bundle exec watchr " script)))
     (gusev-shell-run dir command buffer-name)))
 
 (defun roetags (dir)
