@@ -121,6 +121,34 @@
 (require 'rinari)
 (add-to-list 'rinari-major-modes 'magit-mode-hook)
 
+(defun rinari-web-server (&optional edit-cmd-args)
+  "Starts a Rails webserver.  Dumps output to a compilation buffer
+allowing jumping between errors and source code.  With optional prefix
+argument allows editing of the server command arguments."
+  (interactive "P")
+  (let* ((default-directory (rinari-root))
+         (script (rinari-script-path))
+         (command
+          (expand-file-name
+           (if (file-exists-p (expand-file-name "server" script))
+               "server"
+             "rails server")
+           script)))
+
+    ;; Start web server in correct environment.
+    ;; NOTE: Rails 3 has a bug and does not start in any environment but development for now.
+    (if rinari-rails-env
+        (setq command (concat command " -e " rinari-rails-env)))
+
+    ;; For customization of the web server command with prefix arg.
+    (setq command (if edit-cmd-args
+                      (read-string "Run Ruby: " (concat command " "))
+                    command))
+
+    (gusev-shell-run default-directory command "*server*"))
+  (rinari-launch))
+
+
 ;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
