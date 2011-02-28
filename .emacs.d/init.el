@@ -233,7 +233,7 @@ argument allows editing of the server command arguments."
 ;; nXhtml
 (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
 ;; This prevents activating nxhtml-mode for .html.haml files.
-(add-to-list 'auto-mode-alist '("\\.html\\.haml" . haml-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\.haml$" . haml-mode))
 
 ;;
 ;; Emacs core customization
