@@ -32,6 +32,7 @@
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
                "Rakefile$" "Capfile" "Gemfile" "Sitefile"
+	       "Guardfile"
                "Vagrantfile" "\\.autotest$"
                "\\.watchr")
 
@@ -178,7 +179,18 @@
 
 ;; Ruby test mode
 (require 'ruby-test-mode)
+;; I don't use 'run test' feature of ruby-test-mode. However I need these keys
+;; for my own bindings. ;)
 (add-hook 'ruby-mode-hook 'ruby-test-mode)
+
+(defvar ruby-test-mode-map
+  (let ((map (make-sparse-keymap)))
+    ;; (define-key map "\C-cr" 'ruby-test-run)
+    ;; (define-key map "\C-cp" 'ruby-test-run-at-point)
+    (define-key map "\C-ct" 'ruby-test-toggle-implementation-and-specification)
+    map)
+  "The keymap used in `ruby-test-mode' buffers.")
+
 
 (require 'autoinsert)
 (add-to-list 'auto-insert-alist
