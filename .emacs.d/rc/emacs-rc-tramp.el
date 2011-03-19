@@ -47,6 +47,8 @@
     ;; BontiqueAir
     (add-to-list 'tramp-default-proxies-alist
                  '( "10.0.0.[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
+    (add-to-list 'tramp-default-proxies-alist
+                 '( "sfa[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
 
     ;; Unigate
     (add-to-list 'tramp-default-proxies-alist
