@@ -1,4 +1,3 @@
-#! /bin/zsh -f
+#! /bin/zsh
 
-cd $HOME/.yakserver/src
-exec ruby ./yakserver.rb
+cd $HOME/.yakserver/src && exec ./yakserver.rb
