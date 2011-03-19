@@ -135,6 +135,13 @@
 
 (require 'feature-mode)
 
+(defun guard (dir)
+  "*Run guard in DIR."
+  (interactive "DDirectory with Guardfile: ")
+  (let* ((buffer-name (concat "*guard*<" dir ">"))
+	 (command "bundle exec guard"))
+    (gusev-shell-run dir command buffer-name)))
+
 (defun watchr (script)
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
@@ -164,6 +171,10 @@
     (mapcar 'watchr watchr-files)))
 
 (require 'desktop)
+(add-hook 'desktop-after-read-hook
+	  '(lambda ()
+	     (guard desktop-dirname)))
+
 (add-hook 'desktop-after-read-hook
 	  '(lambda ()
 	     (watchr-all desktop-dirname)))
