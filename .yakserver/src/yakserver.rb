@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#! /usr/bin/env ruby
 
 # Installing Sinatra via apt-get does not pull in rubygems, but everything
 # still works. If you're using rubygems but didn't install Sinatra, you'll
