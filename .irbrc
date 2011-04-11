@@ -100,7 +100,7 @@ tramp_require 'ap'
 # looksee – позволяет посмотреть список методов объекта, разбитый по классам/модулям, из которых
 # эти методы происходят. Очень удобно при исследовании внутренностей классов и модулей фреймворка
 # при отладке или разработке плагинов.
-tramp_require 'looksee/shortcuts' do
+tramp_require 'looksee' do
   # purple
   Looksee.styles.merge!(:undefined => "\e[1;34m%s\e[0m")
 end
