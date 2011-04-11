@@ -138,17 +138,18 @@
 (defun guard (dir)
   "*Run guard in DIR."
   (interactive "DDirectory with Guardfile: ")
-  (let* ((buffer-name (concat "*guard*<" dir ">"))
-	 (command "bundle exec guard"))
-    (gusev-shell-run dir command buffer-name)))
+  (when (file-exists-p (concat dir "Guardfile"))
+    (let* ((buffer-name (concat "*guard*<" dir ">"))
+	   (command "bundle exec guard"))
+      (gusev-shell-run dir command buffer-name))))
 
 (defun watchr (script)
   "*Run watchr in autotest mode for SCRIPT."
   (interactive "fWatchr script: ")
   (let* ((dir (file-name-directory script))
-	 (watchr-filename (file-name-nondirectory script))
-	 (buffer-name (concat "*watchr*<" watchr-filename ">"))
-	 (command (concat "bundle exec watchr " script)))
+         (watchr-filename (file-name-nondirectory script))
+         (buffer-name (concat "*watchr*<" watchr-filename ">"))
+         (command (concat "bundle exec watchr " script)))
     (gusev-shell-run dir command buffer-name)))
 
 (defun roetags (dir)
