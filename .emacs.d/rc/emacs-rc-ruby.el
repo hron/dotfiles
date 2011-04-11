@@ -32,7 +32,8 @@
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
                "Rakefile$" "Capfile" "Gemfile" "Sitefile"
-	       "Guardfile"
+               "Guardfile"
+               "config.ru"
                "Vagrantfile" "\\.autotest$"
                "\\.watchr")
 
@@ -162,8 +163,8 @@
     (with-current-buffer buffer
       (shell-cd dir)
       (comint-send-string buffer (concat "cd " dir "; "
-					 command
-					 "\n")))))
+                                         command
+                                         "\n")))))
 
 (defun watchr-all (dir)
   "*Run all watchr files in DIR."
@@ -173,49 +174,43 @@
 
 (require 'desktop)
 (add-hook 'desktop-after-read-hook
-	  '(lambda ()
-	     (guard desktop-dirname)))
+          '(lambda ()
+             (guard desktop-dirname)))
 
 (add-hook 'desktop-after-read-hook
-	  '(lambda ()
-	     (watchr-all desktop-dirname)))
+          '(lambda ()
+             (watchr-all desktop-dirname)))
 
 (add-hook 'desktop-after-read-hook
-	  '(lambda ()
-	     (when (file-exists-p (concat desktop-dirname "Gemfile"))
-	       (roetags desktop-dirname))))
+          '(lambda ()
+             (when (file-exists-p (concat desktop-dirname "Gemfile"))
+               (roetags desktop-dirname))))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
-;; Ruby test mode
 (require 'ruby-test-mode)
 ;; I don't use 'run test' feature of ruby-test-mode. However I need these keys
 ;; for my own bindings. ;)
-(add-hook 'ruby-mode-hook 'ruby-test-mode)
-
-(defvar ruby-test-mode-map
-  (let ((map (make-sparse-keymap)))
-    ;; (define-key map "\C-cr" 'ruby-test-run)
-    ;; (define-key map "\C-cp" 'ruby-test-run-at-point)
-    (define-key map "\C-ct" 'ruby-test-toggle-implementation-and-specification)
-    map)
-  "The keymap used in `ruby-test-mode' buffers.")
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (ruby-test-mode 't)
+             (local-set-key (kbd "C-c r") 'revert-buffer)))
 
 
 (require 'autoinsert)
 (add-to-list 'auto-insert-alist
-	     '(("_spec\\.rb$" . "RSpec header")
-	       nil
-	       "require 'spec_helper'
+             '(("_spec\\.rb$" . "RSpec header")
+               nil
+               "require 'spec_helper'
 
 describe " (let* ((file-name (file-name-nondirectory buffer-file-name))
-		  (class-name-parts (butlast (split-string file-name "_"))))
-	     (mapconcat 'capitalize class-name-parts "")) " do
+                  (class-name-parts (butlast (split-string file-name "_"))))
+             (mapconcat 'capitalize class-name-parts "")) " do
 
 end"
-	       ))
+	     ))
 
 ;; (require 'hideshow)
 ;; (add-to-list 'hs-special-modes-alist
