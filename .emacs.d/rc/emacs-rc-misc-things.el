@@ -238,6 +238,9 @@
                          newline-mark))
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+(require 're-builder)
+(setq reb-re-syntax 'string)
+
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
