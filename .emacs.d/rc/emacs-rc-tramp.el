@@ -45,10 +45,10 @@
     (setq tramp-default-proxies-alist nil)
 
     ;; BontiqueAir
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "10.0.0.[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "sfa[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
+    ;; (add-to-list 'tramp-default-proxies-alist
+    ;;              '( "10.0.0.[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
+    ;; (add-to-list 'tramp-default-proxies-alist
+    ;;              '( "sfa[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
 
     ;; Unigate
     (add-to-list 'tramp-default-proxies-alist
@@ -106,6 +106,9 @@
     (add-to-list 'tramp-default-proxies-alist
                  '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
 
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '( "\\(sfa0[2-9]\\|sfa[1-9][0-9]\\)" "root" nil))
 
     ;; Old soapblox boxes (direct login with root)
     (add-to-list 'tramp-default-proxies-alist
