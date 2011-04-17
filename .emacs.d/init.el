@@ -47,6 +47,9 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+
 (require 'server)
 
 ;;----------------------------------------------------------------------------
