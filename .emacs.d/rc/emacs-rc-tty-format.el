@@ -50,7 +50,8 @@ indeed be ordinary text."
 
       (when (let ((case-fold-search t))
               (or (string-match "\\.txt\\'"  filename)
-		  (string-match "\\(cucumber\\|development\\|test\\|delayed_job\\)\\.log\\'"  filename)
+                  (string-match "\\(cucumber\\|development\\|test\\|delayed_job\\)\\.log\\'"  filename)
+                  (string-match ".babushka/logs" filename)
                   (string-match "/README\\'" filename)))
 
         (if (save-excursion
