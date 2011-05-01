@@ -1,0 +1,11 @@
+; generated_rule Skype
+( if 
+( begin 
+( is ( window_class ) "Skype" )
+) 
+( begin 
+( pin )
+( stick )
+( println "match" )
+)
+)

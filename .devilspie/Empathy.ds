@@ -1,0 +1,11 @@
+; generated_rule Empathy
+( if 
+( begin 
+( is ( window_class ) "Empathy" )
+) 
+( begin 
+( pin )
+( stick )
+( println "match" )
+)
+)

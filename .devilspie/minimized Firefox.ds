@@ -1,0 +1,10 @@
+; generated_rule minimized Firefox
+( if 
+( begin 
+( is ( window_class ) "Firefox" )
+) 
+( begin 
+( minimize )
+( println "match" )
+)
+)
