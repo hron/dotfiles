@@ -44,6 +44,8 @@ alias cut='cut -f1 --delimiter=" "'
 
 alias aptk='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 
+alias inice='ionice -c 3 nice'
+
 # Where to look for autoloaded function definitions
 #fpath=($fpath ~/.zfunc)
 
