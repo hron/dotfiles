@@ -87,12 +87,12 @@
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
 ;;----------------------------------------------------------------------------
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (condition-case err
-                                 (flymake-ruby-load)
-                               (error (unless (string= "Invalid file-name" (cadr err))
-					(error err))))))
+;; (require 'flymake-ruby)
+;; (add-hook 'ruby-mode-hook '(lambda ()
+;;                              (condition-case err
+;;                                  (flymake-ruby-load)
+;;                                (error (unless (string= "Invalid file-name" (cadr err))
+;; 					(error err))))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode
@@ -114,9 +114,9 @@
 (add-hook 'haml-mode-hook '(lambda ()
 			     (setq indent-tabs-mode nil)))
 
-(require 'flymake-haml)
-(add-hook 'haml-mode-hook 'flymake-haml-load)
-(add-hook 'sass-mode-hook 'flymake-sass-load)
+;; (require 'flymake-haml)
+;; (add-hook 'haml-mode-hook 'flymake-haml-load)
+;; (add-hook 'sass-mode-hook 'flymake-sass-load)
 
 (require 'scss-mode)
 (setq scss-compile-at-save nil)
