@@ -52,7 +52,7 @@
 (org-remember-insinuate)
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/journal.org.gpg"))
-(define-key global-map "\C-cR" 'org-remember)
+;; (define-key global-map "\C-cR" 'org-remember)
 
 (setq remember-annotation-functions '(org-remember-annotation))
 (setq remember-handler-functions '(org-remember-handler))
@@ -134,7 +134,7 @@
   (interactive)
   (find-file (concat org-directory "newgtd.org.gpg")))
 
-(global-set-key (kbd "C-c G") 'gtd)
+;; (global-set-key (kbd "C-c G") 'gtd)
 
 (setq org-clock-persist t)
 
