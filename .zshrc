@@ -66,6 +66,29 @@ alias -g M='|more'
 alias -g H='|head'
 alias -g T='|tail'
 
+# winetricks aliases
+tricks_prefix() {
+   export WINEPREFIX="$HOME/.local/share/wineprefixes/$1"
+}
+
+tricks_goc() {
+   cd $WINEPREFIX/drive_c
+}
+
+tricks_ls() {
+   ls $* $HOME/.local/share/wineprefixes
+}
+
+tricks_run() {
+   tricks_prefix $1
+   tricks_goc
+   wine cmd /c run-$1.bat
+}
+
+tricks_del() {
+    rm -r "$HOME/.local/share/wineprefixes/$1"
+}
+
 # manpath=($X11HOME/man /usr/man /usr/lang/man /usr/local/man)
 # export MANPATH
 
