@@ -92,7 +92,7 @@
 ;;                              (condition-case err
 ;;                                  (flymake-ruby-load)
 ;;                                (error (unless (string= "Invalid file-name" (cadr err))
-;; 					(error err))))))
+;;                                      (error err))))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode
@@ -112,7 +112,7 @@
 (autoload 'sass-mode "sass-mode" "Mode for editing sass files" t)
 
 (add-hook 'haml-mode-hook '(lambda ()
-			     (setq indent-tabs-mode nil)))
+                             (setq indent-tabs-mode nil)))
 
 ;; (require 'flymake-haml)
 ;; (add-hook 'haml-mode-hook 'flymake-haml-load)
@@ -121,8 +121,8 @@
 (require 'scss-mode)
 (setq scss-compile-at-save nil)
 
-(require 'rdebug)
-(add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
+;; (require 'rdebug)
+;; (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
 
 ;; Add binding to insert ruby debugger with F7.
 (defun GAU-insert-ruby-debug ()
@@ -144,7 +144,7 @@
   (interactive "DDirectory with Guardfile: ")
   (when (file-exists-p (concat dir "Guardfile"))
     (let* ((buffer-name (concat "*guard*<" dir ">"))
-	   (command "bundle exec guard"))
+           (command "bundle exec guard"))
       (gusev-shell-run dir command buffer-name))))
 
 (defun watchr (script)
