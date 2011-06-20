@@ -218,14 +218,16 @@ end"
 (require 'hideshow)
 (add-to-list 'hs-special-modes-alist
              '(ruby-mode
-               "\\(class\\|module\\|def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+               "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
                (lambda (arg) (ruby-end-of-block)) nil))
 
-(add-hook 'ruby-mode-hook '(lambda ()
-			     (hs-minor-mode 1)
-			     (when (or (string-match "spec\.rb$" (buffer-file-name))
-				       (string-match "\.rake$" (buffer-file-name)))
-			       (hs-hide-level 2))))
+(add-hook 'ruby-mode-hook
+	  '(lambda ()
+	     (hs-minor-mode 1)
+	     (cond ((string-match "spec\.rb\|.rake$" (buffer-file-name))
+		    (hs-hide-level 2))
+		   ((string-match "Gemfile$" (buffer-file-name))
+		    (hs-show-all)))))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table

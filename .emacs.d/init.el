@@ -298,7 +298,6 @@ argument allows editing of the server command arguments."
 
 (require 'hideshow)
 (setq hs-allow-nesting t)
-(add-hook 'hs-minor-mode-hook '(lambda () (hs-hide-level 1)))
 
 (defun hs-gau-toggle-hiding-or-hide-level (level)
   (interactive "P")
