@@ -52,6 +52,9 @@
 
 (require 'server)
 
+;; Edit with Emacs extension (https://github.com/stsquad/emacs_chrome)
+(require 'edit-server)
+
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
 ;;----------------------------------------------------------------------------
