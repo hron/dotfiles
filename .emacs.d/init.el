@@ -184,6 +184,11 @@ argument allows editing of the server command arguments."
 (require 'emacs-rc-python)
 
 ;; ANSI colors
+(require 'ansi-color)
+(setq ansi-color-names-vector
+      ["black" "red" "green" "yellow" "LightSkyBlue" "magenta" "cyan" "white"])
+(setq ansi-color-map (ansi-color-make-color-map))
+
 (require 'emacs-rc-tty-format)
 
 ;; el4r
