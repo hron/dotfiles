@@ -43,6 +43,8 @@ alias autofeature='AUTOFEATURE=true autospec'
 alias cut='cut -f1 --delimiter=" "'
 
 alias aptk='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
+alias apti='sudo aptitude install'
+alias aptu='sudo aptitude update'
 
 alias inice='ionice -c 3 nice'
 
