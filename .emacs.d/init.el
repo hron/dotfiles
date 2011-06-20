@@ -295,11 +295,20 @@ argument allows editing of the server command arguments."
 
 (setq flyspell-use-meta-tab nil)
 
+
+(require 'hideshow)
 (setq hs-allow-nesting t)
-(add-hook 'hs-minor-mode-hook 'hs-hide-all)
+(add-hook 'hs-minor-mode-hook '(lambda () (hs-hide-level 1)))
+
+(defun hs-gau-toggle-hiding-or-hide-level (level)
+  (interactive "P")
+  (if level
+      (hs-hide-level level)
+    (hs-toggle-hiding)))
+
 (add-hook 'hs-minor-mode-hook
           '(lambda ()
-             (local-set-key (kbd "<C-tab>") 'hs-toggle-hiding)))
+             (local-set-key (kbd "<C-tab>") 'hs-gau-toggle-hiding-or-hide-level)))
 
 ;; Color theme loading, must be the last.
 (load-library "color-themes/color-theme-dark-hron")
