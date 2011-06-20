@@ -262,7 +262,6 @@ argument allows editing of the server command arguments."
 (setq comint-input-ring-separator "\\(\n\\|:[[:space:]]+[[:digit:]]+:[[:digit:]]+;\\)")
 
 (add-hook 'shell-mode-hook 'compilation-shell-minor-mode)
-(add-hook 'shell-mode-hook 'turn-on-rdebug-track-mode)
 
 (require 'emacs-rc-shell)
 
