@@ -184,10 +184,11 @@
           '(lambda ()
              (watchr-all desktop-dirname)))
 
-(add-hook 'desktop-after-read-hook
-          '(lambda ()
-             (when (file-exists-p (concat desktop-dirname "Gemfile"))
-               (roetags desktop-dirname))))
+;; FIXME: Disabled due to heavy problems with rb-inotify when roetags regenerates TAGS.
+;; (add-hook 'desktop-after-read-hook
+;;           '(lambda ()
+;;              (when (file-exists-p (concat desktop-dirname "Gemfile"))
+;;                (roetags desktop-dirname))))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
