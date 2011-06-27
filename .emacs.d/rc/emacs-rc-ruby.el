@@ -121,8 +121,8 @@
 (require 'scss-mode)
 (setq scss-compile-at-save nil)
 
-;; (require 'rdebug)
-;; (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
+(require 'rdebug)
+(add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
 
 ;; Add binding to insert ruby debugger with F7.
 (defun GAU-insert-ruby-debug ()
@@ -219,7 +219,9 @@ end"
 (require 'hideshow)
 (add-to-list 'hs-special-modes-alist
              '(ruby-mode
-               "\\(def\\|do\\)" "\\(end\\|end\\)" "#"
+	       "\\(^[[:space:]]*def[[:space:]]\\|[[:space:]]+do\\([[:space:]]+|\\|[[:space:]]*$\\)\\)"
+	       "end"
+	       "#"
                (lambda (arg) (ruby-end-of-block)) nil))
 
 (add-hook 'ruby-mode-hook
