@@ -299,11 +299,25 @@ argument allows editing of the server command arguments."
 (require 'hideshow)
 (setq hs-allow-nesting t)
 
+(defun hs-gau-hide-level-deeply (arg)
+  "Hide all blocks deeper that ARG level below the top of file."
+  (interactive "p")
+  (let* ((max-level 5)
+	 (level-to-hide max-level))
+    (save-excursion
+      (goto-char (point-min))
+      (hs-show-all)
+      (while (>= level-to-hide arg)
+	(save-excursion
+	  (hs-hide-level level-to-hide)
+	  (setq level-to-hide (1- level-to-hide)))))))
+
 (defun hs-gau-toggle-hiding-or-hide-level (level)
   (interactive "P")
   (if level
-      (hs-hide-level level)
+      (hs-gau-hide-level-deeply level)
     (hs-toggle-hiding)))
+
 
 (add-hook 'hs-minor-mode-hook
           '(lambda ()

@@ -228,11 +228,11 @@ end"
           '(lambda ()
              (hs-minor-mode 1)
              (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
-                    (hs-hide-level 2))
+                    (hs-gau-hide-level-deeply 2))
                    ((string-match "Gemfile$" (buffer-file-name))
                     (hs-show-all))
                    (t
-                    (hs-hide-level 1)))))
+                    (hs-gau-hide-level-deeply 1)))))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table
