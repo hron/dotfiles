@@ -38,9 +38,14 @@
     (comint-truncate-buffer)))
 
 (add-hook 'shell-mode-hook
-	  '(lambda ()
-	     (local-set-key (kbd "C-c q") 'gusev-clear-shell)))
+          '(lambda ()
+             (local-set-key (kbd "C-c q") 'gusev-clear-shell)))
 ;; (define-key 'shell-mode-map (kbd "C-c q") 'gusev-clear-shell)
+
+;; Disable echoing of run commands.
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (setq comint-process-echoes 't)))
 
 (provide 'emacs-rc-shell)
 ;;; emacs-rc-shell.el ends here
