@@ -226,13 +226,17 @@ end"
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (hs-minor-mode 1)
-             (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
-                    (hs-gau-hide-level-deeply 2))
-                   ((string-match "Gemfile$" (buffer-file-name))
-                    (hs-show-all))
-                   (t
-                    (hs-gau-hide-level-deeply 1)))))
+	     ;; This is a workaround for MuMaMo mode (.html.erb files)
+	     (when (stringp (buffer-file-name))
+	       (hs-minor-mode 1)
+	       (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
+		      (hs-gau-hide-level-deeply 2))
+		     ((string-match "Gemfile$" (buffer-file-name))
+		      (hs-show-all))
+		     ((string-match "\.erb$" (buffer-file-name))
+		      (message "Skipping hiding blocks..."))
+		     (t
+		      (hs-gau-hide-level-deeply 1))))))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table
