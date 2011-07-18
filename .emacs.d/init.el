@@ -265,6 +265,8 @@ argument allows editing of the server command arguments."
 ;; Org-mode
 (require 'emacs-rc-org)
 
+(setq large-file-warning-threshold 30000000)
+
 (require 'emacs-rc-flymake)
 (require 'emacs-rc-ido)
 (require 'emacs-rc-calendar)
