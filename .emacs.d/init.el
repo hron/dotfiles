@@ -226,19 +226,11 @@ argument allows editing of the server command arguments."
 (require 'install-elisp)
 (setq install-elisp-repository-directory "~/.emacs.d/site-lisp")
 
-;; Sunrise commander
-(require 'emacs-rc-sunrise-commander)
-
 ;; iBus
 ;; (require 'emacs-rc-ibus)
 
-;; http://julien.danjou.info/rainbow-mode.html
-(require 'rainbow-mode)
-
 ;; Yasnippet
 (require 'yasnippet)
-(setq yas/snippet-dirs "~/.emacs.d/site-lisp/snippets")
-(yas/load-directory yas/snippet-dirs)
 (yas/global-mode t)
 
 ;; nXhtml
