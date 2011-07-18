@@ -90,7 +90,7 @@
 ;; of the buffer were changed most recently, by giving that text a
 ;; different face.  To enable or disable Highlight Changes mode, use
 ;; `M-x highlight-changes-mode'.
-(global-hi-lock-mode 1)
+;; (global-hi-lock-mode 1)
 
 ;;    To enable this feature, set the buffer-local variable
 ;; `indicate-empty-lines' to a non-`nil' value.  The default value of
@@ -216,10 +216,10 @@
 
 ;; Try to read TAGS in the directory of desktop-file
 (add-hook 'desktop-after-read-hook
-	  '(lambda ()
-	     (let ((tags-filename (concat desktop-dirname "/TAGS")))
-	       (if (file-exists-p tags-filename)
-		   (visit-tags-table tags-filename)))))
+          '(lambda ()
+             (let ((tags-filename (concat desktop-dirname "/TAGS")))
+               (if (file-exists-p tags-filename)
+                   (visit-tags-table tags-filename)))))
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
