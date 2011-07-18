@@ -40,24 +40,12 @@
 [submodule ".emacs.d/site-lisp/magit"]
 	path = .emacs.d/site-lisp/magit
 	url = git://gitorious.org/magit/mainline.git
-[submodule ".emacs.d/site-lisp/sunrise-commander"]
-	path = .emacs.d/site-lisp/sunrise-commander
-	url = git://github.com/emacsmirror/sunrise-commander.git
-[submodule ".emacs.d/site-lisp/sunrise-x-loop"]
-	path = .emacs.d/site-lisp/sunrise-x-loop
-	url = git://github.com/emacsmirror/sunrise-x-loop.git
 [submodule ".emacs.d/site-lisp/ruby-test-mode"]
 	path = .emacs.d/site-lisp/ruby-test-mode
 	url = http://github.com/r0man/ruby-test-mode.git
 [submodule ".emacs.d/site-lisp/org-mode"]
 	path = .emacs.d/site-lisp/org-mode
 	url = git://github.com/emacsmirror/org-mode.git
-[submodule ".emacs.d/site-lisp/jd-el"]
-	path = .emacs.d/site-lisp/jd-el
-	url = git://git.naquadah.org/~jd/jd-el.git
 [submodule ".emacs.d/site-lisp/yasnippet"]
 	path = .emacs.d/site-lisp/yasnippet
 	url = http://github.com/emacsmirror/yasnippet.git
-[submodule ".emacs.d/site-lisp/snippets/ruby-mode"]
-	path = .emacs.d/site-lisp/snippets/ruby-mode
-	url = http://github.com/bmaland/yasnippet-ruby-mode.git
