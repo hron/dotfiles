@@ -121,8 +121,8 @@
 (require 'scss-mode)
 (setq scss-compile-at-save nil)
 
-(require 'rdebug)
-(add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
+;; (require 'rdebug)
+;; (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
 
 ;; Add binding to insert ruby debugger with F7.
 (defun GAU-insert-ruby-debug ()
