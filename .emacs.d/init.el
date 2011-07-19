@@ -292,7 +292,6 @@ argument allows editing of the server command arguments."
 
 ;; Everything else...
 ;; FIXME: When I do yank on selected region yanked test does not appear.
-(delete-selection-mode 1)
 (require 'emacs-rc-misc-things)
 
 (setq flyspell-use-meta-tab nil)

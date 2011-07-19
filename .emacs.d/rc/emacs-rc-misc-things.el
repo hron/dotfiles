@@ -14,6 +14,8 @@
 ;; Работа с буфером обмена также как и с внутренними кольцами копирования
 ;; и удаления.
 (setq x-select-enable-clipboard t)
+(setq select-active-regions nil)
+(delete-selection-mode 1)
 
 ;; Undo и redo для конфигурации окон
 (winner-mode t)
