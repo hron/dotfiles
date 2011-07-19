@@ -231,6 +231,8 @@ argument allows editing of the server command arguments."
 
 ;; Yasnippet
 (require 'yasnippet)
+(setq yas/snippet-dirs "~/.emacs.d/site-lisp/yasnippet-snippets")
+(yas/load-snippet-dirs)
 (yas/global-mode t)
 
 ;; nXhtml
