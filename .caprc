@@ -1,4 +1,1 @@
 require 'capistrano_colors'
-
-set :ssh_options, { :forward_agent => true }
-default_run_options[:pty] = true
