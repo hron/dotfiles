@@ -3,7 +3,7 @@
 ;; Copyright (C) 2009  Aleksei Gusev
 
 ;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,22 +20,27 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
+(add-auto-mode 'sh-mode "\\.rvmrc$")
+
+
 (add-hook 'sh-mode-hook '(lambda ()
-			   (turn-on-auto-fill)
-			   (turn-on-orgstruct)
-			   (flyspell-prog-mode)
-			   (highlight-parentheses-mode 1)))
+                           (turn-on-auto-fill)
+                           (turn-on-orgstruct)
+                           (flyspell-prog-mode)
+                           (highlight-parentheses-mode 1)))
 
 ;; Automatically set execute perms on files if first line begins with '#!'
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 (autoload 'flymake-shell-load "flymake-shell"
   "On-the-fly syntax checking of shell scripts" t)
-(add-hook 'sh-mode-hook 'flymake-shell-load)
+(add-hook 'sh-mode-hook '(lambda ()
+			   (unless (tramp-tramp-file-p (buffer-file-name))
+			     (flymake-shell-load))))
 
 (provide 'emacs-rc-sh)
 ;;; emacs-rc-sh.el ends here
