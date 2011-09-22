@@ -35,7 +35,8 @@
                "Guardfile"
                "config.ru"
                "Vagrantfile" "\\.autotest$"
-               "\\.watchr")
+               "\\.watchr"
+               "\\.rep")
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
@@ -89,11 +90,11 @@
 ;;----------------------------------------------------------------------------
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook '(lambda ()
-			     (unless (tramp-tramp-file-p (buffer-file-name))
-			       (condition-case err
-				   (flymake-ruby-load)
-				 (error (unless (string= "Invalid file-name" (cadr err))
-					  (error err)))))))
+                             (unless (tramp-tramp-file-p (buffer-file-name))
+                               (condition-case err
+                                   (flymake-ruby-load)
+                                 (error (unless (string= "Invalid file-name" (cadr err))
+                                          (error err)))))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - Electric mode
@@ -220,24 +221,24 @@ end"
 (require 'hideshow)
 (add-to-list 'hs-special-modes-alist
              '(ruby-mode
-	       "\\(^[[:space:]]*def[[:space:]]\\|[[:space:]]+do\\([[:space:]]+|\\|[[:space:]]*$\\)\\)"
-	       "end"
-	       "#"
+               "\\(^[[:space:]]*def[[:space:]]\\|[[:space:]]+do\\([[:space:]]+|\\|[[:space:]]*$\\)\\)"
+               "end"
+               "#"
                (lambda (arg) (ruby-end-of-block)) nil))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
-	     ;; This is a workaround for MuMaMo mode (.html.erb files)
-	     (when (stringp (buffer-file-name))
-	       (hs-minor-mode 1)
-	       (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
-		      (hs-gau-hide-level-deeply 2))
-		     ((string-match "Gemfile$" (buffer-file-name))
-		      (hs-show-all))
-		     ((string-match "\.erb$" (buffer-file-name))
-		      (message "Skipping hiding blocks..."))
-		     (t
-		      (hs-gau-hide-level-deeply 1))))))
+             ;; This is a workaround for MuMaMo mode (.html.erb files)
+             (when (stringp (buffer-file-name))
+               (hs-minor-mode 1)
+               (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
+                      (hs-gau-hide-level-deeply 2))
+                     ((string-match "Gemfile$" (buffer-file-name))
+                      (hs-show-all))
+                     ((string-match "\.erb$" (buffer-file-name))
+                      (message "Skipping hiding blocks..."))
+                     (t
+                      (hs-gau-hide-level-deeply 1))))))
 
 (require 'haml-mode)
 (setq haml-mode-syntax-table
