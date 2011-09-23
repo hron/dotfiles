@@ -89,7 +89,7 @@
                  '( nil "root" "/sshx:%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-                 '( "sfa35" "cruise" "/sshx:%h:"))
+                 '( "sfa35" "\\(cruise\\|proto\\|staging\\)" "/sshx:%h:"))
 
     ;; (add-to-list 'tramp-default-proxies-alist
     ;;              '( nil "deployer" "/sshx:%h:"))
