@@ -279,6 +279,9 @@ argument allows editing of the server command arguments."
 (require 'emacs-rc-view)
 (require 'emacs-rc-bbdb nil t)
 
+(electric-pair-mode)
+(electric-indent-mode)
+
 (require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)
 
