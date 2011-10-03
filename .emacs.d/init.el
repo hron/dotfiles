@@ -232,9 +232,9 @@ argument allows editing of the server command arguments."
 ;; This prevents activating nxhtml-mode for .html.haml files.
 (add-to-list 'auto-mode-alist '("\\.html\\.haml$" . haml-mode))
 
-;; autopair.el
-(require 'autopair)
-(autopair-global-mode) ;; to enable in all buffers
+
+(setq aug-secret-file "~/.emacs.d/.secret-file")
+(load aug-secret-file t)
 
 ;;
 ;; Emacs core customization
