@@ -51,4 +51,4 @@
 	url = http://github.com/emacsmirror/yasnippet.git
 [submodule ".emacs.d/site-lisp/yasnippet-snippets/ruby-mode"]
 	path = .emacs.d/site-lisp/yasnippet-snippets/ruby-mode
-	url = https://github.com/bmaland/yasnippet-ruby-mode.git
+	url = git@github.com:hron/yasnippet-ruby-mode.git
