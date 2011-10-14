@@ -94,7 +94,6 @@
              '("/etc/conf.d/" . sh-mode))
 
 ;; Javascript
-(require 'emacs-rc-javascript)
 
 ;; Apache
 (require 'apache-mode)
