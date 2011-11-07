@@ -8,32 +8,30 @@
 ;; Requirements:
 ;; Status: not intended to be distributed yet
 
-(setq default-input-method "russian-computer")
+(defun reverse-input-method (input-method)
+  "Build the reverse mapping of single letters from INPUT-METHOD."
+  (interactive
+   (list (read-input-method-name "Use input method (default current): ")))
+  (if (and input-method (symbolp input-method))
+      (setq input-method (symbol-name input-method)))
+  (let ((current current-input-method)
+        (modifiers '(nil (control) (meta) (control meta))))
+    (when input-method
+      (activate-input-method input-method))
+    (when (and current-input-method quail-keyboard-layout)
+      (dolist (map (cdr (quail-map)))
+        (let* ((to (car map))
+               (from (quail-get-translation
+                      (cadr map) (char-to-string to) 1)))
+          (when (and (characterp from) (characterp to))
+            (dolist (mod modifiers)
+              (define-key function-key-map
+                (vector (append mod (list from)))
+                (vector (append mod (list to)))))))))
+    (when input-method
+      (activate-input-method current))))
 
-;; (setq english-layout-key (kbd "C-2")
-;;       russian-layout-key (kbd "C-1"))
-;; ;; (setq english-layout-key (kbd "s-o")
-;; ;;       russian-layout-key (kbd "s-i"))
-;; ;; (setq english-layout-key (kbd "<XF86Forward>")
-;; ;;       russian-layout-key (kbd "S-<XF86Forward>"))
-;;
-;; (global-set-key english-layout-key '(lambda () (interactive) (inactivate-input-method)))
-;; (global-set-key russian-layout-key '(lambda () (interactive) (unless current-input-method
-;; 						      (toggle-input-method))))
-;;
-;; (define-key isearch-mode-map english-layout-key '(lambda () (interactive) (if current-input-method
-;; 								 (isearch-toggle-input-method) (isearch-update))))
-;; (define-key isearch-mode-map russian-layout-key '(lambda () (interactive) (if current-input-method
-;; 								 (isearch-update) (isearch-toggle-input-method))))
-
-;; (dolist (key '("C-<escape>" "S-<return>"))
-;;   (global-set-key (kbd key) 'toggle-input-method))
-(global-set-key (kbd "C-<escape>") 'toggle-input-method)
-(global-set-key (kbd "S-<return>") 'toggle-input-method)
-(define-key isearch-mode-map (kbd "C-<escape>") 'isearch-toggle-input-method)
-(define-key isearch-mode-map (kbd "S-<return>") 'isearch-toggle-input-method)
-
-(define-key global-map (kbd "C-<Esc>") 'toggle-input-method)
+(reverse-input-method "cyrillic-jcuken")
 
 (provide 'emacs-rc-mule)
 

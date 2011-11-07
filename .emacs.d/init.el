@@ -217,9 +217,6 @@ argument allows editing of the server command arguments."
 (require 'install-elisp)
 (setq install-elisp-repository-directory "~/.emacs.d/site-lisp")
 
-;; iBus
-;; (require 'emacs-rc-ibus)
-
 ;; Yasnippet
 (require 'yasnippet)
 (setq yas/snippet-dirs "~/.emacs.d/site-lisp/yasnippet-snippets")
