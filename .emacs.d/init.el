@@ -171,9 +171,6 @@ argument allows editing of the server command arguments."
 ;; ERC
 (require 'emacs-rc-erc)
 
-;; Python
-(require 'emacs-rc-python)
-
 ;; ANSI colors
 (require 'ansi-color)
 (setq ansi-color-names-vector
