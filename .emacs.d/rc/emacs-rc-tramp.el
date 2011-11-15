@@ -1,8 +1,8 @@
 ;;;emacs-rc-tramp.el --- TRAMP package customization.
 
-;; Copyright (C) 2005, 2007  Aleksei Gusev <aleksei.gusev@tut.by>
+;; Copyright (C) 2005, 2007  Aleksei Gusev <aleksei.gusev@gmail.com>
 
-;; Author: Aleksei Gusev <aleksei.gusev@tut.by>
+;; Author: Aleksei Gusev <aleksei.gusev@gmail.com>
 ;; Created: 26 Aug 2005
 ;; Version: $Id$
 ;; Keywords:
@@ -44,81 +44,11 @@
   (progn
     (setq tramp-default-proxies-alist nil)
 
-    ;; BontiqueAir
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '( "10.0.0.[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '( "sfa[0-9]+" nil "/sshx:aleksei@209.237.227.132:"))
-
-    ;; Unigate
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^\\(app02\\|app01\\).i.vxs.mltdnetwork.com$" nil "/sshx:admin.vxs.mltdnetwork.com:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "10.9.2.4\\|10.9.2.132" nil "/sshx:fw3.warecorp.com:"))
-
-    ;; Zanby farm
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^\\(main2\\|zdb\\|mail-\\(00\\|01\\)\\|http-0[0-9]\\|wc-backup-00\\)+$" nil "/sshx:fw1.zanby.com:"))
-
-    ;; Local zanby farm
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^\\(lzdb\\|lzmail-\\(00\\|01\\)\\|lzhttp-0[0-9]\\)+$" nil "/sshx:lzfw1.garage.bogus:"))
-
-    ;; ATZ farm
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^atz-\\(nfs\\|mail\\|http\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
-
-    ;; Soapblox
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^sb-http-\\(00\\|01\\|02\\).*$" nil "/sshx:atz-fw-00.warecorp.com:"))
-
-    ;; CPP farm
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "cpp-\\(db-00\\|mail-0[01]\\|http-0[01]\\)" nil "/sshx:atz-fw-00.warecorp.com:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^cd-prod$" nil "/sshx:atz-fw-00.warecorp.com:"))
-
-    ;; Soapblox
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "^10.101.0.1[0123]$" nil "/sshx:atz-fw-01.warecorp.com:"))
-
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( nil "root" "/sshx:%h:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "sfa35" "\\(cruise\\|proto\\|staging\\)" "/sshx:%h:"))
-
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '( nil "deployer" "/sshx:%h:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "hendrix" "project" "/sshx:%h:"))
-
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '( "hendrix" "project" "/sshx:gusev@%h:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "\\(crystal\\|localhost\\)" "root" nil))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "192.168.100.107" "root" "/sshx:devteam@%h:"))
-
-
     (add-to-list 'tramp-default-proxies-alist
                  '( "\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
 
-    ;; Old soapblox boxes (direct login with root)
     (add-to-list 'tramp-default-proxies-alist
-                 '( ".*.soapblox.net" "root" nil))
-
-    (add-to-list 'tramp-default-proxies-alist
-                 '( "\\(localhost\\|crystal\\)" "root" nil))
+                 '( "\\(localhost\\)" "root" nil))
 
     ))
 
