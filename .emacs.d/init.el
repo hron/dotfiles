@@ -94,6 +94,7 @@
              '("/etc/conf.d/" . sh-mode))
 
 ;; Javascript
+(setq js-indent-level 2)
 
 ;; Apache
 (require 'apache-mode)
