@@ -17,7 +17,7 @@ namespace :mysql do
   task :start do
     mkdir "/var/tmp/mysql", :noop => true
     system "mysql_install_db --datadir=/var/tmp/mysql"
-    system "mysqld_safe --skip-syslog --port 93306 --socket=mysqld.sock --pid-file=mysqld.pid --datadir=/var/tmp/mysql"
+    system "mysqld_safe --skip-syslog --port=13306 --socket=mysqld.sock --pid-file=mysqld.pid --datadir=/var/tmp/mysql"
   end
 
   desc "Shutdown mysql."
