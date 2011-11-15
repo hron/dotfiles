@@ -23,7 +23,7 @@
 (global-set-key (kbd "<f3>") 'winner-redo)
 
 ;; Перемещение между окнами по Shift + стрелки
-(windmove-default-keybindings)
+(windmove-default-keybindings 'meta)
 
 ;; Между предложениями _один_, а не два пробела.
 ;; (setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
@@ -86,7 +86,7 @@
 ;; is active (and the region is highlighted).  However, if you don't
 ;; want to override these bindings in Emacs at all, set
 ;; `cua-enable-cua-keys' to `nil'.
-(setq cua-enable-cua-keys nil)
+;; (setq cua-enable-cua-keys nil)
 
 ;; Highlight Changes mode is a minor mode that "highlights" the parts
 ;; of the buffer were changed most recently, by giving that text a
