@@ -1,7 +1,9 @@
 Emacs*font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-1
-! Emacs*font: Dejavu Sans Mono -10
-Emacs*useXIM: false
-Emacs.FontBackend: xft
+! Emacs*font: Dejavu Sans Mono 13
+! Emacs*useXIM: true
+! Emacs*font: Ubuntu Mono 10
+! Emacs.FontBackend: xft
+! Emacs*font: Ubuntu Mono 15
 
 Xcursor.size: 18
 Xcursor.theme: Human
