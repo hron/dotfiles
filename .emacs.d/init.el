@@ -75,9 +75,6 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-;; TeX
-(require 'emacs-rc-tex)
-
 ;; Gentoo Syntax (ebuild, init.d-scripts and etc)
 (require 'gentoo-syntax)
 
