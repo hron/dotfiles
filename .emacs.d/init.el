@@ -75,9 +75,6 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-;; Gentoo Syntax (ebuild, init.d-scripts and etc)
-(require 'gentoo-syntax)
-
 (add-to-list 'auto-mode-alist
              '("/etc/conf.d/" . sh-mode))
 
