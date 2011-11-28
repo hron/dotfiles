@@ -3,6 +3,7 @@
 	email = aleksei.gusev@gmail.com
 [core]
 	excludesfile = /home/gusev/.gitconfig_global_gitignore
+	pager = 
 
 [color]
 	ui = true
