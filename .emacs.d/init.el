@@ -151,16 +151,12 @@
 ;; This prevents activating nxhtml-mode for .html.haml files.
 (add-to-list 'auto-mode-alist '("\\.html\\.haml$" . haml-mode))
 
-
 (setq aug-secret-file "~/.emacs.d/.secret-file")
 (load aug-secret-file t)
 
 ;;
 ;; Emacs core customization
 ;;
-
-;; EShell
-(require 'emacs-rc-eshell)
 
 ;; Spelling
 (setq ispell-dictionary "en_US")
