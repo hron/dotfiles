@@ -134,9 +134,6 @@
 ;; Anything
 (require 'emacs-rc-anything)
 
-;; C#
-(require 'csharp-mode)
-
 ;; magit
 (require 'magit)
 
