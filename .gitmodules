@@ -7,9 +7,6 @@
 [submodule ".emacs.d/site-lisp/nxhtml"]
         path = .emacs.d/site-lisp/nxhtml
         url = git://github.com/emacsmirror/nxhtml.git
-[submodule ".emacs.d/site-lisp/ecukes"]
-	path = .emacs.d/site-lisp/ecukes
-	url = git://github.com/rejeep/ecukes.git
 [submodule ".emacs.d/site-lisp/ert"]
 	path = .emacs.d/site-lisp/ert
 	url = git://github.com/ohler/ert.git
