@@ -86,9 +86,6 @@
 (add-to-list 'auto-mode-alist '("access\\.conf\\'" . apache-mode))
 (add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
 
-;; Textile
-(require 'emacs-rc-textile)
-
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
