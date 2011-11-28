@@ -137,9 +137,6 @@
 ;; magit
 (require 'magit)
 
-;; twitter
-;; (require 'twit)
-
 ;; Emacswiki
 (require 'yaoddmuse)
 
