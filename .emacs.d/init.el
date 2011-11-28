@@ -140,9 +140,6 @@
 ;; http://www.emacswiki.org/emacs/ToggleWindowSplit
 (require 'toggle-window-split)
 
-(require 'install-elisp)
-(setq install-elisp-repository-directory "~/.emacs.d/site-lisp")
-
 ;; Yasnippet
 (require 'yasnippet)
 (setq yas/snippet-dirs "~/.emacs.d/site-lisp/yasnippet-snippets")
