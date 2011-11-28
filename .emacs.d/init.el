@@ -75,9 +75,6 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-(add-to-list 'auto-mode-alist
-             '("/etc/conf.d/" . sh-mode))
-
 ;; Javascript
 (setq js-indent-level 2)
 

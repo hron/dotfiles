@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(add-auto-mode 'sh-mode "\\.rvmrc$")
+(add-auto-mode 'sh-mode "\\.rvmrc$" "/etc/conf.d/")
 
 
 (add-hook 'sh-mode-hook '(lambda ()
