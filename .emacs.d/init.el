@@ -175,9 +175,6 @@
 
 (require 'emacs-rc-shell)
 
-;; Org-mode
-(require 'emacs-rc-org)
-
 (setq large-file-warning-threshold 30000000)
 
 (require 'emacs-rc-flymake)
