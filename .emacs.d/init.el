@@ -75,9 +75,6 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-;; Octave
-(require 'emacs-rc-octave)
-
 ;; PHP
 (require 'emacs-rc-php)
 
