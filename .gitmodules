@@ -10,9 +10,6 @@
 [submodule ".emacs.d/site-lisp/ecukes"]
 	path = .emacs.d/site-lisp/ecukes
 	url = git://github.com/rejeep/ecukes.git
-[submodule ".emacs.d/site-lisp/el4r"]
-	path = .emacs.d/site-lisp/el4r
-	url = git://github.com/hron/el4r.git
 [submodule ".emacs.d/site-lisp/ert"]
 	path = .emacs.d/site-lisp/ert
 	url = git://github.com/ohler/ert.git
