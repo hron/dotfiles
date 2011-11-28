@@ -275,7 +275,8 @@ argument allows editing of the server command arguments."
 
 (electric-pair-mode)
 ;; Does not work good in cucumber mode and haml.
-;; (electric-indent-mode)
+(electric-layout-mode)
+(electric-indent-mode)
 
 (require 'emacs-rc-user-info)
 (require 'emacs-rc-kbd)
