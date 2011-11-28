@@ -123,9 +123,6 @@
 ;;   '(load-library "sql-indent"))
 (setq sql-sqlite-program "sqlite3")
 
-;; ERC
-(require 'emacs-rc-erc)
-
 ;; ANSI colors
 (require 'ansi-color)
 (setq ansi-color-names-vector
