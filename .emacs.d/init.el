@@ -186,9 +186,7 @@
 (require 'emacs-rc-mule)
 (require 'emacs-rc-tramp)
 (require 'emacs-rc-woman)
-(require 'emacs-rc-ldap nil t)
 (require 'emacs-rc-view)
-(require 'emacs-rc-bbdb nil t)
 
 (electric-pair-mode)
 ;; Does not work good in cucumber mode and haml.
