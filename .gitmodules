@@ -4,9 +4,6 @@
 [submodule ".emacs.d/site-lisp/rinari"]
         path = .emacs.d/site-lisp/rinari
         url = git://github.com/eschulte/rinari.git
-[submodule ".emacs.d/site-lisp/emacs-ditz"]
-        path = .emacs.d/site-lisp/emacs-ditz
-        url = git://github.com/hron/emacs-ditz.git
 [submodule ".emacs.d/site-lisp/nxhtml"]
         path = .emacs.d/site-lisp/nxhtml
         url = git://github.com/emacsmirror/nxhtml.git

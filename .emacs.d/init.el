@@ -145,9 +145,6 @@
 (add-to-list 'load-path (concat (getenv "HOME")
                                "/.emacs.d/site-lisp/emacs-jabber-0.8.0"))
 
-;; ditz
-(require 'ditz)
-
 ;; EMMS
 ;; (require 'emacs-rc-emms)
 
