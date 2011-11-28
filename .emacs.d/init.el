@@ -75,9 +75,6 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-;; PHP
-(require 'emacs-rc-php)
-
 ;; TeX
 (require 'emacs-rc-tex)
 
