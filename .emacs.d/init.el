@@ -134,9 +134,6 @@
 ;; Anything
 (require 'emacs-rc-anything)
 
-;; EMMS
-;; (require 'emacs-rc-emms)
-
 ;; C#
 (require 'csharp-mode)
 
