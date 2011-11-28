@@ -58,32 +58,8 @@
 (setq inf-ruby-first-prompt-pattern "^>> "
       inf-ruby-prompt-pattern "^>> ")
 
-;; these aliases is for emacs-rails-reloaded.
-(defalias 'inferior-ruby-mode 'inf-ruby-mode)
-(defalias 'inferior-ruby-first-prompt-pattern 'inf-ruby-first-prompt-pattern)
-(defalias 'inferior-ruby-prompt-pattern 'inf-ruby-prompt-pattern)
-
 ;; yari
-;; (defun yari-bind-key ()
-;;   (local-set-key [f1] 'yari-anything))
-;;
-;; (defalias 'rails-search-doc 'yari)
-;; (add-hook 'ruby-mode-hook 'yari-bind-key)
-;; (add-hook 'rhtml-mode-hook 'yari-bind-key)
-;; (add-hook 'haml-mode-hook 'yari-bind-key)
-;; (add-hook 'sass-mode-hook 'yari-bind-key)
 (global-set-key [f1] 'yari-anything)
-
-;; ruby-compilation
-;; (add-hook 'ruby-mode-hook
-;;           '(lambda ()
-;;              (if (string-match "Capfile\\|deploy.rb" (buffer-file-name))
-;;                  (local-set-key [f9] 'ruby-compilation-cap)
-;;                (local-set-key [f9] 'ruby-compilation-rake))))
-
-;; emacs-rails-reloaded
-(setq-default rails/bundles/disabled-list '(apidock))
-(setq rails/webserver-bundle/default-type "webrick")
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
@@ -95,15 +71,6 @@
                                    (flymake-ruby-load)
                                  (error (unless (string= "Invalid file-name" (cadr err))
                                           (error err)))))))
-
-;;----------------------------------------------------------------------------
-;; Ruby - Electric mode
-;;----------------------------------------------------------------------------
-;; (autoload 'ruby-electric-mode "ruby-electric" "Electric brackes/quotes/keywords for Ruby source" t)
-;; (add-hook 'ruby-mode-hook
-;;           (lambda ()
-;;             (unless (string= major-mode "el4r-mode")
-;;               (ruby-electric-mode t))))
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - haml & sass & scss
@@ -186,12 +153,6 @@
           '(lambda ()
              (watchr-all desktop-dirname)))
 
-;; FIXME: Disabled due to heavy problems with rb-inotify when roetags regenerates TAGS.
-;; (add-hook 'desktop-after-read-hook
-;;           '(lambda ()
-;;              (when (file-exists-p (concat desktop-dirname "Gemfile"))
-;;                (roetags desktop-dirname))))
-
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
@@ -240,6 +201,7 @@ end"
                      (t
                       (hs-gau-hide-level-deeply 1))))))
 
+;; TODO: What is that for?
 (require 'haml-mode)
 (setq haml-mode-syntax-table
       (let ((table (make-syntax-table)))
