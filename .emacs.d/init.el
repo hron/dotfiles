@@ -96,7 +96,7 @@
 (autoload 'regex-tool "regex-tool" "Mode for exploring regular expressions" t)
 
 ;; Git
-(require 'emacs-rc-git)
+(autoload 'git-blame-mode "git-blame" "Minor mode for incremental blame for Git." t)
 
 ;; Ruby
 (require 'emacs-rc-ruby)
