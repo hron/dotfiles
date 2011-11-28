@@ -137,9 +137,6 @@
 ;; magit
 (require 'magit)
 
-;; Emacswiki
-(require 'yaoddmuse)
-
 ;; http://www.emacswiki.org/emacs/ToggleWindowSplit
 (require 'toggle-window-split)
 
