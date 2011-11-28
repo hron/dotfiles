@@ -75,7 +75,7 @@
                              ;; (turn-on-orgtbl)
                              (highlight-parentheses-mode 1)))
 
-;; Javascript
+;; Java script
 (setq js-indent-level 2)
 
 ;; Apache
@@ -87,7 +87,10 @@
 (add-to-list 'auto-mode-alist '("sites-\\(available\\|enabled\\)/" . apache-mode))
 
 ;; Markdown
-(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;; Regex-tool
 (autoload 'regex-tool "regex-tool" "Mode for exploring regular expressions" t)
