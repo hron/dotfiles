@@ -183,7 +183,8 @@
 (require 'emacs-rc-dired)
 (require 'emacs-rc-hippie-exp)
 (require 'emacs-rc-gdb)
-(require 'emacs-rc-mule)
+;; BUG: Tramp sudo does not work with this hack.
+;; (require 'emacs-rc-mule)
 (require 'emacs-rc-tramp)
 (require 'emacs-rc-woman)
 (require 'emacs-rc-view)
