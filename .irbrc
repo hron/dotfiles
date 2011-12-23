@@ -96,18 +96,20 @@ end
 #   :gray, :red, :green, :yellow, :blue, :purple, :cyan, :white
 #   :black, :redish, :greenish, :yellowish, :blueish, :purpleish, :cyanish, :pale
 tramp_require 'ap' do
-  unless IRB.version.include?('DietRB')
-    IRB::Irb.class_eval do
-      def output_value
-        ap @context.last_value
+  if RUBY_VERSION >= '1.9.0'
+    unless IRB.version.include?('DietRB')
+      IRB::Irb.class_eval do
+        def output_value
+          ap @context.last_value
+        end
       end
+    else # MacRuby
+      IRB.formatter = Class.new(IRB::Formatter) do
+        def inspect_object(object)
+          object.ai
+        end
+      end.new
     end
-  else # MacRuby
-    IRB.formatter = Class.new(IRB::Formatter) do
-      def inspect_object(object)
-        object.ai
-      end
-    end.new
   end
 end
 
