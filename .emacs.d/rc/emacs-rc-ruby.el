@@ -179,27 +179,27 @@ describe " (let* ((file-name (file-name-nondirectory buffer-file-name))
 end"
              ))
 
-(require 'hideshow)
-(add-to-list 'hs-special-modes-alist
-             '(ruby-mode
-               "\\(^[[:space:]]*def[[:space:]]\\|[[:space:]]+do\\([[:space:]]+|\\|[[:space:]]*$\\)\\)"
-               "end"
-               "#"
-               (lambda (arg) (ruby-end-of-block)) nil))
+;; (require 'hideshow)
+;; (add-to-list 'hs-special-modes-alist
+;;              '(ruby-mode
+;;                "\\(^[[:space:]]*def[[:space:]]\\|[[:space:]]+do\\([[:space:]]+|\\|[[:space:]]*$\\)\\)"
+;;                "end"
+;;                "#"
+;;                (lambda (arg) (ruby-end-of-block)) nil))
 
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             ;; This is a workaround for MuMaMo mode (.html.erb files)
-             (when (stringp (buffer-file-name))
-               (hs-minor-mode 1)
-               (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
-                      (hs-gau-hide-level-deeply 2))
-                     ((string-match "Gemfile$" (buffer-file-name))
-                      (hs-show-all))
-                     ((string-match "\.erb$" (buffer-file-name))
-                      (message "Skipping hiding blocks..."))
-                     (t
-                      (hs-gau-hide-level-deeply 1))))))
+;; (add-hook 'ruby-mode-hook
+;;           '(lambda ()
+;;              ;; This is a workaround for MuMaMo mode (.html.erb files)
+;;              (when (stringp (buffer-file-name))
+;;                (hs-minor-mode 1)
+;;                (cond ((string-match "_spec\.rb\\|\.rake$" (buffer-file-name))
+;;                       (hs-gau-hide-level-deeply 2))
+;;                      ((string-match "Gemfile$" (buffer-file-name))
+;;                       (hs-show-all))
+;;                      ((string-match "\.erb$" (buffer-file-name))
+;;                       (message "Skipping hiding blocks..."))
+;;                      (t
+;;                       (hs-gau-hide-level-deeply 1))))))
 
 ;; TODO: What is that for?
 (require 'haml-mode)
