@@ -26,6 +26,8 @@
 
 (require 'anything)
 (require 'anything-config)
+(require 'yari)
+(require 'anything-git-grep)
 
 ;; (add-hook 'anything-after-initialize-hook
 ;;           '(lambda ()
@@ -33,6 +35,17 @@
 ;;              (local-set-key "M-{" 'anything-prev-source)))
 
 ;; (global-set-key (kbd "M-C-5") 'anything-query-replace-regexp)
+(setq anything-sources
+      '(anything-c-source-imenu
+	anything-c-source-buffers+
+	anything-c-source-git-grep
+	anything-c-source-git-submodule-grep
+	anything-c-source-recentf
+	yari-anything-source-ri-pages
+	anything-c-source-files-in-current-dir+))
+
+(define-key anything-map (kbd "M-RET") 'anything-execute-persistent-action)
+
 (global-set-key (kbd "S-SPC") 'anything)
 
 (provide 'emacs-rc-anything)
