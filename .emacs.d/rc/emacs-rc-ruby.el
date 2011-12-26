@@ -165,6 +165,19 @@
              (ruby-test-mode 't)
              (local-set-key (kbd "C-c r") 'revert-buffer)))
 
+;; Rspec examples for imenu
+(defvar rspec-imenu-generic-expression
+  '(("Examples"  "^\\( *\\(it\\|describe\\|context\\) +.+\\)" 1))
+  "The imenu regex to parse an outline of the rspec file")
+
+(defun rspec-set-imenu-generic-expression ()
+  (make-local-variable 'imenu-generic-expression)
+  (make-local-variable 'imenu-create-index-function)
+  (setq imenu-create-index-function 'imenu-default-create-index-function)
+  (setq imenu-generic-expression rspec-imenu-generic-expression))
+
+(add-hook 'ruby-test-mode-hook 'rspec-set-imenu-generic-expression)
+
 
 (require 'autoinsert)
 (add-to-list 'auto-insert-alist
