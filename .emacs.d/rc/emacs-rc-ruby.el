@@ -33,6 +33,7 @@
                ".irbrc" "\.builder" "\.gemspec"
                "Rakefile$" "Capfile" "Gemfile" "Sitefile"
                "Guardfile"
+               "Vendorfile"
                "config.ru"
                "Vagrantfile" "\\.autotest$"
                "\\.watchr"
