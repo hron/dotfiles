@@ -29,7 +29,6 @@
 
 (add-hook 'sh-mode-hook '(lambda ()
                            (turn-on-auto-fill)
-                           (turn-on-orgstruct)
                            (flyspell-prog-mode)
                            (highlight-parentheses-mode 1)))
 
@@ -39,8 +38,8 @@
 (autoload 'flymake-shell-load "flymake-shell"
   "On-the-fly syntax checking of shell scripts" t)
 (add-hook 'sh-mode-hook '(lambda ()
-			   (unless (tramp-tramp-file-p (buffer-file-name))
-			     (flymake-shell-load))))
+                           (unless (tramp-tramp-file-p (buffer-file-name))
+                             (flymake-shell-load))))
 
 (provide 'emacs-rc-sh)
 ;;; emacs-rc-sh.el ends here
