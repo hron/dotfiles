@@ -89,6 +89,10 @@ tricks_del() {
     rm -r "$HOME/.local/share/wineprefixes/$1"
 }
 
+killrails() {
+    kill `lsof -i tcp:3000 | /usr/bin/cut --delimiter=' ' -f5`
+}
+
 # manpath=($X11HOME/man /usr/man /usr/lang/man /usr/local/man)
 # export MANPATH
 
