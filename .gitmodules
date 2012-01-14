@@ -7,9 +7,6 @@
 [submodule ".emacs.d/site-lisp/nxhtml"]
         path = .emacs.d/site-lisp/nxhtml
         url = git://github.com/emacsmirror/nxhtml.git
-[submodule ".emacs.d/site-lisp/magit"]
-	path = .emacs.d/site-lisp/magit
-	url = git://gitorious.org/magit/mainline.git
 [submodule ".emacs.d/site-lisp/ruby-test-mode"]
 	path = .emacs.d/site-lisp/ruby-test-mode
 	url = http://github.com/r0man/ruby-test-mode.git
