@@ -40,8 +40,6 @@ alias be='bundle exec'
 
 alias autofeature='AUTOFEATURE=true autospec'
 
-alias cut='cut -f1 --delimiter=" "'
-
 alias aptk='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias apti='sudo aptitude install'
 alias aptu='sudo aptitude update'
