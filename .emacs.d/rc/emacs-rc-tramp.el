@@ -31,24 +31,29 @@
 
 (setq shell-prompt-pattern "^.*[#$%>] *")
 
-(setq tramp-shell-prompt-pattern shell-prompt-pattern
-      tramp-backup-directory-alist backup-directory-alist
+(setq tramp-backup-directory-alist backup-directory-alist
       tramp-auto-save-directory "~/.emacs.d/tramp-auto-save")
 
 (setq tramp-default-host "localhost")
 (setq tramp-default-method-alist
       '(( nil "root" "sudo")
-	( nil nil "sshx")))
+	( nil nil "ssh")))
 
 (unless (string-match "22\\." (version))
   (progn
     (setq tramp-default-proxies-alist nil)
 
     (add-to-list 'tramp-default-proxies-alist
-                 '( "\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
+                 '(nil "root" "/ssh:%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-                 '( "\\(localhost\\)" "root" nil))
+                 '("sfa35" "\\(cruise\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(localhost\\)" "root" nil))
 
     ))
 
