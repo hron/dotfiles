@@ -149,7 +149,7 @@
 ;; nXhtml
 (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")
 ;; This prevents activating nxhtml-mode for .html.haml files.
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-html-mumamo))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-html-mumamo-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\.haml\\'" . haml-mode))
 
 (setq aug-secret-file "~/.emacs.d/.secret-file")
