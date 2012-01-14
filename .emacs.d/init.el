@@ -6,27 +6,6 @@
 ;; Started: 1 June 2004
 ;; Version: $Id$
 
-;; TODO:
-;;
-;;  * Shadow copies of files do not work with tramp.
-;;  * Status of remote executed grep still 'running' forever.
-;;
-;; Done:
-;;
-;;  * Reconfigure emacsclient:
-;;
-;;     - there is a new option '-c' for creating new frame without
-;;       using existing (as I remember I use some elisp code to
-;;       achieve this behaviour).
-;;
-;;     - make openning a new frame by 'Win-E' without '~/src' in
-;;       buffer and with --no-wait option.
-;;
-;;  * Deleting files in trash.
-;;  * Moved session files somewhere.
-;;  * Add smarty-mode.
-;;
-
 
 ;; Add some dirs to load-path
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
