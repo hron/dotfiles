@@ -159,6 +159,11 @@
 (setq aug-secret-file "~/.emacs.d/.secret-file")
 (load aug-secret-file t)
 
+;; Coffescript
+(setq coffee-tab-width 2)
+(add-hook 'coffe-mode-hook '(lambda ()
+			      (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
+
 ;;
 ;; Emacs core customization
 ;;

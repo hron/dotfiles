@@ -135,9 +135,12 @@ bindkey -s '\M-/' \\\\
 bindkey -s '\M-=' \|
 
 # bindkey -v               # vi key bindings
-bindkey -e                 # emacs key bindings
+# bindkey -e                 # emacs key bindings
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+
+bindkey ';5D' emacs-backward-word
+bindkey ';5C' emacs-forward-word
 
 # Setup new style completion system. To see examples of the old style (compctl
 # based) programmable completion, check Misc/compctl-examples in the zsh
