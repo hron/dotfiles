@@ -161,8 +161,10 @@
 
 ;; Coffescript
 (setq coffee-tab-width 2)
-(add-hook 'coffe-mode-hook '(lambda ()
-			      (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
+(add-hook 'coffee-mode-hook '(lambda ()
+			       (make-variable-buffer-local 'electric-indent-chars)
+			       (setq electric-indent-chars '())
+			       (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
 
 ;;
 ;; Emacs core customization
