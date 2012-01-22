@@ -162,9 +162,16 @@
 ;; Coffescript
 (setq coffee-tab-width 2)
 (add-hook 'coffee-mode-hook '(lambda ()
-			       (make-variable-buffer-local 'electric-indent-chars)
-			       (setq electric-indent-chars '())
-			       (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
+                               (make-variable-buffer-local 'electric-indent-chars)
+                               (setq electric-indent-chars '())
+                               (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
+
+(add-auto-mode 'nginx-mode "nginx.conf$")
+
+
+(add-hook 'feature-mode-hook '(lambda ()
+                               (make-variable-buffer-local 'electric-indent-chars)
+                               (setq electric-indent-chars '())))
 
 ;;
 ;; Emacs core customization
