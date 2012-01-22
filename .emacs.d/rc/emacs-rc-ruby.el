@@ -82,6 +82,8 @@
 (autoload 'sass-mode "sass-mode" "Mode for editing sass files" t)
 
 (add-hook 'haml-mode-hook '(lambda ()
+                             (make-variable-buffer-local 'electric-indent-chars)
+                             (setq electric-indent-chars '())
                              (setq indent-tabs-mode nil)))
 
 ;; (require 'flymake-haml)
