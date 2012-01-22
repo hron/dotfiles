@@ -249,6 +249,10 @@
 ;;           '(lambda ()
 ;;              (local-set-key (kbd "<C-tab>") 'hs-gau-toggle-hiding-or-hide-level)))
 
-;; Color theme loading, must be the last.
-(load-library "color-themes/color-theme-dark-hron")
-(color-theme-dark-hron)
+
+;; ;; Color theme loading, must be the last.
+;; (load-library "color-themes/color-theme-dark-hron")
+;; (color-theme-dark-hron)
+(require 'color-theme)
+(require 'color-theme-solarized)
+(color-theme-solarized-dark)
