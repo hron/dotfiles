@@ -121,22 +121,22 @@
 ;;;###autoload
 (defun magit-status (dir)
   (interactive (list (or (and (not current-prefix-arg)
-			      (magit-get-top-dir default-directory))
-			 (magit-read-top-dir (and (consp current-prefix-arg)
-						  (> (car current-prefix-arg) 4))))))
+                              (magit-get-top-dir default-directory))
+                         (magit-read-top-dir (and (consp current-prefix-arg)
+                                                  (> (car current-prefix-arg) 4))))))
   (magit-save-some-buffers)
   (let ((topdir (magit-get-top-dir dir)))
     (unless topdir
       (when (y-or-n-p (format "There is no Git repository in %S.  Create one? "
-			      dir))
+                              dir))
 	(magit-init dir)
 	(setq topdir (magit-get-top-dir dir))))
     (when topdir
       (let ((buf (or (magit-find-buffer 'status topdir)
-		     (generate-new-buffer
-		      (concat "*magit: "
-			      (file-name-nondirectory
-			       (directory-file-name topdir)) "*")))))
+                     (generate-new-buffer
+                      (concat "*magit: "
+                              (file-name-nondirectory
+                               (directory-file-name topdir)) "*")))))
         (switch-to-buffer buf)
         (magit-mode-init topdir 'status #'magit-refresh-status)
         (magit-status-mode t)))))
