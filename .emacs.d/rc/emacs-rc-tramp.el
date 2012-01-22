@@ -47,7 +47,10 @@
                  '(nil "root" "/ssh:%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-                 '("sfa35" "\\(cruise\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
+                 '("sfa\\(25\\|36\\|37\\|39\\)" "production" "/ssh:aleksei@%h:"))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("sfa35" "\\(cruise\\|staging\\|production\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
                  '("\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
