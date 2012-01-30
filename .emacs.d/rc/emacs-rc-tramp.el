@@ -47,6 +47,9 @@
                  '(nil "root" "/ssh:%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
+                 '("wyvoxapp.com" "deployer" "/ssh:aleksei@%h:"))
+
+    (add-to-list 'tramp-default-proxies-alist
                  '("sfa\\(25\\|36\\|37\\|39\\)" "production" "/ssh:aleksei@%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
