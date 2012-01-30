@@ -16,3 +16,6 @@
 [submodule ".emacs.d/site-lisp/yasnippet-snippets/ruby-mode"]
 	path = .emacs.d/site-lisp/yasnippet-snippets/ruby-mode
 	url = git://github.com/hron/yasnippet-ruby-mode.git
+[submodule ".emacs.d/site-lisp/rhtml"]
+	path = .emacs.d/site-lisp/rhtml
+	url = https://github.com/eschulte/rhtml.git

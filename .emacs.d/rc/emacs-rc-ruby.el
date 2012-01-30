@@ -225,6 +225,7 @@ end"
 	(modify-syntax-entry ?: "." table)
 	table))
 
+(require 'rhtml-mode)
 
 (require 'rinari)
 (add-to-list 'rinari-major-modes 'magit-mode-hook)
