@@ -51,7 +51,7 @@
 ;; [[info:org:Setting%20up%20Remember][info:org:Setting up Remember]]
 (org-remember-insinuate)
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/journal.org.gpg"))
+(setq org-default-notes-file (concat org-directory "/tasks.org.gpg"))
 ;; (define-key global-map "\C-cR" 'org-remember)
 
 (setq remember-annotation-functions '(org-remember-annotation))
@@ -70,12 +70,15 @@
 (add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
 
 ;; This allows [/] and [%] to count all children
-;; (add-hook 'org-mode-hook
-;;	  '(lambda ()
-;;	     (setq org-provide-todo-statistics '("TODO" nil))
-;;	     ))
 (setq org-provide-todo-statistics 'all-headlines)
 (add-hook 'org-insert-heading-hook 'org-update-parent-todo-statistics)
+
+(setq org-tag-alist '((:startgroup . nil)
+		      ("BoutiqueAir" . ?b)
+		      ("FailsafePayments" . ?f)
+		      (:endgroup . nil)
+		      ("outside" . ?o)
+		      ("read" . ?r)))
 
 (let ((someday-common-template (concat "* %^{Brief Description} %^g\n"
 				       "  :PROPERTIES:\n"
@@ -87,25 +90,10 @@
 			     "  :Added: %U\n"
 			     "  :END:\n"
 			     "  %?\n")))
-  (setq org-remember-templates '())
-  (add-to-list 'org-remember-templates (list "MaybeDo" ?d
-					     someday-common-template
-					     "someday.org.gpg" "Сделать"))
-  (add-to-list 'org-remember-templates (list "MaybeLearn" ?r
-					     someday-common-template
-					     "someday.org.gpg" "Изучить"))
-  (add-to-list 'org-remember-templates (list "MaybeBook" ?b
-					     someday-common-template
-					     "someday.org.gpg" "Книги для прочтения"))
-  (add-to-list 'org-remember-templates (list "MaybeProject" ?p
-					     someday-common-template
-					     "someday.org.gpg" "Новые проекты"))
-  (add-to-list 'org-remember-templates (list "MaybeDVD" ?f
-					     someday-common-template
-					     "someday.org.gpg" "Фильмы для просмотра"))
-  (add-to-list 'org-remember-templates (list "Todo" ?t
-					     todo-template
-					     "tasks.org.gpg" "Задачи")))
+  (setq org-capture-templates '())
+  (add-to-list 'org-capture-templates
+	       '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
+		 "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
 
 (setq org-deadline-warning-days 7)
 
@@ -120,31 +108,32 @@
  org-agenda-skip-scheduled-if-done t
  org-agenda-sorting-strategy '((agenda time-up priority-down tag-up) (todo tag-up))
  org-agenda-start-on-weekday nil
- org-agenda-todo-ignore-deadlines t
- org-agenda-todo-ignore-scheduled t
- org-agenda-todo-ignore-with-date t
+ org-agenda-tags-todo-honor-ignore-options t
+ org-agenda-todo-ignore-scheduled 'future
+ org-agenda-todo-ignore-deadlines 'future
 
  org-agenda-custom-commands
- '(
-   ("P" "Projects"
-    ((tags "PROJECT")))
+ '(("h" tags-todo "-BoutiqueAir-FailSafePayments/-DONE"
+    ((org-agenda-sorting-strategy '(user-defined-up))))
+   ("b" tags-todo "BoutiqueAir/-DONE"
+    ((org-agenda-sorting-strategy '(user-defined-up))))
+   ("f" tags-todo "FailSafePayments/-DONE"
+    ((org-agenda-sorting-strategy '(user-defined-up))))
+   ("o" tags-todo "outside"
+    ((org-agenda-sorting-strategy '(user-defined-up))))
+   ("r" tags-todo "read"
+    ((org-agenda-sorting-strategy '(user-defined-up))))))
 
-   ("H" "Office and Home Lists"
-    ((agenda)
-     (tags-todo "OFFICE")
-     (tags-todo "HOME")
-     (tags-todo "COMPUTER")
-     (tags-todo "DVD")
-     (tags-todo "READING")))
-
-   ("D" "Daily Action List"
-    ((agenda
-      ""
-      ((org-agenda-ndays 1)
-       (org-agenda-sorting-strategy
-	(quote ((agenda time-up priority-down tag-up) )))
-       (org-deadline-warning-days 0)))))
-   ))
+(defun org-cmp-todo-always-first (a b)
+  "Compare the todo states of strings A and B. TODO keyword always first."
+  (let* ((ta (or (get-text-property 1 'todo-state a) ""))
+	 (tb (or (get-text-property 1 'todo-state b) "")))
+    (message "%s" ta)
+    (message "%s" tb)
+    (cond ((and (string= ta "TODO") (not (string= tb "TODO"))) -1)
+	  ((and (not (string= ta "TODO")) (string= tb "TODO")) +1)
+	  (t nil))))
+(setq org-agenda-cmp-user-defined 'org-cmp-todo-always-first)
 
 (setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1) ("tickler.org.gpg" :level . 2))))
 (setq org-time-stamp-rounding-minutes '(0 5))
