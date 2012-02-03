@@ -58,6 +58,25 @@
 (setq remember-handler-functions '(org-remember-handler))
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 
+(add-hook 'org-mode-hook '(lambda ()
+			    (make-variable-buffer-local 'electric-indent-chars)
+			    (setq electric-indent-chars '())))
+
+(add-hook 'org-mode-hook '(lambda ()
+			    (local-set-key (kbd "C-M-<return>")
+					   'org-insert-todo-heading)))
+
+(require 'org-cua-dwim)
+(add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
+
+;; This allows [/] and [%] to count all children
+;; (add-hook 'org-mode-hook
+;;	  '(lambda ()
+;;	     (setq org-provide-todo-statistics '("TODO" nil))
+;;	     ))
+(setq org-provide-todo-statistics 'all-headlines)
+(add-hook 'org-insert-heading-hook 'org-update-parent-todo-statistics)
+
 (let ((someday-common-template (concat "* %^{Brief Description} %^g\n"
 				       "  :PROPERTIES:\n"
 				       "  :Added: %U\n"
@@ -86,13 +105,13 @@
 					     "someday.org.gpg" "Фильмы для просмотра"))
   (add-to-list 'org-remember-templates (list "Todo" ?t
 					     todo-template
-					     "newgtd.org.gpg" "Задачи")))
+					     "tasks.org.gpg" "Задачи")))
 
 (setq org-deadline-warning-days 7)
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("birthday.org.gpg" "newgtd.org.gpg"))
+			  '("tickler.org.gpg" "tasks.org.gpg"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
@@ -127,12 +146,12 @@
        (org-deadline-warning-days 0)))))
    ))
 
-(setq org-refile-targets (quote (("newgtd.org.gpg" :maxlevel . 1) ("someday.org.gpg" :level . 2))))
+(setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1) ("tickler.org.gpg" :level . 2))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (defun gtd ()
   (interactive)
-  (find-file (concat org-directory "newgtd.org.gpg")))
+  (find-file (concat org-directory "tasks.org.gpg")))
 
 ;; (global-set-key (kbd "C-c G") 'gtd)
 
