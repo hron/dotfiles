@@ -107,7 +107,7 @@
  org-agenda-todo-ignore-scheduled 'future
  org-agenda-todo-ignore-deadlines 'future)
 
-(setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"/-DONE")
+(setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
 (setq org-agenda-custom-commands
       '(("h" "Home"
 	 tags-tree (concat "-BoutiqueAir-FailsafePayments" org-agenda-na-expression))
