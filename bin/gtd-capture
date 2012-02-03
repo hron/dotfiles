@@ -1,0 +1,3 @@
+#! /bin/zsh -f
+
+emacsclient -c -e "(org-capture-system-wide)"
