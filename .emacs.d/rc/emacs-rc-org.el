@@ -94,7 +94,7 @@
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("tickler.org.gpg" "tasks.org.gpg"))
+			  '("tasks.org.gpg"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
