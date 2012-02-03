@@ -1,3 +1,4 @@
+
 ;; Прозрачная работа с архивами
 (if (fboundp 'auto-compression-mode)
     (auto-compression-mode t))
@@ -239,6 +240,7 @@
                          tab-mark
                          newline-mark))
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
 
 (require 're-builder)
 (setq reb-re-syntax 'string)

@@ -24,6 +24,8 @@
 
 ;;; Code:
 
+(require 'org)
+
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
@@ -48,15 +50,8 @@
 ;; [[info:org:Closing%20items][info:org:Closing items]]
 (setq org-log-done 'time)
 
-;; [[info:org:Setting%20up%20Remember][info:org:Setting up Remember]]
-(org-remember-insinuate)
 (setq org-directory "~/org/")
 (setq org-default-notes-file (concat org-directory "/tasks.org.gpg"))
-;; (define-key global-map "\C-cR" 'org-remember)
-
-(setq remember-annotation-functions '(org-remember-annotation))
-(setq remember-handler-functions '(org-remember-handler))
-(add-hook 'remember-mode-hook 'org-remember-apply-template)
 
 (add-hook 'org-mode-hook '(lambda ()
 			    (make-variable-buffer-local 'electric-indent-chars)
@@ -80,20 +75,17 @@
 		      ("outside" . ?o)
 		      ("read" . ?r)))
 
-(let ((someday-common-template (concat "* %^{Brief Description} %^g\n"
-				       "  :PROPERTIES:\n"
-				       "  :Added: %U\n"
-				       "  :END:\n"
-				       "  %?\n"))
-      (todo-template (concat "* TODO %^{Brief Description} %^g\n"
-			     "  :PROPERTIES:\n"
-			     "  :Added: %U\n"
-			     "  :END:\n"
-			     "  %?\n")))
-  (setq org-capture-templates '())
-  (add-to-list 'org-capture-templates
-	       '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
-		 "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
+(setq org-capture-templates
+      '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
+	"* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+
+(add-hook 'org-capture-after-finalize-hook 'delete-frame)
+
+(defun org-capture-system-wide ()
+  "System-wide variant of org-capture."
+  (interactive)
+  (org-capture :keys "i")
+  (delete-other-windows))
 
 (setq org-deadline-warning-days 7)
 
@@ -137,12 +129,6 @@
 
 (setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1) ("tickler.org.gpg" :level . 2))))
 (setq org-time-stamp-rounding-minutes '(0 5))
-
-(defun gtd ()
-  (interactive)
-  (find-file (concat org-directory "tasks.org.gpg")))
-
-;; (global-set-key (kbd "C-c G") 'gtd)
 
 (setq org-clock-persist t)
 

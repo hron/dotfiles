@@ -217,6 +217,7 @@
 (require 'emacs-rc-woman)
 (require 'emacs-rc-view)
 
+
 (electric-pair-mode)
 ;; Does not work good in cucumber mode and haml.
 (electric-layout-mode)
