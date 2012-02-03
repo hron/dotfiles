@@ -24,6 +24,8 @@
 
 ;;; Code:
 
+(setq org-replace-disputed-keys t)
+
 (require 'org)
 
 ;; The following lines are always needed.  Choose your own keys.
@@ -61,8 +63,8 @@
 			    (local-set-key (kbd "C-M-<return>")
 					   'org-insert-todo-heading)))
 
-(require 'org-cua-dwim)
-(add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
+;; (require 'org-cua-dwim)
+;; (add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
 
 ;; This allows [/] and [%] to count all children
 (setq org-provide-todo-statistics 'all-headlines)
@@ -89,6 +91,7 @@
 
 (setq org-deadline-warning-days 7)
 
+
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
 			  '("tickler.org.gpg" "tasks.org.gpg"))
@@ -102,19 +105,25 @@
  org-agenda-start-on-weekday nil
  org-agenda-tags-todo-honor-ignore-options t
  org-agenda-todo-ignore-scheduled 'future
- org-agenda-todo-ignore-deadlines 'future
+ org-agenda-todo-ignore-deadlines 'future)
 
- org-agenda-custom-commands
- '(("h" tags-todo "-BoutiqueAir-FailSafePayments/-DONE"
-    ((org-agenda-sorting-strategy '(user-defined-up))))
-   ("b" tags-todo "BoutiqueAir/-DONE"
-    ((org-agenda-sorting-strategy '(user-defined-up))))
-   ("f" tags-todo "FailSafePayments/-DONE"
-    ((org-agenda-sorting-strategy '(user-defined-up))))
-   ("o" tags-todo "outside"
-    ((org-agenda-sorting-strategy '(user-defined-up))))
-   ("r" tags-todo "read"
-    ((org-agenda-sorting-strategy '(user-defined-up))))))
+(setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"/-DONE")
+(setq org-agenda-custom-commands
+      '(("h" "Home"
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments" org-agenda-na-expression))
+
+	("o" "Outside"
+	 tags-tree (concat "outside" org-agenda-na-expression))
+
+	("r" "Read"
+	 tags-tree (concat "read" org-agenda-na-expression))
+
+	("b" "BoutiqueAir"
+	 tags-tree (concat "BoutiqueAir" org-agenda-na-expression))
+
+	("f" "FailsafePayments"
+	 tags-tree (concat "FailsafePayments" org-agenda-na-expression))))
+
 
 (defun org-cmp-todo-always-first (a b)
   "Compare the todo states of strings A and B. TODO keyword always first."
