@@ -40,6 +40,23 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+(defun org-todo-convert-to-project ()
+  (interactive)
+  (save-excursion
+    (org-todo "")
+    (if (looking-at "\\(**+\\) ")
+	(replace-match "\\1 [%] ")))
+  (org-show-entry)
+  (org-forward-sentence)
+  (newline)
+  (goto-char (point-at-bol))
+  (call-interactively 'org-insert-todo-subheading)
+  (call-interactively 'org-do-demote)
+  (goto-char (point-at-eol)))
+
+(add-hook 'org-mode-hook
+	  '(lambda ()
+	     (local-set-key (kbd "C-c p") 'org-todo-convert-to-project))))
 ;; You can insert and follow links that have Org syntax not only in Org, but in
 ;; any Emacs buffer. For this, you should create two global commands, like this
 ;; (please select suitable global keys yourself):
@@ -53,7 +70,7 @@
 (setq org-log-done 'time)
 
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/tasks.org.gpg"))
+(setq org-default-notes-file (concat org-directory "/tasks.org"))
 
 (add-hook 'org-mode-hook '(lambda ()
 			    (make-variable-buffer-local 'electric-indent-chars)
@@ -78,7 +95,7 @@
 		      ("read" . ?r)))
 
 (setq org-capture-templates
-      '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
+      '("i" "Todo" entry (file+headline "~/org/tasks.org" "Inbox")
 	"* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
 
 (add-hook 'org-capture-after-finalize-hook 'delete-frame)
@@ -94,7 +111,7 @@
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("tasks.org.gpg"))
+			  '("tasks.org"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
@@ -136,10 +153,17 @@
 	  (t nil))))
 (setq org-agenda-cmp-user-defined 'org-cmp-todo-always-first)
 
-(setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1) ("tickler.org.gpg" :level . 2))))
+(setq org-refile-targets (quote (("tasks.org" :maxlevel . 1))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (setq org-clock-persist t)
+
+(setq org-mobile-directory "/media/AEA9-05F6/tmp/mobile-org")
+
+(setq org-feed-alist
+      '(("Readability"
+	 "http://www.readability.com/aleksei/latest/feed"
+	 "~/org/tasks.org" "Inbox")))
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
