@@ -46,17 +46,17 @@
     (org-todo "")
     (if (looking-at "\\(**+\\) ")
 	(replace-match "\\1 [%] ")))
-  (org-show-entry)
-  (org-forward-sentence)
-  (newline)
-  (goto-char (point-at-bol))
-  (call-interactively 'org-insert-todo-subheading)
-  (call-interactively 'org-do-demote)
+  ;; (org-show-entry)
+  ;; (org-forward-sentence)
+  ;; (newline)
+  ;; (goto-char (point-at-bol))
+  ;; (call-interactively 'org-insert-todo-subheading)
+  ;; (call-interactively 'org-do-demote)
   (goto-char (point-at-eol)))
 
 (add-hook 'org-mode-hook
 	  '(lambda ()
-	     (local-set-key (kbd "C-c p") 'org-todo-convert-to-project))))
+	     (local-set-key (kbd "C-c p") 'org-todo-convert-to-project)))
 ;; You can insert and follow links that have Org syntax not only in Org, but in
 ;; any Emacs buffer. For this, you should create two global commands, like this
 ;; (please select suitable global keys yourself):
@@ -70,7 +70,7 @@
 (setq org-log-done 'time)
 
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/tasks.org"))
+(setq org-default-notes-file (concat org-directory "/tasks.org.gpg"))
 
 (add-hook 'org-mode-hook '(lambda ()
 			    (make-variable-buffer-local 'electric-indent-chars)
@@ -95,7 +95,7 @@
 		      ("read" . ?r)))
 
 (setq org-capture-templates
-      '("i" "Todo" entry (file+headline "~/org/tasks.org" "Inbox")
+      '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
 	"* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
 
 (add-hook 'org-capture-after-finalize-hook 'delete-frame)
@@ -111,7 +111,7 @@
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("tasks.org"))
+			  '("tasks.org.gpg"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
@@ -127,7 +127,7 @@
 (setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments" org-agenda-na-expression))
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-read-outside" org-agenda-na-expression))
 
 	("o" "Outside"
 	 tags-tree (concat "outside" org-agenda-na-expression))
@@ -153,7 +153,7 @@
 	  (t nil))))
 (setq org-agenda-cmp-user-defined 'org-cmp-todo-always-first)
 
-(setq org-refile-targets (quote (("tasks.org" :maxlevel . 1))))
+(setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (setq org-clock-persist t)
@@ -163,7 +163,12 @@
 (setq org-feed-alist
       '(("Readability"
 	 "http://www.readability.com/aleksei/latest/feed"
-	 "~/org/tasks.org" "Inbox")))
+	 "~/org/tasks.org.gpg" "Readability"
+	 :guid-permalink t)
+	("Boutiqueair"
+	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
+	 "~/org/tasks.org.gpg" "HMS Inc.")))
+
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
