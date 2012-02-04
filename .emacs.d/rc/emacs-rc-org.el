@@ -160,6 +160,7 @@
 
 (setq org-mobile-directory "/media/AEA9-05F6/tmp/mobile-org")
 
+(setq org-archive-default-command 'org-archive-to-archive-sibling)
 
 (defun org-feed-springpad-formatter (entry)
   "This function basically just removes <![CDATA[]]> from springpad notes RSS."
