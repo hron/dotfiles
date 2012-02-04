@@ -95,8 +95,8 @@
 		      ("read" . ?r)))
 
 (setq org-capture-templates
-      '("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
-	"* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+      '(("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
+	 "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
 
 (add-hook 'org-capture-after-finalize-hook 'delete-frame)
 
@@ -163,11 +163,12 @@
 (setq org-feed-alist
       '(("Readability"
 	 "http://www.readability.com/aleksei/latest/feed"
-	 "~/org/tasks.org.gpg" "Readability"
-	 :guid-permalink t)
+	 "~/org/tasks.org.gpg" "Inbox (Readability)"
+	 :template "\n* %h :read:\n  %U\n  %a\n")
 	("Boutiqueair"
 	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
-	 "~/org/tasks.org.gpg" "HMS Inc.")))
+	 "~/org/tasks.org.gpg" "Inbox (HMS Inc.)"
+	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n")))
 
 
 (provide 'emacs-rc-org)
