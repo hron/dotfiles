@@ -160,11 +160,59 @@
 
 (setq org-mobile-directory "/media/AEA9-05F6/tmp/mobile-org")
 
+
+(defun org-feed-springpad-formatter (entry)
+  "This function basically just removes <![CDATA[]]> from springpad notes RSS."
+  (let ((template "\n* %h \n  %U\n  %a\n"))
+	(let (dlines fmt tmp indent time name
+		     v-h v-t v-T v-u v-U v-a)
+	  (setq dlines (org-split-string (or (plist-get entry :description) "???")
+					 "\n")
+		v-h (or (plist-get entry :title) (car dlines) "???")
+		time (or (if (plist-get entry :pubDate)
+			     (org-read-date t t (plist-get entry :pubDate)))
+			 (current-time))
+		v-t (format-time-string (org-time-stamp-format nil nil) time)
+		v-T (format-time-string (org-time-stamp-format t   nil) time)
+		v-u (format-time-string (org-time-stamp-format nil t)   time)
+		v-U (format-time-string (org-time-stamp-format t   t)   time)
+		v-a (if (setq tmp (or (and (plist-get entry :guid-permalink)
+					   (plist-get entry :guid))
+				      (plist-get entry :link)))
+			(concat "[[" tmp "]]\n")
+		      ""))
+	  ;; This is actually my code
+	  (setq v-h (if (string-match "<!\\[CDATA\\[\\(.*\\)\\]\\]>" v-h)
+			(replace-match "\\1" nil nil v-h)))
+	  ;; end
+	  (with-temp-buffer
+	    (insert template)
+	    (goto-char (point-min))
+	    (while (re-search-forward "%\\([a-zA-Z]+\\)" nil t)
+	      (setq name (match-string 1))
+	      (cond
+	       ((member name '("h" "t" "T" "u" "U" "a"))
+		(replace-match (symbol-value (intern (concat "v-" name))) t t))
+	       ((setq tmp (plist-get entry (intern (concat ":" name))))
+		(save-excursion
+		  (save-match-data
+		    (beginning-of-line 1)
+		    (when (looking-at (concat "^\\([ \t]*\\)%" name "[ \t]*$"))
+		      (setq tmp (org-feed-make-indented-block
+				 tmp (org-get-indentation))))))
+		(replace-match tmp t t))))
+	    (decode-coding-string
+	     (buffer-string) (detect-coding-region (point-min) (point-max) t))))))
+
 (setq org-feed-alist
       '(("Readability"
 	 "http://www.readability.com/aleksei/latest/feed"
 	 "~/org/tasks.org.gpg" "Inbox (Readability)"
 	 :template "\n* %h :read:\n  %U\n  %a\n")
+	("Springpad"
+	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?notebook=inbox&format=rss&key=3umhkt67iqpa4b"
+	 "~/org/tasks.org.gpg" "Inbox"
+	 :formatter org-feed-springpad-formatter)
 	("Boutiqueair"
 	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
 	 "~/org/tasks.org.gpg" "Inbox (HMS Inc.)"
