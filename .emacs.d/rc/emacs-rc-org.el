@@ -207,16 +207,19 @@
 (setq org-feed-alist
       '(("Readability"
 	 "http://www.readability.com/aleksei/latest/feed"
-	 "~/org/tasks.org.gpg" "Inbox (Readability)"
-	 :template "\n* %h :read:\n  %U\n  %a\n")
+	 "~/org/tasks.org.gpg" "Inbox"
+	 :template "\n* %h :read:\n  %U\n  %a\n"
+	 :drawer "READABILITY")
 	("Springpad"
 	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
 	 "~/org/tasks.org.gpg" "Inbox"
-	 :formatter org-feed-springpad-formatter)
+	 :formatter org-feed-springpad-formatter
+	 :drawer "SPRINGPAD")
 	("Boutiqueair"
 	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
-	 "~/org/tasks.org.gpg" "Inbox (HMS Inc.)"
-	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n")))
+	 "~/org/tasks.org.gpg" "Inbox"
+	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n"
+	 :drawer "HMS")))
 
 
 (provide 'emacs-rc-org)
