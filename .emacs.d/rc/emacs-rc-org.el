@@ -210,7 +210,7 @@
 	 "~/org/tasks.org.gpg" "Inbox (Readability)"
 	 :template "\n* %h :read:\n  %U\n  %a\n")
 	("Springpad"
-	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?notebook=inbox&format=rss&key=3umhkt67iqpa4b"
+	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
 	 "~/org/tasks.org.gpg" "Inbox"
 	 :formatter org-feed-springpad-formatter)
 	("Boutiqueair"
