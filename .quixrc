@@ -1,0 +1,11 @@
+> TITLE:    .quixrc
+> REMARKS:  Hello, world.
+>           Under construction.
+>           Dilute! Dilute!
+> NOW:      2011-03-14_05-40-47
+> GITHUB:   http://github.com/hron/dotfiles/.quixrc
+> MORE:     http://quixapp.com
+@Aleksei Gusev's Custom Quix Commands
+@Go nuts.
+
+springit javascript:(function()%7BSP_HOST%3D'http%3A%2F%2Fspringpadit.com'%3Btry%7Bvar%20x%3Ddocument.createElement('SCRIPT')%3Bx.type%3D'text%2Fjavascript'%3Bx.src%3DSP_HOST%2B'%2Fpublic%2Fclipper_inline.js%3F'%2B(new%20Date().getTime()%2F100000)%3Bdocument.getElementsByTagName('head')%5B0%5D.appendChild(x)%3B%7Dcatch(e)%7Blocation.href%3DSP_HOST%2B'%2Fclip.action%3Furl%3D'%2BencodeURIComponent(location.href)%2B'%26title%3D'%2BencodeURIComponent(document.title)%3B%7D%7D)()%3B
