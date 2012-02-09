@@ -92,7 +92,8 @@
 		      ("FailsafePayments" . ?f)
 		      (:endgroup . nil)
 		      ("outside" . ?o)
-		      ("read" . ?r)))
+		      ("read" . ?r)
+		      ("games" . ?g)))
 
 (setq org-capture-templates
       '(("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
@@ -127,10 +128,13 @@
 (setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-read-outside" org-agenda-na-expression))
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-na-expression))
 
 	("o" "Outside"
 	 tags-tree (concat "outside" org-agenda-na-expression))
+
+	("g" "Games"
+	 tags-tree (concat "games" org-agenda-na-expression))
 
 	("r" "Read"
 	 tags-tree (concat "read" org-agenda-na-expression))
@@ -160,7 +164,8 @@
 
 (setq org-mobile-directory "/media/AEA9-05F6/tmp/mobile-org")
 
-(setq org-archive-default-command 'org-archive-to-archive-sibling)
+;; (setq org-archive-default-command 'org-archive-to-archive-sibling)
+(setq org-archive-default-command 'org-archive-subtree)
 
 (defun org-feed-springpad-formatter (entry)
   "This function basically just removes <![CDATA[]]> from springpad notes RSS."

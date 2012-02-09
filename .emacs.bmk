@@ -8,10 +8,10 @@
  (rear-context-string . "17:38]\n   :END:\n")
  (position . 360))
 ("org-refile-last-stored"
- (filename . "~/org/tasks.org")
- (front-context-string . "** Boutique Air ")
- (rear-context-string . "ickets/1663]]\n\n\n")
- (position . 17499))
+ (filename . "~/src/dotfiles/org/tasks.org.gpg")
+ (front-context-string . "** TODO Move the")
+ (rear-context-string . "tickets/1814]]\n\n")
+ (position . 21673))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
