@@ -8,4 +8,6 @@
 @Aleksei Gusev's Custom Quix Commands
 @Go nuts.
 
-springit javascript:(function()%7BSP_HOST%3D'http%3A%2F%2Fspringpadit.com'%3Btry%7Bvar%20x%3Ddocument.createElement('SCRIPT')%3Bx.type%3D'text%2Fjavascript'%3Bx.src%3DSP_HOST%2B'%2Fpublic%2Fclipper_inline.js%3F'%2B(new%20Date().getTime()%2F100000)%3Bdocument.getElementsByTagName('head')%5B0%5D.appendChild(x)%3B%7Dcatch(e)%7Blocation.href%3DSP_HOST%2B'%2Fclip.action%3Furl%3D'%2BencodeURIComponent(location.href)%2B'%26title%3D'%2BencodeURIComponent(document.title)%3B%7D%7D)()%3B
+springit		javascript:(function(){SP_HOST='http://springpadit.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=SP_HOST+'/public/clipper_inline.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=SP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();		Clip current page with <a href="http://www.springpadit.com/">Springpad</a>
+
+evernote		javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();		Clip current page with <a href="http://www.evernote.com/">Evernote</a>
