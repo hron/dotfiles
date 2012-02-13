@@ -23,3 +23,5 @@
 /.yakserver/credentials
 *.elc
 /.emacs.d/.secret-file
+/org/from-mobile.org
+/org/mobileorg
