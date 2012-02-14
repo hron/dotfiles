@@ -44,6 +44,7 @@
   (interactive)
   (save-excursion
     (org-todo "")
+    (goto-char (point-at-bol))
     (if (looking-at "\\(**+\\) ")
 	(replace-match "\\1 [%] ")))
   ;; (org-show-entry)
@@ -79,6 +80,16 @@
 (add-hook 'org-mode-hook '(lambda ()
 			    (local-set-key (kbd "C-M-<return>")
 					   'org-insert-todo-heading)))
+
+
+(defun soft-wrap-lines ()
+  "Make lines wrap at window edge and on word boundary,
+in current buffer."
+  (interactive)
+  (setq truncate-lines nil)
+  (setq word-wrap t))
+
+(add-hook 'org-mode-hook 'soft-wrap-lines) ; make org-mode wrap long lines
 
 ;; (require 'org-cua-dwim)
 ;; (add-hook 'org-mode-hook 'org-cua-dwim-turn-on-org-cua-mode-partial-support)
@@ -162,7 +173,7 @@
 
 (setq org-clock-persist t)
 
-(setq org-mobile-directory "/media/AEA9-05F6/tmp/mobile-org")
+(setq org-mobile-directory (concat org-directory "mobileorg"))
 
 ;; (setq org-archive-default-command 'org-archive-to-archive-sibling)
 (setq org-archive-default-command 'org-archive-subtree)
