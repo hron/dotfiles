@@ -136,6 +136,9 @@ in current buffer."
  org-agenda-todo-ignore-scheduled 'future
  org-agenda-todo-ignore-deadlines 'future)
 
+;; if you want Enter key to open links, add this
+(setq org-return-follows-link t)
+
 (setq org-agenda-na-expression "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
 (setq org-agenda-custom-commands
       '(("h" "Home"
