@@ -200,5 +200,6 @@ if [[ "$TERM" != "linux" ]] &&
 fi
 
 if [[ "$EMACS" == "t" ]]; then
-    stty columns 80;
+    stty columns 80
+    export NODE_NO_READLINE=1
 fi
