@@ -71,7 +71,7 @@
 (setq org-log-done 'time)
 
 (setq org-directory "~/org/")
-(setq org-default-notes-file (concat org-directory "/tasks.org.gpg"))
+(setq org-default-notes-file (concat org-directory "/tasks.org"))
 
 (add-hook 'org-mode-hook '(lambda ()
 			    (make-variable-buffer-local 'electric-indent-chars)
@@ -107,7 +107,7 @@ in current buffer."
 		      ("games" . ?g)))
 
 (setq org-capture-templates
-      '(("i" "Todo" entry (file+headline "~/org/tasks.org.gpg" "Inbox")
+      '(("i" "Todo" entry (file+headline "~/org/tasks.org" "Inbox")
 	 "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
 
 (add-hook 'org-capture-after-finalize-hook 'delete-frame)
@@ -123,7 +123,7 @@ in current buffer."
 
 (setq
  org-agenda-files (mapcar '(lambda (filename) (concat org-directory filename))
-			  '("tasks.org.gpg"))
+			  '("tasks.org"))
  org-agenda-ndays 7
  org-agenda-repeating-timestamp-show-all nil
  org-agenda-restore-windows-after-quit t
@@ -140,7 +140,7 @@ in current buffer."
 (setq org-return-follows-link t)
 
 (setq org-agenda-na-expression
-      "-SCHEDULED>\"<tomorrow>\"-DEADLINE>\"<tomorrow>\"-someday/-DONE")
+      "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
 (setq org-agenda-custom-commands
       '(("h" "Home"
 	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-na-expression))
@@ -172,7 +172,7 @@ in current buffer."
 	  (t nil))))
 (setq org-agenda-cmp-user-defined 'org-cmp-todo-always-first)
 
-(setq org-refile-targets (quote (("tasks.org.gpg" :maxlevel . 1))))
+(setq org-refile-targets (quote (("tasks.org" :maxlevel . 1))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (setq org-clock-persist t)
@@ -228,17 +228,17 @@ in current buffer."
 (setq org-feed-alist
       '(("Readability"
 	 "http://www.readability.com/aleksei/latest/feed"
-	 "~/org/tasks.org.gpg" "Inbox"
+	 "~/org/tasks.org" "Inbox"
 	 :template "\n* %h :read:\n  %U\n  %a\n"
 	 :drawer "READABILITY")
 	("Springpad"
 	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
-	 "~/org/tasks.org.gpg" "Inbox"
+	 "~/org/tasks.org" "Inbox"
 	 :formatter org-feed-springpad-formatter
 	 :drawer "SPRINGPAD")
 	("Boutiqueair"
 	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
-	 "~/org/tasks.org.gpg" "Inbox"
+	 "~/org/tasks.org" "Inbox"
 	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n"
 	 :drawer "HMS")))
 
