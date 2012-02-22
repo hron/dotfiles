@@ -27,7 +27,6 @@
 (require 'anything)
 (require 'anything-config)
 (require 'yari)
-;; (require 'anything-git-grep)
 (require 'anything-git)
 
 ;; (add-hook 'anything-after-initialize-hook
@@ -39,10 +38,7 @@
 (setq anything-sources
       '(anything-c-source-imenu
 	anything-c-source-buffers+
-	;; anything-c-source-git-grep
-	;; anything-c-source-git-submodule-grep
 	anything-c-source-git-files
-	anything-c-source-git-grep
 	anything-c-source-recentf
 	yari-anything-source-ri-pages
 	anything-c-source-files-in-current-dir+))
