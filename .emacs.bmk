@@ -9,9 +9,9 @@
  (position . 360))
 ("org-refile-last-stored"
  (filename . "~/src/dotfiles/org/tasks.org.gpg")
- (front-context-string . "** TODO Move the")
- (rear-context-string . "tickets/1814]]\n\n")
- (position . 21673))
+ (front-context-string . "** TODO Implemen")
+ (rear-context-string . "ose ticket 599\n\n")
+ (position . 26872))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
