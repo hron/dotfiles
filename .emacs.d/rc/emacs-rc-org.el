@@ -140,7 +140,7 @@ in current buffer."
 (setq org-return-follows-link t)
 
 (setq
- org-agenda-scheduled-later-expr "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/"
+ org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-DEADLINE>=\"<tomorrow>\"-someday/"
  org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
  org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE"))
 
