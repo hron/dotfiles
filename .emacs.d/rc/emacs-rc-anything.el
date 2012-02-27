@@ -40,7 +40,7 @@
 	anything-c-source-buffers+
 	anything-c-source-git-files
 	anything-c-source-recentf
-	yari-anything-source-ri-pages
+	;; yari-anything-source-ri-pages
 	anything-c-source-files-in-current-dir+))
 
 (define-key anything-map (kbd "M-RET") 'anything-execute-persistent-action)
