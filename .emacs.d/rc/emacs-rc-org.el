@@ -139,26 +139,38 @@ in current buffer."
 ;; if you want Enter key to open links, add this
 (setq org-return-follows-link t)
 
-(setq org-agenda-na-expression
-      "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/-DONE")
+(setq
+ org-agenda-scheduled-later-expr "-SCHEDULED>\"<today>\"-DEADLINE>\"<today>\"-someday/"
+ org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+ org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE"))
+
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-na-expression))
-
-	("o" "Outside"
-	 tags-tree (concat "outside" org-agenda-na-expression))
-
-	("g" "Games"
-	 tags-tree (concat "games" org-agenda-na-expression))
-
-	("r" "Read"
-	 tags-tree (concat "read" org-agenda-na-expression))
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-active-expr))
+	("H" "Home (Next Actions)"
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-na-expr))
 
 	("b" "BoutiqueAir"
-	 tags-tree (concat "BoutiqueAir" org-agenda-na-expression))
+	 tags-tree (concat "BoutiqueAir" org-agenda-active-expr))
+	("B" "BoutiqueAir (Next Actions)"
+	 tags-tree (concat "BoutiqueAir" org-agenda-na-expr))
 
 	("f" "FailsafePayments"
-	 tags-tree (concat "FailsafePayments" org-agenda-na-expression))))
+	 tags-tree (concat "FailsafePayments" org-agenda-active-expr))
+	("F" "FailsafePayments (Next Actions)"
+	 tags-tree (concat "FailsafePayments" org-agenda-na-expr))
+
+	("o" "Outside"
+	 tags-tree (concat "outside" org-agenda-active-expr))
+	("O" "Outside (Next Actions)"
+	 tags-tree (concat "outside" org-agenda-na-expr))
+
+	("g" "Games"
+	 tags-tree (concat "games" org-agenda-na-expr))
+
+	("r" "Read"
+	 tags-tree (concat "read" org-agenda-na-expr))))
+
 
 
 (defun org-cmp-todo-always-first (a b)
