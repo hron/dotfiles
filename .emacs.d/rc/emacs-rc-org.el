@@ -33,6 +33,8 @@
 
 (setq org-hide-leading-stars t)
 
+(require 'org-habit)
+
 (add-hook 'message-mode-hook 'turn-on-orgstruct)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 
