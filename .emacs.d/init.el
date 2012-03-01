@@ -179,6 +179,10 @@
 ;; (global-set-key (kbd "S-<delete>") 'ibus-toggle)
 ;; (global-set-key (kbd "S-<return>") 'ibus-toggle)
 
+(require 'expand-region)
+(global-set-key (kbd "M-h") 'er/expand-region)
+(global-set-key (kbd "M-j") 'er/contract-region)
+
 ;;
 ;; Emacs core customization
 ;;
