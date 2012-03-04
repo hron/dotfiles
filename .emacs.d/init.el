@@ -183,6 +183,8 @@
 (global-set-key (kbd "M-h") 'er/expand-region)
 (global-set-key (kbd "M-j") 'er/contract-region)
 
+(add-to-list 'er/try-expand-list 'mark-paragraph)
+
 ;;
 ;; Emacs core customization
 ;;
