@@ -253,38 +253,3 @@ main = do
 (require 'emacs-rc-misc-things)
 
 (setq flyspell-use-meta-tab nil)
-
-;; (require 'hideshow)
-;; (setq hs-allow-nesting t)
-;;
-;; (defun hs-gau-hide-level-deeply (arg)
-;;   "Hide all blocks deeper that ARG level below the top of file."
-;;   (interactive "p")
-;;   (let* ((max-level 5)
-;;          (level-to-hide max-level))
-;;     (save-excursion
-;;       (goto-char (point-min))
-;;       (hs-show-all)
-;;       (while (>= level-to-hide arg)
-;;	(save-excursion
-;;           (hs-hide-level level-to-hide)
-;;           (setq level-to-hide (1- level-to-hide)))))))
-;;
-;; (defun hs-gau-toggle-hiding-or-hide-level (level)
-;;   (interactive "P")
-;;   (if level
-;;       (hs-gau-hide-level-deeply level)
-;;     (hs-toggle-hiding)))
-;;
-;;
-;; (add-hook 'hs-minor-mode-hook
-;;           '(lambda ()
-;;              (local-set-key (kbd "<C-tab>") 'hs-gau-toggle-hiding-or-hide-level)))
-
-(set-face-attribute 'default nil :font "Ubuntu Mono" :height 110)
-
-(require 'color-theme)
-
-;; ;; Color theme loading, must be the last.
-(load-library "color-themes/color-theme-dark-hron")
-(color-theme-dark-hron)
