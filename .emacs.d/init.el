@@ -105,7 +105,7 @@
 ;; ANSI colors
 (require 'ansi-color)
 (setq ansi-color-names-vector
-      ["black" "red" "green" "yellow" "LightSkyBlue" "magenta" "cyan" "white"])
+      ["black" "#B21818" "#18B218" "#B26818" "#1818B2" "#B218B2" "#18B2B2" "#B2B2B2"])
 (setq ansi-color-map (ansi-color-make-color-map))
 
 (require 'emacs-rc-tty-format)
