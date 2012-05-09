@@ -264,7 +264,15 @@ in current buffer."
   (interactive)
   (find-file "~/org/tasks.org")
   (let ((tasks-icon "/usr/share/icons/default.kde4/256x256/apps/planner.png"))
-    (set-frame-parameter nil 'icon-type tasks-icon)))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks")))
+
+(defun aleksei-gtd-capture ()
+  (interactive)
+  (let ((tasks-icon "/usr/share/icons/default.kde4/256x256/apps/korgac.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks"))
+  (org-capture-system-wide))
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here

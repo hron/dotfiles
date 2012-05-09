@@ -9,9 +9,9 @@
  (position . 360))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Boutique")
- (rear-context-string . "ickets/1918]]\n\n\n")
- (position . 18226))
+ (front-context-string . "** Lena Buy addi")
+ (rear-context-string . "Minsk:@Smorgon:\n")
+ (position . 45086))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")

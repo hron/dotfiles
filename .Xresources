@@ -1,9 +1,10 @@
 ! Emacs*font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-1
 ! Emacs*font: Dejavu Sans Mono 10
-Emacs.font: -jmk-neep-medium-r-normal-*-*-140-*-*-*-*-iso10646-1
-! Emacs.font: Ubuntu Mono-11
-Emacs*useXIM: false
+! Emacs*useXIM: false
 ! Emacs.FontBackend: xft
+! ! Emacs.font: -jmk-neep-medium-r-normal-*-*-140-*-*-*-*-iso10646-1
+! Emacs.font: Ubuntu Mono-15
+! Emacs.font: Liberation Mono-10
 
 *VT100*foreground: white
 *VT100*background: black
@@ -11,5 +12,5 @@ Emacs*useXIM: false
 *VT100.font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-iso10646-*
 
 ! Local variables:
-! compile-command: "xrdb ~/.Xresources"
+! compile-command: "xrdb -merge ~/.Xresources"
 ! End:
