@@ -6,6 +6,7 @@
 # options, key bindings, etc.
 #
 source /etc/profile
+source $HOME/.zshenv
 
 # Search path for the cd command
 cdpath=(.. ~ ~/src ~/zsh)
