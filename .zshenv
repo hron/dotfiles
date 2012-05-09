@@ -5,7 +5,7 @@
 # export LC_COLLATE=C
 # export LC_MESSAGES=C
 
-export PATH=$HOME/bin:$PATH:$HOME/.gem/ruby/1.8/bin:/var/lib/gems/1.8/bin:/sbin:/usr/sbin:
+export PATH=$HOME/bin:$PATH:/sbin:/usr/sbin:
 export EDITOR=emacsclient
 
 export PGHOST=127.0.0.1
@@ -22,3 +22,5 @@ export QT_IM_MODULE=ibus
 export CUCUMBER_FORMAT='pretty'
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+PATH=$GEM_HOME/bin:$PATH
