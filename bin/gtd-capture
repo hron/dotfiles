@@ -1,3 +1,3 @@
 #! /bin/zsh -f
 
-emacsclient -c -e "(org-capture-system-wide)"
+emacsclient -c -F "((height . 15) (width . 70))" -e "(aleksei-gtd-capture)"
