@@ -106,7 +106,9 @@ in current buffer."
 		      (:endgroup . nil)
 		      ("outside" . ?o)
 		      ("read" . ?r)
-		      ("games" . ?g)))
+		      ("relax" . ?x)
+		      ("@Minsk" . ?M)
+		      ("@Smorgon" . ?S)))
 
 (setq org-capture-templates
       '(("i" "Todo" entry (file+headline "~/org/tasks.org" "Inbox")
@@ -148,9 +150,9 @@ in current buffer."
 
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-active-expr))
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
 	("H" "Home (Next Actions)"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-games-read-outside" org-agenda-na-expr))
+	 tags-tree (concat "-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
 
 	("b" "BoutiqueAir"
 	 tags-tree (concat "BoutiqueAir" org-agenda-active-expr))
@@ -167,8 +169,8 @@ in current buffer."
 	("O" "Outside (Next Actions)"
 	 tags-tree (concat "outside" org-agenda-na-expr))
 
-	("g" "Games"
-	 tags-tree (concat "games" org-agenda-na-expr))
+	("x" "Relax"
+	 tags-tree (concat "relax" org-agenda-na-expr))
 
 	("r" "Read"
 	 tags-tree (concat "read" org-agenda-na-expr))))
@@ -246,7 +248,7 @@ in current buffer."
 	 :template "\n* %h :read:\n  %U\n  %a\n"
 	 :drawer "READABILITY")
 	("Springpad"
-	 "http://springpadit.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
+	 "http://springpad.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
 	 "~/org/tasks.org" "Inbox"
 	 :formatter org-feed-springpad-formatter
 	 :drawer "SPRINGPAD")
@@ -256,6 +258,13 @@ in current buffer."
 	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n"
 	 :drawer "HMS")))
 
+
+(defun aleksei-gtd ()
+  "Prepare emacs frame to use as a GTD system."
+  (interactive)
+  (find-file "~/org/tasks.org")
+  (let ((tasks-icon "/usr/share/icons/default.kde4/256x256/apps/planner.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)))
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
