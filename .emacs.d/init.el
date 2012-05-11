@@ -253,3 +253,6 @@ main = do
 (require 'emacs-rc-misc-things)
 
 (setq flyspell-use-meta-tab nil)
+
+(require 'desktop)
+(add-hook 'desktop-before-save-hook 'clean-buffer-list)
