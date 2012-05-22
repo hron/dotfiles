@@ -2,16 +2,21 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/src/dotfiles/org/tasks.org.gpg")
- (front-context-string . "** TODO test47\n ")
- (rear-context-string . "17:38]\n   :END:\n")
- (position . 360))
+(("org-capture-last-stored-marker"
+ (filename . "~/org/tasks.org")
+ (front-context-string . "** Fulfilment / ")
+ (rear-context-string . "after purchase?\n")
+ (position . 59107))
+("org-capture-last-stored"
+ (filename . "~/org/tasks.org")
+ (front-context-string . "** TODO Try to r")
+ (rear-context-string . "357df9\n   :END:\n")
+ (position . 15013))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Lena Buy addi")
- (rear-context-string . "Minsk:@Smorgon:\n")
- (position . 45086))
+ (front-context-string . "** Lena Add the ")
+ (rear-context-string . "dc5a69\n   :END:\n")
+ (position . 56181))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
