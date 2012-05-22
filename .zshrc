@@ -131,7 +131,8 @@ zmodload -ap zsh/mapfile mapfile
 bindkey '^X^Z' universal-argument ' ' magic-space
 bindkey '^X^A' vi-find-prev-char-skip
 bindkey '^Xa' _expand_alias
-bindkey '^Z' accept-and-hold
+bindkey '^Z' undo
+
 bindkey -s '\M-/' \\\\
 bindkey -s '\M-=' \|
 
