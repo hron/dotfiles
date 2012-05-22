@@ -188,7 +188,7 @@ in current buffer."
 	  (t nil))))
 (setq org-agenda-cmp-user-defined 'org-cmp-todo-always-first)
 
-(setq org-refile-targets (quote (("tasks.org" :maxlevel . 1))))
+(setq org-refile-targets (quote (("tasks.org" :maxlevel . 2))))
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (setq org-clock-persist t)
@@ -258,6 +258,14 @@ in current buffer."
 	 :template "\n* %h :BoutiqueAir:\n  %U\n  %a\n"
 	 :drawer "HMS")))
 
+
+(defun aleksei-org-feed-update-all-and-mobile-pull ()
+  "org-feed-update-all, then org-mobile-pull"
+  (interactive)
+  (org-feed-update-all)
+  (org-mobile-pull))
+
+(define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 
 (defun aleksei-gtd ()
   "Prepare emacs frame to use as a GTD system."
