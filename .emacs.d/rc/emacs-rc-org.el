@@ -282,5 +282,11 @@ in current buffer."
     (set-frame-parameter nil 'icon-name "Tasks"))
   (org-capture-system-wide))
 
+(defun aleksei-org-clock-time-to-float (time)
+  (let ((re "\\([0-9]+\\):\\([0-9]+\\)"))
+    (if (string-match re time)
+	(+ (string-to-number (match-string 1 time))
+	   (/ (string-to-number (match-string 2 time)) 60.0)))))
+
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
