@@ -129,10 +129,6 @@
          (command (concat "bundle exec watchr " script)))
     (gusev-shell-run dir command buffer-name)))
 
-(defun roetags (dir)
-  "*Run 'roetags build && roetags watch' DIR."
-  (interactive "DDirectory to run roetags in: ")
-  (gusev-shell-run dir "roetags build && roetags watch" "*roetags*"))
 
 (defun gusev-shell-run (dir command buffer-name)
   (let* ((buffer (shell buffer-name)))
