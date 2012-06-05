@@ -117,7 +117,7 @@
   (interactive "DDirectory with Guardfile: ")
   (when (file-exists-p (concat dir "Guardfile"))
     (let* ((buffer-name (concat "*guard*<" dir ">"))
-           (command "bundle exec guard"))
+           (command "resetrails; bundle exec guard"))
       (gusev-shell-run dir command buffer-name))))
 
 (defun gusev-shell-run (dir command buffer-name)
