@@ -49,7 +49,8 @@
              ;; (turn-on-orgtbl)
              (highlight-parentheses-mode 1)))
 
-;; (setq ruby-deep-indent-paren '(?\( t))
+(setq ruby-deep-indent-paren '(?\( t))
+;; (setq ruby-deep-indent-paren '())
 
 ;; Inferion ruby
 (require 'inf-ruby)
@@ -152,9 +153,6 @@
           '(lambda ()
              (guard desktop-dirname)))
 
-(add-hook 'desktop-after-read-hook
-          '(lambda ()
-             (watchr-all desktop-dirname)))
 
 ;; rvm stuff
 (add-auto-mode 'compilation-mode
