@@ -120,16 +120,6 @@
            (command "bundle exec guard"))
       (gusev-shell-run dir command buffer-name))))
 
-(defun watchr (script)
-  "*Run watchr in autotest mode for SCRIPT."
-  (interactive "fWatchr script: ")
-  (let* ((dir (file-name-directory script))
-         (watchr-filename (file-name-nondirectory script))
-         (buffer-name (concat "*watchr*<" watchr-filename ">"))
-         (command (concat "bundle exec watchr " script)))
-    (gusev-shell-run dir command buffer-name)))
-
-
 (defun gusev-shell-run (dir command buffer-name)
   (let* ((buffer (shell buffer-name)))
     (with-current-buffer buffer
@@ -137,12 +127,6 @@
       (comint-send-string buffer (concat "cd " dir "; "
                                          command
                                          "\n")))))
-
-(defun watchr-all (dir)
-  "*Run all watchr files in DIR."
-  (interactive "DDirectory with scripts: ")
-  (let ((watchr-files (directory-files dir t "\.watchr$")))
-    (mapcar 'watchr watchr-files)))
 
 (require 'desktop)
 (add-hook 'desktop-after-read-hook
