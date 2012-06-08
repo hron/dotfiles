@@ -219,10 +219,12 @@
 
 ;; Try to read TAGS in the directory of desktop-file
 (add-hook 'desktop-after-read-hook
-          '(lambda ()
-             (let ((tags-filename (concat desktop-dirname "/TAGS")))
-               (if (file-exists-p tags-filename)
-                   (visit-tags-table tags-filename)))))
+	  '(lambda ()
+	     (let ((candidates '("TAGS" "tags" "gems.tags")))
+	       (dolist (filename candidates)
+		 (let ((full-filename (concat desktop-dirname "/" filename)))
+		   (if (file-exists-p full-filename)
+		       (add-to-list 'tags-table-list full-filename)))))))
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
