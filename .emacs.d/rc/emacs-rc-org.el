@@ -34,6 +34,7 @@
 (setq org-hide-leading-stars t)
 
 (require 'org-habit)
+(setq org-habit-graph-column 70)
 
 (add-hook 'message-mode-hook 'turn-on-orgstruct)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
