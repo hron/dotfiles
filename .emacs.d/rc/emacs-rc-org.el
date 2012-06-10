@@ -102,6 +102,7 @@ in current buffer."
 (add-hook 'org-insert-heading-hook 'org-update-parent-todo-statistics)
 
 (setq org-tag-alist '((:startgroup . nil)
+		      ("2combinators" . ?2)
 		      ("BoutiqueAir" . ?b)
 		      ("FailsafePayments" . ?f)
 		      (:endgroup . nil)
@@ -160,6 +161,11 @@ in current buffer."
 	("B" "BoutiqueAir (Next Actions)"
 	 tags-tree (concat "BoutiqueAir" org-agenda-na-expr))
 
+	("2" "2combinators"
+	 tags-tree (concat "2combinators" org-agenda-active-expr))
+	("@" "2combinators (Next Actions)"
+	 tags-tree (concat "2combinators" org-agenda-na-expr))
+
 	("f" "FailsafePayments"
 	 tags-tree (concat "FailsafePayments" org-agenda-active-expr))
 	("F" "FailsafePayments (Next Actions)"
@@ -193,6 +199,7 @@ in current buffer."
 (setq org-time-stamp-rounding-minutes '(0 5))
 
 (setq org-clock-persist t)
+(setq org-clock-into-drawer t)
 
 (setq org-mobile-directory (concat org-directory "mobileorg"))
 
