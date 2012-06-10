@@ -114,7 +114,7 @@ in current buffer."
 
 (setq org-capture-templates
       '(("i" "Todo" entry (file+headline "~/org/tasks.org" "Inbox")
-	 "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
+	 "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
 
 (add-hook 'org-capture-after-finalize-hook 'delete-frame)
 
