@@ -1,4 +1,3 @@
-
 ;; Прозрачная работа с архивами
 (if (fboundp 'auto-compression-mode)
     (auto-compression-mode t))
@@ -103,7 +102,7 @@
 ;; currently doesn't work on text-only terminals.)
 (setq default-indicate-empty-lines t)
 
-(setq browse-url-generic-program "google-chrome")
+(setq browse-url-generic-program "chromium")
 (setq browse-url-browser-function 'browse-url-generic)
 (setq browse-url-new-window-flag 1)
 
