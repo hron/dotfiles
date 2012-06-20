@@ -139,14 +139,19 @@
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
 (require 'ruby-test-mode)
+;; Formtastic
 (add-to-list 'ruby-test-specification-filename-mapping
 	     '("\\(.*\\)\\(app/inputs/\\)\\(.*\\)\\.rb$" "\\1spec/inputs/\\3_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
 	     '("\\(.*\\)\\(spec/inputs/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/inputs/\\3.rb"))
+;; ActiveAdmin
 (add-to-list 'ruby-test-specification-filename-mapping
 	     '("\\(.*\\)\\(app/admin/\\)\\(.*\\)\\.rb$" "\\1spec/admin/\\3_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
 	     '("\\(.*\\)\\(spec/admin/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/admin/\\3.rb"))
+;; Routing specs
+(add-to-list 'ruby-test-implementation-filename-mapping
+	     '("\\(.*\\)\\(spec/routing/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1config/routes.rb"))
 
 ;; I don't use 'run test' feature of ruby-test-mode. However I need these keys
 ;; for my own bindings. ;)
