@@ -38,8 +38,7 @@ alias bi='bundle install'
 alias bs='bundle show'
 alias bp='bundle package'
 alias be='bundle exec'
-
-alias autofeature='AUTOFEATURE=true autospec'
+alias reguard='resetrails; bundle exec guard'
 
 alias aptk='sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias apti='sudo aptitude install'
