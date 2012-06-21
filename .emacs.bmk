@@ -4,19 +4,19 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored-marker"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Fulfilment / ")
- (rear-context-string . "after purchase?\n")
- (position . 59107))
+ (front-context-string . "** Add badge 'Sp")
+ (rear-context-string . "dd3c8c\n   :END:\n")
+ (position . 89392))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Try to r")
- (rear-context-string . "357df9\n   :END:\n")
- (position . 15013))
+ (front-context-string . "** Fix Emacs on ")
+ (rear-context-string . "91f8c7\n   :END:\n")
+ (position . 15572))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Lena Add the ")
- (rear-context-string . "dc5a69\n   :END:\n")
- (position . 56181))
+ (front-context-string . "** Install money")
+ (rear-context-string . "ilsafePayments:\n")
+ (position . 91143))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
