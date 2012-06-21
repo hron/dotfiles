@@ -152,9 +152,9 @@ in current buffer."
 
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
+	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
 	("H" "Home (Next Actions)"
-	 tags-tree (concat "-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
+	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
 
 	("b" "BoutiqueAir"
 	 tags-tree (concat "BoutiqueAir" org-agenda-active-expr))
