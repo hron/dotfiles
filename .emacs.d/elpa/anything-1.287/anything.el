@@ -1835,14 +1835,14 @@ Anything plug-ins are realized by this function."
 ;; (@* "Core: plug-in attribute documentation hack")
 
 ;; `anything-document-attribute' is public API.
-(defadvice documentation-property (after anything-document-attribute activate)
-  "Hack to display plug-in attributes' documentation as `anything-sources' docstring."
-  (when (eq symbol 'anything-sources)
-    (setq ad-return-value
-          (concat ad-return-value "\n"
-                  (mapconcat (lambda (sym) (get sym 'anything-attrdoc))
-                             anything-additional-attributes
-                             "\n")))))
+;; (defadvice documentation-property (after anything-document-attribute activate)
+;;   "Hack to display plug-in attributes' documentation as `anything-sources' docstring."
+;;   (when (eq symbol 'anything-sources)
+;;     (setq ad-return-value
+;;           (concat ad-return-value "\n"
+;;                   (mapconcat (lambda (sym) (get sym 'anything-attrdoc))
+;;                              anything-additional-attributes
+;;                              "\n")))))
 ;; (describe-variable 'anything-sources)
 ;; (documentation-property 'anything-sources 'variable-documentation)
 ;; (progn (ad-disable-advice 'documentation-property 'after 'anything-document-attribute) (ad-update 'documentation-property)) 
