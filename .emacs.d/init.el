@@ -146,7 +146,7 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(setq yas/snippet-dirs "~/.emacs.d/site-lisp/yasnippet-snippets")
+(setq yas/snippet-dirs "~/.emacs.d/yasnippet-snippets")
 (yas/load-snippet-dirs)
 (yas/global-mode t)
 
