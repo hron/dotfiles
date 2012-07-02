@@ -173,11 +173,15 @@
                                (make-variable-buffer-local 'electric-indent-chars)
                                (setq electric-indent-chars '())))
 
-;; (require 'ibus)
-;; ;; (add-hook 'after-init-hook 'ibus-mode-on)
-;; (ibus-mode-on)
-;; (global-set-key (kbd "S-<delete>") 'ibus-toggle)
-;; (global-set-key (kbd "S-<return>") 'ibus-toggle)
+(require 'ibus)
+;; (add-hook 'after-init-hook 'ibus-mode-on)
+(ibus-mode-on)
+(global-set-key (kbd "S-<delete>") 'ibus-toggle)
+(global-set-key (kbd "S-<return>") 'ibus-toggle)
+;; Use C-SPC for Set Mark command
+(ibus-define-common-key ?\C-\s nil)
+;; Use C-/ for Undo command
+(ibus-define-common-key ?\C-/ nil)
 
 (require 'expand-region)
 (global-set-key (kbd "M-h") 'er/expand-region)
