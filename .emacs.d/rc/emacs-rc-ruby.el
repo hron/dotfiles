@@ -152,6 +152,11 @@
 ;; Routing specs
 (add-to-list 'ruby-test-implementation-filename-mapping
 	     '("\\(.*\\)\\(spec/routing/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1config/routes.rb"))
+;; Mailers
+(add-to-list 'ruby-test-specification-filename-mapping
+	     '("\\(.*\\)\\(app/mailers/\\)\\(.*\\)\\.rb$" "\\1spec/mailers/\\3_spec.rb"))
+(add-to-list 'ruby-test-implementation-filename-mapping
+	     '("\\(.*\\)\\(spec/mailers/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/mailers/\\3.rb"))
 
 ;; I don't use 'run test' feature of ruby-test-mode. However I need these keys
 ;; for my own bindings. ;)
