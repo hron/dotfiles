@@ -30,6 +30,13 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
+(require 'expand-region)
+(eval-after-load "org"     '(require 'org-mode-expansions))
+(global-set-key (kbd "M-h") 'er/expand-region)
+(global-set-key (kbd "M-j") 'er/contract-region)
+
+(add-to-list 'er/try-expand-list 'mark-paragraph)
+
 ;; Shell
 (require 'emacs-rc-sh)
 
@@ -115,6 +122,8 @@
 
 ;; magit
 (require 'magit)
+(add-hook 'magit-log-edit-mode-hook
+	  '(lambda () (set-fill-column 72)))
 
 ;; This is a redefinition of `magit-status' which use `switch-to-buffer' instead
 ;; of `pop-to-buffer'.
@@ -182,12 +191,6 @@
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
-
-(require 'expand-region)
-(global-set-key (kbd "M-h") 'er/expand-region)
-(global-set-key (kbd "M-j") 'er/contract-region)
-
-(add-to-list 'er/try-expand-list 'mark-paragraph)
 
 ;; This is autoinsert template for Real World Haskell exercises
 (require 'autoinsert)
