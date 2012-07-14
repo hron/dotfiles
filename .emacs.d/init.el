@@ -183,14 +183,13 @@
                                (setq electric-indent-chars '())))
 
 (require 'ibus)
-;; (add-hook 'after-init-hook 'ibus-mode-on)
-(ibus-mode-on)
 (global-set-key (kbd "S-<delete>") 'ibus-toggle)
 (global-set-key (kbd "S-<return>") 'ibus-toggle)
 ;; Use C-SPC for Set Mark command
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
 (ibus-define-common-key ?\C-/ nil)
+(ibus-mode-on)
 
 ;; This is autoinsert template for Real World Haskell exercises
 (require 'autoinsert)
