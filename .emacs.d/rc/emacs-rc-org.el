@@ -171,18 +171,12 @@ in current buffer."
 	("F" "FailsafePayments (Next Actions)"
 	 tags-tree (concat "FailsafePayments" org-agenda-na-expr))
 
-	("o" "Outside"
-	 tags-tree (concat "outside" org-agenda-active-expr))
-	("O" "Outside (Next Actions)"
-	 tags-tree (concat "outside" org-agenda-na-expr))
-
-	("x" "Relax"
-	 tags-tree (concat "relax" org-agenda-na-expr))
-
-	("r" "Read"
-	 tags-tree (concat "read" org-agenda-na-expr))))
-
-
+	("o" "Outside" tags-todo "outside-someday")
+	("x" "Relax" tags-todo "relax-someday")
+	("r" "Read" tags-todo "read-someday")
+	("S" "Smorgon" tags-todo "@Smorgon-someday")
+	("M" "Minsk" tags-todo "@Minsk-someday")
+	))
 
 (defun org-cmp-todo-always-first (a b)
   "Compare the todo states of strings A and B. TODO keyword always first."
@@ -271,7 +265,8 @@ in current buffer."
   "org-feed-update-all, then org-mobile-pull"
   (interactive)
   (org-feed-update-all)
-  (org-mobile-pull))
+  (org-mobile-pull)
+  (org-mobile-push))
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 
@@ -295,6 +290,130 @@ in current buffer."
     (if (string-match re time)
 	(+ (string-to-number (match-string 1 time))
 	   (/ (string-to-number (match-string 2 time)) 60.0)))))
+
+(defun aleksei-org-clocktable-insert-row (&rest cells)
+  (insert-before-markers
+   (concat "|"
+	   (mapconcat '(lambda (x) x) cells "|")
+	   "|\n")))
+
+(defun aleksei-org-clocktable-clean-up-headline (headline)
+  (let ((re "^\\(\\[[0-9]*%\\]\\|TODO\\|DONE\\)[[:space:]]*\\(.*\\)$"))
+    (when (string-match re headline)
+      (match-string 2 headline))
+    ))
+
+(defun aleksei-org-clocktable-write-smart-systems (ipos tables params)
+  (let ((header (plist-get  params :header))
+	(multifile (plist-get params :multifile)))
+    (unless header (error "You must pass :header option"))
+
+    ;; Now we need to output this tsuff
+    (goto-char ipos)
+
+    ;; Insert the text *before* the actual table
+    (insert-before-markers header)
+
+    ;; ;; Insert the table header line
+    ;; (insert-before-markers
+    ;;  "|"
+    ;;  "№|"
+    ;;  "Наименование|"
+    ;;  "Количество затраченных часов|"
+    ;;  "Стоимость одного часа (руб.) (без НДС)|"
+    ;;  "Стоимость (руб.) (без НДС)|\n"
+    ;;  "|-\n")
+    (aleksei-org-clocktable-insert-row
+     "№"
+     "Наименование"
+     "Количество затраченных часов"
+     "Стоимость одного часа (руб.) (без НДС)"
+     "Стоимость (руб.) (без НДС)")
+    (insert-before-markers "|-\n")
+
+    ;; Compute the total time
+    (setq total-time (apply '+ (mapcar 'cadr tables)))
+
+    ;; Now iterate over the tables and insert the data
+    ;; but only if any time has been collected
+    (when (and total-time (> total-time 0))
+
+      (setq nentry 0)
+      (while (setq tbl (pop tables))
+	;; now tbl is the table resulting from one file.
+
+	;; Get the list of node entries and iterate over it
+	(setq entries (nth 2 tbl))
+	(while (setq entry (pop entries))
+	  (setq level (car entry)
+		headline (nth 1 entry))
+
+	  (when (= level 2)
+	    (setq nentry (1+ nentry))
+	    (aleksei-org-clocktable-insert-row
+	     (number-to-string nentry)
+	     (aleksei-org-clocktable-clean-up-headline headline)
+	     (format "%.2f"
+	      (aleksei-org-clock-time-to-float
+	       (org-minutes-to-hh:mm-string (nth 3 entry))))
+
+	     ""
+	     "")
+	    )
+	  )
+	)
+
+      (insert-before-markers "|-\n")
+      (aleksei-org-clocktable-insert-row
+       ""
+       "Итого:"
+       ""
+       "")
+
+      (if (setq formula (plist-get params :formula))
+	  (cond
+	   ((eq formula '%)
+	    ;; compute the column where the % numbers need to go
+	    (setq pcol (+ 2
+			  (if multifile 1 0)
+			  (if level-p 1 0)
+			  (if timestamp 1 0)
+			  (min maxlevel (or ntcol 100))))
+	    ;; compute the column where the total time is
+	    (setq tcol (+ 2
+			  (if multifile 1 0)
+			  (if level-p 1 0)
+			  (if timestamp 1 0)))
+	    (insert
+	     (format
+	      "\n#+TBLFM: $%d='(org-clock-time%% @%d$%d $%d..$%d);%%.1f"
+	      pcol            ; the column where the % numbers should go
+	      (if (and narrow (not narrow-cut-p)) 3 2) ; row of the total time
+	      tcol            ; column of the total time
+	      tcol (1- pcol)  ; range of columns where times can be found
+	      ))
+	    (setq recalc t))
+	   ((stringp formula)
+	    (insert "\n#+TBLFM: " formula)
+	    (setq recalc t))
+	   (t (error "invalid formula in clocktable")))
+	;; Should we rescue an old formula?
+	(when (stringp (setq content (plist-get params :content)))
+	  (when (string-match "^\\([ \t]*#\\+TBLFM:.*\\)" content)
+	    (setq recalc t)
+	    (insert "\n" (match-string 1 (plist-get params :content)))
+	    (beginning-of-line 0))))
+
+      ;; Back to beginning, align the table, recalculate if necessary
+      (goto-char ipos)
+      (skip-chars-forward "^|")
+      (org-table-align)
+
+      ;; I do not why, but the last part of formula does not have access to
+      ;; money column on the first calculation.
+      (org-table-recalculate 'all)
+      (org-table-recalculate 'all)
+)))
 
 (provide 'emacs-rc-org)
 ;;; emacs-rc-org.el ends here
