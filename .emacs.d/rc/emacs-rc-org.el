@@ -314,15 +314,6 @@ in current buffer."
     ;; Insert the text *before* the actual table
     (insert-before-markers header)
 
-    ;; ;; Insert the table header line
-    ;; (insert-before-markers
-    ;;  "|"
-    ;;  "№|"
-    ;;  "Наименование|"
-    ;;  "Количество затраченных часов|"
-    ;;  "Стоимость одного часа (руб.) (без НДС)|"
-    ;;  "Стоимость (руб.) (без НДС)|\n"
-    ;;  "|-\n")
     (aleksei-org-clocktable-insert-row
      "№"
      "Наименование"
