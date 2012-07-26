@@ -197,6 +197,8 @@ in current buffer."
 
 (setq org-mobile-directory (concat org-directory "mobileorg"))
 
+(setq org-completion-use-ido t)
+
 ;; (setq org-archive-default-command 'org-archive-to-archive-sibling)
 (setq org-archive-default-command 'org-archive-subtree)
 
