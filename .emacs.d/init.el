@@ -207,6 +207,9 @@ main = do
 "
              ))
 
+;; Javascript
+(add-hook 'js-mode-hook '(lambda () (setq indent-tabs-mode nil)))
+
 ;;
 ;; Emacs core customization
 ;;
