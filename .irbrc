@@ -121,14 +121,14 @@ end
 #   Looksee.styles.merge!(:undefined => "\e[1;34m%s\e[0m")
 # end
 
-# Simple benchmarking
-def time(times = 1)
-  require 'benchmark'
-
-  ret = nil
-  Benchmark.bm { |x| x.report { times.times { ret = yield } } }
-  ret
-end
+# # Simple benchmarking
+# def time(times = 1)
+#   require 'benchmark'
+#
+#   ret = nil
+#   Benchmark.bm { |x| x.report { times.times { ret = yield } } }
+#   ret
+# end
 
 # IRB configuration reloading
 def IRB.reload
