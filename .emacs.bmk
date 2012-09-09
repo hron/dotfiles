@@ -2,21 +2,26 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored-marker"
+(("org-dblock-write:clocktable"
+ (filename . "~/src/dotfiles/.emacs.d/elpa/org-20120605/org-clock.el")
+ (front-context-string . "(defun org-dbloc")
+ (rear-context-string . "lock)\n	 t)))))\n\n")
+ (position . 75973))
+("org-capture-last-stored-marker"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Add badge 'Sp")
- (rear-context-string . "dd3c8c\n   :END:\n")
- (position . 89392))
+ (front-context-string . "** TODO Configur")
+ (rear-context-string . "f9794\n    :END:\n")
+ (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Fix Emacs on ")
- (rear-context-string . "91f8c7\n   :END:\n")
- (position . 15572))
+ (front-context-string . "** Try to instal")
+ (rear-context-string . "e09114\n   :END:\n")
+ (position . 15648))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Install money")
- (rear-context-string . "ilsafePayments:\n")
- (position . 91143))
+ (front-context-string . "** TODO Spin Stu")
+ (rear-context-string . " :2combinators:\n")
+ (position . 58172))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
