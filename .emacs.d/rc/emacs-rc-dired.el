@@ -99,6 +99,23 @@
 (setq auto-mode-alist (cons '("[^/]\\.dired$" . dired-virtual-mode)
                             auto-mode-alist))
 
+(defun dired-xdg-open-file ()
+  "Opens the current file in a Dired buffer."
+  (interactive)
+  (xdg-open-file (dired-get-file-for-visit)))
+
+(defun xdg-open-file (filename)
+  "xdg-opens the specified file."
+  (interactive "fFile to open: ")
+  (let ((process-connection-type nil))
+    (start-process "" nil "/usr/bin/xdg-open" filename)))
+
+;;'e' usually does 'dired-find-file, same as RET, rebinding it here
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    (define-key dired-mode-map (kbd "e") 'dired-xdg-open-file)))
+
+(setq image-dired-external-viewer "/usr/bin/xdg-open")
 
 (provide 'emacs-rc-dired)
 
