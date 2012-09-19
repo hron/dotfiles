@@ -139,6 +139,11 @@
                "\.rvm/log/.*/\\(autoconf\\|configure\\|make\\).*\.log")
 
 (require 'ruby-test-mode)
+;; Presenters
+(add-to-list 'ruby-test-specification-filename-mapping
+	     '("\\(.*\\)\\(app/presenters/\\)\\(.*\\)\\.rb$" "\\1spec/presenters/\\3_spec.rb"))
+(add-to-list 'ruby-test-implementation-filename-mapping
+	     '("\\(.*\\)\\(spec/presenters/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/presenters/\\3.rb"))
 ;; Formtastic
 (add-to-list 'ruby-test-specification-filename-mapping
 	     '("\\(.*\\)\\(app/inputs/\\)\\(.*\\)\\.rb$" "\\1spec/inputs/\\3_spec.rb"))
