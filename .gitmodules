@@ -19,3 +19,6 @@
 [submodule ".emacs.d/site-lisp/rhtml"]
 	path = .emacs.d/site-lisp/rhtml
 	url = https://github.com/eschulte/rhtml.git
+[submodule "zsh-completions"]
+	path = zsh-completions
+	url = git://github.com/zsh-users/zsh-completions.git
