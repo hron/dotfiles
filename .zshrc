@@ -48,6 +48,7 @@ alias inice='ionice -c 3 nice'
 
 # Where to look for autoloaded function definitions
 #fpath=($fpath ~/.zfunc)
+fpath=(~/src/dotfiles/zsh-completions/src $fpath)
 
 # Autoload all shell functions from all directories in $fpath (following
 # symlinks) that have the executable bit on (the executable bit is not
@@ -203,4 +204,5 @@ fi
 if [[ "$EMACS" == "t" ]]; then
     stty columns 80
     export NODE_NO_READLINE=1
+    export PAGER=""
 fi
