@@ -64,6 +64,9 @@
     (add-to-list 'tramp-default-proxies-alist
                  '("\\(localhost\\)" "root" nil))
 
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(192\.168\.56\.101\\)" "root" nil))
+
     ))
 
 (add-hook 'kill-emacs-hook 'tramp-cleanup-all-buffers)
