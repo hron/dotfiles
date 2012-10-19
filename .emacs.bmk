@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Try to instal")
- (rear-context-string . "e09114\n   :END:\n")
- (position . 15648))
+ (front-context-string . "** Shopify App f")
+ (rear-context-string . "888d\"))\n  :END:\n")
+ (position . 16355))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Spin Stu")
- (rear-context-string . " :2combinators:\n")
- (position . 58172))
+ (front-context-string . "** TODO Read all")
+ (rear-context-string . "9-11 Tue 08:26]\n")
+ (position . 110676))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
