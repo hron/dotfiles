@@ -102,7 +102,7 @@
 ;; currently doesn't work on text-only terminals.)
 (setq default-indicate-empty-lines t)
 
-(setq browse-url-generic-program "chromium")
+(setq browse-url-generic-program "xdg-open")
 (setq browse-url-browser-function 'browse-url-generic)
 (setq browse-url-new-window-flag 1)
 
