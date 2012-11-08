@@ -34,7 +34,7 @@
 (setq org-hide-leading-stars t)
 
 (require 'org-habit)
-(setq org-habit-graph-column 70)
+(setq org-habit-graph-column 100)
 
 (add-hook 'message-mode-hook 'turn-on-orgstruct)
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
@@ -171,11 +171,25 @@ in current buffer."
 	("F" "FailsafePayments (Next Actions)"
 	 tags-tree (concat "FailsafePayments" org-agenda-na-expr))
 
-	("o" "Outside" tags-todo "outside-someday")
-	("x" "Relax" tags-todo "relax-someday")
-	("r" "Read" tags-todo "read-someday")
-	("S" "Smorgon" tags-todo "@Smorgon-someday")
-	("M" "Minsk" tags-todo "@Minsk-someday")
+	;; ("o" "Outside" tags-todo "outside-someday")
+	("o" "Outside" tags-tree
+	 (concat (concat "outside-someday" org-agenda-active-expr)))
+
+	;; ("x" "Relax" tags-todo "relax-someday")
+	("x" "Relax" tags-tree
+	 (concat (concat "relax-someday" org-agenda-active-expr)))
+
+	;; ("r" "Read" tags-todo "read-someday")
+	("r" "Read" tags-tree
+	 (concat (concat "read-someday" org-agenda-active-expr)))
+
+	;; ("S" "Smorgon" tags-todo "@Smorgon-someday")
+	("S" "Smorgon" tags-tree
+	 (concat (concat "@Smorgon-someday" org-agenda-active-expr)))
+
+	;; ("M" "Minsk" tags-todo "@Minsk-someday")
+	("M" "Minsk" tags-tree
+	 (concat (concat "@Minsk-someday" org-agenda-active-expr)))
 	))
 
 (defun org-cmp-todo-always-first (a b)
@@ -267,8 +281,9 @@ in current buffer."
   "org-feed-update-all, then org-mobile-pull"
   (interactive)
   (org-feed-update-all)
-  (org-mobile-pull)
-  (org-mobile-push))
+  ;; (org-mobile-pull)
+  ;; (org-mobile-push))
+  )
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 
