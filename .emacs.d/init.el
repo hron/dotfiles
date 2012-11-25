@@ -124,6 +124,7 @@
 (require 'magit)
 (add-hook 'magit-log-edit-mode-hook
           '(lambda () (set-fill-column 70)))
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ;; This is a redefinition of `magit-status' which use `switch-to-buffer' instead
 ;; of `pop-to-buffer'.
