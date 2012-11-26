@@ -211,6 +211,9 @@ main = do
 ;; Javascript
 (add-hook 'js-mode-hook '(lambda () (setq indent-tabs-mode nil)))
 
+;; Cucumber.el
+(add-hook 'feature-mode-hook 'turn-on-flyspell)
+
 ;;
 ;; Emacs core customization
 ;;
