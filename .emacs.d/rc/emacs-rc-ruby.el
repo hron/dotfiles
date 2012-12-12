@@ -97,19 +97,6 @@
 ;; (require 'rdebug)
 ;; (add-hook 'comint-mode-hook 'turn-on-rdebug-track-mode)
 
-;; Add binding to insert ruby debugger with F7.
-(defun GAU-insert-ruby-debug ()
-  (interactive)
-  (let ((ruby-debug-string "require 'ruby-debug'; debugger; stop_here = 1;\n"))
-    (insert ruby-debug-string))
-  (previous-line)
-  (ruby-indent-line))
-
-(defun GAU-bind-insert-ruby-debug-key ()
-  (local-set-key [f7] 'GAU-insert-ruby-debug))
-
-(add-hook 'ruby-mode-hook 'GAU-bind-insert-ruby-debug-key)
-
 (require 'feature-mode)
 
 (defun guard (dir)
@@ -141,27 +128,28 @@
 (require 'ruby-test-mode)
 ;; Presenters
 (add-to-list 'ruby-test-specification-filename-mapping
-	     '("\\(.*\\)\\(app/presenters/\\)\\(.*\\)\\.rb$" "\\1spec/presenters/\\3_spec.rb"))
+             '("\\(.*\\)\\(app/presenters/\\)\\(.*\\)\\.rb$" "\\1spec/presenters/\\3_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
-	     '("\\(.*\\)\\(spec/presenters/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/presenters/\\3.rb"))
+             '("\\(.*\\)\\(spec/presenters/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/presenters/\\3.rb"))
+
 ;; Formtastic
 (add-to-list 'ruby-test-specification-filename-mapping
-	     '("\\(.*\\)\\(app/inputs/\\)\\(.*\\)\\.rb$" "\\1spec/inputs/\\3_spec.rb"))
+             '("\\(.*\\)\\(app/inputs/\\)\\(.*\\)\\.rb$" "\\1spec/inputs/\\3_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
-	     '("\\(.*\\)\\(spec/inputs/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/inputs/\\3.rb"))
+             '("\\(.*\\)\\(spec/inputs/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/inputs/\\3.rb"))
 ;; ActiveAdmin
 (add-to-list 'ruby-test-specification-filename-mapping
-	     '("\\(.*\\)\\(app/admin/\\)\\(.*\\)\\.rb$" "\\1spec/admin/\\3_spec.rb"))
+             '("\\(.*\\)\\(app/admin/\\)\\(.*\\)\\.rb$" "\\1spec/controllers/admin/\\3_controller_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
-	     '("\\(.*\\)\\(spec/admin/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/admin/\\3.rb"))
+             '("\\(.*\\)\\(spec/controllers/admin/\\)\\(.*\\)\\(_controller_spec\\)\\.rb$" "\\1app/admin/\\3.rb"))
 ;; Routing specs
 (add-to-list 'ruby-test-implementation-filename-mapping
-	     '("\\(.*\\)\\(spec/routing/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1config/routes.rb"))
+             '("\\(.*\\)\\(spec/routing/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1config/routes.rb"))
 ;; Mailers
 (add-to-list 'ruby-test-specification-filename-mapping
-	     '("\\(.*\\)\\(app/mailers/\\)\\(.*\\)\\.rb$" "\\1spec/mailers/\\3_spec.rb"))
+             '("\\(.*\\)\\(app/mailers/\\)\\(.*\\)\\.rb$" "\\1spec/mailers/\\3_spec.rb"))
 (add-to-list 'ruby-test-implementation-filename-mapping
-	     '("\\(.*\\)\\(spec/mailers/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/mailers/\\3.rb"))
+             '("\\(.*\\)\\(spec/mailers/\\)\\(.*\\)\\(_spec\\)\\.rb$" "\\1app/mailers/\\3.rb"))
 
 ;; I don't use 'run test' feature of ruby-test-mode. However I need these keys
 ;; for my own bindings. ;)
