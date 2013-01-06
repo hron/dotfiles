@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Shopify App f")
- (rear-context-string . "888d\"))\n  :END:\n")
- (position . 16355))
+ (front-context-string . "** Add some torr")
+ (rear-context-string . "/tickets/2424]]\n")
+ (position . 18035))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Read all")
- (rear-context-string . "9-11 Tue 08:26]\n")
- (position . 110676))
+ (front-context-string . "** TODO BARC:  #")
+ (rear-context-string . "Deploy Logoods\n\n")
+ (position . 77461))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
