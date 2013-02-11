@@ -39,7 +39,7 @@
 
 (add-hook 'shell-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-c q") 'gusev-clear-shell)))
+             (local-set-key (kbd "C-M-x") 'gusev-clear-shell)))
 ;; (define-key 'shell-mode-map (kbd "C-c q") 'gusev-clear-shell)
 
 ;; Disable echoing of run commands.
