@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Add some torr")
- (rear-context-string . "/tickets/2424]]\n")
- (position . 18035))
+ (front-context-string . "** Migrate from ")
+ (rear-context-string . "21:10]\n   :END:\n")
+ (position . 17527))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO BARC:  #")
- (rear-context-string . "Deploy Logoods\n\n")
- (position . 77461))
+ (front-context-string . "** TODO Backup w")
+ (rear-context-string . ":10]\n   :END:\n\n\n")
+ (position . 84693))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")

@@ -6,18 +6,18 @@
 ;; All groups not fetched with this method are foreign groups.
 (setq gnus-select-method '(nntp "news.gmane.org"))
 
-(setq gnus-secondary-select-methods
-      '((nnimap "gmail"
-		(nnimap-address "imap.gmail.com")
-		(nnimap-stream tls)
-		(nnir-search-engine imap))))
+;; (setq gnus-secondary-select-methods
+;;       '((nnimap "gmail"
+;;              (nnimap-address "imap.gmail.com")
+;;              (nnimap-stream tls)
+;;              (nnir-search-engine imap))))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
 (setq gnus-posting-styles
       '((".*"
-	 (signature
-	  (concat "WBR, Aleksei Gusev")))))
+         (signature
+          (concat "WBR, Aleksei Gusev")))))
 
 ;; (add-to-list 'gnus-buttonized-mime-types "multipart/alternative")
 

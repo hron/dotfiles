@@ -105,6 +105,7 @@ in current buffer."
 		      ("2combinators" . ?2)
 		      ("BoutiqueAir" . ?b)
 		      ("FailsafePayments" . ?f)
+		      ("Karmasoft" . ?k)
 		      (:endgroup . nil)
 		      ("outside" . ?o)
 		      ("read" . ?r)
@@ -152,9 +153,9 @@ in current buffer."
 
 (setq org-agenda-custom-commands
       '(("h" "Home"
-	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
+	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
 	("H" "Home (Next Actions)"
-	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
+	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
 
 	("b" "BoutiqueAir"
 	 tags-tree (concat "BoutiqueAir" org-agenda-active-expr))
@@ -171,6 +172,11 @@ in current buffer."
 	("F" "FailsafePayments (Next Actions)"
 	 tags-tree (concat "FailsafePayments" org-agenda-na-expr))
 
+	("k" "Karmasoft"
+	 tags-tree (concat "Karmasoft" org-agenda-active-expr))
+	("K" "Karmasoft (Next Actions)"
+	 tags-tree (concat "Karmasoft" org-agenda-na-expr))
+
 	;; ("o" "Outside" tags-todo "outside-someday")
 	("o" "Outside" tags-tree
 	 (concat (concat "outside-someday" org-agenda-active-expr)))
@@ -183,13 +189,9 @@ in current buffer."
 	("r" "Read" tags-tree
 	 (concat (concat "read-someday" org-agenda-active-expr)))
 
-	;; ("S" "Smorgon" tags-todo "@Smorgon-someday")
-	("S" "Smorgon" tags-tree
-	 (concat (concat "@Smorgon-someday" org-agenda-active-expr)))
+	("S" "Smorgon" tags-tree "@Smorgon-someday-DONE")
 
-	;; ("M" "Minsk" tags-todo "@Minsk-someday")
-	("M" "Minsk" tags-tree
-	 (concat (concat "@Minsk-someday" org-agenda-active-expr)))
+	("M" "Minsk" tags-tree "@Minsk-someday-DONE")
 	))
 
 (defun org-cmp-todo-always-first (a b)
