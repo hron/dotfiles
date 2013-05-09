@@ -20,8 +20,6 @@ read -r -d '' GUARD_NOTIFICATIONS <<'EOF'
 ---
 - :name: :libnotify
   :options: {}
-- :name: :terminal_title
-  :options: {}
 EOF
 export GUARD_NOTIFICATIONS
 
