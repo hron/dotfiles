@@ -47,5 +47,8 @@
 
 (global-set-key (kbd "S-SPC") 'anything)
 
+(add-hook 'dired-mode-hook '(lambda ()
+                              (local-set-key (kbd "S-SPC") 'anything)))
+
 (provide 'emacs-rc-anything)
 ;;; emacs-rc-anything.el ends here
