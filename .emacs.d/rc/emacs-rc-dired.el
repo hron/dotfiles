@@ -112,8 +112,8 @@
 
 ;;'e' usually does 'dired-find-file, same as RET, rebinding it here
 (add-hook 'dired-mode-hook
-	  (lambda ()
-	    (define-key dired-mode-map (kbd "e") 'dired-xdg-open-file)))
+          (lambda ()
+            (define-key dired-mode-map (kbd "e") 'dired-xdg-open-file)))
 
 (setq image-dired-external-viewer "/usr/bin/xdg-open")
 
