@@ -19,6 +19,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/")
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (require 'server)
@@ -117,8 +118,8 @@
 
 (require 'emacs-rc-tty-format)
 
-;; Anything
-(require 'emacs-rc-anything)
+;; Helm
+(require 'emacs-rc-helm)
 
 ;; magit
 (require 'magit)
