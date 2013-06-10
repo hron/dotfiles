@@ -46,7 +46,7 @@
 (define-key helm-map (kbd "M-RET") 'helm-execute-persistent-action)
 
 (global-set-key (kbd "S-SPC") 'gus-helm)
-(helm-mode 1)
+;; (helm-mode 1)
 
 (add-hook 'dired-mode-hook '(lambda ()
                               (local-set-key (kbd "S-SPC") 'helm)))
