@@ -121,6 +121,9 @@
 ;; Helm
 (require 'emacs-rc-helm)
 
+;; Projectile
+(require 'emacs-rc-projectile)
+
 ;; magit
 (require 'magit)
 (add-hook 'magit-log-edit-mode-hook
