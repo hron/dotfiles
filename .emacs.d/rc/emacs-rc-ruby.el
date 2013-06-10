@@ -61,7 +61,7 @@
       inf-ruby-prompt-pattern "^>> ")
 
 ;; yari
-(global-set-key [f1] 'yari-anything)
+(global-set-key [f1] 'yari-helm)
 
 ;;----------------------------------------------------------------------------
 ;; Ruby - flymake
