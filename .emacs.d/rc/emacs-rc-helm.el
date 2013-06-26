@@ -31,16 +31,18 @@
 
 (setq projectile-require-project-root nil)
 
+(setq helm-buffer-max-length 40)
+
 ;;;###autoload
 (defun gus-helm ()
   "Preconfigured `helm' lightweight version \(buffer -> recentf\)."
   (interactive)
   (require 'helm-files)
   (helm-other-buffer '(helm-source-imenu
-		       helm-source-buffers-list
-		       helm-c-source-projectile-files-list
+                       helm-source-buffers-list
+                       helm-c-source-projectile-files-list
                        helm-source-recentf
-		       helm-source-buffer-not-found)
+                       helm-source-buffer-not-found)
                      "*helm mini*"))
 
 (define-key helm-map (kbd "M-RET") 'helm-execute-persistent-action)
