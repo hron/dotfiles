@@ -1,6 +1,6 @@
 #! /bin/bash
 
-railspid=$(lsof -t -i :3000)
+railspid=$(lsof -t -sTCP:LISTEN -i :3000)
 [[ -n "${railspid}" ]] && kill -KILL $railspid
 
 pkill -9 -f guard
