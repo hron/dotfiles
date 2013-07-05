@@ -36,6 +36,7 @@
                "Vendorfile"
                "config.ru"
                "Vagrantfile" "\\.autotest$"
+               "\\.prawn"
                "\\.watchr"
                "\\.rep")
 
