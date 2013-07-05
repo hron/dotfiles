@@ -65,7 +65,16 @@
                  '("\\(198\.199\.115\.91\\)" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
+                 '("\\(198\.211\.123\.130\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(192\.241\.202\.100\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
                  '("\\(10\.13\.13\.102\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(avalon-.*\.local\\)" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
                  '("\\(localhost\\)" "root" nil))
