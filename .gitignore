@@ -25,3 +25,4 @@
 /.emacs.d/.secret-file
 /org/from-mobile.org
 /org/mobileorg
+/.emacs.d/projectile.cache
