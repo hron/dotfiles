@@ -283,11 +283,35 @@ in current buffer."
   "org-feed-update-all, then org-mobile-pull"
   (interactive)
   (org-feed-update-all)
-  ;; (org-mobile-pull)
-  ;; (org-mobile-push))
-  )
+  (org-mobile-pull)
+  (aleksei-copy-trees-from-mobileorg-to-inbox)
+  (org-mobile-push)))
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
+
+(defun aleksei-copy-trees-from-mobileorg-to-inbox ()
+  "Copies all content of ~/org/from-mobile.org into * Inbox tree
+of ~/org/tasks.org"
+  (save-excursion
+    (find-file "~/org/from-mobile.org")
+    (goto-char (point-min))
+    (if (search-forward-regexp "^* " nil t)
+	(let ((from-mobile-tasks))
+	  (mark-whole-buffer)
+	  (setq from-mobile-tasks
+		(filter-buffer-substring (region-beginning) (region-end) t))
+	  (find-file "~/org/tasks.org")
+	  (goto-char (point-min))
+	  (search-forward "* Tickler")
+	  (beginning-of-line)
+	  (insert (replace-regexp-in-string
+		   "^* "
+		   "** "
+		   from-mobile-tasks))
+	  (find-file "~/org/from-mobile.org")
+	  (save-buffer))
+      ))
+  (find-file "~/org/tasks.org"))
 
 (defun aleksei-gtd ()
   "Prepare emacs frame to use as a GTD system."
