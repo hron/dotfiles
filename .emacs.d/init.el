@@ -19,7 +19,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/")
+             '("melpa" . "http://melpa.milkbox.net/packages/")
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (require 'server)
@@ -154,6 +154,7 @@
                                (make-variable-buffer-local 'electric-indent-chars)
                                (setq electric-indent-chars '())
                                (define-key coffee-mode-map (kbd "C-c C-s") 'coffee-repl)))
+(add-auto-mode 'coffee-mode "\.coffee\.erb$")
 
 (add-auto-mode 'nginx-mode "nginx.conf$")
 
@@ -248,3 +249,4 @@ main = do
 
 (require 'desktop)
 (add-hook 'desktop-before-save-hook 'clean-buffer-list)
+(put 'narrow-to-region 'disabled nil)
