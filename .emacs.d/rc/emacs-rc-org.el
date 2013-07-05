@@ -152,7 +152,8 @@ in current buffer."
  org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE"))
 
 (setq org-agenda-custom-commands
-      '(("h" "Home"
+      '(("х" "Home" tags-todo "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-outside-@Minsk-@Smorgon")
+	("h" "Home"
 	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-outside-@Minsk-@Smorgon" org-agenda-active-expr))
 	("H" "Home (Next Actions)"
 	 tags-tree (concat "-2combinators-BoutiqueAir-FailsafePayments-Karmasoft-relax-read-outside-@Minsk-@Smorgon" org-agenda-na-expr))
@@ -177,20 +178,22 @@ in current buffer."
 	("K" "Karmasoft (Next Actions)"
 	 tags-tree (concat "Karmasoft" org-agenda-na-expr))
 
-	;; ("o" "Outside" tags-todo "outside-someday")
+	("й" "Outside" tags-todo "outside-someday")
 	("o" "Outside" tags-tree
 	 (concat (concat "outside-someday" org-agenda-active-expr)))
 
-	;; ("x" "Relax" tags-todo "relax-someday")
+	("х" "Relax" tags-todo "relax-someday")
 	("x" "Relax" tags-tree
 	 (concat (concat "relax-someday" org-agenda-active-expr)))
 
-	;; ("r" "Read" tags-todo "read-someday")
+	("р" "Read" tags-todo "read-someday")
 	("r" "Read" tags-tree
 	 (concat (concat "read-someday" org-agenda-active-expr)))
 
+	("С" "Smorgon" tags-todo "@Smorgon-someday-DONE")
 	("S" "Smorgon" tags-tree "@Smorgon-someday-DONE")
 
+	("М" "Minsk" tags-todo "@Minsk-someday-DONE")
 	("M" "Minsk" tags-tree "@Minsk-someday-DONE")
 	))
 
