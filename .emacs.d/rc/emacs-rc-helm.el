@@ -33,6 +33,8 @@
 
 (setq helm-buffer-max-length 40)
 
+(setq helm-sources-using-default-as-input '())
+
 ;;;###autoload
 (defun gus-helm ()
   "Preconfigured `helm' lightweight version \(buffer -> recentf\)."
@@ -51,7 +53,9 @@
 ;; (helm-mode 1)
 
 (add-hook 'dired-mode-hook '(lambda ()
-                              (local-set-key (kbd "S-SPC") 'helm)))
+                              (local-set-key (kbd "S-SPC") 'gus-helm)))
+(add-hook 'view-mode-hook '(lambda ()
+                              (local-set-key (kbd "S-SPC") 'gus-helm)))
 
 (provide 'emacs-rc-helm)
 ;;; emacs-rc-helm.el ends here
