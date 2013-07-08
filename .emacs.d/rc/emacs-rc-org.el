@@ -270,11 +270,11 @@ in current buffer."
 	 "~/org/tasks.org" "Inbox"
 	 :template "\n* %h :read:\n  %U\n  %a\n"
 	 :drawer "READABILITY")
-	("Springpad"
-	 "http://springpad.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
-	 "~/org/tasks.org" "Inbox"
-	 :formatter org-feed-springpad-formatter
-	 :drawer "SPRINGPAD")
+	;; ("Springpad"
+	;;  "http://springpad.com/api/users/aleksei/blocks/mystuff?type=task&format=rss&key=3umhkt67iqpa4b"
+	;;  "~/org/tasks.org" "Inbox"
+	;;  :formatter org-feed-springpad-formatter
+	;;  :drawer "SPRINGPAD")
 	("Boutiqueair"
 	 "https://hmsinc.unfuddle.com/ticket_reports/4/generate.rss?aak=blah&pak=blah"
 	 "~/org/tasks.org" "Inbox"
@@ -288,7 +288,7 @@ in current buffer."
   (org-feed-update-all)
   (org-mobile-pull)
   (aleksei-copy-trees-from-mobileorg-to-inbox)
-  (org-mobile-push)))
+  (org-mobile-push))
 
 (define-key org-mode-map "\C-c\C-xg" 'aleksei-org-feed-update-all-and-mobile-pull)
 
