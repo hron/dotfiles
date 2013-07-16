@@ -194,6 +194,12 @@ main = do
 ;; Cucumber.el
 (add-hook 'feature-mode-hook 'turn-on-flyspell)
 
+;; Sass mode
+(add-hook 'sass-mode-hook '(lambda ()
+                             (setq indent-tabs-mode nil)))
+(add-hook 'scss-mode-hook '(lambda ()
+                             (setq indent-tabs-mode nil)))
+
 ;;
 ;; Emacs core customization
 ;;
