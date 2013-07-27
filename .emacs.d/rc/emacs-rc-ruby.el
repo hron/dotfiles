@@ -112,9 +112,7 @@
   (let* ((buffer (shell buffer-name)))
     (with-current-buffer buffer
       (shell-cd dir)
-      (comint-send-string buffer (concat "cd " dir "; "
-                                         command
-                                         "\n")))))
+      (comint-send-string buffer (concat "cd " dir "; " command "\n")))))
 
 (require 'desktop)
 (add-hook 'desktop-after-read-hook

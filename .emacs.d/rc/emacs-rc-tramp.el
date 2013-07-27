@@ -53,7 +53,7 @@
                  '("sfa\\(25\\|36\\|37\\|39\\)" "production" "/ssh:aleksei@%h:"))
 
     (add-to-list 'tramp-default-proxies-alist
-                 '("sfa15" "root" "/ssh:aleksei@fire.boutiqueair.com:"))
+                 '("\\(sfa15\\|sfa24\\)" "root" "/ssh:fire.boutiqueair.com:"))
 
     (add-to-list 'tramp-default-proxies-alist
                  '("sfa35" "\\(cruise\\|staging\\|production\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
