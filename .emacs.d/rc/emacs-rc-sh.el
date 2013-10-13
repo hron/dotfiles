@@ -24,7 +24,11 @@
 
 ;;; Code:
 
-(add-auto-mode 'sh-mode "\\.rvmrc$" "/etc/conf.d/" "\\.verb")
+(add-auto-mode 'sh-mode
+	       "\\.rvmrc$"
+	       "/etc/conf.d/"
+	       "\\.verb"
+	       "/etc/init/")
 
 
 (add-hook 'sh-mode-hook '(lambda ()

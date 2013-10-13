@@ -39,9 +39,5 @@
 ;; in `show-paren-style' after `show-paren-delay' seconds of Emacs idle time.
 (show-paren-mode 1)
 
-;; Color theme choosing
-;; (require 'color-theme)
-;; (color-theme-dark-hron)
-;; (color-theme-clarity)
 
 (provide 'emacs-rc-decor)

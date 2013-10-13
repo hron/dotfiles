@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Move ava")
- (rear-context-string . "12:27]\n   :END:\n")
- (position . 16166))
+ (front-context-string . "** Fix the backg")
+ (rear-context-string . "19:00]\n   :END:\n")
+ (position . 16316))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Fix Mobi")
- (rear-context-string . "14:34]\n   :END:\n")
- (position . 107487))
+ (front-context-string . "** TODO Fix the ")
+ (rear-context-string . "17:01]\n   :END:\n")
+ (position . 103559))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")

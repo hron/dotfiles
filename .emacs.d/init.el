@@ -239,8 +239,7 @@ main = do
 (require 'emacs-rc-view)
 
 
-(electric-pair-mode)
-;; Does not work good in cucumber mode and haml.
+;; (electric-pair-mode)
 (electric-layout-mode)
 (electric-indent-mode)
 
@@ -256,3 +255,10 @@ main = do
 (require 'desktop)
 (add-hook 'desktop-before-save-hook 'clean-buffer-list)
 (put 'narrow-to-region 'disabled nil)
+
+
+;; Color theme choosing
+(load-theme 'solarized-light t)
+
+;; (set-face-attribute 'default nil :font "Ubuntu Mono")
+;; (set-face-attribute 'variable-pitch nil :font "Ubuntu")

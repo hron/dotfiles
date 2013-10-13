@@ -4,7 +4,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(background-color "#fdf6e3")
+ '(background-mode light)
  '(canlock-password "e6a803bd4bbe7baa935108fb943f3df19651b148")
+ '(cursor-color "#657b83")
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(foreground-color "#657b83")
  '(safe-local-variable-values
    (quote
     ((ruby-test-specification-filename-mapping
@@ -62,17 +69,30 @@
      (sgml-exposed-tags)
      (sgml-local-catalogs)
      (sgml-local-ecat-files)
-     (encoding . koi8-r)))))
+     (encoding . koi8-r))))
+ '(solarized-height-minus-1 1.0)
+ '(solarized-height-plus-1 1.0)
+ '(solarized-height-plus-2 1.0)
+ '(solarized-height-plus-3 1.0)
+ '(solarized-height-plus-4 1.0)
+ '(solarized-use-variable-pitch nil))
 (put 'set-goal-column 'disabled nil)
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
 ;;  ;; If you edit it by hand, you could mess it up, so be careful.
 ;;  ;; Your init file should contain only one such instance.
 ;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#221f1e" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
+;;  '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#221f1e" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :weight normal :height 143 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
+;;  '(flyspell-duplicate ((t (:underline (:color "red" :style wave)))))
+;;  '(flyspell-incorrect ((t (:underline (:color "red" :style wave))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "#221f1e" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :weight normal :height 143 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
+ '(default ((t (:weight normal :height 140 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16"))))
+ '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900"))))
+ '(org-level-3 ((t (:inherit variable-pitch :foreground "#268bd2"))))
+ '(org-level-4 ((t (:inherit variable-pitch :foreground "#b58900"))))
+ '(variable-pitch ((t (:height 140 :family "Ubuntu")))))
