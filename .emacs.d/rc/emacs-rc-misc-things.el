@@ -252,8 +252,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-(setq split-width-threshold 120)
-
 (require 'midnight)
 (setq clean-buffer-list-delay-general 1)
 
