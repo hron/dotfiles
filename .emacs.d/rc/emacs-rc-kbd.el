@@ -10,12 +10,12 @@
 ;; (global-set-key [f9] 'compile)
 (global-set-key [f9] '(lambda (command &optional comint)
 			(interactive
-			 (list
-			  (let ((command (eval compile-command)))
-			    (if (or compilation-read-command current-prefix-arg)
+                         (list
+                          (let ((command (eval compile-command)))
+                            (if (or compilation-read-command current-prefix-arg)
 				(compilation-read-command command)
-			      command))
-			  (consp current-prefix-arg)))
+                              command))
+                          (consp current-prefix-arg)))
 			(setq comint (not comint))
 			(compile command comint)))
 
@@ -31,10 +31,10 @@
 
 (global-set-key [(control c) (i)] 'overwrite-mode)
 (global-set-key [(control c) (r)] '(lambda (&optional arg)
-				     (interactive "*P")
-				     (if arg
-					 (auto-revert-mode)
-				       (revert-buffer))))
+                                     (interactive "*P")
+                                     (if arg
+                                         (auto-revert-mode)
+                                       (revert-buffer))))
 
 ;; `M-x hippie-expand' is a single command providing a variety of
 ;; completions and expansions.  Called repeatedly, it tries all possible
@@ -47,26 +47,26 @@
 ;; without seeking confirmation:
 (global-set-key "\C-cw"
 		(lambda ()
-		  (interactive)
-		  (let ((woman-topic-at-point t))
-		    (woman))))
+                  (interactive)
+                  (let ((woman-topic-at-point t))
+                    (woman))))
 
 ;; Bind `C-c l' to `locate' command
 ;; (global-set-key "\C-co" 'locate)
 (global-set-key "\C-co" '(lambda ()
-			   (interactive)
-			   (anything-other-buffer
-			    '(anything-c-source-locate)
-			    " *anything-locate*")))
+                           (interactive)
+                           (anything-other-buffer
+                            '(anything-c-source-locate)
+                            " *anything-locate*")))
 
 
 ;; Bind `C-c g' to `grep-find' command
 (global-set-key "\C-cg" 'rgrep)
 ;; (global-set-key "\C-cg" (lambda ()
-;; 			  (interactive)
-;; 			  (if (vc-git-root default-directory)
-;; 			      (vc-git-grep)
-;; 			    (rgrep))))
+;;                        (interactive)
+;;                        (if (vc-git-root default-directory)
+;;                            (vc-git-grep)
+;;                          (rgrep))))
 
 ;; Bind `C-c f' to `find-grep-dired' command
 (global-set-key "\C-cf" 'find-grep-dired)
@@ -98,6 +98,11 @@
 (global-set-key "\M-." 'etags-select-find-tag)
 
 (global-unset-key (kbd "C-z"))
+
+(global-set-key (kbd "M-<down>") 'other-window)
+(global-set-key (kbd "M-<up>") (lambda ()
+                                 (interactive)
+                                 (other-window -1)))
 
 (provide 'emacs-rc-kbd)
 ;; emacs-rc-kbd.el

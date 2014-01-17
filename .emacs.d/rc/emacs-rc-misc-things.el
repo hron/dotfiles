@@ -22,9 +22,6 @@
 (global-set-key (kbd "<f2>") 'winner-undo)
 (global-set-key (kbd "<f3>") 'winner-redo)
 
-;; Перемещение между окнами по Shift + стрелки
-(windmove-default-keybindings 'meta)
-
 ;; Между предложениями _один_, а не два пробела.
 ;; (setq sentence-end "[.?!][]\"')]*\\($\\|\t\\| \\)[ \t\n]*")
 (setq sentence-end-double-space nil)
@@ -218,12 +215,12 @@
 
 ;; Try to read TAGS in the directory of desktop-file
 (add-hook 'desktop-after-read-hook
-	  '(lambda ()
-	     (let ((candidates '("TAGS" "tags" "gems.tags")))
-	       (dolist (filename candidates)
-		 (let ((full-filename (concat desktop-dirname "/" filename)))
-		   (if (file-exists-p full-filename)
-		       (add-to-list 'tags-table-list full-filename)))))))
+          '(lambda ()
+             (let ((candidates '("TAGS" "tags" "gems.tags")))
+               (dolist (filename candidates)
+                 (let ((full-filename (concat desktop-dirname "/" filename)))
+                   (if (file-exists-p full-filename)
+                       (add-to-list 'tags-table-list full-filename)))))))
 
 ;; Default dictionary to use if `ispell-local-dictionary' is nil.
 (setq ispell-dictionary "american")
