@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Fix the backg")
- (rear-context-string . "19:00]\n   :END:\n")
- (position . 16316))
+ (front-context-string . "** Route youtube")
+ (rear-context-string . "78ea\"))\n  :END:\n")
+ (position . 16811))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Fix the ")
- (rear-context-string . "17:01]\n   :END:\n")
- (position . 103559))
+ (front-context-string . "*** \n\n** \n** TOD")
+ (rear-context-string . "tickets/2685]]\n\n")
+ (position . 102670))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")

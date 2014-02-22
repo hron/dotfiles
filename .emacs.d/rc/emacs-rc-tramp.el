@@ -74,7 +74,18 @@
                  '("\\(10\.13\.13\.102\\)" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
-                 '("\\(avalon-.*\.local\\)" "root" nil))
+                 '("\\(192\.168\.1\.1\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(poltergeist\.2combinators\.com\\)" "root" nil))
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(146\.185\.162\.189\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(avalon-.*\.lan\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(10\.13\.13\.1\\)" "root" nil))
 
     (add-to-list 'tramp-default-proxies-alist
                  '("\\(localhost\\)" "root" nil))

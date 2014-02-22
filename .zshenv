@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$PATH:/sbin:/usr/sbin:
+export PATH=$HOME/bin:$PATH:/sbin:/usr/sbin:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/tools:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/platform-tools
 export EDITOR=emacsclient
 
 export PGHOST=127.0.0.1

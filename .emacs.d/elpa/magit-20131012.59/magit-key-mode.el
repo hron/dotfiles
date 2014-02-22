@@ -1,8 +1,13 @@
 ;;; magit-key-mode.el --- interactively tune git invocation
 
-;; Copyright (C) 2010-2011  Phil Jackson
+;; Copyright (C) 2010-2013  The Magit Project Developers.
+;;
+;; For a full list of contributors, see the AUTHORS.md file
+;; at the top-level directory of this distribution and at
+;; https://raw.github.com/magit/magit/master/AUTHORS.md
 
 ;; Author: Phil Jackson <phil@shellarchive.co.uk>
+;; Package: magit
 
 ;; Magit is free software; you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
@@ -34,6 +39,13 @@
 (defvar magit-key-mode-last-buffer)
 (defvar magit-pre-key-mode-window-conf)
 
+;;; Options
+
+(defcustom magit-key-mode-show-usage t
+  "Whether to show usage information when entering a popup."
+  :group 'magit
+  :type 'boolean)
+
 ;;; Faces
 
 (defface magit-key-mode-header-face
@@ -59,13 +71,42 @@
 ;;; Keygroups
 
 (defvar magit-key-mode-groups
-  '((logging
+  '((dispatch
+     (actions
+      ("b" "Branching"       magit-key-mode-popup-branching)
+      ("B" "Bisecting"       magit-key-mode-popup-bisecting)
+      ("c" "Committing"      magit-key-mode-popup-committing)
+      ("d" "Diff worktree"   magit-diff-working-tree)
+      ("D" "Diff"            magit-diff)
+      ("f" "Fetching"        magit-key-mode-popup-fetching)
+      ("F" "Pulling"         magit-key-mode-popup-pulling)
+      ("g" "Refresh Buffers" magit-refresh-all)
+      ("l" "Logging"         magit-key-mode-popup-logging)
+      ("m" "Merging"         magit-key-mode-popup-merging)
+      ("M" "Remoting"        magit-key-mode-popup-remoting)
+      ("P" "Pushing"         magit-key-mode-popup-pushing)
+      ("o" "Submoduling"     magit-key-mode-popup-submodule)
+      ("r" "Rewriting"       magit-key-mode-popup-rewriting)
+      ("s" "Show Status"     magit-status)
+      ("S" "Stage all"       magit-stage-all)
+      ("t" "Tagging"         magit-key-mode-popup-tagging)
+      ("U" "Unstage all"     magit-unstage-all)
+      ("v" "Show Commit"     magit-show-commit)
+      ("V" "Show File"       magit-show)
+      ("w" "Wazzup"          magit-wazzup)
+      ("X" "Reset worktree"  magit-reset-working-tree)
+      ("y" "Cherry"          magit-cherry)
+      ("z" "Stashing"        magit-key-mode-popup-stashing)
+      ("!" "Running"         magit-key-mode-popup-running)
+      ("$" "Show Process"    magit-display-process)))
+
+    (logging
      (man-page "git-log")
      (actions
       ("l" "Short" magit-log)
       ("L" "Long" magit-log-long)
       ("h" "Head Reflog" magit-reflog-head)
-      ("f" "File log" magit-single-file-log)
+      ("f" "File log" magit-file-log)
       ("rl" "Ranged short" magit-log-ranged)
       ("rL" "Ranged long" magit-log-long-ranged)
       ("rh" "Reflog" magit-reflog))
@@ -129,11 +170,12 @@
      (man-page "git-branch")
      (actions
       ("v" "Branch manager" magit-branch-manager)
+      ("b" "Checkout" magit-checkout)
       ("c" "Create" magit-create-branch)
-      ("r" "Rename" magit-move-branch)
-      ("k" "Delete" magit-delete-branch)
-      ("b" "Checkout" magit-checkout))
+      ("r" "Rename" magit-rename-branch)
+      ("k" "Delete" magit-delete-branch))
      (switches
+      ("-t" "Set upstream configuration" "--track")
       ("-m" "Merged to HEAD" "--merged")
       ("-M" "Merged to master" "--merged=master")
       ("-n" "Not merged to HEAD" "--no-merged")
@@ -176,9 +218,11 @@
      (actions
       ("c" "Commit" magit-commit))
      (switches
-      ("-a" "Replace the tip of current branch" "--amend")
-      ("-A" "Stage all modified and deleted files" "--all")
+      ("-r" "Replace the tip of current branch" "--amend")
+      ("-R" "Claim authorship and reset author date" "--reset-author")
+      ("-a" "Stage all modified and deleted files" "--all")
       ("-e" "Allow empty commit" "--allow-empty")
+      ("-v" "Show diff of changes to be committed" "--verbose")
       ("-n" "Bypass git hooks" "--no-verify")
       ("-s" "Add Signed-off-by line" "--signoff")
       ("-S" "Sign using gpg" "--gpg-sign")))
@@ -398,7 +442,7 @@ Put it in `magit-key-mode-keymaps' for fast lookup."
       (dolist (k actions)
         (funcall defkey k `(magit-key-mode-command ',(nth 2 k))))
       (dolist (k switches)
-        (funcall defkey k `(magit-key-mode-add-option ',for-group ,(nth 2 k))))
+        (funcall defkey k `(magit-key-mode-toggle-option ',for-group ,(nth 2 k))))
       (dolist (k arguments)
         (funcall defkey k `(magit-key-mode-add-argument
                             ',for-group ,(nth 2 k) ',(nth 3 k)))))
@@ -440,7 +484,7 @@ Do not customize this (used in the `magit-key-mode' implementation).")
     (puthash arg-name input magit-key-mode-current-args)
     (magit-key-mode-redraw for-group)))
 
-(defun magit-key-mode-add-option (for-group option-name)
+(defun magit-key-mode-toggle-option (for-group option-name)
   "Toggles the appearance of OPTION-NAME in `magit-key-mode-current-options'."
   (if (member option-name magit-key-mode-current-options)
       (setq magit-key-mode-current-options
@@ -484,10 +528,10 @@ the key combination highlighted before the description."
          (make-hash-table))
     (set (make-local-variable 'magit-key-mode-prefix) current-prefix-arg)
     (magit-key-mode-redraw for-group))
-  (message
-   (concat
-    "Type a prefix key to toggle it. Run 'actions' with their prefixes. "
-    "'?' for more help.")))
+  (when magit-key-mode-show-usage
+    (message (concat "Type a prefix key to toggle it. "
+                     "Run 'actions' with their prefixes. "
+                     "'?' for more help."))))
 
 (defun magit-key-mode-get-key-map (for-group)
   "Get or build the keymap for FOR-GROUP."
@@ -639,8 +683,7 @@ Return the point before the actions part, if any, nil otherwise."
          ;; As a tempory kludge it is okay to do this here.
          ,(cl-case group
             (logging
-             '(when magit-have-graph
-                (list "--graph")))
+             '(list "--graph"))
             (diff-options
              '(when (local-variable-p 'magit-diff-options)
                 magit-diff-options))))))))
