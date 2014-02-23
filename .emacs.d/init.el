@@ -135,9 +135,7 @@
 
 ;; Yasnippet
 (require 'yasnippet)
-(setq yas/snippet-dirs "~/.emacs.d/yasnippet-snippets")
-(yas/load-snippet-dirs)
-(yas/global-mode t)
+(yas-global-mode 1)
 
 ;; ;; nXhtml
 ;; (load "~/.emacs.d/site-lisp/nxhtml/autostart.el")

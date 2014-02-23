@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Route youtube")
+ (front-context-string . "** Spin Studio: ")
  (rear-context-string . "78ea\"))\n  :END:\n")
- (position . 16811))
+ (position . 17217))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "*** \n\n** \n** TOD")
- (rear-context-string . "tickets/2685]]\n\n")
- (position . 102670))
+ (front-context-string . "** TODO Spin Stu")
+ (rear-context-string . "13:35]\n   :END:\n")
+ (position . 148455))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
