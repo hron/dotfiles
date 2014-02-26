@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Spin Studio: ")
- (rear-context-string . "78ea\"))\n  :END:\n")
- (position . 17217))
+ (front-context-string . "** Fix plex\n   S")
+ (rear-context-string . "11:30]\n   :END:\n")
+ (position . 17645))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Spin Stu")
- (rear-context-string . "13:35]\n   :END:\n")
- (position . 148455))
+ (front-context-string . "** TODO Read art")
+ (rear-context-string . "11:30]\n   :END:\n")
+ (position . 128825))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")

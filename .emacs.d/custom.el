@@ -32,6 +32,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:weight normal :height 140 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
+ '(clojure-test-failure-face ((t (:underline (:color "red" :style wave) :weight bold))))
  '(flyspell-duplicate ((t (:underline (:color "red" :style wave)))))
  '(flyspell-incorrect ((t (:underline (:color "#dc322f" :style wave)))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16"))))
