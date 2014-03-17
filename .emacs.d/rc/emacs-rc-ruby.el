@@ -86,7 +86,8 @@
 (add-hook 'haml-mode-hook '(lambda ()
                              (make-variable-buffer-local 'electric-indent-chars)
                              (setq electric-indent-chars '())
-                             (setq indent-tabs-mode nil)))
+                             (setq indent-tabs-mode nil)
+                             (auto-fill-mode -1))
 
 ;; (require 'flymake-haml)
 ;; (add-hook 'haml-mode-hook 'flymake-haml-load)
