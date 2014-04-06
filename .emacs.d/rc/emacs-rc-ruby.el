@@ -31,7 +31,7 @@
 (add-auto-mode 'ruby-mode
                "\\.rb$" "\.rake$" "\.rxml$" "\.rjs"
                ".irbrc" "\.builder" "\.gemspec"
-               "Rakefile$" "Capfile" "Gemfile" "Sitefile"
+               "Rakefile$" "Capfile" "Gemfile" "Sitefile" "Berksfile"
                "Guardfile"
                "Vendorfile"
                "config.ru"
@@ -87,7 +87,7 @@
                              (make-variable-buffer-local 'electric-indent-chars)
                              (setq electric-indent-chars '())
                              (setq indent-tabs-mode nil)
-                             (auto-fill-mode -1))
+                             (auto-fill-mode -1)))
 
 ;; (require 'flymake-haml)
 ;; (add-hook 'haml-mode-hook 'flymake-haml-load)
