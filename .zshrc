@@ -204,5 +204,5 @@ fi
 if [[ "$EMACS" == "t" ]]; then
     stty columns 80
     export NODE_NO_READLINE=1
-    export PAGER=""
+    unset PAGER
 fi
