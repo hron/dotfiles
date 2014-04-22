@@ -32,9 +32,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:weight normal :height 140 :width normal :foundry "unknown" :family "Ubuntu Mono"))))
- '(clojure-test-failure-face ((t (:underline (:color "red" :style wave) :weight bold))))
+ '(clojure-test-failure-face ((t (:underline (:color "red" :style wave) :weight bold))) t)
  '(flyspell-duplicate ((t (:underline (:color "red" :style wave)))))
  '(flyspell-incorrect ((t (:underline (:color "#dc322f" :style wave)))))
+ '(helm-source-header ((t (:background "#69B7F0" :foreground "#fdf6e3" :underline nil :weight bold :height 1.0 :family "Sans Serif"))))
  '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16"))))
  '(org-level-2 ((t (:inherit variable-pitch :foreground "#859900"))))
  '(org-level-3 ((t (:inherit variable-pitch :foreground "#268bd2"))))

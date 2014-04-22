@@ -254,6 +254,7 @@ main = do
 (add-hook 'desktop-before-save-hook 'clean-buffer-list)
 (put 'narrow-to-region 'disabled nil)
 
+(setq default-frame-alist '((width . 95) (height . 100) (vertical-scroll-bars)))
 
 ;; Color theme choosing
 (load-theme 'solarized-light t)
