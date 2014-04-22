@@ -14,7 +14,5 @@ export GPGKEY=7E023519
 
 export EMAIL="aleksei.gusev@gmail.com"
 
-ulimit -n 32768
-
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
