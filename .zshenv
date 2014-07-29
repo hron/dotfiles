@@ -1,4 +1,12 @@
-export PATH=$HOME/bin:$PATH:/sbin:/usr/sbin:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/tools:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/platform-tools
+# General
+export PATH=$PATH:/sbin:/usr/sbin
+# Android SDK
+export PATH=$PATH:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/tools:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/platform-tools
+# Tizen SDK
+export PATH=$PATH:/home/aleksei/local/tizen-sdk/tools
+# RVM
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 export EDITOR=emacsclient
 
 export PGHOST=127.0.0.1
@@ -15,4 +23,3 @@ export GPGKEY=7E023519
 export EMAIL="aleksei.gusev@gmail.com"
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

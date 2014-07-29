@@ -60,12 +60,7 @@
 
 (add-hook 'org-mode-hook
 	  '(lambda ()
-	     (local-set-key (kbd "C-c p") 'org-todo-convert-to-project)))
-;; You can insert and follow links that have Org syntax not only in Org, but in
-;; any Emacs buffer. For this, you should create two global commands, like this
-;; (please select suitable global keys yourself):
-(global-set-key "\C-cL" 'org-insert-link-global)
-(global-set-key "\C-cO" 'org-open-at-point-global)
+	     (local-set-key (kbd "C-c o") 'org-todo-convert-to-project)))
 
 ;; The most basic logging is to keep track of _when_ a certain TODO item
 ;; was finished.  This is achieved with(1).

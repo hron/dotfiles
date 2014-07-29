@@ -202,9 +202,6 @@ main = do
 ;; Emacs core customization
 ;;
 
-;; Orgmode
-(require 'emacs-rc-org)
-
 ;; Spelling
 (setq ispell-dictionary "en_US")
 
@@ -232,7 +229,7 @@ main = do
 (require 'emacs-rc-gdb)
 ;; BUG: Tramp sudo does not work with this hack.
 ;; (require 'emacs-rc-mule)
-(require 'emacs-rc-tramp)
+;; (require 'emacs-rc-tramp)
 (require 'emacs-rc-woman)
 (require 'emacs-rc-view)
 

@@ -24,30 +24,27 @@
 
 ;;; Code:
 
+(require 'compile)
 ;; (setq compilation-error-regexp-alist '())
-
-;; This code is needed to prevent jump on the wrong lines when compilation was
-;; rerun in the same compilation buffer (watchr).
-(defadvice compilation-goto-error (before compilation-goto-error-forget-errors)
-  "Forget file structure every time"
-  (compilation-forget-errors))
-(ad-activate 'compilation-goto-error)
 
 (setq compilation-error-regexp-alist
       (mapcar 'car compilation-error-regexp-alist-alist))
 
 (let ((compilation-regexps
        '((ruby
-          "^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
-         (ruby-Test::Unit
-          "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
-         (rspec
-          "\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
-         (cucumber
-          "\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2))))
+	  "^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
+	 (ruby-Test::Unit
+	  "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
+	 (rspec
+	  "\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+	 (cucumber
+	  "\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2))))
   (dolist (regexp compilation-regexps)
     (add-to-list 'compilation-error-regexp-alist (cdr regexp) t)))
 
+(add-hook 'compilation-mode-hook
+	  '(lambda ()
+	     (local-set-key "\C-cg" 'rgrep)))
 
 (provide 'emacs-rc-compilation)
 ;;; emacs-rc-compilation.el ends here

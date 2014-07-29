@@ -14,14 +14,14 @@
  (position . 76046))
 ("org-capture-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** Fix plex\n   S")
- (rear-context-string . "11:30]\n   :END:\n")
- (position . 17645))
+ (front-context-string . "** Research on s")
+ (rear-context-string . "13:52]\n   :END:\n")
+ (position . 17509))
 ("org-refile-last-stored"
  (filename . "~/org/tasks.org")
- (front-context-string . "** TODO Read art")
- (rear-context-string . "11:30]\n   :END:\n")
- (position . 128825))
+ (front-context-string . "** TODO Try Asan")
+ (rear-context-string . "13:52]\n   :END:\n")
+ (position . 116611))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/src/dotfiles/org/newgtd.org.gpg")
  (front-context-string . "** TODO Разобрат")
