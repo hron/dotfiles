@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (projectile-rails-on projectile-rails-mode) "projectile-rails"
-;;;;;;  "projectile-rails.el" (21334 32248 97406 886000))
+;;;;;;  "projectile-rails.el" (21463 32039 591765 485000))
 ;;; Generated autoloads from projectile-rails.el
 
 (autoload 'projectile-rails-mode "projectile-rails" "\
@@ -19,8 +19,8 @@ Enable `projectile-rails-mode' minor mode if this is a rails project.
 
 ;;;***
 
-;;;### (autoloads nil nil ("projectile-rails-pkg.el") (21334 32248
-;;;;;;  104569 301000))
+;;;### (autoloads nil nil ("projectile-rails-pkg.el") (21463 32039
+;;;;;;  607308 44000))
 
 ;;;***
 

@@ -46,47 +46,47 @@
     (add-to-list 'tramp-default-proxies-alist
                  '(nil "root" "/ssh:%h:"))
 
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(wyvoxapp.com\\|spinstudioapp.com\\)" "deployer" "/ssh:aleksei@%h:"))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("sfa\\(25\\|36\\|37\\|39\\)" "production" "/ssh:aleksei@%h:"))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(sfa15\\|sfa24\\)" "root" "/ssh:fire.boutiqueair.com:"))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("sfa35" "\\(cruise\\|staging\\|production\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
+
     ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(wyvoxapp.com\\|spinstudioapp.com\\)" "deployer" "/ssh:aleksei@%h:"))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("sfa\\(25\\|36\\|37\\|39\\)" "production" "/ssh:aleksei@%h:"))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(sfa15\\|sfa24\\)" "root" "/ssh:fire.boutiqueair.com:"))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("sfa35" "\\(cruise\\|staging\\|production\\|proto\\|jenkins\\)" "/ssh:aleksei@%h:"))
-    ;;
-    ;; ;; (add-to-list 'tramp-default-proxies-alist
-    ;; ;;              '("\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(198\.199\.115\.91\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(198\.211\.123\.130\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(192\.241\.202\.100\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(10\.13\.13\.102\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(192\.168\.1\.1\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(poltergeist\.2combinators\.com\\)" "root" nil))
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(146\.185\.162\.189\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(avalon-.*\.lan\\)" "root" nil))
-    ;;
-    ;; (add-to-list 'tramp-default-proxies-alist
-    ;;              '("\\(10\.13\.13\.1\\)" "root" nil))
-    ;;
+    ;;              '("\\(sfa\\(02\\|03\\|04\\|05\\|06\\|07\\|08\\|09\\|10\\|11\\|12\\|13\\|14\\|15\\|16\\|17\\|18\\|19\\|22\\|23\\|24\\|26\\|27\\|28\\|29\\|30\\|31\\|32\\|33\\|34\\)\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(198\.199\.115\.91\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(198\.211\.123\.130\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(192\.241\.202\.100\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(10\.13\.13\.102\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(192\.168\.1\.1\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(poltergeist\.2combinators\.com\\)" "root" nil))
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(146\.185\.162\.189\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(avalon-.*\.lan\\)" "root" nil))
+
+    (add-to-list 'tramp-default-proxies-alist
+                 '("\\(10\.13\.13\.1\\)" "root" nil))
+
     (add-to-list 'tramp-default-proxies-alist
                  '("\\(localhost\\)" "root" nil))
 
