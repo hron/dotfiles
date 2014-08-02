@@ -160,5 +160,7 @@ end"
 
 (require 'rhtml-mode)
 
+(add-hook 'ruby-mode-hook 'robe-mode)
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
