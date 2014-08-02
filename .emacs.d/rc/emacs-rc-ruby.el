@@ -162,5 +162,13 @@ end"
 
 (add-hook 'ruby-mode-hook 'robe-mode)
 
+;;;###autoload
+(defun helm-robe-completing-read (prompt choices &optional predicate require-match)
+  (let ((collection (mapcar (lambda (c) (if (listp c) (car c) c)) choices)))
+    (helm-comp-read prompt collection :test predicate :must-match
+                    require-match)))
+
+(setq robe-completing-read-func 'helm-robe-completing-read)
+
 (provide 'emacs-rc-ruby)
 ;;; emacs-rc-ruby.el ends here
