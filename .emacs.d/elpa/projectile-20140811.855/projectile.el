@@ -5,7 +5,7 @@
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/projectile
 ;; Keywords: project, convenience
-;; Version: 20140716.416
+;; Version: 20140811.855
 ;; X-Original-Version: 0.11.0
 ;; Package-Requires: ((s "1.6.0") (dash "1.5.0") (pkg-info "0.4"))
 
@@ -44,6 +44,10 @@
 (require 'pkg-info)       ; For `pkg-info-version-info'
 (require 'ibuffer)
 (require 'ibuf-ext)
+
+(eval-when-compile
+  (defvar ack-and-a-half-arguments)
+  (defvar ggtags-completion-table))
 
 ;;;; Compatibility
 (eval-and-compile
@@ -245,6 +249,15 @@ If a buffer is using a given major mode, projectile will ignore
 it for functions working with buffers."
   :group 'projectile
   :type '(repeat string))
+
+(defcustom projectile-globally-ignored-buffers nil
+  "A list of buffer-names ignored by projectile.
+
+If a buffer is in the list projectile will ignore
+it for functions working with buffers."
+  :group 'projectile
+  :type '(repeat string)
+  :package-version '(projectile . "0.12.0"))
 
 (defcustom projectile-find-file-hook nil
   "Hooks run when a file is opened with `projectile-find-file'."
@@ -828,10 +841,12 @@ Operates on filenames relative to the project root."
 
 (defun projectile-ignored-buffer-p (buffer)
   "Check if BUFFER should be ignored."
-  (with-current-buffer buffer
-    (--any-p (s-matches? (concat "^" it "$")
-                         (symbol-name major-mode))
-             projectile-globally-ignored-modes)))
+  (or
+   (member (buffer-name buffer) projectile-globally-ignored-buffers)
+   (with-current-buffer buffer
+     (--any-p (s-matches? (concat "^" it "$")
+                          (symbol-name major-mode))
+              projectile-globally-ignored-modes))))
 
 (defun projectile-recently-active-files ()
   "Get list of recently active files.
@@ -1434,7 +1449,7 @@ With an optional prefix argument ARG SEARCH-TERM is interpreted as a
 regular expression."
   (interactive
    (list (read-from-minibuffer
-          (projectile-prepend-project-name "Ag search for: ")
+          (projectile-prepend-project-name (format "Ag %ssearch for: " (if current-prefix-arg "regexp " "")))
           (projectile-symbol-at-point))
          current-prefix-arg))
   (if (fboundp 'ag-regexp)
@@ -1837,10 +1852,12 @@ Invokes the command referenced by `projectile-switch-project-action' on switch.
 With a prefix ARG invokes `projectile-commander' instead of
 `projectile-switch-project-action.'"
   (interactive "P")
-  (let* ((project-to-switch
-          (projectile-completing-read "Switch to project: "
-                                      (projectile-relevant-known-projects))))
-    (projectile-switch-project-by-name project-to-switch arg)))
+  (let ((relevant-projects (projectile-relevant-known-projects)))
+    (if relevant-projects
+        (projectile-switch-project-by-name
+         (projectile-completing-read "Switch to project: " relevant-projects)
+         arg)
+      (error "There are no known projects"))))
 
 (defun projectile-switch-project-by-name (project-to-switch &optional arg)
   "Switch to project by project name PROJECT-TO-SWITCH.
@@ -2172,20 +2189,22 @@ is chosen."
 (easy-menu-change '("Tools") "--" nil "Search Files (Grep)...")
 
 ;;;###autoload
-(defcustom projectile-mode-line-lighter "Projectile"
-  "The default lighter for `projectile-mode'."
+(defcustom projectile-mode-line
+  '(:eval (format " Projectile[%s]" (projectile-project-name)))
+  "Mode line ligher for Projectile.
+
+The value of this variable is a mode line template as in
+`mode-line-format'.  See Info Node `(elisp)Mode Line Format' for
+details about mode line templates.
+
+Customize this variable to change how Projectile displays its
+status in the mode line.  The default value displays the project
+name.  Set this variable to nil to disable the mode line
+entirely."
   :group 'projectile
-  :type 'string)
-
-(defvar-local projectile-mode-line (format " %s" projectile-mode-line-lighter)
-  "The dynamic mode line lighter variable for `projectile-mode'.")
-
-(defun projectile-update-mode-line ()
-  "Report project in mode-line."
-  (let* ((project-name (projectile-project-name))
-         (message (format " %s[%s]" projectile-mode-line-lighter project-name)))
-    (setq projectile-mode-line message))
-  (force-mode-line-update))
+  :type 'sexp
+  :risky t
+  :package-version '(projectile "0.12.0"))
 
 ;;;###autoload
 (define-minor-mode projectile-mode
@@ -2209,36 +2228,18 @@ Otherwise behave as if called interactively.
     (add-hook 'find-file-hook 'projectile-cache-files-find-file-hook t t)
     (add-hook 'find-file-hook 'projectile-cache-projects-find-file-hook t t)
     (add-hook 'projectile-find-dir-hook 'projectile-cache-projects-find-file-hook)
-    (add-hook 'find-file-hook 'projectile-update-mode-line t t)
     (add-hook 'find-file-hook 'projectile-visit-project-tags-table t t)
     (ad-activate 'compilation-find-file))
    (t
     (remove-hook 'find-file-hook 'projectile-cache-files-find-file-hook t)
     (remove-hook 'find-file-hook 'projectile-cache-projects-find-file-hook t)
-    (remove-hook 'find-file-hook 'projectile-update-mode-line t)
     (remove-hook 'find-file-hook 'projectile-visit-project-tags-table t)
     (ad-deactivate 'compilation-find-file))))
 
 ;;;###autoload
 (define-globalized-minor-mode projectile-global-mode
   projectile-mode
-  projectile-on)
-
-(defun projectile-on ()
-  "Enable Projectile minor mode."
-  (projectile-mode 1))
-
-(defun projectile-off ()
-  "Disable Projectile minor mode."
-  (projectile-mode -1))
-
-(defun projectile-global-on ()
-  "Enable Projectile global minor mode."
-  (projectile-global-mode +1))
-
-(defun projectile-global-off ()
-  "Disable Projectile global minor mode."
-  (projectile-global-mode -1))
+  projectile-mode)
 
 (provide 'projectile)
 

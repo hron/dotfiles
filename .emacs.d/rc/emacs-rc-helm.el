@@ -42,7 +42,7 @@
   (require 'helm-files)
   (helm-other-buffer '(helm-source-imenu
                        helm-source-buffers-list
-                       helm-c-source-projectile-files-list
+                       helm-source-projectile-files-list
                        helm-source-recentf
                        helm-source-buffer-not-found)
                      "*helm mini*"))
