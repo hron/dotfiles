@@ -67,10 +67,10 @@ This is the value of `next-error-function' in Compilation buffers."
     (setq compilation-current-error (point-marker)
           overlay-arrow-position
             (if (bolp)
-		compilation-current-error
+             compilation-current-error
               (copy-marker (line-beginning-position))))
     (with-current-buffer
-	(compilation-find-file
+     (compilation-find-file
          marker
          (caar (compilation--loc->file-struct loc))
          (cadr (car (compilation--loc->file-struct loc))))
@@ -82,7 +82,7 @@ This is the value of `next-error-function' in Compilation buffers."
             (compilation-first-column
              (if (local-variable-p 'compilation-first-column)
                  compilation-first-column first-column)))
-	(save-restriction
+     (save-restriction
           (widen)
           (goto-char (point-min))
           ;; Treat file's found lines in forward order, 1 by 1.
@@ -97,12 +97,12 @@ This is the value of `next-error-function' in Compilation buffers."
                       ;; Special case for range end.
                       (end-of-line)
                     (compilation-move-to-column (compilation--loc->col col)
-						screen-columns))
-		(beginning-of-line)
-		(skip-chars-forward " \t"))
+                                             screen-columns))
+             (beginning-of-line)
+             (skip-chars-forward " \t"))
               (if (compilation--loc->marker col)
                   (set-marker (compilation--loc->marker col) (point))
-		(setf (compilation--loc->marker col) (point-marker)))
+             (setf (compilation--loc->marker col) (point-marker)))
               ;; (setf (compilation--loc->timestamp col) timestamp)
               )))))
     (compilation-goto-locus marker (compilation--loc->marker loc)

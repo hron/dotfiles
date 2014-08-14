@@ -6,7 +6,7 @@
 ;; URL: https://github.com/bbatsov/projectile
 ;; Created: 2011-31-07
 ;; Keywords: project, convenience
-;; Version: 20140812.2203
+;; Version: 20140813.2141
 ;; X-Original-Version: 0.11.0
 ;; Package-Requires: ((helm "1.4.0") (projectile "0.11.0") (cl-lib "0.3"))
 
@@ -94,11 +94,11 @@
                  (helm-projectile-define-key map
                    (kbd "M-e") 'helm-projectile-switch-to-eshell)
                  map))
-    (action . (("Switch to project `C-d'" .
+    (action . (("Switch to project" .
                 (lambda (project)
                   (let ((projectile-completion-system 'helm))
                     (projectile-switch-project-by-name project))))
-               ("Open Dired in project's directory" . dired)
+               ("Open Dired in project's directory `C-d'" . dired)
                ("Open project root in vc-dir or magit `M-g'" .
                 helm-projectile-vc)
                ("Switch to Eshell `M-e'" . helm-projectile-switch-to-eshell))))

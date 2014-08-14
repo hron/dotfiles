@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (helm-projectile) "helm-projectile" "helm-projectile.el"
-;;;;;;  (21483 861 888541 347000))
+;;;;;;  (21484 57389 412575 497000))
 ;;; Generated autoloads from helm-projectile.el
 
 (autoload 'helm-projectile "helm-projectile" "\
@@ -18,8 +18,8 @@ With a prefix ARG invalidates the cache first.
 
 ;;;***
 
-;;;### (autoloads nil nil ("helm-projectile-pkg.el") (21483 861 898677
-;;;;;;  276000))
+;;;### (autoloads nil nil ("helm-projectile-pkg.el") (21484 57389
+;;;;;;  424946 356000))
 
 ;;;***
 
