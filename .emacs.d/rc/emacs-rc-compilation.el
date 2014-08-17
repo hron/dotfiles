@@ -27,27 +27,42 @@
 (require 'compile)
 ;; (setq compilation-error-regexp-alist '())
 
-(setq compilation-error-regexp-alist
-      (mapcar 'car compilation-error-regexp-alist-alist))
+;; (setq compilation-error-regexp-alist
+;;       (mapcar 'car compilation-error-regexp-alist-alist))
+;;
+;; (let ((compilation-regexps
+;;        '(
+;;          (ruby-Guard
+;;           "Running\\(?: all\\|:\\)?" 0 nil nil nil nil
+;;           (0 (progn (compilation-forget-errors)
+;;                     nil)))
+;;       (rspec
+;;           "\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+;;       ;;   (cucumber
+;;       ;;    "\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?:
+;;       ;; \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+;;       ;; (ruby
+;;       ;;  "^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
+;;       ;; (ruby-Test::Unit
+;;       ;;  "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
+;;          )
+;;        ))
+;;   (dolist (regexp compilation-regexps)
+;;     (add-to-list 'compilation-error-regexp-alist (cdr regexp) t)))
 
-(let ((compilation-regexps
-       '((ruby
-	  "^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
-	 (ruby-Test::Unit
-	  "[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
-	 (rspec
-	  "\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
-	 (cucumber
-	  "\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?:
-       \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
-	 (ruby-Guard
-	  "^Running" 0 nil nil nil nil
-	  (0 (progn (compilation-forget-errors)
-		    nil)))
-	 )
-       ))
-  (dolist (regexp compilation-regexps)
-    (add-to-list 'compilation-error-regexp-alist (cdr regexp) t)))
+(setq compilation-error-regexp-alist
+      '(
+	;; Forget all errors on each guard run.
+	("Running\\(?: all\\|:\\)?" 0 nil nil nil nil
+         (0 (progn (compilation-forget-errors)
+                   nil)))
+	("\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+	cucumber
+	ruby-Test::Unit
+	gnu
+	bash
+	gcc-include
+	))
 
 (add-hook 'compilation-mode-hook
           '(lambda ()
