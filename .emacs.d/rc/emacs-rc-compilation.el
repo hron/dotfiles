@@ -53,7 +53,7 @@
 (setq compilation-error-regexp-alist
       '(
 	;; Forget all errors on each guard run.
-	("Running\\(?: all\\|:\\)?" 0 nil nil nil nil
+	("Running\\(?: all\\|:\\)?" nil nil nil nil nil
          (0 (progn (compilation-forget-errors)
                    nil)))
 	("\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
