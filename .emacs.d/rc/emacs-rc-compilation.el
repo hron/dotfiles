@@ -53,12 +53,18 @@
 (setq compilation-error-regexp-alist
       '(
 	;; Forget all errors on each guard run.
-	("Running\\(?: all\\|:\\)?" nil nil nil nil nil
+	("^\\(?:[0-9][0-9]:[0-9][0-9]:[0-9][0-9] - INFO - \\)?Running" nil nil nil nil nil
          (0 (progn (compilation-forget-errors)
                    nil)))
+	;; Bottom messages of rspec run
 	("\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
-	cucumber
-	ruby-Test::Unit
+	;; Bottom messages of cucumber run
+        ("\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?:
+      \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+	;; Ruby
+	("^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
+	;; Ruby's Test::Unit
+	("[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
 	gnu
 	bash
 	gcc-include
