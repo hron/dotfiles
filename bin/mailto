@@ -1,3 +1,0 @@
-#! /bin/sh
-
-/usr/bin/emacsclient -c -e "(browse-url-mail \"$1\")"

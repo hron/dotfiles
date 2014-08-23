@@ -1,6 +1,0 @@
-#! /bin/zsh -f
-emacsclient --eval \
-    "(if org-clock-mode-line-timer                                \
-         (org-substring-no-properties org-mode-line-string 2 -2)  \
-       \"N/A\")"                                                  \
-    | sed 's/^"\|"$//g' || echo "N/A"

@@ -1,3 +1,0 @@
-#! /bin/zsh -f
-
-emacsclient -c -F "((height . 25) (width . 100))" -e "(aleksei-gtd-capture)"
