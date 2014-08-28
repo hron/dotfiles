@@ -1,0 +1,4 @@
+#! /bin/sh
+
+dir=${1:-`pwd`}
+exec emacs --no-desktop --eval "(magit-status \"${dir}\")"
