@@ -100,7 +100,13 @@ tramp_require 'ap' do
     unless IRB.version.include?('DietRB')
       IRB::Irb.class_eval do
         def output_value
-          ap @context.last_value
+          # ap @context.last_value
+          awesome_output = @context.last_value.ai
+          if awesome_output.size > 1000
+            puts "Supressed outpub of #{awesome_output.size}"
+          else
+            puts awesome_output
+          end
         end
       end
     else # MacRuby
