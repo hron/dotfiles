@@ -103,7 +103,8 @@ tramp_require 'ap' do
           # ap @context.last_value
           awesome_output = @context.last_value.ai
           if awesome_output.size > 1000
-            puts "Supressed outpub of #{awesome_output.size}"
+            puts awesome_output[0, 100]
+            puts "... Supressed output of #{awesome_output.size} ..."
           else
             puts awesome_output
           end
