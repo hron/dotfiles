@@ -1,5 +1,5 @@
 # General
-export PATH=$PATH:/sbin:/usr/sbin
+export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 # Android SDK
 export PATH=$PATH:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/tools:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/platform-tools
 # Tizen SDK
@@ -23,3 +23,6 @@ export GPGKEY=7E023519
 export EMAIL="aleksei.gusev@gmail.com"
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+export NVM_DIR="/home/aleksei/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
