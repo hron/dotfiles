@@ -1,1 +1,1 @@
-notification :off
+notification :on
