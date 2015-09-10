@@ -1,13 +1,11 @@
 # General
 export PATH=$PATH:$HOME/bin:/sbin:/usr/sbin
 # Android SDK
-export PATH=$PATH:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/tools:$HOME/local/adt-bundle-linux-x86_64-20131030/sdk/platform-tools
-# Tizen SDK
-export PATH=$PATH:/home/aleksei/local/tizen-sdk/tools
+export PATH=$PATH:$HOME/local/android-sdk-linux/tools:$HOME/local/android-sdk-linux/platform-tools
 # RVM
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export EDITOR=emacsclient
+export EDITOR="emacsclient -c"
 
 export PGHOST=127.0.0.1
 export PGUSER=postgres
