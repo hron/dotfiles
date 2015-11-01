@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacsclient -c -F '((title . "GTD Capture"))' -e '(aleksei-gtd-capture)'
