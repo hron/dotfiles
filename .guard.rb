@@ -1,5 +1,6 @@
-notification :on
-
-Pry.plugins['stack_explorer'] && Pry.plugins['stack_explorer'].disable!
-Pry.pager = false if ENV['EMACS']
+require 'pry'
+if ENV['INSIDE_EMACS']
+  Pry.pager = false
+  Pry.color = false
+end
 
