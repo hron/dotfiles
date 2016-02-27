@@ -1,0 +1,9 @@
+auto-replace-in-selection@4.0.0
+cucumber@0.5.0
+file-icons@1.6.15
+language-autohotkey@0.1.0
+language-generic-config@1.0.0
+language-haml@0.23.15
+run-command2@1.12.2
+scroll-searcher@1.1.0
+
