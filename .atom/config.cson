@@ -1,0 +1,23 @@
+"*":
+  "comment-dwim-light": {}
+  core:
+    autoHideMenuBar: true
+    packagesWithKeymapsDisabled: [
+      "auto-replace-in-selection"
+    ]
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  editor:
+    fontSize: 16
+    invisibles: {}
+    lineHeight: 1.3
+    scrollPastEnd: true
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
+  "run-command2":
+    shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
+  welcome:
+    showOnStartup: false
