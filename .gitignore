@@ -26,3 +26,12 @@
 /org/from-mobile.org
 /org/mobileorg
 /.emacs.d/projectile.cache
+
+/.atom/.apm
+/.atom/blob-store
+/.atom/packages
+/.atom/storage
+/.atom/compile-cache
+/.atom/dev
+/.atom/.npm
+/.atom/.node-gyp
