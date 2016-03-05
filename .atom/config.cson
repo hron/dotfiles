@@ -17,6 +17,8 @@
     showIndentGuide: true
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
+  linter: {}
+  "linter-ruby": {}
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
   welcome:
