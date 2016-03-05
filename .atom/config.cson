@@ -1,4 +1,8 @@
 "*":
+  "advanced-open-file":
+    createDirectories: true
+    fuzzyMatch: true
+    helmDirSwitch: true
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true

@@ -35,3 +35,5 @@
 'atom-workspace atom-text-editor:not([mini])':
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
+'atom-workspace':
+  'ctrl-x ctrl-f': 'advanced-open-file:toggle'
