@@ -1,7 +1,0 @@
-#-*- require-final-newline: nil -*-
-#contributor: aleksei.gusev@gmail.com
-#name : describe
-# --
-describe "${1}" do
-  $0
-end

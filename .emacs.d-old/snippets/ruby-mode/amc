@@ -1,3 +1,0 @@
-#name : alias_method_chain method, feature
-# --
-alias_method_chain :${name}, :${feature}
