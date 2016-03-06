@@ -37,3 +37,6 @@
   'ctrl-;': 'editor:toggle-line-comments'
 'atom-workspace':
   'ctrl-x ctrl-f': 'advanced-open-file:toggle'
+  'alt-x': 'command-palette:toggle'
+  'alt-f9': 'run-command:run'
+  'f9': 'run-command:re-run-last-command'

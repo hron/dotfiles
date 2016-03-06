@@ -9,14 +9,16 @@
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
     ]
+    projectHome: "C:\\Users\\aleks\\src\\"
     themes: [
       "one-light-ui"
       "one-light-syntax"
     ]
   editor:
-    fontSize: 16
+    fontFamily: "Ubuntu Mono"
+    fontSize: 18
     invisibles: {}
-    lineHeight: 1.3
+    lineHeight: 1.2
     scrollPastEnd: true
     showIndentGuide: true
   "exception-reporting":
@@ -25,5 +27,6 @@
   "linter-ruby": {}
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
+  "toggle-quotes": {}
   welcome:
     showOnStartup: false
