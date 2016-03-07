@@ -10,7 +10,12 @@ RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
 RWin & m::WinMaximize, A
-RWin & ,::WinMinimize, A
+;RWin & ,::WinMinimize, A
+RWin & ,::
+  Send {LAlt down}{Space}{LAlt up}
+  Sleep 10
+  Send n
+  return
 
 RWin & PgUp::Send {Volume_Up}
 RWin & PgDn::Send {Volume_Down}
