@@ -8,7 +8,8 @@ RWin & k::ShiftAltTab
 RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
 RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
-RWin & n::WinClose, A
+;RWin & n::WinClose, A
+RWin & n::Send {LAlt down}{F4}{LAlt up}
 RWin & m::WinMaximize, A
 ;RWin & ,::WinMinimize, A
 RWin & ,::

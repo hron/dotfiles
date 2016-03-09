@@ -32,11 +32,10 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 'body':
   'ctrl-shift-S': 'window:save-all'
+  'ctrl-x ctrl-f': 'advanced-open-file:toggle'
 'atom-workspace atom-text-editor:not([mini])':
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
-'atom-workspace':
-  'ctrl-x ctrl-f': 'advanced-open-file:toggle'
   'alt-x': 'command-palette:toggle'
   'alt-f9': 'run-command:run'
   'f9': 'run-command:re-run-last-command'

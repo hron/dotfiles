@@ -8,6 +8,7 @@
     autoHideMenuBar: true
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
+      "ruby-block"
     ]
     projectHome: "C:\\Users\\aleks\\src\\"
     themes: [
@@ -25,6 +26,8 @@
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
   linter: {}
   "linter-ruby": {}
+  "rails-rspec": {}
+  "ruby-block-converter": {}
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
   "toggle-quotes": {}
