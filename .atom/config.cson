@@ -16,8 +16,8 @@
       "one-light-syntax"
     ]
   editor:
-    fontFamily: "Consolas"
-    fontSize: 18
+    fontFamily: "Input Mono"
+    fontSize: 17
     invisibles: {}
     lineHeight: 1.2
     scrollPastEnd: true
@@ -26,10 +26,18 @@
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
   linter: {}
   "linter-ruby": {}
+  "linter-scspell": {}
   "rails-rspec": {}
   "ruby-block-converter": {}
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
+  "spell-check":
+    grammars: [
+      "text.haml"
+      "source.ruby"
+    ]
+  tabs:
+    usePreviewTabs: true
   "toggle-quotes": {}
   welcome:
     showOnStartup: false
