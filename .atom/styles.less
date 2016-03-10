@@ -30,3 +30,13 @@ atom-text-editor {
 atom-text-editor::shadow .cursor {
   // border-color: red;
 }
+
+// @my-linter-warning-background-color: #B1B1FF;
+@my-linter-warning-background-color: #8c8cff;
+#linter-inline {
+  background-color: @my-linter-warning-background-color;
+  &::before {
+    border-bottom-color: @my-linter-warning-background-color;
+    border-left-color: @my-linter-warning-background-color;
+  }
+}

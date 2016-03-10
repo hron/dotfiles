@@ -44,3 +44,8 @@ Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
 ;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
 ;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
 #IfWinActive
+
+; Graviteam Tactics: Mius-Front
+#IfWinActive, ahk_class i_window
+XButton1::MButton
+#IfWinActive

@@ -10,14 +10,13 @@
       "auto-replace-in-selection"
       "ruby-block"
     ]
-    projectHome: "C:\\Users\\aleks\\src\\"
+    projectHome: "E:\\src\\"
     themes: [
       "one-light-ui"
       "one-light-syntax"
     ]
   editor:
     fontFamily: "Input Mono"
-    fontSize: 17
     invisibles: {}
     lineHeight: 1.2
     scrollPastEnd: true
@@ -25,6 +24,8 @@
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
   linter: {}
+  "linter-rubocop":
+    command: "ruby.exe C:\\cygwin64\\home\\aleks\\.gem\\ruby\\gems\\rubocop-0.38.0\\bin\\rubocop"
   "linter-ruby": {}
   "linter-scspell": {}
   "rails-rspec": {}
