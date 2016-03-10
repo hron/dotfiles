@@ -8,20 +8,20 @@ RWin & k::ShiftAltTab
 RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
 RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
-;RWin & n::WinClose, A
+RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
-RWin & n::
-  Send {LAlt down}{Space}{LAlt up}
-  Sleep 10
-  Send c
-  return
+;RWin & n::
+;  Send {LAlt down}{Space}{LAlt up}
+;  Sleep 10
+;  Send c
+;  return
 RWin & m::WinMaximize, A
-;RWin & ,::WinMinimize, A
-RWin & ,::
-  Send {LAlt down}{Space}{LAlt up}
-  Sleep 10
-  Send n
-  return
+RWin & ,::WinMinimize, A
+;RWin & ,::
+;  Send {LAlt down}{Space}{LAlt up}
+;  Sleep 10
+;  Send n
+;  return
 
 RWin & PgUp::Send {Volume_Up}
 RWin & PgDn::Send {Volume_Down}
