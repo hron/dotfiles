@@ -39,3 +39,4 @@
   'alt-x': 'command-palette:toggle'
   'alt-f9': 'run-command:run'
   'f9': 'run-command:re-run-last-command'
+  'f6': 'editor:toggle-soft-wrap'

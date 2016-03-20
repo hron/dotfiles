@@ -16,7 +16,7 @@
       "one-light-syntax"
     ]
   editor:
-    fontFamily: "Input Mono"
+    fontFamily: "Fira Code"
     invisibles: {}
     lineHeight: 1.2
     scrollPastEnd: true
@@ -27,16 +27,13 @@
   "linter-rubocop":
     command: "ruby.exe C:\\cygwin64\\home\\aleks\\.gem\\ruby\\gems\\rubocop-0.38.0\\bin\\rubocop"
   "linter-ruby": {}
+  "linter-sass-lint": {}
   "linter-scspell": {}
   "rails-rspec": {}
   "ruby-block-converter": {}
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
-  "spell-check":
-    grammars: [
-      "text.haml"
-      "source.ruby"
-    ]
+  "spell-check": {}
   tabs:
     usePreviewTabs: true
   "toggle-quotes": {}

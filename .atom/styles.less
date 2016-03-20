@@ -40,3 +40,13 @@ atom-text-editor::shadow .cursor {
     border-left-color: @my-linter-warning-background-color;
   }
 }
+
+// https://github.com/tonsky/FiraCode/wiki/Atom-instructions
+atom-text-editor {
+  text-rendering: optimizeLegibility;
+}
+
+atom-text-editor::shadow .string.quoted,
+atom-text-editor::shadow .string.regexp {
+  -webkit-font-feature-settings: "liga" off, "calt" off;
+}
