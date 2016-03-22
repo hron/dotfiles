@@ -29,6 +29,7 @@
   "linter-ruby": {}
   "linter-sass-lint": {}
   "linter-scspell": {}
+  "merge-conflicts": {}
   "rails-rspec": {}
   "ruby-block-converter": {}
   "run-command2":
