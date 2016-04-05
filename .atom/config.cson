@@ -16,9 +16,9 @@
       "one-light-syntax"
     ]
   editor:
-    fontFamily: "Fira Code"
+    fontFamily: "Input Mono"
     invisibles: {}
-    lineHeight: 1.2
+    lineHeight: 1.25
     scrollPastEnd: true
     showIndentGuide: true
   "exception-reporting":
@@ -30,6 +30,7 @@
   "linter-sass-lint": {}
   "linter-scspell": {}
   "merge-conflicts": {}
+  "one-light-ui": {}
   "rails-rspec": {}
   "ruby-block-converter": {}
   "run-command2":

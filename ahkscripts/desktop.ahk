@@ -1,6 +1,10 @@
 ~RWin Up:: return
 
-RWin & Space:: Send {RWin up}
+;RWin & Space:: Send {RWin up}
+; Run Wox
+;RWin & Space:: Send {LShift down}{LCtrl down}{LAlt down}{Space}{LShift up}{LCtrl up}{LAlt up}
+RWin & Space:: Send {LCtrl down}{Space}{LCtrl up}
+RWin & ':: Send {LShift down}{LCtrl down}{LAlt down}{Enter}{LShift up}{LCtrl up}{LAlt up}
 
 RWin & j::AltTab
 RWin & k::ShiftAltTab
@@ -74,4 +78,8 @@ Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
 ; Graviteam Tactics: Mius-Front
 #IfWinActive, ahk_class i_Window
 XButton1::MButton
+#IfWinActive
+
+#IfWinActive, ahk_exe FTLGame.exe
+XButton1::Send {Backspace}
 #IfWinActive

@@ -33,6 +33,7 @@
 'body':
   'ctrl-shift-S': 'window:save-all'
   'ctrl-x ctrl-f': 'advanced-open-file:toggle'
+  'ctrl-alt-o': 'application:open-folder'
 'atom-workspace atom-text-editor:not([mini])':
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
@@ -40,3 +41,6 @@
   'alt-f9': 'run-command:run'
   'f9': 'run-command:re-run-last-command'
   'f6': 'editor:toggle-soft-wrap'
+  'ctrl-alt-o': 'application:open-folder'
+'.platform-win32 atom-workspace, .platform-linux atom-workspace':
+  'ctrl-alt-o': 'application:open-folder'
