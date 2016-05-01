@@ -6,7 +6,7 @@ WinWaitActive ahk_class VirtualConsoleClass
 Sleep 1000
 Send {LCtrl down}t{LCtrl up}{AppsKey down}r{AppsKey up}unison{Enter}
 Sleep 1000
-Send cd %UnixWorkDir%{Enter}vagrant up && echo ./script/unison{Enter}
+Send cd %UnixWorkDir%{Enter}vagrant up && ./script/unison{Enter}
 Sleep 1000
 Send {LCtrl down}t{LCtrl up}{AppsKey down}r{AppsKey up}guard{Enter}
 Sleep 1000

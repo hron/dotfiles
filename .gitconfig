@@ -4,6 +4,7 @@
 [core]
 	excludesfile = ~/.gitconfig_global_gitignore
 	pager =
+	editor = nano
 
 [color]
 	ui = true
