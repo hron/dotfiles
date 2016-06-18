@@ -10,11 +10,11 @@ Send cd %UnixWorkDir%{Enter}vagrant up && ./script/unison{Enter}
 Sleep 1000
 Send {LCtrl down}t{LCtrl up}{AppsKey down}r{AppsKey up}guard{Enter}
 Sleep 1000
-Send cd %UnixWorkDir%{Enter}sleep 20 && vagrant ssh{Enter}cd /vagrant/baweb && bundle exec guard{Enter}
+Send cd %UnixWorkDir%{Enter}sleep 40 && vagrant ssh{Enter}cd /vagrant/baweb && bundle exec guard{Enter}
 Sleep 1000
 Send {LCtrl down}t{LCtrl up}{AppsKey down}r{AppsKey up}vagrant{Enter}
 Sleep 1000
-Send cd %UnixWorkDir%{Enter}sleep 20 && vagrant ssh{Enter}
+Send cd %UnixWorkDir%{Enter}sleep 40 && vagrant ssh{Enter}
 Sleep 1000
 Send {LAlt down}1{LAlt up}
 Sleep 1000
