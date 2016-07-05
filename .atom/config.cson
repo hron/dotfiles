@@ -6,9 +6,13 @@
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "activate-power-mode"
+    ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
       "ruby-block"
+      "activate-power-mode"
     ]
     projectHome: "E:\\src\\"
     themes: [
@@ -16,14 +20,20 @@
       "one-light-syntax"
     ]
   editor:
-    fontFamily: "Input Mono"
+    fontFamily: "Input Mono Medium "
+    fontSize: 15
     invisibles: {}
-    lineHeight: 1.25
+    lineHeight: 1.2
+    nonWordCharacters: "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-…_"
+    preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
-  linter: {}
+  "fuzzy-finder": {}
+  linter:
+    showErrorPanel: false
+    showErrorTabProject: false
   "linter-rubocop":
     command: "ruby.exe C:\\cygwin64\\home\\aleks\\.gem\\ruby\\gems\\rubocop-0.38.0\\bin\\rubocop"
   "linter-ruby": {}
@@ -41,3 +51,12 @@
   "toggle-quotes": {}
   welcome:
     showOnStartup: false
+  'dash':
+    'grammars':
+      'Ruby Haml': [
+        'ruby', 'html', 'javascript', 'jquery', 'css'
+      ]
+    'filenames':
+      'gruntfile.js': [
+        'grunt'
+      ]

@@ -34,6 +34,8 @@
   'ctrl-shift-S': 'window:save-all'
   'ctrl-x ctrl-f': 'advanced-open-file:toggle'
   'ctrl-alt-o': 'application:open-folder'
+  'alt-down': 'window:focus-next-pane'
+  'alt-up': 'window:focus-previous-pane'
 'atom-workspace atom-text-editor:not([mini])':
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
