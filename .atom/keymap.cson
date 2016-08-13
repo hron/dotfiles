@@ -44,5 +44,10 @@
   'f9': 'run-command:re-run-last-command'
   'f6': 'editor:toggle-soft-wrap'
   'ctrl-alt-o': 'application:open-folder'
+  'alt-,': 'atom-ctags:return-from-declaration'
+  'alt-.': 'atom-ctags:go-to-declaration'
 '.platform-win32 atom-workspace, .platform-linux atom-workspace':
   'ctrl-alt-o': 'application:open-folder'
+'.platform-darwin, .platform-win32, .platform-linux':
+  'alt-g alt-g': 'go-to-line:toggle'
+  'alt-t': 'ruby-test-switcher:switch-without-split'

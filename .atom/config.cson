@@ -3,11 +3,15 @@
     createDirectories: true
     fuzzyMatch: true
     helmDirSwitch: true
+  "atom-ctags":
+    autoBuildTagsWhenActive: true
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true
     disabledPackages: [
       "activate-power-mode"
+      "symbols-view"
+      "tabs"
     ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
@@ -19,8 +23,22 @@
       "one-light-ui"
       "one-light-syntax"
     ]
+  dash:
+    filenames:
+      "gruntfile.js": [
+        "grunt"
+      ]
+    grammars:
+      "Ruby Haml": [
+        "ruby"
+        "rails"
+        "html"
+        "javascript"
+        "jquery"
+        "css"
+      ]
   editor:
-    fontFamily: "Input Mono Medium "
+    fontFamily: "Input Mono Medium"
     fontSize: 15
     invisibles: {}
     lineHeight: 1.2
@@ -51,12 +69,3 @@
   "toggle-quotes": {}
   welcome:
     showOnStartup: false
-  'dash':
-    'grammars':
-      'Ruby Haml': [
-        'ruby', 'html', 'javascript', 'jquery', 'css'
-      ]
-    'filenames':
-      'gruntfile.js': [
-        'grunt'
-      ]
