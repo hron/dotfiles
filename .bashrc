@@ -199,3 +199,5 @@ alias apm='apm.cmd'
 # }
 #
 # alias cd=cd_func
+
+export PATH=$HOME/bin:$PATH
