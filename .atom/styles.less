@@ -31,13 +31,6 @@ atom-text-editor::shadow .cursor {
   // border-color: red;
 }
 
-atom-text-editor::shadow {
-  .bracket-matcher .region {
-    border: 1px solid @syntax-cursor-color;
-    box-sizing: border-box;
- }
-}
-
 @my-linter-warning-background-color: #B1B1FF;
 @my-linter-warning-background-color: #8c8cff;
 #linter-inline {
@@ -56,4 +49,8 @@ atom-text-editor::shadow {
 atom-text-editor::shadow .string.quoted,
 atom-text-editor::shadow .string.regexp {
   -webkit-font-feature-settings: "liga" off, "calt" off;
+}
+
+atom-text-editor::shadow .line.highlight-line {
+  background: rgb(255, 242, 207) !important;
 }

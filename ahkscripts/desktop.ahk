@@ -41,7 +41,7 @@ RWin & h::Send {RWin down}{Tab}{RWin up}
 SetCapsLockState, AlwaysOff
 +CapsLock::CapsLock
 
-CapsLock::Send, {LShift down}{LAlt down}{LAlt up}{LShift up}
+CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
 RWin & -::
@@ -91,4 +91,8 @@ XButton1::Send {Backspace}
 
 #IfWinActive, ahk_exe stellaris.exe
 XButton1::Send {Space}
+#IfWinActive
+
+#IfWinActive ahk_exe Skype.exe
+RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive

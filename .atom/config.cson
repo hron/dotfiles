@@ -5,23 +5,25 @@
     helmDirSwitch: true
   "atom-ctags":
     autoBuildTagsWhenActive: true
+    disableComplete: true
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true
     disabledPackages: [
       "activate-power-mode"
-      "symbols-view"
       "tabs"
+      "symbols-view"
     ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
       "ruby-block"
       "activate-power-mode"
+      "highlight-line"
     ]
     projectHome: "E:\\src\\"
     themes: [
       "one-light-ui"
-      "one-light-syntax"
+      "solarized-light-syntax"
     ]
   dash:
     filenames:
@@ -46,9 +48,12 @@
     preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true
+    zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
   "fuzzy-finder": {}
+  "highlight-line":
+    hideHighlightOnSelect: true
   linter:
     showErrorPanel: false
     showErrorTabProject: false

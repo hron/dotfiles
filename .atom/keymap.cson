@@ -46,8 +46,12 @@
   'ctrl-alt-o': 'application:open-folder'
   'alt-,': 'atom-ctags:return-from-declaration'
   'alt-.': 'atom-ctags:go-to-declaration'
+'atom-workspace atom-text-editor':
+  'alt-l': 'editor:lower-case'
 '.platform-win32 atom-workspace, .platform-linux atom-workspace':
   'ctrl-alt-o': 'application:open-folder'
+  'shift-space': 'fuzzy-finder:toggle-file-finder'
 '.platform-darwin, .platform-win32, .platform-linux':
   'alt-g alt-g': 'go-to-line:toggle'
   'alt-t': 'ruby-test-switcher:switch-without-split'
+  'ctrl-c t': 'ruby-test-switcher:switch-without-split'
