@@ -33,9 +33,9 @@
 'body':
   'ctrl-shift-S': 'window:save-all'
   'ctrl-x ctrl-f': 'advanced-open-file:toggle'
-  'ctrl-alt-o': 'application:open-folder'
   'alt-down': 'window:focus-next-pane'
   'alt-up': 'window:focus-previous-pane'
+
 'atom-workspace atom-text-editor:not([mini])':
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
@@ -43,15 +43,19 @@
   'alt-f9': 'run-command:run'
   'f9': 'run-command:re-run-last-command'
   'f6': 'editor:toggle-soft-wrap'
-  'ctrl-alt-o': 'application:open-folder'
-  'alt-,': 'atom-ctags:return-from-declaration'
-  'alt-.': 'atom-ctags:go-to-declaration'
+  'ctrl-alt-o': 'application:add-project-folder'
+  'alt-.': 'symbols-view:go-to-declaration'
+  'alt-,': 'symbols-view:return-from-declaration'
+  'ctrl-alt-t': 'zentabs:toggletab'
+
 'atom-workspace atom-text-editor':
-  'alt-l': 'editor:lower-case'
+  'alt-l': 'change-case:lower'
+  'alt-u': 'change-case:upper'
+  'alt-c': 'change-case:upperFirst'
+
 '.platform-win32 atom-workspace, .platform-linux atom-workspace':
-  'ctrl-alt-o': 'application:open-folder'
   'shift-space': 'fuzzy-finder:toggle-file-finder'
+
 '.platform-darwin, .platform-win32, .platform-linux':
   'alt-g alt-g': 'go-to-line:toggle'
   'alt-t': 'ruby-test-switcher:switch-without-split'
-  'ctrl-c t': 'ruby-test-switcher:switch-without-split'

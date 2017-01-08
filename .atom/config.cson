@@ -9,21 +9,27 @@
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true
+    closeEmptyWindows: false
     disabledPackages: [
       "activate-power-mode"
-      "tabs"
-      "symbols-view"
     ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
       "ruby-block"
       "activate-power-mode"
       "highlight-line"
+      "split-diff"
+      "zentabs"
+      "git-control"
+      "git-status"
+      "git-commit"
+      "blame"
     ]
     projectHome: "E:\\src\\"
+    telemetryConsent: "limited"
     themes: [
-      "one-light-ui"
-      "solarized-light-syntax"
+      "one-dark-ui"
+      "zenburn"
     ]
   dash:
     filenames:
@@ -40,7 +46,7 @@
         "css"
       ]
   editor:
-    fontFamily: "Input Mono Medium"
+    fontFamily: "Input Mono"
     fontSize: 15
     invisibles: {}
     lineHeight: 1.2
@@ -51,15 +57,32 @@
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
-  "fuzzy-finder": {}
+  "fuzzy-finder":
+    ignoredNames: [
+      "db/migrate"
+    ]
+  "git-plus":
+    diffs:
+      wordDiff: false
+    general:
+      _analyticsUserId: "bca9df50-622c-4773-a90f-b70f633f05da"
+      enableStatusBarIcon: false
   "highlight-line":
     hideHighlightOnSelect: true
   linter:
     showErrorPanel: false
+    showErrorTabFile: false
     showErrorTabProject: false
+    statusIconPosition: "Right"
+    statusIconScope: "File"
   "linter-rubocop":
-    command: "ruby.exe C:\\cygwin64\\home\\aleks\\.gem\\ruby\\gems\\rubocop-0.38.0\\bin\\rubocop"
-  "linter-ruby": {}
+    command: "c:\\msys64\\home\\aleksei\\bin\\rubocop-wrapper"
+  "linter-ruby":
+    ignoredExtensions: [
+      "erb"
+      "md"
+      "html"
+    ]
   "linter-sass-lint": {}
   "linter-scspell": {}
   "merge-conflicts": {}
@@ -69,8 +92,13 @@
   "run-command2":
     shellCommand: "c:\\Cygwin64\\bin\\bash.exe"
   "spell-check": {}
+  "split-diff":
+    ignoreWhitespace: true
   tabs:
     usePreviewTabs: true
   "toggle-quotes": {}
+  "tree-view-git-status": {}
   welcome:
     showOnStartup: false
+  zentabs:
+    neverCloseUnsaved: true
