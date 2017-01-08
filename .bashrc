@@ -200,4 +200,9 @@ alias apm='apm.cmd'
 #
 # alias cd=cd_func
 
-export PATH=$HOME/bin:$PATH
+export EDITOR=nano
+
+export PATH=$HOME/bin:/c/local/bin:/c/HashiCorp/Vagrant/bin/:$PATH
+
+# ssh-pageant
+eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")
