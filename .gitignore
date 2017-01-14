@@ -35,4 +35,5 @@
 /.atom/dev
 /.atom/.npm
 /.atom/.node-gyp
+/.atom/split-diff/
 /.emacs.desktop

@@ -60,6 +60,7 @@
   "fuzzy-finder":
     ignoredNames: [
       "db/migrate"
+      "vendor/cache"
     ]
   "git-plus":
     diffs:
