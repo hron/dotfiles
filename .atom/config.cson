@@ -50,7 +50,6 @@
     fontSize: 15
     invisibles: {}
     lineHeight: 1.2
-    nonWordCharacters: "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-…_"
     preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true

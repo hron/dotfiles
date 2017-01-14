@@ -40,8 +40,6 @@
   'alt-;': 'editor:toggle-line-comments'
   'ctrl-;': 'editor:toggle-line-comments'
   'alt-x': 'command-palette:toggle'
-  'alt-f9': 'run-command:run'
-  'f9': 'run-command:re-run-last-command'
   'f6': 'editor:toggle-soft-wrap'
   'ctrl-alt-o': 'application:add-project-folder'
   'alt-.': 'symbols-view:go-to-declaration'
@@ -52,6 +50,10 @@
   'alt-l': 'change-case:lower'
   'alt-u': 'change-case:upper'
   'alt-c': 'change-case:upperFirst'
+  'ctrl-right': 'editor:move-to-next-subword-boundary'
+  'ctrl-shift-right': 'editor:select-to-next-subword-boundary'
+  'ctrl-left': 'editor:move-to-previous-subword-boundary'
+  'ctrl-shift-left': 'editor:select-to-previous-subword-boundary'
 
 '.platform-win32 atom-workspace, .platform-linux atom-workspace':
   'shift-space': 'fuzzy-finder:toggle-file-finder'
