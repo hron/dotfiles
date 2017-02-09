@@ -6,12 +6,20 @@
   "atom-ctags":
     autoBuildTagsWhenActive: true
     disableComplete: true
+  build:
+    beepWhenDone: true
+    matchedErrorFailsBuild: false
+    panelVisibility: "Hidden"
+    saveOnBuild: true
+    scrollOnError: true
+    stealFocus: false
   "comment-dwim-light": {}
   core:
     autoHideMenuBar: true
     closeEmptyWindows: false
     disabledPackages: [
       "activate-power-mode"
+      "linter-rubocop"
     ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
@@ -56,6 +64,9 @@
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
+  "fold-functions":
+    autofold: true
+    skipAutofoldWhenOnlyOneFunction: true
   "fuzzy-finder":
     ignoredNames: [
       "db/migrate"
@@ -70,18 +81,19 @@
   "highlight-line":
     hideHighlightOnSelect: true
   linter:
-    showErrorPanel: false
-    showErrorTabFile: false
-    showErrorTabProject: false
-    statusIconPosition: "Right"
+    displayLinterStatus: false
+    errorPanelHeight: 100
+    ignoreVCSIgnoredFiles: false
     statusIconScope: "File"
-  "linter-rubocop":
-    command: "c:\\msys64\\home\\aleksei\\bin\\rubocop-wrapper"
+  "linter-erb": {}
+  "linter-rubocop": {}
   "linter-ruby":
     ignoredExtensions: [
       "erb"
       "md"
       "html"
+      "haml.html"
+      "erb.html"
     ]
   "linter-sass-lint": {}
   "linter-scspell": {}

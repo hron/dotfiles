@@ -11,7 +11,7 @@
 
 
 // https://github.com/mupchrch/split-diff/blob/master/styles/split-diff.less
-atom-text-editor, atom-text-editor::shadow {
+atom-text-editor {
   .gutter .line-number,
   .line {
     &.split-diff-added {
@@ -43,5 +43,12 @@ atom-text-editor, atom-text-editor::shadow {
 atom-workspace {
   .tab.pinned {
     font-weight: bold;
+  }
+}
+
+// Avoid showing linter tooltips above panels
+atom-workspace {
+  atom-panel-container {
+    z-index: 5;
   }
 }

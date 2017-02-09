@@ -54,6 +54,12 @@
   'ctrl-shift-right': 'editor:select-to-next-subword-boundary'
   'ctrl-left': 'editor:move-to-previous-subword-boundary'
   'ctrl-shift-left': 'editor:select-to-previous-subword-boundary'
+  'ctrl-backspace': 'editor:delete-to-beginning-of-subword'
+  'ctrl-delete': 'editor:delete-to-end-of-subword'
+  'alt-q': 'autoflow:reflow-selection'
+
+'atom-workspace atom-text-editor[data-grammar~="feature"]':
+  'alt-.': 'cucumber-step:jump-to-step'
 
 '.platform-win32 atom-workspace, .platform-linux atom-workspace':
   'shift-space': 'fuzzy-finder:toggle-file-finder'

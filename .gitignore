@@ -36,4 +36,5 @@
 /.atom/.npm
 /.atom/.node-gyp
 /.atom/split-diff/
+/.atom/recovery
 /.emacs.desktop
