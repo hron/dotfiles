@@ -65,6 +65,8 @@
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "d583c4bd-71f3-9e8a-faa5-fc83973e361c"
+  "file-icons":
+    coloured: false
   "fold-functions":
     autofold: true
     skipAutofoldWhenOnlyOneFunction: true
@@ -83,7 +85,7 @@
     hideHighlightOnSelect: true
   linter:
     displayLinterStatus: false
-    errorPanelHeight: 100
+    errorPanelHeight: 166
     ignoreVCSIgnoredFiles: false
     statusIconScope: "File"
   "linter-erb": {}
@@ -95,6 +97,7 @@
       "html"
       "haml.html"
       "erb.html"
+      "html.haml"
     ]
   "linter-sass-lint": {}
   "linter-scspell": {}

@@ -70,14 +70,14 @@ RWin & ,::
 
 #IfWinActive, ahk_class VirtualConsoleClass
 RWin & n::WinClose, A
-Ctrl & Left::Send {LAlt down}b{LAlt up}
-Ctrl & Right::Send {LAlt down}f{LAlt up}
-Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
-Ctrl & Delete::Send {LAlt down}d{LAlt up}
-Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
-Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
-;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
-;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
+;Ctrl & Left::Send {LAlt down}b{LAlt up}
+;Ctrl & Right::Send {LAlt down}f{LAlt up}
+;Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
+;Ctrl & Delete::Send {LAlt down}d{LAlt up}
+;Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
+;Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
+;;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
+;;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
 #IfWinActive
 
 ; Graviteam Tactics: Mius-Front
