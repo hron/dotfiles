@@ -1,3 +1,5 @@
+SetTitleMatchMode, RegEx
+
 ~RWin Up:: return
 
 Ctrl & g::Send {Escape}
@@ -5,7 +7,7 @@ Ctrl & g::Send {Escape}
 Ctrl & g::Send {LCtrl down}g{LCtrl up}
 #IfWinActive
 
-RWin & Space:: Send {RWin up}
+;RWin & Space:: Send {RWin up}
 ; Run Wox
 ;RWin & Space:: Send {LCtrl down}{LAlt down}{Space}{LCtrl up}{LAlt up}
 ;RWin & Space:: Send {LCtrl down}{Space}{LCtrl up}
@@ -44,10 +46,36 @@ SetCapsLockState, AlwaysOff
 CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
+;RWin & -::
+;  IfWinNotExist ahk_exe PlexMediaPlayer.exe
+;    return
+;  ControlSend, ahk_parent, {Space down}{Space up}
+;  return
+;RWin & -::
+;  IfWinNotExist ahk_exe vlc.exe
+;    return
+;  ControlSend, ahk_parent, {Space down}{Space up}
+;  return
 RWin & -::
-  IfWinNotExist ahk_class Kodi
-    return
-  ControlSend, ahk_parent, {Space down}{Space up}
+  WinGetTitle, CurrentWin, A ;save title of current window
+  WinActivate - Google Play Music
+  Send, {Space}
+  WinMinimize A
+  WinActivate, %CurrentWin%
+  return
+RWin & ]::
+  WinGetTitle, CurrentWin, A ;save title of current window
+  WinActivate - Google Play Music
+  Send, {Right}
+  WinMinimize A
+  WinActivate, %CurrentWin%
+  return
+RWin & [::
+  WinGetTitle, CurrentWin, A ;save title of current window
+  WinActivate - Google Play Music
+  Send, {Left}
+  WinMinimize A
+  WinActivate, %CurrentWin%
   return
 
 #IfWinActive ahk_exe Telegram.exe
@@ -68,18 +96,6 @@ RWin & ,::
   return
 #IfWinActive
 
-#IfWinActive, ahk_class VirtualConsoleClass
-RWin & n::WinClose, A
-;Ctrl & Left::Send {LAlt down}b{LAlt up}
-;Ctrl & Right::Send {LAlt down}f{LAlt up}
-;Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
-;Ctrl & Delete::Send {LAlt down}d{LAlt up}
-;Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
-;Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
-;;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
-;;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
-#IfWinActive
-
 ; Graviteam Tactics: Mius-Front
 #IfWinActive, ahk_class i_Window
 XButton1::MButton
@@ -93,6 +109,46 @@ XButton1::Send {Backspace}
 XButton1::Send {Space}
 #IfWinActive
 
+#IfWinActive, ahk_exe hoi4.exe
+XButton1::Send {Space}
+XButton2::Send {F1}
+#IfWinActive
+
+
+#IfWinActive, ahk_exe CK2game.exe
+XButton1::Send {Space}
+XButton2::Send q
+#IfWinActive
+
+
+#IfWinActive, ahk_exe eu4.exe
+XButton1::Send {Space}
+XButton2::Send q
+#IfWinActive
+
+
+#IfWinActive, ahk_exe CivilizationVI_DX12.exe
+XButton1::Send {Escape}
+XButton2::Send {Enter}
+#IfWinActive
+
 #IfWinActive ahk_exe Skype.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
+
+
+#IfWinActive, ahk_class VirtualConsoleClass
+RWin & n::WinClose, A
+;Ctrl & Left::Send {LAlt down}b{LAlt up}
+;Ctrl & Right::Send {LAlt down}f{LAlt up}
+;Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
+;Ctrl & Delete::Send {LAlt down}d{LAlt up}
+;Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
+;Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
+;;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
+;;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
+#IfWinActive
+
+;#IfWinActive, ^aleksei@
+;Ctrl & Left::Send {LAlt down}b{LAlt up}
+;#IfWinActive
