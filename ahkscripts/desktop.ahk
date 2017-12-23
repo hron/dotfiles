@@ -46,37 +46,17 @@ SetCapsLockState, AlwaysOff
 CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
-;RWin & -::
-;  IfWinNotExist ahk_exe PlexMediaPlayer.exe
-;    return
-;  ControlSend, ahk_parent, {Space down}{Space up}
-;  return
-;RWin & -::
-;  IfWinNotExist ahk_exe vlc.exe
-;    return
-;  ControlSend, ahk_parent, {Space down}{Space up}
-;  return
 RWin & -::
-  WinGetTitle, CurrentWin, A ;save title of current window
-  WinActivate - Google Play Music
-  Send, {Space}
-  WinMinimize A
-  WinActivate, %CurrentWin%
+  SwitchToWindowAndSendKey("- Google Play Music", "{Space}")
   return
 RWin & ]::
-  WinGetTitle, CurrentWin, A ;save title of current window
-  WinActivate - Google Play Music
-  Send, {Right}
-  WinMinimize A
-  WinActivate, %CurrentWin%
+  SwitchToWindowAndSendKey("- Google Play Music", "{Right}")
   return
 RWin & [::
-  WinGetTitle, CurrentWin, A ;save title of current window
-  WinActivate - Google Play Music
-  Send, {Left}
-  WinMinimize A
-  WinActivate, %CurrentWin%
+  SwitchToWindowAndSendKey("- Google Play Music", "{Left}")
   return
+
+
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -152,3 +132,13 @@ RWin & n::WinClose, A
 ;#IfWinActive, ^aleksei@
 ;Ctrl & Left::Send {LAlt down}b{LAlt up}
 ;#IfWinActive
+
+SwitchToWindowAndSendKey(tWindowTitle, tKey)
+{
+  WinGetTitle, CurrentWin, A ;save title of current window
+  WinActivate %tWindowTitle%
+  Send, %tKey%
+  WinMinimize A
+  WinActivate, %CurrentWin%
+  return
+}
