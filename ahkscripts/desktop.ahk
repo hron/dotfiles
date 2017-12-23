@@ -135,10 +135,14 @@ RWin & n::WinClose, A
 
 SwitchToWindowAndSendKey(tWindowTitle, tKey)
 {
-  WinGetTitle, CurrentWin, A ;save title of current window
+  CurrentWinId := WinExist("A")
+  WinGet, isTargetWindowMinimized, MinMax, %tWindowTitle%
   WinActivate %tWindowTitle%
   Send, %tKey%
-  WinMinimize A
-  WinActivate, %CurrentWin%
+  WinActivate, ahk_id %CurrentWinId%
+  if isTargetWindowMinimized=-1
+  {
+    WinMinimize, %tWindowTitle%
+  }
   return
 }
