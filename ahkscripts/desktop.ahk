@@ -3,15 +3,6 @@ SetTitleMatchMode, RegEx
 ~RWin Up:: return
 
 Ctrl & g::Send {Escape}
-#IfWinActive, ahk_class Emacs
-Ctrl & g::Send {LCtrl down}g{LCtrl up}
-#IfWinActive
-
-;RWin & Space:: Send {RWin up}
-; Run Wox
-;RWin & Space:: Send {LCtrl down}{LAlt down}{Space}{LCtrl up}{LAlt up}
-;RWin & Space:: Send {LCtrl down}{Space}{LCtrl up}
-RWin & ':: Send {LShift down}{LCtrl down}{LAlt down}{Enter}{LShift up}{LCtrl up}{LAlt up}
 
 RWin & j::AltTab
 RWin & k::ShiftAltTab
@@ -56,8 +47,6 @@ RWin & [::
   SwitchToWindowAndSendKey("- Google Play Music", "{Left}")
   return
 
-
-
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 RWin & ,::
@@ -94,18 +83,15 @@ XButton1::Send {Space}
 XButton2::Send {F1}
 #IfWinActive
 
-
 #IfWinActive, ahk_exe CK2game.exe
 XButton1::Send {Space}
 XButton2::Send q
 #IfWinActive
 
-
 #IfWinActive, ahk_exe eu4.exe
 XButton1::Send {Space}
 XButton2::Send q
 #IfWinActive
-
 
 #IfWinActive, ahk_exe CivilizationVI_DX12.exe
 XButton1::Send {Escape}
@@ -115,7 +101,6 @@ XButton2::Send {Enter}
 #IfWinActive ahk_exe Skype.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
-
 
 #IfWinActive, ahk_class VirtualConsoleClass
 RWin & n::WinClose, A
