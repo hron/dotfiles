@@ -21,6 +21,7 @@
       "activate-power-mode"
       "linter-rubocop"
       "remember-folds"
+      "character-table"
     ]
     packagesWithKeymapsDisabled: [
       "auto-replace-in-selection"
@@ -37,8 +38,8 @@
     projectHome: "E:\\src\\"
     telemetryConsent: "limited"
     themes: [
-      "one-dark-ui"
-      "zenburn"
+      "one-light-ui"
+      "one-light-syntax"
     ]
   dash:
     filenames:
@@ -83,11 +84,7 @@
       enableStatusBarIcon: false
   "highlight-line":
     hideHighlightOnSelect: true
-  linter:
-    displayLinterStatus: false
-    errorPanelHeight: 166
-    ignoreVCSIgnoredFiles: false
-    statusIconScope: "File"
+  linter: {}
   "linter-erb": {}
   "linter-rubocop": {}
   "linter-ruby":
