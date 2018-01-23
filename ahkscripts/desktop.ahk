@@ -4,6 +4,8 @@ SetTitleMatchMode, RegEx
 
 Ctrl & g::Send {Escape}
 
+RWin & y::Send {AppsKey}
+
 RWin & j::AltTab
 RWin & k::ShiftAltTab
 
@@ -37,15 +39,25 @@ SetCapsLockState, AlwaysOff
 CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
-RWin & -::
-  SwitchToWindowAndSendKey("- Google Play Music", "{Space}")
-  return
-RWin & ]::
-  SwitchToWindowAndSendKey("- Google Play Music", "{Right}")
-  return
-RWin & [::
-  SwitchToWindowAndSendKey("- Google Play Music", "{Left}")
-  return
+;RWin & -::
+;  SwitchToWindowAndSendKey("- Google Play Music", "{Space down}{Space up")
+;  return
+;RWin & ]::
+;  SwitchToWindowAndSendKey("- Google Play Music", "{Right down}{Right up")
+;  return
+;RWin & [::     
+;  SwitchToWindowAndSendKey("- Google Play Music", "{Left down}{Left up}")
+;  return
+
+;RWin & -::
+;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Space down}{Space up}")
+;  return
+;RWin & ]::
+;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Right down}{Right up}")
+;  return
+;RWin & [::
+;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Left down}{Left up}")
+;  return
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -102,6 +114,10 @@ XButton2::Send {Enter}
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
 
+#IfWinActive ahk_exe mowas_2.exe
+XButton1::Send {Pause}
+#IfWinActive
+
 #IfWinActive, ahk_class VirtualConsoleClass
 RWin & n::WinClose, A
 ;Ctrl & Left::Send {LAlt down}b{LAlt up}
@@ -131,3 +147,4 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   }
   return
 }
+
