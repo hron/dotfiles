@@ -33,10 +33,10 @@ RWin & PgDn::Send {Volume_Down}
 RWin & h::Send {RWin down}{Tab}{RWin up}
 
 ; http://superuser.com/questions/429930/using-capslock-to-switch-the-keyboard-language-layout#431302
-SetCapsLockState, AlwaysOff
-+CapsLock::CapsLock
+;SetCapsLockState, AlwaysOff
+;+CapsLock::CapsLock
 
-CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
+Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
 ;RWin & -::
