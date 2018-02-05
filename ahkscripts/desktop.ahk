@@ -134,6 +134,10 @@ RWin & n::WinClose, A
 ;Ctrl & Left::Send {LAlt down}b{LAlt up}
 ;#IfWinActive
 
+#IfWinActive ahk_exe ahk_exe Evernote.exe
+RWin & n::Send {LAlt down}{F4}{LAlt up}
+#IfWinActive
+
 SwitchToWindowAndSendKey(tWindowTitle, tKey)
 {
   CurrentWinId := WinExist("A")
