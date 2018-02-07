@@ -9,18 +9,19 @@ RWin & y::Send {AppsKey}
 RWin & j::AltTab
 RWin & k::ShiftAltTab
 
-RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+;RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+;RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
-RWin & n::WinClose, A
+;RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & n::
 ;  Send {LAlt down}{Space}{LAlt up}
 ;  Sleep 10
 ;  Send c
 ;  return
-RWin & m::WinMaximize, A
-RWin & ,::WinMinimize, A
+
+;RWin & m::WinMaximize, A
+;RWin & ,::WinMinimize, A
 ;RWin & ,::
 ;  Send {LAlt down}{Space}{LAlt up}
 ;  Sleep 10
@@ -61,20 +62,11 @@ return
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
-RWin & ,::
-  Send {LAlt down}{Space}{LAlt up}
-  Sleep 10
-  Send n
-  return
-#IfWinActive
-
-#IfWinActive ahk_exe pidgin.exe
-RWin & n::Send {LAlt down}{F4}{LAlt up}
-RWin & ,::
-  Send {LAlt down}{Space}{LAlt up}
-  Sleep 10
-  Send n
-  return
+;RWin & ,::
+;  Send {LAlt down}{Space}{LAlt up}
+;  Sleep 10
+;  Send n
+;  return
 #IfWinActive
 
 ; Graviteam Tactics: Mius-Front
