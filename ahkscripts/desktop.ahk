@@ -12,7 +12,7 @@ RWin & k::ShiftAltTab
 ;RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
 ;RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
-;RWin & n::WinClose, A
+RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & n::
 ;  Send {LAlt down}{Space}{LAlt up}
@@ -20,18 +20,26 @@ RWin & k::ShiftAltTab
 ;  Send c
 ;  return
 
-;RWin & m::WinMaximize, A
+;RWin & h::WinMaximize, A
 ;RWin & ,::WinMinimize, A
 ;RWin & ,::
 ;  Send {LAlt down}{Space}{LAlt up}
 ;  Sleep 10
 ;  Send n
 ;  return
+RWin & h::
+  WinGet, MinMax, MinMax, A
+  if (MinMax = 0) {
+    WinMaximize, A
+  } else {
+    WinRestore, A
+  }
+  return
 
 RWin & PgUp::Send {Volume_Up}
 RWin & PgDn::Send {Volume_Down}
 
-RWin & h::Send {RWin down}{Tab}{RWin up}
+;RWin & h::Send {RWin down}{Tab}{RWin up}
 
 ; http://superuser.com/questions/429930/using-capslock-to-switch-the-keyboard-language-layout#431302
 ;SetCapsLockState, AlwaysOff
