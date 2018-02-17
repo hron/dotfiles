@@ -27,14 +27,14 @@ RWin & n::WinClose, A
 ;  Sleep 10
 ;  Send n
 ;  return
-RWin & h::
-  WinGet, MinMax, MinMax, A
-  if (MinMax = 0) {
-    WinMaximize, A
-  } else {
-    WinRestore, A
-  }
-  return
+;RWin & h::
+;  WinGet, MinMax, MinMax, A
+;  if (MinMax = 0)
+;    WinMaximize, A
+;  } else {
+;    WinRestore, A
+;  }
+;  return
 
 RWin & PgUp::Send {Volume_Up}
 RWin & PgDn::Send {Volume_Down}
