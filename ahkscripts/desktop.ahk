@@ -89,6 +89,7 @@ XButton1::Send {Backspace}
 
 #IfWinActive, ahk_exe stellaris.exe
 XButton1::Send {Space}
+XButton2::Send M
 #IfWinActive
 
 #IfWinActive, ahk_exe hoi4.exe
