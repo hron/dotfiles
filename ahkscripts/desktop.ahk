@@ -154,3 +154,4 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   return
 }
 
+RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
