@@ -155,3 +155,4 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 }
 
 RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
+RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
