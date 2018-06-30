@@ -120,6 +120,10 @@ RWin & n::Send {LAlt down}{F4}{LAlt up}
 XButton1::Send {Pause}
 #IfWinActive
 
+#IfWinActive, ahk_exe Rome2.exe
+XButton1::Send =
+#IfWinActive
+
 #IfWinActive, ahk_class VirtualConsoleClass
 RWin & n::WinClose, A
 ;Ctrl & Left::Send {LAlt down}b{LAlt up}
