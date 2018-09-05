@@ -6,14 +6,18 @@ RWin::return
 Ctrl & g::Send {Escape}
 
 RWin & y::Send {AppsKey}
+LWin & y::Send {AppsKey}
 
 RWin & j::AltTab
+LWin & j::AltTab
 RWin & k::ShiftAltTab
+LWin & k::ShiftAltTab
 
 ;RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
 ;RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
+LWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & n::
 ;  Send {LAlt down}{Space}{LAlt up}
@@ -73,6 +77,7 @@ return
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
+LWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & ,::
 ;  Send {LAlt down}{Space}{LAlt up}
 ;  Sleep 10
@@ -144,6 +149,7 @@ RWin & n::WinClose, A
 
 #IfWinActive ahk_exe ahk_exe Evernote.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
+LWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
 
 SwitchToWindowAndSendKey(tWindowTitle, tKey)
@@ -161,4 +167,6 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 }
 
 RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
+LWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
 RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
+LWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
