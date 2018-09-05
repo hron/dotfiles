@@ -46,6 +46,8 @@ RWin & PgDn::Send {Volume_Down}
 ;SetCapsLockState, AlwaysOff
 ;+CapsLock::CapsLock
 
+Shift & Escape::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
+
 Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
 
