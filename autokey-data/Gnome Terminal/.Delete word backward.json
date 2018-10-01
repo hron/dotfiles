@@ -1,5 +1,5 @@
 {
-    "usageCount": 0, 
+    "usageCount": 23, 
     "omitTrigger": false, 
     "prompt": false, 
     "description": "Delete word backward", 
@@ -22,7 +22,7 @@
     ], 
     "showInTrayMenu": false, 
     "filter": {
-        "regex": null, 
+        "regex": "gnome-terminal-server.Gnome-terminal", 
         "isRecursive": false
     }, 
     "type": "script", 
