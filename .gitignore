@@ -38,3 +38,5 @@
 /.atom/split-diff/
 /.atom/recovery
 /.emacs.desktop
+
+/.config/fish/fishd.*
