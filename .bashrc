@@ -149,3 +149,5 @@ PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
 export PS1="${PS_INFO} ${PS_GIT}\n${RESET}\$ "
 
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
