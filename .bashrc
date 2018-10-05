@@ -116,9 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 alias xcc='xclip -selection clipboard'
 
 # URL: https://gist.github.com/mkottman/1936195
