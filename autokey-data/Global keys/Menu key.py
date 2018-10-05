@@ -1,1 +1,1 @@
-keyboard.send_keys('<shift>+<f10>')
+keyboard.send_keys('<menu>')
