@@ -1,0 +1,5 @@
+[escape]>[caps]
+[caps]>[escape]
+[up]>[down]
+[down]>[up]
+[intl-\]>[rwin]
