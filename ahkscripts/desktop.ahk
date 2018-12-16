@@ -13,8 +13,8 @@ LWin & j::AltTab
 RWin & k::ShiftAltTab
 LWin & k::ShiftAltTab
 
-;RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-;RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
 LWin & n::WinClose, A
