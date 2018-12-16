@@ -25,21 +25,10 @@ LWin & n::WinClose, A
 ;  Send c
 ;  return
 
-;RWin & h::WinMaximize, A
-;RWin & ,::WinMinimize, A
-;RWin & ,::
-;  Send {LAlt down}{Space}{LAlt up}
-;  Sleep 10
-;  Send n
-;  return
-;RWin & h::
-;  WinGet, MinMax, MinMax, A
-;  if (MinMax = 0)
-;    WinMaximize, A
-;  } else {
-;    WinRestore, A
-;  }
-;  return
+RWin & 8::Send {RWin down}{Up}{RWin up}
+RWin & u::Send {RWin down}{Left}{RWin up}
+RWin & i::Send {RWin down}{Down}{RWin up}
+RWin & o::Send {RWin down}{Right}{RWin up}
 
 RWin & PgUp::Send {Volume_Up}
 RWin & PgDn::Send {Volume_Down}
