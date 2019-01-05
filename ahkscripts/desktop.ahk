@@ -4,7 +4,9 @@ RWin::return
 
 Ctrl & g::Send {Escape}
 
-RWin & y::Send {AppsKey}
+;RWin & y::Send {AppsKey}
+
+RWin & h::Send {RWin down}{Tab}{RWin up}
 
 RWin & j::AltTab
 RWin & k::ShiftAltTab
@@ -20,13 +22,13 @@ RWin & n::WinClose, A
 ;  Send c
 ;  return
 
-RWin & 8::Send {RWin down}{Up}{RWin up}
-RWin & u::Send {RWin down}{Left}{RWin up}
-RWin & i::Send {RWin down}{Down}{RWin up}
-RWin & o::Send {RWin down}{Right}{RWin up}
+;RWin & 8::Send {RWin down}{Up}{RWin up}
+;RWin & u::Send {RWin down}{Left}{RWin up}
+;RWin & i::Send {RWin down}{Down}{RWin up}
+;RWin & o::Send {RWin down}{Right}{RWin up}
 
-RWin & PgUp::Send {Volume_Up}
-RWin & PgDn::Send {Volume_Down}
+;RWin & PgUp::Send {Volume_Up}
+;RWin & PgDn::Send {Volume_Down}
 
 ;RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -75,6 +77,11 @@ XButton1::MButton
 
 #IfWinActive, ahk_exe FTLGame.exe
 XButton1::Send {Backspace}
+#IfWinActive
+
+#IfWinActive, ahk_exe ST Earth.exe
+XButton1::Send {Space}
+XButton2::Send {Tab}
 #IfWinActive
 
 #IfWinActive, ahk_exe stellaris.exe
@@ -148,7 +155,9 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   return
 }
 
-RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
-RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
-RWin & F9::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-RWin & F12::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
+;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=GvcVrA_ZMaWX06ysNXvFpi_K
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
+;RWin & F9::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+;RWin & F12::Run "C:\Program Files\ConEmu\ConEmu64.exe"
