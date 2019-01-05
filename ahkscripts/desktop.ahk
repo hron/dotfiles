@@ -27,6 +27,15 @@ RWin & n::WinClose, A
 ;RWin & i::Send {RWin down}{Down}{RWin up}
 ;RWin & o::Send {RWin down}{Right}{RWin up}
 
+;RWin & u::
+;    SysGet, WA, MonitorWorkArea
+;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom%.
+;    WAWidth := WARight - WALeft
+;    WAHeight := WABottom - WATop
+;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom% -- Width: %WAWidth% -- Height: %WAHeight%
+;    WinMove, A,, 0, WATop, WAWidth/2, WAHeight
+;    return
+
 ;RWin & PgUp::Send {Volume_Up}
 ;RWin & PgDn::Send {Volume_Down}
 

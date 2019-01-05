@@ -1,0 +1,3 @@
+[submodule ".\\ahkscripts\\WindowPadX"]
+	path = .\\ahkscripts\\WindowPadX
+	url = git@github.com:hoppfrosch/WindowPadX.git
