@@ -1,23 +1,20 @@
 SetTitleMatchMode, RegEx
 
-LWin::return
 RWin::return
 
 Ctrl & g::Send {Escape}
 
-RWin & y::Send {AppsKey}
-LWin & y::Send {AppsKey}
+;RWin & y::Send {AppsKey}
+
+RWin & h::Send {RWin down}{Tab}{RWin up}
 
 RWin & j::AltTab
-LWin & j::AltTab
 RWin & k::ShiftAltTab
-LWin & k::ShiftAltTab
 
-;RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-;RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
-LWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & n::
 ;  Send {LAlt down}{Space}{LAlt up}
@@ -25,24 +22,22 @@ LWin & n::WinClose, A
 ;  Send c
 ;  return
 
-;RWin & h::WinMaximize, A
-;RWin & ,::WinMinimize, A
-;RWin & ,::
-;  Send {LAlt down}{Space}{LAlt up}
-;  Sleep 10
-;  Send n
-;  return
-;RWin & h::
-;  WinGet, MinMax, MinMax, A
-;  if (MinMax = 0)
-;    WinMaximize, A
-;  } else {
-;    WinRestore, A
-;  }
-;  return
+;RWin & 8::Send {RWin down}{Up}{RWin up}
+;RWin & u::Send {RWin down}{Left}{RWin up}
+;RWin & i::Send {RWin down}{Down}{RWin up}
+;RWin & o::Send {RWin down}{Right}{RWin up}
 
-RWin & PgUp::Send {Volume_Up}
-RWin & PgDn::Send {Volume_Down}
+;RWin & u::
+;    SysGet, WA, MonitorWorkArea
+;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom%.
+;    WAWidth := WARight - WALeft
+;    WAHeight := WABottom - WATop
+;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom% -- Width: %WAWidth% -- Height: %WAHeight%
+;    WinMove, A,, 0, WATop, WAWidth/2, WAHeight
+;    return
+
+;RWin & PgUp::Send {Volume_Up}
+;RWin & PgDn::Send {Volume_Down}
 
 ;RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -77,7 +72,6 @@ return
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
-LWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & ,::
 ;  Send {LAlt down}{Space}{LAlt up}
 ;  Sleep 10
@@ -92,6 +86,11 @@ XButton1::MButton
 
 #IfWinActive, ahk_exe FTLGame.exe
 XButton1::Send {Backspace}
+#IfWinActive
+
+#IfWinActive, ahk_exe ST Earth.exe
+XButton1::Send {Space}
+XButton2::Send {Tab}
 #IfWinActive
 
 #IfWinActive, ahk_exe stellaris.exe
@@ -149,7 +148,6 @@ RWin & n::WinClose, A
 
 #IfWinActive ahk_exe ahk_exe Evernote.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
-LWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
 
 SwitchToWindowAndSendKey(tWindowTitle, tKey)
@@ -166,7 +164,9 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   return
 }
 
-RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
-LWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
-RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
-LWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
+;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
+;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=GvcVrA_ZMaWX06ysNXvFpi_K
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
+;RWin & F9::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+;RWin & F12::Run "C:\Program Files\ConEmu\ConEmu64.exe"
