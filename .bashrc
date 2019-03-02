@@ -64,7 +64,7 @@ function parse_git_branch {
 PROMPT_COMMAND=parse_git_branch
 PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
-export PS1="${PS_INFO} ${PS_GIT}\n${RESET}\$ "
+export PS1="${PS_INFO} ${PS_GIT}\n${RESET}\\$ "
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -123,3 +123,20 @@ alias xcc='xclip -selection clipboard'
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# # added by Anaconda3 2018.12 installer
+# # >>> conda init >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/aleksei/local/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/home/aleksei/local/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/aleksei/local/anaconda3/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/home/aleksei/local/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda init <<<
