@@ -26,5 +26,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export BROWSER=google-chrome
+export BROWSER=firefox
 export EDITOR=code-insiders
+export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
