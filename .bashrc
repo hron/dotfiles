@@ -121,22 +121,24 @@ fi
 
 alias xcc='xclip -selection clipboard'
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# ASDF setup
+if [ -d $HOME/.asdf ]; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
 
-# # added by Anaconda3 2018.12 installer
-# # >>> conda init >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/aleksei/local/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     \eval "$__conda_setup"
-# else
-#     if [ -f "/home/aleksei/local/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/aleksei/local/anaconda3/etc/profile.d/conda.sh"
-#         CONDA_CHANGEPS1=false conda activate base
-#     else
-#         \export PATH="/home/aleksei/local/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda init <<<
+# Anaconda3 
+if [ -d $HOME/local/anaconda3 ]; then
+  __conda_setup="$(CONDA_REPORT_ERRORS=false '$HOME/local/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      \eval "$__conda_setup"
+  else
+      if [ -f "$HOME/local/anaconda3/etc/profile.d/conda.sh" ]; then
+          . "$HOME/local/anaconda3/etc/profile.d/conda.sh"
+          CONDA_CHANGEPS1=false conda activate base
+      else
+          \export PATH="$HOME/local/anaconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+fi
