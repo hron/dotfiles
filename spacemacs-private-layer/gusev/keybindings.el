@@ -102,3 +102,6 @@
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
+
+(use-package comint
+  :bind (:map comint-mode-map ("C-d" . comint-delchar-or-maybe-of)))
