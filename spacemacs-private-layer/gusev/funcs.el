@@ -40,9 +40,6 @@
      (define-key projectile-mode-map (kbd "C-S-n") 'projectile-find-file-dwim)
      (define-key projectile-mode-map (kbd "M-r") 'projectile-repeat-last-command)))
 
-(use-package comint
-  :bind (:map comint-mode-map ("C-d" . comint-delchar-or-maybe-eof)))
-
 (with-eval-after-load 'dired
   (setq dired-listing-switches "-ahl --group-directories-first")
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode))))
