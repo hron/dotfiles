@@ -89,6 +89,10 @@
               ("C-/" . nil)
               ("C-S-z" . undo-tree-redo))) 
 
+(use-package company
+  :bind (:map company-mode-map
+              ("<escape>" . company-abort)))
+
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package winner
   :init
@@ -97,3 +101,4 @@
 
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 
+(global-set-key (kbd "C-w") 'kill-this-buffer)

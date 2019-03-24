@@ -20,7 +20,7 @@ values."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'all
+   dotspacemacs-enable-lazy-installation 'unused
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
@@ -49,8 +49,7 @@ values."
      ;;        shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     (version-control :variables
-                      version-control-diff-side 'left)
+     version-control
      themes-megapack
      gusev
      )
@@ -315,6 +314,29 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (use-package org
+    :bind (:map org-mode-map
+                ("M-<down>" . nil)
+                ("M-<up>" . nil)))
+  (setq compilation-error-regexp-alist
+        '(
+          ;; Bottom messages of rspec run
+          ("\\(?:^rspec\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?: \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+          ;; Bottom messages of cucumber run
+          ;;   ("\\(?:^cucumber\\(?: -p [^[:space:]]+\\)?\\|#\\)\\(?:
+          ;; \\)\\([^\(].*\\):\\([1-9][0-9]*\\)" 1 2)
+          ;; Ruby
+          ("^[\t ]*\\(?:from \\)?\\([^\(\n][^[:space:]\n]*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?.*$" 1 2)
+          ;; Ruby's Test::Unit
+          ("[\t ]*\\[\\([^\(].*\\):\\([1-9][0-9]*\\)\\(\\]\\)?:" 1 2)
+          ;; Pry's binding.pry
+          ;; From: /home/aleksei/src/hms-dev/baweb/app/models/air/book_a_seat/reservation.rb @ line 429 Air::BookASeat::Reservation#number_of_seats_must_be_available:
+          ("\\(?:^From: \\|#\\)\\([^\(].*\\) @ line \\([1-9][0-9]*\\)" 1 2)
+          cucumber
+          gnu
+          bash
+          gcc-include
+          ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
