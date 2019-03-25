@@ -104,4 +104,6 @@
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 
 (use-package comint
-  :bind (:map comint-mode-map ("C-d" . comint-delchar-or-maybe-of)))
+  :bind (:map comint-mode-map
+              ("C-d" . comint-delchar-or-maybe-eof)
+              ("C-c" . nil)))
