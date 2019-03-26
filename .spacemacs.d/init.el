@@ -342,6 +342,24 @@ you should place your code here."
   (setq evil-emacs-state-cursor '("SkyBlue2" bar))
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
   (spaceline-toggle-minor-modes-off)
+  (setq compilation-ask-about-save nil)
+
+  ;; TODO: Create a pull request for minitest.el to use `compile' instead of
+  ;; `compilation-start' to follow `compilation-ask-about-save'
+  (defun minitest--run-command (command &optional file-name)
+    (save-some-buffers (not compilation-ask-about-save)
+                       compilation-save-buffers-predicate)
+    (if (fboundp 'rvm-activate-corresponding-ruby)
+        (rvm-activate-corresponding-ruby))
+
+    (let ((default-directory (minitest-project-root))
+          (compilation-scroll-output t)
+          (actual-command (concat (or minitest-default-env "") " " command)))
+      (setq minitest--last-command (list command file-name))
+      (compilation-start
+       actual-command
+       'minitest-compilation-mode
+       (lambda (arg) (minitest-buffer-name (or file-name ""))))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
