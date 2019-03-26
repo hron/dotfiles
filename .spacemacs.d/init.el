@@ -340,6 +340,7 @@ you should place your code here."
           ))
   (setq evil-emacs-state-cursor '("SkyBlue2" bar))
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (spaceline-toggle-minor-modes-off)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
