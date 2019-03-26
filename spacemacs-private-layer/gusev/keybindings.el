@@ -1,4 +1,6 @@
 (cua-mode t)
+(define-key cua--cua-keys-keymap [(control z)] 'undo-tree-undo)
+(define-key cua--cua-keys-keymap [(control shift z)] 'undo-tree-redo)
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
