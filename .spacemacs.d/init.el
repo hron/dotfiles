@@ -346,20 +346,23 @@ you should place your code here."
 
   ;; TODO: Create a pull request for minitest.el to use `compile' instead of
   ;; `compilation-start' to follow `compilation-ask-about-save'
-  (defun minitest--run-command (command &optional file-name)
-    (save-some-buffers (not compilation-ask-about-save)
-                       compilation-save-buffers-predicate)
-    (if (fboundp 'rvm-activate-corresponding-ruby)
-        (rvm-activate-corresponding-ruby))
+  (eval-after-load 'minitest
+    '(defun minitest--run-command (command &optional file-name)
+      (save-some-buffers (not compilation-ask-about-save)
+                         compilation-save-buffers-predicate)
+      (if (fboundp 'rvm-activate-corresponding-ruby)
+          (rvm-activate-corresponding-ruby))
 
-    (let ((default-directory (minitest-project-root))
-          (compilation-scroll-output t)
-          (actual-command (concat (or minitest-default-env "") " " command)))
-      (setq minitest--last-command (list command file-name))
-      (compilation-start
-       actual-command
-       'minitest-compilation-mode
-       (lambda (arg) (minitest-buffer-name (or file-name ""))))))
+      (let ((default-directory (minitest-project-root))
+            (compilation-scroll-output t)
+            (actual-command (concat (or minitest-default-env "") " " command)))
+        (setq minitest--last-command (list command file-name))
+        (compilation-start
+         actual-command
+         'minitest-compilation-mode
+         (lambda (arg) (minitest-buffer-name (or file-name "")))))))
+
+  (transient-mark-mode -1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
