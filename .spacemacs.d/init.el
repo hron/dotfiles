@@ -32,6 +32,7 @@ values."
    dotspacemacs-configuration-layers
    '(sql
      yaml
+     csv
      markdown
      ruby
      ;; ----------------------------------------------------------------
@@ -297,7 +298,7 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'changed
-   dotspacemacs-mode-line-theme '(doom)
+   ;; dotspacemacs-mode-line-theme '(doom)
    ))
 
 (defun dotspacemacs/user-init ()
@@ -308,6 +309,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq evil-toggle-key "C-S-M-z")
+  (setq ruby-enable-enh-ruby-mode t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -342,9 +344,31 @@ you should place your code here."
           ))
   (setq evil-emacs-state-cursor '("SkyBlue2" (bar . 4)))
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (spaceline-toggle-minor-modes-off)
+  (setq compilation-ask-about-save nil)
   (setq rspec-command-options "-Ispecs --format documentation")
   (define-key rspec-mode-map (kbd "M-r") 'rspec-rerun)
   (define-key yaml-mode-map (kbd "C-/") 'comment-dwim)
+
+  ;; TODO: Create a pull request for minitest.el to use `compile' instead of
+  ;; `compilation-start' to follow `compilation-ask-about-save'
+  (eval-after-load 'minitest
+    '(defun minitest--run-command (command &optional file-name)
+      (save-some-buffers (not compilation-ask-about-save)
+                         compilation-save-buffers-predicate)
+      (if (fboundp 'rvm-activate-corresponding-ruby)
+          (rvm-activate-corresponding-ruby))
+
+      (let ((default-directory (minitest-project-root))
+            (compilation-scroll-output t)
+            (actual-command (concat (or minitest-default-env "") " " command)))
+        (setq minitest--last-command (list command file-name))
+        (compilation-start
+         actual-command
+         'minitest-compilation-mode
+         (lambda (arg) (minitest-buffer-name (or file-name "")))))))
+
+  (transient-mark-mode -1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -379,16 +403,15 @@ This function is called at the very end of Spacemacs initialization."
  '(cursor-type 'bar)
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(sqlup-mode sql-indent rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))
+   '(sqlup-mode csv-mode sql-indent rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))
  '(safe-local-variable-values
-   '((eval progn
+   '((ruby-test-runner . minitest)
+     (eval progn
            (setq projectile-project-test-cmd #'projectile-rails-minitest-test-at-point-cmd)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "DAMA" :family "Input Mono"))))
- '(mode-line ((t (:background "#222226" :foreground "#b2b2b2" :box (:line-width 1 :color "#5d4d7a") :height 0.9))))
- '(mode-line-inactive ((t (:background "#292b2e" :foreground "#b2b2b2" :box (:line-width 1 :color "#5d4d7a") :height 0.9)))))
+ '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "DAMA" :family "Input Mono")))))
 )

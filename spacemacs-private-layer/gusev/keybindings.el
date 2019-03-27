@@ -1,4 +1,6 @@
 (cua-mode t)
+(define-key cua--cua-keys-keymap [(control z)] 'undo-tree-undo)
+(define-key cua--cua-keys-keymap [(control shift z)] 'undo-tree-redo)
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
@@ -100,8 +102,12 @@
   (global-set-key [f3] 'winner-redo))
 
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
+(global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
+(global-set-key (kbd "C-d") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 
 (use-package comint
-  :bind (:map comint-mode-map ("C-d" . comint-delchar-or-maybe-of)))
+  :bind (:map comint-mode-map
+              ("C-d" . comint-delchar-or-maybe-eof)
+              ("C-c" . nil)))
