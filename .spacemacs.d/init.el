@@ -347,7 +347,6 @@ you should place your code here."
   (spaceline-toggle-minor-modes-off)
   (setq compilation-ask-about-save nil)
   (setq rspec-command-options "-Ispecs --format documentation")
-  (define-key rspec-mode-map (kbd "M-r") 'rspec-rerun)
   (define-key yaml-mode-map (kbd "C-/") 'comment-dwim)
 
   ;; TODO: Create a pull request for minitest.el to use `compile' instead of
