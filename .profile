@@ -30,18 +30,18 @@ export BROWSER=chromium-browser
 export EDITOR=code-insiders
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
 
-function connect_googledrive {
-    mountpoint="${HOME}/GoogleDrive"
-    if [[ ! "$(ls ${mountpoint})" ]]; then
-        printf "mounting google drive: waiting for network connection"
-        while ! ping -q -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
-            printf "..."
-            sleep 1
-        done
-        printf "\n"
-        cd "${HOME}"
-        google-drive-ocamlfuse "$mountpoint"
-    fi
-    printf "google drive connected\n"
-}
-connect_googledrive
+# function connect_googledrive {
+#     mountpoint="${HOME}/GoogleDrive"
+#     if [[ ! "$(ls ${mountpoint})" ]]; then
+#         printf "mounting google drive: waiting for network connection"
+#         while ! ping -q -c 1 -W 1 8.8.8.8 > /dev/null 2>&1; do
+#             printf "..."
+#             sleep 1
+#         done
+#         printf "\n"
+#         cd "${HOME}"
+#         google-drive-ocamlfuse "$mountpoint"
+#     fi
+#     printf "google drive connected\n"
+# }
+# connect_googledrive
