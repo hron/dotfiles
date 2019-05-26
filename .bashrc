@@ -141,3 +141,7 @@ if [ -d $HOME/anaconda3 ]; then
     fi
     unset __conda_setup
 fi
+
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
