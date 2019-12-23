@@ -30,7 +30,10 @@
 ;;; Code:
 
 (defconst gusev-packages
-  '()
+  '(
+    (org-caldav :requires org)
+    oauth2
+   )
   "The list of Lisp packages required by the gusev layer.
 
 Each entry is either:
@@ -58,5 +61,20 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun gusev/init-org-caldav ()
+  (use-package org-caldav
+    :config ((lambda ()
+               (setq org-caldav-url 'google
+                     org-caldav-calendar-id "6oqbribi3hku4n81i2ach9b3qo@group.calendar.google.com"
+                     org-caldav-inbox "/home/aleksei/src/org/from-google-calendar.org"
+                     org-caldav-files '("/home/aleksei/src/org/tasks.org")
+                     org-icalendar-timezone "Europe/Minsk"
+                     org-icalendar-alarm-time 10)))))
+
+(defun gusev/init-oauth2 ()
+  (use-package oauth2
+    :config ((lambda ()
+               (setq org-caldav-oauth2-client-id "712874160068-fbgq4lk2k58hct939q5vo7g2e4o9icvu.apps.googleusercontent.com"
+                     org-caldav-oauth2-client-secret "hJDHEHjaXGbNd7k90Kizk6Wy")))))
 
 ;;; packages.el ends here

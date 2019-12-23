@@ -111,3 +111,10 @@
   :bind (:map comint-mode-map
               ("C-d" . comint-delchar-or-maybe-eof)
               ("C-c" . nil)))
+
+(use-package org
+  :bind (:map org-mode-map
+              ("S-<return>" . org-insert-heading-after-current)
+              ("S-M-<return>" . org-insert-todo-heading-respect-content)
+              ("S-M-<up>" . org-move-subtree-up)
+              ("S-M-<down>" . org-move-subtree-down)))
