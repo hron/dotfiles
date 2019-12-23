@@ -53,7 +53,7 @@
          :map helm-find-files-map
          ("C-z" . undo-tree-undo)
 
-))
+         ))
 
 (use-package expand-region
   :init
@@ -117,4 +117,6 @@
               ("S-<return>" . org-insert-heading-after-current)
               ("S-M-<return>" . org-insert-todo-heading-respect-content)
               ("S-M-<up>" . org-move-subtree-up)
-              ("S-M-<down>" . org-move-subtree-down)))
+              ("S-M-<down>" . org-move-subtree-down)
+              ("C-c o" . gusev/org-todo-convert-to-project)
+               ))

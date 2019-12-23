@@ -43,3 +43,18 @@
 (with-eval-after-load 'dired
   (setq dired-listing-switches "-ahl --group-directories-first")
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode))))
+
+(defun gusev/org-todo-convert-to-project ()
+  (interactive)
+  (save-excursion
+    (org-todo "")
+    (goto-char (point-at-bol))
+    (if (looking-at "\\(**+\\) ")
+        (replace-match "\\1 [%] ")))
+  ;; (org-show-entry)
+  ;; (org-forward-sentence)
+  ;; (newline)
+  ;; (goto-char (point-at-bol))
+  ;; (call-interactively 'org-insert-todo-subheading)
+  ;; (call-interactively 'org-do-demote)
+  (goto-char (point-at-eol)))

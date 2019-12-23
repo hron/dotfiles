@@ -31,6 +31,7 @@
 
 (defconst gusev-packages
   '(
+    org
     (org-caldav :requires org)
     oauth2
    )
@@ -61,6 +62,30 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun gusev/init-org ()
+  (use-package org
+    :init ((lambda ()
+             (org/init-org)
+             (setq
+              org-tag-alist '((:startgroup . nil)
+                              ("Freska" . ?f)
+                              (:endgroup . nil)
+                              ("outside" . ?o)
+                              ("read" . ?r)
+                              ("games" . ?g)
+                              ("shop" . ?s))
+              org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+              org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+              org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+              org-agenda-custom-commands
+              '(("h" "Home" tags-tree (concat "-outside-Freska-games-read-shop" org-agenda-active-expr))
+                ("H" "Home (Next Actions)"
+                 tags-tree (concat "-outside-Freska-games-read-shop" org-agenda-na-expr))
+                ("f" "Freska" tags-tree (concat "Freska" org-agenda-active-expr))
+                ("F" "Freska (Next Actions)" tags-tree (concat "Freska" org-agenda-na-expr))
+                )
+              )))))
+
 (defun gusev/init-org-caldav ()
   (use-package org-caldav
     :config ((lambda ()
@@ -78,3 +103,5 @@ Each entry is either:
                      org-caldav-oauth2-client-secret "hJDHEHjaXGbNd7k90Kizk6Wy")))))
 
 ;;; packages.el ends here
+
+; LocalWords:  Freska
