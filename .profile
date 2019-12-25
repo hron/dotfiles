@@ -26,7 +26,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export BROWSER=chromium-browser
-export EDITOR=code-insiders
+if [ -d "$HOME/.yarn/bin" ] ; then
+    PATH="$HOME/.yarn/bin:$PATH"
+fi
+
+export BROWSER=sensible-browser
+export EDITOR=sensible-editor
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
 
