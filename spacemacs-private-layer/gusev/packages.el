@@ -66,24 +66,25 @@ Each entry is either:
   (use-package org
     :init ((lambda ()
              (org/init-org)
+             (add-hook 'org-capture-after-finalize-hook 'delete-frame)
              (setq
-              org-tag-alist '((:startgroup . nil)
-                              ("Freska" . ?f)
-                              (:endgroup . nil)
-                              ("outside" . ?o)
+              org-tag-alist '(("outside" . ?o)
                               ("read" . ?r)
                               ("games" . ?g)
-                              ("shop" . ?s))
+                              ("shop" . ?s)
+                              ("office" . ?e))
               org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
               org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
               org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
               org-agenda-custom-commands
-              '(("h" "Home" tags-tree (concat "-outside-Freska-games-read-shop" org-agenda-active-expr))
-                ("H" "Home (Next Actions)"
-                 tags-tree (concat "-outside-Freska-games-read-shop" org-agenda-na-expr))
-                ("f" "Freska" tags-tree (concat "Freska" org-agenda-active-expr))
-                ("F" "Freska (Next Actions)" tags-tree (concat "Freska" org-agenda-na-expr))
-                )
+              '(("n" "NA" tags-tree org-agenda-na-expr))
+              org-agenda-files '("tasks.org" "freska.org" "tickler.org" "inbox.org")
+              org-refile-targets '((org-agenda-files :maxlevel . 2) ("someday.org" :maxlevel . 1))
+              org-archive-location (concat "archive/%s_" (format-time-string "%Y") ".org" "::* Tasks" )
+              org-archive-default-command 'org-archive-subtree
+              org-capture-templates
+                    '(("i" "Todo" entry (file "~/org/inbox.org")
+                       "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
               )))))
 
 (defun gusev/init-org-caldav ()
@@ -91,10 +92,14 @@ Each entry is either:
     :config ((lambda ()
                (setq org-caldav-url 'google
                      org-caldav-calendar-id "6oqbribi3hku4n81i2ach9b3qo@group.calendar.google.com"
-                     org-caldav-inbox "/home/aleksei/src/org/from-google-calendar.org"
-                     org-caldav-files '("/home/aleksei/src/org/tasks.org")
+                     org-caldav-inbox "~/org/from-google-calendar.org"
+                     org-caldav-files '("~/org/tasks.org"
+                                        "~/org/tickler.org"
+                                        "~/org/freska.org"
+                                        "~/org/inbox.org")
                      org-icalendar-timezone "Europe/Minsk"
-                     org-icalendar-alarm-time 10)))))
+                     org-icalendar-alarm-time 10
+                     org-caldav-show-sync-results 'nil)))))
 
 (defun gusev/init-oauth2 ()
   (use-package oauth2
