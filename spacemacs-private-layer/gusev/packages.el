@@ -67,6 +67,9 @@ Each entry is either:
     :init ((lambda ()
              (org/init-org)
              (add-hook 'org-capture-after-finalize-hook 'delete-frame)
+             (add-hook 'org-mode-hook '(lambda ()
+                                         (toggle-truncate-lines +1)
+                                         (toggle-word-wrap +1)))
              (setq
               org-tag-alist '(("outside" . ?o)
                               ("read" . ?r)
@@ -80,7 +83,7 @@ Each entry is either:
               '(("n" "NA" tags-tree org-agenda-na-expr))
               org-agenda-files '("tasks.org" "freska.org" "tickler.org" "inbox.org")
               org-refile-targets '((org-agenda-files :maxlevel . 2) ("someday.org" :maxlevel . 1))
-              org-archive-location (concat "archive/%s_" (format-time-string "%Y") ".org" "::* Tasks" )
+              org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
               org-archive-default-command 'org-archive-subtree
               org-capture-templates
                     '(("i" "Todo" entry (file "~/org/inbox.org")
