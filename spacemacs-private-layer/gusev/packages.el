@@ -30,7 +30,11 @@
 ;;; Code:
 
 (defconst gusev-packages
-  '()
+  '(
+    org
+    (org-caldav :requires org)
+    oauth2
+   )
   "The list of Lisp packages required by the gusev layer.
 
 Each entry is either:
@@ -58,5 +62,51 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun gusev/init-org ()
+  (use-package org
+    :init ((lambda ()
+             (org/init-org)
+             (add-hook 'org-capture-after-finalize-hook 'delete-frame)
+             (setq
+              org-tag-alist '(("outside" . ?o)
+                              ("read" . ?r)
+                              ("games" . ?g)
+                              ("shop" . ?s)
+                              ("office" . ?e))
+              org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+              org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+              org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+              org-agenda-custom-commands
+              '(("n" "NA" tags-tree org-agenda-na-expr))
+              org-agenda-files '("tasks.org" "freska.org" "tickler.org" "inbox.org")
+              org-refile-targets '((org-agenda-files :maxlevel . 2) ("someday.org" :maxlevel . 1))
+              org-archive-location (concat "archive/%s_" (format-time-string "%Y") ".org" "::* Tasks" )
+              org-archive-default-command 'org-archive-subtree
+              org-capture-templates
+                    '(("i" "Todo" entry (file "~/org/inbox.org")
+                       "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+              )))))
+
+(defun gusev/init-org-caldav ()
+  (use-package org-caldav
+    :config ((lambda ()
+               (setq org-caldav-url 'google
+                     org-caldav-calendar-id "6oqbribi3hku4n81i2ach9b3qo@group.calendar.google.com"
+                     org-caldav-inbox "~/org/from-google-calendar.org"
+                     org-caldav-files '("~/org/tasks.org"
+                                        "~/org/tickler.org"
+                                        "~/org/freska.org"
+                                        "~/org/inbox.org")
+                     org-icalendar-timezone "Europe/Minsk"
+                     org-icalendar-alarm-time 10
+                     org-caldav-show-sync-results 'nil)))))
+
+(defun gusev/init-oauth2 ()
+  (use-package oauth2
+    :config ((lambda ()
+               (setq org-caldav-oauth2-client-id "712874160068-fbgq4lk2k58hct939q5vo7g2e4o9icvu.apps.googleusercontent.com"
+                     org-caldav-oauth2-client-secret "hJDHEHjaXGbNd7k90Kizk6Wy")))))
 
 ;;; packages.el ends here
+
+; LocalWords:  Freska
