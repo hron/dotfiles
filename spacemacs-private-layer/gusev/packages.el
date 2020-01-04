@@ -68,7 +68,7 @@ Each entry is either:
              (org/init-org)
              (add-hook 'org-capture-after-finalize-hook 'delete-frame)
              (add-hook 'org-mode-hook '(lambda ()
-                                         (toggle-truncate-lines +1)
+                                         (toggle-truncate-lines -1)
                                          (toggle-word-wrap +1)))
              (setq
               org-tag-alist '(("outside" . ?o)
