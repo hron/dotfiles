@@ -109,7 +109,8 @@ Each entry is either:
                                         "~/org/inbox.org")
                      org-icalendar-timezone "Europe/Minsk"
                      org-icalendar-alarm-time 10
-                     org-caldav-show-sync-results 'nil)))))
+                     org-caldav-show-sync-results 'nil
+                     plstore-cache-passphrase-for-symmetric-encryption t)))))
 
 (defun gusev/init-oauth2 ()
   (use-package oauth2
