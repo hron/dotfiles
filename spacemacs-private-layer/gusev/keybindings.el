@@ -122,3 +122,8 @@
               ("C-c C-x g" . org-caldav-sync)
               ("C-c b" . org-switchb)
               ))
+
+(use-package helm-files
+  :config
+  (unbind-key "C-<backspace>" helm-find-files-map)
+  (unbind-key "C-<backspace>" helm-read-file-map))
