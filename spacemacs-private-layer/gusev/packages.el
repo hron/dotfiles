@@ -110,7 +110,17 @@ Each entry is either:
                      org-icalendar-timezone "Europe/Minsk"
                      org-icalendar-alarm-time 10
                      org-caldav-show-sync-results 'nil
-                     plstore-cache-passphrase-for-symmetric-encryption t)))))
+                     plstore-cache-passphrase-for-symmetric-encryption t)
+
+               ;; This is a workaround for the problem with asking password multiple times
+               (defun gusev/unset-gpg-agen-info (orig-fun &rest args)
+                 (let ((orig-env (getenv "GPG_AGENT_INFO")))
+                   (setenv "GPG_AGENT_INFO")
+                   (apply orig-fun args)
+                   (setenv "GPG_AGENT_INFO" orig-env)))
+               (advice-add 'org-caldav-sync :around #'gusev/unset-gpg-agen-info)
+
+               ))))
 
 (defun gusev/init-oauth2 ()
   (use-package oauth2
