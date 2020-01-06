@@ -31,5 +31,5 @@ if [ -d "$HOME/.yarn/bin" ] ; then
 fi
 
 export BROWSER=sensible-browser
-export EDITOR=sensible-editor
+export EDITOR='/usr/bin/emacsclient -c'
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
