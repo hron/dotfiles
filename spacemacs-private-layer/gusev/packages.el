@@ -70,31 +70,31 @@ Each entry is either:
              (add-hook 'org-mode-hook '(lambda ()
                                          (toggle-truncate-lines -1)
                                          (toggle-word-wrap +1)))
-             (setq
-              org-tag-alist '(("outside" . ?o)
-                              ("read" . ?r)
-                              ("games" . ?g)
-                              ("shop" . ?s)
-                              ("office" . ?e)
-                              ("thor-linux" . ?t)
-                              ("thor-windows" . ?w)
-                              ("thinkpad" . ?x)
-                              (:startgroup)
-                              ("Elena" . ?E)
-                              (:endgroup)
-                              )
-              org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
-              org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
-              org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
-              org-agenda-custom-commands
-              '(("n" "NA" tags-tree org-agenda-na-expr))
-              org-agenda-files '("tasks.org" "freska.org" "tickler.org" "inbox.org")
-              org-refile-targets '((org-agenda-files :maxlevel . 2) ("someday.org" :maxlevel . 1))
-              org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
-              org-archive-default-command 'org-archive-subtree
-              org-capture-templates
-                    '(("i" "Todo" entry (file "~/org/inbox.org")
-                       "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+             (setq org-tag-alist '(("outside" . ?o)
+                                   ("read" . ?r)
+                                   ("games" . ?g)
+                                   ("shop" . ?s)
+                                   ("office" . ?e)
+                                   ("thor-linux" . ?t)
+                                   ("thor-windows" . ?w)
+                                   ("thinkpad" . ?x)
+                                   (:startgroup)
+                                   ("Elena" . ?E)
+                                   (:endgroup)
+                                   )
+                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+                   org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+                   org-agenda-custom-commands
+                   '(("n" "NA" tags-tree org-agenda-na-expr))
+                   org-agenda-files '("tasks.org" "freska.org" "tickler.org" "inbox.org")
+                   org-refile-targets '((org-agenda-files :maxlevel . 2) ("someday.org" :maxlevel . 1))
+                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
+                   org-archive-default-command 'org-archive-subtree
+                   org-capture-templates
+                   '(("i" "Todo" entry (file "~/org/inbox.org")
+                      "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+                   org-agenda-start-on-weekday 1
               )))))
 
 (defun gusev/init-org-caldav ()
