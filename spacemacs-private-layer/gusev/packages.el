@@ -107,6 +107,7 @@ Each entry is either:
                                         "~/org/tickler.org"
                                         "~/org/freska.org"
                                         "~/org/inbox.org")
+                     org-caldav-save-directory "~/org/.org-caldav"
                      org-icalendar-timezone "Europe/Minsk"
                      org-icalendar-alarm-time 10
                      org-caldav-show-sync-results 'nil
