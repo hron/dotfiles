@@ -95,6 +95,7 @@ Each entry is either:
                    '(("i" "Todo" entry (file "~/org/inbox.org")
                       "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
                    org-agenda-start-on-weekday 1
+                   calendar-week-start-day 1
               )))))
 
 (defun gusev/init-org-caldav ()
