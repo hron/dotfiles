@@ -405,6 +405,7 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(org-icalendar-include-todo t)
  '(org-icalendar-use-scheduled (quote (event-if-todo todo-start)))
+ '(org-provide-todo-statistics (quote all-headlines))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 1))))
  '(org-refile-use-outline-path (quote file))
  '(org-support-shift-select (quote always))
