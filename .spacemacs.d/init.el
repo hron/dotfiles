@@ -55,7 +55,7 @@ values."
      version-control
      themes-megapack
      docker
-     (multiple-cursors :variables multiple-cursors-backend 'mc)
+     multiple-cursors
      gusev
      )
    ;; List of additional packages that will be installed without being
