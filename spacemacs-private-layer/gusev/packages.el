@@ -112,6 +112,7 @@ Each entry is either:
                      org-icalendar-timezone "Europe/Helsinki"
                      org-icalendar-alarm-time 10
                      org-caldav-show-sync-results 'nil
+                     org-caldav-sync-direction 'org->cal
                      plstore-cache-passphrase-for-symmetric-encryption t)
                ))))
 
