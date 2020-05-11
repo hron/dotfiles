@@ -142,6 +142,12 @@ if [ -d $HOME/anaconda3 ]; then
     unset __conda_setup
 fi
 
+# https://virtualenvwrapper.readthedocs.io/
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+. $HOME/.local/bin/virtualenvwrapper.sh
+
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && exec tmux
+
+source /home/aleksei/.config/broot/launcher/bash/br
