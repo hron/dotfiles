@@ -48,8 +48,8 @@
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
          ("C-a" . helm-select-action) ; list actions using C-a
          ("C-z" . undo-tree-undo)
-         :map helm-moccur-mode-map
-         ("RET" . helm-moccur-mode-goto-line-ow)
+         ;; :map helm-moccur-mode-map
+         ;; ("RET" . helm-moccur-mode-goto-line-ow)
          :map helm-find-files-map
          ("C-z" . undo-tree-undo)
 
