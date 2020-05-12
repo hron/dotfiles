@@ -1,4 +1,4 @@
-(cua-mode t)
+(cua-mode +1)
 (define-key cua--cua-keys-keymap [(control z)] 'undo-tree-undo)
 (define-key cua--cua-keys-keymap [(control shift z)] 'undo-tree-redo)
 

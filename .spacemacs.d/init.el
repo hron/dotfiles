@@ -372,6 +372,9 @@ you should place your code here."
          (lambda (arg) (minitest-buffer-name (or file-name "")))))))
 
   (transient-mark-mode -1)
+  ;; Disable global magit minor mode because it prevents cua-
+  (global-magit-file-mode -1)
+  (cua-mode +1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
