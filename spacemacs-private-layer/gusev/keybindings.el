@@ -9,6 +9,10 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
+(use-package evil
+  :bind (("M-[" . evil-jump-backward)
+         ("M-]" . evil-jump-forward)))
+
 (use-package helm
   :init
   (setq helm-semantic-fuzzy-match t
@@ -86,11 +90,20 @@
 (setq select-active-regions nil)
 
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "M-.") 'spacemacs/jump-to-definition)))
+
+(use-package anaconda-mode
+  :bind (:map anaconda-mode-map
+              ("M-." . spacemacs/jump-to-definition)))
+
+(use-package robe
+  :bind (:map robe-mode-map
+              ("M-." . spacemacs/jump-to-definition)))
 
 (use-package undo-tree
   :bind (:map undo-tree-map
               ("C-/" . nil)
-              ("C-S-z" . undo-tree-redo))) 
+              ("C-S-z" . undo-tree-redo)))
 
 (use-package company
   :bind (:map company-mode-map
