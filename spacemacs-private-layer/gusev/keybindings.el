@@ -92,18 +92,6 @@
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "M-.") 'spacemacs/jump-to-definition)))
 
-(use-package anaconda-mode
-  :bind (:map anaconda-mode-map
-              ("M-." . spacemacs/jump-to-definition)))
-
-(use-package robe
-  :bind (:map robe-mode-map
-              ("M-." . spacemacs/jump-to-definition)))
-
-(use-package lisp
-  :bind (:map lisp-mode-map
-              ("M-." . spacemacs/jump-to-definition)))
-
 (use-package undo-tree
   :bind (:map undo-tree-map
               ("C-/" . nil)
@@ -149,3 +137,20 @@
   :config
   (unbind-key "C-<backspace>" helm-find-files-map)
   (unbind-key "C-<backspace>" helm-read-file-map))
+
+(defun gusev--spacemacs|define-jump-handlers (mode &rest handlers)
+  "Adds M-. as an alias for SPC m g g"
+  (let ((mode-hook (intern (format "%S-hook" mode))))
+    (message (format "%S" mode-hook))
+    (add-hook mode-hook '(lambda () (local-set-key (kbd "M-.") 'spacemacs/jump-to-definition)))))
+(advice-add 'spacemacs|define-jump-handlers :after 'gusev--spacemacs|define-jump-handlers)
+
+(use-package robe
+  :bind* (:map robe-mode-map
+               ("M-." . spacemacs/jump-to-definition)))
+(use-package elisp-slime-nav
+  :bind* (:map elisp-slime-nav-mode-map
+               ("M-." . spacemacs/jump-to-definition)))
+(use-package anaconda-mode
+  :bind (:map anaconda-mode-map
+              ("M-." . spacemacs/jump-to-definition)))

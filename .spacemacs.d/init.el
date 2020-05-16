@@ -313,8 +313,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq evil-toggle-key "C-S-M-z")
-  (setq ruby-enable-enh-ruby-mode t)
-  )
+  (setq ruby-enable-enh-ruby-mode t))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
