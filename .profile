@@ -32,4 +32,5 @@ fi
 
 export BROWSER=sensible-browser
 export EDITOR='/usr/bin/emacsclient -c'
+export ALTERNATE_EDITOR=""
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0

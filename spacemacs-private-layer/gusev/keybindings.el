@@ -100,6 +100,10 @@
   :bind (:map robe-mode-map
               ("M-." . spacemacs/jump-to-definition)))
 
+(use-package lisp
+  :bind (:map lisp-mode-map
+              ("M-." . spacemacs/jump-to-definition)))
+
 (use-package undo-tree
   :bind (:map undo-tree-map
               ("C-/" . nil)
@@ -134,9 +138,13 @@
               ("S-M-<down>" . org-move-subtree-down)
               ("C-c o" . gusev/org-todo-convert-to-project)
               ("C-c C-x g" . org-caldav-sync)
-              ("C-c b" . org-switchb)
-              ))
+              ("C-c b" . org-switchb)))
 
+(use-package org-agenda
+  :bind* (:map org-agenda-mode-map
+              ("z" . org-agenda-undo)))
+;; (use-package org-agenda
+;;   )
 (use-package helm-files
   :config
   (unbind-key "C-<backspace>" helm-find-files-map)
