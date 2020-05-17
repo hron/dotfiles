@@ -437,7 +437,7 @@ This function is called at the very end of Spacemacs initialization."
  '(plstore-encrypt-to (quote ("aleksei.gusev@gmail.com")))
  '(projectile-globally-ignored-directories
    (quote
-    (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "*.mypy_cache" ".eggs" "*node_modules")))
+    (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "*.mypy_cache" ".eggs" "*node_modules" ".pytest_cache")))
  '(safe-local-variable-values
    (quote
     ((python-test-runner . pytest)

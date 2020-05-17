@@ -154,3 +154,8 @@
 (use-package anaconda-mode
   :bind (:map anaconda-mode-map
               ("M-." . spacemacs/jump-to-definition)))
+
+(use-package python-mode
+  :bind (:map python-mode-map
+             ("M-<right>" . python-indent-shift-right)
+             ("M-<left>" . python-indent-shift-left)))
