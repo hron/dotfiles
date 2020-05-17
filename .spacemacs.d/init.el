@@ -143,9 +143,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
-                               :weight normal
+   dotspacemacs-default-font '("Input Mono"
+                               :size 18
+                               :weight demibold
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -474,7 +474,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
+ '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 108 :width semi-condensed :foundry "FBI " :family "Input Mono"))))
  '(org-level-1 ((t (:inherit bold :foreground "#4f97d7" :weight bold :height 1.0))))
  '(org-level-2 ((t (:inherit bold :foreground "#2d9574" :weight bold :height 1.0))))
  '(org-level-3 ((t (:foreground "#67b11d" :weight normal :height 1.0)))))
