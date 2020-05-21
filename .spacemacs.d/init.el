@@ -371,10 +371,12 @@ you should place your code here."
          'minitest-compilation-mode
          (lambda (arg) (minitest-buffer-name (or file-name "")))))))
 
-  (transient-mark-mode -1)
+  ;; (transient-mark-mode -1)
   ;; Disable global magit minor mode because it prevents cua-
   (global-magit-file-mode -1)
   (cua-mode +1)
+  (purpose-mode -1)
+  (popwin-mode -1)
 
   (setq paradox-github-token "fe428627dbaf0325892ed41a28911df83d6b7eb6")
   )
@@ -418,10 +420,28 @@ This function is called at the very end of Spacemacs initialization."
  '(blink-cursor-mode t)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
+ '(cua-mode t nil (cua-base))
  '(cursor-type (quote bar))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#383838")
  '(global-git-gutter+-mode t)
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f"))))
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
@@ -440,7 +460,8 @@ This function is called at the very end of Spacemacs initialization."
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "*.mypy_cache" ".eggs" "*node_modules" ".pytest_cache")))
  '(safe-local-variable-values
    (quote
-    ((python-test-runner . pytest)
+    ((pytest-cmd-flags . "-x -s --disable-warnings")
+     (python-test-runner . pytest)
      (python-shell-virtualenv-root . "/home/aleksei/.virtualenvs/etcd3")
      (eval progn
            (setq projectile-project-test-cmd
@@ -474,7 +495,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#292b2e" :foreground "#b2b2b2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 108 :width semi-condensed :foundry "FBI " :family "Input Mono"))))
+ '(default ((t (:background nil))))
  '(org-level-1 ((t (:inherit bold :foreground "#4f97d7" :weight bold :height 1.0))))
  '(org-level-2 ((t (:inherit bold :foreground "#2d9574" :weight bold :height 1.0))))
  '(org-level-3 ((t (:foreground "#67b11d" :weight normal :height 1.0)))))
