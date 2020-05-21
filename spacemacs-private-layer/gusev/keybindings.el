@@ -126,7 +126,8 @@
               ("S-M-<down>" . org-move-subtree-down)
               ("C-c o" . gusev/org-todo-convert-to-project)
               ("C-c C-x g" . org-caldav-sync)
-              ("C-c b" . org-switchb)))
+              ("C-c b" . org-switchb)
+              ("M-<return>" . nil)))
 
 (use-package org-agenda
   :bind* (:map org-agenda-mode-map
