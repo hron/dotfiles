@@ -72,6 +72,7 @@ Each entry is either:
                                          (toggle-word-wrap +1)))
              (add-hook 'after-save-hook '(lambda ()
                                            (when (eq major-mode 'org-mode)
+                                             (org-caldav-sync)
                                              (org-caldav-sync))))
              (setq org-tag-alist '(("outside" . ?o)
                                    ("read" . ?r)
