@@ -121,27 +121,6 @@ fi
 
 alias xcc='xclip -selection clipboard'
 
-# ASDF setup
-if [ -d $HOME/.asdf ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
-
-# Anaconda3
-if [ -d $HOME/anaconda3 ]; then
-    __conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "$HOME/anaconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="$HOME/anaconda3/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-fi
-
 # https://virtualenvwrapper.readthedocs.io/
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 . $HOME/.local/bin/virtualenvwrapper.sh
