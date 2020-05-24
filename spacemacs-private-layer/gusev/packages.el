@@ -135,7 +135,7 @@ Each entry is either:
     :hook (js2-mode . nvm-use-for-buffer)))
 
 (defun gusev/init-jest-test-mode ()
-  (use-package jest
+  (use-package jest-test-mode
     :defer t
     :commands jest-test-mode
     :hook ((js2-mode . jest-test-mode)
