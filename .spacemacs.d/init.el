@@ -375,8 +375,8 @@ you should place your code here."
   ;; Disable global magit minor mode because it prevents cua-
   (global-magit-file-mode -1)
   (cua-mode +1)
-  (purpose-mode -1)
-  (popwin-mode -1)
+  ;; (purpose-mode -1)
+  ;; (popwin-mode -1)
 
   (setq paradox-github-token "fe428627dbaf0325892ed41a28911df83d6b7eb6")
   )
@@ -458,7 +458,8 @@ This function is called at the very end of Spacemacs initialization."
     (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "*.mypy_cache" ".eggs" "*node_modules" ".pytest_cache")))
  '(safe-local-variable-values
    (quote
-    ((js2-strict-missing-semi-warning)
+    ((js2-basic-offset . 2)
+     (js2-strict-missing-semi-warning)
      (pytest-cmd-flags . "-x -s --disable-warnings")
      (python-test-runner . pytest)
      (python-shell-virtualenv-root . "/home/aleksei/.virtualenvs/etcd3")
