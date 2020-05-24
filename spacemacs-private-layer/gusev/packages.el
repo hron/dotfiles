@@ -35,6 +35,7 @@
     (org-caldav :requires org)
     oauth2
     nvm
+    jest
    )
   "The list of Lisp packages required by the gusev layer.
 
@@ -132,6 +133,11 @@ Each entry is either:
   (use-package nvm
     :ensure t
     :hook (js2-mode . nvm-use-for-buffer)))
+
+(defun gusev/init-jest ()
+  (use-package jest
+    :after (js2-mode)
+    :hook (js2-mode . jest-minor-mode)))
 
 ;;; packages.el ends here
 
