@@ -132,6 +132,7 @@ Each entry is either:
   (use-package nvm
     :ensure t
     :hook (js2-mode . nvm-use-for-buffer)))
+
 ;;; packages.el ends here
 
 ; LocalWords:  F-Secure
