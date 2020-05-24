@@ -34,6 +34,7 @@
     org
     (org-caldav :requires org)
     oauth2
+    nvm
    )
   "The list of Lisp packages required by the gusev layer.
 
@@ -127,6 +128,10 @@ Each entry is either:
                (setq org-caldav-oauth2-client-id "712874160068-fbgq4lk2k58hct939q5vo7g2e4o9icvu.apps.googleusercontent.com"
                      org-caldav-oauth2-client-secret "hJDHEHjaXGbNd7k90Kizk6Wy")))))
 
+(defun gusev/init-nvm ()
+  (use-package nvm
+    :ensure t
+    :hook (js2-mode . nvm-use-for-buffer)))
 ;;; packages.el ends here
 
 ; LocalWords:  F-Secure
