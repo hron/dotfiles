@@ -1,3 +1,6 @@
 [submodule "ahkscripts/WindowPadX"]
 	path = ahkscripts/WindowPadX
 	url = git@github.com:hoppfrosch/WindowPadX.git
+[submodule "doom-emacs"]
+	path = doom-emacs
+	url = https://github.com/hlissner/doom-emacs
