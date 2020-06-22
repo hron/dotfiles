@@ -54,3 +54,10 @@
 ;; they are implemented.
 
 (cua-mode)
+
+(use-package! smartparens
+  :config
+   (custom-set-variables
+   '(sp-override-key-bindings
+     '(("C-<right>" . nil)
+       ("C-<left>" . nil)))))
