@@ -142,7 +142,17 @@
              ;; (call-interactively 'org-insert-todo-subheading)
              ;; (call-interactively 'org-do-demote)
              (goto-char (point-at-eol)))
-           ))
+           )
+  :bind (:map org-mode-map
+              ("S-<return>" . org-insert-heading-after-current)
+              ("S-M-<return>" . org-insert-todo-heading-respect-content)
+              ("S-M-<up>" . org-move-subtree-up)
+              ("S-M-<down>" . org-move-subtree-down)
+              ("C-c o" . gusev/org-todo-convert-to-project)
+              ("C-c C-x g" . org-caldav-sync)
+              ("C-c b" . org-switchb)
+              ("M-<return>" . nil))
+  )
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
@@ -203,3 +213,63 @@
   :bind (:map helm-find-files-map
          ("C-z" . undo-tree-undo)))
 
+(use-package! expand-region
+  :init
+  (global-set-key (kbd "C-h") 'er/expand-region)
+  (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1))))
+
+(use-package! mwim
+  :config
+  (global-set-key (kbd "<home>") 'mwim-beginning-of-code-or-line))
+
+(global-set-key (kbd "C-M-l") 'indent-region)
+
+(global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
+
+(setq search-exit-option 'edit)
+(global-set-key (kbd "C-f") 'isearch-forward)
+(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
+(define-key isearch-mode-map [return] 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
+(define-key isearch-mode-map (kbd "C-v") 'isearch-yank-kill)
+(define-key minibuffer-local-isearch-map (kbd "<escape>") 'exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
+(define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
+;; (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+
+(global-set-key (kbd "C-M-<down>") 'next-error)
+(global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
+
+(setq select-enable-clipboard t)
+(setq select-active-regions nil)
+
+(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "M-.") 'spacemacs/jump-to-definition)))
+
+(use-package! undo-tree
+  :bind (:map undo-tree-map
+              ("C-/" . nil)
+              ("C-S-z" . undo-tree-redo)))
+
+(use-package! company
+  :bind (:map company-mode-map
+              ("<escape>" . company-abort)))
+
+(global-set-key [f6] 'toggle-truncate-lines)
+(use-package! winner
+  :init
+  (global-set-key [f2] 'winner-undo)
+  (global-set-key [f3] 'winner-redo))
+
+(global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
+(global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
+(global-set-key (kbd "C-d") 'spacemacs/duplicate-line-or-region)
+
+(global-set-key (kbd "C-w") 'kill-this-buffer)
+
+(use-package! comint
+  :bind (:map comint-mode-map
+              ("C-d" . comint-delchar-or-maybe-eof)
+              ("C-c" . nil)))
