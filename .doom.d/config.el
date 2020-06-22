@@ -252,7 +252,6 @@
 (setq select-active-regions nil)
 
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "M-.") 'spacemacs/jump-to-definition)))
 
 (use-package! undo-tree
   :bind (:map undo-tree-map
