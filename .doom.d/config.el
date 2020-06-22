@@ -61,3 +61,85 @@
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
        ("C-<left>" . nil)))))
+
+(defun gusev/org-gtd ()
+  "Prepare emacs frame to use as a GTD system."
+  (interactive)
+  (dolist (f org-agenda-files)
+    (find-file (concat org-directory "/" f)))
+  (switch-to-buffer "tasks.org")
+  (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks")))
+
+(defun gusev/org-capture-system-wide ()
+  "System-wide variant of org-capture."
+  (interactive)
+  (org-capture :keys "i")
+  (delete-other-windows))
+
+(defun gusev/org-gtd-capture ()
+  (interactive)
+  (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks"))
+  (gusev/org-capture-system-wide))
+
+(use-package! org
+  :config (progn
+           (add-hook 'org-capture-after-finalize-hook 'delete-frame)
+           (add-hook 'org-mode-hook '(lambda ()
+                                       (toggle-truncate-lines -1)
+                                       (toggle-word-wrap +1)))
+           ;; (add-hook 'after-save-hook '(lambda ()
+           ;;                               (when (eq major-mode 'org-mode)
+           ;;                                 (org-caldav-sync)
+           ;;                                 (org-caldav-sync))))
+           (setq org-tag-alist '(("outside" . ?o)
+                                 ("read" . ?r)
+                                 ("games" . ?g)
+                                 ("shop" . ?s)
+                                 ("office" . ?e)
+                                 ("thor-linux" . ?t)
+                                 ("thor-windows" . ?w)
+                                 ("thinkpad" . ?x)
+                                 (:startgroup)
+                                 ("Elena" . ?E)
+                                 (:endgroup)
+                                 )
+
+                 org-todo-keywords
+                       '((sequence
+                          "TODO"
+                          "DONE"))
+                 org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+                 org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+                 org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+                 org-agenda-custom-commands
+                 '(("n" "NA" tags-tree org-agenda-na-expr))
+                 org-agenda-files '("tasks.org" "f-secure.org" "tickler.org" "inbox.org")
+                 org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
+                 org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
+                 org-archive-default-command 'org-archive-subtree
+                 org-capture-templates
+                 '(("i" "Todo" entry (file "~/org/inbox.org")
+                    "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+                 org-agenda-start-on-weekday 1
+                 calendar-week-start-day 1
+                 )
+
+           (defun gusev/org-todo-convert-to-project ()
+             (interactive)
+             (save-excursion
+               (org-todo "")
+               (goto-char (point-at-bol))
+               (if (looking-at "\\(**+\\) ")
+                   (replace-match "\\1 [%] ")))
+             ;; (org-show-entry)
+             ;; (org-forward-sentence)
+             ;; (newline)
+             ;; (goto-char (point-at-bol))
+             ;; (call-interactively 'org-insert-todo-subheading)
+             ;; (call-interactively 'org-do-demote)
+             (goto-char (point-at-eol)))
+           ))
