@@ -66,6 +66,10 @@ PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
 PS_GIT="$YELLOW\$PS_BRANCH"
 export PS1="${PS_INFO} ${PS_GIT}\n${RESET}\\$ "
 
+# Write/read history after each command
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
