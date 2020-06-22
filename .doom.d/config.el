@@ -65,6 +65,7 @@
 (defun gusev/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
   (interactive)
+  (require 'org)
   (dolist (f org-agenda-files)
     (find-file (concat org-directory "/" f)))
   (switch-to-buffer "tasks.org")
@@ -75,6 +76,7 @@
 (defun gusev/org-capture-system-wide ()
   "System-wide variant of org-capture."
   (interactive)
+  (require 'org)
   (org-capture :keys "i")
   (delete-other-windows))
 
@@ -153,6 +155,10 @@
               ("C-c b" . org-switchb)
               ("M-<return>" . nil))
   )
+
+(use-package! org-agenda
+  :bind* (:map org-agenda-mode-map
+              ("z" . org-agenda-undo)))
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
@@ -273,3 +279,8 @@
   :bind (:map comint-mode-map
               ("C-d" . comint-delchar-or-maybe-eof)
               ("C-c" . nil)))
+
+(use-package! python-mode
+  :bind (:map python-mode-map
+             ("M-<right>" . python-indent-shift-right)
+             ("M-<left>" . python-indent-shift-left)))
