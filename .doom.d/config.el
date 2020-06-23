@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Aleksei Gusev"
-      user-mail-address "john@doe.com")
+      user-mail-address "aleksei.gusev@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -21,6 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font "JetBrains Mono Medium-11")
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -283,3 +284,32 @@
   :bind (:map python-mode-map
              ("M-<right>" . python-indent-shift-right)
              ("M-<left>" . python-indent-shift-left)))
+
+(use-package! jest-test-mode
+  :ensure t
+  :defer t
+  :commands jest-test-mode
+  :init
+  (add-hook 'typescript-mode-hook 'jest-test-mode)
+  (add-hook 'js-mode-hook 'jest-test-mode)
+  (add-hook 'typescript-tsx-mode-hook 'jest-test-mode)
+  :bind (:map jest-test-mode-map
+         ("M-r" . jest-test-rerun-test)
+         ("M-R" . jest-test-debug-rerun-test)))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   (quote
+    ((js2-strict-missing-semi-warning)
+     (js2-basic-offset . 2))))
+ '(sp-override-key-bindings (quote (("C-<right>") ("C-<left>")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
