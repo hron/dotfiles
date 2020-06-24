@@ -160,3 +160,7 @@
   :bind (:map python-mode-map
              ("M-<right>" . python-indent-shift-right)
              ("M-<left>" . python-indent-shift-left)))
+
+(use-package markdown-mode
+  :bind (:map markdown-mode-map
+              ("M-<return>" . nil)))
