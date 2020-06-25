@@ -156,7 +156,11 @@
               ("C-S-<left>" . nil)
               ("C-S-<right>" . nil)
               ("S-<left>" . nil)
-              ("S-<right>" . nil)))
+              ("S-<right>" . nil)
+              ("C-S-<up>" . nil)
+              ("C-S-<down>" . nil)
+              ("S-<up>" . nil)
+              ("S-<down>" . nil)))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
