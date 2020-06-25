@@ -152,10 +152,11 @@
               ("S-M-<up>" . org-move-subtree-up)
               ("S-M-<down>" . org-move-subtree-down)
               ("C-c o" . gusev/org-todo-convert-to-project)
-              ("C-c C-x g" . org-caldav-sync)
               ("C-c b" . org-switchb)
-              ("M-<return>" . nil))
-  )
+              ("C-S-<left>" . nil)
+              ("C-S-<right>" . nil)
+              ("S-<left>" . nil)
+              ("S-<right>" . nil)))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
