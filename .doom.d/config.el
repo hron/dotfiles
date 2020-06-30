@@ -302,6 +302,8 @@
          ("M-r" . jest-test-rerun-test)
          ("M-R" . jest-test-debug-rerun-test)))
 
+(global-auto-revert-mode +1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
