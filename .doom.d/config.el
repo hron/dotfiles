@@ -177,6 +177,7 @@
 
 (use-package! helm
   :init
+  (require 'helm-projectile)
   (setq helm-semantic-fuzzy-match t
         helm-imenu-fuzzy-match    t
         helm-M-x-fuzzy-match      t)
