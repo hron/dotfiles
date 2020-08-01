@@ -53,3 +53,7 @@ fi
 # export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
 # . $HOME/.local/bin/virtualenvwrapper.sh
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+if [ -d "$HOME/.cargo/bin" ] ; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
