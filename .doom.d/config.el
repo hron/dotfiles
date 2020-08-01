@@ -224,6 +224,8 @@
          ;;("C-z" . undo-tree-undo)
          ))
 
+(use-package! helm-projectile)
+
 (use-package! helm-files
   :config
   (unbind-key "C-<backspace>" helm-find-files-map)
