@@ -11,3 +11,4 @@ TAGS
 \.rspec
 capybara-*.html
 *.iml
+.idea/*
