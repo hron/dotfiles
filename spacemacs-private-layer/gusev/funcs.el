@@ -43,3 +43,72 @@
 (with-eval-after-load 'dired
   (setq dired-listing-switches "-ahl --group-directories-first")
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode))))
+
+(defun gusev/org-todo-convert-to-project ()
+  (interactive)
+  (save-excursion
+    (org-todo "")
+    (goto-char (point-at-bol))
+    (if (looking-at "\\(**+\\) ")
+        (replace-match "\\1 [%] ")))
+  ;; (org-show-entry)
+  ;; (org-forward-sentence)
+  ;; (newline)
+  ;; (goto-char (point-at-bol))
+  ;; (call-interactively 'org-insert-todo-subheading)
+  ;; (call-interactively 'org-do-demote)
+  (goto-char (point-at-eol)))
+
+(defun gusev/org-gtd ()
+  "Prepare emacs frame to use as a GTD system."
+  (interactive)
+  (dolist (f org-agenda-files)
+    (find-file (concat org-directory "/" f)))
+  (switch-to-buffer "tasks.org")
+  (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks")))
+
+(defun gusev/org-capture-system-wide ()
+  "System-wide variant of org-capture."
+  (interactive)
+  (org-capture :keys "i")
+  (delete-other-windows))
+
+(defun gusev/org-gtd-capture ()
+  (interactive)
+  (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
+    (set-frame-parameter nil 'icon-type tasks-icon)
+    (set-frame-parameter nil 'icon-name "Tasks"))
+  (gusev/org-capture-system-wide))
+
+(defun gusev/org-copy-trees-from-mobileorg-to-inbox ()
+  "Copies all content of ~/org/from-mobile.org into * Inbox tree
+of ~/org/tasks.org"
+  (save-excursion
+    (find-file "~/org/from-mobile.org")
+    (goto-char (point-min))
+    (if (search-forward-regexp "^* " nil t)
+        (let ((from-mobile-tasks))
+          (mark-whole-buffer)
+          (setq from-mobile-tasks
+                (filter-buffer-substring (region-beginning) (region-end) t))
+          (find-file "~/org/tasks.org")
+          (goto-char (point-min))
+          (search-forward "* Tickler")
+          (beginning-of-line)
+          (insert (replace-regexp-in-string
+                   "^* "
+                   "** "
+                   from-mobile-tasks))
+          (find-file "~/org/from-mobile.org")
+          (save-buffer))
+      ))
+  (find-file "~/org/tasks.org"))
+
+(defun gusev/org-feed-update-all-and-mobile-pull ()
+  "org-feed-update-all, then org-mobile-pull"
+  (interactive)
+  ;; (org-feed-update-all)
+  ;; (org-mobile-pull)
+  (gusev/org-copy-trees-from-mobileorg-to-inbox))

@@ -10,3 +10,5 @@ TAGS
 .emacs.desktop.lock
 \.rspec
 capybara-*.html
+*.iml
+.idea/*

@@ -35,36 +35,12 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# URL: https://gist.github.com/mkottman/1936195
-# A two-line colored Bash prompt (PS1) with Git branch and a line decoration
-# which adjusts automatically to the width of the terminal.
-# Recognizes and shows Git, SVN and Fossil branch/revision.
-# Screenshot: http://img194.imageshack.us/img194/2154/twolineprompt.png
-# Michal Kottman, 2012
- 
-RESET="\[\033[0m\]"
-RED="\[\033[0;31m\]"
-GREEN="\[\033[01;32m\]"
-BLUE="\[\033[01;34m\]"
-YELLOW="\[\033[0;33m\]"
- 
-function parse_git_branch {
-  PS_BRANCH=''
-  PS_FILL=${PS_LINE:0:$COLUMNS}
-  if [ -d .svn ]; then
-    PS_BRANCH="(svn r$(svn info|awk '/Revision/{print $2}'))"
-    return
-  elif [ -f _FOSSIL_ -o -f .fslckout ]; then
-    PS_BRANCH="(fossil $(fossil status|awk '/tags/{print $2}')) "
-    return
-  fi
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  PS_BRANCH="(git ${ref#refs/heads/}) "
-}
-PROMPT_COMMAND=parse_git_branch
-PS_INFO="$GREEN\u@\h$RESET:$BLUE\w"
-PS_GIT="$YELLOW\$PS_BRANCH"
-export PS1="${PS_INFO} ${PS_GIT}\n${RESET}\\$ "
+STARSHIP_BIN=$HOME/.cargo/bin/starship
+[ -x "$STARSHIP_BIN" ] && eval "$($STARSHIP_BIN init bash)"
+
+# Write/read history after each command
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -91,7 +67,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alFh'
+alias ll='ls -alFh --group-directories-first'
 alias la='ls -Ah'
 alias l='ls -CFh'
 
@@ -121,24 +97,38 @@ fi
 
 alias xcc='xclip -selection clipboard'
 
-# ASDF setup
-if [ -d $HOME/.asdf ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
+# Antti Seppälä: to help with logging in and setting the role I've set up these aliases:
+alias aws-xdr-ci-data-admin='samlauth.py --accountid 286741534858 --rolename aws-rds-ci-raw-data-admin --profile xdr-ci-data-admin; export AWS_DEFAULT_PROFILE=xdr-ci-data-admin; export AWS_PROFILE=xdr-ci-data-admin'
+alias aws-xdr-stg-data-admin='samlauth.py --accountid 755737209292 --rolename aws-rds-stg-raw-data-admin --profile xdr-stg-data-admin; export AWS_DEFAULT_PROFILE=xdr-stg-data-admin; export AWS_PROFILE=xdr-stg-data-admin'
+alias aws-xdr-prd-data-admin='samlauth.py --accountid 977557471879 --rolename aws-rds-prd-raw-data-admin --profile xdr-prd-data-admin; export AWS_DEFAULT_PROFILE=xdr-prd-data-admin; export AWS_PROFILE=xdr-prd-data-admin'
 
-# Anaconda3 
-if [ -d $HOME/local/anaconda3 ]; then
-  __conda_setup="$(CONDA_REPORT_ERRORS=false '$HOME/local/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      \eval "$__conda_setup"
-  else
-      if [ -f "$HOME/local/anaconda3/etc/profile.d/conda.sh" ]; then
-          . "$HOME/local/anaconda3/etc/profile.d/conda.sh"
-          CONDA_CHANGEPS1=false conda activate base
-      else
-          \export PATH="$HOME/local/anaconda3/bin:$PATH"
-      fi
+function f_secure_aws_activate() {
+  TEAM=$1
+  ENV=$2
+
+  if [ -z $TEAM ] || [ -z $ENV ]; then
+    echo "You have to profive at least 2 arguments"
+    return
   fi
-  unset __conda_setup
-fi
+
+  if [ ! -z $3 ]; then
+    POSTFIX="-${3}"
+  else
+    POSTFIX=""
+  fi
+  pyenv activate virtenv-3.7.7-aws &&
+    aws-login -a $ENV -t $TEAM -P &&
+    export AWS_DEFAULT_PROFILE=rds-$TEAM-${ENV}${POSTFIX} &&
+    export AWS_PROFILE=$AWS_DEFAULT_PROFILE
+}
+alias aws-rds-ci-pua='f_secure_aws_activate be ci pua'
+alias aws-rds-stg-pua='f_secure_aws_activate be stg pua'
+alias aws-rds-prd-pua='f_secure_aws_activate be prd pua'
+
+alias aws-rds-ci='f_secure_aws_activate be ci'
+alias aws-rds-stg='f_secure_aws_activate be stg'
+alias aws-rds-prd='f_secure_aws_activate be prd'
+
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && exec tmux

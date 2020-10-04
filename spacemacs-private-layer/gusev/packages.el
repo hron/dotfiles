@@ -30,7 +30,13 @@
 ;;; Code:
 
 (defconst gusev-packages
-  '()
+  '(
+    org
+    (org-caldav :requires org)
+    oauth2
+    nvm
+    jest-test-mode
+   )
   "The list of Lisp packages required by the gusev layer.
 
 Each entry is either:
@@ -58,5 +64,84 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
+(defun gusev/init-org ()
+  (use-package org
+    :init ((lambda ()
+             (org/init-org)
+             (add-hook 'org-capture-after-finalize-hook 'delete-frame)
+             (add-hook 'org-mode-hook '(lambda ()
+                                         (toggle-truncate-lines -1)
+                                         (toggle-word-wrap +1)))
+             ;; (add-hook 'after-save-hook '(lambda ()
+             ;;                               (when (eq major-mode 'org-mode)
+             ;;                                 (org-caldav-sync)
+             ;;                                 (org-caldav-sync))))
+             (setq org-tag-alist '(("outside" . ?o)
+                                   ("read" . ?r)
+                                   ("games" . ?g)
+                                   ("shop" . ?s)
+                                   ("office" . ?e)
+                                   ("thor-linux" . ?t)
+                                   ("thor-windows" . ?w)
+                                   ("thinkpad" . ?x)
+                                   (:startgroup)
+                                   ("Elena" . ?E)
+                                   (:endgroup)
+                                   )
+                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+                   org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+                   org-agenda-custom-commands
+                   '(("n" "NA" tags-tree org-agenda-na-expr))
+                   org-agenda-files '("tasks.org" "f-secure.org" "tickler.org" "inbox.org")
+                   org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
+                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
+                   org-archive-default-command 'org-archive-subtree
+                   org-capture-templates
+                   '(("i" "Todo" entry (file "~/org/inbox.org")
+                      "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+                   org-agenda-start-on-weekday 1
+                   calendar-week-start-day 1
+              )))))
+
+(defun gusev/init-org-caldav ()
+  (use-package org-caldav
+    :config ((lambda ()
+               (setq org-caldav-url 'google
+                     org-caldav-calendar-id "6oqbribi3hku4n81i2ach9b3qo@group.calendar.google.com"
+                     org-caldav-inbox "~/org/from-google-calendar.org"
+                     org-caldav-files '("~/org/tasks.org"
+                                        "~/org/tickler.org"
+                                        "~/org/f-secure.org"
+                                        "~/org/inbox.org")
+                     org-caldav-save-directory "~/org/.org-caldav"
+                     org-icalendar-timezone "Europe/Helsinki"
+                     org-icalendar-alarm-time 10
+                     org-caldav-show-sync-results 'nil
+                     org-caldav-debug-level 0
+                     org-caldav-sync-direction 'org->cal
+                     plstore-cache-passphrase-for-symmetric-encryption t)
+               ))))
+
+(defun gusev/init-oauth2 ()
+  (use-package oauth2
+    :config ((lambda ()
+               (setq org-caldav-oauth2-client-id "712874160068-fbgq4lk2k58hct939q5vo7g2e4o9icvu.apps.googleusercontent.com"
+                     org-caldav-oauth2-client-secret "hJDHEHjaXGbNd7k90Kizk6Wy")))))
+
+(defun gusev/init-nvm ()
+  (use-package nvm
+    :ensure t
+    :hook (js2-mode . nvm-use-for-buffer)))
+
+(defun gusev/init-jest-test-mode ()
+  (use-package jest-test-mode
+    :defer t
+    :commands jest-test-mode
+    :hook ((js2-mode . jest-test-mode)
+           (typescript-mode . jest-test-mode)
+           (typescript-tsx-mode . jest-test-mode))))
 
 ;;; packages.el ends here
+
+; LocalWords:  F-Secure
