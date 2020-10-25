@@ -4,6 +4,8 @@ SetTitleMatchMode, RegEx
 
 LWin::return
 RWin::return
+~LWin Up:: return
+~RWin Up:: return
 
 Ctrl & g::Send {Escape}
 
