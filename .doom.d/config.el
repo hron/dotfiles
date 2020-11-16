@@ -271,6 +271,7 @@
   :bind (:map undo-tree-map
               ("C-/" . nil)
               ("C-S-z" . undo-tree-redo)))
+(global-undo-tree-mode +1)
 
 (use-package! company
   :bind (:map company-mode-map
