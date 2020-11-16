@@ -1,6 +1,11 @@
 SetTitleMatchMode, RegEx
 
+;RWin::return
+
+LWin::return
 RWin::return
+~LWin Up:: return
+~RWin Up:: return
 
 Ctrl & g::Send {Escape}
 
@@ -11,8 +16,8 @@ RWin & h::Send {RWin down}{Tab}{RWin up}
 RWin & j::AltTab
 RWin & k::ShiftAltTab
 
-RWin & 7::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-RWin & 9::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+RWin & Up::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+RWin & Down::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -36,8 +41,10 @@ RWin & n::WinClose, A
 ;    WinMove, A,, 0, WATop, WAWidth/2, WAHeight
 ;    return
 
-;RWin & PgUp::Send {Volume_Up}
-;RWin & PgDn::Send {Volume_Down}
+#0::Send {Media_Play_Pause}
+#!0::Send {Media_Next}
+RWin & PgUp::Send {Volume_Up}
+RWin & PgDn::Send {Volume_Down}
 
 ;RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -49,6 +56,9 @@ Shift & Escape::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 
 Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 return
+
+CapsLock::Escape
+Escape::CapsLock
 
 ;RWin & -::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Space down}{Space up")
@@ -69,6 +79,8 @@ return
 ;RWin & [::
 ;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Left down}{Left up}")
 ;  return
+
+RWin & /::DllCall("LockWorkStation")
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -104,6 +116,11 @@ XButton2::Send {F1}
 #IfWinActive
 
 #IfWinActive, ahk_exe CK2game.exe
+XButton1::Send {Space}
+XButton2::Send q
+#IfWinActive
+
+#IfWinActive, ahk_exe ck3.exe
 XButton1::Send {Space}
 XButton2::Send q
 #IfWinActive
@@ -166,7 +183,11 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 
 ;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
 ;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=GvcVrA_ZMaWX06ysNXvFpi_K
-;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
 ;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
-;RWin & F9::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-;RWin & F12::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
+RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
+#^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
+RWin & [::Run "C:\ProgramData\chocolatey\bin\runemacs.exe" -f gusev/org-gtd
+;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
