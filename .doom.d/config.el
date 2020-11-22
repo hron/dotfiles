@@ -321,6 +321,17 @@
 (use-package! json-mode
   :init (setq js-indent-level 2))
 
+(use-package! lsp-mode
+  :bind (:map lsp-mode-map
+         ("M-." . lsp-goto-type-definition)
+         ("M-<RET>" . lsp-execute-code-action)))
+
+(use-package! git-gutter
+  :init
+  (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
+  (global-set-key (kbd "M-<next>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "M-<prior>") 'git-gutter:previous-hunk))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
