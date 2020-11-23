@@ -333,9 +333,16 @@
          ("<f9>" . dap-debug)
          ("C-9" . dap-debug)
          ("<f7>" . dap-ui-expressions)
-         ("C-S-<f8>" . dap-ui-breakpoints))
+         ("C-S-<f8>" . dap-ui-breakpoints)
+         ("<f10>" . dap-go-to-output-buffer))
   :custom
-  (dap-auto-configure-features '()))
+  (dap-auto-configure-features '())
+  (dap-auto-show-output nil)
+  (dap-output-window-max-height 10)
+  (dap-output-window-max-height 20)
+  :init
+  (add-hook 'dap-stopped-hook
+          (lambda (arg) (call-interactively #'dap-hydra))))
 
 (use-package! git-gutter
   :init
@@ -352,6 +359,20 @@
   :bind (:map global-map
          ("C-8" . projectile-test-project)
          ("M-r" . projectile-test-project)))
+
+(use-package! compile
+  :ensure nil
+  :init
+  ;; Add NodeJS error format
+  (setq compilation-error-regexp-alist-alist
+        (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
+                     1 ;; file
+                     2 ;; line
+                     3 ;; column
+                     )
+              compilation-error-regexp-alist-alist))
+  (setq compilation-error-regexp-alist
+        (cons 'node compilation-error-regexp-alist)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
