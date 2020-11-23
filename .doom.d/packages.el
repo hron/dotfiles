@@ -52,5 +52,3 @@
 ;(unpin! t)
 
 (package! mwim)
-
-(package! jest-test-mode)

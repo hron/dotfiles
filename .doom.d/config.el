@@ -302,18 +302,6 @@
          ("M-<right>" . python-indent-shift-right)
          ("M-<left>" . python-indent-shift-left)))
 
-(use-package! jest-test-mode
-  :ensure t
-  :defer t
-  :commands jest-test-mode
-  :init
-  (add-hook 'typescript-mode-hook 'jest-test-mode)
-  (add-hook 'js-mode-hook 'jest-test-mode)
-  (add-hook 'typescript-tsx-mode-hook 'jest-test-mode)
-  :bind (:map jest-test-mode-map
-         ("M-r" . jest-test-rerun-test)
-         ("M-R" . jest-test-debug-rerun-test)))
-
 ;; (set-popup-rule! "\\*compilation" :side 'right :width 0.5 :modeline t)
 ;; (plist-put +popup-defaults :modeline t)
 ;;
@@ -343,8 +331,10 @@
          ("<f8>" . dap-breakpoint-toggle)
          ("C-<f8>" . dap-breakpoint-condition)
          ("<f9>" . dap-debug)
+         ("C-9" . dap-debug)
          ("<f7>" . dap-ui-expressions)
          ("C-S-<f8>" . dap-ui-breakpoints))
+  :custom
   (dap-auto-configure-features '()))
 
 (use-package! git-gutter
@@ -357,6 +347,11 @@
   :bind (:map treemacs-mode-map
          ("M-<up>" . other-window-back)
          ("M-<down>" . other-window)))
+
+(use-package! projectile
+  :bind (:map global-map
+         ("C-8" . projectile-test-project)
+         ("M-r" . projectile-test-project)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
