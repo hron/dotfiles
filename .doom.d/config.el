@@ -58,7 +58,7 @@
 
 (use-package! smartparens
   :config
-   (custom-set-variables
+  (custom-set-variables
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
        ("C-<left>" . nil)))))
@@ -90,81 +90,81 @@
 
 (use-package! org
   :config (progn
-           (add-hook 'org-capture-after-finalize-hook 'delete-frame)
-           (add-hook 'org-mode-hook '(lambda ()
-                                       (toggle-truncate-lines -1)
-                                       (toggle-word-wrap +1)))
-           ;; (add-hook 'after-save-hook '(lambda ()
-           ;;                               (when (eq major-mode 'org-mode)
-           ;;                                 (org-caldav-sync)
-           ;;                                 (org-caldav-sync))))
-           (setq org-tag-alist '(("outside" . ?o)
-                                 ("read" . ?r)
-                                 ("games" . ?g)
-                                 ("shop" . ?s)
-                                 ("office" . ?e)
-                                 ("thor-linux" . ?t)
-                                 ("thor-windows" . ?w)
-                                 ("thinkpad" . ?x)
-                                 (:startgroup)
-                                 ("Elena" . ?E)
-                                 (:endgroup)
-                                 )
+            (add-hook 'org-capture-after-finalize-hook 'delete-frame)
+            (add-hook 'org-mode-hook '(lambda ()
+                                        (toggle-truncate-lines -1)
+                                        (toggle-word-wrap +1)))
+            ;; (add-hook 'after-save-hook '(lambda ()
+            ;;                               (when (eq major-mode 'org-mode)
+            ;;                                 (org-caldav-sync)
+            ;;                                 (org-caldav-sync))))
+            (setq org-tag-alist '(("outside" . ?o)
+                                  ("read" . ?r)
+                                  ("games" . ?g)
+                                  ("shop" . ?s)
+                                  ("office" . ?e)
+                                  ("thor-linux" . ?t)
+                                  ("thor-windows" . ?w)
+                                  ("thinkpad" . ?x)
+                                  (:startgroup)
+                                  ("Elena" . ?E)
+                                  (:endgroup)
+                                  )
 
-                 org-todo-keywords
-                       '((sequence
-                          "TODO"
-                          "DONE"))
-                 org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
-                 org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
-                 org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
-                 org-agenda-custom-commands
-                 '(("n" "NA" tags-tree org-agenda-na-expr))
-                 org-agenda-files '("tasks.org" "f-secure.org" "tickler.org" "inbox.org")
-                 org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
-                 org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
-                 org-archive-default-command 'org-archive-subtree
-                 org-capture-templates
-                 '(("i" "Todo" entry (file "~/org/inbox.org")
-                    "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
-                 org-agenda-start-on-weekday 1
-                 calendar-week-start-day 1
-                 )
+                  org-todo-keywords
+                  '((sequence
+                     "TODO"
+                     "DONE"))
+                  org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+                  org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+                  org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+                  org-agenda-custom-commands
+                  '(("n" "NA" tags-tree org-agenda-na-expr))
+                  org-agenda-files '("tasks.org" "f-secure.org" "tickler.org" "inbox.org")
+                  org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
+                  org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
+                  org-archive-default-command 'org-archive-subtree
+                  org-capture-templates
+                  '(("i" "Todo" entry (file "~/org/inbox.org")
+                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
+                  org-agenda-start-on-weekday 1
+                  calendar-week-start-day 1
+                  )
 
-           (defun gusev/org-todo-convert-to-project ()
-             (interactive)
-             (save-excursion
-               (org-todo "")
-               (goto-char (point-at-bol))
-               (if (looking-at "\\(**+\\) ")
-                   (replace-match "\\1 [%] ")))
-             ;; (org-show-entry)
-             ;; (org-forward-sentence)
-             ;; (newline)
-             ;; (goto-char (point-at-bol))
-             ;; (call-interactively 'org-insert-todo-subheading)
-             ;; (call-interactively 'org-do-demote)
-             (goto-char (point-at-eol)))
-           )
+            (defun gusev/org-todo-convert-to-project ()
+              (interactive)
+              (save-excursion
+                (org-todo "")
+                (goto-char (point-at-bol))
+                (if (looking-at "\\(**+\\) ")
+                    (replace-match "\\1 [%] ")))
+              ;; (org-show-entry)
+              ;; (org-forward-sentence)
+              ;; (newline)
+              ;; (goto-char (point-at-bol))
+              ;; (call-interactively 'org-insert-todo-subheading)
+              ;; (call-interactively 'org-do-demote)
+              (goto-char (point-at-eol)))
+            )
   :bind (:map org-mode-map
-              ("S-<return>" . org-insert-heading-after-current)
-              ("S-M-<return>" . org-insert-todo-heading-respect-content)
-              ("S-M-<up>" . org-move-subtree-up)
-              ("S-M-<down>" . org-move-subtree-down)
-              ("C-c C-e" . gusev/org-todo-convert-to-project)
-              ("C-c b" . org-switchb)
-              ("C-S-<left>" . nil)
-              ("C-S-<right>" . nil)
-              ("S-<left>" . nil)
-              ("S-<right>" . nil)
-              ("C-S-<up>" . nil)
-              ("C-S-<down>" . nil)
-              ("S-<up>" . nil)
-              ("S-<down>" . nil)))
+         ("S-<return>" . org-insert-heading-after-current)
+         ("S-M-<return>" . org-insert-todo-heading-respect-content)
+         ("S-M-<up>" . org-move-subtree-up)
+         ("S-M-<down>" . org-move-subtree-down)
+         ("C-c C-e" . gusev/org-todo-convert-to-project)
+         ("C-c b" . org-switchb)
+         ("C-S-<left>" . nil)
+         ("C-S-<right>" . nil)
+         ("S-<left>" . nil)
+         ("S-<right>" . nil)
+         ("C-S-<up>" . nil)
+         ("C-S-<down>" . nil)
+         ("S-<up>" . nil)
+         ("S-<down>" . nil)))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
-              ("z" . org-agenda-undo)))
+          ("z" . org-agenda-undo)))
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
@@ -269,13 +269,13 @@
 
 (use-package! undo-tree
   :bind (:map undo-tree-map
-              ("C-/" . nil)
-              ("C-S-z" . undo-tree-redo)))
+         ("C-/" . nil)
+         ("C-S-z" . undo-tree-redo)))
 (global-undo-tree-mode +1)
 
 (use-package! company
   :bind (:map company-mode-map
-              ("<escape>" . company-abort)))
+         ("<escape>" . company-abort)))
 
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package! winner
@@ -291,13 +291,13 @@
 
 (use-package! comint
   :bind (:map comint-mode-map
-              ("C-d" . comint-delchar-or-maybe-eof)
-              ("C-c" . nil)))
+         ("C-d" . comint-delchar-or-maybe-eof)
+         ("C-c" . nil)))
 
 (use-package! python-mode
   :bind (:map python-mode-map
-             ("M-<right>" . python-indent-shift-right)
-             ("M-<left>" . python-indent-shift-left)))
+         ("M-<right>" . python-indent-shift-right)
+         ("M-<left>" . python-indent-shift-left)))
 
 (use-package! jest-test-mode
   :ensure t
@@ -320,6 +320,16 @@
 
 (use-package! json-mode
   :init (setq js-indent-level 2))
+
+(use-package! rst-mode
+  :bind (:map rst-mode-map
+         ("<tab>" . indent-rigidly-right)
+         ("<backtab>" . indent-rigidly-left)))
+
+(use-package! git-commit
+  :custom
+  (git-commit-summary-max-length 70))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
