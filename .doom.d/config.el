@@ -168,7 +168,10 @@
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
-(global-set-key (kbd "M-<up>") (lambda () (interactive) (other-window -1)))
+(defun other-window-back ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "M-<up>") 'other-window-back)
 
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
@@ -326,10 +329,34 @@
          ("<tab>" . indent-rigidly-right)
          ("<backtab>" . indent-rigidly-left)))
 
+(use-package! lsp-mode
+  :bind (:map lsp-mode-map
+         ("M-." . lsp-goto-type-definition)
+         ("M-<RET>" . lsp-execute-code-action)))
+
 (use-package! git-commit
   :custom
   (git-commit-summary-max-length 70))
 
+(use-package! dap-mode
+  :bind (:map dap-mode-map
+         ("<f8>" . dap-breakpoint-toggle)
+         ("C-<f8>" . dap-breakpoint-condition)
+         ("<f9>" . dap-debug)
+         ("<f7>" . dap-ui-expressions)
+         ("C-S-<f8>" . dap-ui-breakpoints))
+  (dap-auto-configure-features '()))
+
+(use-package! git-gutter
+  :init
+  (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
+  (global-set-key (kbd "M-<next>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "M-<prior>") 'git-gutter:previous-hunk))
+
+(use-package! treemacs
+  :bind (:map treemacs-mode-map
+         ("M-<up>" . other-window-back)
+         ("M-<down>" . other-window)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
