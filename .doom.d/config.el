@@ -320,7 +320,8 @@
 (use-package! lsp-mode
   :bind (:map lsp-mode-map
          ("M-." . lsp-goto-type-definition)
-         ("M-<RET>" . lsp-execute-code-action)))
+         ("M-<RET>" . lsp-execute-code-action)
+         ("C-q" . lsp-describe-thing-at-point)))
 
 (use-package! git-commit
   :custom
