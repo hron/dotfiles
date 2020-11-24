@@ -374,6 +374,9 @@
   (setq compilation-error-regexp-alist
         (cons 'node compilation-error-regexp-alist)))
 
+(use-package! vterm
+  :custom (vterm-min-window-width 200))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
