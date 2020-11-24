@@ -376,7 +376,9 @@
         (cons 'node compilation-error-regexp-alist)))
 
 (use-package! vterm
-  :custom (vterm-min-window-width 200))
+  :custom (vterm-min-window-width 200)
+  :init
+  (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
