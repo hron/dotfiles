@@ -291,6 +291,7 @@
 (global-set-key (kbd "C-d") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
+(global-set-key (kbd "C-m") 'recenter-top-bottom)
 
 (use-package! comint
   :bind (:map comint-mode-map
@@ -350,8 +351,8 @@
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
-  (global-set-key (kbd "M-<next>") 'git-gutter:next-hunk)
-  (global-set-key (kbd "M-<prior>") 'git-gutter:previous-hunk))
+  (global-set-key (kbd "C-<next>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "C-<prior>") 'git-gutter:previous-hunk))
 
 (use-package! treemacs
   :bind (:map treemacs-mode-map
@@ -360,7 +361,9 @@
 
 (use-package! projectile
   :bind (:map global-map
-         ("C-8" . projectile-test-project)
+         ("C-S-t" . projectile-toggle-between-implementation-and-test)
+         ("C-8" . projectile-run-async-shell-command-in-root)
+         ("C-0" . projectile-test-project)
          ("M-r" . projectile-test-project)))
 
 (use-package! compile
@@ -381,6 +384,10 @@
   :custom (vterm-min-window-width 200)
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode))
+
+(use-package! tide
+  :bind (:map tide-mode-map
+         ("C-q" . tide-documentation-at-point)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
