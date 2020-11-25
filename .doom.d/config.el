@@ -302,9 +302,11 @@
          ("M-<right>" . python-indent-shift-right)
          ("M-<left>" . python-indent-shift-left)))
 
-;; (set-popup-rule! "\\*compilation" :side 'right :width 0.5 :modeline t)
-;; (plist-put +popup-defaults :modeline t)
-;;
+(use-package! popup
+  :init
+  ;(plist-put +popup-defaults :modeline t)
+  (set-popup-rule! "\\*compilation" :side 'right :width 0.5 :modeline t))
+
 (global-auto-revert-mode +1)
 
 (setq-default cursor-type '(bar . 3))
