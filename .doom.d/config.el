@@ -359,12 +359,17 @@
          ("M-<up>" . other-window-back)
          ("M-<down>" . other-window)))
 
+(defun projectile-test-rerun ()
+  (interactive)
+  (let ((compilation-read-command nil))
+    (call-interactively 'projectile-test-project)))
+
 (use-package! projectile
   :bind (:map global-map
          ("C-S-t" . projectile-toggle-between-implementation-and-test)
          ("C-8" . projectile-run-async-shell-command-in-root)
          ("C-0" . projectile-test-project)
-         ("M-r" . projectile-test-project)))
+         ("M-r" . projectile-test-rerun)))
 
 (use-package! compile
   :ensure nil
