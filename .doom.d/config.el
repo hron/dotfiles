@@ -381,13 +381,22 @@
         (cons 'node compilation-error-regexp-alist)))
 
 (use-package! vterm
+  :bind (:map vterm-mode-map
+         ("C-z" . vterm-undo)
+         ("C-<backspace>" . vterm-send-meta-backspace))
   :custom (vterm-min-window-width 200)
   :init
-  (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode))
+  (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
+  ;(add-hook 'vterm-mode-hook '(lambda () (cua-mode -1)))
+  )
 
 (use-package! tide
   :bind (:map tide-mode-map
          ("C-q" . tide-documentation-at-point)))
+
+(use-package! better-jumper
+  :bind (("M-[" . better-jumper-jump-backward)
+         ("M-]" . better-jumper-jump-forward)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
