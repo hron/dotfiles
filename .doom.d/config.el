@@ -56,6 +56,7 @@
 
 (cua-mode +1)
 (global-subword-mode +1)
+(blink-cursor-mode +1)
 
 (use-package! smartparens
   :config
