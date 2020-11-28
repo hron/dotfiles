@@ -1,9 +1,4 @@
 SetTitleMatchMode, RegEx
-
-;RWin::return
-
-LWin::return
-RWin::return
 ~LWin Up:: return
 ~RWin Up:: return
 
