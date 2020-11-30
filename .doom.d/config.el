@@ -331,10 +331,6 @@
          ("M-<RET>" . lsp-execute-code-action)
          ("C-q" . lsp-describe-thing-at-point)))
 
-(use-package! git-commit
-  :custom
-  (git-commit-summary-max-length 70))
-
 (use-package! dap-mode
   :bind (:map dap-mode-map
          ("<f8>" . dap-breakpoint-toggle)
