@@ -236,7 +236,8 @@
   (unbind-key "C-<backspace>" helm-find-files-map)
   (unbind-key "C-<backspace>" helm-read-file-map)
   :bind (:map helm-find-files-map
-         ("C-z" . undo-tree-undo)))
+         ("C-z" . undo-tree-undo))
+  :custom (helm-ff-fuzzy-matching t))
 
 (use-package! expand-region
   :init
