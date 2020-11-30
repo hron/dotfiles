@@ -264,6 +264,8 @@
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
 ;; (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+(global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
+(global-anzu-mode +1)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
