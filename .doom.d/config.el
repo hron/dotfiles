@@ -310,8 +310,8 @@
 
 (use-package! popup
   :init
-  ;(plist-put +popup-defaults :modeline t)
-  (set-popup-rule! "\\*compilation" :side 'right :width 0.5 :modeline t))
+  (plist-put +popup-defaults :modeline t)
+  (set-popup-rule! "\\*compilation" :side 'right :size 0.5 :modeline t))
 
 (global-auto-revert-mode +1)
 
