@@ -177,9 +177,6 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
-(global-set-key (kbd "M-[") 'previous-buffer)
-(global-set-key (kbd "M-]") 'next-buffer)
-
 (use-package! helm
   :init
   (require 'helm-projectile)
@@ -297,6 +294,7 @@
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 ;; (global-set-key (kbd "C-m") 'recenter-top-bottom)
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
 
 (use-package! comint
   :bind (:map comint-mode-map
@@ -403,6 +401,28 @@
 (use-package! better-jumper
   :bind (("M-[" . better-jumper-jump-backward)
          ("M-]" . better-jumper-jump-forward)))
+
+(use-package! shell
+  :ensure nil
+  :init (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
+
+;; (use-package! ob-core
+;;   :ensure nil
+;;   :init
+;;   (require 'cl)
+;;   (defun org-redisplay-ansi-source-blocks ()
+;;     "Refresh the display of ANSI text source blocks."
+;;     (interactive)
+;;     (org-element-map (org-element-parse-buffer) 'src-block
+;;       (lambda (src)
+;;         (when (equalp "ansi" (org-element-property :language src))
+;;           (let ((begin (org-element-property :begin src))
+;;                 (end (org-element-property :end src)))
+;;             (ansi-color-apply-on-region begin end))))))
+
+;;   (add-to-list 'org-babel-after-execute-hook #'org-redisplay-ansi-source-blocks)
+
+;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
