@@ -309,7 +309,7 @@
 (use-package! popup
   :init
   (plist-put +popup-defaults :modeline t)
-  (set-popup-rule! "\\*compilation" :side 'right :size 0.5 :modeline t))
+  (set-popup-rule! "\\*compilation" :side 'bottom :size 0.5 :modeline t))
 
 (global-auto-revert-mode +1)
 
@@ -368,8 +368,11 @@
          ("C-S-t" . projectile-toggle-between-implementation-and-test)
          ("C-8" . projectile-run-async-shell-command-in-root)
          ("C-0" . projectile-test-project)
-         ("M-r" . projectile-test-rerun)))
+         ("M-r" . recompile)))
 
+(use-package! anaconda-mode
+  :bind (:map anaconda-mode-map
+         ("M-r" . recompile)))
 (use-package! compile
   :ensure nil
   :init
