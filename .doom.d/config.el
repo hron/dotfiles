@@ -438,6 +438,9 @@
 
 ;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
 
+(after! git-gutter-fringe
+  (fringe-mode 8))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
