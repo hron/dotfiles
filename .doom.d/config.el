@@ -60,6 +60,16 @@
 
 (map! "C-<f2>" 'list-processes)
 
+(use-package! iflipb
+  :bind (:map global-map
+         ("C-<tab>" . iflipb-next-buffer)
+         ("<C-iso-lefttab>" . iflipb-previous-buffer)))
+
+(use-package! magit
+  :bind (:map magit-section-mode-map
+         ("C-<tab>" . nil)
+         ("<C-iso-lefttab>" . nil)))
+
 (use-package! smartparens
   :config
   (custom-set-variables
