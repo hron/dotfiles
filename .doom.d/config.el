@@ -58,6 +58,8 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
+(map! "C-<f2>" 'list-processes)
+
 (use-package! smartparens
   :config
   (custom-set-variables
@@ -214,7 +216,6 @@
   (setq helm-mini-default-sources
         '(helm-source-buffers-list helm-source-recentf helm-source-projectile-files-list))
   :bind (("C-e" . helm-mini)
-         ("C-<f2>" . helm-list-emacs-process)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
