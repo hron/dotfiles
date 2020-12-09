@@ -58,6 +58,18 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
+(map! "C-<f2>" 'list-processes)
+
+(use-package! iflipb
+  :bind (:map global-map
+         ("C-<tab>" . iflipb-next-buffer)
+         ("<C-iso-lefttab>" . iflipb-previous-buffer)))
+
+(use-package! magit
+  :bind (:map magit-section-mode-map
+         ("C-<tab>" . nil)
+         ("<C-iso-lefttab>" . nil)))
+
 (use-package! smartparens
   :config
   (custom-set-variables
@@ -215,7 +227,6 @@
   (setq helm-mini-default-sources
         '(helm-source-buffers-list helm-source-recentf helm-source-projectile-files-list))
   :bind (("C-e" . helm-mini)
-         ("C-<f2>" . helm-list-emacs-process)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
@@ -427,6 +438,9 @@
 ;;   (add-to-list 'org-babel-after-execute-hook #'org-redisplay-ansi-source-blocks)
 
 ;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
+
+(after! git-gutter-fringe
+  (fringe-mode 8))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

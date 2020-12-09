@@ -35,7 +35,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-STARSHIP_BIN=$HOME/.cargo/bin/starship
+STARSHIP_BIN=/usr/local/bin/starship
+[ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
 [ -x "$STARSHIP_BIN" ] && eval "$($STARSHIP_BIN init bash)"
 
 # Write/read history after each command
