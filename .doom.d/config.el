@@ -162,7 +162,8 @@
          ("C-S-<up>" . nil)
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
-         ("S-<down>" . nil)))
+         ("S-<down>" . nil))
+  :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
