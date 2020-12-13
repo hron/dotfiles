@@ -405,6 +405,9 @@
   :bind (("M-[" . better-jumper-jump-backward)
          ("M-]" . better-jumper-jump-forward)))
 
+(setq w32-pass-lwindow-to-system nil)
+(setq w32-pass-rwindow-to-system nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
