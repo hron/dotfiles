@@ -1,10 +1,11 @@
 SetTitleMatchMode, RegEx
-~LWin Up:: return
-~RWin Up:: return
+
+LWin:: return
+RWin:: return
 
 Ctrl & g::Send {Escape}
 
-;RWin & y::Send {AppsKey}
+RWin & y::Send {AppsKey}
 
 RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -61,7 +62,7 @@ Escape::CapsLock
 ;RWin & ]::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Right down}{Right up")
 ;  return
-;RWin & [::     
+;RWin & [::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Left down}{Left up}")
 ;  return
 
@@ -75,7 +76,7 @@ Escape::CapsLock
 ;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Left down}{Left up}")
 ;  return
 
-RWin & /::DllCall("LockWorkStation")
+RWin & l::DllCall("LockWorkStation")
 
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -181,7 +182,7 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 ;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
 ;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
-RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
 RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\runemacs.exe" -f gusev/org-gtd

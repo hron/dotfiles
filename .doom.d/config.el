@@ -58,6 +58,18 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
+(map! "C-<f2>" 'list-processes)
+
+(use-package! iflipb
+  :bind (:map global-map
+         ("C-<tab>" . iflipb-next-buffer)
+         ("<C-iso-lefttab>" . iflipb-previous-buffer)))
+
+(use-package! magit
+  :bind (:map magit-section-mode-map
+         ("C-<tab>" . nil)
+         ("<C-iso-lefttab>" . nil)))
+
 (use-package! smartparens
   :config
   (custom-set-variables
@@ -162,7 +174,8 @@
          ("C-S-<up>" . nil)
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
-         ("S-<down>" . nil)))
+         ("S-<down>" . nil))
+  :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
@@ -176,9 +189,6 @@
 (global-set-key (kbd "M-<up>") 'other-window-back)
 
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-
-(global-set-key (kbd "M-[") 'previous-buffer)
-(global-set-key (kbd "M-]") 'next-buffer)
 
 (use-package! helm
   :init
@@ -217,7 +227,6 @@
   (setq helm-mini-default-sources
         '(helm-source-buffers-list helm-source-recentf helm-source-projectile-files-list))
   :bind (("C-e" . helm-mini)
-         ("C-<f2>" . helm-list-emacs-process)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
@@ -236,7 +245,8 @@
   (unbind-key "C-<backspace>" helm-find-files-map)
   (unbind-key "C-<backspace>" helm-read-file-map)
   :bind (:map helm-find-files-map
-         ("C-z" . undo-tree-undo)))
+         ("C-z" . undo-tree-undo))
+  :custom (helm-ff-fuzzy-matching t))
 
 (use-package! expand-region
   :init
@@ -263,6 +273,8 @@
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
 ;; (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+(global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
+(global-anzu-mode +1)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
@@ -294,6 +306,7 @@
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 ;; (global-set-key (kbd "C-m") 'recenter-top-bottom)
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
 
 (use-package! comint
   :bind (:map comint-mode-map
@@ -307,8 +320,8 @@
 
 (use-package! popup
   :init
-  ;(plist-put +popup-defaults :modeline t)
-  (set-popup-rule! "\\*compilation" :side 'right :width 0.5 :modeline t))
+  (plist-put +popup-defaults :modeline t)
+  (set-popup-rule! "\\*compilation" :side 'bottom :size 0.5 :modeline t))
 
 (global-auto-revert-mode +1)
 
@@ -327,10 +340,6 @@
          ("M-." . lsp-find-definition)
          ("M-<RET>" . lsp-execute-code-action)
          ("C-q" . lsp-describe-thing-at-point)))
-
-(use-package! git-commit
-  :custom
-  (git-commit-summary-max-length 70))
 
 (use-package! dap-mode
   :bind (:map dap-mode-map
@@ -371,8 +380,11 @@
          ("C-S-t" . projectile-toggle-between-implementation-and-test)
          ("C-8" . projectile-run-async-shell-command-in-root)
          ("C-0" . projectile-test-project)
-         ("M-r" . projectile-test-rerun)))
+         ("M-r" . recompile)))
 
+(use-package! anaconda-mode
+  :bind (:map anaconda-mode-map
+         ("M-r" . recompile)))
 (use-package! compile
   :ensure nil
   :init
@@ -404,6 +416,31 @@
 (use-package! better-jumper
   :bind (("M-[" . better-jumper-jump-backward)
          ("M-]" . better-jumper-jump-forward)))
+
+(use-package! shell
+  :ensure nil
+  :init (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
+
+;; (use-package! ob-core
+;;   :ensure nil
+;;   :init
+;;   (require 'cl)
+;;   (defun org-redisplay-ansi-source-blocks ()
+;;     "Refresh the display of ANSI text source blocks."
+;;     (interactive)
+;;     (org-element-map (org-element-parse-buffer) 'src-block
+;;       (lambda (src)
+;;         (when (equalp "ansi" (org-element-property :language src))
+;;           (let ((begin (org-element-property :begin src))
+;;                 (end (org-element-property :end src)))
+;;             (ansi-color-apply-on-region begin end))))))
+
+;;   (add-to-list 'org-babel-after-execute-hook #'org-redisplay-ansi-source-blocks)
+
+;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
+
+(after! git-gutter-fringe
+  (fringe-mode 8))
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
