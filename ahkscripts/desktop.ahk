@@ -23,10 +23,8 @@ RWin & n::WinClose, A
 ;  Send c
 ;  return
 
-;RWin & 8::Send {RWin down}{Up}{RWin up}
-;RWin & u::Send {RWin down}{Left}{RWin up}
-;RWin & i::Send {RWin down}{Down}{RWin up}
-;RWin & o::Send {RWin down}{Right}{RWin up}
+RWin & u::Send {RWin down}{Left}{RWin up}
+RWin & i::Send {RWin down}{Right}{RWin up}
 
 ;RWin & u::
 ;    SysGet, WA, MonitorWorkArea
