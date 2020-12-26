@@ -175,13 +175,9 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   return
 }
 
-;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://checkvist.com/checklists/657547
-;RWin & ]::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app=https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=GvcVrA_ZMaWX06ysNXvFpi_K
-;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --profile-directory=Default --app-id=apbhkicgdmkmphgheeacendjgegplhfo
-;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
 RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
 RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
-RWin & [::Run "C:\ProgramData\chocolatey\bin\runemacs.exe" -f gusev/org-gtd
-;RWin & [::Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --app="https://dynalist.io/d/o5vd3YTzB05-chhPQm0NHuwK#z=N91SoqK9MlZU9ARh1Sy-ZN4R"
+RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
+RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
