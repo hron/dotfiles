@@ -284,6 +284,10 @@
 
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
 
+(use-package! ahk-mode
+  :bind (:map ahk-mode-map
+         ("C-/" . comment-dwim)))
+
 (use-package! undo-tree
   :bind (:map undo-tree-map
          ("C-/" . nil)
