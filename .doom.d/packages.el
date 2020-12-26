@@ -54,3 +54,5 @@
 (package! mwim)
 
 (package! iflipb)
+
+(package! ahk-mode)
