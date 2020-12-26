@@ -166,7 +166,7 @@
          ("S-M-<up>" . org-move-subtree-up)
          ("S-M-<down>" . org-move-subtree-down)
          ("C-c C-e" . gusev/org-todo-convert-to-project)
-         ("C-c b" . org-switchb)
+         ("C-b" . org-switchb)
          ("C-S-<left>" . nil)
          ("C-S-<right>" . nil)
          ("S-<left>" . nil)
