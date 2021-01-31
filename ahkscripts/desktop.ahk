@@ -87,6 +87,20 @@ Escape::CapsLock
 
 RWin & l::DllCall("LockWorkStation")
 
+;RWin & o::
+;  Send, {RWin down}6{RWin up}
+;  WinWait, ahk_exe FancyZonesEditor.exe
+;  if ErrorLevel
+;  {
+;    MsgBox, WinWait timed out.
+;    return
+;  }
+;  else {
+;   WinActivate ahk_exe FancyZonesEditor.exe, , "FancyZones Layout"
+;   Send, {Tab}{Right}{Right}{Right}{Right}
+;   MsgBox, "Hooray"
+;  }
+
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & ,::
@@ -185,6 +199,8 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   }
   return
 }
+
+
 
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
 RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
