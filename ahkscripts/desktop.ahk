@@ -23,6 +23,17 @@ RWin & n::WinClose, A
 ;  Send c
 ;  return
 
+; RWin & m:: WinMaximize, A
+RWin & m::
+  WinGet MX, MinMax, A
+  if (MX = 1) {
+    WinRestore, A
+  }
+  else {
+    WinMaximize, A
+  }
+  return
+
 RWin & u::Send {RWin down}{Left}{RWin up}
 RWin & i::Send {RWin down}{Right}{RWin up}
 
