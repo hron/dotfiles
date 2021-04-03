@@ -207,7 +207,8 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 
 
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
-RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+; RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
 RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
