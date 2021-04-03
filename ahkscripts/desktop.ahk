@@ -36,6 +36,10 @@ RWin & m::
 
 RWin & u::Send {RWin down}{Left}{RWin up}
 RWin & i::Send {RWin down}{Right}{RWin up}
+RWin & 0::Send {RWin down}{Ctrl down}{Alt down}0{RWin up}{Ctrl up}{Alt up}
+RWin & 9::Send {RWin down}{Ctrl down}{Alt down}9{RWin up}{Ctrl up}{Alt up}
+RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
+RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 
 ;RWin & u::
 ;    SysGet, WA, MonitorWorkArea
