@@ -36,6 +36,10 @@ RWin & m::
 
 RWin & u::Send {RWin down}{Left}{RWin up}
 RWin & i::Send {RWin down}{Right}{RWin up}
+RWin & 0::Send {RWin down}{Ctrl down}{Alt down}0{RWin up}{Ctrl up}{Alt up}
+RWin & 9::Send {RWin down}{Ctrl down}{Alt down}9{RWin up}{Ctrl up}{Alt up}
+RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
+RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 
 ;RWin & u::
 ;    SysGet, WA, MonitorWorkArea
@@ -203,7 +207,8 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 
 
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
-RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+; RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
 RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
