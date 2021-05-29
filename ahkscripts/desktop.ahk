@@ -105,6 +105,12 @@ RWin & l::DllCall("LockWorkStation")
 ;   MsgBox, "Hooray"
 ;  }
 
+
+#IfWinActive ahk_exe MTGA.exe
+XButton1::Send {Space down}{Space up}
+XButton2::Send {Ctrl down}{Shift down}{Shift up}{Ctrl up}
+#IfWinActive
+
 #IfWinActive ahk_exe Telegram.exe
 RWin & n::Send {LAlt down}{F4}{LAlt up}
 ;RWin & ,::
@@ -123,12 +129,22 @@ XButton1::MButton
 XButton1::Send {Backspace}
 #IfWinActive
 
+#IfWinActive, ahk_exe CivilizationVI.exe
+XButton1::Send {Return}
+XButton2::Send {Escape}
+#IfWinActive
+
 #IfWinActive, ahk_exe ST Earth.exe
 XButton1::Send {Space}
 XButton2::Send {Tab}
 #IfWinActive
 
 #IfWinActive, ahk_exe stellaris.exe
+XButton1::Send {Space}
+XButton2::Send M
+#IfWinActive
+
+#IfWinActive, ahk_exe imperator.exe
 XButton1::Send {Space}
 XButton2::Send M
 #IfWinActive
@@ -207,8 +223,8 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 
 
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
-; RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
-RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+; RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
 RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
