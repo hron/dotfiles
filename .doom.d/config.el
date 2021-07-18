@@ -124,6 +124,7 @@
                                   ("thor-linux" . ?t)
                                   ("thor-windows" . ?w)
                                   ("thinkpad" . ?x)
+                                  ("laptop" . ?l)
                                   (:startgroup)
                                   ("Elena" . ?E)
                                   (:endgroup)
