@@ -221,7 +221,6 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 }
 
 
-
 RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
 RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
 ; RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
@@ -229,3 +228,31 @@ RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
 RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
+
+;;; Change resolution and scale for Steam Link
+
+; https://www.reddit.com/r/AutoHotkey/comments/c7r7hl/help_change_display_resolution_and_scaling_on/
+
+ChangeResolution(Screen_Width := 3240, Screen_Height := 2160, Color_Depth := 32)
+{
+	VarSetCapacity(Device_Mode,156,0)
+	NumPut(156,Device_Mode,36) 
+	DllCall( "EnumDisplaySettingsA", UInt,0, UInt,-1, UInt,&Device_Mode )
+	NumPut(0x5c0000,Device_Mode,40) 
+	NumPut(Color_Depth,Device_Mode,104)
+	NumPut(Screen_Width,Device_Mode,108)
+	NumPut(Screen_Height,Device_Mode,112)
+	DllCall( "ChangeDisplaySettingsA", UInt,&Device_Mode, UInt,0 )
+  RunWait cmd.exe /c taskkill.exe /f /im explorer.exe && start explorer.exe
+  Return
+}
+
+RWin & F9::
+ RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 1
+ ChangeResolution(3440, 1440)
+ Return
+
+RWin & F10::
+ RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
+ ChangeResolution(1920, 1080)
+ Return
