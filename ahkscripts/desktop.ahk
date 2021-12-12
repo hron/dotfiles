@@ -3,17 +3,19 @@ SetTitleMatchMode, RegEx
 LWin:: return
 RWin:: return
 
-;Ctrl & g::Send {Escape}
+Ctrl & g::Send {Escape}
 
 ;RWin & y::Send {AppsKey}
 
-;RWin & h::Send {RWin down}{Tab}{RWin up}
+Ctrl & Escape::Send {LCtrl down}{Space}{LCtrl up}
 
-;RWin & j::AltTab
-;RWin & k::ShiftAltTab
+RWin & h::Send {RWin down}{Tab}{RWin up}
 
-;RWin & Up::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-;RWin & Down::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+RWin & j::AltTab
+RWin & k::ShiftAltTab
+
+RWin & Up::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+RWin & Down::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -34,41 +36,24 @@ RWin & m::
   }
   return
 
-;RWin & u::Send {RWin down}{Left}{RWin up}
-;RWin & i::Send {RWin down}{Right}{RWin up}
+RWin & u::Send {RWin down}{Left}{RWin up}
+RWin & i::Send {RWin down}{Right}{RWin up}
 RWin & 0::Send {RWin down}{Ctrl down}{Alt down}0{RWin up}{Ctrl up}{Alt up}
 RWin & 9::Send {RWin down}{Ctrl down}{Alt down}9{RWin up}{Ctrl up}{Alt up}
 RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
 RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 
-;RWin & u::
-;    SysGet, WA, MonitorWorkArea
-;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom%.
-;    WAWidth := WARight - WALeft
-;    WAHeight := WABottom - WATop
-;    ;MsgBox, Left: %WALeft% -- Top: %WATop% -- Right: %WARight% -- Bottom %WABottom% -- Width: %WAWidth% -- Height: %WAHeight%
-;    WinMove, A,, 0, WATop, WAWidth/2, WAHeight
-;    return
-
 ;#0::Send {Media_Play_Pause}
 ;#!0::Send {Media_Next}
 ;RWin & PgUp::Send {Volume_Up}
 ;RWin & PgDn::Send {Volume_Down}
-
-;RWin & h::Send {RWin down}{Tab}{RWin up}
-
-; http://superuser.com/questions/429930/using-capslock-to-switch-the-keyboard-language-layout#431302
-;SetCapsLockState, AlwaysOff
-;+CapsLock::CapsLock
 
 ;Shift & Escape::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 
 ;Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 ;return
 
-;CapsLock::Escape
-;Escape::CapsLock
 
 ;RWin & -::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Space down}{Space up")
@@ -228,12 +213,15 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 
 
 ;RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
+RWin & `;::Send {RWin down}{1}{RWin up}
 
 ;RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
-; RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+;RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
+RWin & '::Send {RWin down}{2}{RWin up}
 
 ;RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
-#^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
+RWin & .::Send {RWin down}{3}{RWin up}
+
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
 RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
 
