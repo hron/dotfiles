@@ -3,17 +3,17 @@ SetTitleMatchMode, RegEx
 LWin:: return
 RWin:: return
 
-Ctrl & g::Send {Escape}
+;Ctrl & g::Send {Escape}
 
-RWin & y::Send {AppsKey}
+;RWin & y::Send {AppsKey}
 
-RWin & h::Send {RWin down}{Tab}{RWin up}
+;RWin & h::Send {RWin down}{Tab}{RWin up}
 
-RWin & j::AltTab
-RWin & k::ShiftAltTab
+;RWin & j::AltTab
+;RWin & k::ShiftAltTab
 
-RWin & Up::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
-RWin & Down::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
+;RWin & Up::Send {RWin down}{LCtrl down}{Left}{RWin up}{LCtrl up}
+;RWin & Down::Send {RWin down}{LCtrl down}{Right}{RWin up}{LCtrl up}
 
 RWin & n::WinClose, A
 ;RWin & n::Send {LAlt down}{F4}{LAlt up}
@@ -34,12 +34,13 @@ RWin & m::
   }
   return
 
-RWin & u::Send {RWin down}{Left}{RWin up}
-RWin & i::Send {RWin down}{Right}{RWin up}
+;RWin & u::Send {RWin down}{Left}{RWin up}
+;RWin & i::Send {RWin down}{Right}{RWin up}
 RWin & 0::Send {RWin down}{Ctrl down}{Alt down}0{RWin up}{Ctrl up}{Alt up}
 RWin & 9::Send {RWin down}{Ctrl down}{Alt down}9{RWin up}{Ctrl up}{Alt up}
 RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
 RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
+RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 
 ;RWin & u::
 ;    SysGet, WA, MonitorWorkArea
@@ -50,10 +51,10 @@ RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 ;    WinMove, A,, 0, WATop, WAWidth/2, WAHeight
 ;    return
 
-#0::Send {Media_Play_Pause}
-#!0::Send {Media_Next}
-RWin & PgUp::Send {Volume_Up}
-RWin & PgDn::Send {Volume_Down}
+;#0::Send {Media_Play_Pause}
+;#!0::Send {Media_Next}
+;RWin & PgUp::Send {Volume_Up}
+;RWin & PgDn::Send {Volume_Down}
 
 ;RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -61,13 +62,13 @@ RWin & PgDn::Send {Volume_Down}
 ;SetCapsLockState, AlwaysOff
 ;+CapsLock::CapsLock
 
-Shift & Escape::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
+;Shift & Escape::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 
-Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
-return
+;Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
+;return
 
-CapsLock::Escape
-Escape::CapsLock
+;CapsLock::Escape
+;Escape::CapsLock
 
 ;RWin & -::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Space down}{Space up")
@@ -89,7 +90,7 @@ Escape::CapsLock
 ;  SwitchToWindowAndSendKey("ahk_exe Google Play Music Desktop Player.exe", "{Left down}{Left up}")
 ;  return
 
-RWin & l::DllCall("LockWorkStation")
+;RWin & l::DllCall("LockWorkStation")
 
 ;RWin & o::
 ;  Send, {RWin down}6{RWin up}
@@ -140,6 +141,11 @@ XButton2::Send {Tab}
 #IfWinActive
 
 #IfWinActive, ahk_exe stellaris.exe
+XButton1::Send {Space}
+XButton2::Send M
+#IfWinActive
+
+#IfWinActive, ahk_exe BattleBrothers.exe
 XButton1::Send {Space}
 XButton2::Send M
 #IfWinActive
@@ -221,10 +227,12 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
 }
 
 
-RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
-RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+;RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
+
+;RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
 ; RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
-RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
+
+;RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 #^0::Run "C:\Users\aleks\AppData\Local\Programs\youtube-music-desktop-app\YouTube Music Desktop App.exe"
 RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
 RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
@@ -255,4 +263,9 @@ RWin & F9::
 RWin & F10::
  RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
  ChangeResolution(1920, 1080)
+ Return
+
+RWin & F11::
+ RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
+ ChangeResolution(2560, 1440)
  Return
