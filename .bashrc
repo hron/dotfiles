@@ -16,8 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -97,38 +96,8 @@ if ! shopt -oq posix; then
 fi
 
 alias xcc='xclip -selection clipboard'
+alias bc='bc -l'
 
-# Antti Seppälä: to help with logging in and setting the role I've set up these aliases:
-alias aws-xdr-ci-data-admin='samlauth.py --accountid 286741534858 --rolename aws-rds-ci-raw-data-admin --profile xdr-ci-data-admin; export AWS_DEFAULT_PROFILE=xdr-ci-data-admin; export AWS_PROFILE=xdr-ci-data-admin'
-alias aws-xdr-stg-data-admin='samlauth.py --accountid 755737209292 --rolename aws-rds-stg-raw-data-admin --profile xdr-stg-data-admin; export AWS_DEFAULT_PROFILE=xdr-stg-data-admin; export AWS_PROFILE=xdr-stg-data-admin'
-alias aws-xdr-prd-data-admin='samlauth.py --accountid 977557471879 --rolename aws-rds-prd-raw-data-admin --profile xdr-prd-data-admin; export AWS_DEFAULT_PROFILE=xdr-prd-data-admin; export AWS_PROFILE=xdr-prd-data-admin'
-
-function f_secure_aws_activate() {
-  TEAM=$1
-  ENV=$2
-
-  if [ -z $TEAM ] || [ -z $ENV ]; then
-    echo "You have to profive at least 2 arguments"
-    return
-  fi
-
-  if [ ! -z $3 ]; then
-    POSTFIX="-${3}"
-  else
-    POSTFIX=""
-  fi
-  pyenv activate virtenv-3.7.7-aws &&
-    aws-login -a $ENV -t $TEAM -P &&
-    export AWS_DEFAULT_PROFILE=rds-$TEAM-${ENV}${POSTFIX} &&
-    export AWS_PROFILE=$AWS_DEFAULT_PROFILE
-}
-alias aws-rds-ci-pua='f_secure_aws_activate be ci pua'
-alias aws-rds-stg-pua='f_secure_aws_activate be stg pua'
-alias aws-rds-prd-pua='f_secure_aws_activate be prd pua'
-
-alias aws-rds-ci='f_secure_aws_activate be ci'
-alias aws-rds-stg='f_secure_aws_activate be stg'
-alias aws-rds-prd='f_secure_aws_activate be prd'
 
 vterm_printf(){
     if [ -n "$TMUX" ]; then
