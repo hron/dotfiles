@@ -288,6 +288,7 @@
 (setq select-active-regions nil)
 
 (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+(add-hook 'conf-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
 
 (use-package! ahk-mode
   :bind (:map ahk-mode-map
@@ -453,3 +454,14 @@
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
+
+;; (use-package! ispell
+;;   :init (setq ispell-dictionary "english"))
+
+(use-package! spell-fu
+  :bind ("M-$" . +spell/add-word))
+
+(use-package! jest-test-mode
+  :ensure t
+  :commands jest-test-mode
+  :hook (typescript-mode js-mode typescript-tsx-mode))

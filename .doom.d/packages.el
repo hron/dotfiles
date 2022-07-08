@@ -56,3 +56,5 @@
 (package! iflipb)
 
 (package! ahk-mode)
+
+(package! jest-test-mode)
