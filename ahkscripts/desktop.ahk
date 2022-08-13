@@ -7,7 +7,8 @@ Ctrl & g::Send {Escape}
 
 ;RWin & y::Send {AppsKey}
 
-Ctrl & Escape::Send {LCtrl down}{Space}{LCtrl up}
+;Ctrl & Escape::Send {LCtrl down}{LShift down}{LAlt down}{Space}{LCtrl up}{LShift up}{LAlt up}
+Ctrl & Escape::Send {Rwin down}{Enter}{RWin up}
 
 RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -36,6 +37,8 @@ RWin & m::
   }
   return
 
+RWin & \::Send {RWin down}v{RWin up}
+
 RWin & u::Send {RWin down}{Left}{RWin up}
 RWin & i::Send {RWin down}{Right}{RWin up}
 RWin & 0::Send {RWin down}{Ctrl down}{Alt down}0{RWin up}{Ctrl up}{Alt up}
@@ -43,6 +46,7 @@ RWin & 9::Send {RWin down}{Ctrl down}{Alt down}9{RWin up}{Ctrl up}{Alt up}
 RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
 RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
+
 
 ;#0::Send {Media_Play_Pause}
 ;#!0::Send {Media_Next}

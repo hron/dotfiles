@@ -64,6 +64,14 @@
 
 (map! "C-<f2>" 'list-processes)
 
+(custom-set-faces!
+ '(outline-1 :weight normal)
+ '(outline-2 :weight normal)
+ '(outline-3 :weight normal)
+ '(outline-4 :weight normal)
+ '(outline-5 :weight normal)
+ '(outline-6 :weight normal))
+
 (use-package! iflipb
   :bind (:map global-map
          ("C-<tab>" . iflipb-next-buffer)
