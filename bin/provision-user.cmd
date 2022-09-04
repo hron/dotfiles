@@ -1,0 +1,2 @@
+@REM ssh %1 bash -l -c "uname -a && mkdir --help ~/src && git clone git@github.com:hron/dotfiles.git ~/src/dotfiles && ~/src/dotfiles/install.sh"
+ssh %1 "mkdir -p ~/src && git clone git@github.com:hron/dotfiles.git ~/src/dotfiles && cd ~/src/dotfiles && ./install.sh"
