@@ -1,1 +1,5 @@
 "\C-h": backward-kill-word
+
+# set show-all-if-ambiguous on
+# TAB: menu-complete
+# "\e[Z": menu-complete-backward
