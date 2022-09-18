@@ -35,7 +35,7 @@ RWin & m::
   else {
     WinMaximize, A
   }
-  return
+return
 
 ;RWin & \::Send {RWin down}v{RWin up}
 
@@ -47,7 +47,6 @@ RWin & 8::Send {RWin down}{Ctrl down}{Alt down}8{RWin up}{Ctrl up}{Alt up}
 RWin & 7::Send {RWin down}{Ctrl down}{Alt down}7{RWin up}{Ctrl up}{Alt up}
 RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 
-
 ;#0::Send {Media_Play_Pause}
 ;#!0::Send {Media_Next}
 ;RWin & PgUp::Send {Volume_Up}
@@ -57,7 +56,6 @@ RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 
 ;Shift & CapsLock::Send, {LAlt down}{LShift down}{LShift up}{LAlt up}
 ;return
-
 
 ;RWin & -::
 ;  SwitchToWindowAndSendKey("- Google Play Music", "{Space down}{Space up")
@@ -95,102 +93,101 @@ RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 ;   MsgBox, "Hooray"
 ;  }
 
-
 #IfWinActive ahk_exe MTGA.exe
-XButton1::Send {Space down}{Space up}
-XButton2::Send {Ctrl down}{Shift down}{Shift up}{Ctrl up}
+  XButton1::Send {Space down}{Space up}
+  XButton2::Send {Ctrl down}{Shift down}{Shift up}{Ctrl up}
 #IfWinActive
 
 #IfWinActive ahk_exe Telegram.exe
-RWin & n::Send {LAlt down}{F4}{LAlt up}
-;RWin & ,::
-;  Send {LAlt down}{Space}{LAlt up}
-;  Sleep 10
-;  Send n
-;  return
+  RWin & n::Send {LAlt down}{F4}{LAlt up}
+  ;RWin & ,::
+  ;  Send {LAlt down}{Space}{LAlt up}
+  ;  Sleep 10
+  ;  Send n
+  ;  return
 #IfWinActive
 
 ; Graviteam Tactics: Mius-Front
 #IfWinActive, ahk_class i_Window
-XButton1::MButton
+  XButton1::MButton
 #IfWinActive
 
 #IfWinActive, ahk_exe FTLGame.exe
-XButton1::Send {Backspace}
+  XButton1::Send {Backspace}
 #IfWinActive
 
 #IfWinActive, ahk_exe CivilizationVI.exe
-XButton1::Send {Return}
-XButton2::Send {Escape}
+  XButton1::Send {Return}
+  XButton2::Send {Escape}
 #IfWinActive
 
 #IfWinActive, ahk_exe ST Earth.exe
-XButton1::Send {Space}
-XButton2::Send {Tab}
+  XButton1::Send {Space}
+  XButton2::Send {Tab}
 #IfWinActive
 
 #IfWinActive, ahk_exe stellaris.exe
-XButton1::Send {Space}
-XButton2::Send M
+  XButton1::Send {Space}
+  XButton2::Send M
 #IfWinActive
 
 #IfWinActive, ahk_exe BattleBrothers.exe
-XButton1::Send {Space}
-XButton2::Send M
+  XButton1::Send {Space}
+  XButton2::Send M
 #IfWinActive
 
 #IfWinActive, ahk_exe imperator.exe
-XButton1::Send {Space}
-XButton2::Send M
+  XButton1::Send {Space}
+  XButton2::Send M
 #IfWinActive
 
 #IfWinActive, ahk_exe hoi4.exe
-XButton1::Send {Space}
-XButton2::Send {F1}
+  XButton1::Send {Space}
+  XButton2::Send {F1}
 #IfWinActive
 
 #IfWinActive, ahk_exe CK2game.exe
-XButton1::Send {Space}
-XButton2::Send q
+  XButton1::Send {Space}
+  XButton2::Send q
 #IfWinActive
 
 #IfWinActive, ahk_exe ck3.exe
-XButton1::Send {Space}
-XButton2::Send q
+  XButton1::Send {Space}
+  XButton2::Send q
 #IfWinActive
 
 #IfWinActive, ahk_exe eu4.exe
-XButton1::Send {Space}
-XButton2::Send q
+  XButton1::Send {Space}
+  XButton2::Send q
 #IfWinActive
 
 #IfWinActive, ahk_exe CivilizationVI_DX12.exe
-XButton1::Send {Escape}
-XButton2::Send {Enter}
+  XButton1::Send {Escape}
+  XButton2::Send {Enter}
 #IfWinActive
 
 #IfWinActive ahk_exe Skype.exe
-RWin & n::Send {LAlt down}{F4}{LAlt up}
+  RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
 
 #IfWinActive ahk_exe mowas_2.exe
-XButton1::Send {Pause}
+  XButton1::Send {Pause}
 #IfWinActive
 
 #IfWinActive, ahk_exe Rome2.exe
-XButton1::Send =
+  XButton1::Send =
 #IfWinActive
 
 #IfWinActive, ahk_class VirtualConsoleClass
-RWin & n::WinClose, A
-;Ctrl & Left::Send {LAlt down}b{LAlt up}
-;Ctrl & Right::Send {LAlt down}f{LAlt up}
-;Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
-;Ctrl & Delete::Send {LAlt down}d{LAlt up}
-;Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
-;Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
-;;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
-;;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
+  RWin & n::WinClose, A
+  ;Ctrl & Left::Send {LAlt down}b{LAlt up}
+  ;Ctrl & Right::Send {LAlt down}f{LAlt up}
+  ;Ctrl & Backspace::Send {LAlt down}{Backspace}{LAlt up}
+  ;Ctrl & Delete::Send {LAlt down}d{LAlt up}
+  ;Shift & PgUp::Send {LCtrl down}{PgUp down}{PgUp up}{LCtrl up}
+  ;Shift & PgDn::Send {LCtrl down}{PgDn down}{PgDn up}{LCtrl up}
+  ;;Ctrl & PgUp::Send {LCtrl down}{Tab down}{Tab up}{LCtrl up}
+  ;;Ctrl & PgDn::Send {LCtrl down}{LShift down}{Tab down}{Tab up}{LShift up}{LCtrl up}
 #IfWinActive
 
 ;#IfWinActive, ^aleksei@
@@ -198,7 +195,7 @@ RWin & n::WinClose, A
 ;#IfWinActive
 
 #IfWinActive ahk_exe ahk_exe Evernote.exe
-RWin & n::Send {LAlt down}{F4}{LAlt up}
+  RWin & n::Send {LAlt down}{F4}{LAlt up}
 #IfWinActive
 
 SwitchToWindowAndSendKey(tWindowTitle, tKey)
@@ -212,14 +209,13 @@ SwitchToWindowAndSendKey(tWindowTitle, tKey)
   {
     WinMinimize, %tWindowTitle%
   }
-  return
+return
 }
-
 
 ;RWin & `;::Run "C:\Program Files\Mozilla Firefox\firefox.exe"
 RWin & `;::Send {RWin down}{1}{RWin up}
 
-;RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe"
+;RWin & '::Run "C:\Users\aleks\AppData\Local\Microsoft\WindowsApps\wt.exe" C:\Program Files\PowerShell\7\pwsh.exe -wd ~"
 ;RWin & '::Run "C:\Program Files\ConEmu\ConEmu64.exe"
 RWin & '::Send {RWin down}{2}{RWin up}
 
@@ -237,29 +233,29 @@ RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/
 
 ChangeResolution(Screen_Width := 3240, Screen_Height := 2160, Color_Depth := 32)
 {
-	VarSetCapacity(Device_Mode,156,0)
-	NumPut(156,Device_Mode,36) 
-	DllCall( "EnumDisplaySettingsA", UInt,0, UInt,-1, UInt,&Device_Mode )
-	NumPut(0x5c0000,Device_Mode,40) 
-	NumPut(Color_Depth,Device_Mode,104)
-	NumPut(Screen_Width,Device_Mode,108)
-	NumPut(Screen_Height,Device_Mode,112)
-	DllCall( "ChangeDisplaySettingsA", UInt,&Device_Mode, UInt,0 )
+  VarSetCapacity(Device_Mode,156,0)
+  NumPut(156,Device_Mode,36) 
+  DllCall( "EnumDisplaySettingsA", UInt,0, UInt,-1, UInt,&Device_Mode )
+  NumPut(0x5c0000,Device_Mode,40) 
+  NumPut(Color_Depth,Device_Mode,104)
+  NumPut(Screen_Width,Device_Mode,108)
+  NumPut(Screen_Height,Device_Mode,112)
+  DllCall( "ChangeDisplaySettingsA", UInt,&Device_Mode, UInt,0 )
   RunWait cmd.exe /c taskkill.exe /f /im explorer.exe && start explorer.exe
-  Return
+Return
 }
 
 RWin & F9::
- RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 1
- ChangeResolution(3440, 1440)
- Return
+  RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 1
+  ChangeResolution(3440, 1440)
+Return
 
 RWin & F10::
- RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
- ChangeResolution(1920, 1080)
- Return
+  RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
+  ChangeResolution(1920, 1080)
+Return
 
 RWin & F11::
- RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
- ChangeResolution(2560, 1440)
- Return
+  RegWrite, REG_DWORD, HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings\ACI3433#ASMB1feejzPd_07_07E1_81^79109E73CE7F3E1AA87C137D942745EE, DpiValue, 0
+  ChangeResolution(2560, 1440)
+Return
