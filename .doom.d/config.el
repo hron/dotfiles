@@ -473,3 +473,7 @@
   :ensure t
   :commands jest-test-mode
   :hook (typescript-mode js-mode typescript-tsx-mode))
+
+(use-package! multi-cursors
+  :bind (("M-j" . mc/mark-next-like-this)
+         ("M-C-j" . mc/mark-all-like-this)))
