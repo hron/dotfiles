@@ -113,5 +113,5 @@ vterm_printf(){
 }
 
 # If not running interactively, do not do anything
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ $(type -P "tmux") ]] && exec tmux
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ $(type -P "tmux") ]] && exec tmux
