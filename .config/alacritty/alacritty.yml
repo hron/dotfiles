@@ -841,6 +841,7 @@ key_bindings:
   - { key: End,     mods: Shift,         mode: Vi|~Search, action: Last                    }
   #- { key: Key6,   mods: Shift,         mode: Vi|~Search, action: FirstOccupied           }
   - { key: Home,                         mode: Vi|~Search, action: FirstOccupied           }
+  - { key: End,                          mode: Vi|~Search, action: Last                    }
   #- { key: H,      mods: Shift,         mode: Vi|~Search, action: High                    }
   #- { key: M,      mods: Shift,         mode: Vi|~Search, action: Middle                  }
   #- { key: L,      mods: Shift,         mode: Vi|~Search, action: Low                     }
