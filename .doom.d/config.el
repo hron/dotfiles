@@ -333,8 +333,8 @@
 
 (use-package! python-mode
   :bind (:map python-mode-map
-         ("M-<right>" . python-indent-shift-right)
-         ("M-<left>" . python-indent-shift-left)))
+         ("<tab>" . python-indent-shift-right)
+         ("<backtab>" . python-indent-shift-left)))
 
 (use-package! popup
   :init
@@ -357,7 +357,8 @@
   :bind (:map lsp-mode-map
          ("M-." . lsp-find-definition)
          ("M-<RET>" . lsp-execute-code-action)
-         ("C-q" . lsp-describe-thing-at-point)))
+         ("C-q" . lsp-describe-thing-at-point)
+         ("M-7" . lsp-ui-peek-find-references)))
 
 (use-package! dap-mode
   :bind (:map dap-mode-map
@@ -365,6 +366,7 @@
          ("C-<f8>" . dap-breakpoint-condition)
          ("<f9>" . dap-debug)
          ("C-9" . dap-debug)
+         ("M-r" . dap-debug-last)
          ("<f7>" . dap-ui-expressions)
          ("C-S-<f8>" . dap-ui-breakpoints)
          ("<f10>" . dap-go-to-output-buffer))
@@ -397,7 +399,7 @@
   :bind (:map global-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
-              ("C-0" . projectile-test-project)
+              ("C-0" . project-compile)
               ("M-r" . recompile)))
 
 (use-package! anaconda-mode

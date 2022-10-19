@@ -20,7 +20,26 @@
  '(rustic-ansi-faces
    ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(safe-local-variable-values
-   '((lsp-python-ms-python-executable . "./venv/bin/python")
+   '((eval progn
+      (setq dap-python-executable
+       (concat
+        (projectile-project-root)
+        "/venv/bin/python")))
+     (eval progn
+      (setq dap-python-executable
+            (concat
+             (projectile-project-root)
+             "/venv/bin/python"))
+      (dap-register-debug-template "Python :: Run file from project directory [AWS=CI]"
+                                   (list :type "python" :args "" :cwd "${workspaceFolder}" :env
+                                         '(("AWS_PROFILE" . "rds-be-ci-pua"))
+                                         :program nil :module nil :request "launch")))
+     (eval setq dap-python-executable
+      (concat
+       (projectile-project-root)
+       "/venv/bin/python"))
+     (dap-python-executable . "./venv/bin/python")
+     (lsp-python-ms-python-executable . "./venv/bin/python")
      (git-commit-major-mode . git-commit-elisp-text-mode)
      (js2-strict-missing-semi-warning)
      (js2-basic-offset . 2)))
