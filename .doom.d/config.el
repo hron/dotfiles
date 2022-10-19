@@ -30,7 +30,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one-light)
+(setq doom-theme 'doom-solarized-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -375,7 +375,7 @@
   (dap-output-window-max-height 20)
   :init
   (add-hook 'dap-stopped-hook
-          (lambda (arg) (call-interactively #'dap-hydra))))
+            (lambda (arg) (call-interactively #'dap-hydra))))
 
 (use-package! git-gutter
   :init
@@ -385,8 +385,8 @@
 
 (use-package! treemacs
   :bind (:map treemacs-mode-map
-         ("M-<up>" . other-window-back)
-         ("M-<down>" . other-window)))
+              ("M-<up>" . other-window-back)
+              ("M-<down>" . other-window)))
 
 (defun projectile-test-rerun ()
   (interactive)
@@ -395,33 +395,35 @@
 
 (use-package! projectile
   :bind (:map global-map
-         ("C-S-t" . projectile-toggle-between-implementation-and-test)
-         ("C-8" . projectile-run-async-shell-command-in-root)
-         ("C-0" . projectile-test-project)
-         ("M-r" . recompile)))
+              ("C-S-t" . projectile-toggle-between-implementation-and-test)
+              ("C-8" . projectile-run-async-shell-command-in-root)
+              ("C-0" . projectile-test-project)
+              ("M-r" . recompile)))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
-         ("M-r" . recompile)))
+              ("M-r" . recompile)))
 (use-package! compile
   :ensure nil
   :init
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
         (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([@a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
-                     1 ;; file
-                     2 ;; line
-                     3 ;; column
-                     )
+                1 ;; file
+                2 ;; line
+                3 ;; column
+                )
               compilation-error-regexp-alist-alist))
   (setq compilation-error-regexp-alist
         (cons 'node compilation-error-regexp-alist)))
 
-(use-package! vterm
-  :bind (:map vterm-mode-map
-         ("C-z" . vterm-undo)
-         ("C-<backspace>" . vterm-send-meta-backspace))
+(use-package vterm
+  :bind* (:map vterm-mode-map
+               ("C-z" . vterm-undo)
+               ("C-v" . vterm-yank)
+               ("C-<backspace>" . vterm-send-meta-backspace))
   :custom (vterm-min-window-width 200)
+          (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   ;(add-hook 'vterm-mode-hook '(lambda () (cua-mode -1)))
