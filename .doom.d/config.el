@@ -419,6 +419,7 @@
   (setq compilation-error-regexp-alist
         (cons 'node compilation-error-regexp-alist)))
 
+
 (use-package vterm
   :bind* (:map vterm-mode-map
                ("C-z" . vterm-undo)
@@ -428,8 +429,7 @@
           (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
-  ;(add-hook 'vterm-mode-hook '(lambda () (cua-mode -1)))
-  )
+  (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil))))
 
 (use-package! tide
   :bind (:map tide-mode-map
