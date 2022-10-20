@@ -439,7 +439,20 @@
 
 (use-package! better-jumper
   :bind (("M-[" . better-jumper-jump-backward)
-         ("M-]" . better-jumper-jump-forward)))
+         ("M-]" . better-jumper-jump-forward))
+  :config
+  (with-eval-after-load 'isearch
+    (defadvice isearch-forward (before better-jumper activate)
+      (when (bound-and-true-p better-jumper-local-mode)
+        (better-jumper-set-jump))))
+
+  (defadvice beginning-of-buffer (before better-jumper activate)
+      (when (bound-and-true-p better-jumper-local-mode)
+        (better-jumper-set-jump)))
+
+  (defadvice end-of-buffer (before better-jumper activate)
+      (when (bound-and-true-p better-jumper-local-mode)
+        (better-jumper-set-jump))))
 
 (use-package! shell
   :ensure nil
