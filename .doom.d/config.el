@@ -128,11 +128,10 @@
                                   ("read" . ?r)
                                   ("games" . ?g)
                                   ("shop" . ?s)
-                                  ("office" . ?e)
-                                  ("thor-linux" . ?t)
-                                  ("thor-windows" . ?w)
-                                  ("thinkpad" . ?x)
+                                  ("windows" . ?w)
                                   ("laptop" . ?l)
+                                  ("meet" . ?m)
+                                  ("emacs" . ?e)
                                   (:startgroup)
                                   ("Elena" . ?E)
                                   (:endgroup)
@@ -402,7 +401,8 @@
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("C-0" . project-compile)
-              ("M-r" . recompile)))
+              ("M-r" . recompile)
+              ("M-9" . magit-status)))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
@@ -422,7 +422,7 @@
         (cons 'node compilation-error-regexp-alist)))
 
 
-(use-package vterm
+(use-package! vterm
   :bind* (:map vterm-mode-map
                ("C-z" . vterm-undo)
                ("C-v" . vterm-yank)
@@ -464,7 +464,7 @@
 ;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
 
 (after! git-gutter-fringe
-  (fringe-mode 8))
+  (fringe-mode 12))
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
@@ -482,4 +482,13 @@
 
 (use-package! multi-cursors
   :bind (("M-j" . mc/mark-next-like-this)
-         ("M-C-j" . mc/mark-all-like-this)))
+         ("M-C-j" . mc/mark-all-like-this)
+         :map mc/keymap
+         ("<escape>" . mc/keyboard-quit)
+         ("<return>" . nil)
+         ("C-v" . nil)
+         ("M-v" . nil)
+         ("M-<down>" . mc/cycle-forward)
+         ("M-<up>" . mc/cycle-backward)))
+
+(use-package! jenkinsfile-mode)

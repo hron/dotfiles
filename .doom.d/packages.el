@@ -58,3 +58,8 @@
 (package! ahk-mode)
 
 (package! jest-test-mode)
+
+(package! groovy-mode)
+
+(package! jenkinsfile-mode
+ :recipe (:host github :repo "john2x/jenkinsfile-mode"))
