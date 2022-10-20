@@ -222,8 +222,8 @@ RWin & '::Send {RWin down}{2}{RWin up}
 ;RWin & .::Run "C:\Users\aleks\AppData\Roaming\Telegram Desktop\Telegram.exe"
 RWin & .::Send {RWin down}{3}{RWin up}
 
-RWin & [::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
-RWin & ]::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
+; RWin & 4::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-gtd)"
+; RWin & 5::Run "C:\ProgramData\chocolatey\bin\emacsclientw.exe" -c -n -e "(gusev/org-capture-system-wide)"
 ;RWin & [::Run "C:\Program Files\Mozilla Firefox\firefox.exe" "--new-window" "https://checkvist.com/checklists#due"
 ;RWin & ]::Run "C:\Program Files\Mozilla Firefox\firefox.exe" "--new-window" "https://checkvist.com/checklists/657547"
 
