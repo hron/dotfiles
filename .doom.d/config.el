@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (if (eq system-type 'gnu/linux)
-    (setq doom-font "JetBrainsMono Nerd Font-12")
+    (setq doom-font "JetBrainsMono Nerd Font-11")
   (setq doom-font "JetBrainsMono NF-11")
   (setq doom-unicode-font "JetBrainsMono NF-11")
   (setq doom-variable-pitch-font "JetBrainsMono NF-11"))
