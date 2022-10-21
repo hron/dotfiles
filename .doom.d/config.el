@@ -58,10 +58,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(cua-mode +1)
-(global-subword-mode +1)
-(blink-cursor-mode +1)
-
 (map! "C-<f2>" 'list-processes)
 
 (custom-set-faces!
@@ -274,7 +270,7 @@
 (global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
 
 (setq search-exit-option 'edit)
-(global-set-key (kbd "C-f") 'isearch-forward)
+;; (global-set-key (kbd "C-f") 'isearch-forward)
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
 (define-key isearch-mode-map [return] 'isearch-repeat-forward)
@@ -284,9 +280,12 @@
 (define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
-;; (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+(remove-hook 'isearch-mode-hook 'isearch-yank-kill)
 (global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
 (global-anzu-mode +1)
+
+(global-set-key (kbd "C-f") '+default/search-buffer)
+(global-set-key (kbd "C-S-f") '+default/search-project)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
@@ -450,6 +449,10 @@
       (when (bound-and-true-p better-jumper-local-mode)
         (better-jumper-set-jump)))
 
+  (defadvice +default/search-buffer (before better-jumper activate)
+      (when (bound-and-true-p better-jumper-local-mode)
+        (better-jumper-set-jump)))
+
   (defadvice end-of-buffer (before better-jumper activate)
       (when (bound-and-true-p better-jumper-local-mode)
         (better-jumper-set-jump))))
@@ -505,3 +508,16 @@
          ("M-<up>" . mc/cycle-backward)))
 
 (use-package! jenkinsfile-mode)
+
+(use-package! cua-base
+  :init (setq cua-rectangle-mark-key '[control shift return]))
+
+(use-package! ein-notebook
+  :bind (:map ein:notebook-mode-map
+         ("C-<return>" . ein:worksheet-execute-cell-km)
+         ("M-<up>" . nil)
+         ("M-<down>" . nil)))
+
+(cua-mode +1)
+(global-subword-mode +1)
+(blink-cursor-mode +1)
