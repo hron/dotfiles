@@ -505,7 +505,11 @@
          ("C-v" . nil)
          ("M-v" . nil)
          ("M-<down>" . mc/cycle-forward)
-         ("M-<up>" . mc/cycle-backward)))
+         ("M-<up>" . mc/cycle-backward)
+         ("C-c" . cua-copy-region)
+         ("C-x" . cua-cut-region))
+  :config
+  (add-to-list 'mc--default-cmds-to-run-for-all 'cua-cut-region))
 
 (use-package! jenkinsfile-mode)
 
