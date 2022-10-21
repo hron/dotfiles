@@ -303,6 +303,7 @@
 (use-package! undo-tree
   :bind (:map undo-tree-map
          ("C-/" . nil)
+         ("C-z" . undo-tree-undo)
          ("C-S-z" . undo-tree-redo)))
 (global-undo-tree-mode +1)
 
@@ -430,7 +431,7 @@
           (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
-  (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil))))
+  )
 
 (use-package! tide
   :bind (:map tide-mode-map
@@ -505,16 +506,9 @@
          ("C-v" . nil)
          ("M-v" . nil)
          ("M-<down>" . mc/cycle-forward)
-         ("M-<up>" . mc/cycle-backward)
-         ("C-c" . cua-copy-region)
-         ("C-x" . cua-cut-region))
-  :config
-  (add-to-list 'mc--default-cmds-to-run-for-all 'cua-cut-region))
+         ("M-<up>" . mc/cycle-backward)))
 
 (use-package! jenkinsfile-mode)
-
-(use-package! cua-base
-  :init (setq cua-rectangle-mark-key '[control shift return]))
 
 (use-package! ein-notebook
   :bind (:map ein:notebook-mode-map
@@ -522,6 +516,16 @@
          ("M-<up>" . nil)
          ("M-<down>" . nil)))
 
-(cua-mode +1)
 (global-subword-mode +1)
 (blink-cursor-mode +1)
+
+;; We don't need cua-mode!
+(keyboard-translate ?\C-a ?\C-x)
+(keyboard-translate ?\C-b ?\C-c)
+(keyboard-translate ?\C-x 'control-x)
+(keyboard-translate ?\C-c 'control-c)
+(keyboard-translate ?\C-v 'control-v)
+(global-set-key [control-x] 'kill-region)
+(global-set-key [control-c] 'kill-ring-save)
+(global-set-key [control-v] 'yank)
+(global-set-key (kbd "C-z") 'undo)
