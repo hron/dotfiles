@@ -308,7 +308,7 @@
 (global-undo-tree-mode +1)
 
 (use-package! company
-  :bind (:map company-mode-map
+  :bind (:map company-active-map
          ("<escape>" . company-abort)))
 
 (global-set-key [f6] 'toggle-truncate-lines)
