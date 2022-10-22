@@ -235,6 +235,7 @@
   (setq helm-mini-default-sources
         '(helm-source-buffers-list helm-source-recentf helm-source-projectile-files-list))
   :bind (("C-e" . helm-mini)
+         ("C-p" . helm-M-x)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
@@ -519,9 +520,11 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
+(global-set-key (kbd "C-i") 'delete-other-windows)
+
 ;; We don't need cua-mode!
-(keyboard-translate ?\C-a ?\C-x)
-(keyboard-translate ?\C-b ?\C-c)
+(define-key key-translation-map [?\M-x] [?\C-x])
+(define-key key-translation-map [?\M-c] [?\C-c])
 (keyboard-translate ?\C-x 'control-x)
 (keyboard-translate ?\C-c 'control-c)
 (keyboard-translate ?\C-v 'control-v)
