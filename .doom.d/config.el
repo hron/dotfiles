@@ -175,7 +175,7 @@
          ("S-M-<down>" . org-move-subtree-down)
          ("C-c C-e" . gusev/org-todo-convert-to-project)
          ("C-<return>" . org-todo)
-         ("C-M-<return>" . org-archive-subtree-default)
+         ("C-S-<return>" . org-archive-subtree-default)
          ("C-b" . org-switchb)
          ("C-S-<left>" . nil)
          ("C-S-<right>" . nil)
@@ -186,12 +186,14 @@
          ("S-<up>" . nil)
          ("S-<down>" . nil)
          :map org-agenda-mode-map
-         ("C-<return>" . org-agenda-todo))
+         )
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
-          ("z" . org-agenda-undo)))
+          ("z" . org-agenda-undo)
+          ("C-z" . org-agenda-undo)
+          ("C-<return>" . org-agenda-todo)))
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
