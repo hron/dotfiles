@@ -202,57 +202,6 @@
   (other-window -1))
 (global-set-key (kbd "M-<up>") 'other-window-back)
 
-(use-package! helm
-  :init
-  (require 'helm-projectile)
-  (setq helm-semantic-fuzzy-match t
-        helm-imenu-fuzzy-match    t
-        helm-M-x-fuzzy-match      t)
-  ;; (when (executable-find "ack-grep")
-  ;;   (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
-  ;;         helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
-  ;; (when (executable-find "ag")
-  ;;   (setq helm-grep-default-command "ag --nocolor --nogroup %p %f"
-  ;;         helm-grep-default-recurse-command "ag --nocolor --nogroup %p %f"))
-  :config
-  (require 'subr-x)
-  (defvar helm-source-emacs-process
-    (helm-build-sync-source "Emacs Process"
-      :init (lambda ()
-              (let (tabulated-list-use-header-line)
-                (list-processes--refresh)))
-      :candidates (lambda () (mapcar
-                              (lambda (process)
-                                (concat (process-name process)
-                                        " ["
-                                        (string-join (process-command process) " ")
-                                        "] "))
-                              (process-list)))
-      :persistent-action (lambda (elm)
-                           (delete-process (get-process elm))
-                           (helm-delete-current-selection))
-      :persistent-help "Kill Process"
-      :action (helm-make-actions "Kill Process"
-                                 (lambda (_elm)
-                                   (cl-loop for p in (helm-marked-candidates)
-                                            do (delete-process (get-process p)))))))
-  (setq helm-mini-default-sources
-        '(helm-source-buffers-list helm-source-recentf helm-source-projectile-files-list))
-  :bind (("C-e" . helm-mini)
-         ("C-p" . helm-M-x)
-         :map helm-map
-         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-         ("C-a" . helm-select-action) ; list actions using C-a
-         ))
-
-(use-package! helm-projectile)
-
-(use-package! helm-files
-  :config
-  (unbind-key "C-<backspace>" helm-find-files-map)
-  (unbind-key "C-<backspace>" helm-read-file-map)
-  :custom (helm-ff-fuzzy-matching t))
-
 (use-package! expand-region
   :init
   (global-set-key (kbd "C-h") 'er/expand-region)
@@ -388,12 +337,13 @@
     (call-interactively 'projectile-test-project)))
 
 (use-package! projectile
-  :bind (:map global-map
+  :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("C-0" . project-compile)
               ("M-r" . recompile)
-              ("M-9" . magit-status)))
+              ("M-9" . magit-status)
+              ("C-e" . projectile-find-file)))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
@@ -433,6 +383,10 @@
          ("M-]" . better-jumper-jump-forward))
   :config
   (defadvice beginning-of-buffer (before better-jumper activate)
+      (when (bound-and-true-p better-jumper-local-mode)
+        (better-jumper-set-jump)))
+
+  (defadvice mark-whole-buffer (before better-jumper activate)
       (when (bound-and-true-p better-jumper-local-mode)
         (better-jumper-set-jump)))
 
@@ -500,54 +454,3 @@
   (global-set-key (kbd "C-z") 'undo)
   (global-unset-key (kbd "C-<return>")))
 
-(use-package! helm-icons
-  :config
-  ;; Workaround https://github.com/yyoncho/helm-icons/issues/16 (Bringing up
-  ;; helm-buffers-list breaks when using all-the-icons provider.)
-
-  (defun dotfiles--helm-icons--get-icon (file)
-    "Get icon for FILE."
-    (cond ((eq helm-icons-provider 'all-the-icons)
-           (require 'all-the-icons)
-           (concat
-            (or (cond ((not (stringp file)) (all-the-icons-octicon "gear"))
-                      ((or
-                        (member (f-base file) '("." ".."))
-                        (f-dir? file))
-                       (all-the-icons-octicon "file-directory")))
-                (all-the-icons-icon-for-file file))
-            " "))
-          ((eq helm-icons-provider 'treemacs)
-           (helm-icons--treemacs-icon file))))
-
-  (advice-add #'helm-icons--get-icon :override #'dotfiles--helm-icons--get-icon)
-
-  (defun dotfiles--helm-icons--get-icon-for-mode (mode)
-    "Get icon for MODE.
-First it will use the customized helm-icons-mode->icon to resolve the icon,
-otherwise it tries to use the provider."
-    (or (-some->> (assoc major-mode helm-icons-mode->icon)
-          (cl-rest)
-          helm-icons--get-icon)
-        (cond ((eq helm-icons-provider 'all-the-icons)
-               (-let ((icon (all-the-icons-icon-for-mode mode)))
-                 (when (stringp icon) (concat icon " "))))
-              (t nil))))
-
-
-  (defun dotfiles--helm-icons-buffers-add-icon (candidates _source)
-    "Add icon to buffers source.
-CANDIDATES is the list of candidates."
-    (-map (-lambda ((display . buffer))
-            (cons (concat
-                   (with-current-buffer buffer
-                     (or (dotfiles--helm-icons--get-icon-for-mode major-mode)
-                         (-some->> (buffer-file-name)
-                           helm-icons--get-icon)
-                         (helm-icons--get-icon 'fallback)))
-                   display)
-                  buffer))
-          candidates))
-
-  (advice-add #'helm-icons-buffers-add-icon :override
-              #'dotfiles--helm-icons-buffers-add-icon))
