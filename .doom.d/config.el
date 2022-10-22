@@ -176,7 +176,6 @@
          ("C-c C-e" . gusev/org-todo-convert-to-project)
          ("C-<return>" . org-todo)
          ("C-S-<return>" . org-archive-subtree-default)
-         ("C-b" . org-switchb)
          ("C-S-<left>" . nil)
          ("C-S-<right>" . nil)
          ("S-<left>" . nil)
@@ -458,3 +457,7 @@
   :bind (:map global-map
               ("C-z"   . undo-fu-only-undo)
               ("C-S-z" . undo-fu-only-redo)))
+
+(use-package! vertico
+  :bind (:map global-map
+              ("C-b" . +vertico/switch-workspace-buffer)))
