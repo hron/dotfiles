@@ -502,3 +502,7 @@
         modus-themes-lang-checkers '(straight-underline)
         modus-themes-paren-match '(bold)
         modus-themes-org-blocks 'gray-background))
+
+(use-package! emacs
+  :bind (:map global-map
+              ("C-/" . comment-dwim)))
