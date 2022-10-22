@@ -501,8 +501,12 @@
         modus-themes-region '(bg-only no-extend)
         modus-themes-lang-checkers '(straight-underline)
         modus-themes-paren-match '(bold)
-        modus-themes-org-blocks 'gray-background))
+        modus-themes-org-blocks 'gray-background
+        modus-themes-mode-line '(borderless accented)))
 
 (use-package! emacs
   :bind (:map global-map
               ("C-/" . comment-dwim)))
+
+(use-package! doom-modeline
+  :custom (doom-modeline-height 30))
