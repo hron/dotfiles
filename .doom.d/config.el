@@ -293,12 +293,15 @@
 
 (use-package lsp-mode
   :bind (:map lsp-mode-map
-         ("M-." . lsp-find-definition)
-         ("M-<RET>" . lsp-execute-code-action)
-         ("C-q" . lsp-describe-thing-at-point)
-         ("M-7" . lsp-ui-peek-find-references))
+              ("M-." . lsp-find-definition)
+              ("M-<RET>" . lsp-execute-code-action)
+              ("C-q" . lsp-describe-thing-at-point)
+              ("M-7" . lsp-ui-peek-find-references))
   :config
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'"))
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
+  :hook ((lsp-mode-hook . (lambda ()
+                            (setq-local er/try-expand-list
+                                        (append er/try-expand-list '(lsp-extend-selection)))))))
 
 (use-package! dap-mode
   :bind (:map dap-mode-map
