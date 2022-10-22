@@ -174,6 +174,7 @@
          ("S-M-<up>" . org-move-subtree-up)
          ("S-M-<down>" . org-move-subtree-down)
          ("C-c C-e" . gusev/org-todo-convert-to-project)
+         ("C-<return>" . org-todo)
          ("C-b" . org-switchb)
          ("C-S-<left>" . nil)
          ("C-S-<right>" . nil)
@@ -182,7 +183,9 @@
          ("C-S-<up>" . nil)
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
-         ("S-<down>" . nil))
+         ("S-<down>" . nil)
+         :map org-agenda-mode-map
+         ("C-<return>" . org-agenda-todo))
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
