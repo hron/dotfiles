@@ -200,8 +200,6 @@
   (other-window -1))
 (global-set-key (kbd "M-<up>") 'other-window-back)
 
-(global-set-key (kbd "<escape>") 'keyboard-quit)
-
 (use-package! helm
   :init
   (require 'helm-projectile)
@@ -279,9 +277,7 @@
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
 (define-key isearch-mode-map [return] 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "<escape>") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-v") 'isearch-yank-kill)
-(define-key minibuffer-local-isearch-map (kbd "<escape>") 'exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
@@ -311,10 +307,6 @@
          ("C-z" . undo-tree-undo)
          ("C-S-z" . undo-tree-redo)))
 (global-undo-tree-mode +1)
-
-(use-package! company
-  :bind (:map company-active-map
-         ("<escape>" . company-abort)))
 
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package! winner
@@ -506,7 +498,6 @@
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
          :map mc/keymap
-         ("<escape>" . mc/keyboard-quit)
          ("<return>" . nil)
          ("C-v" . nil)
          ("M-v" . nil)
@@ -533,6 +524,7 @@
   (keyboard-translate ?\C-x 'control-x)
   (keyboard-translate ?\C-c 'control-c)
   (keyboard-translate ?\C-v 'control-v)
+  (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
   (global-set-key [control-x] 'kill-region)
   (global-set-key [control-c] 'kill-ring-save)
   (global-set-key [control-v] 'yank)
