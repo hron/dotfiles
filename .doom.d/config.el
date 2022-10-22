@@ -523,15 +523,18 @@
 (global-set-key (kbd "C-i") 'delete-other-windows)
 
 ;; We don't need cua-mode!
-(define-key key-translation-map [?\M-x] [?\C-x])
-(define-key key-translation-map [?\M-c] [?\C-c])
-(keyboard-translate ?\C-x 'control-x)
-(keyboard-translate ?\C-c 'control-c)
-(keyboard-translate ?\C-v 'control-v)
-(global-set-key [control-x] 'kill-region)
-(global-set-key [control-c] 'kill-ring-save)
-(global-set-key [control-v] 'yank)
-(global-set-key (kbd "C-z") 'undo)
+(after! doom-keybinds
+  (keyboard-translate ?\C-d ?\C-c)
+  (keyboard-translate ?\C-t ?\C-x)
+  (keyboard-translate ?\C-x 'control-x)
+  (keyboard-translate ?\C-c 'control-c)
+  (keyboard-translate ?\C-v 'control-v)
+  (global-set-key [control-x] 'kill-region)
+  (global-set-key [control-c] 'kill-ring-save)
+  (global-set-key [control-v] 'yank)
+  (global-set-key (kbd "C-z") 'undo)
+  (global-unset-key (kbd "C-<return>"))
+  )
 
 (use-package! helm-icons
   :config
