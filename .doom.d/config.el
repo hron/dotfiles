@@ -242,13 +242,7 @@
          ("C-p" . helm-M-x)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-         ("C-i" . helm-execute-persistent-action) ; make TAB works in terminal
          ("C-a" . helm-select-action) ; list actions using C-a
-         ("C-z" . undo-tree-undo)
-         ;; :map helm-moccur-mode-map
-         ;; ("RET" . helm-moccur-mode-goto-line-ow)
-         ;;:map helm-find-files-map
-         ;;("C-z" . undo-tree-undo)
          ))
 
 (use-package! helm-projectile)
@@ -257,8 +251,6 @@
   :config
   (unbind-key "C-<backspace>" helm-find-files-map)
   (unbind-key "C-<backspace>" helm-read-file-map)
-  :bind (:map helm-find-files-map
-         ("C-z" . undo-tree-undo))
   :custom (helm-ff-fuzzy-matching t))
 
 (use-package! expand-region
@@ -440,11 +432,6 @@
   :bind (("M-[" . better-jumper-jump-backward)
          ("M-]" . better-jumper-jump-forward))
   :config
-  (with-eval-after-load 'isearch
-    (defadvice isearch-forward (before better-jumper activate)
-      (when (bound-and-true-p better-jumper-local-mode)
-        (better-jumper-set-jump))))
-
   (defadvice beginning-of-buffer (before better-jumper activate)
       (when (bound-and-true-p better-jumper-local-mode)
         (better-jumper-set-jump)))
@@ -461,32 +448,12 @@
   :ensure nil
   :init (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
 
-;; (use-package! ob-core
-;;   :ensure nil
-;;   :init
-;;   (require 'cl)
-;;   (defun org-redisplay-ansi-source-blocks ()
-;;     "Refresh the display of ANSI text source blocks."
-;;     (interactive)
-;;     (org-element-map (org-element-parse-buffer) 'src-block
-;;       (lambda (src)
-;;         (when (equalp "ansi" (org-element-property :language src))
-;;           (let ((begin (org-element-property :begin src))
-;;                 (end (org-element-property :end src)))
-;;             (ansi-color-apply-on-region begin end))))))
-
-;;   (add-to-list 'org-babel-after-execute-hook #'org-redisplay-ansi-source-blocks)
-
-;;   (org-babel-do-load-languages 'org-babel-load-languages '((shell . t))))
 
 (after! git-gutter-fringe
   (fringe-mode 12))
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
-
-;; (use-package! ispell
-;;   :init (setq ispell-dictionary "english"))
 
 (use-package! spell-fu
   :bind ("M-$" . +spell/add-word))
