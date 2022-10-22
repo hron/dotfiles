@@ -65,3 +65,5 @@
  :recipe (:host github :repo "john2x/jenkinsfile-mode"))
 
 (package! undo-fu)
+
+(package! solaire-mode :disable t)

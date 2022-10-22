@@ -30,7 +30,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'modus-operandi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -459,5 +459,26 @@
               ("C-S-z" . undo-fu-only-redo)))
 
 (use-package! vertico
-  :bind (:map global-map
+  :bind (:map minibuffer-local-map
+         ("C-f" . consult-history)
+         ("C-r" . consult-history)
+         ("C-s" . nil)
+         ("<prior>" . vertico-scroll-down)
+         ("<next>" . vertico-scroll-up)
+         :map global-map
               ("C-b" . +vertico/switch-workspace-buffer)))
+
+(use-package! info
+  :bind (:map Info-mode-map
+              ("M-[" . Info-history-back)
+              ("M-]" . Info-history-forward)))
+
+(use-package! emacs
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-region '(bg-only no-extend)
+        modus-themes-lang-checkers '(straight-underline)
+        modus-themes-paren-match '(bold)
+        modus-themes-org-blocks 'gray-background))
