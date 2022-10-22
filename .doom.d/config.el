@@ -451,6 +451,10 @@
   (global-set-key [control-x] 'kill-region)
   (global-set-key [control-c] 'kill-ring-save)
   (global-set-key [control-v] 'yank)
-  (global-set-key (kbd "C-z") 'undo)
   (global-unset-key (kbd "C-<return>")))
 
+
+(use-package! undo-fu
+  :bind (:map global-map
+              ("C-z"   . undo-fu-only-undo)
+              ("C-S-z" . undo-fu-only-redo)))
