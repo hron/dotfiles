@@ -498,8 +498,7 @@
   (global-set-key [control-c] 'kill-ring-save)
   (global-set-key [control-v] 'yank)
   (global-set-key (kbd "C-z") 'undo)
-  (global-unset-key (kbd "C-<return>"))
-  )
+  (global-unset-key (kbd "C-<return>")))
 
 (use-package! helm-icons
   :config
