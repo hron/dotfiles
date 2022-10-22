@@ -439,6 +439,23 @@
 
 (global-set-key (kbd "C-i") 'delete-other-windows)
 
+(defun guseal/copy-line-or-region ()
+  "Copy the region if it's active otherwise copy current line"
+  (interactive)
+  (if (region-active-p)
+        (call-interactively 'kill-ring-save)
+    (save-excursion
+      (call-interactively 'kill-whole-line)
+      (yank))))
+
+(defun guseal/cut-line-or-region ()
+  "Cut the region if it's active otherwise cut current line"
+  (interactive)
+  (if (region-active-p)
+        (call-interactively 'kill-region)
+    (save-excursion
+      (call-interactively 'kill-whole-line))))
+
 ;; We don't need cua-mode!
 (after! doom-keybinds
   (keyboard-translate ?\C-d ?\C-c)
@@ -447,8 +464,8 @@
   (keyboard-translate ?\C-c 'control-c)
   (keyboard-translate ?\C-v 'control-v)
   (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
-  (global-set-key [control-x] 'kill-region)
-  (global-set-key [control-c] 'kill-ring-save)
+  (global-set-key [control-x] 'guseal/cut-line-or-region)
+  (global-set-key [control-c] 'guseal/copy-line-or-region)
   (global-set-key [control-v] 'yank)
   (global-unset-key (kbd "C-<return>")))
 
