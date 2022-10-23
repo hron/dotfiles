@@ -501,6 +501,14 @@
          :map global-map
               ("C-b" . +vertico/switch-workspace-buffer)))
 
+(use-package! embark
+  :bind (:map global-map
+             ("M-<return>" . embark-act)
+         :map minibuffer-local-map
+              ("M-<return>" . embark-act)
+         :map minibuffer-mode-map
+              ("M-<return>" . embark-act)))
+
 (use-package! info
   :bind (:map Info-mode-map
               ("M-[" . Info-history-back)
