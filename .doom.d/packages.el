@@ -57,7 +57,9 @@
 
 (package! ahk-mode)
 
-(package! jest-test-mode)
+(package! jest-test-mode :pin "3126c5c")
+
+(package! mocha :pin "6a72fa2")
 
 (package! groovy-mode)
 
@@ -67,3 +69,6 @@
 (package! undo-fu)
 
 (package! solaire-mode :disable t)
+
+(package! realgud :pin "aff03ae")
+(package! realgud-node-debug :pin "72e786359ce9dace1796b0d81a00e9340e9c90ad")

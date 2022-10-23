@@ -325,6 +325,13 @@
 
   )
 
+(use-package! mocha
+  :custom (mocha-reporter "spec"))
+
+(use-package! realgud)
+
+(use-package! realgud-node-debug)
+
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
