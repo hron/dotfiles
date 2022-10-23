@@ -446,10 +446,14 @@
   "Copy the region if it's active otherwise copy current line"
   (interactive)
   (if (region-active-p)
-        (call-interactively 'kill-ring-save)
+      (call-interactively 'kill-ring-save)
     (save-excursion
-      (call-interactively 'kill-whole-line)
-      (yank))))
+      (call-interactively
+       '(lambda ()
+          (interactive)
+          (copy-region-as-kill
+           (progn (beginning-of-line) (point))
+           (progn (end-of-line) (point))))))))
 
 (defun aleksei/cut-line-or-region ()
   "Cut the region if it's active otherwise cut current line"
