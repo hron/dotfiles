@@ -421,6 +421,7 @@
 (use-package! multi-cursors
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
+         ("M-J" . mc/unmark-next-like-this)
          :map mc/keymap
          ("<return>" . nil)
          ("C-v" . nil)
