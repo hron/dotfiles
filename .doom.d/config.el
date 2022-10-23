@@ -258,7 +258,6 @@
 
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
-(global-set-key (kbd "C-d") 'spacemacs/duplicate-line-or-region)
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 ;; (global-set-key (kbd "C-m") 'recenter-top-bottom)
