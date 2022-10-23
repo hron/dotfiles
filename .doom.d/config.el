@@ -515,7 +515,8 @@
         modus-themes-lang-checkers '(straight-underline)
         modus-themes-paren-match '(bold)
         modus-themes-org-blocks 'gray-background
-        modus-themes-mode-line '(borderless accented)))
+        modus-themes-mode-line '(borderless accented)
+        modus-themes-diffs '(bg-only)))
 
 (use-package! emacs
   :bind (:map global-map
