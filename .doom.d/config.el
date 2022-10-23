@@ -311,15 +311,19 @@
          ("M-r" . dap-debug-last)
          ("<f7>" . dap-ui-expressions)
          ("C-S-<f8>" . dap-ui-breakpoints)
-         ("<f10>" . dap-go-to-output-buffer))
+         ("<f10>" . dap-go-to-output-buffer)
+         ("C-8" . dap-eval-region)
+         ("C-M-8" . dap-eval))
   :custom
-  (dap-auto-configure-features '())
-  (dap-auto-show-output nil)
+  (dap-auto-configure-features '(locals expressions tooltip))
+  (dap-auto-show-output t)
   (dap-output-window-max-height 10)
   (dap-output-window-max-height 20)
-  :init
-  (add-hook 'dap-stopped-hook
-            (lambda (arg) (call-interactively #'dap-hydra))))
+  ;; :init
+  ;; (add-hook 'dap-stopped-hook
+  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
+
+  )
 
 (use-package! git-gutter
   :init
