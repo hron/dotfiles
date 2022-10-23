@@ -440,7 +440,7 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
-(global-set-key (kbd "C-i") 'delete-other-windows)
+(global-set-key (kbd "C-p") 'delete-other-windows)
 
 (defun aleksei/copy-line-or-region ()
   "Copy the region if it's active otherwise copy current line"
