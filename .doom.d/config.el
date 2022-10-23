@@ -442,7 +442,7 @@
 
 (global-set-key (kbd "C-i") 'delete-other-windows)
 
-(defun guseal/copy-line-or-region ()
+(defun aleksei/copy-line-or-region ()
   "Copy the region if it's active otherwise copy current line"
   (interactive)
   (if (region-active-p)
@@ -451,7 +451,7 @@
       (call-interactively 'kill-whole-line)
       (yank))))
 
-(defun guseal/cut-line-or-region ()
+(defun aleksei/cut-line-or-region ()
   "Cut the region if it's active otherwise cut current line"
   (interactive)
   (if (region-active-p)
@@ -460,18 +460,27 @@
       (call-interactively 'kill-whole-line))))
 
 ;; We don't need cua-mode!
-(after! doom-keybinds
-  (keyboard-translate ?\C-d ?\C-c)
-  (keyboard-translate ?\C-t ?\C-x)
-  (keyboard-translate ?\C-x 'control-x)
-  (keyboard-translate ?\C-c 'control-c)
-  (keyboard-translate ?\C-v 'control-v)
-  (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
-  (global-set-key [control-x] 'guseal/cut-line-or-region)
-  (global-set-key [control-c] 'guseal/copy-line-or-region)
-  (global-set-key [control-v] 'yank)
-  (global-unset-key (kbd "C-<return>")))
+(defun aleksei/define-global-key-translations (&optional frame)
+  "Re-map C-x/c/v and ESC according modern conventions"
+  (with-selected-frame (or frame (selected-frame))
+    ;; C-x
+    (keyboard-translate ?\C-t ?\C-x)
+    (keyboard-translate ?\C-x 'control-x)
+    (global-set-key [control-x] 'aleksei/cut-line-or-region)
+    ;; C-c
+    (keyboard-translate ?\C-d ?\C-c)
+    (keyboard-translate ?\C-c 'control-c)
+    (global-set-key [control-c] 'aleksei/copy-line-or-region)
+    ;; C-v
+    (keyboard-translate ?\C-v 'control-v)
+    (global-set-key [control-v] 'yank)
+    ;; Escape
+    (define-key key-translation-map (kbd "ESC") (kbd "C-g"))))
 
+(after! doom-keybinds
+  (aleksei/define-global-key-translations)
+  (add-hook 'after-make-frame-functions 'aleksei/define-global-key-translations)
+  (global-unset-key (kbd "C-<return>")))
 
 (use-package! undo-fu
   :bind (:map global-map
