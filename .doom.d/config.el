@@ -365,10 +365,13 @@
 
 
 (use-package! vterm
-  :bind* (:map vterm-mode-map
-               ("C-z" . vterm-undo)
-               ("C-v" . vterm-yank)
-               ("C-<backspace>" . vterm-send-meta-backspace))
+  :bind (:map vterm-mode-map
+              ("C-z" . vterm-undo)
+              ("C-v" . vterm-yank)
+              ("C-<backspace>" . vterm-send-meta-backspace)
+              ("C-<delete>" . vterm-send-M-d)
+              ("C-S-<SPC>" . vterm-copy-mode)
+              ("C-w" . kill-this-buffer))
   :custom (vterm-min-window-width 200)
           (vterm-shell "/bin/bash -l")
   :init
