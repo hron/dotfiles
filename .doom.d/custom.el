@@ -4,11 +4,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval progn
-           (setq dap-python-executable
-                 (concat
-                  (projectile-project-root)
-                  "/venv/bin/python")))))
+   '((toc-org-max-depth . 4)
+     (eval progn
+      (setq dap-python-executable
+            (concat
+             (projectile-project-root)
+             "/venv/bin/python")))))
  '(sp-override-key-bindings '(("C-<right>") ("C-<left>"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
