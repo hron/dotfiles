@@ -243,12 +243,6 @@
   :bind (:map ahk-mode-map
          ("C-/" . comment-dwim)))
 
-(use-package! undo-tree
-  :bind (:map undo-tree-map
-         ("C-/" . nil)
-         ("C-z" . undo-tree-undo)
-         ("C-S-z" . undo-tree-redo)))
-(global-undo-tree-mode +1)
 
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package! winner
