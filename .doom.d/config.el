@@ -301,16 +301,10 @@
          ("<f8>" . dap-breakpoint-toggle)
          ("C-<f8>" . dap-breakpoint-condition)
          ("<f9>" . dap-debug)
-         ("C-9" . dap-debug)
-         ("M-r" . dap-debug-last)
-         ("<f7>" . dap-ui-expressions)
-         ("C-S-<f8>" . dap-ui-breakpoints)
-         ("<f10>" . dap-go-to-output-buffer)
-         ("C-8" . dap-eval-region)
-         ("C-M-8" . dap-eval))
+         ("C-9" . dap-debug))
   :custom
   (dap-auto-configure-features '(locals expressions tooltip))
-  (dap-auto-show-output t)
+  (dap-auto-show-output nil)
   (dap-output-window-max-height 10)
   (dap-output-window-max-height 20)
   ;; :init
