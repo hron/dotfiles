@@ -453,9 +453,7 @@
       (call-interactively
        '(lambda ()
           (interactive)
-          (copy-region-as-kill
-           (progn (beginning-of-line) (point))
-           (progn (end-of-line) (point))))))))
+          (copy-region-as-kill (point-at-bol) (point-at-eol)))))))
 
 (defun aleksei/cut-line-or-region ()
   "Cut the region if it's active otherwise cut current line"
