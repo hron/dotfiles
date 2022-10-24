@@ -536,7 +536,8 @@
 
 (use-package! emacs
   :bind (:map global-map
-              ("C-/" . comment-dwim)))
+              ("C-/" . comment-dwim)
+              ("M-r" . recompile)))
 
 (use-package! doom-modeline
   :custom (doom-modeline-height 30))
