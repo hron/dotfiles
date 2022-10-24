@@ -296,22 +296,7 @@
                             (setq-local er/try-expand-list
                                         (append er/try-expand-list '(lsp-extend-selection)))))))
 
-(use-package! dap-mode
-  :bind (:map dap-mode-map
-         ("<f8>" . dap-breakpoint-toggle)
-         ("C-<f8>" . dap-breakpoint-condition)
-         ("<f9>" . dap-debug)
-         ("C-9" . dap-debug))
-  :custom
-  (dap-auto-configure-features '(locals expressions tooltip))
-  (dap-auto-show-output nil)
-  (dap-output-window-max-height 10)
-  (dap-output-window-max-height 20)
-  ;; :init
-  ;; (add-hook 'dap-stopped-hook
-  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
-
-  )
+(load! "configs/dap-mode.el")
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
