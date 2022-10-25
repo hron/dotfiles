@@ -369,6 +369,7 @@
           (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
+  (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
   )
 
 (use-package! tide
