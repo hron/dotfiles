@@ -4,7 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((checkdoc-package-keywords-flag)
+   '((eval setq ein:jupyter-server-command
+      (concat
+       (projectile-project-root)
+       "/venv/bin/jupyter"))
+     (checkdoc-package-keywords-flag)
      (toc-org-max-depth . 4)
      (eval progn
       (setq dap-python-executable
