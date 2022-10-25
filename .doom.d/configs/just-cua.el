@@ -4,6 +4,7 @@
   :custom
   (cua-remap-control-z nil)
   (cua-prefix-override-inhibit-delay 0.0000000001)
+  (cua-rectangle-mark-key [(control shift return)])
   :config (cua-mode +1))
 
 (defun aleksei/define-global-key-translations (&optional frame)
