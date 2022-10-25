@@ -112,6 +112,8 @@ vterm_printf(){
     fi
 }
 
+[ -f "$HOME/.bashrc_local" ] && source "$HOME/.bashrc_local"
+
 # If not running interactively, do not do anything
 #[[ $- != *i* ]] && return
 #[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ $(type -P "tmux") ]] && exec tmux
