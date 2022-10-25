@@ -488,3 +488,6 @@
 
 (use-package! doom-modeline
   :custom (doom-modeline-height 30))
+
+(map! "C-M-l" '+format/region-or-buffer)
+(setq +format-with-lsp nil)
