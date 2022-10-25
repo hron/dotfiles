@@ -321,14 +321,23 @@
   (let ((compilation-read-command nil))
     (call-interactively 'projectile-test-project)))
 
+(defun aleksei/compile ()
+  "Run compilation command in project root or just in current dir"
+  (interactive)
+  (if (projectile-project-root)
+      (call-interactively 'projectile-compile-project)
+    (call-interactively 'compile)))
+
 (use-package! projectile
   :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
-              ("C-0" . project-compile)
+              ("C-0" . aleksei/compile)
               ("M-r" . recompile)
               ("M-9" . magit-status)
-              ("C-e" . projectile-find-file)))
+              ("C-e" . projectile-find-file))
+  :custom
+  (projectile-compile-use-comint-mode t))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
