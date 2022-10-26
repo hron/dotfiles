@@ -101,24 +101,8 @@
                                    (width . 101)
                                    (height . 59)))))
 
-(defun gusev/org-capture ()
-  "System-wide variant of org-capture."
-  (interactive)
-  (require 'org)
-  (org-capture :keys "i")
-  (delete-other-windows)
-  (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
-    (modify-frame-parameters nil '((icon-type . tasks-icon)
-                                   (auro-raise . t)
-                                   (left . (+ 1142))
-                                   (top . (+ 450))
-                                   (width . 101)
-                                   (height . 25)))))
-
-
 (use-package! org
   :config (progn
-            (add-hook 'org-capture-after-finalize-hook 'delete-frame)
             (add-hook 'org-mode-hook '(lambda ()
                                         (toggle-truncate-lines -1)
                                         (toggle-word-wrap +1)))
@@ -192,6 +176,18 @@
           ("z" . org-agenda-undo)
           ("C-z" . org-agenda-undo)
           ("C-<return>" . org-agenda-todo)))
+
+(use-package! org-capture
+  :config
+  (setq +org-capture-frame-parameters '((name . "doom-capture")
+                                        (left . (+ 1142))
+                                        (top . (+ 450))
+                                        (width . 101)
+                                        (height . 25)
+                                        (transient . t)
+                                        (window-system . x)
+                                        (display . ":0")
+                                        nil)))
 
 (global-set-key (kbd "M-<down>") 'other-window)
 (global-unset-key (kbd "C-x O"))
