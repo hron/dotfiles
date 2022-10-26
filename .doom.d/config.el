@@ -34,7 +34,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Sync/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -93,22 +93,28 @@
     (find-file (concat org-directory "/" f)))
   (switch-to-buffer "tasks.org")
   (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
-    (set-frame-parameter nil 'icon-type tasks-icon)
-    (set-frame-parameter nil 'icon-name "Tasks")))
+    (modify-frame-parameters nil '((name . "Tasks")
+                                   (icon-type . tasks-icon)
+                                   (auro-raise . t)
+                                   (left . (+ 5))
+                                   (top . (+ 38))
+                                   (width . 101)
+                                   (height . 59)))))
 
-(defun gusev/org-capture-system-wide ()
+(defun gusev/org-capture ()
   "System-wide variant of org-capture."
   (interactive)
   (require 'org)
   (org-capture :keys "i")
-  (delete-other-windows))
-
-(defun gusev/org-gtd-capture ()
-  (interactive)
+  (delete-other-windows)
   (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
-    (set-frame-parameter nil 'icon-type tasks-icon)
-    (set-frame-parameter nil 'icon-name "Tasks"))
-  (gusev/org-capture-system-wide))
+    (modify-frame-parameters nil '((icon-type . tasks-icon)
+                                   (auro-raise . t)
+                                   (left . (+ 1142))
+                                   (top . (+ 450))
+                                   (width . 101)
+                                   (height . 25)))))
+
 
 (use-package! org
   :config (progn
