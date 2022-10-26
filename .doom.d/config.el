@@ -454,6 +454,7 @@
          ("C-s" . nil)
          ("<prior>" . vertico-scroll-down)
          ("<next>" . vertico-scroll-up)
+         ("C-j" . vertico-exit-input)
          :map global-map
               ("C-b" . +vertico/switch-workspace-buffer)))
 
