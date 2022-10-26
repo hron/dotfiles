@@ -153,7 +153,7 @@
                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
                   org-archive-default-command 'org-archive-subtree
                   org-capture-templates
-                  '(("i" "Todo" entry (file "~/org/inbox.org")
+                  '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
                      "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
                   org-agenda-start-on-weekday 1
                   calendar-week-start-day 1
@@ -165,7 +165,7 @@
                 (org-todo "")
                 (goto-char (point-at-bol))
                 (if (looking-at "\\(**+\\) ")
-                    (replace-match "\\1 [%] ")))
+                    (replace-match "\\1 [/] ")))
               ;; (org-show-entry)
               ;; (org-forward-sentence)
               ;; (newline)
