@@ -61,22 +61,22 @@
 (map! "C-<f2>" 'list-processes)
 
 (custom-set-faces!
- '(outline-1 :weight normal)
- '(outline-2 :weight normal)
- '(outline-3 :weight normal)
- '(outline-4 :weight normal)
- '(outline-5 :weight normal)
- '(outline-6 :weight normal))
+  '(outline-1 :weight normal)
+  '(outline-2 :weight normal)
+  '(outline-3 :weight normal)
+  '(outline-4 :weight normal)
+  '(outline-5 :weight normal)
+  '(outline-6 :weight normal))
 
 (use-package! iflipb
   :bind (:map global-map
-         ("C-<tab>" . iflipb-next-buffer)
-         ("<C-iso-lefttab>" . iflipb-previous-buffer)))
+              ("C-<tab>" . iflipb-next-buffer)
+              ("<C-iso-lefttab>" . iflipb-previous-buffer)))
 
 (use-package! magit
   :bind (:map magit-section-mode-map
-         ("C-<tab>" . nil)
-         ("<C-iso-lefttab>" . nil)))
+              ("C-<tab>" . nil)
+              ("<C-iso-lefttab>" . nil)))
 
 (use-package! smartparens
   :config
@@ -173,9 +173,9 @@
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
-          ("z" . org-agenda-undo)
-          ("C-z" . org-agenda-undo)
-          ("C-<return>" . org-agenda-todo)))
+               ("z" . org-agenda-undo)
+               ("C-z" . org-agenda-undo)
+               ("C-<return>" . org-agenda-todo)))
 
 (use-package! org-capture
   :config
@@ -236,7 +236,7 @@
 
 (use-package! ahk-mode
   :bind (:map ahk-mode-map
-         ("C-/" . comment-dwim)))
+              ("C-/" . comment-dwim)))
 
 
 (global-set-key [f6] 'toggle-truncate-lines)
@@ -254,13 +254,13 @@
 
 (use-package! comint
   :bind (:map comint-mode-map
-         ("C-d" . comint-delchar-or-maybe-eof)
-         ("C-c" . nil)))
+              ("C-d" . comint-delchar-or-maybe-eof)
+              ("C-c" . nil)))
 
 (use-package! python-mode
   :bind (:map python-mode-map
-         ("<tab>" . python-indent-shift-right)
-         ("<backtab>" . python-indent-shift-left)))
+              ("<tab>" . python-indent-shift-right)
+              ("<backtab>" . python-indent-shift-left)))
 
 ;; (use-package! popup
 ;;   :config
@@ -276,8 +276,8 @@
 
 (use-package! rst-mode
   :bind (:map rst-mode-map
-         ("<tab>" . indent-rigidly-right)
-         ("<backtab>" . indent-rigidly-left)))
+              ("<tab>" . indent-rigidly-right)
+              ("<backtab>" . indent-rigidly-left)))
 
 (use-package lsp-mode
   :bind (:map lsp-mode-map
@@ -361,7 +361,7 @@
               ("C-S-<SPC>" . vterm-copy-mode)
               ("C-w" . kill-this-buffer))
   :custom (vterm-min-window-width 200)
-          (vterm-shell "/bin/bash -l")
+  (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
@@ -369,27 +369,27 @@
 
 (use-package! tide
   :bind (:map tide-mode-map
-         ("C-q" . tide-documentation-at-point)))
+              ("C-q" . tide-documentation-at-point)))
 
 (use-package! better-jumper
   :bind (("M-[" . better-jumper-jump-backward)
          ("M-]" . better-jumper-jump-forward))
   :config
   (defadvice beginning-of-buffer (before better-jumper activate)
-      (when (bound-and-true-p better-jumper-local-mode)
-        (better-jumper-set-jump)))
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
 
   (defadvice mark-whole-buffer (before better-jumper activate)
-      (when (bound-and-true-p better-jumper-local-mode)
-        (better-jumper-set-jump)))
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
 
   (defadvice +default/search-buffer (before better-jumper activate)
-      (when (bound-and-true-p better-jumper-local-mode)
-        (better-jumper-set-jump)))
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
 
   (defadvice end-of-buffer (before better-jumper activate)
-      (when (bound-and-true-p better-jumper-local-mode)
-        (better-jumper-set-jump))))
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump))))
 
 (use-package! shell
   :ensure nil
@@ -425,9 +425,9 @@
 
 (use-package! ein-notebook
   :bind (:map ein:notebook-mode-map
-         ("C-<return>" . ein:worksheet-execute-cell-km)
-         ("M-<up>" . nil)
-         ("M-<down>" . nil)))
+              ("C-<return>" . ein:worksheet-execute-cell-km)
+              ("M-<up>" . nil)
+              ("M-<down>" . nil)))
 
 (global-subword-mode +1)
 (blink-cursor-mode +1)
@@ -451,15 +451,15 @@
          ("<next>" . vertico-scroll-up)
          ("C-j" . vertico-exit-input)
          :map global-map
-              ("C-b" . +vertico/switch-workspace-buffer)))
+         ("C-b" . +vertico/switch-workspace-buffer)))
 
 (use-package! embark
   :bind (:map global-map
-             ("M-<return>" . embark-act)
+         ("M-<return>" . embark-act)
          :map minibuffer-local-map
-              ("M-<return>" . embark-act)
+         ("M-<return>" . embark-act)
          :map minibuffer-mode-map
-              ("M-<return>" . embark-act)))
+         ("M-<return>" . embark-act)))
 
 (use-package! info
   :bind (:map Info-mode-map
