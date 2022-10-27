@@ -34,7 +34,9 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Sync/org/")
+(setq org-directory (if (eq system-type 'gnu/linux)
+                        "~/Sync/org/"
+                      "~/Sync/Default/org"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -59,14 +61,6 @@
 ;; they are implemented.
 
 (map! "C-<f2>" 'list-processes)
-
-(custom-set-faces!
-  '(outline-1 :weight normal)
-  '(outline-2 :weight normal)
-  '(outline-3 :weight normal)
-  '(outline-4 :weight normal)
-  '(outline-5 :weight normal)
-  '(outline-6 :weight normal))
 
 (use-package! iflipb
   :bind (:map global-map
@@ -478,6 +472,10 @@
         modus-themes-org-blocks 'gray-background
         modus-themes-mode-line '(borderless accented)
         modus-themes-diffs '(bg-only)))
+
+(use-package! org-modern
+  :config
+  (global-org-modern-mode +1))
 
 (use-package! emacs
   :bind (:map global-map
