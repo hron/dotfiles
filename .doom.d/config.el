@@ -332,7 +332,8 @@
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file))
   :custom
-  (projectile-compile-use-comint-mode t))
+  (projectile-compile-use-comint-mode t)
+  (projectile-create-missing-test-files t))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
