@@ -454,7 +454,9 @@
          :map minibuffer-local-map
          ("M-<return>" . embark-act)
          :map minibuffer-mode-map
-         ("M-<return>" . embark-act)))
+         ("M-<return>" . embark-act))
+  :custom
+  (embark-prompter 'embark-completing-read-prompter))
 
 (use-package! info
   :bind (:map Info-mode-map
