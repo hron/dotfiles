@@ -34,9 +34,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory (if (eq system-type 'gnu/linux)
-                        "~/Sync/org/"
-                      "~/Sync/Default/org"))
+(setq org-directory "~/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -95,6 +93,15 @@
                                    (width . 101)
                                    (height . 59)))))
 
+(defun gusev/org-todo-convert-to-project ()
+              (interactive)
+              (save-excursion
+                (org-todo "")
+                (goto-char (point-at-bol))
+                (if (looking-at "\\(**+\\) ")
+                    (replace-match "\\1 [/] ")))
+              (call-interactively 'org-insert-todo-subheading))
+
 (defun aleksei/org-capture ()
   "Opens a new frame with Org capture inbox template"
   (interactive)
@@ -134,26 +141,10 @@
                   org-archive-default-command 'org-archive-subtree
                   org-agenda-start-on-weekday 1
                   calendar-week-start-day 1
-                  )
+                  org-capture-templates
+                  '(("i" "Todo" entry (file "~/org/inbox.org")
+                     "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))))
 
-            ;; FIXME: Use (concat org-directory "inbox.org")
-            ;; It seems this requires a macro?
-            (if (eq system-type 'gnu/linux)
-              (setq org-capture-templates
-                  '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
-                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
-              (setq org-capture-templates
-                  '(("i" "Todo" entry (file "~/Sync/Default/org/inbox.org")
-                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))))
-
-            (defun gusev/org-todo-convert-to-project ()
-              (interactive)
-              (save-excursion
-                (org-todo "")
-                (goto-char (point-at-bol))
-                (if (looking-at "\\(**+\\) ")
-                    (replace-match "\\1 [/] ")))
-              (call-interactively 'org-insert-todo-subheading)))
   :bind (:map org-mode-map
          ("S-<return>" . org-insert-heading-after-current)
          ("S-M-<return>" . org-insert-todo-heading-respect-content)
