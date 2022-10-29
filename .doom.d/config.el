@@ -95,6 +95,11 @@
                                    (width . 101)
                                    (height . 59)))))
 
+(defun aleksei/org-capture ()
+  "Opens a new frame with Org capture inbox template"
+  (interactive)
+  (+org-capture/open-frame "" "i"))
+
 (use-package! org
   :config (progn
             (add-hook 'org-mode-hook '(lambda ()
@@ -117,10 +122,7 @@
                                   (:endgroup)
                                   )
 
-                  org-todo-keywords
-                  '((sequence
-                     "TODO"
-                     "DONE"))
+                  org-todo-keywords '((sequence "TODO" "DONE"))
                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
                   org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
@@ -130,12 +132,19 @@
                   org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
                   org-archive-default-command 'org-archive-subtree
-                  org-capture-templates
-                  '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
-                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))
                   org-agenda-start-on-weekday 1
                   calendar-week-start-day 1
                   )
+
+            ;; FIXME: Use (concat org-directory "inbox.org")
+            ;; It seems this requires a macro?
+            (if (eq system-type 'gnu/linux)
+              (setq org-capture-templates
+                  '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
+                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a")))
+              (setq org-capture-templates
+                  '(("i" "Todo" entry (file "~/Sync/Default/org/inbox.org")
+                     "* %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))))
 
             (defun gusev/org-todo-convert-to-project ()
               (interactive)
@@ -179,8 +188,6 @@
                                         (width . 101)
                                         (height . 25)
                                         (transient . t)
-                                        (window-system . x)
-                                        (display . ":0")
                                         nil)))
 
 (global-set-key (kbd "M-<down>") 'other-window)
