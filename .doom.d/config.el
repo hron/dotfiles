@@ -290,10 +290,6 @@
 (use-package! mocha
   :custom (mocha-reporter "spec"))
 
-(use-package! realgud)
-
-(use-package! realgud-node-debug)
-
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
@@ -474,10 +470,6 @@
         modus-themes-org-blocks 'gray-background
         modus-themes-mode-line '(borderless accented)
         modus-themes-diffs '(bg-only)))
-
-(use-package! org-modern
-  :config
-  (global-org-modern-mode +1))
 
 (use-package! emacs
   :bind (:map global-map

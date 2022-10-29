@@ -14,7 +14,6 @@
     ;; Escape
     (define-key key-translation-map (kbd "ESC") (kbd "C-g"))))
 
-(after! doom-keybinds
-  (aleksei/define-global-key-translations)
-  (add-hook 'after-make-frame-functions 'aleksei/define-global-key-translations)
-  (global-unset-key (kbd "C-<return>")))
+(aleksei/define-global-key-translations)
+(add-hook 'after-make-frame-functions 'aleksei/define-global-key-translations)
+(global-unset-key (kbd "C-<return>"))

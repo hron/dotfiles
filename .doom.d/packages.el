@@ -67,8 +67,3 @@
  :recipe (:host github :repo "john2x/jenkinsfile-mode"))
 
 (package! solaire-mode :disable t)
-
-(package! realgud :pin "aff03ae")
-(package! realgud-node-debug :pin "72e786359ce9dace1796b0d81a00e9340e9c90ad")
-
-(package! org-modern :pin "59b2e3c94756b4e37b2cf7b9f81028c6d4758672")
