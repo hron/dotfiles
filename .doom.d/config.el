@@ -252,10 +252,11 @@
               ("<tab>" . python-indent-shift-right)
               ("<backtab>" . python-indent-shift-left)))
 
-;; (use-package! popup
-;;   :config
-;;   (plist-put +popup-defaults :modeline t)
-;;   (set-popup-rule! "\\*compilation" :side 'bottom :size 0.5 :modeline t :select nil))
+(use-package! popup
+  :config
+  (plist-put +popup-defaults :modeline t)
+  (set-popup-rule! "\\*compilation" :side 'bottom :size 0.33 :select t)
+  (set-popup-rule! "\\*eshell" :side 'bottom :size 0.33 :select t))
 
 (global-auto-revert-mode +1)
 
