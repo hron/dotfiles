@@ -478,3 +478,7 @@
 
 (map! "C-M-l" '+format/region-or-buffer)
 (setq +format-with-lsp nil)
+
+(use-package! emacs
+  :custom
+  (ls-lisp-dirs-first t))
