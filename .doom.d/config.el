@@ -416,9 +416,9 @@
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . nil)
               ("M-<down>" . nil)))
-
+
 (global-subword-mode +1)
-(blink-cursor-mode +1)
+(blink-cursor-mode +1)
 
 (global-set-key (kbd "C-p") 'delete-other-windows)
 
@@ -439,7 +439,7 @@
          ("<next>" . vertico-scroll-up)
          ("C-j" . vertico-exit-input)
          :map global-map
-         ("C-b" . +vertico/switch-workspace-buffer)))
+         ("C-b" . +vertico/switch-workspace-buffer)))
 
 (use-package! embark
   :bind (:map global-map
