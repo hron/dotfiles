@@ -181,8 +181,12 @@
                                         (transient . t)
                                         nil)))
 
+(load! "configs/indent-rigidly")
+
+(setq-default tab-width 2)
+
 (use-package! emacs
-  :hook ((emacs-lisp-mode-hook . (lambda () (setq-local tab-width 2)))))
+  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
 (use-package! expand-region
   :init
