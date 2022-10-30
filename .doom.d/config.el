@@ -1,9 +1,3 @@
-(global-set-key (kbd "M-<down>") 'other-window)
-(global-unset-key (kbd "C-x O"))
-(defun other-window-back ()
-  (interactive)
-  (other-window -1))
-(global-set-key (kbd "M-<up>") 'other-window-back)
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
