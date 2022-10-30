@@ -464,7 +464,9 @@
         modus-themes-paren-match '(bold)
         modus-themes-org-blocks 'gray-background
         modus-themes-mode-line '(borderless accented)
-        modus-themes-diffs '(bg-only)))
+        modus-themes-diffs '(bg-only))
+  :custom-face
+  (mc/cursor-bar-face ((t (:background "white" :foreground "black" :height 1)))))
 
 (use-package! emacs
   :bind (:map global-map
