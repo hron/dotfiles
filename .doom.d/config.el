@@ -1,3 +1,9 @@
+(global-set-key (kbd "M-<down>") 'other-window)
+(global-unset-key (kbd "C-x O"))
+(defun other-window-back ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "M-<up>") 'other-window-back)
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
@@ -146,8 +152,8 @@
   :bind (:map org-mode-map
          ("S-<return>" . org-insert-heading-after-current)
          ("S-M-<return>" . org-insert-todo-heading-respect-content)
-         ("S-M-<up>" . org-move-subtree-up)
-         ("S-M-<down>" . org-move-subtree-down)
+         ("S-C-<up>" . org-metaup)
+         ("S-C-<down>" . org-metadown)
          ("C-c C-e" . gusev/org-todo-convert-to-project)
          ("C-<return>" . org-todo)
          ("S-<return>" . org-insert-heading)
@@ -159,6 +165,8 @@
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
          ("S-<down>" . nil)
+         ("M-<up>" . nil)
+         ("M-<down>" . nil)
          :map org-agenda-mode-map
          )
   :custom (org-provide-todo-statistics 'all-headlines))
@@ -179,12 +187,8 @@
                                         (transient . t)
                                         nil)))
 
-(global-set-key (kbd "M-<down>") 'other-window)
-(global-unset-key (kbd "C-x O"))
-(defun other-window-back ()
-  (interactive)
-  (other-window -1))
-(global-set-key (kbd "M-<up>") 'other-window-back)
+(use-package! emacs
+  :hook ((emacs-lisp-mode-hook . (lambda () (setq-local tab-width 2)))))
 
 (use-package! expand-region
   :init
@@ -294,7 +298,6 @@
 
 (use-package! treemacs
   :bind (:map treemacs-mode-map
-              ("M-<up>" . other-window-back)
               ("M-<down>" . other-window)))
 
 (defun projectile-test-rerun ()
@@ -405,8 +408,8 @@
          ("<return>" . nil)
          ("C-v" . nil)
          ("M-v" . nil)
-         ("M-<down>" . mc/cycle-forward)
-         ("M-<up>" . mc/cycle-backward)))
+         ("M-n" . mc/cycle-forward)
+         ("M-p" . mc/cycle-backward)))
 
 (use-package! jenkinsfile-mode)
 
@@ -415,9 +418,9 @@
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . nil)
               ("M-<down>" . nil)))
-
+
 (global-subword-mode +1)
-(blink-cursor-mode +1)
+(blink-cursor-mode +1)
 
 (global-set-key (kbd "C-p") 'delete-other-windows)
 
