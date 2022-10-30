@@ -420,7 +420,7 @@
 (global-subword-mode +1)
 (blink-cursor-mode +1)
 
-(global-set-key (kbd "C-p") 'delete-other-windows)
+(global-set-key (kbd "C-p") 'window-toggle-side-windows)
 
 ;; (load! "configs/cua-modernized")
 (load! "configs/just-cua")
