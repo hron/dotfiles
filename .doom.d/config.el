@@ -159,10 +159,8 @@
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
          ("S-<down>" . nil)
-         ("M-<up>" . nil)
-         ("M-<down>" . nil)
-         :map org-agenda-mode-map
-         )
+         ("M-<up>" . org-move-subtree-up)
+         ("M-<down>" . org-move-subtree-down))
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
