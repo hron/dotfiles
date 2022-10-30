@@ -489,4 +489,4 @@
          ("<home>" . eshell-bol)
          :map eshell-hist-mode-map
          ("<up>" . nil)
-         ("down" . nil)))
+         ("<down>" . nil)))
