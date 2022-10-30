@@ -12,3 +12,4 @@ TAGS
 capybara-*.html
 *.iml
 .idea/*
+flychek*.el
