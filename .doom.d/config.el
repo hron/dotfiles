@@ -483,3 +483,10 @@
 (use-package! emacs
   :custom
   (ls-lisp-dirs-first t))
+
+(use-package! emacs
+  :bind (:map eshell-mode-map
+         ("<home>" . eshell-bol)
+         :map eshell-hist-mode-map
+         ("<up>" . nil)
+         ("down" . nil)))
