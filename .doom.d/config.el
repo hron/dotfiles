@@ -491,3 +491,8 @@
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
               ("<down>" . nil)))
+(use-package! em-prompt
+  :bind (:map eshell-prompt-mode-map
+         ("<home>" . eshell-bol)
+         ("C-<prior>" . eshell-previous-prompt)
+         ("C-<next>" . eshell-next-prompt)))
