@@ -406,7 +406,9 @@
          ("C-v" . nil)
          ("M-v" . nil)
          ("M-n" . mc/cycle-forward)
-         ("M-p" . mc/cycle-backward)))
+         ("M-p" . mc/cycle-backward))
+  :custom
+  (mc/match-cursor-style nil))
 
 (use-package! jenkinsfile-mode)
 
@@ -465,9 +467,7 @@
         modus-themes-paren-match '(bold)
         modus-themes-org-blocks 'gray-background
         modus-themes-mode-line '(borderless accented)
-        modus-themes-diffs '(bg-only))
-  :custom-face
-  (mc/cursor-bar-face ((t (:background "white" :foreground "black" :height 1)))))
+        modus-themes-diffs '(bg-only)))
 
 (use-package! emacs
   :bind (:map global-map
