@@ -415,8 +415,8 @@
 (use-package! ein-notebook
   :bind (:map ein:notebook-mode-map
               ("C-<return>" . ein:worksheet-execute-cell-km)
-              ("M-<up>" . nil)
-              ("M-<down>" . nil)))
+              ("M-<up>" . ein:worksheet-move-cell-up)
+              ("M-<down>" . ein:worksheet-move-cell-down)))
 
 (global-subword-mode +1)
 (blink-cursor-mode +1)
