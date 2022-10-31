@@ -13,3 +13,5 @@ capybara-*.html
 *.iml
 .idea/*
 flychek*.el
+.env
+.envrc
