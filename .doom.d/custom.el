@@ -29,3 +29,4 @@
  '(outline-4 ((t (:weight normal))))
  '(outline-5 ((t (:weight normal))))
  '(outline-6 ((t (:weight normal)))))
+(put 'narrow-to-region 'disabled nil)
