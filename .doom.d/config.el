@@ -92,13 +92,13 @@
                                    (height . 59)))))
 
 (defun gusev/org-todo-convert-to-project ()
-              (interactive)
-              (save-excursion
-                (org-todo "")
-                (goto-char (point-at-bol))
-                (if (looking-at "\\(**+\\) ")
-                    (replace-match "\\1 [/] ")))
-              (call-interactively 'org-insert-todo-subheading))
+  (interactive)
+  (save-excursion
+    (org-todo "")
+    (goto-char (point-at-bol))
+    (if (looking-at "\\(**+\\) ")
+        (replace-match "\\1 [/] ")))
+  (call-interactively 'org-insert-todo-subheading))
 
 (defun aleksei/org-capture ()
   "Opens a new frame with Org capture inbox template"
@@ -144,23 +144,23 @@
                      "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))))
 
   :bind (:map org-mode-map
-         ("S-<return>" . org-insert-heading-after-current)
-         ("S-M-<return>" . org-insert-todo-heading-respect-content)
-         ("S-C-<up>" . org-metaup)
-         ("S-C-<down>" . org-metadown)
-         ("C-c C-e" . gusev/org-todo-convert-to-project)
-         ("C-<return>" . org-todo)
-         ("S-<return>" . org-insert-heading)
-         ("C-S-<left>" . nil)
-         ("C-S-<right>" . nil)
-         ("S-<left>" . nil)
-         ("S-<right>" . nil)
-         ("C-S-<up>" . nil)
-         ("C-S-<down>" . nil)
-         ("S-<up>" . nil)
-         ("S-<down>" . nil)
-         ("M-<up>" . org-move-subtree-up)
-         ("M-<down>" . org-move-subtree-down))
+              ("S-<return>" . org-insert-heading-after-current)
+              ("S-M-<return>" . org-insert-todo-heading-respect-content)
+              ("S-C-<up>" . org-metaup)
+              ("S-C-<down>" . org-metadown)
+              ("C-c C-e" . gusev/org-todo-convert-to-project)
+              ("C-<return>" . org-todo)
+              ("S-<return>" . org-insert-heading)
+              ("C-S-<left>" . nil)
+              ("C-S-<right>" . nil)
+              ("S-<left>" . nil)
+              ("S-<right>" . nil)
+              ("C-S-<up>" . nil)
+              ("C-S-<down>" . nil)
+              ("S-<up>" . nil)
+              ("S-<down>" . nil)
+              ("M-<up>" . org-move-subtree-up)
+              ("M-<down>" . org-move-subtree-down))
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
@@ -488,13 +488,13 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-         ("<home>" . eshell-bol)))
+              ("<home>" . eshell-bol)))
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
               ("<down>" . nil)))
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
-         ("<home>" . eshell-bol)
-         ("C-<prior>" . eshell-previous-prompt)
-         ("C-<next>" . eshell-next-prompt)))
+              ("<home>" . eshell-bol)
+              ("C-<prior>" . eshell-previous-prompt)
+              ("C-<next>" . eshell-next-prompt)))
