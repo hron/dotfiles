@@ -277,7 +277,7 @@
               ("M-." . lsp-find-definition)
               ("M-<RET>" . lsp-execute-code-action)
               ("C-q" . lsp-describe-thing-at-point)
-              ("M-7" . lsp-ui-peek-find-references))
+              ("M-7" . lsp-find-references))
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
   :hook ((lsp-mode-hook . (lambda ()
