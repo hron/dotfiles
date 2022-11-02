@@ -12,6 +12,6 @@ TAGS
 capybara-*.html
 *.iml
 .idea/*
-flychek*.el
+flycheck*.el
 .env
 .envrc
