@@ -17,7 +17,8 @@
             (concat
              (projectile-project-root)
              "/venv/bin/python")))))
- '(sp-override-key-bindings '(("C-<right>") ("C-<left>"))))
+ '(sp-override-key-bindings '(("C-<right>") ("C-<left>")))
+ '(warning-suppress-types '((lsp-mode) (lsp-mode) (lsp-mode) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
