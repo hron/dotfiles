@@ -67,3 +67,5 @@
   :recipe (:host github :repo "john2x/jenkinsfile-mode"))
 
 (package! solaire-mode :disable t)
+
+(package! feature-mode)

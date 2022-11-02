@@ -123,8 +123,7 @@
                                   ("emacs" . ?e)
                                   (:startgroup)
                                   ("Elena" . ?E)
-                                  (:endgroup)
-                                  )
+                                  (:endgroup))
 
                   org-todo-keywords '((sequence "TODO" "DONE"))
                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
@@ -504,3 +503,7 @@
               ("<home>" . eshell-bol)
               ("C-<prior>" . eshell-previous-prompt)
               ("C-<next>" . eshell-next-prompt)))
+
+(use-package! feature-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
