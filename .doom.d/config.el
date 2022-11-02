@@ -281,7 +281,14 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
   :hook ((lsp-mode-hook . (lambda ()
                             (setq-local er/try-expand-list
-                                        (append er/try-expand-list '(lsp-extend-selection)))))))
+                                        (append er/try-expand-list '(lsp-extend-selection))))))
+  :custom
+  (lsp-ui-sideline-diagnostic-max-lines 5))
+
+(use-package! flycheck
+  :bind (:map flycheck-mode-map
+              ("<f2>" . flycheck-next-error)
+              ("S-<f2>" . flycheck-previous-error)))
 
 (load! "configs/dap-mode.el")
 
