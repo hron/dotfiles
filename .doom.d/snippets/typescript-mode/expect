@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: expect
+# uuid:
+# key: exp
+# condition: t
+# --
+
+expect($1).to.$2;
