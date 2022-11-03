@@ -511,3 +511,7 @@
 (use-package! feature-mode
   :config
   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
+
+(use-package! windmove
+  :bind (:map global-map
+             ("C-o" . ace-swap-window)))
