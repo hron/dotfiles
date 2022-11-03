@@ -515,3 +515,19 @@
 (use-package! windmove
   :bind (:map global-map
              ("C-o" . ace-swap-window)))
+
+(use-package! doom-modeline
+  :config
+  (setq doom-modeline-buffer-file-name-style 'buffer-name
+        doom-modeline-major-mode-icon t
+        doom-modeline-major-mode-color-icon t))
+
+(defun aleksei/buffer-file-name-for-frame-title ()
+  (let ((doom-modeline-buffer-file-name-style 'relative-to-project))
+    (doom-modeline-buffer-file-name)))
+
+(use-package! emacs
+  :config
+  (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
+                             (:eval (concat " - " (projectile-project-name))))
+        icon-title-format frame-title-format))
