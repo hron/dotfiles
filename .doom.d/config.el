@@ -532,3 +532,7 @@
   (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
                              (:eval (concat " - " (projectile-project-name))))
         icon-title-format frame-title-format))
+
+(use-package! ert
+  :bind (:map emacs-lisp-mode-map
+              ("C-; f" . ert)))
