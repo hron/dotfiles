@@ -259,6 +259,7 @@
   (plist-put +popup-defaults :modeline t)
   (plist-put +popup-defaults :size 0.40)
   (set-popup-rule! "\\*compilation" :side 'right :size 0.45 :select nil)
+  (set-popup-rule! "\\*ert" :side 'bottom :size 0.45 :select t)
   (set-popup-rule! "\\*mocha" :side 'right :size 0.45 :select nil)
   (set-popup-rule! "\\*eshell" :side 'bottom :select t))
 
