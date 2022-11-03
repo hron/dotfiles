@@ -68,6 +68,10 @@
               ("C-<tab>" . nil)
               ("<C-iso-lefttab>" . nil)))
 
+(use-package! magit-gitflow
+  :bind (:map magit-gitflow-mode-map
+              ("C-f" . nil)))
+
 (use-package! smartparens
   :config
   (custom-set-variables
@@ -253,10 +257,10 @@
 (use-package! popup
   :config
   (plist-put +popup-defaults :modeline t)
-  (plist-put +popup-defaults :size 0.33)
-  (set-popup-rule! "\\*compilation" :side 'bottom :size 0.33 :select nil)
-  (set-popup-rule! "\\*mocha" :side 'bottom :size 0.33 :select nil)
-  (set-popup-rule! "\\*eshell" :side 'bottom :size 0.33 :select t))
+  (plist-put +popup-defaults :size 0.40)
+  (set-popup-rule! "\\*compilation" :side 'right :select nil)
+  (set-popup-rule! "\\*mocha" :side 'right :select nil)
+  (set-popup-rule! "\\*eshell" :side 'bottom :select t))
 
 (global-auto-revert-mode +1)
 
