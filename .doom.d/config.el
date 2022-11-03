@@ -258,8 +258,8 @@
   :config
   (plist-put +popup-defaults :modeline t)
   (plist-put +popup-defaults :size 0.40)
-  (set-popup-rule! "\\*compilation" :side 'right :select nil)
-  (set-popup-rule! "\\*mocha" :side 'right :select nil)
+  (set-popup-rule! "\\*compilation" :side 'right :size 0.45 :select nil)
+  (set-popup-rule! "\\*mocha" :side 'right :size 0.45 :select nil)
   (set-popup-rule! "\\*eshell" :side 'bottom :select t))
 
 (global-auto-revert-mode +1)
@@ -441,7 +441,7 @@
   :bind (:map global-map
               ("C-z"   . undo-fu-only-undo)
               ("C-S-z" . undo-fu-only-redo)))
-
+
 (use-package! vertico
   :bind (:map minibuffer-local-map
          ("C-f" . consult-history)
