@@ -186,7 +186,13 @@
 (setq-default tab-width 2)
 
 (use-package! emacs
+  :bind (:map emacs-lisp-mode-map
+              ("C-q" . describe-symbol))
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
+
+(use-package! ert
+  :bind (:map emacs-lisp-mode-map
+              ("C-; f" . ert)))
 
 (use-package! expand-region
   :init
@@ -532,7 +538,3 @@
   (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
                              (:eval (concat " - " (projectile-project-name))))
         icon-title-format frame-title-format))
-
-(use-package! ert
-  :bind (:map emacs-lisp-mode-map
-              ("C-; f" . ert)))
