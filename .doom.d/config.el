@@ -207,11 +207,19 @@
 
 (global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
 
+(defun aleksei/isearch-region-or-forward ()
+  "Do incremental search forward, use region if it's active"
+  (interactive)
+  (if (use-region-p)
+      (isearch-forward-thing-at-point)
+    (isearch-forward)))
+
 (setq search-exit-option 'edit)
-;; (global-set-key (kbd "C-f") 'isearch-forward)
+(global-set-key (kbd "C-f") 'aleksei/isearch-region-or-forward)
 (define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
 (define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
 (define-key isearch-mode-map [return] 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
 (define-key isearch-mode-map (kbd "C-v") 'isearch-yank-kill)
 (define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
 (define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
@@ -220,7 +228,7 @@
 (global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
 (global-anzu-mode +1)
 
-(global-set-key (kbd "C-f") '+default/search-buffer)
+(global-set-key (kbd "M-f") '+default/search-buffer)
 (global-set-key (kbd "C-S-f") '+default/search-project)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
@@ -389,6 +397,10 @@
       (better-jumper-set-jump)))
 
   (defadvice +default/search-buffer (before better-jumper activate)
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
+
+  (defadvice aleksei/isearch-region-or-forward (before better-jumper activate)
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump)))
 
