@@ -270,7 +270,7 @@
 
 (use-package! popup
   :config
-  (plist-put +popup-defaults :modeline t)
+  (plist-put +popup-defaults :modeline nil)
   (plist-put +popup-defaults :size 0.40)
   (set-popup-rule! "\\*ein" :ignore t)
   (set-popup-rule! "\\*compilation" :size 0.45 :select nil)
