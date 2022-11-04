@@ -272,10 +272,11 @@
   :config
   (plist-put +popup-defaults :modeline t)
   (plist-put +popup-defaults :size 0.40)
-  (set-popup-rule! "\\*compilation" :side 'bottom :size 0.45 :select nil)
-  (set-popup-rule! "\\*ert" :side 'bottom :size 0.45 :select t)
-  (set-popup-rule! "\\*mocha" :side 'bottom :size 0.45 :select nil)
-  (set-popup-rule! "\\*eshell" :side 'bottom :select t))
+  (set-popup-rule! "\\*ein" :ignore t)
+  (set-popup-rule! "\\*compilation" :size 0.45 :select nil)
+  (set-popup-rule! "\\*ert" :size 0.45 :select t)
+  (set-popup-rule! "\\*mocha" :size 0.45 :select nil)
+  (set-popup-rule! "\\*eshell" :select t))
 
 (global-auto-revert-mode +1)
 
