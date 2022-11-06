@@ -125,6 +125,7 @@
                                   ("laptop" . ?l)
                                   ("meet" . ?m)
                                   ("emacs" . ?e)
+                                  ("watch" . ?a)
                                   (:startgroup)
                                   ("Elena" . ?E)
                                   (:endgroup))
