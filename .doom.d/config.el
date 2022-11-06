@@ -268,15 +268,15 @@
               ("<tab>" . python-indent-shift-right)
               ("<backtab>" . python-indent-shift-left)))
 
-(use-package! popup
-  :config
-  (plist-put +popup-defaults :modeline nil)
-  (plist-put +popup-defaults :size 0.40)
-  (set-popup-rule! "\\*ein" :ignore t)
-  (set-popup-rule! "\\*compilation" :size 0.45 :select nil)
-  (set-popup-rule! "\\*ert" :size 0.45 :select t)
-  (set-popup-rule! "\\*mocha" :size 0.45 :select nil)
-  (set-popup-rule! "\\*eshell" :select t))
+(plist-put +popup-defaults :modeline nil)
+(plist-put +popup-defaults :size 0.33)
+(set-popup-rules!
+  '(
+    ("\\*ein" :ignore t)
+    ("\\*compilation" :select nil)
+    ("\\*ert" :select t)
+    ("\\*mocha" :select nil)
+    ("\\*eshell" :select t)))
 
 (global-auto-revert-mode +1)
 
