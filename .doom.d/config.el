@@ -312,6 +312,22 @@
 
 (load! "configs/dap-mode.el")
 
+;; Unset company-complete
+(global-unset-key (kbd "C-;"))
+(use-package! typescript-mode
+  :bind (:map typescript-mode-map
+              ("C-; f" . mocha-test-file)
+              ("C-; c" . mocha-test-at-point)
+              ("C-; C-f" . mocha-debug-file)
+              ("C-; C-c" . mocha-debug-at-point)))
+
+(use-package! js2-mode
+  :bind (:map js2-mode-map
+              ("C-; f" . mocha-test-file)
+              ("C-; c" . mocha-test-at-point)
+              ("C-; C-f" . mocha-debug-file)
+              ("C-; C-c" . mocha-debug-at-point)))
+
 (use-package! mocha
   :custom (mocha-reporter "spec"))
 
@@ -548,3 +564,4 @@
   (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
                              (:eval (concat " - " (projectile-project-name))))
         icon-title-format frame-title-format))
+

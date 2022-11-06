@@ -59,7 +59,8 @@
 
 (package! jest-test-mode :pin "3126c5c")
 
-(package! mocha :pin "6a72fa2")
+(package! mocha
+  :recipe (:host github :repo "hron/mocha.el" :branch "tree-sitter"))
 
 (package! groovy-mode)
 
