@@ -320,10 +320,6 @@
   (global-set-key (kbd "C-<next>") 'git-gutter:next-hunk)
   (global-set-key (kbd "C-<prior>") 'git-gutter:previous-hunk))
 
-(use-package! treemacs
-  :bind (:map treemacs-mode-map
-              ("M-<down>" . other-window)))
-
 (defun projectile-test-rerun ()
   (interactive)
   (let ((compilation-read-command nil))
@@ -532,9 +528,9 @@
   :config
   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
 
-(use-package! windmove
+(use-package! ace-window
   :bind (:map global-map
-             ("C-o" . ace-swap-window)))
+             ("C-o" . ace-window)))
 
 (use-package! doom-modeline
   :config

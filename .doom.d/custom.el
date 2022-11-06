@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((lsp-eslint-quiet . t)
+   '((comment-fill-column . 80)
+     (lsp-eslint-quiet . t)
      (lsp-eslint-experimental-incremental-sync)
      (lsp-eslint-package-manager . "yarn")
      (eval setq ein:jupyter-server-command
@@ -30,5 +31,6 @@
  '(outline-3 ((t (:weight normal))))
  '(outline-4 ((t (:weight normal))))
  '(outline-5 ((t (:weight normal))))
- '(outline-6 ((t (:weight normal)))))
+ '(outline-6 ((t (:weight normal))))
+ '(ts-fold-replacement-face ((t (:foreground nil :box nil :inherit font-lock-comment-face :weight light)))))
 (put 'narrow-to-region 'disabled nil)
