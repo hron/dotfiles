@@ -9,6 +9,12 @@
          (deactivate-mark "irrelevant")) ; avoid deactivating mark
     (indent-rigidly rstart rend n)))
 
+;; (defun aleksei/indent-rigidly-right ()
+;;   "Indent the region, or otherwise the current line, by 4 spaces."
+;;   (interactive)
+;;   (if (aleksei/current-line-empty-p)
+;;       (indent-for-tab-command))
+;;   (aleksei/indent-rigidly tab-width))
 (defun aleksei/indent-rigidly-right ()
   "Indent the region, or otherwise the current line, by 4 spaces."
   (interactive)

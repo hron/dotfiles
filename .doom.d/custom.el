@@ -4,33 +4,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((comment-fill-column . 80)
+   '((flycheck-disabled-checkers quote
+      (javascript-eslint emacs-lisp-checkdoc))
      (lsp-eslint-quiet . t)
      (lsp-eslint-experimental-incremental-sync)
      (lsp-eslint-package-manager . "yarn")
-     (eval setq ein:jupyter-server-command
-      (concat
-       (projectile-project-root)
-       "/venv/bin/jupyter"))
-     (checkdoc-package-keywords-flag)
-     (toc-org-max-depth . 4)
-     (eval progn
-      (setq dap-python-executable
-            (concat
-             (projectile-project-root)
-             "/venv/bin/python")))))
- '(sp-override-key-bindings '(("C-<right>") ("C-<left>")))
- '(warning-suppress-types '((lsp-mode) (lsp-mode) (lsp-mode) (defvaralias))))
+     (mocha-project-test-directory . "packages/**/test/**/*.test.ts")))
+ '(sp-override-key-bindings '(("C-<right>") ("C-<left>"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(outline-1 ((t (:weight normal))))
- '(outline-2 ((t (:weight normal))))
- '(outline-3 ((t (:weight normal))))
- '(outline-4 ((t (:weight normal))))
- '(outline-5 ((t (:weight normal))))
- '(outline-6 ((t (:weight normal))))
  '(ts-fold-replacement-face ((t (:foreground nil :box nil :inherit font-lock-comment-face :weight light)))))
 (put 'narrow-to-region 'disabled nil)

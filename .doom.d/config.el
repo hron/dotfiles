@@ -144,7 +144,7 @@
                   calendar-week-start-day 1
                   org-capture-templates
                   '(("i" "Todo" entry (file "~/org/inbox.org")
-                     "* TODO %?\n  :PROPERTIES:\n  :Added: %U\n  :END:\n  %i\n  %a"))))
+                     "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))))
 
   :bind (:map org-mode-map
               ("S-<return>" . org-insert-heading-after-current)
@@ -182,7 +182,7 @@
                                         (transient . t)
                                         nil)))
 
-(load! "configs/indent-rigidly")
+;; (load! "configs/indent-rigidly")
 
 (setq-default tab-width 2)
 
@@ -273,11 +273,17 @@
 (plist-put +popup-defaults :size 0.33)
 (set-popup-rules!
   '(
+    ("\\*" :size 0.33)
     ("\\*ein" :ignore t)
-    ("\\*compilation" :select nil)
+    ("\\*compilation")
     ("\\*ert" :select t)
-    ("\\*mocha" :select nil)
-    ("\\*eshell" :select t)))
+    ("\\*mocha")
+    ("\\*eshell" :select t)
+    ("\\*doom:eshell" :select t)))
+
+(use-package! emacs
+  :bind (("C-<prior>" . other-window)
+         ("C-<next>" . +popup/other)))
 
 (global-auto-revert-mode +1)
 
@@ -303,14 +309,16 @@
                             (setq-local er/try-expand-list
                                         (append er/try-expand-list '(lsp-extend-selection))))))
   :custom
-  (lsp-ui-sideline-diagnostic-max-lines 5))
+  ;; (lsp-ui-sideline-diagnostic-max-lines 5)
+  (lsp-ui-sideline-show-diagnostics nil)
+  (lsp-eslint-experimental-incremental-sync t))
 
 (use-package! flycheck
   :bind (:map flycheck-mode-map
               ("<f2>" . flycheck-next-error)
               ("S-<f2>" . flycheck-previous-error)))
 
-(load! "configs/dap-mode.el")
+;; (load! "configs/dap-mode.el")
 
 ;; Unset company-complete
 (global-unset-key (kbd "C-;"))
@@ -334,8 +342,8 @@
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
-  (global-set-key (kbd "C-<next>") 'git-gutter:next-hunk)
-  (global-set-key (kbd "C-<prior>") 'git-gutter:previous-hunk))
+  (global-set-key (kbd "M-<next>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "M-<prior>") 'git-gutter:previous-hunk))
 
 (defun projectile-test-rerun ()
   (interactive)
@@ -519,7 +527,7 @@
               ("M-r" . recompile)))
 
 (use-package! doom-modeline
-  :custom (doom-modeline-height 30))
+  :custom (doom-modeline-height 34))
 
 (map! "C-M-l" '+format/region-or-buffer)
 (setq +format-with-lsp nil)
@@ -538,8 +546,8 @@
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
               ("<home>" . eshell-bol)
-              ("C-<prior>" . eshell-previous-prompt)
-              ("C-<next>" . eshell-next-prompt)))
+              ("M-<prior>" . eshell-previous-prompt)
+              ("M-<next>" . eshell-next-prompt)))
 
 (use-package! feature-mode
   :config
@@ -565,3 +573,44 @@
                              (:eval (concat " - " (projectile-project-name))))
         icon-title-format frame-title-format))
 
+
+;; (use-package! polymode
+;;   :config
+
+;;   (define-hostmode poly-js2-hostmode :mode 'js2-mode)
+;;   (define-hostmode poly-typescript-hostmode :mode 'typescript-mode)
+;;   (define-hostmode poly-rjsx-hostmode :mode 'rjsx-mode)
+
+;;   (define-innermode poly-js-sql-expr-innermode
+;;     :mode 'sql-mode
+;;     :head-matcher "`--sql\n"
+;;     :tail-matcher "`\n"
+;;     :head-mode 'host
+;;     :tail-mode 'host)
+
+;;   ;; (dolist (hostmode '("js" "js2" "typescript" "rjsx"))
+;;   ;;   (let ((poly-mode-name (intern (concat "poly-" hostmode "-mode")))
+;;   ;;         (poly-hostmode-name (intern (concat "poly-" hostmode "-hostmode"))))
+;;   ;;     (define-polymode poly-mode-name
+;;   ;;       :hostmode poly-hostmode-name
+;;   ;;       :innermodes '(poly-js-sql-expr-innermode))))
+
+;;   (define-polymode poly-js-mode
+;;     :hostmode 'poly-js-hostmode
+;;     :innermodes '(poly-js-sql-expr-innermode))
+;;   (define-polymode poly-js2-mode
+;;     :hostmode 'poly-js2-hostmode
+;;     :innermodes '(poly-js-sql-expr-innermode))
+;;   (define-polymode poly-typescript-mode
+;;     :hostmode 'poly-typescript-hostmode
+;;     :innermodes '(poly-js-sql-expr-innermode))
+;;   (define-polymode poly-rjsx-mode
+;;     :hostmode 'poly-rjsx-hostmode
+;;     :innermodes '(poly-js-sql-expr-innermode))
+
+;;   (add-to-list 'auto-mode-alist '("\.js$" . poly-rjsx-mode))
+;;   (add-to-list 'auto-mode-alist '("\.ts$" . poly-typescript-mode)))
+
+(use-package! fd-dired
+  :config
+  (setq fd-dired-program "fdfind"))
