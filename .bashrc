@@ -34,10 +34,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-STARSHIP_BIN=/usr/local/bin/starship
-[ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
-[ -x "$STARSHIP_BIN" ] && eval "$($STARSHIP_BIN init bash)"
-
 # Write/read history after each command
 shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
@@ -75,14 +71,18 @@ alias l='ls -CFh'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+alias xcc='xclip -selection clipboard'
+alias bc='bc -l'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -95,9 +95,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias xcc='xclip -selection clipboard'
-alias bc='bc -l'
-
+STARSHIP_BIN=/usr/local/bin/starship
+[ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
+[ -x "$STARSHIP_BIN" ] && eval "$($STARSHIP_BIN init bash)"
 
 vterm_printf(){
     if [ -n "$TMUX" ]; then
@@ -111,7 +111,3 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
-
-# If not running interactively, do not do anything
-#[[ $- != *i* ]] && return
-#[[ -z "$TMUX" ]] && [[ -z "$INSIDE_EMACS" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ $(type -P "tmux") ]] && exec tmux
