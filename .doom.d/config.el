@@ -280,7 +280,7 @@
     ("\\*" :size 0.33)
     ("\\*ein" :ignore t)
     ("\\*Org Agenda" :ignore t)
-    ("\\*Flycheck Errors" :select t)
+    ("\\*Flycheck errors" :select t)
     ("\\*compilation")
     ("\\*ert")
     ("\\*mocha")
