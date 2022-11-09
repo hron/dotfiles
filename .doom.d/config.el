@@ -275,8 +275,9 @@
   '(
     ("\\*" :size 0.33)
     ("\\*ein" :ignore t)
+    ("\\*Org Agenda" :ignore t)
     ("\\*compilation")
-    ("\\*ert" :select t)
+    ("\\*ert")
     ("\\*mocha")
     ("\\*eshell" :select t)
     ("\\*doom:eshell" :select t)))
