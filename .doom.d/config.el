@@ -280,6 +280,7 @@
     ("\\*" :size 0.33)
     ("\\*ein" :ignore t)
     ("\\*Org Agenda" :ignore t)
+    ("\\*Flycheck Errors" :select t)
     ("\\*compilation")
     ("\\*ert")
     ("\\*mocha")
@@ -315,13 +316,20 @@
                                         (append er/try-expand-list '(lsp-extend-selection))))))
   :custom
   ;; (lsp-ui-sideline-diagnostic-max-lines 5)
-  (lsp-ui-sideline-show-diagnostics nil)
+  (lsp-ui-sideline-show-diagnostics 10)
   (lsp-eslint-experimental-incremental-sync t))
 
 (use-package! flycheck
   :bind (:map flycheck-mode-map
-              ("<f2>" . flycheck-next-error)
-              ("S-<f2>" . flycheck-previous-error)))
+              ("<f2>" . (lambda ()
+                          (interactive)
+                          (flycheck-next-error )
+                          (flycheck-explain-error-at-point)))
+              ("S-<f2>" . (lambda ()
+                            (interactive)
+                            (flycheck-previous-error)
+                            (flycheck-explain-error-at-point)))
+              ("C-6" . 'flycheck-list-errors)))
 
 ;; (load! "configs/dap-mode.el")
 

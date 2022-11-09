@@ -72,3 +72,5 @@
 (package! feature-mode)
 
 ;; (package! polymode :pin "15b6c1e94a450a65a0e32096855c31f4390a3963")
+
+(package! flycheck-popup-tip :disable t)
