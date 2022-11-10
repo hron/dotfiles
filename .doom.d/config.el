@@ -21,14 +21,31 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'semi-bold)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'bold)
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans"))
+
+;; Use more weighted font for dark theme
+(use-package! emacs
+  :custom-face
+  (bold ((t (:weight extra-bold)))))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-operandi)
+(setq doom-theme 'ef-autumn)
+
+;; (use-package! emacs
+;;   :init
+;;   ;; Add all your customizations prior to loading the themes
+;;   (setq modus-themes-italic-constructs t
+;;         modus-themes-bold-constructs t
+;;         modus-themes-region '(bg-only no-extend)
+;;         modus-themes-lang-checkers '(straight-underline)
+;;         modus-themes-paren-match '(bold)
+;;         modus-themes-org-blocks 'gray-background
+;;         modus-themes-mode-line '(borderless accented)
+;;         modus-themes-diffs '(bg-only)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -521,18 +538,6 @@
   :bind (:map Info-mode-map
               ("M-[" . Info-history-back)
               ("M-]" . Info-history-forward)))
-
-(use-package! emacs
-  :init
-  ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs t
-        modus-themes-region '(bg-only no-extend)
-        modus-themes-lang-checkers '(straight-underline)
-        modus-themes-paren-match '(bold)
-        modus-themes-org-blocks 'gray-background
-        modus-themes-mode-line '(borderless accented)
-        modus-themes-diffs '(bg-only)))
 
 (use-package! emacs
   :bind (:map global-map
