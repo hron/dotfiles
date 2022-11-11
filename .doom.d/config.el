@@ -352,6 +352,14 @@
 
 ;; Unset company-complete
 (global-unset-key (kbd "C-;"))
+;; (after! company
+;;   (setq company-idle-delay 0.2)
+;;   (global-set-key (kbd "C-/") '+company/complete))
+(use-package! company
+  :bind (:map company-mode-map
+              ("M-;" . +company/complete)))
+
+
 (use-package! typescript-mode
   :bind (:map typescript-mode-map
               ("C-; f" . mocha-test-file)
@@ -556,7 +564,8 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol)))
+              ("<home>" . eshell-bol))
+  :hook (eshell-mode-hook 'compilation-shell-minor-mode))
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
@@ -624,7 +633,7 @@
 ;;     :innermodes '(poly-js-sql-expr-innermode))
 ;;   (define-polymode poly-rjsx-mode
 ;;     :hostmode 'poly-rjsx-hostmode
-;;     :innermodes '(poly-js-sql-expr-innermode))
+;;     :innermodes '(poly-js-sql-expr-innermode)))
 
 ;;   (add-to-list 'auto-mode-alist '("\.js$" . poly-rjsx-mode))
 ;;   (add-to-list 'auto-mode-alist '("\.ts$" . poly-typescript-mode)))
