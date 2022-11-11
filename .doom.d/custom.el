@@ -10,11 +10,14 @@
      (lsp-eslint-experimental-incremental-sync)
      (lsp-eslint-package-manager . "yarn")
      (mocha-project-test-directory . "packages/**/test/**/*.test.ts")))
- '(sp-override-key-bindings '(("C-<right>") ("C-<left>"))))
+ '(sp-override-key-bindings '(("C-<right>") ("C-<left>")))
+ '(warning-suppress-log-types '((lsp-mode) (defvaralias)))
+ '(warning-suppress-types '((lsp-mode) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bold ((t (:weight extra-bold))))
  '(ts-fold-replacement-face ((t (:foreground nil :box nil :inherit font-lock-comment-face :weight light)))))
 (put 'narrow-to-region 'disabled nil)
