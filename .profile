@@ -8,6 +8,13 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+export BROWSER=sensible-browser
+export EDITOR='/usr/bin/emacsclient -c'
+export ALTERNATE_EDITOR=""
+export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
+export DEBEMAIL="aleksei.gusev@gmail.com"
+export DEBFULLNAME="Aleksei Gusev"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -36,11 +43,6 @@ if [ -f $HOME/.asdf/asdf.sh ]; then
     . $HOME/.asdf/completions/asdf.bash
 fi
 
-export BROWSER=sensible-browser
-export EDITOR='/usr/bin/emacsclient -c'
-export ALTERNATE_EDITOR=""
-export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
-# export QT_STYLE_OVERRIDE=kvantum
 
 export ADVTP_BUILD_DIR=$HOME/src/f-secure/advtp-build
 

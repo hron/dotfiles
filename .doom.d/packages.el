@@ -78,3 +78,5 @@
 (package! ef-themes)
 
 (package! flycheck-popup-tip :disable t)
+
+(package! dpkg-dev-el)

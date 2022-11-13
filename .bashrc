@@ -111,3 +111,12 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+# Debian Packaging Guide
+# https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html
+quilt_completions=/usr/share/bash-completion/completions/quilt
+if [ -f $quilt_completions ]; then
+    alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+    source $quilt_completions
+    complete -F _quilt_completion $_quilt_complete_opt dquilt
+fi
