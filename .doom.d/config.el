@@ -336,9 +336,10 @@
 
 ;; Unset company-complete
 (global-unset-key (kbd "C-;"))
-;; (after! company
-;;   (setq company-idle-delay 0.2)
-;;   (global-set-key (kbd "C-/") '+company/complete))
+(after! company
+  (setq company-idle-delay 0.01))
+  ;; (global-set-key (kbd "C-/") '+company/complete)
+
 (use-package! company
   :bind (:map company-mode-map
               ("M-;" . +company/complete)))
