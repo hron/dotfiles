@@ -44,6 +44,7 @@
 
           grep-mode
           ))
+  (popper-mode-line "")
   :init
   (popper-mode +1)
   (popper-echo-mode +1))
