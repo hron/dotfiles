@@ -1,9 +1,9 @@
 # -*- mode: snippet -*-
 # name: console.dir
-# uuid:
 # key: cdir
 # condition: t
 # --
 
 // TODO: Remove me!
 console.dir($1, { depth: null });
+$0
