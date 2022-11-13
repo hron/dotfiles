@@ -627,3 +627,5 @@
   (setq fd-dired-program "fdfind"))
 
 (load! "configs/git-link")
+
+(add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
