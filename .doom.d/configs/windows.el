@@ -32,6 +32,10 @@
         '("\\*Messages\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
+          "\\*doom eval\\*"
+          "\\*doom:scratch"
+          "\\*ert\\*"
+          "\\*git-gutter:diff"
 
           helpful-mode help-mode
 
