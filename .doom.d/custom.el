@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((flycheck-disabled-checkers quote
+   '((diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")
+     (flycheck-disabled-checkers quote
       (javascript-eslint emacs-lisp-checkdoc))
      (lsp-eslint-quiet . t)
      (lsp-eslint-experimental-incremental-sync)
