@@ -564,8 +564,8 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol))
-  :hook (eshell-mode-hook 'compilation-shell-minor-mode))
+              ("<home>" . eshell-bol)))
+  ;; :hook (eshell-mode-hook 'compilation-shell-minor-mode))
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
