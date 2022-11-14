@@ -823,9 +823,10 @@ key_bindings:
   #- { key: D,      mods: Control,       mode: Vi|~Search, action: ScrollHalfPageDown      }
   #- { key: Y,                           mode: Vi|~Search, action: Copy                    }
   - { key: C,       mods: Control,       mode: Vi|~Search, action: Copy                    }
+  - { key: Return,                       mode: Vi|~Search, action: Copy                    }
   #- { key: Y,                           mode: Vi|~Search, action: ClearSelection          }
   #- { key: Copy,                        mode: Vi|~Search, action: ClearSelection          }
-  #- { key: V,                           mode: Vi|~Search, action: ToggleNormalSelection   }
+  - { key: Space,   mods: Control,      mode: Vi|~Search, action: ToggleNormalSelection   }
   #- { key: V,      mods: Shift,         mode: Vi|~Search, action: ToggleLineSelection     }
   #- { key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    }
   #- { key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection }
