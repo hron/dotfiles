@@ -417,7 +417,8 @@
               ("C-<backspace>" . vterm-send-meta-backspace)
               ("C-<delete>" . vterm-send-M-d)
               ("C-S-<SPC>" . vterm-copy-mode)
-              ("C-w" . kill-this-buffer))
+              ("C-w" . kill-this-buffer)
+              ("C-b" . +vertico/switch-workspace-buffer))
   :custom (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
   :init
