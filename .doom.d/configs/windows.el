@@ -36,6 +36,7 @@
           "\\*doom:scratch"
           "\\*ert\\*"
           "\\*git-gutter:diff"
+          "\\*SQL: "
 
           helpful-mode help-mode
 

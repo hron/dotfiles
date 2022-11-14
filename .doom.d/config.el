@@ -631,3 +631,14 @@
 (load! "configs/git-link")
 
 (add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
+
+(use-package! sql
+  :custom
+  (sql-connection-alist
+      '(("incident-api-local"
+         (sql-product 'postgres)
+         (sql-server "localhost")
+         (sql-port 15432)
+         (sql-user "rds")
+         (sql-password "rds")
+         (sql-database "rds")))))
