@@ -127,7 +127,7 @@ font:
     family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    style: Semi Bold
 
   # Bold font face
   bold:
@@ -138,7 +138,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: ExtraBold
+    style: Bold
 
   # Italic font face
   italic:
@@ -149,7 +149,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    style: Semi Bold Italic
 
   # Bold italic font face
   bold_italic:
@@ -160,7 +160,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: ExtraBold Italic
+    style: Bold Italic
 
   # Point size
   size: 11
