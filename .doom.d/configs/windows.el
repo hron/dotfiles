@@ -17,17 +17,33 @@
     (display-buffer-in-side-window
      buffer
      (append alist
-             (if (> (frame-parameter nil 'width) 200)
-                 wide-frame-opts
-               narrow-frame-opts)))))
+             (if (> (frame-width) 200) wide-frame-opts narrow-frame-opts)))))
+
+(defun aleksei/other-popper-buffer-p (buffer)
+  "Predicate to detect if BUFFER is a popup"
+  (let ((buffer (if (bufferp buffer) buf (get-buffer buffer))))
+    (with-current-buffer buffer
+      (or (memq popper-popup-status '(popup user-popup))
+          (unless (eq popper-popup-status 'raised)
+            (popper-popup-p buffer))))))
 
 (setq display-buffer-alist
       '(
         ("\\*SQL:"
          (display-buffer-in-side-window)
-         (side . bottom))
-        (popper-display-control-p
-         (aleksei/popper-display-popup-at-bottom-or-right))
+         (side . top))
+
+        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (>= (frame-width) 200)))
+         (display-buffer-in-side-window)
+         (window-width . 0.5)
+         (side . right)
+         (slot . 1))
+
+        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (< (frame-width) 200)))
+         (display-buffer-in-side-window)
+         (window-height . 0.33)
+         (side . bottom)
+         (slot . 1))
         ))
 
 (use-package popper
@@ -35,7 +51,8 @@
          ("M-`"   . popper-cycle)
          ("C-~" . popper-toggle-type))
   :custom
-  (popper-display-function nil)
+  (popper-display-control 'user)
+  (popper-display-function #'aleksei/popper-display-popup-at-bottom-or-right)
   (popper-group-function #'popper-group-by-projectile)
   (popper-reference-buffers
         '("\\*Messages\\*"
