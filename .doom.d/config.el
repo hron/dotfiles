@@ -98,7 +98,8 @@
   (custom-set-variables
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
-       ("C-<left>" . nil)))))
+       ("C-<left>" . nil)
+       ("C-M-k"  . nil)))))
 
 (defun gusev/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
@@ -642,3 +643,8 @@
          (sql-user "rds")
          (sql-password "rds")
          (sql-database "rds")))))
+
+(use-package! emacs
+  :bind (("C-k" . +fold/toggle)
+         ("C-M-k" . +fold/open-all)
+         ("M-k" . +fold/close-all)))
