@@ -94,7 +94,8 @@
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
        ("C-<left>" . nil)
-       ("C-M-k"  . nil)))))
+       ("C-M-k"  . nil)
+       ("C-M-t" . nil)))))
 
 (defun gusev/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
@@ -643,3 +644,27 @@
   :bind (("C-k" . +fold/toggle)
          ("C-M-k" . +fold/open-all)
          ("M-k" . +fold/close-all)))
+
+
+(defun aleksei/string-inflection-cycle-auto ()
+  "switching by major-mode"
+  (interactive)
+  (cond
+   ;; for emacs-lisp-mode
+   ((eq major-mode 'emacs-lisp-mode)
+    (string-inflection-all-cycle))
+   ;; for python
+   ((eq major-mode 'python-mode)
+    (string-inflection-python-style-cycle))
+   ;; for java
+   ((eq major-mode 'java-mode)
+    (string-inflection-java-style-cycle))
+   ;; for elixir
+   ((eq major-mode 'elixir-mode)
+    (string-inflection-elixir-style-cycle))
+   (t
+    ;; default
+    (string-inflection-ruby-style-cycle))))
+
+(use-package! string-inflection
+  :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
