@@ -21,12 +21,21 @@
                  wide-frame-opts
                narrow-frame-opts)))))
 
+(setq display-buffer-alist
+      '(
+        ("\\*SQL:"
+         (display-buffer-in-side-window)
+         (side . bottom))
+        (popper-display-control-p
+         (aleksei/popper-display-popup-at-bottom-or-right))
+        ))
+
 (use-package popper
   :bind (("C-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-~" . popper-toggle-type))
   :custom
-  (popper-display-function #'aleksei/popper-display-popup-at-bottom-or-right)
+  (popper-display-function nil)
   (popper-group-function #'popper-group-by-projectile)
   (popper-reference-buffers
         '("\\*Messages\\*"
@@ -37,6 +46,7 @@
           "\\*ert\\*"
           "\\*git-gutter:diff"
           "\\*SQL: "
+          "\\*Flycheck error"
 
           helpful-mode help-mode
 
