@@ -29,19 +29,38 @@
           (unless (eq popper-popup-status 'raised)
             (popper-popup-p buffer))))))
 
+(defun aleksei/3-columns-layout-p ()
+  (and (>= (frame-width) 305)))
+
+(defun aleksei/2-columns-layout-p ()
+  (and (>= (frame-width) 200)
+       (< (frame-width) 305)))
+
+(defun aleksei/1-column-layout-p ()
+  (< (frame-width) 200))
+
 (setq display-buffer-alist
       '(
-        ("\\*SQL:"
+        ("\\*Flycheck error"
          (display-buffer-in-side-window)
-         (side . top))
+         (window-height . popper--fit-window-height)
+         (side . bottom)
+         (slot . 1)
+         (select . t))
 
-        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (>= (frame-width) 200)))
+        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
+         (display-buffer-in-side-window)
+         (window-width . 0.33)
+         (side . left)
+         (slot . 1))
+
+        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/2-columns-layout-p)))
          (display-buffer-in-side-window)
          (window-width . 0.5)
          (side . right)
          (slot . 1))
 
-        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (< (frame-width) 200)))
+        ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/1-column-layout-p)))
          (display-buffer-in-side-window)
          (window-height . 0.33)
          (side . bottom)
