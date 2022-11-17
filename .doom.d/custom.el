@@ -4,7 +4,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((diff-add-log-use-relative-names . t)
+   '((eval setq ein:jupyter-server-command
+      (concat
+       (projectile-project-root)
+       "/venv/bin/jupyter"))
+     (projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
+     (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target build --output-style=static && yarn nxmany --target=lint --output-style=static -- --quiet")
+     (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target=lint --output-style=static -- --quiet")
+     (projectile-project-test-cmd . "yarn nxmany --target=test --output-style=static")
+     (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target=lint --output-style=static -- --quiet --fix")
+     (vc-prepare-patches-separately)
+     (diff-add-log-use-relative-names . t)
      (vc-git-annotate-switches . "-w")
      (flycheck-disabled-checkers quote
       (javascript-eslint emacs-lisp-checkdoc))
