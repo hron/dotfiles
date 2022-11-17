@@ -333,17 +333,6 @@
 
 ;; (load! "configs/dap-mode.el")
 
-;; Unset company-complete
-(global-unset-key (kbd "C-;"))
-(after! company
-  (setq company-idle-delay 0.01))
-  ;; (global-set-key (kbd "C-/") '+company/complete)
-
-(use-package! company
-  :bind (:map company-mode-map
-              ("M-;" . +company/complete)))
-
-
 (use-package! typescript-mode
   :bind (:map typescript-mode-map
               ("C-; f" . mocha-test-file)
@@ -670,6 +659,9 @@
 
 (use-package! string-inflection
   :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
+
+(load! "configs/company")
+
 (use-package! separedit
   :bind (:map prog-mode-map
          ("C-c '" . separedit)
