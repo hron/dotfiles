@@ -84,3 +84,5 @@
 (package! popper :pin "d7560f18350faaee8362aee16481268de3cc6457")
 
 (package! string-inflection :pin "50ad54970b3cc79b6b83979bde9889ad9a9e1a9c")
+
+(package! separedit :pin "91a41ff")

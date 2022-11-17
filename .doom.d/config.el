@@ -670,3 +670,18 @@
 
 (use-package! string-inflection
   :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
+(use-package! separedit
+  :bind (:map prog-mode-map
+         ("C-c '" . separedit)
+         :map minibuffer-local-map
+         ("C-c '" . separedit)
+         :map prog-mode-map
+         ("C-c '" . separedit)
+         :map help-mode-map
+         ("C-c '" . separedit)
+         :map helpful-mode-map
+         ("C-c '" . separedit))
+  :init
+  (setq separedit-save-key (kbd "C-s"))
+  :custom
+  (separedit-default-mode 'sql-mode))
