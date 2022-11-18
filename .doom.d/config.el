@@ -316,7 +316,7 @@
                                         (append er/try-expand-list '(lsp-extend-selection))))))
   :custom
   ;; (lsp-ui-sideline-diagnostic-max-lines 5)
-  (lsp-ui-sideline-show-diagnostics 10)
+  (lsp-ui-sideline-show-diagnostics nil)
   (lsp-eslint-experimental-incremental-sync t))
 
 (use-package! flycheck
