@@ -677,3 +677,5 @@
   (setq separedit-save-key (kbd "C-s"))
   :custom
   (separedit-default-mode 'sql-mode))
+
+(context-menu-mode +1)
