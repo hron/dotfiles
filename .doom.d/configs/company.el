@@ -3,7 +3,7 @@
 ;; Unset company-complete
 (global-unset-key (kbd "C-;"))
 (after! company
-  (setq company-idle-delay nil))
+  (setq company-idle-delay 0.0))
   ;; (global-set-key (kbd "C-/") '+company/complete)
 
 (use-package! company
