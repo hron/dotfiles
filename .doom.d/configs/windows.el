@@ -48,6 +48,20 @@
          (slot . 1)
          (select . t))
 
+        ("\\*lsp-help"
+         (display-buffer-in-side-window)
+         (window-height . popper--fit-window-height)
+         (side . bottom)
+         (slot . 1)
+         (select . t))
+
+        ("\\*git-gutter:diff"
+         (display-buffer-in-side-window)
+         (window-height . popper--fit-window-height)
+         (side . bottom)
+         (slot . 1)
+         (select . t))
+
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
          (display-buffer-in-side-window)
          (window-width . 0.33)
