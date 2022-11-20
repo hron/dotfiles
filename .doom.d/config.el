@@ -276,6 +276,7 @@
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 ;; (global-set-key (kbd "C-m") 'recenter-top-bottom)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
+(global-set-key (kbd "C-S-b") 'switch-to-buffer)
 
 (use-package! comint
   :bind (:map comint-mode-map
@@ -406,7 +407,8 @@
               ("C-<delete>" . vterm-send-M-d)
               ("C-S-<SPC>" . vterm-copy-mode)
               ("C-w" . kill-this-buffer)
-              ("C-b" . +vertico/switch-workspace-buffer))
+              ("C-b" . +vertico/switch-workspace-buffer)
+              ("C-S-b" . switch-to-buffer))
   :custom (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
   :init
