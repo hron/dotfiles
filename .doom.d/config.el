@@ -560,7 +560,9 @@
 
 (use-package! ace-window
   :bind (:map global-map
-             ("C-o" . ace-window)))
+             ("C-o" . ace-window))
+  :custom
+  (aw-scope 'frame))
 
 (use-package! doom-modeline
   :config
