@@ -2,7 +2,7 @@
 # PACKAGE BUILD RELATED (source-only-upload as default)
 ##############################################################################
 # -d
-$distribution = 'unstable';
+$distribution = 'jammy';
 # -A
 $build_arch_all = 1;
 # -s
