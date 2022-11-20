@@ -414,7 +414,7 @@
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
-  )
+  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode))
 
 (use-package! tide
   :bind (:map tide-mode-map
@@ -540,8 +540,10 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol)))
-  ;; :hook (eshell-mode-hook 'compilation-shell-minor-mode))
+              ("<home>" . eshell-bol))
+  :init
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
+
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
