@@ -124,7 +124,7 @@ font:
     #   - (Windows) Consolas
     #family: monospace
     # family: CaskaydiaCove Nerd Font
-    family: JetBrainsMono Nerd Font
+    family: CaskaydiaCove Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: semibold
@@ -140,7 +140,7 @@ font:
     # The `style` can be specified to pick a specific face.
     style: bold
 
-  # Italic font face
+  # # Italic font face
   italic:
     # Font family
     #
