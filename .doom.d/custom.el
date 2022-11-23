@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((lsp-eslint-quiet)
+   '((projectile-project-compilation-cmd . "gbp buildpackage --git-ignore-new --git-pristine-tar --git-pristine-tar-commit --git-debian-branch=ubuntu/jammy-json-rpc --git-builder='debuild -S -sa'")
+     (projectile-project-test-cmd . "gbp buildpackage --git-ignore-new --git-pristine-tar --git-pristine-tar-commit --git-debian-branch=ubuntu/jammy-json-rpc")
+     (lsp-eslint-quiet)
      (eval setq ein:jupyter-server-command
       (concat
        (projectile-project-root)
