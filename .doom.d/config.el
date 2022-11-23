@@ -538,8 +538,9 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol))
-  :init
+              ("<home>" . eshell-bol)))
+
+(after! eshell
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
 
 (use-package! em-hist
