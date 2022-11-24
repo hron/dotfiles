@@ -719,3 +719,6 @@
   (separedit-default-mode 'sql-mode))
 
 (context-menu-mode +1)
+
+(after! man
+  (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
