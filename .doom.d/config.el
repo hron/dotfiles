@@ -308,6 +308,7 @@
 
 (use-package lsp-mode
   :bind (:map lsp-mode-map
+              ("M-C-." . lsp-find-implementation)
               ("M-." . lsp-find-definition)
               ("M-<RET>" . lsp-execute-code-action)
               ("C-q" . lsp-describe-thing-at-point)
