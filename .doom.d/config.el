@@ -662,6 +662,13 @@
          (sql-server "localhost")
          (sql-port 45533)
          (sql-user "rds")
+         (sql-database "rds"))
+
+        ("incident-api/prd[MASTER]"
+         (sql-product 'postgres)
+         (sql-server "localhost")
+         (sql-port 45534)
+         (sql-user "rds")
          (sql-database "rds")))))
 
 (use-package! emacs
