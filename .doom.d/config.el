@@ -86,7 +86,9 @@
 (use-package! magit
   :bind (:map magit-section-mode-map
               ("C-<tab>" . nil)
-              ("<C-iso-lefttab>" . nil)))
+              ("<C-iso-lefttab>" . nil)
+              :map magit-mode-map
+              ("C-w" . kill-this-buffer)))
 
 (use-package! magit-gitflow
   :bind (:map magit-gitflow-mode-map
