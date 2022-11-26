@@ -353,8 +353,8 @@
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
-  (global-set-key (kbd "M-<next>") 'git-gutter:next-hunk)
-  (global-set-key (kbd "M-<prior>") 'git-gutter:previous-hunk))
+  (global-set-key (kbd "C-<next>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "C-<prior>") 'git-gutter:previous-hunk))
 
 (defun projectile-test-rerun ()
   (interactive)
@@ -407,6 +407,7 @@
               ("C-S-<SPC>" . vterm-copy-mode)
               ("C-w" . kill-this-buffer)
               ("C-b" . +vertico/switch-workspace-buffer)
+              ("C-o" . ace-window)
               ("C-S-b" . switch-to-buffer))
   :custom (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
@@ -551,8 +552,8 @@
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
               ("<home>" . eshell-bol)
-              ("M-<prior>" . eshell-previous-prompt)
-              ("M-<next>" . eshell-next-prompt)))
+              ("C-<prior>" . eshell-previous-prompt)
+              ("C-<next>" . eshell-next-prompt)))
 
 (use-package! feature-mode
   :config
