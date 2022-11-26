@@ -561,7 +561,7 @@
 
 (use-package! ace-window
   :bind (:map global-map
-             ("C-o" . ace-window))
+              ("C-o" . ace-window))
   :custom
   (aw-scope 'frame))
 
@@ -630,47 +630,47 @@
 (use-package! sql
   :custom
   (sql-connection-alist
-      '(("incident-api"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 15432)
-         (sql-user "rds")
-         (sql-database "rds"))
+   '(("incident-api"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 15432)
+      (sql-user "rds")
+      (sql-database "rds"))
 
-        ("incident-api/ci"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 25433)
-         (sql-user "postgres")
-         (sql-database "rds"))
+     ("incident-api/ci"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 25433)
+      (sql-user "postgres")
+      (sql-database "rds"))
 
-        ("incident-api/ci[MASTER]"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 25435)
-         (sql-user "postgres")
-         (sql-database "rds"))
+     ("incident-api/ci[MASTER]"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 25435)
+      (sql-user "postgres")
+      (sql-database "rds"))
 
-        ("incident-api/stg"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 37440)
-         (sql-user "incidentapi")
-         (sql-database "rds"))
+     ("incident-api/stg"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 37440)
+      (sql-user "incidentapi")
+      (sql-database "rds"))
 
-        ("incident-api/prd"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 45533)
-         (sql-user "rds")
-         (sql-database "rds"))
+     ("incident-api/prd"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 45533)
+      (sql-user "rds")
+      (sql-database "rds"))
 
-        ("incident-api/prd[MASTER]"
-         (sql-product 'postgres)
-         (sql-server "localhost")
-         (sql-port 45534)
-         (sql-user "rds")
-         (sql-database "rds")))))
+     ("incident-api/prd[MASTER]"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 45534)
+      (sql-user "rds")
+      (sql-database "rds")))))
 
 (use-package! emacs
   :bind (("C-k" . +fold/toggle)
