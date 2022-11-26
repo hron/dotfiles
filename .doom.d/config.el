@@ -571,6 +571,12 @@
   :custom
   (aw-scope 'frame))
 
+(use-package! emacs
+  :bind (:map compilation-minor-mode-map
+              ("C-o" . ace-window)
+              :map compilation-mode-map
+              ("C-o" . ace-window)))
+
 (use-package! doom-modeline
   :config
   (setq doom-modeline-buffer-file-name-style 'buffer-name
