@@ -323,7 +323,9 @@
   :custom
   ;; (lsp-ui-sideline-diagnostic-max-lines 5)
   (lsp-ui-sideline-show-diagnostics t)
-  (lsp-eslint-experimental-incremental-sync t))
+  (lsp-eslint-experimental-incremental-sync t)
+  (lsp-modeline-diagnostics-enable nil)
+  (lsp-modeline-workspace-status-enable nil))
 
 (use-package! flycheck
   :bind (:map flycheck-mode-map
@@ -529,7 +531,9 @@
               ("M-r" . recompile)))
 
 (use-package! doom-modeline
-  :custom (doom-modeline-height 34))
+  :custom
+  (doom-modeline-height 34)
+  (doom-modeline-lsp nil))
 
 (map! "C-M-l" '+format/region-or-buffer)
 (setq +format-with-lsp nil)
