@@ -263,9 +263,13 @@
 (setq select-enable-clipboard t)
 (setq select-active-regions nil)
 
-(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-(add-hook 'conf-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-
+;; Commenting setup
+(use-package! emacs
+  :custom
+  (comment-empty-lines t)
+  :config
+  (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
+  (add-hook 'conf-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim))))
 (use-package! ahk-mode
   :bind (:map ahk-mode-map
               ("C-/" . comment-dwim)))
