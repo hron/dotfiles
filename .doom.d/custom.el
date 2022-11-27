@@ -4,11 +4,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval progn
+   '((comment-fill-column . 80)
+     (eval progn
       (setq dap-python-executable
-       (concat
-        (projectile-project-root)
-        "/venv/bin/python")))
+            (concat
+             (projectile-project-root)
+             "/venv/bin/python")))
      (projectile-project-compilation-cmd . "gbp buildpackage --git-ignore-new --git-pristine-tar --git-pristine-tar-commit --git-debian-branch=ubuntu/jammy-json-rpc --git-builder='debuild -S -sa'")
      (projectile-project-test-cmd . "gbp buildpackage --git-ignore-new --git-pristine-tar --git-pristine-tar-commit --git-debian-branch=ubuntu/jammy-json-rpc")
      (lsp-eslint-quiet)
