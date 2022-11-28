@@ -416,7 +416,6 @@
               ("C-S-<SPC>" . vterm-copy-mode)
               ("C-w" . kill-this-buffer)
               ("C-b" . +vertico/switch-workspace-buffer)
-              ("C-o" . ace-window)
               ("C-S-b" . switch-to-buffer))
   :custom (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
@@ -572,15 +571,9 @@
 
 (use-package! ace-window
   :bind (:map global-map
-              ("C-o" . ace-window))
+              ("C-x o" . ace-window))
   :custom
   (aw-scope 'frame))
-
-(use-package! emacs
-  :bind (:map compilation-minor-mode-map
-              ("C-o" . ace-window)
-              :map compilation-mode-map
-              ("C-o" . ace-window)))
 
 (use-package! doom-modeline
   :config
