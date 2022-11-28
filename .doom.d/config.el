@@ -491,6 +491,7 @@
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . ein:worksheet-move-cell-up)
               ("M-<down>" . ein:worksheet-move-cell-down)))
+(require 'ob-ein)
 
 (global-subword-mode +1)
 (blink-cursor-mode +1)
@@ -570,8 +571,7 @@
   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
 
 (use-package! ace-window
-  :bind (:map global-map
-              ("C-x o" . ace-window))
+  :bind (("C-x o" . ace-window))
   :custom
   (aw-scope 'frame))
 
