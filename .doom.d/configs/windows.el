@@ -104,6 +104,8 @@
 
           compilation-mode comint-mode "\\*mocha"
 
+          "\\*tree-sitter-tree:"
+
           "^\\*eshell.*\\*$" eshell-mode ;eshell as a popup
           "^\\*shell.*\\*$"  shell-mode  ;shell as a popup
           "^\\*term.*\\*$"   term-mode   ;term as a popup
