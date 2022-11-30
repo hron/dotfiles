@@ -444,6 +444,10 @@
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump)))
 
+  (defadvice consult-lsp-symbols (before better-jumper activate)
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
+
   (defadvice aleksei/isearch-region-or-forward (before better-jumper activate)
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump)))
