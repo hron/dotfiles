@@ -21,7 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'semi-bold)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'bold)
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans"))
 
