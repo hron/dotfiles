@@ -372,10 +372,7 @@
               ("C-0" . aleksei/compile)
               ("M-r" . recompile)
               ("M-9" . magit-status)
-              ("C-e" . projectile-find-file))
-  :custom
-  (projectile-compile-use-comint-mode t)
-  (projectile-create-missing-test-files t))
+              ("C-e" . projectile-find-file)))
 
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
