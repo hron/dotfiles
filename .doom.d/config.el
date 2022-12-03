@@ -320,7 +320,8 @@
   (lsp-ui-sideline-show-diagnostics t)
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
-  (lsp-modeline-workspace-status-enable nil))
+  (lsp-modeline-workspace-status-enable nil)
+  (lsp-lens-enable nil))
 
 (use-package! flycheck
   :bind (:map flycheck-mode-map
