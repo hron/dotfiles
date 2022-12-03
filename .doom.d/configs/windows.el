@@ -48,12 +48,12 @@
          (slot . 1)
          (select . t))
 
-        ("\\*lsp-help"
-         (display-buffer-in-side-window)
-         (window-height . popper--fit-window-height)
-         (side . bottom)
-         (slot . 1)
-         (select . t))
+        ;; ("\\*lsp-help"
+        ;;  (display-buffer-in-side-window)
+        ;;  (window-height . popper--fit-window-height)
+        ;;  (side . bottom)
+        ;;  (slot . 1)
+        ;;  (select . t))
 
         ("\\*git-gutter:diff"
          (display-buffer-in-side-window)
