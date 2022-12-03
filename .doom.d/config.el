@@ -340,7 +340,7 @@
               ("S-<f2>" . #'flycheck-previous-error)
               ("C-6" . 'flycheck-list-errors)))
 
-;; (load! "configs/dap-mode.el")
+(load! "configs/dap-mode.el")
 
 (use-package! typescript-mode
   :bind (:map typescript-mode-map
