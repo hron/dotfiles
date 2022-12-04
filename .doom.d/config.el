@@ -725,5 +725,9 @@
   (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
 
 (use-package! rustic
+  :bind (:map rustic-mode-map
+              ("C-; c" . rustic-cargo-test-dwim)
+              ("C-; l" . rustic-cargo-test-rerun)
+              ("C-; a" . rustic-cargo-test))
   :hook
   ((rustic-mode . (lambda () (require 'rust-compile)))))
