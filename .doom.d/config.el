@@ -327,7 +327,10 @@
   :bind (:map flycheck-mode-map
               ("<f2>" . #'flycheck-next-error)
               ("S-<f2>" . #'flycheck-previous-error)
-              ("C-6" . 'flycheck-list-errors)))
+              ("C-6" . (lambda ()
+                          (interactive)
+                          (flycheck-list-errors)
+                          (select-window (get-buffer-window flycheck-error-list-buffer))))))
 
 (load! "configs/dap-mode.el")
 
