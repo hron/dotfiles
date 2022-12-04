@@ -724,5 +724,6 @@
 (after! man
   (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
 
-(after! rustic
-  (add-hook 'rustic-mode-hook '(lambda () (require 'rust-compile))))
+(use-package! rustic
+  :hook
+  ((rustic-mode-hook . (lambda () (require 'rust-compile)))))
