@@ -726,4 +726,4 @@
 
 (use-package! rustic
   :hook
-  ((rustic-mode-hook . (lambda () (require 'rust-compile)))))
+  ((rustic-mode . (lambda () (require 'rust-compile)))))
