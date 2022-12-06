@@ -542,22 +542,7 @@
   :custom
   (ls-lisp-dirs-first t))
 
-(use-package! esh-mode
-  :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol)))
-
-(after! eshell
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
-
-(use-package! em-hist
-  :bind (:map eshell-hist-mode-map
-              ("<up>" . nil)
-              ("<down>" . nil)))
-(use-package! em-prompt
-  :bind (:map eshell-prompt-mode-map
-              ("<home>" . eshell-bol)
-              ("C-<prior>" . eshell-previous-prompt)
-              ("C-<next>" . eshell-next-prompt)))
+(load "configs/eshell")
 
 (use-package! feature-mode
   :config
