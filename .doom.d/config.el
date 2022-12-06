@@ -542,7 +542,7 @@
   :custom
   (ls-lisp-dirs-first t))
 
-(load "configs/eshell")
+(load! "configs/eshell")
 
 (use-package! feature-mode
   :config
