@@ -20,7 +20,8 @@
 
 (use-package! esh-mode
   :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol)))
+              ("<home>" . eshell-bol)
+              ("C-r" . consult-history)))
 
 (after! eshell
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
