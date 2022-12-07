@@ -4,12 +4,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
+   '((eval progn
+      (setq dap-python-executable
+       (concat
+        (projectile-project-root)
+        "/venv/bin/python")))
+     (projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
      (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target build --output-style=static && yarn nxmany --target=lint --output-style=static -- --quiet")
      (lsp-eslint-quiet)
      (lsp-eslint-package-manager . "yarn")))
  '(sp-override-key-bindings '(("C-<right>") ("C-<left>") ("C-M-k") ("C-M-t")))
- '(warning-suppress-log-types '((lsp-mode) (defvaralias))))
+ '(warning-suppress-log-types '((lsp-mode) (defvaralias)))
+ '(warning-suppress-types '(((undo discard-info)) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
