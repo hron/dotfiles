@@ -338,6 +338,7 @@
   :bind (:map typescript-mode-map
               ("C-; f" . mocha-test-file)
               ("C-; c" . mocha-test-at-point)
+              ("C-; l" . recompile)
               ("C-; C-f" . mocha-debug-file)
               ("C-; C-c" . mocha-debug-at-point)))
 
@@ -345,6 +346,7 @@
   :bind (:map js2-mode-map
               ("C-; f" . mocha-test-file)
               ("C-; c" . mocha-test-at-point)
+              ("C-; l" . recompile)
               ("C-; C-f" . mocha-debug-file)
               ("C-; C-c" . mocha-debug-at-point)))
 
