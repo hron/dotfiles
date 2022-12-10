@@ -317,22 +317,15 @@
                                         (append er/try-expand-list '(lsp-extend-selection))))))
   :custom
   ;; (lsp-ui-sideline-diagnostic-max-lines 5)
-  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-sideline-show-diagnostics nil)
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
   (lsp-lens-enable nil))
 
-(use-package! flycheck
-  :bind (:map flycheck-mode-map
-              ("<f2>" . #'flycheck-next-error)
-              ("S-<f2>" . #'flycheck-previous-error)
-              ("C-6" . (lambda ()
-                          (interactive)
-                          (flycheck-list-errors)
-                          (select-window (get-buffer-window flycheck-error-list-buffer))))))
+(load! "configs/flycheck")
 
-(load! "configs/dap-mode.el")
+(load! "configs/dap-mode")
 
 (use-package! typescript-mode
   :bind (:map typescript-mode-map

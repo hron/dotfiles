@@ -77,8 +77,6 @@
 
 (package! ef-themes)
 
-(package! flycheck-popup-tip :disable t)
-
 (package! dpkg-dev-el)
 
 (package! popper :pin "d7560f18350faaee8362aee16481268de3cc6457")
