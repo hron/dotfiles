@@ -9,8 +9,6 @@
                             pwd
                           (abbreviate-file-name (shrink-path-file pwd)))
                         'face '+eshell-prompt-pwd))
-          (propertize (+eshell--current-git-branch)
-                      'face '+eshell-prompt-git-branch)
           "\n"
           (propertize " λ" 'face (if (zerop eshell-last-command-status) 'success 'error))
           " "))
