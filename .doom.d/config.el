@@ -349,8 +349,8 @@
 (use-package! git-gutter
   :init
   (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
-  (global-set-key (kbd "C-<next>") 'git-gutter:next-hunk)
-  (global-set-key (kbd "C-<prior>") 'git-gutter:previous-hunk))
+  (global-set-key (kbd "M-S-<down>") 'git-gutter:next-hunk)
+  (global-set-key (kbd "M-S-<up>") 'git-gutter:previous-hunk))
 
 (defun projectile-test-rerun ()
   (interactive)
