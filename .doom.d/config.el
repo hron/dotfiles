@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'semi-bold)
       doom-unicode-font doom-font
-      doom-variable-pitch-font (font-spec :family "Ubuntu" :size 20))
+      doom-variable-pitch-font (font-spec :family "sans" :size 20))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -32,6 +32,7 @@
   :init
   (setq ef-themes-variable-pitch-ui nil
         ef-themes-region '(no-extend neutral)
+        ef-themes-variable-pitch-ui t
         doom-theme 'ef-winter))
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -122,14 +123,11 @@
   (+org-capture/open-frame "" "i"))
 
 (use-package! org
+  :hook ((org-mode . variable-pitch-mode)
+         (org-mode . (lambda ()
+                       (toggle-truncate-lines -1)
+                       (toggle-word-wrap +1))))
   :config (progn
-            (add-hook 'org-mode-hook '(lambda ()
-                                        (toggle-truncate-lines -1)
-                                        (toggle-word-wrap +1)))
-            ;; (add-hook 'after-save-hook '(lambda ()
-            ;;                               (when (eq major-mode 'org-mode)
-            ;;                                 (org-caldav-sync)
-            ;;                                 (org-caldav-sync))))
             (setq org-tag-alist '(("outside" . ?o)
                                   ("read" . ?r)
                                   ("games" . ?g)
