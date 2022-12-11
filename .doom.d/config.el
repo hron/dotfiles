@@ -211,9 +211,8 @@
   (global-set-key (kbd "C-h") 'er/expand-region)
   (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1))))
 
-(use-package! mwim
-  :config
-  (global-set-key (kbd "<home>") 'mwim-beginning-of-code-or-line))
+(use-package! emacs
+  :bind (("<home>" . 'doom/backward-to-bol-or-indent)))
 
 (global-set-key (kbd "C-M-l") 'indent-region)
 
