@@ -508,6 +508,9 @@
          :map minibuffer-mode-map
          ("M-<return>" . embark-act))
   :custom
+  (embark-indicators '(embark--vertico-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
   (embark-prompter 'embark-completing-read-prompter))
 
 (use-package! info
