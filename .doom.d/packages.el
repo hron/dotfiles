@@ -80,3 +80,5 @@
 (package! string-inflection :pin "50ad54970b3cc79b6b83979bde9889ad9a9e1a9c")
 
 (package! separedit :pin "91a41ff")
+
+(package! rg :pin "14d4c6a754d127c5cacd58fb66bb0992faff68e4")

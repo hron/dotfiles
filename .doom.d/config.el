@@ -675,3 +675,7 @@
               ("C-; a" . rustic-cargo-test))
   :hook
   ((rustic-mode . (lambda () (require 'rust-compile)))))
+
+(use-package! rg
+  :custom
+  (rg-executable "rg"))
