@@ -195,8 +195,6 @@
                                         (transient . t)
                                         nil)))
 
-;; (load! "configs/indent-rigidly")
-
 (setq-default tab-width 2)
 
 (use-package! emacs
@@ -273,7 +271,6 @@
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
 
 (global-set-key (kbd "C-w") 'kill-this-buffer)
-;; (global-set-key (kbd "C-m") 'recenter-top-bottom)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-S-b") 'switch-to-buffer)
 
@@ -324,7 +321,6 @@
   (lsp-lens-enable nil))
 
 (load! "configs/flycheck")
-
 (load! "configs/dap-mode")
 
 (use-package! typescript-mode
@@ -564,43 +560,6 @@
                              (:eval (concat " - " (projectile-project-name))))
         icon-title-format frame-title-format))
 
-
-;; (use-package! polymode
-;;   :config
-
-;;   (define-hostmode poly-js2-hostmode :mode 'js2-mode)
-;;   (define-hostmode poly-typescript-hostmode :mode 'typescript-mode)
-;;   (define-hostmode poly-rjsx-hostmode :mode 'rjsx-mode)
-
-;;   (define-innermode poly-js-sql-expr-innermode
-;;     :mode 'sql-mode
-;;     :head-matcher "`--sql\n"
-;;     :tail-matcher "`\n"
-;;     :head-mode 'host
-;;     :tail-mode 'host)
-
-;;   ;; (dolist (hostmode '("js" "js2" "typescript" "rjsx"))
-;;   ;;   (let ((poly-mode-name (intern (concat "poly-" hostmode "-mode")))
-;;   ;;         (poly-hostmode-name (intern (concat "poly-" hostmode "-hostmode"))))
-;;   ;;     (define-polymode poly-mode-name
-;;   ;;       :hostmode poly-hostmode-name
-;;   ;;       :innermodes '(poly-js-sql-expr-innermode))))
-
-;;   (define-polymode poly-js-mode
-;;     :hostmode 'poly-js-hostmode
-;;     :innermodes '(poly-js-sql-expr-innermode))
-;;   (define-polymode poly-js2-mode
-;;     :hostmode 'poly-js2-hostmode
-;;     :innermodes '(poly-js-sql-expr-innermode))
-;;   (define-polymode poly-typescript-mode
-;;     :hostmode 'poly-typescript-hostmode
-;;     :innermodes '(poly-js-sql-expr-innermode))
-;;   (define-polymode poly-rjsx-mode
-;;     :hostmode 'poly-rjsx-hostmode
-;;     :innermodes '(poly-js-sql-expr-innermode)))
-
-;;   (add-to-list 'auto-mode-alist '("\.js$" . poly-rjsx-mode))
-;;   (add-to-list 'auto-mode-alist '("\.ts$" . poly-typescript-mode)))
 
 (use-package! fd-dired
   :config
