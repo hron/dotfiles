@@ -488,7 +488,7 @@
   :bind (:map global-map
               ("C-z"   . undo-fu-only-undo)
               ("C-S-z" . undo-fu-only-redo)))
-
+
 (use-package! vertico
   :bind (:map minibuffer-local-map
          ("C-f" . consult-history)
