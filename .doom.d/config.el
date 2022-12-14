@@ -32,7 +32,6 @@
   :init
   (setq ef-themes-variable-pitch-ui nil
         ef-themes-region '(no-extend neutral)
-        ef-themes-variable-pitch-ui t
         doom-theme 'ef-winter))
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -125,7 +124,7 @@
   (+org-capture/open-frame "" "i"))
 
 (use-package! org
-  :hook ((org-mode . variable-pitch-mode)
+  :hook (;; (org-mode . variable-pitch-mode)
          (org-mode . (lambda ()
                        (toggle-truncate-lines -1)
                        (toggle-word-wrap +1))))
