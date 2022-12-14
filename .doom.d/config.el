@@ -211,8 +211,8 @@
   (global-set-key (kbd "C-h") 'er/expand-region)
   (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1))))
 
-(use-package! emacs
-  :bind (("<home>" . 'doom/backward-to-bol-or-indent)))
+(use-package! crux
+  :bind (("<home>" . crux-move-beginning-of-line)))
 
 (global-set-key (kbd "C-M-l") 'indent-region)
 

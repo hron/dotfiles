@@ -82,3 +82,5 @@
 (package! separedit :pin "91a41ff")
 
 (package! rg :pin "14d4c6a754d127c5cacd58fb66bb0992faff68e4")
+
+(package! crux :pin "f8789f67a9d2e1eb31a0e4531aec9bb6d6ec1282")
