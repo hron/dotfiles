@@ -6,11 +6,15 @@
  '(custom-safe-themes
    '("9e7119d21b31e80bc7c7ccee937cd687bfc1617b61b413e2ba1683df0fb10248" default))
  '(safe-local-variable-values
-   '((eval progn
+   '((eval setq ein:jupyter-server-command
+      (concat
+       (projectile-project-root)
+       "/venv/bin/jupyter"))
+     (eval progn
       (setq dap-python-executable
-       (concat
-        (projectile-project-root)
-        "/venv/bin/python")))
+            (concat
+             (projectile-project-root)
+             "/venv/bin/python")))
      (projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
      (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target build --output-style=static && yarn nxmany --target=lint --output-style=static -- --quiet")
      (lsp-eslint-quiet)
