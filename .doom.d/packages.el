@@ -84,3 +84,5 @@
 (package! rg :pin "14d4c6a754d127c5cacd58fb66bb0992faff68e4")
 
 (package! crux :pin "f8789f67a9d2e1eb31a0e4531aec9bb6d6ec1282")
+
+(package! cfn-mode :pin "4cf56affe3035fda364109836e26499431095185")
