@@ -440,7 +440,7 @@
 
 
 (after! git-gutter-fringe
-  (fringe-mode 12))
+  (fringe-mode))
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
