@@ -613,7 +613,14 @@
       (sql-server "localhost")
       (sql-port 45534)
       (sql-user "rds")
-      (sql-database "rds")))))
+      (sql-database "rds"))
+
+     ("ods/prd"
+      (sql-product 'postgres)
+      (sql-server "localhost")
+      (sql-port 45434)
+      (sql-user "odsadmin")
+      (sql-database "ods")))))
 
 (use-package! emacs
   :bind (("C-k" . +fold/toggle)
