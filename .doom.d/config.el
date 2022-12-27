@@ -483,16 +483,10 @@
 ;; (load! "configs/cua-modernized")
 (load! "configs/just-cua")
 
-(use-package! undo-tree
-  :bind (:map undo-tree-map
-              ("C-/" . nil)
-              ("C-z"   . undo-tree-undo)
-              ("C-S-z" . undo-tree-redo))
-  :config
-  ;; Override this because I have C-/ binding to comment line or region and
-  ;; hence undo-tree thinks it shouldn't be activated...
-  (defun undo-tree-overridden-undo-bindings-p () nil)
-  (global-undo-tree-mode +1))
+(use-package! undo-fu
+  :bind (:map global-map
+              ("C-z"   . undo-fu-only-undo)
+              ("C-S-z" . undo-fu-only-redo)))
 
 (use-package! vertico
   :bind (:map minibuffer-local-map
