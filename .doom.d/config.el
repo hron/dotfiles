@@ -485,6 +485,7 @@
 
 (use-package! undo-tree
   :bind (:map undo-tree-map
+              ("C-/" . nil)
               ("C-z"   . undo-tree-undo)
               ("C-S-z" . undo-tree-redo))
   :config
@@ -527,15 +528,7 @@
               ("C-/" . comment-dwim)
               ("M-r" . recompile)))
 
-(use-package! doom-modeline
-  :config
-  (doom-modeline-def-modeline 'main
-    '(bar workspace-name window-number modals matches follow buffer-info remote-host buffer-position word-count parrot selection-info)
-    '(objed-state misc-info persp-name battery grip irc mu4e gnus github debug repl lsp minor-modes input-method indent-info buffer-encoding major-mode process vcs checker time))
-
-  :custom
-  (doom-modeline-height 34)
-  (doom-modeline-lsp nil))
+(load! "configs/doom-modeline")
 
 (map! "C-M-l" '+format/region-or-buffer)
 (setq +format-with-lsp nil)
