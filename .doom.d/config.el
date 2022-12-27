@@ -262,8 +262,8 @@
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package! winner
   :init
-  (global-set-key [f2] 'winner-undo)
-  (global-set-key [f3] 'winner-redo))
+  (global-set-key [f3] 'winner-undo)
+  (global-set-key [f4] 'winner-redo))
 
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
