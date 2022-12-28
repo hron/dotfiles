@@ -620,7 +620,8 @@
       (sql-database "ods")))))
 
 (use-package! emacs
-  :bind (("C-k" . +fold/toggle)
+  :bind (("C-=" . +fold/toggle)
+         ("C-k" . +fold/toggle)
          ("C-M-k" . +fold/open-all)
          ("M-k" . +fold/close-all)))
 
@@ -682,6 +683,3 @@
 (use-package! rg
   :custom
   (rg-executable "rg"))
-
-(use-package! emacs
-  :bind (("C-=" . +fold/toggle)))
