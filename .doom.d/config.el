@@ -430,6 +430,10 @@
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump)))
 
+  (defadvice +default/search-project (before better-jumper activate)
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
+
   (defadvice end-of-buffer (before better-jumper activate)
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump))))
