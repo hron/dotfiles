@@ -682,3 +682,6 @@
 (use-package! rg
   :custom
   (rg-executable "rg"))
+
+(use-package! emacs
+  :bind (("C-=" . +fold/toggle)))
