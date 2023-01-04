@@ -316,26 +316,14 @@
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
-  (lsp-lens-enable nil))
+  (lsp-lens-enable nil)
+  (lsp-eslint-run "onSave"))
 
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
 
-(use-package! typescript-mode
-  :bind (:map typescript-mode-map
-              ("C-; f" . mocha-test-file)
-              ("C-; c" . mocha-test-at-point)
-              ("C-; l" . recompile)
-              ("C-; C-f" . mocha-debug-file)
-              ("C-; C-c" . mocha-debug-at-point)))
-
-(use-package! js2-mode
-  :bind (:map js2-mode-map
-              ("C-; f" . mocha-test-file)
-              ("C-; c" . mocha-test-at-point)
-              ("C-; l" . recompile)
-              ("C-; C-f" . mocha-debug-file)
-              ("C-; C-c" . mocha-debug-at-point)))
+(load! "configs/testlab")
+(testlab-mode +1)
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
@@ -453,7 +441,12 @@
   :bind ("M-$" . +spell/add-word))
 
 (use-package! jest-test-mode
-  :ensure t
+  ;; :bind (:map jest-test-mode
+  ;;             ("C-; f" . jest-test-run)
+  ;;             ("C-; c" . jest-test-run-at-point)
+  ;;             ("C-; l" . jest-test-rerun-test)
+  ;;             ("C-; C-f" . jest-test-debug)
+  ;;             ("C-; C-c" . jest-test-debug-run-at-point))
   :commands jest-test-mode
   :hook (typescript-mode js-mode typescript-tsx-mode))
 

@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
+   '((testlab-test-framework . jest)
+     (projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
      (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target build --output-style=static && yarn nxmany --target=lint --output-style=static -- --quiet")
      (lsp-eslint-quiet)
      (lsp-eslint-package-manager . "yarn")))
