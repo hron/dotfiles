@@ -440,16 +440,6 @@
 (use-package! spell-fu
   :bind ("M-$" . +spell/add-word))
 
-(use-package! jest-test-mode
-  ;; :bind (:map jest-test-mode
-  ;;             ("C-; f" . jest-test-run)
-  ;;             ("C-; c" . jest-test-run-at-point)
-  ;;             ("C-; l" . jest-test-rerun-test)
-  ;;             ("C-; C-f" . jest-test-debug)
-  ;;             ("C-; C-c" . jest-test-debug-run-at-point))
-  :commands jest-test-mode
-  :hook (typescript-mode js-mode typescript-tsx-mode))
-
 (use-package! multi-cursors
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
@@ -670,10 +660,6 @@
   (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
 
 (use-package! rustic
-  :bind (:map rustic-mode-map
-              ("C-; c" . rustic-cargo-test-dwim)
-              ("C-; l" . rustic-cargo-test-rerun)
-              ("C-; a" . rustic-cargo-test))
   :hook
   ((rustic-mode . (lambda () (require 'rust-compile)))))
 

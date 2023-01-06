@@ -4,8 +4,8 @@
   "Minor mode providing commands for running tests."
   :group 'test)
 
-(defcustom testlab-test-framework 'mocha
-  "Test framework to use when testlab runs tests"
+(defcustom testlab-test-framework nil
+  "Test framework to use when testlab runs tests. Set to override automatic detection."
   :type 'symbol
   :group 'testlab
   :safe t)
@@ -24,7 +24,11 @@
               (debug . jest-test-debug)
               (debug-at-point . jest-test-debug-run-at-point)
               (run-last . jest-test-rerun-test)
-              (debug-last . jest-test-debug-rerun-test)))))
+              (debug-last . jest-test-debug-rerun-test)))
+    (rustic  . ((run . rustic-cargo-test-run)
+                (run-at-point . rustic-cargo-test-dwim)
+                (run-all . rustic-cargo-test-run)
+                (run-last . rustic-cargo-test-rerun)))))
 
 (defun testlab-run ()
   "Run current test file"
@@ -60,15 +64,31 @@
   `(lambda ()
      (interactive)
      (message (format "Action '%s' is not defined for '%s' test framework"
-                   action-type
-                   testlab-test-framework))))
+                      action-type
+                      testlab-test-framework))))
 
 (defun testlab--action (action-type)
   "Find function corresponding for ACTION-TYPE for current test framework
 
 ACTION-TYPE could be 'run, 'run-at-point, 'debug, 'debug-at-point, 'run-last, 'debug-last"
-  (let ((framework-defs (alist-get testlab-test-framework testlab-framework-defs)))
-    (alist-get action-type framework-defs (testlab--default-action action-type))))
+  (alist-get action-type
+             (testlab--current-framework-defs)
+             (testlab--default-action action-type)))
+
+(defun testlab--current-framework-defs ()
+  (alist-get (testlab--current-framework) testlab-framework-defs))
+
+(defun testlab--current-framework ()
+  (if (not (eq testlab-test-framework nil))
+      testlab-test-framework
+    (cl-case (testlab--project-type)
+      ('rust-cargo 'rustic)
+      (('npm 'make) 'jest)
+      (t 'mocha))))
+
+(defun testlab--project-type ()
+  (when (boundp projectile-project-type)
+      (projectile-project-type)))
 
 (defvar testlab-mode-map
   (let ((map (make-sparse-keymap)))
