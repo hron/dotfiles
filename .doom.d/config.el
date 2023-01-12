@@ -32,7 +32,7 @@
   :init
   (setq ef-themes-variable-pitch-ui nil
         ef-themes-region '(no-extend neutral)
-        doom-theme 'ef-winter))
+        doom-theme 'ef-frost))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
