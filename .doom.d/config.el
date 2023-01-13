@@ -28,11 +28,17 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(use-package! ef-themes
+(use-package! emacs
   :init
-  (setq ef-themes-variable-pitch-ui nil
-        ef-themes-region '(no-extend neutral)
-        doom-theme 'ef-frost))
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-region '(bg-only no-extend)
+        modus-themes-lang-checkers '(straight-underline)
+        modus-themes-paren-match '(bold)
+        modus-themes-org-blocks 'gray-background
+        modus-themes-mode-line '(borderless accented)))
+(setq doom-theme 'modus-operandi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
