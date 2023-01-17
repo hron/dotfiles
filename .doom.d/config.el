@@ -323,7 +323,7 @@
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
   (lsp-lens-enable nil)
-  (lsp-eslint-run "onSave"))
+  (lsp-eslint-run "onType"))
 
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
