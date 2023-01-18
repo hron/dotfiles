@@ -379,7 +379,7 @@
         (cons 'node compilation-error-regexp-alist))
 
   (setq compilation-error-regexp-alist-alist
-        (cons '(webpack-ts-error "\\(\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+        (cons '(webpack-ts-error " \\(\\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
                 1 ;; file
                 2 ;; line
                 3 ;; column
@@ -399,7 +399,8 @@
               ("C-w" . kill-this-buffer)
               ("C-b" . +vertico/switch-workspace-buffer)
               ("C-S-b" . switch-to-buffer))
-  :custom (vterm-min-window-width 200)
+  :custom
+  (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
@@ -435,6 +436,10 @@
       (better-jumper-set-jump)))
 
   (defadvice +default/search-project (before better-jumper activate)
+    (when (bound-and-true-p better-jumper-local-mode)
+      (better-jumper-set-jump)))
+
+  (defadvice flycheck-next-error (before better-jumper activate)
     (when (bound-and-true-p better-jumper-local-mode)
       (better-jumper-set-jump)))
 
