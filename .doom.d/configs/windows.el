@@ -79,6 +79,8 @@
          (window-height . 0.33)
          (side . bottom)
          (slot . 1))
+
+        (".*" display-buffer-reuse-window)
         ))
 
 (use-package popper
