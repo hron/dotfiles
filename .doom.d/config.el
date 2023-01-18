@@ -376,7 +376,17 @@
                 )
               compilation-error-regexp-alist-alist))
   (setq compilation-error-regexp-alist
-        (cons 'node compilation-error-regexp-alist)))
+        (cons 'node compilation-error-regexp-alist))
+
+  (setq compilation-error-regexp-alist-alist
+        (cons '(webpack-ts-error "\\(\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+                1 ;; file
+                2 ;; line
+                3 ;; column
+                )
+              compilation-error-regexp-alist-alist))
+  (setq compilation-error-regexp-alist
+        (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 
 (use-package! vterm
