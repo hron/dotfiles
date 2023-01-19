@@ -4,6 +4,7 @@
 (global-unset-key (kbd "C-;"))
 (after! company
   (setq company-idle-delay 0.0
+        company-minimum-prefix-length 3
         company-box-doc-enable nil))
   ;; (global-set-key (kbd "C-/") '+company/complete)
 
