@@ -93,6 +93,7 @@
   (popper-group-function #'popper-group-by-projectile)
   (popper-reference-buffers
         '("\\*Messages\\*"
+          "\\*Warnings\\*"
           "Output\\*$"
           "\\*Async Shell Command\\*"
           "\\*doom eval\\*"
