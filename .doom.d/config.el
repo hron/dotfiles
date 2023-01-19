@@ -364,8 +364,7 @@
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
               ("M-r" . recompile)))
-(use-package! compile
-  :ensure nil
+(use-package! emacs
   :init
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
@@ -379,7 +378,7 @@
         (cons 'node compilation-error-regexp-alist))
 
   (setq compilation-error-regexp-alist-alist
-        (cons '(webpack-ts-error " \\(\\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+        (cons '(webpack-ts-error "\\(\\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
                 1 ;; file
                 2 ;; line
                 3 ;; column
