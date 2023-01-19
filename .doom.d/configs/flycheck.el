@@ -7,7 +7,8 @@
                           (flycheck-list-errors)
                           (select-window (get-buffer-window flycheck-error-list-buffer)))))
   :config
-  (setq flycheck-display-errors-delay 60))
+  (setq flycheck-display-errors-delay 60
+        flycheck-checker-error-threshold 999))
 
 (use-package! flycheck-posframe
   :custom
