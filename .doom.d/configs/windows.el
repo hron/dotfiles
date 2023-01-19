@@ -80,7 +80,7 @@
          (side . bottom)
          (slot . 1))
 
-        (".*" display-buffer-reuse-window)
+        (".*" (display-buffer-reuse-mode-window))
         ))
 
 (use-package popper
