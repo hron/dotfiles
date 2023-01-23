@@ -411,8 +411,8 @@
               ("C-q" . tide-documentation-at-point)))
 
 (use-package! better-jumper
-  :bind (("M-[" . better-jumper-jump-backward)
-         ("M-]" . better-jumper-jump-forward))
+  :bind (("M-<left>" . better-jumper-jump-backward)
+         ("M-<right>" . better-jumper-jump-forward))
   :config
   (defadvice beginning-of-buffer (before better-jumper activate)
     (when (bound-and-true-p better-jumper-local-mode)
