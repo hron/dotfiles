@@ -656,8 +656,6 @@
 (use-package! string-inflection
   :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
 
-(load! "configs/company")
-
 (use-package! separedit
   :bind (:map prog-mode-map
          ("C-c '" . separedit)
@@ -686,3 +684,12 @@
 (use-package! rg
   :custom
   (rg-executable "rg"))
+
+(use-package! corfu
+  :bind (:map corfu-map
+              ("<home>" . corfu-first)
+              ("<end>" . corfu-last)
+              ("<prior>" . corfu-scroll-down)
+              ("<next>" . corfu-scroll-up)
+              ("M-v" . nil)
+              ("C-v" . nil)))
