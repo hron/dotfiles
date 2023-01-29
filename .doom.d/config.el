@@ -317,8 +317,8 @@
                             (setq-local er/try-expand-list
                                         (append er/try-expand-list '(lsp-extend-selection))))))
   :custom
-  ;; (lsp-ui-sideline-diagnostic-max-lines 5)
-  (lsp-ui-sideline-show-diagnostics nil)
+  (lsp-ui-sideline-diagnostic-max-lines 10)
+  (lsp-ui-sideline-show-diagnostics t)
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
