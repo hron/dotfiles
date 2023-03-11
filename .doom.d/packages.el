@@ -86,3 +86,5 @@
 (package! crux :pin "f8789f67a9d2e1eb31a0e4531aec9bb6d6ec1282")
 
 (package! cfn-mode :pin "4cf56affe3035fda364109836e26499431095185")
+
+(package! vundo :pin "12862c673d274adab2b9232a281f64898016c3e4")
