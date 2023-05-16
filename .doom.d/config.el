@@ -154,7 +154,7 @@
                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
                   org-agenda-custom-commands
                   '(("n" "NA" tags-tree org-agenda-na-expr))
-                  org-agenda-files '("tasks.org" "f-secure.org" "tickler.org" "inbox.org")
+                  org-agenda-files '("tasks.org" "forenom.org" "tickler.org" "inbox.org")
                   org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
                   org-archive-default-command 'org-archive-subtree
