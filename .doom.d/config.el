@@ -693,3 +693,5 @@
               ("<next>" . corfu-scroll-up)
               ("M-v" . nil)
               ("C-v" . nil)))
+
+(setq ispell-dictionary "american")
