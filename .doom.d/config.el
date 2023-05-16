@@ -86,9 +86,9 @@
          :map magit-mode-map
          ("C-w" . kill-this-buffer)))
 
-(use-package! magit-gitflow
-  :bind (:map magit-gitflow-mode-map
-              ("C-f" . nil)))
+;;(use-package! magit-gitflow
+;;  :bind (:map magit-gitflow-mode-map
+;;              ("C-f" . nil)))
 
 (use-package! smartparens
   :config
