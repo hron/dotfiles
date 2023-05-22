@@ -16,3 +16,4 @@ flycheck*.el
 .env
 .envrc
 .ecukes-failing-scenarios
+.tool-versions
