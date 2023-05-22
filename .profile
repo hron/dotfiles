@@ -44,15 +44,6 @@ if [ -f $HOME/.asdf/asdf.sh ]; then
 fi
 
 
-export ADVTP_BUILD_DIR=$HOME/src/f-secure/advtp-build
-
-# https://stash.f-secure.com/projects/ADVTP/repos/advtp-aws-deployment/browse/
-export ADVTP_AWS_DEPLOYMENT_DIR="$HOME/src/f-secure/advtp-aws-deployment"
-if [ -d $ADVTP_AWS_DEPLOYMENT_DIR ]; then
-    PATH="$ADVTP_AWS_DEPLOYMENT_DIR/bin:$PATH"
-    source $ADVTP_AWS_DEPLOYMENT_DIR/bin/awsenvtool
-fi
-
 # Homebrew
 homebrew_exe=/home/linuxbrew/.linuxbrew/bin/brew
 if [ -x ${homebrew_exe} ]; then
