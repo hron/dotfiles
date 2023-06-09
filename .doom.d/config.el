@@ -21,15 +21,16 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
-      doom-unicode-font doom-font
-      doom-variable-pitch-font (font-spec :family "sans" :size 20))
-
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
   (if (string= (getenv "XDG_SESSION_TYPE") "wayland")
       14
     18))
+
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
+      doom-unicode-font doom-font
+      doom-variable-pitch-font (font-spec :family "sans" :size 20))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
