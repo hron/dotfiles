@@ -337,6 +337,7 @@
 
 (load! "configs/testlab")
 (testlab-mode +1)
+(setq testlab-test-framework 'jest)
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
