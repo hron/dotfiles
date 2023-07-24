@@ -14,15 +14,15 @@
   fallthrough true
 
   ;; Set this to false to disable any command-execution in KMonad
-  allow-cmd false
+  allow-cmd true
 )
 
 (defsrc
-  caps F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  prnt slck pause
+  esc  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  F11  F12  prnt slck pause
 
   =    1    2    3    4    5                   6    7    8    9    0    -
   tab  q    w    e    r    t                   y    u    i    o    p    \
-  esc  a    s    d    f    g                   h    j    k    l    ;    '
+  caps a    s    d    f    g                   h    j    k    l    ;    '
   lsft z    x    c    v    b                   n    m    ,    .    / rsft
        grv  rmet left rght                          up   down [    ]
 
@@ -35,11 +35,17 @@
 ;; Aliases
 ;;
 (defalias
+    wf4 A-F4
+    lck (cmd-button "C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation")
+    wsp M-spc
+
     +a (tap-hold-next-release 200 a lmet)
     +s (tap-hold-next-release 200 s lalt)
     +d (tap-hold-next-release 200 d lctl)
     +f (tap-hold-next-release 200 f lsft)
+    +g (tap-hold-next-release 200 g (layer-toggle hyper))
 
+    +h (tap-hold-next-release 200 h (layer-toggle hyper))
     +j (tap-hold-next-release 200 j rsft)
     +k (tap-hold-next-release 200 k rctl)
     +l (tap-hold-next-release 200 l lalt)
@@ -56,7 +62,7 @@
 
   =    1    2    3    4    5                   6    7    8    9    0    -
   tab  q    w    e    r    t                   y    u    i    o    p    \
-  esc  @+a  @+s  @+d  @+f  g                   h    @+j  @+k  @+l  @+;  '
+  esc  @+a  @+s  @+d  @+f  @+g                 @+hl  @+j  @+k  @+l  @+;  '
   lsft z    x    c    v    b                   n    m    ,    .    / rsft
        grv  rmet left rght                          up   down [    ]
 
@@ -64,6 +70,21 @@
                       bspc del  home   pgup  ret spc
                                  end   pgdn
 )
+
+(deflayer hyper
+  _    _    _    _    _    _    _    _    _    _     _    _    _     _    _     _
+
+  _    _    _    _    _    _                   _    _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    @lck _    _
+  _    _    _    _    _    _                   @wf4 _    _    _    _    _
+       _    _    _    _                             _    _    _    _
+
+                           _    _      _    _
+                      _    _    _      _    _   @wsp
+                                _      _
+)
+
 
 (deflayer numbers
   _    _    _    _    _    _    _    _    _    _     _    _    _     _    _     _
