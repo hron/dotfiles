@@ -88,3 +88,7 @@
 (package! cfn-mode :pin "4cf56affe3035fda364109836e26499431095185")
 
 (package! vundo :pin "12862c673d274adab2b9232a281f64898016c3e4")
+
+(package! kbd-mode
+  :recipe (:host github
+           :repo "kmonad/kbd-mode"))

@@ -702,3 +702,5 @@
               ("C-v" . nil)))
 
 (setq ispell-dictionary "american")
+
+(use-package! kbd-mode)
