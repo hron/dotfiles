@@ -62,7 +62,7 @@
 
   =    1    2    3    4    5                   6    7    8    9    0    -
   tab  q    w    e    r    t                   y    u    i    o    p    \
-  esc  @+a  @+s  @+d  @+f  @+g                 @+hl  @+j  @+k  @+l  @+;  '
+  esc  @+a  @+s  @+d  @+f  @+g                 @+h  @+j  @+k  @+l  @+;  '
   lsft z    x    c    v    b                   n    m    ,    .    / rsft
        grv  rmet left rght                          up   down [    ]
 
@@ -74,11 +74,11 @@
 (deflayer hyper
   _    _    _    _    _    _    _    _    _    _     _    _    _     _    _     _
 
-  _    _    _    _    _    _                   _    _    _    _    _    _
-  _    _    _    _    _    _                   _    _    _    _    _    _
-  _    _    _    _    _    _                   _    _    _    @lck _    _
-  _    _    _    _    _    _                   @wf4 _    _    _    _    _
-       _    _    _    _                             _    _    _    _
+  F12  F1   F2   F3   F4   F5                  F6   F7   F8   F9   F10  F11
+  _    _    _    _    _    _                   menu _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    @lck M-1  M-2
+  _    _    _    _    _    _                   @wf4 _    _    M-3  _   _
+       _    _    _    _                             _    _    M-4  M-5
 
                            _    _      _    _
                       _    _    _      _    _   @wsp
