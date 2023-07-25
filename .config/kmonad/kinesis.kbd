@@ -55,8 +55,11 @@
 (defalias
     wf4 A-F4
     lck (cmd-button "C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation")
-    wsp M-spc
     gam (layer-switch gaming)
+    dlf (around rmet (around rctrl left))
+    drt (around rmet (around rctrl rght))
+    wlf (around rmet left)
+    wrt (around rmet rght)
 )
 
 ;; Gaming layer aliases
@@ -85,13 +88,13 @@
   _    _    _    _    _    _    _    _    _    _     _    _    _     _    _     _
 
   F12  F1   F2   F3   F4   F5                  F6   F7   F8   F9   F10  F11
-  _    _    _    _    _    _                   menu _    _    _    _    _
-  _    _    _    _    _    _                   _    _    _    @lck M-1  M-2
+  _    _    _    _    _    _                   menu @wlf @wrt _    _    _
+  _    _    _    _    _    _                   _    _    _    _    M-1  M-2
   _    _    _    _    _    _                   @wf4 _    _    M-3  _    @gam
-       _    _    _    _                             _    _    M-4  M-5
+       _    _    _    _                             @dlf @drt M-4  M-5
 
                            _    _      mute next
-                      _    _    _      volu pp  @wsp
+                      _    _    _      volu pp  _
                                 _      vold
 )
 
