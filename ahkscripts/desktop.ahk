@@ -7,8 +7,11 @@ Ctrl & g::Send {Escape}
 
 ;RWin & y::Send {AppsKey}
 
+$Capslock::Esc
+$Esc::Capslock
+
 ;Ctrl & Escape::Send {LCtrl down}{LShift down}{LAlt down}{Space}{LCtrl up}{LShift up}{LAlt up}
-Ctrl & Escape::Send {Rwin down}{Enter}{RWin up}
+Ctrl & Capslock::Send {Rwin down}{Enter}{RWin up}
 
 RWin & h::Send {RWin down}{Tab}{RWin up}
 
@@ -115,6 +118,12 @@ RWin & 6::Send {RWin down}{Ctrl down}{Alt down}6{RWin up}{Ctrl up}{Alt up}
 #IfWinActive, ahk_exe FTLGame.exe
   XButton1::Send {Backspace}
 #IfWinActive
+
+
+#IfWinActive, ahk_exe Ixion.exe
+  XButton1::Send {Space}
+#IfWinActive
+
 
 #IfWinActive, ahk_exe CivilizationVI.exe
   XButton1::Send {Return}
