@@ -1,0 +1,107 @@
+(defcfg
+  linux-dev /dev/input/by-id/usb-Kinesis_Advantage2_Keyboard_314159265359-if01-event-kbd
+  process-unmapped-keys yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt slck pause
+
+  =    1    2    3    4    5                   6    7    8    9    0    -
+  tab  q    w    e    r    t                   y    u    i    o    p    \
+  caps a    s    d    f    g                   h    j    k    l    ;    '
+  lsft z    x    c    v    b                   n    m    ,    .    / rsft
+       grv  rmet left rght                          up   down [    ]
+
+                           lctl lalt   ralt rctl
+                      bspc del  home   pgup  ret spc
+                                 end   pgdn
+)
+
+;;
+;; Aliases
+;;
+
+(defvar
+  tap-timeout   100
+  hold-timeout  200
+  tt $tap-timeout
+  ht $hold-timeout
+)
+
+;; QWERTY layers bindings
+(defalias
+    +a (tap-hold $tt $ht a lmet)
+    +s (tap-hold $tt $ht s lalt)
+    +d (tap-hold $tt $ht d lctl)
+    +f (tap-hold $tt $ht f lsft)
+    +g (tap-hold $tt $ht g (layer-toggle hyper))
+
+    +h (tap-hold $tt $ht h (layer-toggle hyper))
+    +j (tap-hold $tt $ht j rsft)
+    +k (tap-hold $tt $ht k rctl)
+    +l (tap-hold $tt $ht l lalt)
+    +; (tap-hold $tt $ht ; rmet)
+
+    cw (caps-word 2000)
+)
+
+;; Hyper layers aliases
+(defalias
+    wf4 A-f4
+    gam (layer-switch gaming)
+    dlf M-C-left
+    drt M-C-rght
+    wlf M-left
+    wrt M-rght
+)
+
+;; Gaming layer aliases
+(defalias
+    qwe (layer-switch qwerty)
+)
+
+;;
+;; Layers
+;;
+(deflayer qwerty
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prnt slck pause
+
+  =    1    2    3    4    5                   6    7    8    9    0    -
+  tab  q    w    e    r    t                   y    u    i    o    p    \
+  esc  @+a  @+s  @+d  @+f  @+g                 @+h  @+j  @+k  @+l  @+;  '
+  XX   z    x    c    v    b                   n    m    ,    .    /    XX
+       grv  @cw  left rght                          up   down [    ]
+
+                           XX   XX     XX    XX
+                      bspc del  home   pgup  ret spc
+                                 end   pgdn
+)
+
+(deflayer hyper
+  _    _    _    _    _    _    _    _    _    _     _    _    _     _    _     _
+
+  f12  f1   f2   f3   f4   f5                  f6   f7   f8   f9   f10  f11
+  _    _    _    _    _    _                   menu @wlf @wrt _    _    _
+  _    _    _    _    _    _                   _    _    _    _    M-1  M-2
+  _    _    _    _    _    _                   @wf4 _    _    M-3  _    @gam
+       _    _    _    _                             @dlf @drt M-4  M-5
+
+                           _    _      mute next
+                      _    _    _      volu pp   _
+                                _      vold
+)
+
+
+(deflayer gaming
+  _    _    _    _    _    _    _    _    _    _     _    _    _     _    @qwe _
+
+  _    _    _    _    _    _                   _    _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    _    _    _
+  _    _    _    _    _    _                   _    _    _    _    _    _
+       _    _    _    _                             _    _    _    _
+
+                           _    _      _    _
+                      spc  _    _      _    _   bspc
+                                _      _
+)
