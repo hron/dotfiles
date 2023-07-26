@@ -37,17 +37,17 @@
 
 ;; QWERTY layers bindings
 (defalias
-    +a (tap-hold-next-release 200 a lmet)
-    +s (tap-hold-next-release 200 s lalt)
-    +d (tap-hold-next-release 200 d lctl)
-    +f (tap-hold-next-release 200 f lsft)
-    +g (tap-hold-next-release 200 g (layer-toggle hyper))
+    +a (tap-next-release a lmet)
+    +s (tap-next-release s lalt)
+    +d (tap-next-release d lctl)
+    +f (tap-next-release f lsft)
+    +g (tap-next-release g (layer-toggle hyper))
 
-    +h (tap-hold-next-release 200 h (layer-toggle hyper))
-    +j (tap-hold-next-release 200 j rsft)
-    +k (tap-hold-next-release 200 k rctl)
-    +l (tap-hold-next-release 200 l lalt)
-    +; (tap-hold-next-release 200 ; rmet)
+    +h (tap-next-release h (layer-toggle hyper))
+    +j (tap-next-release j rsft)
+    +k (tap-next-release k rctl)
+    +l (tap-next-release l lalt)
+    +; (tap-next-release ; rmet)
 
 )
 
