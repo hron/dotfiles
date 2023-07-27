@@ -1,0 +1,38 @@
+(defvar
+  tap-timeout   100
+  hold-timeout  200
+  tt $tap-timeout
+  ht $hold-timeout
+)
+
+;; QWERTY layers bindings
+(defalias
+    +a (tap-hold $tt $ht a lmet)
+    +s (tap-hold $tt $ht s lalt)
+    +d (tap-hold $tt $ht d lctl)
+    +f (tap-hold $tt $ht f lsft)
+    +g (tap-hold $tt $ht g (layer-toggle hyper))
+
+    +h (tap-hold $tt $ht h (layer-toggle hyper))
+    +j (tap-hold $tt $ht j rsft)
+    +k (tap-hold $tt $ht k rctl)
+    +l (tap-hold $tt $ht l lalt)
+    +; (tap-hold $tt $ht ; rmet)
+
+    cw (caps-word 2000)
+)
+
+;; Hyper layers aliases
+(defalias
+    wf4 A-f4
+    gam (layer-switch gaming)
+    dlf M-C-left
+    drt M-C-rght
+    wlf M-left
+    wrt M-rght
+)
+
+;; Gaming layer aliases
+(defalias
+    qwe (layer-switch qwerty)
+)
