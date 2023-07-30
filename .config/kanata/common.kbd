@@ -35,15 +35,15 @@
 
     bas (layer-switch base)
 
-    Dtap (tap-dance $tt (XX (layer-toggle tap)))
-    Dext (tap-dance $tt (XX (layer-toggle extra)))
-    Dbse (tap-dance $tt (XX (layer-toggle base)))
-    Dnum (tap-dance $tt (XX (layer-toggle num)))
-    Dnav (tap-dance $tt (XX (layer-toggle nav)))
-    Dsym (tap-dance $tt (XX (layer-toggle sym)))
-    Dmos (tap-dance $tt (XX (layer-toggle mouse)))
-    Dfun (tap-dance $tt (XX (layer-toggle fun)))
-    Dmed (tap-dance $tt (XX (layer-toggle media)))
+    Dtap (tap-dance $tt (XX (layer-switch tap)))
+    Dext (tap-dance $tt (XX (layer-switch extra)))
+    Dbse (tap-dance $tt (XX (layer-switch base)))
+    Dnum (tap-dance $tt (XX (layer-switch num)))
+    Dnav (tap-dance $tt (XX (layer-switch nav)))
+    Dsym (tap-dance $tt (XX (layer-switch sym)))
+    Dmos (tap-dance $tt (XX (layer-switch mouse)))
+    Dfun (tap-dance $tt (XX (layer-switch fun)))
+    Dmed (tap-dance $tt (XX (layer-switch media)))
 
     ;; Mouse wheel actions. The first number is the interval in milliseconds
     ;; between scroll actions. The second number is the distance in some arbitrary
@@ -84,7 +84,7 @@
     *   S-8
     ocb S-9
     ccb S-0
-    |   S--
+    |   S-\
 
     cw (caps-word 2000)
 )
