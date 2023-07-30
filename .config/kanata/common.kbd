@@ -1,6 +1,10 @@
 (defvar
-  tap-timeout   100
+  tap-timeout   200
   hold-timeout  200
+  mouse-time 1
+  mouse-pixels 1
+  ms $mouse-time
+  mp $mouse-pixels
   tt $tap-timeout
   ht $hold-timeout
 )
@@ -11,28 +15,77 @@
     +s (tap-hold $tt $ht s lalt)
     +d (tap-hold $tt $ht d lctl)
     +f (tap-hold $tt $ht f lsft)
-    +g (tap-hold $tt $ht g (layer-toggle hyper))
 
-    +h (tap-hold $tt $ht h (layer-toggle hyper))
     +j (tap-hold $tt $ht j rsft)
     +k (tap-hold $tt $ht k rctl)
     +l (tap-hold $tt $ht l lalt)
-    +; (tap-hold $tt $ht ; rmet)
+    +' (tap-hold $tt $ht ' rmet)
+
+    +z (tap-hold $tt $ht z (layer-toggle button))
+    +x (tap-hold $tt $ht x ralt)
+    +. (tap-hold $tt $ht . ralt)
+    +/ (tap-hold $tt $ht / (layer-toggle button))
+
+    esc (tap-hold $tt $ht esc (layer-toggle media))
+    spc (tap-hold $tt $ht spc (layer-toggle nav))
+    tab (tap-hold $tt $ht tab (layer-toggle mouse))
+    ent (tap-hold $tt $ht tab (layer-toggle sym))
+    bsp (tap-hold $tt $ht bspc (layer-toggle num))
+    del (tap-hold $tt $ht del (layer-toggle fun))
+
+    bas (layer-switch base)
+
+    Dtap (tap-dance $tt (XX (layer-toggle tap)))
+    Dext (tap-dance $tt (XX (layer-toggle extra)))
+    Dbse (tap-dance $tt (XX (layer-toggle base)))
+    Dnum (tap-dance $tt (XX (layer-toggle num)))
+    Dnav (tap-dance $tt (XX (layer-toggle nav)))
+    Dsym (tap-dance $tt (XX (layer-toggle sym)))
+    Dmos (tap-dance $tt (XX (layer-toggle mouse)))
+    Dfun (tap-dance $tt (XX (layer-toggle fun)))
+    Dmed (tap-dance $tt (XX (layer-toggle media)))
+
+    ;; Mouse wheel actions. The first number is the interval in milliseconds
+    ;; between scroll actions. The second number is the distance in some arbitrary
+    ;; unit. Play with the parameters to see what feels correct. Both numbers
+    ;; must be in the range 1-65535
+    ;;
+    ;; In both Windows and Linux, 120 distance units is equivalent to a single
+    ;; notch movement on a physical wheel. In Linux, not all desktop environments
+    ;; support the REL_WHEEL_HI_RES event so if you experience issues with `mwheel`
+    ;; actions in Linux, using a distance value that is multiple of 120 may help.
+    mw↑ (mwheel-up 50 120)
+    mw↓ (mwheel-down 50 120)
+
+    ;; Horizontal mouse wheel actions. Similar story to vertical mouse wheel.
+    mw← (mwheel-left 50 120)
+    mw→ (mwheel-right 50 120)
+
+    ;; Mouse movement actions.The first number is the interval in milliseconds
+    ;; between mouse actions. The second number is the distance traveled per interval
+    ;; in pixels.
+    ms↑ (movemouse-up $ms $mp)
+    ms← (movemouse-left $ms $mp)
+    ms↓ (movemouse-down $ms $mp)
+    ms→ (movemouse-right $ms $mp)
+
+    undo C-z
+    agan C-y
+
+    :   S-;
+    ~   grv
+    !   S-1
+    @   S-2
+    #   S-3
+    $   S-4
+    %   S-5
+    ^   S-6
+    &   S-7
+    *   S-8
+    ocb S-9
+    ccb S-0
+    |   S--
 
     cw (caps-word 2000)
 )
 
-;; Hyper layers aliases
-(defalias
-    wf4 A-f4
-    gam (layer-switch gaming)
-    dlf M-C-left
-    drt M-C-rght
-    wlf M-left
-    wrt M-rght
-)
-
-;; Gaming layer aliases
-(defalias
-    qwe (layer-switch qwerty)
-)
