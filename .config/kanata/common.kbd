@@ -29,7 +29,7 @@
     esc (tap-hold $tt $ht esc (layer-toggle media))
     spc (tap-hold $tt $ht spc (layer-toggle nav))
     tab (tap-hold $tt $ht tab (layer-toggle mouse))
-    ent (tap-hold $tt $ht tab (layer-toggle sym))
+    ent (tap-hold $tt $ht ent (layer-toggle sym))
     bsp (tap-hold $tt $ht bspc (layer-toggle num))
     del (tap-hold $tt $ht del (layer-toggle fun))
 
