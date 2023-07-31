@@ -86,6 +86,8 @@
     ccb S-0
     |   S-\
     _   S--
+    {   S-[
+    }   S-]
 
     cw (caps-word 2000)
 )
