@@ -85,6 +85,7 @@
     ocb S-9
     ccb S-0
     |   S-\
+    _   S--
 
     cw (caps-word 2000)
 )
