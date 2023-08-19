@@ -18,12 +18,12 @@
 ;; Layers
 ;;
 (deflayer base
-  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-  grv  q    w    e    r    t    y    u    i    o    p    [    XX   XX
-  XX   @+a  @+s  @+d  @+f  g    h    @+j  @+k  @+l  @+;  '    XX
-  XX   @+z  @+x  c    v    b    n    m    ,    @+.  @+/  ]    XX   XX
-  XX   z    @esc @spc @tab b    @ent @bsp @del XX   XX   XX
-  XX   XX   XX             XX             XX   XX   XX   XX   XX   XX
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  @del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    @bsp
+  @tab q    w    e    r    t    y    u    i    o    p    [    ]
+  @esc @+a  @+s  @+d  @+f  g    h    @+j  @+k  @+l  @+;  '    \    @ent
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl met  @esc          @spc            ralt rctl left up   down rght
 )
 
 (deflayer extra
@@ -45,66 +45,66 @@
 )
 
 (deflayer button
-  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   @undo S-del C-ins S-ins @agan @agan S-ins C-ins S-del @undo XX   XX   XX
-  XX   met   alt    ctl   sft  XX    XX    sft   ctl   alt   met   XX   XX
-  XX   @undo S-del C-ins S-ins @agan @agan S-ins C-ins S-del @undo XX   XX   XX
-  XX   XX    mmid  mlft  mrgt  XX    mrgt  mlft  mmid  XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX     XX    XX    XX     XX    XX    XX    XX    XX    XX   XX   @del
+  XX   XX    XX     XX    XX    XX     XX    XX    XX    XX    XX    XX   XX   @bsp
+  @tab @undo S-del  C-ins S-ins @agan  @agan S-ins C-ins S-del @undo XX   XX
+  XX   met   alt    ctl   sft   XX     XX    sft   ctl   alt   met   XX   XX   @ent
+  XX   @undo S-del  C-ins S-ins @agan  @agan S-ins C-ins S-del @undo XX
+  XX   XX    @esc            @spc            XX    XX    XX    XX    XX   XX
 )
 
 (deflayer nav
-  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   XX    @Dtap @Dext @Dbse XX    @agan S-ins C-ins S-del @undo XX   XX   XX
-  XX   met   alt    ctl   sft  XX    caps  left  down  up    rght  XX   XX
-  XX   XX    ralt  @Dnum @Dnav XX    ins   home  pgdn  pgup  end   XX   XX   XX
-  XX   XX    mmid  mlft  mrgt  XX    ent   bspc  del   XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX     XX    XX    XX     XX    XX    XX    XX    XX    XX   XX   @del
+  XX   XX    XX     XX    XX    XX     XX    XX    XX    XX    XX    XX   XX   @bsp
+  XX   XX    @Dtap  @Dext @Dbse XX     @agan S-ins C-ins S-del @undo XX   XX
+  XX   met   alt    ctl   sft   XX     caps  left  down  up    rght  XX   XX   @ent
+  XX   XX    ralt  @Dnum @Dnav  XX     ins   home  pgdn  pgup  end   XX
+  XX   XX    XX            XX          XX    XX    XX    XX    XX   XX
 )
 
 (deflayer mouse
   XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   XX    @Dtap @Dext @Dbse XX    @agan S-ins C-ins S-del @undo XX   XX   XX
-  XX   met   alt    ctl   sft  XX    XX    @ms←  @ms↓  @ms↑  @ms→  XX   XX
-  XX   XX    ralt  @Dsym @Dmos XX    XX    @mw←  @mw↓  @mw↑  @mw→  XX   XX   XX
-  XX   XX    XX    XX    XX    XX    mrgt  mlft  mmid  XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
+  XX   XX    @Dtap @Dext @Dbse XX    @agan S-ins C-ins S-del @undo XX   XX
+  XX   met   alt    ctl   sft  XX    XX    @ms←  @ms↓  @ms↑  @ms→  XX   XX   XX
+  XX   XX    ralt  @Dsym @Dmos XX    XX    @mw←  @mw↓  @mw↑  @mw→  XX
+  XX   XX    XX                mrgt        mlft  mmid  XX    XX    XX   XX
 )
 
 (deflayer media
   XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   XX    @Dtap @Dext @Dbse XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   met   alt    ctl   sft  XX    XX    prev  vold  volu  next  XX   XX
-  XX   XX    ralt  @Dfun @Dmed XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   XX    XX    XX    XX    XX    pp    pp    mute  XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
+  XX   XX    @Dtap @Dext @Dbse XX    XX    XX    XX    XX    XX    XX   XX
+  XX   met   alt    ctl   sft  XX    XX    prev  vold  volu  next  XX   XX   XX
+  XX   XX    ralt  @Dfun @Dmed XX    XX    XX    XX    XX    XX    XX
+  XX   XX    XX                pp          mute  XX    XX    XX    XX   XX
 )
 
 (deflayer num
   XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   [     7     8     9     ]     XX    @Dbse @Dext @Dtap XX    XX   XX   XX
-  XX   ;     4     5     6     =     XX    sft   ctl   alt   met   XX   XX
-  XX   `     1     2     3     \     XX    @Dnum @Dnav ralt  XX    XX   XX   XX
-  XX   XX    .     0     -     XX    XX    XX    XX    XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
+  XX   [     7     8     9     ]     XX    @Dbse @Dext @Dtap XX    XX   XX
+  XX   ;     4     5     6     =     XX    sft   ctl   alt   met   XX   XX   XX
+  XX   `     1     2     3     \     XX    @Dnum @Dnav ralt  XX    XX
+  XX   .     0                 -           XX    XX    XX    XX    XX   XX
 )
 
 (deflayer sym
   XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   @{    @&    @*    @ocb  @}    XX    @Dbse @Dext @Dtap XX    XX   XX   XX
-  XX   @:    @$    @%    @^    +     XX    sft   ctl   alt   met   XX   XX
-  XX   @~    @!    @@    @#    @|    XX    @Dnum @Dnav ralt  XX    XX   XX   XX
-  XX   XX    @ocb @ccb   @_    XX    XX    XX    XX    XX    XX    XX
-  XX   XX    XX                XX          XX    XX    XX    XX    XX   XX
+  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
+  XX   @{    @&    @*    @ocb  @}    XX    @Dbse @Dext @Dtap XX    XX   XX
+  XX   @:    @$    @%    @^    +     XX    sft   ctl   alt   met   XX   XX   XX
+  XX   @~    @!    @@    @#    @|    XX    @Dnum @Dnav ralt  XX    XX
+  XX   @ocb  @ccb              @_          XX    XX    XX    XX    XX   XX
 )
 
 (deflayer fun
   XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
-  XX   f12   f7    f8    f9    prtsc XX    @Dbse @Dext @Dtap XX    XX   XX   XX
-  XX   f11   f4    f5    f6    slck  XX    sft   ctl   alt   met   XX   XX
-  XX   f10   f1    f2    f3    pause XX    @Dnum @Dnav ralt  XX    XX   XX   XX
-  XX   XX    comp spc    tab  XX     XX    XX    XX    XX    XX    XX
-  XX   XX    XX               XX           XX    XX    XX    XX    XX   XX
+  XX   XX    XX    XX    XX    XX    XX    XX    XX    XX    XX    XX   XX   XX
+  XX   f12   f7    f8    f9    prtsc XX    @Dbse @Dext @Dtap XX    XX   XX
+  XX   f11   f4    f5    f6    slck  XX    sft   ctl   alt   met   XX   XX   XX
+  XX   f10   f1    f2    f3    pause XX    @Dnum @Dnav ralt  XX    XX
+  XX   comp  spc              tab          XX    XX    XX    XX    XX   XX
 )
 
 
