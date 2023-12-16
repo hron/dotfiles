@@ -19,7 +19,7 @@
     +j (tap-hold $tt $ht j rsft)
     +k (tap-hold $tt $ht k rctl)
     +l (tap-hold $tt $ht l lalt)
-    +; (tap-hold $tt $ht ' rmet)
+    +; (tap-hold $tt $ht ; rmet)
 
     +z (tap-hold $tt $ht z (layer-toggle button))
     +x (tap-hold $tt $ht x ralt)
