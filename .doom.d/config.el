@@ -512,7 +512,7 @@
          ("<next>" . vertico-scroll-up)
          ("C-j" . vertico-exit-input)
          :map global-map
-         ("C-b" . +vertico/switch-workspace-buffer)))
+         ("C-b" . +vertico/switch-workspace-buffer)))
 
 (use-package! embark
   :bind (:map global-map
