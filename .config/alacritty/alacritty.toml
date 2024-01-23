@@ -1,0 +1,174 @@
+import = ["/home/aleksei/.config/alacritty/github-light.toml"]
+
+[cursor.style]
+blinking = "Always"
+
+[cursor.vi_mode_style]
+blinking = "Off"
+
+[font]
+size = 11
+
+[font.bold]
+style = "extrabold"
+
+[font.bold_italic]
+style = "extrabolditalic"
+
+[font.italic]
+style = "bolditalic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "semibold"
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "F"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "M"
+mode = "~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "F7"
+mode = "~Search"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Return"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleNormalSelection"
+key = "Space"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "CenterAroundViCursor"
+key = "L"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "First"
+key = "Home"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "End"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "FirstOccupied"
+key = "Home"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "End"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SemanticLeft"
+key = "Left"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SemanticRightEnd"
+key = "Right"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "F"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchNext"
+key = "Return"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchPrevious"
+key = "Return"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "T"
+mods = "Control"
+
+[[mouse.bindings]]
+action = "Copy"
+mouse = "Right"
+
+[shell]
+args = ["--login"]
+program = "/bin/bash"
+
+[window]
+dynamic_title = true
