@@ -1,4 +1,4 @@
-import = ["/home/aleksei/.config/alacritty/github-light.toml"]
+import = ["/home/aleksei/.config/alacritty/konsole-light.toml"]
 
 [cursor.style]
 blinking = "Always"
