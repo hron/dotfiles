@@ -24,7 +24,7 @@
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
   (if (string= (getenv "XDG_SESSION_TYPE") "wayland")
-      14
+      15
     22))
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
