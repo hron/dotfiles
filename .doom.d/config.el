@@ -25,7 +25,7 @@
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
   (if (string= (getenv "XDG_SESSION_TYPE") "wayland")
       15
-    22))
+    24))
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
       doom-unicode-font doom-font
@@ -104,7 +104,8 @@
      '(("C-<right>" . nil)
        ("C-<left>" . nil)
        ("C-M-k"  . nil)
-       ("C-M-t" . nil)))))
+       ("C-M-t" . nil)
+       ("C-M-e" . nil)))))
 
 (defun gusev/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
@@ -253,6 +254,7 @@
 
 (global-set-key (kbd "M-f") '+default/search-buffer)
 (global-set-key (kbd "C-S-f") '+default/search-project)
+(global-set-key (kbd "C-S-r") 'projectile-replace)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
@@ -365,6 +367,7 @@
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("C-0" . aleksei/compile)
+              ("C-M-e" . aleksei/compile)
               ("M-r" . recompile)
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file)))
@@ -705,3 +708,7 @@
 (setq ispell-dictionary "american")
 
 (use-package! kbd-mode)
+
+(use-package! yaml-mode
+  :bind (:map yaml-mode-map
+              ("<backspace>" . backward-delete-char-untabify)))
