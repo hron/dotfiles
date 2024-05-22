@@ -71,7 +71,7 @@
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/2-columns-layout-p)))
          (display-buffer-in-side-window)
          (window-width . 0.5)
-         (side . right)
+         (side . left)
          (slot . 1))
 
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/1-column-layout-p)))
@@ -92,38 +92,38 @@
   (popper-display-function #'aleksei/popper-display-popup-at-bottom-or-right)
   (popper-group-function #'popper-group-by-projectile)
   (popper-reference-buffers
-        '("\\*Messages\\*"
-          "\\*Warnings\\*"
-          "Output\\*$"
-          "\\*Async Shell Command\\*"
-          "\\*doom eval\\*"
-          "\\*doom:scratch"
-          "\\*ert\\*"
-          "\\*git-gutter:diff"
-          "\\*SQL: "
-          "\\*Flycheck error"
+   '("\\*Messages\\*"
+     "\\*Warnings\\*"
+     "Output\\*$"
+     "\\*Async Shell Command\\*"
+     "\\*doom eval\\*"
+     "\\*doom:scratch"
+     "\\*ert\\*"
+     "\\*git-gutter:diff"
+     "\\*SQL: "
+     "\\*Flycheck error"
 
-          helpful-mode help-mode
+     helpful-mode help-mode
 
-          compilation-mode comint-mode "\\*mocha"
+     compilation-mode comint-mode "\\*mocha"
 
-          "\\*tree-sitter-tree:"
+     "\\*tree-sitter-tree:"
 
-          "\\*cargo"
+     "\\*cargo"
 
-          "\\*rg"
+     "\\*rg"
 
-          "\\*Embark"
+     "\\*Embark"
 
-          "\\*format-all-errors\\*"
+     "\\*format-all-errors\\*"
 
-          "^\\*eshell.*\\*$" eshell-mode ;eshell as a popup
-          "^\\*shell.*\\*$"  shell-mode  ;shell as a popup
-          "^\\*term.*\\*$"   term-mode   ;term as a popup
-          "^\\*vterm.*\\*$"  vterm-mode  ;vterm as a popup
+     "^\\*eshell.*\\*$" eshell-mode ;eshell as a popup
+     "^\\*shell.*\\*$"  shell-mode  ;shell as a popup
+     "^\\*term.*\\*$"   term-mode   ;term as a popup
+     "^\\*vterm.*\\*$"  vterm-mode  ;vterm as a popup
 
-          grep-mode
-          ))
+     grep-mode
+     ))
   (popper-mode-line "")
   :init
   (popper-mode +1)
