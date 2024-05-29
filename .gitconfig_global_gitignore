@@ -17,3 +17,4 @@ flycheck*.el
 .envrc
 .ecukes-failing-scenarios
 .tool-versions
+.vscode/*
