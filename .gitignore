@@ -40,3 +40,4 @@
 /.emacs.desktop
 
 /.config/fish/fishd.*
+.config/zed/.tmp*
