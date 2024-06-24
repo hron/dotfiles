@@ -9,8 +9,9 @@
 #umask 022
 
 export BROWSER=sensible-browser
-export EDITOR='/usr/bin/emacsclient -c'
-export ALTERNATE_EDITOR=""
+#export EDITOR='/usr/bin/emacsclient -c'
+#export ALTERNATE_EDITOR=""
+
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
 export DEBEMAIL="aleksei.gusev@gmail.com"
 export DEBFULLNAME="Aleksei Gusev"
@@ -62,6 +63,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+export QT_SCALE_FACTOR=1.25
 
 # https://direnv.net/docs/hook.html
 if [ -x /usr/bin/direnv ]; then
