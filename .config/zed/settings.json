@@ -7,10 +7,59 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "One Light",
-  // "ui_font_family": "JetBrainsMono",
-  "ui_font_size": 22,
+  "theme": {
+    "dark": "Zedwaita Dark",
+    "light": "Zedwaita Light"
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic"
+      },
+      "comment.doc": {
+        "font_style": "italic"
+      }
+    }
+  },
+  "ui_font_size": 18,
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_size": 16,
-  "buffer_font_weight": 700
+  // "buffer_font_family": "BlexMono Nerd Font",
+  "buffer_font_size": 13,
+  "buffer_font_weight": 500,
+  "buffer_font_features": {
+    "calt": false,
+    "liga": false
+  },
+  "gutter": {
+    "line_numbers": false
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "indent_guides": {
+    "active_line_width": 2,
+    // "coloring": "indent_aware",
+    // "background_coloring": "indent_aware"
+  },
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": true,
+    "enable_preview_from_code_navigation": true,
+  },
+  "terminal": {
+    // "dock": "bottom",
+    "dock": "bottom",
+    "default_width": 650,
+    // "font_size": 20
+    // "font_weight": 1000
+  },
+  "project_panel": {
+    "dock": "left",
+    "default_width": 650
+  },
+  "assistant": {
+    "dock": "left",
+    "version": "1",
+    "enabled": false
+  }
 }

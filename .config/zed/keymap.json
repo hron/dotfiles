@@ -2,18 +2,17 @@
   {
     "bindings": {
       "ctrl-\"": "workspace::ToggleZoom"
+      // "ctrl-q": null
     }
   },
-
   {
     "context": "Editor",
     "bindings": {
+      "ctrl-k": null,
       "ctrl-backspace": "editor::DeleteToPreviousSubwordStart",
       "ctrl-delete": "editor::DeleteToNextSubwordEnd",
       "ctrl-left": "editor::MoveToPreviousSubwordStart",
       "ctrl-right": "editor::MoveToNextSubwordEnd",
-      "pageup": "editor::MovePageUp",
-      "pagedown": "editor::MovePageDown",
       "ctrl-up": "editor::MoveToStartOfParagraph",
       "ctrl-down": "editor::MoveToEndOfParagraph",
       "ctrl-shift-up": "editor::SelectToStartOfParagraph",
@@ -25,8 +24,24 @@
       "alt-shift-down": "editor::MoveLineDown",
       "ctrl-j": null,
       "ctrl-shift-j": "editor::JoinLines",
-      "alt-enter": "editor::ToggleCodeActions",
+      "ctrl-.": "editor::ToggleCodeActions",
       "ctrl-l": "editor::ScrollCursorCenter",
+      "f1": "editor::ToggleSoftWrap",
+      "ctrl-alt-z": "editor::RevertSelectedHunks",
+      "alt-]": "editor::GoToHunk",
+      "alt-[": "editor::GoToPrevHunk",
+      "ctrl-alt-[": "editor::ToggleHunkDiff",
+      "f2": "editor::GoToDiagnostic",
+      "shift-f2": "editor::GoToPrevDiagnostic",
+      "ctrl-alt-l": "editor::Format",
+      "alt-.": "editor::GoToDefinition",
+      "alt-ctrl-.": "editor::GoToTypeDefinition",
+      "alt-shift->": "editor::FindAllReferences",
+      "alt-shift-&": "editor::FindAllReferences",
+      "alt-shift-f7": "editor::FindAllReferences",
+      // "shift-escape": null,
+      "ctrl-q": "editor::Hover",
+      "ctrl-t": "editor::Rename",
       "alt-j": [
         "editor::SelectNext",
         {
@@ -51,17 +66,12 @@
         {
           "replace_newest": true
         }
-      ]
-
-      // "alt-shift-j": [
-      //   "editor::SelectPrevious",
-      //   {
-      //     "replace_newest": false
-      //   }
-      // ]
+      ],
+      // disable because it causes significant lag for ctrl-alt-g (SelectNextMatch)
+      // remove me after https://github.com/zed-industries/zed/pull/13637 is merged
+      "ctrl-alt-g b": null
     }
   },
-
   // {
   //   "context": "BufferSearchBar",
   //   "bindings": {
@@ -74,7 +84,6 @@
   //     "ctrl-h": null
   //   }
   // },
-
   {
     "context": "Pane",
     "bindings": {
@@ -88,15 +97,27 @@
       "alt-8": null,
       "alt-9": null,
       "alt-0": null,
+      "ctrl-q": null,
       "alt-left": "pane::GoBack",
       "alt-right": "pane::GoForward",
       "ctrl-shift-f": "project_search::ToggleFocus"
+      // "ctrl-alt-down": "search::SelectNextMatch",
+      // "ctrl-alt-up": "search::SelectPrevMatch"
+      // "ctrl-shift-g": "search::SelectNextMatch",
+      // "ctrl-alt-shift-g": "search::SelectPrevMatch"
     }
   },
-
+  {
+    "context": "ProjectSearchView",
+    "bindings": {
+      "shift-ctrl-alt-f": "project_search::ToggleFilters"
+    }
+  },
   {
     "context": "Workspace",
     "bindings": {
+      "ctrl-s": "workspace::SaveAll",
+      "ctrl-alt-s": "workspace::Save",
       "alt-x": "command_palette::Toggle",
       "alt-t": "task::Spawn",
       "alt-r": "task::Rerun",
@@ -112,7 +133,34 @@
       "alt-6": null,
       "alt-7": null,
       "alt-8": null,
-      "alt-9": null
+      "alt-9": null,
+      "ctrl-q": null
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "shift-escape": "terminal_panel::ToggleFocus",
+      "ctrl-l": "terminal::Clear",
+      "ctrl-t": "workspace::NewTerminal",
+      "ctrl-v": "terminal::Paste",
+      "ctrl-e": null,
+      "ctrl-w": null,
+      "ctrl-q": null
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "shift-escape": "project_panel::ToggleFocus",
+      "enter": "project_panel::OpenPermanent",
+      "ctrl-q": null,
+      "ctrl-shift-f": "project_panel::NewSearchInDirectory",
+      "ctrl-shift-left": "project_panel::CollapseAllEntries",
+      "f2": "project_panel::Rename",
+      "f7": "project_panel::NewDirectory",
+      "ctrl-shift-c": "project_panel::CopyPath",
+      "ctrl-shift-alt-c": "project_panel::CopyRelativePath"
     }
   }
 ]

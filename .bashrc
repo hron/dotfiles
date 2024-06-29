@@ -95,9 +95,41 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# function set_win_title(){
+#     echo -ne "\033]0; ${PWD//$HOME/\~} \007"
+# }
+function set_win_title() {
+    local cmd=" ($@)"
+    if [[ "$cmd" == " (starship_precmd)" || "$cmd" == " ()" ]]
+    then
+      cmd=""
+    fi
+    if [[ $PWD == $HOME ]]
+    then
+      if [[ $SSH_TTY ]]
+      then
+        echo -ne "\033]0; 🏛️ @ $HOSTNAME ~$cmd\a" < /dev/null
+      else
+        echo -ne "\033]0; 🏠 ~$cmd\a" < /dev/null
+      fi
+    else
+      BASEPWD=$(basename "$PWD")
+      if [[ $SSH_TTY ]]
+      then
+        echo -ne "\033]0; 🌩️ $BASEPWD @ $HOSTNAME $cmd\a" < /dev/null
+      else
+        echo -ne "\033]0; 📁 $BASEPWD $cmd\a" < /dev/null
+      fi
+    fi
+}
 STARSHIP_BIN=/usr/local/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
-[ -x "$STARSHIP_BIN" ] && eval "$($STARSHIP_BIN init bash)"
+[ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/bin/starship
+if [ -x "$STARSHIP_BIN" ]; then
+    starship_precmd_user_func="set_win_title"
+    eval "$($STARSHIP_BIN init bash)"
+    trap "set_win_title \${BASH_COMMAND}" DEBUG
+fi
 
 vterm_printf(){
     if [ -n "$TMUX" ]; then
