@@ -65,7 +65,10 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
-export QT_SCALE_FACTOR=1.25
+# export QT_SCALE_FACTOR=1.25
+export PGHOST=localhost
+export PGUSER=spaceship
+export PGDATABASE=spaceship
 
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"

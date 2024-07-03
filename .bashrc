@@ -126,9 +126,9 @@ STARSHIP_BIN=/usr/local/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/bin/starship
 if [ -x "$STARSHIP_BIN" ]; then
-    starship_precmd_user_func="set_win_title"
+    # starship_precmd_user_func="set_win_title"
     eval "$($STARSHIP_BIN init bash)"
-    trap "set_win_title \${BASH_COMMAND}" DEBUG
+    # trap "set_win_title \${BASH_COMMAND}" DEBUG
 fi
 
 vterm_printf(){
