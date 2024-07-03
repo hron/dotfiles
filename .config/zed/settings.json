@@ -11,6 +11,9 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "chat_panel": {
+    "dock": "left"
+  },
   "experimental.theme_overrides": {
     "syntax": {
       "comment": {
