@@ -2,6 +2,8 @@
 
 set -x -e
 
+gsettings set org.gnome.desktop.wm.keybindings show-desktop ['<Primary><Super>d', '<Primary><Alt>d']
+
 gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-1 "['<Super>1', '<Super>x']"
 gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-2 "['<Super>2', '<Super>c']"
 gsettings set org.gnome.shell.extensions.dash-to-dock app-hotkey-3 "['<Super>3', '<Super>v']"
