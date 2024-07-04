@@ -9,8 +9,8 @@
     "context": "Editor",
     "bindings": {
       "ctrl-k": null,
-      "alt-c": "editor::ConvertToLowerCase",
-      "alt-shift-c": "editor::ConvertToUpperCase",
+      // "alt-c": "editor::ConvertToLowerCase",
+      // "alt-shift-c": "editor::ConvertToUpperCase",
       "shift-escape": "editor::Cancel",
       "ctrl-backspace": "editor::DeleteToPreviousSubwordStart",
       "ctrl-delete": "editor::DeleteToNextSubwordEnd",
@@ -143,7 +143,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "shift-escape": "terminal_panel::ToggleFocus",
+      "escape": "terminal_panel::ToggleFocus",
       "ctrl-l": "terminal::Clear",
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
@@ -155,7 +155,7 @@
   {
     "context": "ProjectPanel",
     "bindings": {
-      "shift-escape": "project_panel::ToggleFocus",
+      "escape": "project_panel::ToggleFocus",
       "enter": "project_panel::OpenPermanent",
       "ctrl-q": null,
       "ctrl-shift-f": "project_panel::NewSearchInDirectory",
@@ -164,6 +164,12 @@
       "f7": "project_panel::NewDirectory",
       "ctrl-shift-c": "project_panel::CopyPath",
       "ctrl-shift-alt-c": "project_panel::CopyRelativePath"
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "escape": "assistant::ToggleFocus"
     }
   }
 ]

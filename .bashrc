@@ -95,6 +95,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -n "$ZED_TERM" ]; then
+    export GIT_EDITOR='zed --wait'
+fi
+
 # function set_win_title(){
 #     echo -ne "\033]0; ${PWD//$HOME/\~} \007"
 # }

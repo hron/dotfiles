@@ -11,6 +11,10 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "vim_mode": false,
+  "notification_panel": {
+    "dock": "left"
+  },
   "chat_panel": {
     "dock": "left"
   },
@@ -31,7 +35,7 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 500,
+  "buffer_font_weight": 600,
   // "buffer_line_height": "standard",
   "buffer_font_features": {
     "calt": false,
@@ -55,7 +59,7 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "bottom",
+    "dock": "left",
     "default_width": 650
     // "font_size": 20
     // "font_weight": 1000
@@ -71,6 +75,7 @@
       "available_models": []
     },
     "dock": "left",
+    "default_width": 650,
     "version": "1",
     "enabled": true
   },
