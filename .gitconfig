@@ -12,3 +12,5 @@
 	default = matching
 [github]
 	user = hron
+[init]
+	defaultBranch = main
