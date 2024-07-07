@@ -1,8 +1,11 @@
 [
   {
     "bindings": {
-      "ctrl-\"": "workspace::ToggleZoom"
+      "ctrl-\"": "workspace::ToggleZoom",
+      // "ctrl-\"": "workspace::ActivateNextPane",
       // "ctrl-q": null
+      "alt-up": "workspace::ActivatePreviousPane",
+      "alt-down": "workspace::ActivateNextPane"
     }
   },
   {

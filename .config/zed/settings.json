@@ -11,6 +11,10 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "theme": {
+    "dark": "Modus Vivendi",
+    "light": "Modus Operandi"
+  },
   "vim_mode": false,
   "notification_panel": {
     "dock": "left"
@@ -27,7 +31,7 @@
         "font_style": "italic"
       },
       "title": {
-        "font_weight": 700
+        "font_weight": 800
       }
     }
   },
@@ -35,7 +39,7 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 600,
+  "buffer_font_weight": 700,
   // "buffer_line_height": "standard",
   "buffer_font_features": {
     "calt": false,
@@ -59,7 +63,7 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "left",
+    "dock": "bottom",
     "default_width": 650
     // "font_size": 20
     // "font_weight": 1000
@@ -72,6 +76,7 @@
     "provider": {
       "name": "openai",
       "default_model": "gpt-4o",
+      "default_width": 650,
       "available_models": []
     },
     "dock": "left",
