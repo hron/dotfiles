@@ -17,7 +17,7 @@
   },
   "vim_mode": false,
   "notification_panel": {
-    "dock": "left"
+    "dock": "right"
   },
   "chat_panel": {
     "dock": "left"
@@ -79,7 +79,7 @@
       "default_width": 650,
       "available_models": []
     },
-    "dock": "left",
+    "dock": "bottom",
     "default_width": 650,
     "version": "1",
     "enabled": true

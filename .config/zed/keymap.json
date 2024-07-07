@@ -73,6 +73,7 @@
           "replace_newest": true
         }
       ],
+      "alt-shift-j": "editor::UndoSelection",
       // disable because it causes significant lag for ctrl-alt-g (SelectNextMatch)
       // remove me after https://github.com/zed-industries/zed/pull/13637 is merged
       "ctrl-alt-g b": null
@@ -128,8 +129,6 @@
       "alt-t": "task::Spawn",
       "alt-r": "task::Rerun",
       "ctrl-i": "workspace::CloseAllDocks",
-      "ctrl-n": null,
-      "alt-\\": "workspace::NewFile",
       "ctrl-p": null,
       "alt-1": "project_panel::ToggleFocus",
       "alt-2": null,
