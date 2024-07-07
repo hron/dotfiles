@@ -25,3 +25,4 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'magit-clean 'disabled nil)
+(put 'customize-face 'disabled nil)

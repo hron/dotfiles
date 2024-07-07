@@ -23,9 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  (if (string= (getenv "XDG_SESSION_TYPE") "wayland")
-      15
-    23))
+  25)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
       doom-unicode-font doom-font
@@ -303,8 +301,8 @@
 
 (setq-default cursor-type '(bar . 3))
 
-(use-package! json-mode
-  :init (setq js-indent-level 2))
+;; (use-package! json-mode
+;;   :init (setq js-indent-level 2))
 
 (use-package! rst-mode
   :bind (:map rst-mode-map
@@ -344,11 +342,12 @@
 (use-package! mocha
   :custom (mocha-reporter "spec"))
 
-(use-package! git-gutter
-  :init
-  (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
-  (global-set-key (kbd "M-]") 'git-gutter:next-hunk)
-  (global-set-key (kbd "M-[") 'git-gutter:previous-hunk))
+(;; use-package! git-gutter
+ ;;  :init
+ ;;  (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
+ ;;  (global-set-key (kbd "M-]") 'git-gutter:next-hunk)
+ ;;  (global-set-key (kbd "M-[") 'git-gutter:previous-hunk)
+ )
 
 (defun projectile-test-rerun ()
   (interactive)
