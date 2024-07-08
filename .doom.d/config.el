@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  25)
+  13)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
       doom-unicode-font doom-font
@@ -315,7 +315,7 @@
               ("M-." . lsp-find-definition)
               ("M-<RET>" . lsp-execute-code-action)
               ("C-q" . lsp-describe-thing-at-point)
-              ("M-7" . lsp-find-references)
+              ("M->" . lsp-find-references)
               ("C-t" . lsp-rename)
               ("M-t" . lsp-execute-code-action))
   :config
@@ -342,12 +342,11 @@
 (use-package! mocha
   :custom (mocha-reporter "spec"))
 
-(;; use-package! git-gutter
- ;;  :init
- ;;  (global-set-key (kbd "C-M-z") 'git-gutter:revert-hunk)
- ;;  (global-set-key (kbd "M-]") 'git-gutter:next-hunk)
- ;;  (global-set-key (kbd "M-[") 'git-gutter:previous-hunk)
- )
+(use-package! diff-hl
+  :bind (:map diff-hl-mode-map
+              ("C-M-z" . +vc-gutter/revert-hunk)
+              ("M-[" . +vc-gutter/previous-hunk)
+              ("M-]" . +vc-gutter/next-hunk)))
 
 (defun projectile-test-rerun ()
   (interactive)
@@ -553,11 +552,6 @@
 (use-package! feature-mode
   :config
   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
-
-(use-package! ace-window
-  :bind (("C-x o" . ace-window))
-  :custom
-  (aw-scope 'frame))
 
 (use-package! doom-modeline
   :config

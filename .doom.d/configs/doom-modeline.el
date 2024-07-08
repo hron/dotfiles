@@ -48,5 +48,4 @@
     '(objed-state misc-info debug lsp minor-modes input-method indent-info buffer-encoding major-mode process time))
 
   :custom
-  (doom-modeline-height 34)
   (doom-modeline-lsp nil))
