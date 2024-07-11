@@ -25,7 +25,7 @@
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
   13)
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'medium)
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
@@ -346,7 +346,8 @@
   :bind (:map diff-hl-mode-map
               ("C-M-z" . +vc-gutter/revert-hunk)
               ("M-[" . +vc-gutter/previous-hunk)
-              ("M-]" . +vc-gutter/next-hunk)))
+              ("M-]" . +vc-gutter/next-hunk)
+              ("C-'" . diff-hl-show-hunk)))
 
 (defun projectile-test-rerun ()
   (interactive)
@@ -366,7 +367,6 @@
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("C-0" . aleksei/compile)
               ("C-M-e" . aleksei/compile)
-              ("M-r" . recompile)
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file)))
 
@@ -683,7 +683,9 @@
 
 (use-package! rustic
   :hook
-  ((rustic-mode . (lambda () (require 'rust-compile)))))
+  ((rustic-mode . (lambda () (require 'rust-compile))))
+  :bind (:map rustic-mode-map
+              ("M-r" . rustic-cargo-test-rerun)))
 
 (use-package! rg
   :custom

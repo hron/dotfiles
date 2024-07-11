@@ -62,6 +62,15 @@
          (slot . 1)
          (select . t))
 
+        ((lambda (buff &optional alist)
+           (and (string-match-p "magit-revision" buff)
+                (aleksei/1-column-layout-p)))
+         (display-buffer-in-side-window)
+         (side . bottom)
+         (window-height . 0.67)
+         (slot . 1)
+         (select . t))
+
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
          (display-buffer-in-side-window)
          (window-width . 0.33)
@@ -123,6 +132,8 @@
      "^\\*vterm.*\\*$"  vterm-mode  ;vterm as a popup
 
      grep-mode
+
+     ;; magit-revision-mode
      ))
   (popper-mode-line "")
   :init
