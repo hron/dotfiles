@@ -317,7 +317,8 @@
               ("C-q" . lsp-describe-thing-at-point)
               ("M->" . lsp-find-references)
               ("C-t" . lsp-rename)
-              ("M-t" . lsp-execute-code-action))
+              ("C-." . lsp-execute-code-action)
+              ("C-S-o" . consult-lsp-file-symbols))
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
   :hook ((lsp-mode-hook . (lambda ()
@@ -367,6 +368,7 @@
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("C-0" . aleksei/compile)
               ("C-M-e" . aleksei/compile)
+              ("M-t" . aleksei/compile)
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file)))
 
