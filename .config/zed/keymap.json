@@ -173,5 +173,11 @@
     "bindings": {
       "escape": "assistant::ToggleFocus"
     }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "shift-escape": "outline_panel::ToggleFocus"
+    }
   }
 ]

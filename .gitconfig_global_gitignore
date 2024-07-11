@@ -18,3 +18,4 @@ flycheck*.el
 .ecukes-failing-scenarios
 .tool-versions
 .vscode/*
+/.zed/

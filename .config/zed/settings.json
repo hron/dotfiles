@@ -15,13 +15,6 @@
     "dark": "Modus Vivendi",
     "light": "Modus Operandi"
   },
-  "vim_mode": false,
-  "notification_panel": {
-    "dock": "right"
-  },
-  "chat_panel": {
-    "dock": "left"
-  },
   "experimental.theme_overrides": {
     "syntax": {
       "comment": {
@@ -39,11 +32,18 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 700,
-  // "buffer_line_height": "standard",
+  "buffer_font_weight": 600,
+  // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
     "liga": false
+  },
+  "autosave": "on_focus_change",
+  "notification_panel": {
+    "dock": "right"
+  },
+  "chat_panel": {
+    "dock": "left"
   },
   "gutter": {
     "line_numbers": false
@@ -64,9 +64,11 @@
   "terminal": {
     // "dock": "bottom",
     "dock": "bottom",
-    "default_width": 650
-    // "font_size": 20
-    // "font_weight": 1000
+    "default_width": 650,
+    // "font_family": "BlexMonoNF"
+    // "font_size": 20,
+    "font_weight": 600
+    // "line_height": "standard"
   },
   "project_panel": {
     "dock": "left",
@@ -79,12 +81,9 @@
       "default_width": 650,
       "available_models": []
     },
-    "dock": "bottom",
+    "dock": "right",
     "default_width": 650,
     "version": "1",
-    "enabled": true
-  },
-  "inlay_hints": {
     "enabled": true
   },
   "features": {
