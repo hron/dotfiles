@@ -464,9 +464,6 @@
   :init (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
 
 
-(after! git-gutter-fringe
-  (fringe-mode 15))
-
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
 
@@ -559,9 +556,7 @@
 
 (use-package! doom-modeline
   :config
-  (setq doom-modeline-buffer-file-name-style 'buffer-name
-        doom-modeline-major-mode-icon t
-        doom-modeline-major-mode-color-icon t))
+  (setq doom-modeline-major-mode-icon t))
 
 (defun aleksei/buffer-file-name-for-frame-title ()
   (let ((doom-modeline-buffer-file-name-style 'relative-to-project))
