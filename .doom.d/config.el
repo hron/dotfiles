@@ -336,9 +336,8 @@
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
 
-;; (load! "configs/testlab")
-;; (testlab-mode +1)
-;; (setq testlab-test-framework 'jest)
+(load! "configs/testlab")
+(testlab-mode +1)
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
