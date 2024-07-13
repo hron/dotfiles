@@ -6,7 +6,6 @@
   :bind (("C-<prior>" . other-window)
          ("C-<next>" . (lambda () (interactive) (other-window -1)))))
 
-
 (defun aleksei/popper-display-popup-at-bottom-or-right (buffer &optional alist)
   "Display popup-buffer BUFFER at the bottom of the screen."
   (let ((wide-frame-opts '((window-width . .5)
@@ -93,7 +92,7 @@
         ))
 
 (use-package popper
-  :bind (("C-`"   . popper-toggle-latest)
+  :bind (("C-M-`"   . popper-toggle-latest)
          ("M-`"   . popper-cycle)
          ("C-~" . popper-toggle-type))
   :custom

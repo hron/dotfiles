@@ -336,9 +336,9 @@
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
 
-(load! "configs/testlab")
-(testlab-mode +1)
-(setq testlab-test-framework 'jest)
+;; (load! "configs/testlab")
+;; (testlab-mode +1)
+;; (setq testlab-test-framework 'jest)
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
@@ -375,6 +375,7 @@
 (use-package! anaconda-mode
   :bind (:map anaconda-mode-map
               ("M-r" . recompile)))
+
 (use-package! emacs
   :init
   ;; Add NodeJS error format
@@ -400,15 +401,17 @@
 
 
 (use-package! vterm
-  :bind (:map vterm-mode-map
-              ("C-z" . vterm-undo)
-              ("C-v" . vterm-yank)
-              ("C-<backspace>" . vterm-send-meta-backspace)
-              ("C-<delete>" . vterm-send-M-d)
-              ("C-S-<SPC>" . vterm-copy-mode)
-              ("C-w" . kill-this-buffer)
-              ("C-b" . +vertico/switch-workspace-buffer)
-              ("C-S-b" . switch-to-buffer))
+  :bind (:map global-map
+         ("C-`" . +vterm/toggle)
+         :map vterm-mode-map
+         ("C-z" . vterm-undo)
+         ("C-v" . vterm-yank)
+         ("C-<backspace>" . vterm-send-meta-backspace)
+         ("C-<delete>" . vterm-send-M-d)
+         ("C-S-<SPC>" . vterm-copy-mode)
+         ("C-w" . kill-this-buffer)
+         ("C-b" . +vertico/switch-workspace-buffer)
+         ("C-S-b" . switch-to-buffer))
   :custom
   (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
@@ -695,6 +698,7 @@
 
 (use-package! corfu
   :bind (:map corfu-map
+              ("<return>" . corfu-complete)
               ("<home>" . corfu-first)
               ("<end>" . corfu-last)
               ("<prior>" . corfu-scroll-down)
