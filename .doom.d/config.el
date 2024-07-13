@@ -691,14 +691,18 @@
   (rg-executable "rg"))
 
 (use-package! corfu
-  :bind (:map corfu-map
-              ("<return>" . corfu-complete)
-              ("<home>" . corfu-first)
-              ("<end>" . corfu-last)
-              ("<prior>" . corfu-scroll-down)
-              ("<next>" . corfu-scroll-up)
-              ("M-v" . nil)
-              ("C-v" . nil)))
+  :config
+  (remove-hook! corfu-mode '+corfu-mode-unbinds)
+  :bind (:map global-map
+         ("C-SPC" . completion-at-point)
+         :map corfu-map
+         ("<return>" . corfu-complete)
+         ("<home>" . corfu-first)
+         ("<end>" . corfu-last)
+         ("<prior>" . corfu-scroll-down)
+         ("<next>" . corfu-scroll-up)
+         ("M-v" . nil)
+         ("C-v" . nil)))
 
 (setq ispell-dictionary "american")
 
