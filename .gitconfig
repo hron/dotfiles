@@ -4,7 +4,13 @@
 [core]
 	excludesfile = ~/.gitconfig_global_gitignore
 	pager =
-	editor = zed --new --wait
+	editor = emacs
+
+[diff]
+	tool = emacs
+
+[difftool "emacs"]
+	cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 
 [color]
 	ui = true

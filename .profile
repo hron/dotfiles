@@ -10,7 +10,7 @@
 
 export BROWSER=sensible-browser
 alias zn='zed --new'
-export EDITOR='zed --new --wait'
+export EDITOR='emacs'
 #export ALTERNATE_EDITOR=""
 
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
