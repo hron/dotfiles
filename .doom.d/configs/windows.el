@@ -10,6 +10,13 @@
   :bind (("C-<prior>" . other-window)
          ("C-<next>" . (lambda () (interactive) (other-window -1)))))
 
+(defun display-buffer-at-bottom-and-fit (buffer alist)
+  "Display BUFFER at the bottom of the window, fit the height to the content, and select the window."
+  (let ((window (display-buffer-in-side-window buffer `((side . bottom)))))
+    (fit-window-to-buffer window (floor (frame-height) 2))
+    (select-window window)  ;; Select the window displaying the buffer
+    window))
+
 (defun aleksei/popper-display-popup-at-bottom-or-right (buffer &optional alist)
   "Display popup-buffer BUFFER at the bottom of the screen."
   (let ((wide-frame-opts '((window-width . .5)
@@ -48,8 +55,7 @@
          (display-buffer-in-side-window)
          (window-height . popper--fit-window-height)
          (side . bottom)
-         (slot . 1)
-         (select . t))
+         (slot . 1))
 
         ;; ("\\*lsp-help"
         ;;  (display-buffer-in-side-window)
@@ -62,8 +68,7 @@
          (display-buffer-in-side-window)
          (window-height . popper--fit-window-height)
          (side . bottom)
-         (slot . 1)
-         (select . t))
+         (slot . 1))
 
         ((lambda (buff &optional alist)
            (and (string-match-p "magit-revision" buff)
@@ -73,6 +78,22 @@
          (window-height . 0.67)
          (slot . 1)
          (select . t))
+
+        ((derived-mode . process-menu-mode)
+         (display-buffer-reuse-mode-window display-buffer-at-bottom-and-fit)
+         (side . bottom)
+         (window-height . fit-window-to-buffer)
+         (preserve-size . (nil . t))
+         (window-parameters . ((inhibit-same-window . nil)
+                               (select-window . t)))
+         )
+
+        ;; ((derived-mode . process-menu-mode)
+        ;;  (display-buffer-reuse-mode-window display-buffer-below-selected)
+        ;;  (dedicated . t)
+        ;;  (select . t)
+        ;;  (window-height . fit-window-to-buffer)
+        ;;  (window-parameters . ((select-window . t))))
 
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
          (display-buffer-in-side-window)
@@ -114,6 +135,7 @@
      "\\*git-gutter:diff"
      "\\*SQL: "
      "\\*Flycheck error"
+     "\\*Apropos"
 
      helpful-mode help-mode
 
