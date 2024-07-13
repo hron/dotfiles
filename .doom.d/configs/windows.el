@@ -2,6 +2,10 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window
 
+;; (define-key key-translation-map (kbd "C-i") (kbd "S-C-M-q"))
+;; (use-package! emacs
+;;   :bind (("S-C-M-q" . delete-other-windows)))
+
 (use-package! emacs
   :bind (("C-<prior>" . other-window)
          ("C-<next>" . (lambda () (interactive) (other-window -1)))))
