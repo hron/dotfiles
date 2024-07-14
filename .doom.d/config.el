@@ -322,7 +322,7 @@ to the current theme"
     (interactive)
     (if (lsp-ui-doc--visible-p)
         (lsp-ui-doc-focus-frame)
-      (lsp-ui-doc-show)))
+      (lsp-ui-doc-glance)))
 
   :bind (:map lsp-mode-map
               ("M-C-." . lsp-find-implementation)
