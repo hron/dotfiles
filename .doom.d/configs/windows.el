@@ -136,6 +136,8 @@
      "\\*SQL: "
      "\\*Flycheck error"
      "\\*Apropos"
+     "\\*lsp-help"
+     "\\*lsp-ui-imenu"
 
      helpful-mode help-mode
 

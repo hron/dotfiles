@@ -310,15 +310,25 @@
               ("<backtab>" . indent-rigidly-left)))
 
 (use-package lsp-mode
+  :init
+  (defun lsp-ui-doc-show-or-focus ()
+    "Show hover information popup, focus it if it's already shown"
+    (interactive)
+    (if (lsp-ui-doc--visible-p)
+        (lsp-ui-doc-focus-frame)
+      (lsp-ui-doc-show)))
+
   :bind (:map lsp-mode-map
               ("M-C-." . lsp-find-implementation)
               ("M-." . lsp-find-definition)
               ("M-<RET>" . lsp-execute-code-action)
-              ("C-q" . lsp-describe-thing-at-point)
+              ("C-q" . lsp-ui-doc-show-or-focus)
+              ("C-S-q" . lsp-rust-analyzer-open-external-docs)
               ("M->" . lsp-find-references)
               ("C-t" . lsp-rename)
               ("C-." . lsp-execute-code-action)
               ("C-S-o" . consult-lsp-file-symbols))
+
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
   :hook ((lsp-mode-hook . (lambda ()
