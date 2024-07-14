@@ -35,14 +35,20 @@
 ;; `load-theme' function. This is the default:
 (use-package! emacs
   :init
-  ;; Add all your customizations prior to loading the themes
+  (defun aleksei/set-colors-for-current-theme ()
+    "Sets variables like `lsp-ui-doc-border' to good colors according
+to the current theme"
+    (setq lsp-ui-doc-border (modus-themes-color 'fg-main)))
+  (setq lsp-ui-doc-border "#000000")
+
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-region '(bg-only no-extend)
         modus-themes-lang-checkers '(straight-underline)
         modus-themes-paren-match '(bold)
         modus-themes-org-blocks 'gray-background
-        modus-themes-mode-line '(borderless accented)))
+        modus-themes-mode-line '(borderless accented))
+  :hook (modus-themes-after-load-theme . aleksei/set-colors-for-current-theme))
 (setq doom-theme 'modus-operandi)
 
 ;; If you use `org' and don't want your org files in the default location below,
