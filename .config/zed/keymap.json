@@ -74,23 +74,11 @@
         }
       ],
       "alt-shift-j": "editor::UndoSelection",
-      // disable because it causes significant lag for ctrl-alt-g (SelectNextMatch)
-      // remove me after https://github.com/zed-industries/zed/pull/13637 is merged
-      "ctrl-alt-g b": null
+      "alt-ctrl-f": null,
+      "ctrl-shift-alt-f": null,
+      "ctrl-alt-shift-f": null
     }
   },
-  // {
-  //   "context": "BufferSearchBar",
-  //   "bindings": {
-  //     // "escape": "buffer_search::Dismiss",
-  //     // "tab": "buffer_search::FocusEditor",
-  //     // "enter": "search::SelectNextMatch",
-  //     // "shift-enter": "search::SelectPrevMatch",
-  //     // "alt-enter": "search::SelectAllMatches",
-  //     // "ctrl-f": "search::FocusSearch",
-  //     "ctrl-h": null
-  //   }
-  // },
   {
     "context": "Pane",
     "bindings": {
@@ -106,18 +94,7 @@
       "alt-0": null,
       "ctrl-q": null,
       "alt-left": "pane::GoBack",
-      "alt-right": "pane::GoForward",
-      "ctrl-shift-f": "project_search::ToggleFocus"
-      // "ctrl-alt-down": "search::SelectNextMatch",
-      // "ctrl-alt-up": "search::SelectPrevMatch"
-      // "ctrl-shift-g": "search::SelectNextMatch",
-      // "ctrl-alt-shift-g": "search::SelectPrevMatch"
-    }
-  },
-  {
-    "context": "ProjectSearchView",
-    "bindings": {
-      "shift-ctrl-alt-f": "project_search::ToggleFilters"
+      "alt-right": "pane::GoForward"
     }
   },
   {
@@ -130,6 +107,7 @@
       "alt-r": "task::Rerun",
       "ctrl-i": "workspace::CloseAllDocks",
       "ctrl-p": null,
+      "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
       "alt-1": "project_panel::ToggleFocus",
       "alt-2": null,
       "alt-3": null,
