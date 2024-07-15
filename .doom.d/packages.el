@@ -53,25 +53,14 @@
 
 (package! iflipb)
 
-(package! ahk-mode)
-
 (package! jest-test-mode :pin "3126c5c")
 
 (package! mocha
   :recipe (:host github :repo "hron/mocha.el" :branch "tree-sitter"))
 
-(package! groovy-mode)
-
-(package! jenkinsfile-mode
-  :recipe (:host github :repo "john2x/jenkinsfile-mode"))
-
 (package! solaire-mode :disable t)
 
-(package! feature-mode)
-
 (package! git-link)
-
-(package! ef-themes)
 
 (package! dpkg-dev-el)
 
@@ -92,3 +81,5 @@
 (package! kbd-mode
   :recipe (:host github
            :repo "kmonad/kbd-mode"))
+
+(package! auto-dark)

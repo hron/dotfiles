@@ -51,6 +51,11 @@ to the current theme"
   :hook (modus-themes-after-load-theme . aleksei/set-colors-for-current-theme))
 (setq doom-theme 'modus-operandi)
 
+(after! doom-ui
+  (setq! auto-dark-dark-theme 'modus-vivendi
+         auto-dark-light-theme 'modus-operandi)
+  (auto-dark-mode 1))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org")
@@ -499,8 +504,6 @@ to the current theme"
   :custom
   (mc/match-cursor-style nil))
 
-(use-package! jenkinsfile-mode)
-
 (use-package! ein-notebook
   :bind (:map ein:notebook-mode-map
               ("C-<return>" . ein:worksheet-execute-cell-km)
@@ -565,10 +568,6 @@ to the current theme"
   (ls-lisp-dirs-first t))
 
 (load! "configs/eshell")
-
-(use-package! feature-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
 
 (use-package! doom-modeline
   :config
