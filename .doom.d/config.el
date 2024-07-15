@@ -111,21 +111,14 @@ to the current theme"
        ("C-M-t" . nil)
        ("C-M-e" . nil)))))
 
-(defun gusev/org-gtd ()
+(defun aleksei/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
-  (dolist (f org-agenda-files)
-    (find-file (concat org-directory "/" f)))
-  (switch-to-buffer "tasks.org")
-  ;; (let ((tasks-icon "/usr/share/icons/Yaru/256x256/apps/org.gnome.Todo.png"))
-  ;;   (modify-frame-parameters nil '((icon-type . tasks-icon)
-  ;;                                  (auro-raise . t)
-  ;;                                  (left . (+ 5))
-  ;;                                  (top . (+ 38))
-  ;;                                  (width . 101)
-  ;;                                  (height . 59))))
-  )
+  ;; (dolist (f org-agenda-files)
+  ;;   (find-file (concat org-directory "/" f)))
+  (find-file (concat org-directory "/tasks.org" ))
+  (org-agenda-list))
 
 (defun gusev/org-todo-convert-to-project ()
   (interactive)
@@ -139,7 +132,9 @@ to the current theme"
 (defun aleksei/org-capture ()
   "Opens a new frame with Org capture inbox template"
   (interactive)
-  (+org-capture/open-frame "" "i"))
+  (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
+  (org-capture "" "i")
+  (delete-other-windows))
 
 (use-package! org
   :hook (;; (org-mode . variable-pitch-mode)
@@ -310,6 +305,10 @@ to the current theme"
 ;; (use-package! json-mode
 ;;   :init (setq js-indent-level 2))
 
+(use-package! imenu
+  :bind (:map global-map
+              ("C-S-o" . imenu)))
+
 (use-package! rst-mode
   :bind (:map rst-mode-map
               ("<tab>" . indent-rigidly-right)
@@ -343,6 +342,7 @@ to the current theme"
   :custom
   (lsp-ui-sideline-diagnostic-max-lines 10)
   (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-doc-max-height 13)
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
