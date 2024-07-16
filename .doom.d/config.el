@@ -115,7 +115,7 @@ to the current theme"
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
        ("C-<left>" . nil)
-       ("C-m" . aleksei/sp-beginning-or-end-of-sexp)
+       ("M-m" . aleksei/sp-beginning-or-end-of-sexp)
        ("C-M-k"  . nil)
        ("C-M-t" . nil)
        ("C-M-e" . nil)))))
@@ -726,7 +726,6 @@ to the current theme"
 (setq ispell-dictionary "american")
 
 (use-package! kbd-mode)
-
 (use-package! yaml-mode
   :bind (:map yaml-mode-map
               ("<backspace>" . backward-delete-char-untabify)))
