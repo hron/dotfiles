@@ -575,7 +575,8 @@ to the current theme"
 
 (use-package! doom-modeline
   :config
-  (setq doom-modeline-major-mode-icon t))
+  (setq doom-modeline-major-mode-icon t
+        doom-modeline-buffer-file-name-style 'file-name))
 
 (defun aleksei/buffer-file-name-for-frame-title ()
   (let ((doom-modeline-buffer-file-name-style 'relative-to-project))
@@ -599,54 +600,13 @@ to the current theme"
 (use-package! sql
   :custom
   (sql-connection-alist
-   '(("incident-api"
+   '(("local/spaceship:slap"
       (sql-product 'postgres)
       (sql-server "localhost")
-      (sql-port 15432)
-      (sql-user "rds")
-      (sql-database "rds"))
+      (sql-database "spaceship")
+      (sql-user "spaceship"))
 
-     ("incident-api/ci"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 25433)
-      (sql-user "postgres")
-      (sql-database "rds"))
-
-     ("incident-api/ci[MASTER]"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 25435)
-      (sql-user "postgres")
-      (sql-database "rds"))
-
-     ("incident-api/stg"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 37440)
-      (sql-user "incidentapi")
-      (sql-database "rds"))
-
-     ("incident-api/prd"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 45533)
-      (sql-user "rds")
-      (sql-database "rds"))
-
-     ("incident-api/prd[MASTER]"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 45534)
-      (sql-user "rds")
-      (sql-database "rds"))
-
-     ("ods/prd"
-      (sql-product 'postgres)
-      (sql-server "localhost")
-      (sql-port 45434)
-      (sql-user "odsadmin")
-      (sql-database "ods")))))
+     )))
 
 (use-package! emacs
   :bind (("C-=" . +fold/toggle)

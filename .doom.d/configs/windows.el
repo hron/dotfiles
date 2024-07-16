@@ -160,6 +160,8 @@
 
      grep-mode
 
+     "\\*projectile-files-errors\\*"
+
      ;; magit-revision-mode
      ))
   (popper-mode-line "")
