@@ -102,16 +102,20 @@ to the current theme"
          :map magit-mode-map
          ("C-w" . kill-this-buffer)))
 
-;;(use-package! magit-gitflow
-;;  :bind (:map magit-gitflow-mode-map
-;;              ("C-f" . nil)))
-
 (use-package! smartparens
   :config
+  (defun aleksei/sp-beginning-or-end-of-sexp ()
+    "Move to the beginning of sexp if not at the beginning, otherwise move to the end of sexp."
+    (interactive)
+    (let ((initial-point (point)))
+      (sp-beginning-of-sexp)
+      (when (eq initial-point (point))
+        (sp-end-of-sexp))))
   (custom-set-variables
    '(sp-override-key-bindings
      '(("C-<right>" . nil)
        ("C-<left>" . nil)
+       ("C-m" . aleksei/sp-beginning-or-end-of-sexp)
        ("C-M-k"  . nil)
        ("C-M-t" . nil)
        ("C-M-e" . nil)))))
