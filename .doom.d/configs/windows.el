@@ -8,7 +8,8 @@
 
 (use-package! emacs
   :bind (("C-<prior>" . other-window)
-         ("C-<next>" . (lambda () (interactive) (other-window -1)))))
+         ("C-<next>" . (lambda () (interactive) (other-window -1)))
+         ("M-i" . delete-other-windows)))
 
 (defun display-buffer-at-bottom-and-fit (buffer alist)
   "Display BUFFER at the bottom of the window, fit the height to the content, and select the window."
