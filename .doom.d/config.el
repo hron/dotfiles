@@ -690,3 +690,6 @@ to the current theme"
 (use-package! yaml-mode
   :bind (:map yaml-mode-map
               ("<backspace>" . backward-delete-char-untabify)))
+
+(use-package! gptel
+  :bind (("C-<return>" . gptel-send)))

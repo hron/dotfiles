@@ -83,3 +83,5 @@
            :repo "kmonad/kbd-mode"))
 
 (package! auto-dark)
+
+(package! gptel)
