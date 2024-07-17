@@ -692,4 +692,5 @@ to the current theme"
               ("<backspace>" . backward-delete-char-untabify)))
 
 (use-package! gptel
-  :bind (("C-<return>" . gptel-send)))
+  :bind (("C-<return>" . gptel-menu))
+  :config (setq gptel-model "gpt-4o"))
