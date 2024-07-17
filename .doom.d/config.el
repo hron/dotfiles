@@ -362,6 +362,7 @@ to the current theme"
 (load! "configs/dap-mode")
 
 (load! "configs/testlab")
+(load! "configs/testlab-forenom")
 (testlab-mode +1)
 
 (use-package! mocha

@@ -35,6 +35,11 @@
   (interactive)
   (call-interactively (testlab--action 'run)))
 
+(defun testlab-run-all ()
+  "Run all tests"
+  (interactive)
+  (call-interactively (testlab--action 'run-all)))
+
 (defun testlab-run-at-point ()
   "Run the test at point"
   (interactive)
@@ -88,7 +93,7 @@ ACTION-TYPE could be 'run, 'run-at-point, 'debug, 'debug-at-point, 'run-last, 'd
 
 (defun testlab--project-type ()
   (when (boundp projectile-project-type)
-      (projectile-project-type)))
+    (projectile-project-type)))
 
 (defvar testlab-mode-map
   (let ((map (make-sparse-keymap)))
@@ -107,3 +112,5 @@ ACTION-TYPE could be 'run, 'run-at-point, 'debug, 'debug-at-point, 'run-last, 'd
 (define-minor-mode testlab-mode
   "Provide shortcuts to run tests."
   :global t)
+
+(provide 'testlab)
