@@ -20,3 +20,5 @@
 	user = hron
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
