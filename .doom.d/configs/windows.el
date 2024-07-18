@@ -67,4 +67,8 @@ content, and select the window."
          (aleksei/display-buffer-in-side-window)
          (side-width . .45)
          (side-height . .33))
+
+        (".*"
+         (display-buffer-reuse-mode-window))
+
         ))
