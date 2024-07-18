@@ -87,6 +87,7 @@ to the current theme"
   (setq-default line-spacing 3))
 
 (map! "C-<f2>" 'list-processes)
+(map! "C-d" 'duplicate-dwim)
 
 (use-package! iflipb
   :bind (:map global-map
@@ -696,5 +697,7 @@ to the current theme"
               ("<backspace>" . backward-delete-char-untabify)))
 
 (use-package! gptel
-  :bind (("C-<return>" . gptel-menu))
+  :bind (("C-<return>" . gptel-menu)
+         :map gptel-mode
+         ("C-<return>" . gptel-send))
   :config (setq gptel-model "gpt-4o"))
