@@ -41,6 +41,7 @@ to the current theme"
     (setq lsp-ui-doc-border (modus-themes-color 'fg-main)))
   (setq lsp-ui-doc-border "#000000")
 
+
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-region '(bg-only no-extend)
