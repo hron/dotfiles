@@ -672,6 +672,7 @@ to the current theme"
 
 (use-package! corfu
   :config
+  (setq corfu-preview-current nil)
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
   :bind (:map global-map
          ("C-SPC" . completion-at-point)

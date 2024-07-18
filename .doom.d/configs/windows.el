@@ -96,6 +96,9 @@
         ;;  (window-height . fit-window-to-buffer)
         ;;  (window-parameters . ((select-window . t))))
 
+        ("\\*Warnings\\*"
+         (display-buffer-no-window))
+
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
          (display-buffer-in-side-window)
          (window-width . 0.33)
