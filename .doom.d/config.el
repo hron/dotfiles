@@ -435,8 +435,8 @@ to the current theme"
          ("C-<delete>" . vterm-send-M-d)
          ("C-S-<SPC>" . vterm-copy-mode)
          ("C-w" . kill-this-buffer)
-         ("C-b" . +vertico/switch-workspace-buffer)
-         ("C-S-b" . switch-to-buffer))
+         ("C-S-b" . +vertico/switch-workspace-buffer)
+         ("C-b" . switch-to-buffer))
   :custom
   (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
@@ -529,16 +529,19 @@ to the current theme"
               ("C-z"   . undo-fu-only-undo)
               ("C-S-z" . undo-fu-only-redo)))
 
+(use-package! consult
+  :bind (:map global-map
+         ("C-b" . consult-buffer)
+         :map minibuffer-local-map
+         ("C-f" . consult-history)
+         ("C-r" . consult-history)))
+
 (use-package! vertico
   :bind (:map minibuffer-local-map
-         ("C-f" . consult-history)
-         ("C-r" . consult-history)
-         ("C-s" . nil)
-         ("<prior>" . vertico-scroll-down)
-         ("<next>" . vertico-scroll-up)
-         ("C-j" . vertico-exit-input)
-         :map global-map
-         ("C-b" . +vertico/switch-workspace-buffer)))
+              ("C-s" . nil)
+              ("<prior>" . vertico-scroll-down)
+              ("<next>" . vertico-scroll-up)
+              ("C-j" . vertico-exit-input)))
 
 (use-package! embark
   :bind (:map global-map

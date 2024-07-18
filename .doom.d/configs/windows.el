@@ -97,7 +97,7 @@
         ;;  (window-parameters . ((select-window . t))))
 
         ("\\*Warnings\\*"
-         (display-buffer-no-window))
+         (display-buffer-no-windol))
 
         ((lambda (buff &optional alist) (and (aleksei/other-popper-buffer-p buff) (aleksei/3-columns-layout-p)))
          (display-buffer-in-side-window)
@@ -170,5 +170,5 @@
      ))
   (popper-mode-line "")
   :init
-  (popper-mode +1)
+  (popper-mode -1)
   (popper-echo-mode +1))
