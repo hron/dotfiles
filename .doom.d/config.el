@@ -341,10 +341,6 @@ to the current theme"
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
 
-(load! "configs/testlab")
-(load! "configs/testlab-forenom")
-(testlab-mode +1)
-
 (use-package! mocha
   :custom (mocha-reporter "spec"))
 
@@ -354,11 +350,6 @@ to the current theme"
               ("M-[" . +vc-gutter/previous-hunk)
               ("M-]" . +vc-gutter/next-hunk)
               ("C-'" . diff-hl-show-hunk)))
-
-(defun projectile-test-rerun ()
-  (interactive)
-  (let ((compilation-read-command nil))
-    (call-interactively 'projectile-test-project)))
 
 (defun aleksei/compile ()
   "Run compilation command in project root or just in current dir"
@@ -700,3 +691,35 @@ of a line"
 (use-package! docker
   :config
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
+
+(use-package! phpunit
+  :config
+  (defvar-local phpunit-root-directory-in-docker ""
+    "Directory path in docker PHPUnit project is mounted to.")
+  (put 'phpunit-root-directory-in-docker 'safe-local-variable #'stringp)
+
+  (defun phpunit-test-file-prefix-path ()
+    "Returns prefix that should be used when a test run in docker."
+    (and phpunit-root-directory-in-docker (concat phpunit-root-directory-in-docker "/")))
+
+  ;;;###autoload
+  (defun phpunit-current-test ()
+    "Launch PHPUnit on curent test."
+    (interactive)
+    (let* (
+           (args (s-concat " --filter '"
+			                     (phpunit-get-current-class)
+			                     "::"
+			                     (phpunit-get-current-test) "'"
+                           " "
+                           (concat (phpunit-test-file-prefix-path)
+                                   (s-chop-prefix (phpunit-get-root-directory) buffer-file-name)))))
+      (phpunit-run args)))
+
+  ;;;###autoload
+  (defun phpunit-current-class ()
+    "Launch PHPUnit on current class."
+    (interactive)
+
+    (phpunit-run (concat (phpunit-test-file-prefix-path)
+                         (s-chop-prefix (phpunit-get-root-directory t) buffer-file-name)))))

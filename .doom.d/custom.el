@@ -4,7 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((testlab-test-framework . php-forenom-slap)
+   '((eval setq phpunit-executable
+      (executable-find "docker"))
+     (testlab-test-framework . php-forenom-slap)
      (company-idle-delay . 0.0)
      (company-idle-delay)
      (vc-prepare-patches-separately)
