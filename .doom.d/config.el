@@ -271,17 +271,6 @@ to the current theme"
 (setq select-enable-clipboard t)
 (setq select-active-regions nil)
 
-;; Commenting setup
-(use-package! emacs
-  :custom
-  (comment-empty-lines t)
-  :config
-  (add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim)))
-  (add-hook 'conf-mode-hook (lambda () (local-set-key (kbd "C-/") 'comment-dwim))))
-(use-package! ahk-mode
-  :bind (:map ahk-mode-map
-              ("C-/" . comment-dwim)))
-
 
 (global-set-key [f6] 'toggle-truncate-lines)
 (use-package! winner
@@ -548,9 +537,24 @@ to the current theme"
               ("M-[" . Info-history-back)
               ("M-]" . Info-history-forward)))
 
+;;;###autoload
+(defun aleksei/comment-dwim (&optional arg)
+  "Comment/uncomment region if active, other do the same with current line.
+
+There is subtle difference between this function and
+`comment-line'. Basically, when commenting region this function
+respects region boundaries extactly. This is especially useful
+lisp like languages when you might want to comment only some part
+of a line"
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (use-region-p)
+      (comment-or-uncomment-region (region-beginning) (region-end) arg)
+    (call-interactively #'comment-line 1)))
+
 (use-package! emacs
   :bind (:map global-map
-              ("C-/" . comment-dwim)
+              ("C-/" . aleksei/comment-dwim)
               ("M-t" . aleksei/compile)
               ("M-r" . recompile)
               ("C-M-l" . +format/region-or-buffer)
