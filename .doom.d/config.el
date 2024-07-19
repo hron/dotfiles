@@ -701,3 +701,7 @@ to the current theme"
          :map gptel-mode
          ("C-<return>" . gptel-send))
   :config (setq gptel-model "gpt-4o"))
+
+(use-package! docker
+  :config
+  (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
