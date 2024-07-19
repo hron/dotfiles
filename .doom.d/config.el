@@ -312,13 +312,6 @@ to the current theme"
 
 (setq-default cursor-type '(bar . 3))
 
-;; (use-package! json-mode
-;;   :init (setq js-indent-level 2))
-
-(use-package! imenu
-  :bind (:map global-map
-              ("C-S-o" . imenu)))
-
 (use-package! rst-mode
   :bind (:map rst-mode-map
               ("<tab>" . indent-rigidly-right)
@@ -334,12 +327,9 @@ to the current theme"
       (lsp-ui-doc-glance)))
 
   :bind (:map lsp-mode-map
-              ("M-C-." . lsp-find-implementation)
-              ("M-." . lsp-find-definition)
-              ("M-<RET>" . lsp-execute-code-action)
               ("C-q" . lsp-ui-doc-show-or-focus)
+              ("M-<RET>" . lsp-execute-code-action)
               ("C-S-q" . lsp-rust-analyzer-open-external-docs)
-              ("M->" . lsp-find-references)
               ("C-t" . lsp-rename)
               ("C-." . lsp-execute-code-action)
               ("C-S-o" . consult-lsp-file-symbols))
@@ -397,10 +387,6 @@ to the current theme"
               ("M-t" . aleksei/compile)
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file)))
-
-(use-package! anaconda-mode
-  :bind (:map anaconda-mode-map
-              ("M-r" . recompile)))
 
 (use-package! emacs
   :init
@@ -565,11 +551,19 @@ to the current theme"
 (use-package! emacs
   :bind (:map global-map
               ("C-/" . comment-dwim)
-              ("M-r" . recompile)))
+              ("M-t" . aleksei/compile)
+              ("M-r" . recompile)
+              ("C-M-l" . +format/region-or-buffer)
+              ("M-C-." . +lookup/type-definition)
+              ("M-." . +lookup/definition)
+              ("M->" . +lookup/references)
+              ("C-q" . +lookup/documentation)
+              ("S-RET" . +default/diagnostics)
+              ("C-S-o" . imenu)
+              ("C-M-o" . consult-imenu-multi)))
 
 (load! "configs/doom-modeline")
 
-(map! "C-M-l" '+format/region-or-buffer)
 (setq +format-with-lsp nil)
 
 (use-package! emacs
