@@ -371,9 +371,6 @@ to the current theme"
   :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
-              ("C-0" . aleksei/compile)
-              ("C-M-e" . aleksei/compile)
-              ("M-t" . aleksei/compile)
               ("M-9" . magit-status)
               ("C-e" . projectile-find-file)))
 
