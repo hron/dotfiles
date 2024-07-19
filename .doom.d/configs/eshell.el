@@ -31,8 +31,9 @@
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
               ("<home>" . eshell-bol)
-              ("C-<prior>" . eshell-previous-prompt)
-              ("C-<next>" . eshell-next-prompt)))
+              ("M-r" . recompile)
+              ("M-<prior>" . eshell-previous-prompt)
+              ("M-<next>" . eshell-next-prompt)))
 
 (defun eshell/less (&rest args)
   "Invoke `view-file' on a file. \"less +42 foo\" will go to line 42 in
