@@ -53,7 +53,11 @@ content, and select the window."
                 (derived-mode . flycheck-error-list-mode)
                 ;; "\\*diff-hl"
                 ))
-         (display-buffer-reuse-mode-window aleksei/display-buffer-below-selected-then-fit-and-select))
+         (display-buffer-reuse-mode-window
+          aleksei/display-buffer-below-selected-then-fit-and-select))
+
+        ("\\*Org"
+         (display-buffer-reuse-window))
 
         ("magit-revision"
          (aleksei/display-buffer-in-side-window)
