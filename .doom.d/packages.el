@@ -83,3 +83,8 @@
 (package! auto-dark)
 
 (package! gptel)
+
+;; Activate me after upgrade to Emacs 30
+;; (package! indent-bars
+;;   :recipe (:host github :repo "jdtsmith/indent-bars")
+;;   :pin "756cfb0f55a6d0e3eccc6e12211aac922aa71a49")
