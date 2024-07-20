@@ -51,8 +51,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-(package! iflipb)
-
 (package! jest-test-mode :pin "3126c5c")
 
 (package! mocha

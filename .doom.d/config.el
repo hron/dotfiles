@@ -89,13 +89,6 @@ to the current theme"
 (map! "C-<f2>" 'list-processes)
 (map! "C-d" 'duplicate-dwim)
 
-(use-package! iflipb
-  :bind (:map global-map
-              ("C-<tab>" . iflipb-next-buffer)
-              ("<C-iso-lefttab>" . iflipb-previous-buffer))
-  :custom
-  (iflipb-format-buffers-function #'iflipb-format-buffers-vertically))
-
 (use-package! magit
   :bind (:map magit-section-mode-map
          ("C-<tab>" . nil)
