@@ -1,6 +1,6 @@
 ;;; ../src/dotfiles/.doom.d/configs/eshell.el -*- lexical-binding: t; -*-
 
-(map! "C-`" #'project-eshell)
+;; (map! "C-`" #'project-eshell)
 
 (defun aleksei/eshell-default-prompt-fn ()
   "Generate the prompt string for eshell. Use for `eshell-prompt-function'."

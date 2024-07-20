@@ -386,7 +386,7 @@ to the current theme"
 
 (use-package! vterm
   :bind (:map global-map
-         ;; ("C-`" . +vterm/toggle)
+         ("C-`" . +vterm/toggle)
          :map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
