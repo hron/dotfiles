@@ -419,37 +419,23 @@ to the current theme"
   :bind (("M-<left>" . better-jumper-jump-backward)
          ("M-<right>" . better-jumper-jump-forward))
   :config
-  (defadvice beginning-of-buffer (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
+  (setq aleksei/better-jumper-advice-funcs
+        '(beginning-of-buffer
+          end-of-buffer
+          mark-whole-buffer
+          +default/search-project
+          +default/search-buffer
+          consult-lsp-symbols
+          aleksei/isearch-region-or-forward
+          isearch-forward
+          isearch-backward
+          flycheck-next-error
+          flycheck-previous-error))
 
-  (defadvice mark-whole-buffer (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice +default/search-buffer (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice consult-lsp-symbols (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice aleksei/isearch-region-or-forward (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice +default/search-project (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice flycheck-next-error (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump)))
-
-  (defadvice end-of-buffer (before better-jumper activate)
-    (when (bound-and-true-p better-jumper-local-mode)
-      (better-jumper-set-jump))))
+  (dolist (func aleksei/better-jumper-advice-funcs)
+    (eval `(defadvice ,func (before better-jumper activate)
+             (when (bound-and-true-p better-jumper-local-mode)
+               (better-jumper-set-jump))))))
 
 (use-package! shell
   :ensure nil
