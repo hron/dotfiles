@@ -50,8 +50,10 @@
 ;;           (tyler-eshell-view-file file)
 ;;           (goto-line line))
 ;;       (tyler-eshell-view-file (pop args)))))
-
-;; (defalias 'eshell/more 'eshell/less)
+(defun eshell/less (&rest files)
+  "Essentially an alias to the `view-file' function."
+  (eshell-fn-on-files 'view-file 'view-file-other-window files))
+(defalias 'eshell/more 'eshell/less)
 
 (setenv "AWS_PAGER" "")
 (setenv "PAGER" "")
