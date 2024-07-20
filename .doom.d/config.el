@@ -389,9 +389,13 @@ to the current theme"
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 
+(use-package! eshell
+  :bind (:map global-map
+              ("C-`" . project-eshell)))
+
 (use-package! vterm
   :bind (:map global-map
-         ("C-`" . +vterm/toggle)
+         ;; ("C-`" . +vterm/toggle)
          :map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
