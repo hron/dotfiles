@@ -4,25 +4,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval setq phpunit-executable
-      (executable-find "docker"))
-     (testlab-test-framework . php-forenom-slap)
-     (company-idle-delay . 0.0)
-     (company-idle-delay)
-     (vc-prepare-patches-separately)
-     (diff-add-log-use-relative-names . t)
-     (vc-git-annotate-switches . "-w")
-     (projectile-project-test-cmd . "yarn nx run-many --all --target=test --output-style=static")
-     (projectile-project-compilation-cmd . "yarn format:write && yarn nxmany --target build --output-style=static && yarn nxmany --target=lint --output-style=static -- --quiet")
-     (lsp-eslint-quiet)
-     (lsp-eslint-package-manager . "yarn")))
- '(sp-override-key-bindings '(("C-<right>") ("C-<left>") ("C-M-k") ("C-M-t"))))
+   '((phpunit-root-directory-in-docker . "/www")
+     (eval setq phpunit-executable
+           (executable-find "docker"))))
+ '(sp-override-key-bindings
+   '(("C-<right>")
+     ("C-<left>")
+     ("M-m" . aleksei/sp-beginning-or-end-of-sexp)
+     ("C-M-k")
+     ("C-M-t")
+     ("C-M-e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ts-fold-replacement-face ((t (:foreground unspecified :box nil :inherit font-lock-comment-face :weight light)))))
+ )
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

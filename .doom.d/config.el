@@ -495,6 +495,7 @@ to the current theme"
 (use-package! embark
   :bind (:map global-map
          ("M-<return>" . embark-act)
+         ("C-;" . nil)
          :map minibuffer-local-map
          ("M-<return>" . embark-act)
          :map minibuffer-mode-map
@@ -688,7 +689,7 @@ of a line"
 
   ;;;###autoload
   (defun phpunit-current-test ()
-    "Launch PHPUnit on curent test."
+    "Launch PHPUnit on current test."
     (interactive)
     (let* (
            (args (s-concat " --filter '"
@@ -706,4 +707,18 @@ of a line"
     (interactive)
 
     (phpunit-run (concat (phpunit-test-file-prefix-path)
-                         (s-chop-prefix (phpunit-get-root-directory t) buffer-file-name)))))
+                         (s-chop-prefix (phpunit-get-root-directory t) buffer-file-name))))
+
+  (defvar aleksei/phpunit-mode-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "f") 'phpunit-current-class)
+      (define-key map (kbd "c") 'phpunit-current-test)
+      (define-key map (kbd "a") 'phpunit-current-project)
+      (define-key map (kbd "l") 'recompile)
+      map))
+
+  :bind-keymap* ("C-;" . aleksei/phpunit-mode-map))
+
+(use-package! flyspell
+  :bind (:map flyspell-mode-map
+              ("C-;" . nil)))
