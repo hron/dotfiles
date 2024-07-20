@@ -445,9 +445,6 @@ to the current theme"
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
 
-(use-package! spell-fu
-  :bind ("M-$" . +spell/add-word))
-
 (use-package! multi-cursors
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
@@ -663,7 +660,6 @@ of a line"
          ("M-v" . nil)
          ("C-v" . nil)))
 
-(setq ispell-dictionary "american")
 
 (use-package! kbd-mode)
 (use-package! yaml-mode
