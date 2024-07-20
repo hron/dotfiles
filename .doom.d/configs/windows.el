@@ -3,8 +3,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window
 
 (use-package! emacs
-  :bind (("C-<prior>" . other-window)
-         ("C-<next>" . (lambda () (interactive) (other-window -1)))
+  :bind (("C-<next>" . other-window)
+         ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("M-i" . delete-other-windows)))
 
 (defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer)
