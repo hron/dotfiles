@@ -80,3 +80,5 @@ fi
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
 . "$HOME/.cargo/env"
+
+[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh

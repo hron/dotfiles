@@ -24,3 +24,5 @@ export EMAIL="aleksei.gusev@gmail.com"
 
 export NVM_DIR="/home/aleksei/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+if [ -e /home/algus/.nix-profile/etc/profile.d/nix.sh ]; then . /home/algus/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
