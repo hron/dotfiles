@@ -1,5 +1,7 @@
 ;;; ../src/dotfiles/.doom.d/configs/eshell.el -*- lexical-binding: t; -*-
 
+(map! "C-`" #'project-eshell)
+
 (defun aleksei/eshell-default-prompt-fn ()
   "Generate the prompt string for eshell. Use for `eshell-prompt-function'."
   (require 'shrink-path)
@@ -27,7 +29,10 @@
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
               ("<up>" . nil)
-              ("<down>" . nil)))
+              ("<down>" . nil)
+              ("C-<up>" . nil)
+              ("C-<down>" . nil)))
+
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
               ("<home>" . eshell-bol)
