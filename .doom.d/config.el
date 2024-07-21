@@ -395,9 +395,14 @@ to the current theme"
          ("C-S-<SPC>" . vterm-copy-mode)
          ("C-w" . kill-this-buffer)
          ("C-S-b" . +vertico/switch-workspace-buffer)
-         ("C-b" . switch-to-buffer))
+         ("C-b" . switch-to-buffer)
+         ("M-<prior>" . vterm-previous-prompt)
+         ("M-<next>" . vterm-next-prompt)
+         :map vterm-copy-mode-map
+         ("M-<prior>" . vterm-previous-prompt)
+         ("M-<next>" . vterm-next-prompt))
   :custom
-  (vterm-min-window-width 200)
+  ;; (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)

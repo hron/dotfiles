@@ -1,4 +1,4 @@
-[character]
-# disabled = true
-success_symbol = "[➜](bold green) "
-error_symbol = "[✗](bold red) "
+# [character]
+# # disabled = true
+# success_symbol = "[➜](bold green) "
+# error_symbol = "[✗](bold red) "

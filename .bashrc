@@ -131,14 +131,17 @@ STARSHIP_BIN=/usr/local/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/bin/starship
 if [ -x "$STARSHIP_BIN" ]; then
     # starship_precmd_user_func="set_win_title"
+    starship_precmd_user_func="vterm_prompt_end"
     eval "$($STARSHIP_BIN init bash)"
     # trap "set_win_title \${BASH_COMMAND}" DEBUG
 fi
 
-vterm_printf(){
-    if [ -n "$TMUX" ]; then
+##
+## vterm configuration
+##
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
         # Tell tmux to pass the escape sequences through
-        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
         printf "\ePtmux;\e\e]%s\007\e\\" "$1"
     elif [ "${TERM%%-*}" = "screen" ]; then
         # GNU screen (screen, screen-256color, screen-256color-bce)
@@ -147,6 +150,18 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    function clear() {
+        vterm_printf "51;Evterm-clear-scrollback";
+        tput clear;
+    }
+fi
+
+vterm_prompt_end(){
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+}
+
 
 # Debian Packaging Guide
 # https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html
