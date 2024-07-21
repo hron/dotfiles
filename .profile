@@ -9,7 +9,6 @@
 #umask 022
 
 export BROWSER=sensible-browser
-alias zn='zed --new'
 export EDITOR='emacs'
 #export ALTERNATE_EDITOR=""
 
@@ -35,32 +34,12 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/.yarn/bin" ] ; then
-    PATH="$HOME/.yarn/bin:$PATH"
-fi
-
-# asdf
-if [ -f $HOME/.asdf/asdf.sh ]; then
-    . $HOME/.asdf/asdf.sh
-    . $HOME/.asdf/completions/asdf.bash
-fi
-
 
 # Homebrew
 homebrew_exe=/home/linuxbrew/.linuxbrew/bin/brew
 if [ -x ${homebrew_exe} ]; then
     eval $(${homebrew_exe} shellenv)
 fi
-
-# Rust
-rust_env="$HOME/.cargo/env"
-if [ -f $rust_env ]; then
-   . $rust_env
-fi
-
-# deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
@@ -70,15 +49,7 @@ export PGHOST=localhost
 export PGUSER=spaceship
 export PGDATABASE=spaceship
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
 # https://direnv.net/docs/hook.html
-if [ -x /usr/bin/direnv ]; then
-    eval "$(direnv hook bash)"
-fi
-
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/bashrc"
-. "$HOME/.cargo/env"
-
-[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
+# if [ -x /usr/bin/direnv ]; then
+#     eval "$(direnv hook bash)"
+# fi
