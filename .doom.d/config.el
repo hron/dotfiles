@@ -381,9 +381,6 @@ to the current theme"
   (setq compilation-error-regexp-alist
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
-
-
-
 (use-package! vterm
   :bind (:map global-map
          ("C-`" . +vterm/toggle)
@@ -396,8 +393,8 @@ to the current theme"
          ("C-w" . kill-this-buffer)
          ("C-S-b" . +vertico/switch-workspace-buffer)
          ("C-b" . switch-to-buffer)
-         ("M-<prior>" . vterm-previous-prompt)
-         ("M-<next>" . vterm-next-prompt)
+         ("M-<prior>" . aleksei/vterm-copy-mode-previous-prompt)
+         ("M-<next>" . aleksei/vterm-copy-mode-next-prompt)
          :map vterm-copy-mode-map
          ("M-<prior>" . vterm-previous-prompt)
          ("M-<next>" . vterm-next-prompt))
@@ -407,7 +404,17 @@ to the current theme"
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
-  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode))
+  (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
+
+  (defun aleksei/vterm-copy-mode-next-prompt ()
+    (interactive)
+    (vterm-copy-mode)
+    (call-interactively #'vterm-next-prompt))
+
+  (defun aleksei/vterm-copy-mode-previous-prompt ()
+    (interactive)
+    (vterm-copy-mode)
+    (call-interactively #'vterm-previous-prompt)))
 
 (use-package! tide
   :bind (:map tide-mode-map
@@ -670,7 +677,6 @@ of a line"
          :map gptel-mode
          ("C-<return>" . gptel-send))
   :config (setq gptel-model "gpt-4o"))
-
 (use-package! docker
   :config
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
