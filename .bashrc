@@ -175,4 +175,8 @@ fi
 
 [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
 
+# https://direnv.net/docs/hook.html
+if [ -x /usr/bin/direnv ]; then
+    eval "$(direnv hook bash)"
+fi
 source $HOME/.nix-profile/share/nix-direnv/direnvrc
