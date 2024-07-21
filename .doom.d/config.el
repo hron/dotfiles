@@ -669,10 +669,13 @@ of a line"
               ("<backspace>" . backward-delete-char-untabify)))
 
 (use-package! gptel
-  :bind (("C-<return>" . gptel-menu)
-         :map gptel-mode
-         ("C-<return>" . gptel-send))
+  :bind (:map global-map
+              ("C-<return>" . gptel-menu)
+              ;; :map gptel-mode
+              ;; ("C-<return>" . gptel-send)
+              )
   :config (setq gptel-model "gpt-4o"))
+
 (use-package! docker
   :config
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
