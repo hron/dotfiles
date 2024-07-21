@@ -384,7 +384,7 @@ to the current theme"
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
          ("C-<backspace>" . vterm-send-meta-backspace)
-         ("C-<delete>" . vterm-send-M-d)
+         ("C-<delete>" . vterm--self-insert)
          ("C-S-<SPC>" . vterm-copy-mode)
          ("C-w" . kill-this-buffer)
          ("C-S-b" . +vertico/switch-workspace-buffer)
@@ -395,8 +395,8 @@ to the current theme"
          ("M-<prior>" . vterm-previous-prompt)
          ("M-<next>" . vterm-next-prompt))
   :custom
-  ;; (vterm-min-window-width 200)
   (vterm-shell "/bin/bash -l")
+  (vterm-max-scrollback 100000)
   :init
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
