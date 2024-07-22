@@ -90,7 +90,7 @@ to the current theme"
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
-         ("C-w" . kill-this-buffer)))
+         ("C-w" . +workspace/close-window-or-workspace)))
 
 (use-package! smartparens
   :config
@@ -386,7 +386,7 @@ to the current theme"
          ("C-<backspace>" . vterm-send-meta-backspace)
          ("C-<delete>" . vterm--self-insert)
          ("C-S-<SPC>" . vterm-copy-mode)
-         ("C-w" . kill-this-buffer)
+         ("C-w" . +workspace/close-window-or-workspace)
          ("C-S-b" . +vertico/switch-workspace-buffer)
          ("C-b" . switch-to-buffer)
          ("M-<prior>" . aleksei/vterm-copy-mode-previous-prompt)
