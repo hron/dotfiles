@@ -584,6 +584,10 @@ of a line"
   :config
   (setq fd-dired-program "fdfind"))
 
+(use-package! dired
+  :config
+  (setq delete-by-moving-to-trash t))
+
 (load! "configs/git-link")
 
 (add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
