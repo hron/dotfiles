@@ -59,13 +59,10 @@ content, and select the window."
         ("\\*Org"
          (display-buffer-reuse-window))
 
-        ("magit-revision"
-         (aleksei/display-buffer-in-side-window)
-         (side-width . .55)
-         (side-height . .67))
-
         ((or . ("^\\*"
                 "Output\\*$"
+                "^magit-log"
+                "^magit-revision"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)))
          (aleksei/display-buffer-in-side-window)
