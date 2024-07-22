@@ -186,8 +186,8 @@ to the current theme"
               ("C-S-<down>" . nil)
               ("S-<up>" . nil)
               ("S-<down>" . nil)
-              ("M-<up>" . org-move-subtree-up)
-              ("M-<down>" . org-move-subtree-down))
+              ("M-S-<up>" . org-move-subtree-up)
+              ("M-S-<down>" . org-move-subtree-down))
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
@@ -228,6 +228,11 @@ to the current theme"
 (global-set-key (kbd "C-M-l") 'indent-region)
 
 (global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
+
+(global-unset-key (kbd "M-<up>"))
+(global-unset-key (kbd "M-<down>"))
+(global-set-key (kbd "M-S-<up>") 'drag-stuff-up)
+(global-set-key (kbd "M-S-<down>") 'drag-stuff-down)
 
 (defun aleksei/isearch-region-or-forward ()
   "Do incremental search forward, use region if it's active"
@@ -277,7 +282,9 @@ to the current theme"
 (use-package! comint
   :bind (:map comint-mode-map
               ("C-d" . comint-delchar-or-maybe-eof)
-              ("C-c" . nil)))
+              ("C-c" . nil)
+              ("M-<up>" . comint-previous-prompt)
+              ("M-<down>" . comint-next-prompt)))
 
 (use-package! python-mode
   :bind (:map python-mode-map
@@ -389,12 +396,12 @@ to the current theme"
          ("C-w" . delete-window)
          ("C-S-b" . +vertico/switch-workspace-buffer)
          ("C-b" . switch-to-buffer)
-         ("M-<prior>" . aleksei/vterm-copy-mode-previous-prompt)
-         ("M-<next>" . aleksei/vterm-copy-mode-next-prompt)
+         ("M-<up>" . aleksei/vterm-copy-mode-previous-prompt)
+         ("M-<down>" . aleksei/vterm-copy-mode-next-prompt)
          ("C-t" . aleksei/vterm-new-tab)
          :map vterm-copy-mode-map
-         ("M-<prior>" . vterm-previous-prompt)
-         ("M-<next>" . vterm-next-prompt)
+         ("M-<up>" . vterm-previous-prompt)
+         ("M-<down>" . vterm-next-prompt)
          ("C-t" . aleksei/vterm-new-tab))
   :custom
   (vterm-shell "/bin/bash -l")
@@ -589,7 +596,6 @@ of a line"
       (sql-server "localhost")
       (sql-database "spaceship")
       (sql-user "spaceship"))
-
      )))
 
 (use-package! emacs
