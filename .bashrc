@@ -179,4 +179,3 @@ fi
 if [ -x /usr/bin/direnv ]; then
     eval "$(direnv hook bash)"
 fi
-source $HOME/.nix-profile/share/nix-direnv/direnvrc
