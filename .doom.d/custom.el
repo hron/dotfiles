@@ -4,9 +4,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((phpunit-root-directory-in-docker . "/www")
+   '((eval remove-hook 'before-save-hook #'format-all-buffer t)
+     (phpunit-root-directory-in-docker . "/www")
      (eval setq phpunit-executable
-           (executable-find "docker"))))
+      (executable-find "docker"))))
  '(sp-override-key-bindings
    '(("C-<right>")
      ("C-<left>")
