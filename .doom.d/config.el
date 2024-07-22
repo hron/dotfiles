@@ -270,7 +270,7 @@ to the current theme"
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
 
-(global-set-key (kbd "C-w") 'kill-this-buffer)
+(global-set-key (kbd "C-w") '+workspace/close-window-or-workspace)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-S-b") 'switch-to-buffer)
 
@@ -391,9 +391,11 @@ to the current theme"
          ("C-b" . switch-to-buffer)
          ("M-<prior>" . aleksei/vterm-copy-mode-previous-prompt)
          ("M-<next>" . aleksei/vterm-copy-mode-next-prompt)
+         ("C-t" . aleksei/vterm-new-tab)
          :map vterm-copy-mode-map
          ("M-<prior>" . vterm-previous-prompt)
-         ("M-<next>" . vterm-next-prompt))
+         ("M-<next>" . vterm-next-prompt)
+         ("C-t" . aleksei/vterm-new-tab))
   :custom
   (vterm-shell "/bin/bash -l")
   (vterm-max-scrollback 100000)
@@ -410,7 +412,11 @@ to the current theme"
   (defun aleksei/vterm-copy-mode-previous-prompt ()
     (interactive)
     (vterm-copy-mode)
-    (call-interactively #'vterm-previous-prompt)))
+    (call-interactively #'vterm-previous-prompt))
+
+  (defun aleksei/vterm-new-tab ()
+    (interactive)
+    (vterm 'new)))
 
 (use-package! tide
   :bind (:map tide-mode-map
