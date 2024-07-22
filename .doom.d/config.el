@@ -90,7 +90,7 @@ to the current theme"
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
-         ("C-w" . +workspace/close-window-or-workspace)))
+         ("C-w" . delete-window)))
 
 (use-package! smartparens
   :config
@@ -270,7 +270,7 @@ to the current theme"
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
 
-(global-set-key (kbd "C-w") '+workspace/close-window-or-workspace)
+(global-set-key (kbd "C-w") 'delete-window)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-S-b") 'switch-to-buffer)
 
@@ -386,7 +386,7 @@ to the current theme"
          ("C-<backspace>" . vterm-send-meta-backspace)
          ("C-<delete>" . vterm--self-insert)
          ("C-S-<SPC>" . vterm-copy-mode)
-         ("C-w" . +workspace/close-window-or-workspace)
+         ("C-w" . delete-window)
          ("C-S-b" . +vertico/switch-workspace-buffer)
          ("C-b" . switch-to-buffer)
          ("M-<prior>" . aleksei/vterm-copy-mode-previous-prompt)
