@@ -762,6 +762,8 @@ of a line"
                            +lookup/definition
                            +lookup/type-definition
                            +lookup/implementations
+                           vterm-next-prompt
+                           vterm-previous-prompt
                            )))
     (dolist (func funcs-to-advice)
       (eval `(scroll-on-jump-advice-add ,func))))
