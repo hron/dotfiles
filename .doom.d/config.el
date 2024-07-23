@@ -766,6 +766,8 @@ of a line"
                            +lookup/implementations
                            vterm-next-prompt
                            vterm-previous-prompt
+                           flycheck-next-error
+                           flycheck-previous-error
                            )))
     (dolist (func funcs-to-advice)
       (eval `(scroll-on-jump-advice-add ,func))))
