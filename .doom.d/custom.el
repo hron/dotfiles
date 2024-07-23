@@ -4,7 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval remove-hook 'before-save-hook #'format-all-buffer t)
+   '((+format-inhibit . t)
+     (eval progn
+      (remove-hook 'before-save-hook #'ws-butler-before-save t)
+      (remove-hook 'before-save-hook #'format-all-buffer t))
+     (eval remove-hook 'before-save-hook #'format-all-buffer t)
      (phpunit-root-directory-in-docker . "/www")
      (eval setq phpunit-executable
       (executable-find "docker"))))
