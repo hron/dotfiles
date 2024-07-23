@@ -741,9 +741,11 @@ of a line"
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
 
+
+(pixel-scroll-precision-mode +1)
+
 (use-package! scroll-on-jump
   :config
-
   (let ((funcs-to-advice '(forward-paragraph
                            backward-paragraph
                            beginning-of-buffer
