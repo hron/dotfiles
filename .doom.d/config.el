@@ -753,6 +753,7 @@ of a line"
                            isearch-backward
                            isearch-forward-thing-at-point
                            isearch-repeat-forward
+                           isearch-repeat-backward
                            better-jumper-jump-forward
                            better-jumper-jump-backward
                            )))
