@@ -746,6 +746,7 @@ of a line"
 
 (use-package! scroll-on-jump
   :config
+  (setq scroll-on-jump-duration 0.3)
   (let ((funcs-to-advice '(forward-paragraph
                            backward-paragraph
                            beginning-of-buffer
