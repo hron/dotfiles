@@ -28,7 +28,6 @@
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'medium)
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
-
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -756,6 +755,13 @@ of a line"
                            isearch-repeat-backward
                            better-jumper-jump-forward
                            better-jumper-jump-backward
+                           +vc-gutter/previous-hunk
+                           +vc-gutter/next-hunk
+                           undo-fu-only-undo
+                           undo-fu-only-redo
+                           +lookup/definition
+                           +lookup/type-definition
+                           +lookup/implementations
                            )))
     (dolist (func funcs-to-advice)
       (eval `(scroll-on-jump-advice-add ,func))))
