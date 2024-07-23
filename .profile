@@ -44,6 +44,10 @@ fi
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
+if [ -d $HOME/.config/emacs/bin ]; then
+    export PATH=$HOME/.config/emacs/bin:$PATH
+fi
+
 # export QT_SCALE_FACTOR=1.25
 export PGHOST=localhost
 export PGUSER=spaceship
