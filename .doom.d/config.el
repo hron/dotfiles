@@ -741,3 +741,26 @@ of a line"
 (use-package! flyspell
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
+
+(use-package! scroll-on-jump
+  :config
+
+  (let ((funcs-to-advice '(forward-paragraph
+                           backward-paragraph
+                           beginning-of-buffer
+                           end-of-buffer
+                           isearch-forward
+                           isearch-backward
+                           isearch-forward-thing-at-point
+                           isearch-repeat-forward
+                           better-jumper-jump-forward
+                           better-jumper-jump-backward
+                           )))
+    (dolist (func funcs-to-advice)
+      (eval `(scroll-on-jump-advice-add ,func))))
+
+  (let ((funcs '(cua-scroll-up
+                 cua-scroll-down
+                 recenter-top-bottom)))
+    (dolist (func funcs)
+      (eval `(scroll-on-jump-with-scroll-advice-add ,func)))))
