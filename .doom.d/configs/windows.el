@@ -7,6 +7,9 @@
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("M-i" . delete-other-windows)))
 
+(setq aleksei/default-side-window-width .45
+      aleksei/default-side-window-height .33)
+
 (defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer)
   "Display BUFFER at the bottom of the window, fit the height to the
 content, and select the window."
@@ -17,8 +20,8 @@ content, and select the window."
 
 (defun aleksei/display-buffer-in-side-window (buffer &optional alist)
   "Display BUFFER at the appropriate place depending on the current frame width"
-  (let* ((side-width (or (cdr (assq 'side-width alist)) .5))
-         (side-height (or (cdr (assq 'side-height alist)) .33))
+  (let* ((side-width (or (cdr (assq 'side-width alist)) aleksei/default-side-window-width))
+         (side-height (or (cdr (assq 'side-height alist)) aleksei/default-side-window-height))
          (wide-frame-opts `(list
                             (window-width . ,side-width)
                             (side . left)))
@@ -29,26 +32,25 @@ content, and select the window."
     (display-buffer-in-side-window
      buffer
      (append alist
-             (if (> (frame-width) 200) wide-frame-opts narrow-frame-opts))
+             (if (aleksei/2-columns-layout-p) wide-frame-opts narrow-frame-opts))
      )))
 
-(defun aleksei/3-columns-layout-p ()
-  (and (>= (frame-width) 305)))
+(defun aleksei/display-buffer-in-side-window-if-wide (buffer &optional alist)
+  (if (aleksei/2-columns-layout-p)
+      (display-buffer-in-side-window
+       buffer
+       (append alist  `(list (side . left)
+                        (window-width . ,aleksei/default-side-window-width))))
+    (display-buffer-same-window buffer alist)))
 
 (defun aleksei/2-columns-layout-p ()
-  (and (>= (frame-width) 200)
-       (< (frame-width) 305)))
+  (>= (frame-width) 200))
 
 (defun aleksei/1-column-layout-p ()
-  (< (frame-width) 200))
+  (not (aleksei/2-columns-layout-p)))
 
 (setq display-buffer-alist
       '(
-        ;; ((or . ("\\*Warnings\\*"
-        ;;         "\\*projectile-files-errors\\*"))
-        ;;  (display-buffer-no-window)
-        ;;  (allow-no-window . t))
-
         ((or . ((derived-mode . process-menu-mode)
                 (derived-mode . flycheck-error-list-mode)
                 ;; "\\*diff-hl"
@@ -56,8 +58,13 @@ content, and select the window."
          (display-buffer-reuse-mode-window
           aleksei/display-buffer-below-selected-then-fit-and-select))
 
-        ("\\*Org"
-         (display-buffer-reuse-window))
+        ((or . ("\\*Org"
+                ))
+         (display-buffer-reuse-window
+          display-buffer-same-window))
+
+        ((or . ("\\*ChatGPT"))
+         (aleksei/display-buffer-in-side-window-if-wide))
 
         ((or . ("^\\*"
                 "Output\\*$"
@@ -65,9 +72,7 @@ content, and select the window."
                 "^magit-revision"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)))
-         (aleksei/display-buffer-in-side-window)
-         (side-width . .45)
-         (side-height . .33))
+         (aleksei/display-buffer-in-side-window))
 
         (".*"
          (display-buffer-reuse-mode-window))
