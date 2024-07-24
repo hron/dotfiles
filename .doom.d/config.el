@@ -744,37 +744,3 @@ of a line"
 
 (pixel-scroll-precision-mode +1)
 
-(use-package! scroll-on-jump
-  :config
-  (setq scroll-on-jump-duration 0.3)
-  (let ((funcs-to-advice '(forward-paragraph
-                           backward-paragraph
-                           beginning-of-buffer
-                           end-of-buffer
-                           isearch-forward
-                           isearch-backward
-                           isearch-forward-thing-at-point
-                           isearch-repeat-forward
-                           isearch-repeat-backward
-                           better-jumper-jump-forward
-                           better-jumper-jump-backward
-                           +vc-gutter/previous-hunk
-                           +vc-gutter/next-hunk
-                           undo-fu-only-undo
-                           undo-fu-only-redo
-                           +lookup/definition
-                           +lookup/type-definition
-                           +lookup/implementations
-                           vterm-next-prompt
-                           vterm-previous-prompt
-                           flycheck-next-error
-                           flycheck-previous-error
-                           )))
-    (dolist (func funcs-to-advice)
-      (eval `(scroll-on-jump-advice-add ,func))))
-
-  (let ((funcs '(cua-scroll-up
-                 cua-scroll-down
-                 recenter-top-bottom)))
-    (dolist (func funcs)
-      (eval `(scroll-on-jump-with-scroll-advice-add ,func)))))
