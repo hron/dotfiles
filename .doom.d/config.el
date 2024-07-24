@@ -758,5 +758,3 @@ of a line"
               ("C-;" . nil)))
 
 
-(pixel-scroll-precision-mode +1)
-
