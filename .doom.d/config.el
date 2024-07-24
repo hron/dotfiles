@@ -541,7 +541,7 @@ of a line"
 
 (use-package! emacs
   :bind (:map global-map
-              ("C-/" . aleksei/comment-dwim)
+              ("C-/" . comment-dwim)
               ("M-t" . aleksei/compile)
               ("M-r" . recompile)
               ("C-M-l" . +format/region-or-buffer)
