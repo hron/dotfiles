@@ -10,7 +10,7 @@
 (setq aleksei/default-side-window-width .45
       aleksei/default-side-window-height .33)
 
-(defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer)
+(defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer &optional alist)
   "Display BUFFER at the bottom of the window, fit the height to the
 content, and select the window."
   (let ((window (display-buffer-below-selected buffer `((side . bottom)))))
