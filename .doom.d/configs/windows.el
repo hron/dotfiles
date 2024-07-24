@@ -53,6 +53,7 @@ content, and select the window."
       '(
         ((or . ((derived-mode . process-menu-mode)
                 (derived-mode . flycheck-error-list-mode)
+                "\\*RE-Builder\\*"
                 ;; "\\*diff-hl"
                 ))
          (display-buffer-reuse-mode-window
