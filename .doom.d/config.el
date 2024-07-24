@@ -82,7 +82,11 @@ to the current theme"
 ;; they are implemented.
 
 (map! "C-<f2>" 'list-processes)
+
 (map! "C-d" 'duplicate-dwim)
+(use-package! cc-mode
+  :bind (:map c-mode-base-map
+              ("C-d" . nil)))
 
 (use-package! magit
   :bind (:map magit-section-mode-map
@@ -751,10 +755,13 @@ of a line"
                '(phpunit  "^[[:blank:]]+[[:digit:].]+.*[[:digit:]]+. .* \\([^[:blank:]]+\\):\\([0-9]+\\)" 1 2))
   (add-to-list 'compilation-error-regexp-alist 'phpunit)
 
+  ;; Add `Warning:' to the default php regexp
+  (add-to-list 'compilation-error-regexp-alist-alist
+               '(php-warning "\\(?:Warning\\): \\(.*\\) in \\(.*\\) on line \\([0-9]+\\)" 2 3 nil nil))
+  (add-to-list 'compilation-error-regexp-alist 'php-warning)
+
   )
 
 (use-package! flyspell
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
-
-
