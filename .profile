@@ -54,6 +54,9 @@ export PGUSER=spaceship
 export PGDATABASE=spaceship
 
 # https://direnv.net/docs/hook.html
-# if [ -x /usr/bin/direnv ]; then
-#     eval "$(direnv hook bash)"
-# fi
+if [ -x /usr/bin/direnv ]; then
+    eval "$(direnv hook bash)"
+fi
+
+nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
+[ -e $nix_profile ] && source $nix_profile
