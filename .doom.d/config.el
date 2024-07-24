@@ -696,7 +696,17 @@ of a line"
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
 
 (use-package! phpunit
+  :bind-keymap* ("C-;" . aleksei/phpunit-mode-map)
   :config
+  (defvar aleksei/phpunit-mode-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map (kbd "f") 'phpunit-current-class)
+      (define-key map (kbd "c") 'phpunit-current-test)
+      (define-key map (kbd "a") 'phpunit-current-project)
+      (define-key map (kbd "l") 'recompile)
+      map))
+
+  ;; Hacks for Forenom. TODO: Move this to .dir-locals.el
   (defvar-local phpunit-root-directory-in-docker ""
     "Directory path in docker PHPUnit project is mounted to.")
   (put 'phpunit-root-directory-in-docker 'safe-local-variable #'stringp)
@@ -727,15 +737,21 @@ of a line"
     (phpunit-run (concat (phpunit-test-file-prefix-path)
                          (s-chop-prefix (phpunit-get-root-directory t) buffer-file-name))))
 
-  (defvar aleksei/phpunit-mode-map
-    (let ((map (make-sparse-keymap)))
-      (define-key map (kbd "f") 'phpunit-current-class)
-      (define-key map (kbd "c") 'phpunit-current-test)
-      (define-key map (kbd "a") 'phpunit-current-project)
-      (define-key map (kbd "l") 'recompile)
-      map))
+  ;; Don't add the bad compilation regexp. I will add my own bad regexps
+  (defun phpunit-run (args)
+    "Execute phpunit command with `ARGS'."
+    ;; (add-to-list 'compilation-error-regexp-alist '("^\\(.+\\.php\\):\\([0-9]+\\)$" 1 2))
+    ;; format: #0 /path/to/file(line): class::method(param)
+    ;; (add-to-list 'compilation-error-regexp-alist '("^#[0-9]+ \\(.+\\.php\\)(\\([0-9]+\\)):" 1 2))
+    (let ((default-directory (phpunit-get-root-directory))
+          (compilation-process-setup-function #'phpunit--setup-compilation-buffer))
+      (compile (phpunit-get-compile-command args))))
 
-  :bind-keymap* ("C-;" . aleksei/phpunit-mode-map))
+  (add-to-list 'compilation-error-regexp-alist-alist
+               '(phpunit  "^[[:blank:]]+[[:digit:].]+.*[[:digit:]]+. .* \\([^[:blank:]]+\\):\\([0-9]+\\)" 1 2))
+  (add-to-list 'compilation-error-regexp-alist 'phpunit)
+
+  )
 
 (use-package! flyspell
   :bind (:map flyspell-mode-map
