@@ -7,7 +7,7 @@
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("M-i" . delete-other-windows)))
 
-(setq aleksei/default-side-window-width .45
+(setq aleksei/default-side-window-width .5
       aleksei/default-side-window-height .33)
 
 (defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer &optional alist)
