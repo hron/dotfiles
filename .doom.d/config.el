@@ -765,3 +765,7 @@ of a line"
 (use-package! flyspell
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
+
+(use-package! apheleia
+  :config
+  (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml)))
