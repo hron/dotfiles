@@ -59,7 +59,7 @@ content, and select the window."
          (display-buffer-reuse-mode-window
           aleksei/display-buffer-below-selected-then-fit-and-select))
 
-        ((or . ("\\*Org"
+        ((or . ("\\*Org Agenda"
                 ))
          (display-buffer-reuse-window
           display-buffer-same-window))
