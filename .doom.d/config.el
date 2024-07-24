@@ -528,24 +528,9 @@ to the current theme"
               ("M-[" . Info-history-back)
               ("M-]" . Info-history-forward)))
 
-;;;###autoload
-(defun aleksei/comment-dwim (&optional arg)
-  "Comment/uncomment region if active, other do the same with current line.
-
-There is subtle difference between this function and
-`comment-line'. Basically, when commenting region this function
-respects region boundaries extactly. This is especially useful
-lisp like languages when you might want to comment only some part
-of a line"
-  (interactive "*P")
-  (comment-normalize-vars)
-  (if (use-region-p)
-      (comment-or-uncomment-region (region-beginning) (region-end) arg)
-    (call-interactively #'comment-line 1)))
-
 (use-package! emacs
   :bind (:map global-map
-              ("C-/" . comment-dwim)
+              ("C-/" . aleksei/comment-dwim)
               ("M-t" . aleksei/compile)
               ("M-r" . recompile)
               ("C-M-l" . +format/region-or-buffer)
@@ -555,7 +540,18 @@ of a line"
               ("C-q" . +lookup/documentation)
               ("S-RET" . +default/diagnostics)
               ("C-S-o" . imenu)
-              ("C-M-o" . consult-imenu-multi)))
+              ("C-M-o" . consult-imenu-multi))
+  :config
+  ;;;###autoload
+  (defun aleksei/comment-dwim (&optional arg)
+    "Replacement for `comment-dwim'.
+ If no region is selected and point is not at the end of the line,
+ comment or uncomment the current line. Otherwise, call `comment-dwim'."
+    (interactive "*P")
+    (if (and (not (use-region-p))
+             (not (looking-at "^\\s-*$")))
+        (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+      (comment-dwim arg))))
 
 (load! "configs/doom-modeline")
 
