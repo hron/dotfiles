@@ -549,7 +549,7 @@ to the current theme"
  comment or uncomment the current line. Otherwise, call `comment-dwim'."
     (interactive "*P")
     (if (and (not (use-region-p))
-             (not (looking-at "^\\s-*$")))
+             (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
         (comment-or-uncomment-region (line-beginning-position) (line-end-position))
       (comment-dwim arg))))
 
