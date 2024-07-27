@@ -5,7 +5,7 @@
 (use-package! emacs
   :bind (("C-<next>" . other-window)
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
-         ("M-i" . delete-other-windows)))
+         ("M-i" . window-toggle-side-windows)))
 
 (setq aleksei/default-side-window-width .5
       aleksei/default-side-window-height .33)
@@ -64,13 +64,13 @@ content, and select the window."
          (display-buffer-reuse-window
           display-buffer-same-window))
 
-        ((or . ("\\*ChatGPT"))
+        ((or . ("\\*ChatGPT"
+                "^magit-log"
+                "^magit-revision"))
          (aleksei/display-buffer-in-side-window-if-wide))
 
         ((or . ("^\\*"
                 "Output\\*$"
-                "^magit-log"
-                "^magit-revision"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)))
          (aleksei/display-buffer-in-side-window))
