@@ -323,13 +323,6 @@ to the current theme"
         (lsp-ui-doc-focus-frame)
       (lsp-ui-doc-glance)))
 
-  (defun my/disable-flycheck-in-headerline ()
-    "Disable Flycheck in the header line."
-    (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-    (flycheck-mode 0)
-    (flyspell-mode 0))
-  (add-hook 'lsp-headerline-breadcrumb-mode-hook #'my/disable-flycheck-in-headerline)
-
   :hook ((lsp-mode-hook . (lambda ()
                             (setq-local er/try-expand-list
                                         (append er/try-expand-list '(lsp-extend-selection))))))
@@ -342,7 +335,8 @@ to the current theme"
   (lsp-modeline-workspace-status-enable nil)
   (lsp-lens-enable nil)
   (lsp-eslint-run "onType")
-  (lsp-headerline-breadcrumb-enable t))
+  (lsp-headerline-breadcrumb-enable t)
+  (lsp-headerline-breadcrumb-enable-diagnostics nil))
 
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
