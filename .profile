@@ -58,5 +58,10 @@ if [ -x /usr/bin/direnv ]; then
     eval "$(direnv hook bash)"
 fi
 
+# Nix Standalone
 nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
 [ -e $nix_profile ] && source $nix_profile
+
+# Nix's Home Manager
+nix_home_manager_init=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+[ -e $nix_home_manager_init ] && source $nix_home_manager_init
