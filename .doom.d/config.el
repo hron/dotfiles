@@ -306,14 +306,6 @@ to the current theme"
               ("<backtab>" . indent-rigidly-left)))
 
 (use-package lsp-mode
-  :init
-  (defun lsp-ui-doc-show-or-focus ()
-    "Show hover information popup, focus it if it's already shown"
-    (interactive)
-    (if (lsp-ui-doc--visible-p)
-        (lsp-ui-doc-focus-frame)
-      (lsp-ui-doc-glance)))
-
   :bind (:map lsp-mode-map
               ("C-q" . lsp-ui-doc-show-or-focus)
               ("M-<RET>" . lsp-execute-code-action)
@@ -324,6 +316,20 @@ to the current theme"
 
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\venv\\'")
+  (defun lsp-ui-doc-show-or-focus ()
+    "Show hover information popup, focus it if it's already shown"
+    (interactive)
+    (if (lsp-ui-doc--visible-p)
+        (lsp-ui-doc-focus-frame)
+      (lsp-ui-doc-glance)))
+
+  (defun my/disable-flycheck-in-headerline ()
+    "Disable Flycheck in the header line."
+    (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+    (flycheck-mode 0)
+    (flyspell-mode 0))
+  (add-hook 'lsp-headerline-breadcrumb-mode-hook #'my/disable-flycheck-in-headerline)
+
   :hook ((lsp-mode-hook . (lambda ()
                             (setq-local er/try-expand-list
                                         (append er/try-expand-list '(lsp-extend-selection))))))
@@ -335,7 +341,8 @@ to the current theme"
   (lsp-modeline-diagnostics-enable nil)
   (lsp-modeline-workspace-status-enable nil)
   (lsp-lens-enable nil)
-  (lsp-eslint-run "onType"))
+  (lsp-eslint-run "onType")
+  (lsp-headerline-breadcrumb-enable t))
 
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
