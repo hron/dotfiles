@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  13)
+  12)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'medium)
       doom-unicode-font doom-font
