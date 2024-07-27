@@ -62,6 +62,8 @@ to the current theme"
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
+(setq-default tab-width 2)
+(setq-default cursor-type '(bar . 3))
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -113,6 +115,7 @@ to the current theme"
        ("C-M-t" . nil)
        ("C-M-e" . nil)))))
 
+;;;###autoload
 (defun aleksei/org-gtd ()
   "Prepare emacs frame to use as a GTD system."
   (interactive)
@@ -122,6 +125,7 @@ to the current theme"
   (find-file (concat org-directory "/tasks.org" ))
   (org-agenda-list))
 
+;;;###autoload
 (defun gusev/org-todo-convert-to-project ()
   (interactive)
   (save-excursion
@@ -131,6 +135,7 @@ to the current theme"
         (replace-match "\\1 [/] ")))
   (call-interactively 'org-insert-todo-subheading))
 
+;;;###autoload
 (defun aleksei/org-capture ()
   "Opens a new frame with Org capture inbox template"
   (interactive)
@@ -139,8 +144,7 @@ to the current theme"
   (delete-other-windows))
 
 (use-package! org
-  :hook (;; (org-mode . variable-pitch-mode)
-         (org-mode . (lambda ()
+  :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
                        (toggle-word-wrap +1))))
   :config (progn
@@ -209,8 +213,6 @@ to the current theme"
                                         (transient . t)
                                         nil)))
 
-(setq-default tab-width 2)
-
 (use-package! emacs
   :bind (:map emacs-lisp-mode-map
               ("C-q" . describe-symbol))
@@ -237,6 +239,7 @@ to the current theme"
 (global-set-key (kbd "M-S-<up>") 'drag-stuff-up)
 (global-set-key (kbd "M-S-<down>") 'drag-stuff-down)
 
+;;;###autoload
 (defun aleksei/isearch-region-or-forward ()
   "Do incremental search forward, use region if it's active"
   (interactive)
@@ -297,8 +300,6 @@ to the current theme"
 (load! "configs/windows.el")
 
 (global-auto-revert-mode +1)
-
-(setq-default cursor-type '(bar . 3))
 
 (use-package! rst-mode
   :bind (:map rst-mode-map
@@ -366,7 +367,7 @@ to the current theme"
               ("C-e" . projectile-find-file)))
 
 (use-package! emacs
-  :init
+  :config
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
         (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([@a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
@@ -410,7 +411,7 @@ to the current theme"
   :custom
   (vterm-shell "/bin/bash -l")
   (vterm-max-scrollback 100000)
-  :init
+  :config
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
@@ -481,7 +482,7 @@ to the current theme"
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . ein:worksheet-move-cell-up)
               ("M-<down>" . ein:worksheet-move-cell-down)))
-(require 'ob-ein)
+;; (require 'ob-ein)
 
 (global-subword-mode +1)
 (blink-cursor-mode +1)
@@ -555,12 +556,6 @@ to the current theme"
       (comment-dwim arg))))
 
 (load! "configs/doom-modeline")
-
-(setq +format-with-lsp nil)
-
-(use-package! emacs
-  :custom
-  (ls-lisp-dirs-first t))
 
 (load! "configs/eshell")
 
