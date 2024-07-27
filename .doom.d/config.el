@@ -765,3 +765,11 @@ to the current theme"
 (use-package! apheleia
   :config
   (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml)))
+
+(use-package treesit
+  :custom
+  (treesit-font-lock-level 4))
+
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode +1))
