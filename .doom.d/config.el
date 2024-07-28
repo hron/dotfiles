@@ -447,6 +447,9 @@ to the current theme"
           +default/search-project
           +default/search-buffer
           consult-lsp-symbols
+          consult-imenu
+          consult-line
+          consult-line-multi
           aleksei/isearch-region-or-forward
           isearch-forward
           isearch-backward
@@ -774,7 +777,7 @@ to the current theme"
 
 (use-package! scroll-on-jump
   :config
-  (setq scroll-on-jump-duration 0.2)
+  (setq scroll-on-jump-duration 0.25)
   (let ((funcs-to-advice '(forward-paragraph
                            backward-paragraph
                            beginning-of-buffer
@@ -792,7 +795,8 @@ to the current theme"
                            vterm-previous-prompt
                            flycheck-next-error
                            flycheck-previous-error
-                           )))
+                           comint-next-prompt
+                           comint-previous-prompt)))
     (dolist (func funcs-to-advice)
       (eval `(scroll-on-jump-advice-add ,func))))
 
