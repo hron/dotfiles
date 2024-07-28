@@ -10,6 +10,14 @@ let
   );
 in
 {
+  # allowUnfree=true, taken from https://fnordig.de/til/nix/home-manager-allow-unfree.html
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+
   home.username = "algus";
   home.homeDirectory = "/home/algus";
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -32,6 +40,8 @@ in
 
       aws-vault
       awscli2
+
+      _1password-gui
     ]
     ++ [ emacs ];
 
