@@ -807,3 +807,8 @@ to the current theme"
                  )))
     (dolist (func funcs)
       (eval `(scroll-on-jump-with-scroll-advice-add ,func)))))
+
+(use-package! bookmark
+  :ensure nil
+  :custom
+  (bookmark-watch-bookmark-file 'silent))
