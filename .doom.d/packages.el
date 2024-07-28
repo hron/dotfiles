@@ -90,3 +90,5 @@
 ;;   :pin "756cfb0f55a6d0e3eccc6e12211aac922aa71a49")
 
 (package! treesit-auto)
+
+(package! scroll-on-jump)
