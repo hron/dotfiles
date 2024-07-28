@@ -803,6 +803,7 @@ to the current theme"
   (let ((funcs '(cua-scroll-up
                  cua-scroll-down
                  recenter-top-bottom
-                 isearch-update)))
+                 ;; isearch-update
+                 )))
     (dolist (func funcs)
       (eval `(scroll-on-jump-with-scroll-advice-add ,func)))))
