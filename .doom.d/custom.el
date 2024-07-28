@@ -4,7 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((+format-inhibit . t)
+   '((elisp-autofmt-format-quoted)
+     (+format-inhibit . t)
      (eval progn
       (remove-hook 'before-save-hook #'ws-butler-before-save t)
       (remove-hook 'before-save-hook #'format-all-buffer t))
