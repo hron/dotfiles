@@ -777,7 +777,7 @@ to the current theme"
 
 (use-package! scroll-on-jump
   :config
-  (setq scroll-on-jump-duration 0.25)
+  (setq scroll-on-jump-duration 0.15)
   (let ((funcs-to-advice '(forward-paragraph
                            backward-paragraph
                            beginning-of-buffer
