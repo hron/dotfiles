@@ -62,7 +62,6 @@ to the current theme"
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
-(setq-default tab-width 2)
 (setq-default cursor-type '(bar . 3))
 
 
