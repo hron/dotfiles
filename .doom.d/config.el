@@ -51,8 +51,8 @@ to the current theme"
 (setq doom-theme 'modus-operandi)
 
 (after! doom-ui
-  (setq! auto-dark-dark-theme 'ef-dark
-         auto-dark-light-theme 'ef-light)
+  (setq! auto-dark-dark-theme 'modus-vivendi
+         auto-dark-light-theme 'modus-operandi)
   (auto-dark-mode 1))
 
 ;; If you use `org' and don't want your org files in the default location below,
