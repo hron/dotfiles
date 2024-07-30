@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  12)
+  13)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'medium)
       doom-unicode-font doom-font
@@ -91,10 +91,10 @@ to the current theme"
 
 (use-package! magit
   :bind (:map magit-section-mode-map
-         ("C-<tab>" . nil)
-         ("<C-iso-lefttab>" . nil)
-         :map magit-mode-map
-         ("C-w" . delete-window)))
+              ("C-<tab>" . nil)
+              ("<C-iso-lefttab>" . nil)
+              :map magit-mode-map
+              ("C-w" . delete-window)))
 
 (use-package! smartparens
   :config
@@ -336,6 +336,7 @@ to the current theme"
   (lsp-lens-enable nil)
   (lsp-eslint-run "onType")
   (lsp-headerline-breadcrumb-enable t)
+  (lsp-headerline-breadcrumb-segments '(symbols))
   (lsp-headerline-breadcrumb-enable-diagnostics nil))
 
 (load! "configs/flycheck")
@@ -370,45 +371,45 @@ to the current theme"
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
         (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([@a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
-                1 ;; file
-                2 ;; line
-                3 ;; column
-                )
+                     1 ;; file
+                     2 ;; line
+                     3 ;; column
+                     )
               compilation-error-regexp-alist-alist))
   (setq compilation-error-regexp-alist
         (cons 'node compilation-error-regexp-alist))
 
   (setq compilation-error-regexp-alist-alist
         (cons '(webpack-ts-error "\\(\\./[^: \n]+\\):\\([0-9]+\\):\\([0-9]+\\)"
-                1 ;; file
-                2 ;; line
-                3 ;; column
-                )
+                                 1 ;; file
+                                 2 ;; line
+                                 3 ;; column
+                                 )
               compilation-error-regexp-alist-alist))
   (setq compilation-error-regexp-alist
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 (use-package! vterm
   :bind (:map global-map
-         ("C-`" . +vterm/toggle)
-         :map vterm-mode-map
-         ("C-z" . vterm-undo)
-         ("C-v" . vterm-yank)
-         ("C-<backspace>" . vterm-send-meta-backspace)
-         ("C-<delete>" . vterm--self-insert)
-         ("C-S-<SPC>" . vterm-copy-mode)
-         ("C-w" . nil)
-         ("C-p" . nil)
-         ("M-i" . nil)
-         ("C-S-b" . +vertico/switch-workspace-buffer)
-         ("C-b" . switch-to-buffer)
-         ("M-<up>" . aleksei/vterm-copy-mode-previous-prompt)
-         ("M-<down>" . aleksei/vterm-copy-mode-next-prompt)
-         ("C-t" . aleksei/vterm-new-tab)
-         :map vterm-copy-mode-map
-         ("M-<up>" . vterm-previous-prompt)
-         ("M-<down>" . vterm-next-prompt)
-         ("C-t" . aleksei/vterm-new-tab))
+              ("C-`" . +vterm/toggle)
+              :map vterm-mode-map
+              ("C-z" . vterm-undo)
+              ("C-v" . vterm-yank)
+              ("C-<backspace>" . vterm-send-meta-backspace)
+              ("C-<delete>" . vterm--self-insert)
+              ("C-S-<SPC>" . vterm-copy-mode)
+              ("C-w" . nil)
+              ("C-p" . nil)
+              ("M-i" . nil)
+              ("C-S-b" . +vertico/switch-workspace-buffer)
+              ("C-b" . switch-to-buffer)
+              ("M-<up>" . aleksei/vterm-copy-mode-previous-prompt)
+              ("M-<down>" . aleksei/vterm-copy-mode-next-prompt)
+              ("C-t" . aleksei/vterm-new-tab)
+              :map vterm-copy-mode-map
+              ("M-<up>" . vterm-previous-prompt)
+              ("M-<down>" . vterm-next-prompt)
+              ("C-t" . aleksei/vterm-new-tab))
   :custom
   (vterm-shell "/bin/bash -l")
   (vterm-max-scrollback 100000)
@@ -503,26 +504,30 @@ to the current theme"
 
 (use-package! consult
   :bind (:map global-map
-         ("C-b" . consult-buffer)
-         :map minibuffer-local-map
-         ("C-f" . consult-history)
-         ("C-r" . consult-history)))
+              ("C-b" . consult-buffer)
+              :map minibuffer-local-map
+              ("C-f" . consult-history)
+              ("C-r" . consult-history)))
 
 (use-package! vertico
   :bind (:map minibuffer-local-map
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
-              ("C-j" . vertico-exit-input)))
+              ("C-j" . vertico-exit-input))
+  :config
+  (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom)))
+  ;; (vertico-buffer-mode +1)
+  )
 
 (use-package! embark
   :bind (:map global-map
-         ("M-<return>" . embark-act)
-         ("C-;" . nil)
-         :map minibuffer-local-map
-         ("M-<return>" . embark-act)
-         :map minibuffer-mode-map
-         ("M-<return>" . embark-act))
+              ("M-<return>" . embark-act)
+              ("C-;" . nil)
+              :map minibuffer-local-map
+              ("M-<return>" . embark-act)
+              :map minibuffer-mode-map
+              ("M-<return>" . embark-act))
   :custom
   (embark-indicators '(embark--vertico-indicator
                        embark-highlight-indicator
@@ -633,15 +638,15 @@ to the current theme"
 
 (use-package! separedit
   :bind (:map prog-mode-map
-         ("C-c '" . separedit)
-         :map minibuffer-local-map
-         ("C-c '" . separedit)
-         :map prog-mode-map
-         ("C-c '" . separedit)
-         :map help-mode-map
-         ("C-c '" . separedit)
-         :map helpful-mode-map
-         ("C-c '" . separedit))
+              ("C-c '" . separedit)
+              :map minibuffer-local-map
+              ("C-c '" . separedit)
+              :map prog-mode-map
+              ("C-c '" . separedit)
+              :map help-mode-map
+              ("C-c '" . separedit)
+              :map helpful-mode-map
+              ("C-c '" . separedit))
   :init
   (setq separedit-save-key (kbd "C-s"))
   :custom
@@ -667,15 +672,15 @@ to the current theme"
   (setq corfu-preview-current nil)
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
   :bind (:map global-map
-         ("C-SPC" . completion-at-point)
-         :map corfu-map
-         ("<return>" . corfu-complete)
-         ("<home>" . corfu-first)
-         ("<end>" . corfu-last)
-         ("<prior>" . corfu-scroll-down)
-         ("<next>" . corfu-scroll-up)
-         ("M-v" . nil)
-         ("C-v" . nil)))
+              ("C-SPC" . completion-at-point)
+              :map corfu-map
+              ("<return>" . corfu-complete)
+              ("<home>" . corfu-first)
+              ("<end>" . corfu-last)
+              ("<prior>" . corfu-scroll-down)
+              ("<next>" . corfu-scroll-up)
+              ("M-v" . nil)
+              ("C-v" . nil)))
 
 
 (use-package! kbd-mode)
