@@ -4,7 +4,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((elisp-autofmt-format-quoted)
+   '((+format-with . phpcs)
+     (+format-with quote phpcs)
+     (+format-with-lsp-mode)
+     (elisp-autofmt-format-quoted)
      (+format-inhibit . t)
      (eval progn
       (remove-hook 'before-save-hook #'ws-butler-before-save t)
