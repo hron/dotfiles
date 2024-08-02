@@ -30,12 +30,13 @@ in
 
       # LSP
       nil
-      # phpactor
+      phpactor
 
       # Code Formatters
       nixfmt-rfc-style
+      nixpkgs-fmt
       nodePackages.prettier
-      nodePackages.intelephense
+      # nodePackages.intelephense
       yq-go
       php83Packages.php-codesniffer
 
