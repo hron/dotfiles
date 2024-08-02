@@ -69,23 +69,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  #
-  # https://github.com/nix-community/home-manager/issues/1439
-  home.activation = {
-    linkDesktopApplications = {
-      after = [
-        "writeBoundary"
-        "createXdgUserDirectories"
-      ];
-      before = [ ];
-      data = ''
-        rm -rf ${config.xdg.dataHome}/"applications/home-manager"
-        mkdir -p ${config.xdg.dataHome}/"applications/home-manager"
-        cp -Lr ${config.home.homeDirectory}/.nix-profile/share/applications/* ${config.xdg.dataHome}/"applications/home-manager/"
-      '';
-    };
-  };
-
   xdg.enable = true;
   xdg.mime.enable = true;
 
