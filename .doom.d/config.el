@@ -564,6 +564,8 @@ to the current theme"
         (comment-or-uncomment-region (line-beginning-position) (line-end-position))
       (comment-dwim arg))))
 
+(setq confirm-kill-emacs nil)
+
 (load! "configs/doom-modeline")
 
 (load! "configs/eshell")
