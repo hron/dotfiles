@@ -44,6 +44,8 @@ in
       awscli2
 
       _1password-gui
+
+      act
     ]
     ++ [ emacs ];
 
