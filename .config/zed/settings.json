@@ -11,9 +11,14 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "language_models": {
+    "openai": {
+      "available_models": []
+    }
+  },
   "theme": {
-    "dark": "Modus Vivendi",
-    "light": "Modus Operandi"
+    "dark": "One Dark",
+    "light": "One Light"
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -63,7 +68,7 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "bottom",
+    "dock": "left",
     "default_width": 650,
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
@@ -75,15 +80,15 @@
     "default_width": 650
   },
   "assistant": {
-    "provider": {
-      "name": "openai",
-      "default_model": "gpt-4o",
-      "default_width": 650,
-      "available_models": []
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o"
     },
-    "dock": "right",
+    "default_height": 650.0,
+    "provider": null,
+    "dock": "left",
     "default_width": 650,
-    "version": "1",
+    "version": "2",
     "enabled": true
   },
   "features": {

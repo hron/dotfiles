@@ -42,10 +42,13 @@ in
 
       aws-vault
       awscli2
+      kubectl
+      kubectx
+      eksctl
 
       _1password-gui
-
       act
+      gh
     ]
     ++ [ emacs ];
 

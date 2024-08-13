@@ -34,6 +34,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+export AWS_DEFAULT_PROFILE=fdev
+
 # Write/read history after each command
 shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
