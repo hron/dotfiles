@@ -45,6 +45,7 @@ in
       kubectl
       kubectx
       eksctl
+      kustomize
 
       _1password-gui
       act
