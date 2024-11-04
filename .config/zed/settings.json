@@ -13,6 +13,7 @@
   // },
   "language_models": {
     "openai": {
+      "version": "1",
       "available_models": []
     }
   },
@@ -60,6 +61,10 @@
     "active_line_width": 2
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
   },
   "preview_tabs": {
     "enabled": true,

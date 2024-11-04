@@ -586,9 +586,9 @@ to the current theme"
         icon-title-format frame-title-format))
 
 
-(use-package! fd-dired
-  :config
-  (setq fd-dired-program "fdfind"))
+;; (use-package! fd-dired
+;;   :config
+;;   (setq fd-dired-program "fdfind"))
 
 (use-package! dired
   :config

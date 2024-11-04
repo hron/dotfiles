@@ -82,7 +82,8 @@
   {
     "context": "Pane",
     "bindings": {
-      "alt-1": null,
+      // "alt-1": null,
+      "alt-1": "project_panel::ToggleFocus",
       "alt-2": null,
       "alt-3": null,
       "alt-4": null,

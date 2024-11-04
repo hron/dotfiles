@@ -39,6 +39,7 @@ in
       # nodePackages.intelephense
       yq-go
       php83Packages.php-codesniffer
+      shfmt
 
       aws-vault
       awscli2
@@ -48,9 +49,13 @@ in
       kustomize
       gomplate
 
+      nodejs
+      pnpm
+
       _1password-gui
       act
       gh
+      gitlab-ci-local
     ]
     ++ [ emacs ];
 
