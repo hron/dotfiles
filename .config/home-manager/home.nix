@@ -30,7 +30,9 @@ in
 
       # LSP
       nil
+      nixd
       phpactor
+      clojure-lsp
 
       # Code Formatters
       nixfmt-rfc-style
@@ -40,6 +42,9 @@ in
       yq-go
       php83Packages.php-codesniffer
       shfmt
+
+      # linters
+      clj-kondo
 
       aws-vault
       awscli2
