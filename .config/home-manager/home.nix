@@ -25,6 +25,7 @@ in
   home.packages =
     with pkgs;
     [
+      direnv
       nix-direnv
       nix-index
 
@@ -57,7 +58,6 @@ in
       nodejs
       pnpm
 
-      _1password-gui
       act
       gh
       gitlab-ci-local

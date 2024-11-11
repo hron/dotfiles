@@ -9,10 +9,15 @@
 ;;   {:shortcuts {:ui/toggle-theme "t z"
 ;;                :ui/toggle-brackets "t b"}}
 
-{:shortcuts {:go/backward ["alt+left"]
- :go/forward ["alt+right"]
- :editor/zoom-in []
- :editor/zoom-out []
+{:shortcuts {:editor/zoom-out []
+ :plugin.logseq13-missing-commands/mc-2-edit-block-3-step-up []
+ :go/backward ["alt+left"]
+ :go/search-in-page ["shift+ctrl+e"]
  :go/search ["ctrl+e"]
+ :plugin.logseq13-missing-commands/mc-2-edit-block-4-step-down []
+ :plugin.logseq13-missing-commands/mc-2-edit-block-5-prev-sibling ["alt+ctrl+up"]
  :editor/copy-embed []
- :go/search-in-page ["shift+ctrl+e"]}}
+ :go/forward ["alt+right"]
+ :editor/toggle-checked ["ctrl+space"]
+ :editor/zoom-in []
+ :plugin.logseq13-missing-commands/mc-2-edit-block-6-next-sibling ["alt+ctrl+down"]}}

@@ -1,9 +1,22 @@
 {
-  "theme": null,
+  "theme": {
+    "name": "Dev theme",
+    "url": "assets:///home/algus/.logseq/plugins/logseq-dev-theme/custom.css",
+    "pid": "logseq-dev-theme"
+  },
   "themes": {
-    "mode": "light",
+    "mode": "dark",
     "light": null,
-    "dark": null
+    "dark": {
+      "name": "Bonofix Theme",
+      "url": "assets:///home/algus/.logseq/plugins/logseq-bonofix-theme/custom.css",
+      "description": "A clean theme",
+      "pid": "logseq-bonofix-theme",
+      "group-first": true,
+      "group-desc": "light & dark themes",
+      "mode": "dark",
+      "selected": false
+    }
   },
   "externals": []
 }

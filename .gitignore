@@ -41,3 +41,5 @@
 
 /.config/fish/fishd.*
 .config/zed/.tmp*
+.clj-kondo/
+.lsp/

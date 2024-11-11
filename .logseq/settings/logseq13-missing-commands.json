@@ -1,0 +1,16 @@
+{
+  "headingCommands": null,
+  "magicQuotes": "\"\"",
+  "headingFeatures": null,
+  "enableHomeEnd": "Yes",
+  "enableSearchImprovements": "Yes",
+  "enableMouseRefClick": "Yes",
+  "spareBlocksSpace": 20,
+  "headingViews": null,
+  "hideDotRefs": "Hide by wrapping to «…» only",
+  "enableTabularView": "Yes",
+  "enableColumnsView": "Yes",
+  "enableGalleryView": "Yes",
+  "enableBorderView": "Yes",
+  "disabled": false
+}
