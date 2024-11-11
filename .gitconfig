@@ -4,10 +4,10 @@
 [core]
 	excludesfile = ~/.gitconfig_global_gitignore
 	pager =
-	editor = emacs
+	editor = code --wait
 
 [diff]
-	tool = emacs
+	tool = vscode
 
 [difftool "emacs"]
 	cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
@@ -22,3 +22,9 @@
 	defaultBranch = main
 [rerere]
 	enabled = true
+[difftool "vscode"]
+	cmd = "code --wait --diff  "
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = "code --wait "
