@@ -12,5 +12,5 @@
   "enableColumnsView": "Yes",
   "enableGalleryView": "Yes",
   "enableBorderView": "Yes",
-  "disabled": false
+  "disabled": true
 }

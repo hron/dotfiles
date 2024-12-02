@@ -165,7 +165,6 @@ vterm_prompt_end(){
 }
 PS1=$PS1'\[$(vterm_prompt_end)\]'
 
-
 # Debian Packaging Guide
 # https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html
 quilt_completions=/usr/share/bash-completion/completions/quilt
@@ -174,3 +173,30 @@ if [ -f $quilt_completions ]; then
     source $quilt_completions
     complete -F _quilt_completion $_quilt_complete_opt dquilt
 fi
+
+# Nix Standalone
+nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
+[ -e $nix_profile ] && source $nix_profile
+
+# Nix's Home Manager
+nix_home_manager_init=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+[ -e $nix_home_manager_init ] && source $nix_home_manager_init
+
+# https://direnv.net/docs/hook.html
+if which direnv >/dev/null; then
+  eval "$(direnv hook bash)"
+  # This is a workaround to make direnv work with VS Code's integrated terminal
+  # when using the direnv extension, by making sure to reload
+  # the environment the first time terminal is opened.
+  #
+  # See https://github.com/direnv/direnv-vscode/issues/561#issuecomment-1837462994.
+  #
+  # The variable VSCODE_INJECTION is apparently set by VS Code itself, and this is how
+  # we can detect if we're running inside the VS Code terminal or not.
+  if [[ -n "$VSCODE_INJECTION" && -z "$VSCODE_TERMINAL_DIRENV_LOADED" && -f .envrc ]]; then
+    direnv reload
+    export VSCODE_TERMINAL_DIRENV_LOADED=1
+  fi
+fi
+
+which starship >/dev/null && eval "$(starship init bash)"

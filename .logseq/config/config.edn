@@ -15,9 +15,11 @@
  :go/search-in-page ["shift+ctrl+e"]
  :go/search ["ctrl+e"]
  :plugin.logseq13-missing-commands/mc-2-edit-block-4-step-down []
+ :editor/cycle-todo []
  :plugin.logseq13-missing-commands/mc-2-edit-block-5-prev-sibling ["alt+ctrl+up"]
  :editor/copy-embed []
  :go/forward ["alt+right"]
  :editor/toggle-checked ["ctrl+space"]
  :editor/zoom-in []
+ :plugin.cycle-todo-dwim/cycle-todo-dwim ["ctrl+enter"]
  :plugin.logseq13-missing-commands/mc-2-edit-block-6-next-sibling ["alt+ctrl+down"]}}

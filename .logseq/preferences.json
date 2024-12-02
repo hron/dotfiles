@@ -18,5 +18,7 @@
       "selected": false
     }
   },
-  "externals": []
+  "externals": [
+    "/home/algus/src/logseq-cycle-todo-dwim"
+  ]
 }

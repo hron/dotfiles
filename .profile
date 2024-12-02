@@ -11,10 +11,13 @@
 export BROWSER=sensible-browser
 export EDITOR='emacs'
 #export ALTERNATE_EDITOR=""
-
 export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
 export DEBEMAIL="aleksei.gusev@gmail.com"
 export DEBFULLNAME="Aleksei Gusev"
+# export QT_SCALE_FACTOR=1.25
+export PGHOST=localhost
+export PGUSER=spaceship
+export PGDATABASE=spaceship
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -35,33 +38,3 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-# Homebrew
-homebrew_exe=/home/linuxbrew/.linuxbrew/bin/brew
-if [ -x ${homebrew_exe} ]; then
-    eval $(${homebrew_exe} shellenv)
-fi
-
-# Added by Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
-if [ -d $HOME/.config/emacs/bin ]; then
-    export PATH=$HOME/.config/emacs/bin:$PATH
-fi
-
-# export QT_SCALE_FACTOR=1.25
-export PGHOST=localhost
-export PGUSER=spaceship
-export PGDATABASE=spaceship
-
-# https://direnv.net/docs/hook.html
-if [ -x /usr/bin/direnv ]; then
-    eval "$(direnv hook bash)"
-fi
-
-# Nix Standalone
-nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
-[ -e $nix_profile ] && source $nix_profile
-
-# Nix's Home Manager
-nix_home_manager_init=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-[ -e $nix_home_manager_init ] && source $nix_home_manager_init
