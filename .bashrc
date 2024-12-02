@@ -165,14 +165,6 @@ vterm_prompt_end(){
 }
 PS1=$PS1'\[$(vterm_prompt_end)\]'
 
-# Debian Packaging Guide
-# https://www.debian.org/doc/manuals/debmake-doc/ch03.en.html
-quilt_completions=/usr/share/bash-completion/completions/quilt
-if [ -f $quilt_completions ]; then
-    alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
-    source $quilt_completions
-    complete -F _quilt_completion $_quilt_complete_opt dquilt
-fi
 
 # Nix Standalone
 nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
@@ -194,7 +186,11 @@ if which direnv >/dev/null; then
   # The variable VSCODE_INJECTION is apparently set by VS Code itself, and this is how
   # we can detect if we're running inside the VS Code terminal or not.
   if [[ -n "$VSCODE_INJECTION" && -z "$VSCODE_TERMINAL_DIRENV_LOADED" && -f .envrc ]]; then
-    direnv reload
+    # direnv reload
+    cd ..
+    _direnv_hook
+    cd -
+    _direnv_hook
     export VSCODE_TERMINAL_DIRENV_LOADED=1
   fi
 fi
