@@ -20,7 +20,7 @@ in
 
   home.username = "algus";
   home.homeDirectory = "/home/algus";
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.packages =
     with pkgs;
