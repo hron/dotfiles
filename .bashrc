@@ -75,6 +75,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias bc='bc -l'
 
+alias man='man --html'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -95,6 +97,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export BROWSER=firefox
 
 if [ -n "$ZED_TERM" ]; then
     export GIT_EDITOR='zed --wait'
