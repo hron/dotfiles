@@ -1,4 +1,5 @@
 {:logseq-bonofix-theme {:version "v3.10.4", :repo "sansui233/logseq-bonofix-theme", :effect false, :theme true}
  :logseq13-missing-commands {:version "v1.8.3", :repo "stdword/logseq13-missing-commands", :effect true, :theme false}
  :logseq-dev-theme {:version "v1.26.17", :repo "pengx17/logseq-dev-theme", :effect false, :theme true}
- :logseq-todo-master {:version "v1.10.3", :repo "pengx17/logseq-plugin-todo-master", :effect false, :theme false}}
+ :logseq-todo-master {:version "v1.10.3", :repo "pengx17/logseq-plugin-todo-master", :effect false, :theme false}
+ :cycle-todo-dwim {:version "v1.1.0", :repo "hron/logseq-cycle-todo-dwim", :effect false, :theme false}}
