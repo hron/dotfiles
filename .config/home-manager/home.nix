@@ -10,7 +10,6 @@ let
   );
 in
 {
-  # allowUnfree=true, taken from https://fnordig.de/til/nix/home-manager-allow-unfree.html
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -20,7 +19,7 @@ in
 
   home.username = "algus";
   home.homeDirectory = "/home/algus";
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "24.11";
 
   home.packages =
     with pkgs;
@@ -61,6 +60,8 @@ in
       act
       gh
       gitlab-ci-local
+
+      vial
     ]
     ++ [ emacs ];
 
