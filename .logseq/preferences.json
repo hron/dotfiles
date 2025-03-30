@@ -18,5 +18,9 @@
       "selected": false
     }
   },
-  "externals": []
+  "externals": [],
+  "pinnedToolbarItems": [
+    "logseq-agenda:Agenda3",
+    "logseq-agenda:Agenda2-Legacy"
+  ]
 }

@@ -9,7 +9,7 @@
 ;;   {:shortcuts {:ui/toggle-theme "t z"
 ;;                :ui/toggle-brackets "t b"}}
 
-{:shortcuts {:editor/zoom-out []
+{:shortcuts {:editor/zoom-out ["alt+ctrl+left"]
  :plugin.logseq13-missing-commands/mc-2-edit-block-3-step-up []
  :go/backward ["alt+left"]
  :go/search-in-page ["shift+ctrl+e"]
@@ -20,6 +20,7 @@
  :editor/copy-embed []
  :go/forward ["alt+right"]
  :editor/toggle-checked ["ctrl+space"]
- :editor/zoom-in []
+ :editor/zoom-in ["alt+ctrl+right"]
+ :ui/clear-all-notifications ["shift+alt+n"]
  :plugin.cycle-todo-dwim/cycle-todo-dwim ["ctrl+enter"]
  :plugin.logseq13-missing-commands/mc-2-edit-block-6-next-sibling ["alt+ctrl+down"]}}
