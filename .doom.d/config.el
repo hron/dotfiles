@@ -23,9 +23,9 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  13)
+  26)
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'medium)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -64,6 +64,7 @@ to the current theme"
 (setq display-line-numbers-type nil)
 (setq-default cursor-type '(bar . 3))
 
+(set-fringe-style '(20 . 20))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -193,7 +194,9 @@ to the current theme"
               ("S-<up>" . nil)
               ("S-<down>" . nil)
               ("M-S-<up>" . org-move-subtree-up)
-              ("M-S-<down>" . org-move-subtree-down))
+              ("M-S-<down>" . org-move-subtree-down)
+              ("M-<left>" . nil)
+              ("M-<right>" . nil))
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
@@ -454,7 +457,8 @@ to the current theme"
           isearch-forward
           isearch-backward
           flycheck-next-error
-          flycheck-previous-error))
+          flycheck-previous-error
+          org-open-at-point-global))
 
   (dolist (func aleksei/better-jumper-advice-funcs)
     (eval `(defadvice ,func (before better-jumper activate)
