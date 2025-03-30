@@ -39,14 +39,23 @@ to the current theme"
     (setq lsp-ui-doc-border (modus-themes-color 'fg-main)))
   (setq lsp-ui-doc-border "#000000")
 
+  ;; Do not extend it to the end of the line
+  (custom-set-faces
+   '(region ((t :extend nil))))
+
+  (setq modus-themes-common-palette-overrides
+        '(;; Make the region to change only the background
+          (bg-region bg-ochre)
+          (fg-region unspecified)))
 
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
-        modus-themes-region '(bg-only no-extend)
-        modus-themes-lang-checkers '(straight-underline)
-        modus-themes-paren-match '(bold)
-        modus-themes-org-blocks 'gray-background
-        modus-themes-mode-line '(borderless accented))
+        ;; modus-themes-region '(bg-only no-extend)
+        ;; modus-themes-lang-checkers '(straight-underline)
+        ;; modus-themes-paren-match '(bold)
+        ;; modus-themes-org-blocks 'gray-background
+        ;; modus-themes-mode-line '(borderless accented)
+        )
   :hook (modus-themes-after-load-theme . aleksei/set-colors-for-current-theme))
 (setq doom-theme 'modus-operandi)
 
