@@ -43,3 +43,7 @@
 .config/zed/.tmp*
 .clj-kondo/
 .lsp/
+/.logseq/graphs/*.transit
+/.config/devilspie2/debug
+/.config/devilspie2/errors
+/.logseq/git/

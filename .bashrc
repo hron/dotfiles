@@ -75,7 +75,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias bc='bc -l'
 
-alias man='man --html'
+#alias man='man --html'
+
+alias protontricks='flatpak run com.github.Matoking.protontricks'
+
+function protontricks_by_name () {
+  protontricks $(protontricks -l | grep -i $1 | grep -oP '\(\K\d+(?=\))') $2
+}
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -97,8 +103,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export BROWSER=firefox
 
 if [ -n "$ZED_TERM" ]; then
     export GIT_EDITOR='zed --wait'
