@@ -21,6 +21,19 @@ in
   home.homeDirectory = "/home/algus";
   home.stateVersion = "24.11";
 
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Original-Ice";
+    size = 48;
+    x11 = {
+      enable = true;
+      defaultCursor = "left_ptr";
+    };
+    gtk = {
+      enable = true;
+    };
+  };
+
   home.packages =
     with pkgs;
     [
