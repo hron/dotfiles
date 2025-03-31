@@ -863,7 +863,10 @@ to the current theme"
 (use-package! iflipb
   :bind (:map global-map
               ("C-<tab>" . 'iflipb-next-buffer)
-              ("C-<iso-lefttab>" . 'iflipb-previous-buffer)))
+              ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
+  :custom
+  (iflipb-wrap-around t)
+  (iflipb-ignore-buffers '()))
 
 ;; (use-package! persp-mode
 ;;   :bind (:map persp-mode-map
