@@ -94,3 +94,5 @@
 (package! scroll-on-jump)
 
 (package! ef-themes)
+
+(package! iflipb)

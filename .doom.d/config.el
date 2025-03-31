@@ -152,6 +152,32 @@ to the current theme"
   (org-capture "" "i")
   (delete-other-windows))
 
+;; (defun aleksei/org-yank ()
+;;   "Paste media or text based on clipboard content in Org mode."
+;;   (interactive)
+;;   (let* ((clipboard-data (clipboard-yank))
+;;          (f (if (memq 'text (car clipboard-data)) 'cua-paste 'yank-media)))
+;;     (call-interactively f)))
+
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "C-v") 'my-org-paste)))
+
+;; (defun aleksei/clipboard-data ()
+;;   "Get clipboard data without inserting it."
+;;   (with-temp-buffer
+;;     (clipboard-yank)))
+
+;; (defun aleksei/cua-paste (orig-cua-paste &rest args)
+;;   "Paste media or text based on clipboard content in Org mode."
+;;   (interactive)
+;;   (let ((clipboard-data (aleksei/clipboard-data)))
+;;     (call-interactively
+;;      (if (memq 'text (car clipboard-data))
+;;          orig-cua-paste 'yank-media))))
+
+;; (advice-add 'cua-paste :around #'aleksei/cua-paste)
+
 (use-package! org
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
@@ -205,7 +231,9 @@ to the current theme"
               ("M-S-<up>" . org-move-subtree-up)
               ("M-S-<down>" . org-move-subtree-down)
               ("M-<left>" . nil)
-              ("M-<right>" . nil))
+              ("M-<right>" . nil)
+              ("C-c y" . yank-media)
+              )
   :custom (org-provide-todo-statistics 'all-headlines))
 
 (use-package! org-agenda
@@ -831,3 +859,12 @@ to the current theme"
   :ensure nil
   :custom
   (bookmark-watch-bookmark-file 'silent))
+
+(use-package! iflipb
+  :bind (:map global-map
+              ("C-<tab>" . 'iflipb-next-buffer)
+              ("C-<iso-lefttab>" . 'iflipb-previous-buffer)))
+
+;; (use-package! persp-mode
+;;   :bind (:map persp-mode-map
+;;               ("C-w" . nil)))
