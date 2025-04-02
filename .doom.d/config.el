@@ -320,7 +320,6 @@ to the current theme"
 (global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
 (global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
 
-(global-set-key (kbd "C-w") 'delete-window)
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-S-b") 'switch-to-buffer)
 
@@ -592,7 +591,10 @@ to the current theme"
               ("C-q" . +lookup/documentation)
               ("S-RET" . +default/diagnostics)
               ("C-S-o" . imenu)
-              ("C-M-o" . consult-imenu-multi))
+              ("C-M-o" . consult-imenu-multi)
+              ("C-w" . (lambda ()
+                         (interactive)
+                         (kill-buffer (current-buffer)))))
   :config
   ;;;###autoload
   (defun aleksei/comment-dwim (&optional arg)
@@ -867,7 +869,3 @@ to the current theme"
   :custom
   (iflipb-wrap-around t)
   (iflipb-ignore-buffers '()))
-
-;; (use-package! persp-mode
-;;   :bind (:map persp-mode-map
-;;               ("C-w" . nil)))
