@@ -96,3 +96,5 @@
 (package! ef-themes)
 
 (package! iflipb)
+
+(package! consult-projectile)

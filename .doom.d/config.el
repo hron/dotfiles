@@ -403,7 +403,7 @@ to the current theme"
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("M-9" . magit-status)
-              ("C-e" . projectile-find-file)))
+              ("C-e" . consult-projectile)))
 
 (use-package! emacs
   :config
@@ -869,3 +869,9 @@ to the current theme"
   :custom
   (iflipb-wrap-around t)
   (iflipb-ignore-buffers '()))
+
+(use-package! consult-projectile
+  :custom
+  (consult-projectile-sources '(consult--source-buffer
+                                consult-projectile--source-projectile-file
+                                consult-projectile--source-projectile-project)))
