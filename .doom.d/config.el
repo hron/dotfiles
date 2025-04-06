@@ -871,7 +871,16 @@ to the current theme"
   (iflipb-ignore-buffers '()))
 
 (use-package! consult-projectile
+  :init
+  (defvar aleksei/consult--source-buffer
+    (list :name     "Buffer"
+          :narrow   '(?b . "Buffer")
+          :category 'buffer
+          :face     'consult-buffer
+          :history  'buffer-name-history
+          :state    #'consult--buffer-state
+          :items    (lambda ()
+                      (mapcar #'buffer-name (+workspace-buffer-list)))))
   :custom
-  (consult-projectile-sources '(consult--source-buffer
-                                consult-projectile--source-projectile-file
-                                consult-projectile--source-projectile-project)))
+  (consult-projectile-sources '(aleksei/consult--source-buffer
+                                consult-projectile--source-projectile-file)))
