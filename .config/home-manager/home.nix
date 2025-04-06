@@ -46,6 +46,7 @@ in
       nixd
       phpactor
       clojure-lsp
+      rust-analyzer
 
       # Code Formatters
       nixfmt-rfc-style
