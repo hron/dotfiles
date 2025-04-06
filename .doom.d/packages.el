@@ -80,9 +80,7 @@
 
 (package! auto-dark)
 
-(package! gptel
-  :recipe (:host github :repo "hron/gptel")
-  :pin "730d19212e1e1a0c85f4c91a3aa8f02af29ed377")
+(package! gptel :recipe (:nonrecursive t))
 
 ;; Activate me after upgrade to Emacs 30
 ;; (package! indent-bars
