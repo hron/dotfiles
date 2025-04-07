@@ -863,6 +863,8 @@ to the current theme"
   (bookmark-watch-bookmark-file 'silent))
 
 (use-package! iflipb
+  :init
+  (setq iflipb-buffer-list-function  #'+workspace-buffer-list)
   :bind (:map global-map
               ("C-<tab>" . 'iflipb-next-buffer)
               ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
@@ -877,10 +879,16 @@ to the current theme"
           :narrow   '(?b . "Buffer")
           :category 'buffer
           :face     'consult-buffer
-          :history  'buffer-name-history
+          :history  'consult--buffer-history
           :state    #'consult--buffer-state
           :items    (lambda ()
-                      (mapcar #'buffer-name (+workspace-buffer-list)))))
+                      (consult--buffer-query
+                       :sort 'visibility
+                       :as #'buffer-name
+                       :predicate
+                       (lambda (buf)
+                         (+workspace-contains-buffer-p buf (+workspace-current)))))
+          ))
   :custom
   (consult-projectile-sources '(aleksei/consult--source-buffer
                                 consult-projectile--source-projectile-file)))
