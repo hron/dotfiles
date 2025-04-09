@@ -24,6 +24,19 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
+(use-package emacs
+  :init
+  (cua-mode +1)
+  :custom
+  (cua-remap-control-z nil)
+  (cua-prefix-override-inhibit-delay 0.0000000001)
+  (cua-rectangle-mark-key [(control shift return)]))
+
+(use-package undo-fu
+  :bind (:map global-map
+              ("C-z"   . undo-fu-only-undo)
+              ("C-S-z" . undo-fu-only-redo)))
+
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline

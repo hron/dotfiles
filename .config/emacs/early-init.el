@@ -75,5 +75,15 @@
   :custom
   (auto-dark-themes '((modus-vivendi) (modus-operandi))))
 
+
+;;; cua-mode
+(defun aleksei/define-global-key-translations (&optional frame)
+  "ESC according modern conventions"
+  (with-selected-frame (or frame (selected-frame))
+    ;; C-x
+    ;; Escape
+    (define-key key-translation-map (kbd "ESC") (kbd "C-g"))))
+(add-hook 'after-make-frame-functions 'aleksei/define-global-key-translations)
+
 (provide 'early-init)
 ;;; early-init.el ends here
