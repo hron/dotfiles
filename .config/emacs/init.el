@@ -9,7 +9,7 @@
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
 ;; Homepage: https://github.com/hron/dotfiles/.config/emacs
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "29.1"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -19,6 +19,10 @@
 ;;
 ;;; Code:
 
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
+(setq user-full-name "Aleksei Gusev"
+      user-mail-address "aleksei.gusev@gmail.com")
 
 ;; straight.el bootstrap
 (setq straight-use-package-by-default t)
@@ -38,10 +42,11 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-(setq user-full-name "Aleksei Gusev"
-      user-mail-address "aleksei.gusev@gmail.com")
+(use-package auto-dark
+  :init
+  (auto-dark-mode)
+  :custom
+  (auto-dark-themes '((modus-vivendi) (modus-operandi))))
 
 (use-package gptel
   :bind (:map global-map
