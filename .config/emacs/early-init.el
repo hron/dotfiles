@@ -9,7 +9,7 @@
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
 ;; Homepage: https://github.com/hron/early-init
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "30.1"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -22,6 +22,20 @@
 (add-to-list 'default-frame-alist
              '(font . "JetBrainsMono Nerd Font-10"))
 
+(setq frame-resize-pixelwise t
+      frame-inhibit-implied-resize t
+      ring-bell-function 'ignore
+      use-dialog-box nil
+      use-file-dialog t
+      use-short-answers t
+      inhibit-splash-screen t
+      inhibit-startup-screen t
+      inhibit-x-resources t
+      inhibit-startup-buffer-menu nil)
+
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 (provide 'early-init)
 ;;; early-init.el ends here

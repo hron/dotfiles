@@ -42,6 +42,19 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
+(use-package emacs
+  :init
+  ;; Do not extend it to the end of the line
+  (custom-set-faces
+   '(region ((t :extend nil))))
+  :custom
+  (modus-themes-common-palette-overrides
+   '(;; Make the region to change only the background
+     (bg-region bg-ochre)
+     (fg-region unspecified)))
+  (modus-themes-italic-constructs t)
+  (modus-themes-bold-constructs t))
+
 (use-package auto-dark
   :init
   (auto-dark-mode)
