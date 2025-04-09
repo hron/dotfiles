@@ -37,5 +37,43 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+
+;; straight.el bootstrap
+(setq straight-use-package-by-default t)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(use-package emacs
+  :init
+  ;; Do not extend it to the end of the line
+  (custom-set-faces
+   '(region ((t :extend nil))))
+  :custom
+  (modus-themes-common-palette-overrides
+   '(;; Make the region to change only the background
+     (bg-region bg-ochre)
+     (fg-region unspecified)))
+  (modus-themes-italic-constructs t)
+  (modus-themes-bold-constructs t))
+
+(use-package auto-dark
+  :init
+  (auto-dark-mode)
+  :custom
+  (auto-dark-themes '((modus-vivendi) (modus-operandi))))
+
 (provide 'early-init)
 ;;; early-init.el ends here
