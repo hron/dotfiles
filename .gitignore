@@ -47,3 +47,8 @@
 /.config/devilspie2/debug
 /.config/devilspie2/errors
 /.logseq/git/
+
+/.config/emacs/auto-save-list
+/.config/emacs/eln-cache
+/.config/emacs/straight
+/.config/emacs/transient
