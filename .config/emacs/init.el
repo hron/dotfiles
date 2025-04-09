@@ -24,6 +24,15 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
+  :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
+  :config
+  (setq doom-modeline-major-mode-icon t
+        doom-modeline-buffer-file-name-style 'file-name
+        doom-modeline-height (+ (frame-char-height) 8)))
+
 (use-package gptel
   :bind (:map global-map
               ("C-<return>" . gptel-menu)
