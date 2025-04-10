@@ -714,19 +714,19 @@ to the current theme"
 
 (use-package! corfu
   :config
-  (setq corfu-preview-current nil)
+  (setq corfu-preview-current nil
+        corfu-preselect t)
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
   :bind (:map global-map
          ("C-SPC" . completion-at-point)
          :map corfu-map
-         ("<return>" . corfu-complete)
+         ("<tab>" . corfu-expand)
          ("<home>" . corfu-first)
          ("<end>" . corfu-last)
          ("<prior>" . corfu-scroll-down)
          ("<next>" . corfu-scroll-up)
          ("M-v" . nil)
          ("C-v" . nil)))
-
 
 (use-package! kbd-mode)
 (use-package! yaml-mode
