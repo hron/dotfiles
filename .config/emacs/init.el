@@ -54,6 +54,7 @@
               )
   :config (setq gptel-model "gpt-4o"))
 
+(setq-default cursor-type '(bar . 3))
 (modify-all-frames-parameters
  '((font . "JetBrainsMono Nerd Font-10")))
 (menu-bar-mode -1)
@@ -61,5 +62,16 @@
 (tool-bar-mode -1)
 (fringe-mode (frame-char-width))
 
+(use-package emacs
+  :bind (:map global-map
+              ("C-<f2>" . list-processes)
+              ("C-d" . duplicate-dwim)))
+
+(use-package magit
+  :bind (:map magit-section-mode-map
+         ("C-<tab>" . nil)
+         ("<C-iso-lefttab>" . nil)
+         :map magit-mode-map
+         ("C-w" . delete-window)))
 (provide 'init)
 ;;; init.el ends here
