@@ -186,6 +186,7 @@ to the current theme"
                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
                   org-archive-default-command 'org-archive-subtree
                   org-agenda-start-on-weekday 1
+                  org-agenda-span 'week
                   calendar-week-start-day 1
                   org-capture-templates
                   '(("i" "Todo" entry (file "~/org/inbox.org")
