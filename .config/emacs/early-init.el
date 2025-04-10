@@ -19,9 +19,6 @@
 ;;
 ;;; Code:
 
-(add-to-list 'default-frame-alist
-             '(font . "JetBrainsMono Nerd Font-10"))
-
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
       ring-bell-function 'ignore
@@ -32,11 +29,6 @@
       inhibit-startup-screen t
       inhibit-x-resources t
       inhibit-startup-buffer-menu nil)
-
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-
 
 ;; straight.el bootstrap
 (setq straight-use-package-by-default t)
@@ -73,10 +65,9 @@
   :init
   (auto-dark-mode)
   :custom
-  (auto-dark-themes '((modus-vivendi) (modus-operandi))))
+  (auto-dark-themes '((modus-vivendi) (modus-operandi)))
+  :unless noninteractive)
 
-
-;;; cua-mode
 (defun aleksei/define-global-key-translations (&optional frame)
   "ESC according modern conventions"
   (with-selected-frame (or frame (selected-frame))

@@ -54,5 +54,12 @@
               )
   :config (setq gptel-model "gpt-4o"))
 
+(modify-all-frames-parameters
+ '((font . "JetBrainsMono Nerd Font-10")))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(fringe-mode (frame-char-width))
+
 (provide 'init)
 ;;; init.el ends here
