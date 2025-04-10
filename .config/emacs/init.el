@@ -90,6 +90,39 @@
 
   :custom (search-exit-option . 'edit))
 
+
+(use-package consult
+  :bind (:map global-map
+         ("C-b" . consult-buffer)
+         :map minibuffer-local-map
+         ("C-f" . consult-history)
+         ("C-r" . consult-history)))
+
+(use-package vertico
+  :bind (:map minibuffer-local-map
+              ("C-s" . nil)
+              ("<prior>" . vertico-scroll-down)
+              ("<next>" . vertico-scroll-up)
+              ("C-j" . vertico-exit-input))
+  :config
+  (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom)))
+  ;; (vertico-buffer-mode +1)
+  )
+
+(use-package embark
+  :bind (:map global-map
+         ("M-<return>" . embark-act)
+         ("C-;" . nil)
+         :map minibuffer-local-map
+         ("M-<return>" . embark-act)
+         :map minibuffer-mode-map
+         ("M-<return>" . embark-act))
+  :custom
+  (embark-indicators '(embark--vertico-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
+  (embark-prompter 'embark-completing-read-prompter))
+
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline

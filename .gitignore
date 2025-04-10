@@ -52,3 +52,4 @@
 /.config/emacs/eln-cache
 /.config/emacs/straight
 /.config/emacs/transient
+/.config/emacs/projects
