@@ -135,7 +135,7 @@ to the current theme"
   (org-agenda-list))
 
 ;;;###autoload
-(defun gusev/org-todo-convert-to-project ()
+(defun algus/org-todo-convert-to-project ()
   (interactive)
   (save-excursion
     (org-todo "")
@@ -152,36 +152,15 @@ to the current theme"
   (org-capture "" "i")
   (delete-other-windows))
 
-;; (defun aleksei/org-yank ()
-;;   "Paste media or text based on clipboard content in Org mode."
-;;   (interactive)
-;;   (let* ((clipboard-data (clipboard-yank))
-;;          (f (if (memq 'text (car clipboard-data)) 'cua-paste 'yank-media)))
-;;     (call-interactively f)))
-
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (local-set-key (kbd "C-v") 'my-org-paste)))
-
-;; (defun aleksei/clipboard-data ()
-;;   "Get clipboard data without inserting it."
-;;   (with-temp-buffer
-;;     (clipboard-yank)))
-
-;; (defun aleksei/cua-paste (orig-cua-paste &rest args)
-;;   "Paste media or text based on clipboard content in Org mode."
-;;   (interactive)
-;;   (let ((clipboard-data (aleksei/clipboard-data)))
-;;     (call-interactively
-;;      (if (memq 'text (car clipboard-data))
-;;          orig-cua-paste 'yank-media))))
-
-;; (advice-add 'cua-paste :around #'aleksei/cua-paste)
-
 (use-package! org
+  :init
+  (defun algus/org-update-parent-todo-statistics ()
+    (let ((current-prefix-arg t))
+      (call-interactively 'org-update-statistics-cookies)))
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
-                       (toggle-word-wrap +1))))
+                       (toggle-word-wrap +1)
+                       (add-hook! 'before-save-hook :local t #'algus/org-update-parent-todo-statistics))))
   :config (progn
             (setq org-tag-alist '(("outside" . ?o)
                                   ("read" . ?r)
@@ -217,7 +196,7 @@ to the current theme"
               ("S-M-<return>" . org-insert-todo-heading-respect-content)
               ("S-C-<up>" . org-metaup)
               ("S-C-<down>" . org-metadown)
-              ("C-c C-e" . gusev/org-todo-convert-to-project)
+              ("C-c C-e" . algus/org-todo-convert-to-project)
               ("C-<return>" . org-todo)
               ("S-<return>" . org-insert-heading)
               ("C-S-<left>" . nil)
@@ -234,7 +213,8 @@ to the current theme"
               ("M-<right>" . nil)
               ("C-c y" . yank-media)
               )
-  :custom (org-provide-todo-statistics 'all-headlines))
+  :custom (org-provide-todo-statistics 'all-headlines)
+  )
 
 (use-package! org-agenda
   :bind* (:map org-agenda-mode-map
