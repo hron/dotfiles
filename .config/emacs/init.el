@@ -24,6 +24,8 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
+(add-to-list 'load-path (locate-user-emacs-file "lisp"))
+
 (use-package emacs
   :init
   (cua-mode +1)
@@ -73,5 +75,8 @@
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
          ("C-w" . delete-window)))
+
+(require 'algus-org)
+
 (provide 'init)
 ;;; init.el ends here
