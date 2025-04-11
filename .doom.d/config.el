@@ -283,7 +283,6 @@ to the current theme"
 
 (global-set-key (kbd "M-f") '+default/search-buffer)
 (global-set-key (kbd "C-S-f") '+default/search-project)
-(global-set-key (kbd "C-S-r") 'projectile-replace)
 
 (global-set-key (kbd "C-M-<down>") 'next-error)
 (global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
@@ -384,7 +383,8 @@ to the current theme"
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("M-9" . magit-status)
-              ("C-e" . consult-projectile)))
+              ("C-e" . consult-projectile)
+              ("C-S-r" . projectile-replace)))
 
 (use-package! emacs
   :config
