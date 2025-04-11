@@ -4,7 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval progn (pp-buffer) (indent-buffer)) (checkdoc-package-keywords-flag)
+   '((eval ignore-errors
+      (push
+       '("Tests" "(\\(\\<ert-deftest\\)\\>\\s *\\(\\(?:\\sw\\|\\s_\\)+\\)?" 2)
+       imenu-generic-expression))
+     (eval progn (pp-buffer) (indent-buffer)) (checkdoc-package-keywords-flag)
      (+format-on-save-disabled-modes quote (clojure-mode clojurescript-mode))
      (+format-on-save-disabled-modes quote (clojure-mode))
      (+format-with . phpcs) (+format-with quote phpcs) (+format-with-lsp-mode)
