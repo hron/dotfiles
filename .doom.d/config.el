@@ -371,20 +371,21 @@ to the current theme"
               ("M-]" . +vc-gutter/next-hunk)
               ("C-'" . diff-hl-show-hunk)))
 
-(defun aleksei/compile ()
-  "Run compilation command in project root or just in current dir"
-  (interactive)
-  (if (projectile-project-root)
-      (call-interactively 'projectile-compile-project)
-    (call-interactively 'compile)))
-
 (use-package! projectile
+  :init
+  (defun aleksei/compile ()
+    "Run compilation command in project root or just in current dir"
+    (interactive)
+    (if (projectile-project-root)
+        (call-interactively 'projectile-compile-project)
+      (call-interactively 'compile)))
   :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("M-9" . magit-status)
               ("C-e" . consult-projectile)
               ("C-S-r" . projectile-replace)))
+
 
 (use-package! emacs
   :config
