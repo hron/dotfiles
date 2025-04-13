@@ -414,9 +414,7 @@ to the current theme"
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 (use-package! vterm
-  :bind (:map global-map
-         ("C-`" . +vterm/toggle)
-         :map vterm-mode-map
+  :bind (:map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
          ("C-<backspace>" . vterm-send-meta-backspace)

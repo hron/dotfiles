@@ -57,3 +57,5 @@
 
 (setenv "AWS_PAGER" "")
 (setenv "PAGER" "")
+
+(map! "C-`" #'+eshell/toggle)
