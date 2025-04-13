@@ -386,7 +386,8 @@ to the current theme"
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("M-9" . magit-status)
               ("C-e" . consult-projectile)
-              ("C-S-r" . projectile-replace)))
+              ("C-S-r" . projectile-replace))
+  :custom (project-list-exclude '(".local\/straight/repos")))
 
 
 (use-package! emacs
