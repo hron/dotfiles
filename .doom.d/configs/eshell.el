@@ -31,7 +31,9 @@
               ("<up>" . nil)
               ("<down>" . nil)
               ("C-<up>" . nil)
-              ("C-<down>" . nil)))
+              ("C-<down>" . nil)
+              ("M-<up>" . eshell-previous-matching-input-from-input)
+              ("M-<down>" . eshell-next-matching-input-from-input)))
 
 (use-package! em-prompt
   :bind (:map eshell-prompt-mode-map
