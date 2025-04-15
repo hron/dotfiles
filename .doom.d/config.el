@@ -395,7 +395,7 @@ to the current theme"
   :config
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
-        (cons '(node "^[  ]+at \\(?:[^\(\n]+ \(\\)?\\([@a-zA-Z\.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\)\)?$"
+        (cons '(node "^[  ]+at \\(?:[^(\n]+ (?\\)?\\(?:file://\\)?\\([@a-zA-Z.0-9_/-]+\\):\\([0-9]+\\):\\([0-9]+\\))?$"
                 1 ;; file
                 2 ;; line
                 3 ;; column
