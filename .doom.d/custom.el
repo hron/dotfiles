@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((checkdoc-allow-quoting-nil-and-t . t)
+   '((comment-fill-column . 80) (checkdoc-allow-quoting-nil-and-t . t)
      (eval ignore-errors
       (push
        '("Tests" "(\\(\\<ert-deftest\\)\\>\\s *\\(\\(?:\\sw\\|\\s_\\)+\\)?" 2)
