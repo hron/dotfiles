@@ -28,35 +28,21 @@
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (use-package! emacs
   :init
-  (defun aleksei/set-colors-for-current-theme ()
-    "Sets variables like `lsp-ui-doc-border' to good colors according
-to the current theme"
-    (setq lsp-ui-doc-border (modus-themes-get-color-value 'fg-main)))
-  (setq lsp-ui-doc-border "#000000")
-
-  ;; Do not extend it to the end of the line
-  (custom-set-faces
-   '(region ((t :extend nil))))
-
-  (setq modus-themes-common-palette-overrides
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-common-palette-overrides
         '(;; Make the region to change only the background
           (bg-region bg-ochre)
           (fg-region unspecified)))
-
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs t
-        ;; modus-themes-region '(bg-only no-extend)
-        ;; modus-themes-lang-checkers '(straight-underline)
-        ;; modus-themes-paren-match '(bold)
-        ;; modus-themes-org-blocks 'gray-background
-        ;; modus-themes-mode-line '(borderless accented)
-        )
-  :hook (modus-themes-after-load-theme . aleksei/set-colors-for-current-theme))
+  ;; Do not extend it to the end of the line
+  (custom-set-faces `(region ((t :extend nil))))
+  :hook (modus-themes-after-load-theme . algus/modus-themes-custom-faces))
 (setq doom-theme 'modus-operandi)
 
 (after! doom-ui
@@ -347,7 +333,12 @@ to the current theme"
 
   :hook ((lsp-mode-hook . (lambda ()
                             (setq-local er/try-expand-list
-                                        (append er/try-expand-list '(lsp-extend-selection))))))
+                                        (append er/try-expand-list '(lsp-extend-selection)))))
+         (lsp-ui-mode . (lambda ()
+                          (setq lsp-ui-doc-border (modus-themes-get-color-value 'fg-main))
+                          (modus-themes-with-colors
+                            (custom-set-faces
+                             `(lsp-ui-doc-background ((t :background ,bg-dim))))))))
   :custom
   (lsp-ui-sideline-diagnostic-max-lines 10)
   (lsp-ui-sideline-show-diagnostics t)
