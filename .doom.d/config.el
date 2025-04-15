@@ -36,7 +36,7 @@
   (defun aleksei/set-colors-for-current-theme ()
     "Sets variables like `lsp-ui-doc-border' to good colors according
 to the current theme"
-    (setq lsp-ui-doc-border (modus-themes-color 'fg-main)))
+    (setq lsp-ui-doc-border (modus-themes-get-color-value 'fg-main)))
   (setq lsp-ui-doc-border "#000000")
 
   ;; Do not extend it to the end of the line
