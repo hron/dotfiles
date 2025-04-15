@@ -808,39 +808,6 @@ to the current theme"
   :config
   (global-treesit-auto-mode +1))
 
-(use-package! scroll-on-jump
-  :config
-  (setq scroll-on-jump-duration 0.15)
-  (let ((funcs-to-advice '(forward-paragraph
-                           backward-paragraph
-                           beginning-of-buffer
-                           end-of-buffer
-                           better-jumper-jump-forward
-                           better-jumper-jump-backward
-                           +vc-gutter/previous-hunk
-                           +vc-gutter/next-hunk
-                           undo-fu-only-undo
-                           undo-fu-only-redo
-                           +lookup/definition
-                           +lookup/type-definition
-                           +lookup/implementations
-                           vterm-next-prompt
-                           vterm-previous-prompt
-                           flycheck-next-error
-                           flycheck-previous-error
-                           comint-next-prompt
-                           comint-previous-prompt)))
-    (dolist (func funcs-to-advice)
-      (eval `(scroll-on-jump-advice-add ,func))))
-
-  (let ((funcs '(cua-scroll-up
-                 cua-scroll-down
-                 recenter-top-bottom
-                 ;; isearch-update
-                 )))
-    (dolist (func funcs)
-      (eval `(scroll-on-jump-with-scroll-advice-add ,func)))))
-
 (use-package! bookmark
   :ensure nil
   :custom
