@@ -73,7 +73,7 @@ to the current theme"
 (setq display-line-numbers-type nil)
 (setq-default cursor-type '(bar . 3))
 
-(set-fringe-style '(20 . 20))
+(fringe-mode (frame-char-width))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
