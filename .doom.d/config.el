@@ -895,3 +895,5 @@ to the current theme"
 ;;   (desktop-save-mode +1)
 ;;   :custom
 ;;   (desktop-path (list "." user-emacs-directory)))
+
+(add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
