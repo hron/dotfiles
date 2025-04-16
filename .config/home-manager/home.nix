@@ -145,7 +145,7 @@ in
     orgMode = {
       name = "GTD";
       comment = "Get Things Done with org-mode";
-      exec = "emacs --name org-mode --eval \"(aleksei/org-gtd)\"";
+      exec = "emacs  --no-desktop --name org-mode --eval \"(aleksei/org-gtd)\"";
       icon = "org.gnome.Todo";
       type = "Application";
       terminal = false;
