@@ -844,10 +844,10 @@
       (gcmh-set-high-threshold)
       (setq +lsp--optimization-init-p t))))
 
-(add-hook! 'doom-project-hook '(lambda (&rest _)
-                                 (when-let ((root (doom-project-root)))
-                                   (when (not (string= desktop-dirname root))
-                                     (desktop-change-dir root)))))
+;; (add-hook! 'doom-project-hook '(lambda (&rest _)
+;;                                  (when-let ((root (doom-project-root)))
+;;                                    (when (not (string= desktop-dirname root))
+;;                                      (desktop-change-dir root)))))
 
 (use-package! emacs
   :init
