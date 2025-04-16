@@ -350,7 +350,8 @@
   (lsp-eslint-run "onType")
   (lsp-headerline-breadcrumb-enable t)
   (lsp-headerline-breadcrumb-segments '(file symbols))
-  (lsp-headerline-breadcrumb-enable-diagnostics nil))
+  (lsp-headerline-breadcrumb-enable-diagnostics nil)
+  (lsp-file-watch-threshold 5000))
 
 (load! "configs/flycheck")
 (load! "configs/dap-mode")
