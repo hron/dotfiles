@@ -570,9 +570,7 @@
               ("S-RET" . +default/diagnostics)
               ("C-S-o" . imenu)
               ("C-M-o" . consult-imenu-multi)
-              ("C-w" . (lambda ()
-                         (interactive)
-                         (kill-buffer (current-buffer)))))
+              ("C-w" . delete-window))
   :config
   ;;;###autoload
   (defun aleksei/comment-dwim (&optional arg)
