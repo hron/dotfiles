@@ -45,10 +45,12 @@
   :hook (modus-themes-after-load-theme . algus/modus-themes-custom-faces))
 (setq doom-theme 'modus-operandi)
 
-(after! doom-ui
-  (setq! auto-dark-dark-theme 'modus-vivendi
-         auto-dark-light-theme 'modus-operandi)
-  (auto-dark-mode 1))
+(use-package auto-dark
+  :init
+  (after! doom-ui
+    (setq! auto-dark-dark-theme 'modus-vivendi
+           auto-dark-light-theme 'modus-operandi)
+    (auto-dark-mode 1)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
