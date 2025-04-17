@@ -885,6 +885,6 @@
 
   (desktop-save-mode +1)
   :custom
-  (desktop-path (list "." user-emacs-directory)))
+  (desktop-path (list ".")))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
