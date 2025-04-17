@@ -5,7 +5,7 @@
 (use-package! emacs
   :bind (("C-<next>" . other-window)
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
-         ("M-i" . window-toggle-side-windows)))
+         ("M-i" . delete-other-windows)))
 
 (setq aleksei/default-side-window-width .5
       aleksei/default-side-window-height .33)
