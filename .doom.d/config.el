@@ -376,13 +376,29 @@
     (if (projectile-project-root)
         (call-interactively 'projectile-compile-project)
       (call-interactively 'compile)))
+
+  (defvar algus/project-list-exclude '(".local\/straight/repos")
+    "Used by `algus/project-p' to exclude projects")
+
+  (defun algus/project-ignored-p (dir)
+    "Decides if `DIR' is ignored as a project"
+    (seq-some (lambda (r) (string-match-p r dir))
+              algus/project-list-exclude))
+  
+  (defun algus/projectile-project-p (dir)
+    "Decides if `DIR' is a project. It is used by projectile"
+    (or (doom-project-ignored-p dir)
+        (algus/project-ignored-p dir)))
+
+  :custom ((projectile-ignored-project-function #'algus/projectile-project-p)
+           (project-list-exclude '(algus/project-ignored-p)))
+
   :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
               ("C-8" . projectile-run-async-shell-command-in-root)
               ("M-9" . magit-status)
               ("C-e" . consult-projectile)
-              ("C-S-r" . projectile-replace))
-  :custom (project-list-exclude '(".local\/straight/repos")))
+              ("C-S-r" . projectile-replace)))
 
 
 (use-package! emacs
