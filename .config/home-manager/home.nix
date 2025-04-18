@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30).treesit-grammars.with-all-grammars;
-  emacs = (pkgs.emacsPackagesFor pkgs.emacs30).emacsWithPackages (
+  treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).treesit-grammars.with-all-grammars;
+  emacs = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).emacsWithPackages (
     epkgs: with epkgs; [
       vterm
       treesitGrammars

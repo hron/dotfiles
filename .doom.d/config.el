@@ -23,7 +23,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
-  26)
+  13)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
       doom-unicode-font doom-font
@@ -61,8 +61,6 @@
 (setq display-line-numbers-type nil)
 (setq-default cursor-type '(bar . 3))
 
-(fringe-mode (frame-char-width))
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -89,7 +87,6 @@
 
 (use-package! magit
   :init
-  (setq +magit-fringe-size nil)
   :bind (:map magit-section-mode-map
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
