@@ -28,3 +28,4 @@
 (put 'magit-clean 'disabled nil)
 (put 'customize-face 'disabled nil)
 (put 'customize-group 'disabled nil)
+(put 'scroll-left 'disabled nil)

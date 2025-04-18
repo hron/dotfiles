@@ -379,7 +379,7 @@
 
   (defvar algus/project-list-exclude '(".local\/straight/repos")
     "Used by `algus/project-p' to exclude projects")
-
+  
   (defun algus/project-ignored-p (dir)
     "Decides if `DIR' is ignored as a project"
     (seq-some (lambda (r) (string-match-p r dir))
@@ -902,3 +902,27 @@
   (desktop-path (list ".")))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
+
+
+
+(use-package emacs
+  :init
+  (defun algus/javascript-console-dir ()
+    "Add console.dir calls one line above with the current region as the param."
+    (interactive)
+    (when (use-region-p)
+      (let ((region-text (buffer-substring-no-properties (region-beginning) (region-end))))
+        (save-excursion
+          (goto-char (region-beginning))
+          (forward-line -1)
+          (end-of-line)
+          (insert
+           "\n\n// TODO: Remove me!\n"
+           "console.dir(\n"
+           region-text
+           "\n);\n")))))
+
+  :config
+  (map! :map (typescript-ts-mode-map typescript-mode-map rjsx-mode-map)
+        "C-c C-d"
+        #'algus/javascript-console-dir))
