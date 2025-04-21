@@ -704,7 +704,8 @@
 (use-package! corfu
   :config
   (setq corfu-preview-current nil
-        corfu-preselect t)
+        corfu-preselect t
+        corfu-auto nil)
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
   :bind (:map global-map
          ("C-SPC" . completion-at-point)
