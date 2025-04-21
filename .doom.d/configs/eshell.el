@@ -21,10 +21,12 @@
 (use-package! esh-mode
   :bind (:map eshell-mode-map
               ("<home>" . eshell-bol)
-              ("C-r" . consult-history)))
+              ("C-r" . consult-history))
+  :hook ((eshell-mode . (lambda () (eldoc-mode -1)))))
 
 (after! eshell
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
+
 
 (use-package! em-hist
   :bind (:map eshell-hist-mode-map
