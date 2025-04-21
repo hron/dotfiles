@@ -341,7 +341,9 @@
                              `(lsp-ui-doc-background ((t :background ,bg-dim))))))))
   :custom
   (lsp-ui-sideline-diagnostic-max-lines 10)
-  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-sideline-show-diagnostics nil)
+  (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-enable nil)
   (lsp-ui-doc-max-height 13)
   (lsp-eslint-experimental-incremental-sync t)
   (lsp-modeline-diagnostics-enable nil)
@@ -351,7 +353,13 @@
   (lsp-headerline-breadcrumb-enable t)
   (lsp-headerline-breadcrumb-segments '(file symbols))
   (lsp-headerline-breadcrumb-enable-diagnostics nil)
-  (lsp-file-watch-threshold 5000))
+  (lsp-file-watch-threshold 5000)
+  (lsp-enable-symbol-highlighting nil)
+  ;; If an LSP server isn't present when I start a prog-mode buffer, you
+  ;; don't need to tell me. I know. On some machines I don't care to have
+  ;; a whole development environment for some ecosystems.
+  (lsp-enable-suggest-server-download nil))
+
 
 (use-package! flycheck
   :bind (:map flycheck-mode-map
@@ -721,7 +729,7 @@
   :config
   (setq corfu-preview-current nil
         corfu-preselect t
-        corfu-auto nil)
+        corfu-auto t)
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
   :bind (:map global-map
          ("C-SPC" . completion-at-point)
