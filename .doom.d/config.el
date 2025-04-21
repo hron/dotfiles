@@ -47,6 +47,7 @@
 
 (use-package auto-dark
   :init
+  (add-hook 'desktop-after-read-hook #'doom/reload-theme)
   (after! doom-ui
     (setq! auto-dark-dark-theme 'modus-vivendi-tinted
            auto-dark-light-theme 'modus-operandi-tinted)
@@ -879,7 +880,7 @@
 ;;                                    (when (not (string= desktop-dirname root))
 ;;                                      (desktop-change-dir root)))))
 
-(use-package! emacs
+(use-package desktop
   :init
   ;; (defun doom-highlight-non-default-indentation-h ()
   ;;   "Highlight whitespace at odds with `indent-tabs-mode'.
@@ -909,10 +910,8 @@
             '(lambda ()
                (remove-hook 'after-change-major-mode-hook #'doom-highlight-non-default-indentation-h))
             100)
-
   (desktop-save-mode +1)
-  :custom
-  (desktop-path (list ".")))
+  :custom (desktop-path (list ".")))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
 
