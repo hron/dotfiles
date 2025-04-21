@@ -22,11 +22,11 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
-  "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
+  "Returns font size depending on the environment"
   13)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
-      doom-unicode-font doom-font
+      doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -126,7 +126,7 @@
   (interactive)
   (save-excursion
     (org-todo "")
-    (goto-char (point-at-bol))
+    (goto-char (line-beginning-position))
     (if (looking-at "\\(**+\\) ")
         (replace-match "\\1 [/] ")))
   (call-interactively 'org-insert-todo-subheading))
@@ -285,8 +285,8 @@
   (global-set-key [f3] 'winner-undo)
   (global-set-key [f4] 'winner-redo))
 
-(global-set-key (kbd "C-j") '(lambda () (interactive) (next-line) (join-line)))
-(global-set-key (kbd "C-S-j") '(lambda () (interactive) (next-line) (join-line)))
+(global-set-key (kbd "C-j") #'(lambda () (interactive) (forward-line) (join-line)))
+(global-set-key (kbd "C-S-j") #'(lambda () (interactive) (forward-line) (join-line)))
 
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-S-b") 'switch-to-buffer)
@@ -352,7 +352,11 @@
   (lsp-headerline-breadcrumb-enable-diagnostics nil)
   (lsp-file-watch-threshold 5000))
 
-(load! "configs/flycheck")
+(use-package! flycheck
+  :bind (:map flycheck-mode-map
+              ("<f2>" . #'flycheck-next-error)
+              ("S-<f2>" . #'flycheck-previous-error)))
+
 (load! "configs/dap-mode")
 
 (use-package! mocha
@@ -445,7 +449,7 @@
   (vterm-max-scrollback 100000)
   :config
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
-  (add-hook 'vterm-mode-hook '(lambda () (setq-local cua-mode nil)))
+  (add-hook 'vterm-mode-hook #'(lambda () (setq-local cua-mode nil)))
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
 
   (defun aleksei/vterm-copy-mode-next-prompt ()
