@@ -544,8 +544,13 @@
 
 (use-package! undo-fu
   :bind (:map global-map
-              ("C-z"   . undo-fu-only-undo)
-              ("C-S-z" . undo-fu-only-redo)))
+         ("C-_" . nil)
+         ("M-_" . nil )
+         :map undo-fu-mode-map
+         ("C-z"   . undo-fu-only-undo)
+         ("C-S-z" . undo-fu-only-redo)
+         ("C-_" . nil)
+         ("C-M-_" . nil)))
 
 (use-package! consult
   :bind (:map global-map
