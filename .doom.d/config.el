@@ -48,8 +48,8 @@
 (use-package auto-dark
   :init
   (after! doom-ui
-    (setq! auto-dark-dark-theme 'modus-vivendi
-           auto-dark-light-theme 'modus-operandi)
+    (setq! auto-dark-dark-theme 'modus-vivendi-tinted
+           auto-dark-light-theme 'modus-operandi-tinted)
     (auto-dark-mode 1)))
 
 ;; If you use `org' and don't want your org files in the default location below,
