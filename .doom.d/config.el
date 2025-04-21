@@ -379,7 +379,7 @@
         (call-interactively 'projectile-compile-project)
       (call-interactively 'compile)))
 
-  (defvar algus/project-list-exclude '(".local\/straight/repos")
+  (defvar algus/project-list-exclude '(".local\/straight/repos" "dotfiles/doom-emacs")
     "Used by `algus/project-p' to exclude projects")
   
   (defun algus/project-ignored-p (dir)
