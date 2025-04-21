@@ -88,6 +88,7 @@
 
 (use-package! magit
   :init
+  (setq +magit-fringe-size nil)
   :bind (:map magit-section-mode-map
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
