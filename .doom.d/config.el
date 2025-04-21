@@ -25,7 +25,7 @@
   "Returns font size depending on the environment. Currently I use a smaller font on Wayland"
   13)
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
       doom-unicode-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
