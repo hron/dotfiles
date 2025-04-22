@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(use-package! emacs
+(use-package emacs
   :init
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
@@ -40,10 +40,16 @@
         '(;; Make the region to change only the background
           (bg-region bg-ochre)
           (fg-region unspecified)))
-  ;; Do not extend it to the end of the line
-  (custom-set-faces `(region ((t :extend nil))))
-  :hook (modus-themes-after-load-theme . algus/modus-themes-custom-faces))
-(setq doom-theme 'modus-operandi)
+
+  (defun algus/apply-theme-customizations ()
+    (modus-themes-with-colors
+      (custom-set-faces
+       ;; Do not extend it to the end of the line
+       `(region ((t :extend nil)))
+       ;; `(flycheck-posframe-border-face ((t :foreground ,border)))
+       )))
+  
+  :hook ((modus-themes-after-load-theme . #'algus/apply-theme-customizations)))
 
 (use-package auto-dark
   :init
