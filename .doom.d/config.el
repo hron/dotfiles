@@ -19,13 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-bold)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Returns font size depending on the environment"
   13)
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
       doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
