@@ -756,8 +756,11 @@
               ("<backspace>" . backward-delete-char-untabify)))
 
 (use-package! gptel
+  :init
+  ;; :key can be a function that returns the API key.
+  ;; (gptel-make-gemini "Gemini"  :stream t)
   :bind (:map global-map
-              ("C-<return>" . gptel-menu)
+              ("C-S-q" . gptel-menu)
               ;; :map gptel-mode
               ;; ("C-<return>" . gptel-send)
               )
