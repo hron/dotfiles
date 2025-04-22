@@ -94,3 +94,5 @@
 (package! iflipb)
 
 (package! consult-projectile)
+
+(package! eldoc-box)

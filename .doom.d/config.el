@@ -99,7 +99,7 @@
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
-         ("C-w" . delete-window)))
+         ("C-w" . #'delete-window)))
 
 (use-package! smartparens
   :config
@@ -230,8 +230,6 @@
                                         nil)))
 
 (use-package! emacs
-  :bind (:map emacs-lisp-mode-map
-              ("C-q" . describe-symbol))
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
 (use-package! ert
@@ -322,9 +320,7 @@
 
 (use-package lsp-mode
   :bind (:map lsp-mode-map
-              ("C-q" . lsp-ui-doc-show-or-focus)
               ("M-<RET>" . lsp-execute-code-action)
-              ("C-S-q" . lsp-rust-analyzer-open-external-docs)
               ("C-t" . lsp-rename)
               ("C-." . lsp-execute-code-action)
               ("C-S-o" . consult-lsp-file-symbols))
@@ -367,15 +363,13 @@
   ;; a whole development environment for some ecosystems.
   (lsp-enable-suggest-server-download nil))
 
-
-(use-package! flycheck
-  :bind (:map flycheck-mode-map
-              ("<f2>" . #'flycheck-next-error)
-              ("S-<f2>" . #'flycheck-previous-error))
-  :custom ((flycheck-posframe-border-width 1)
-           (flycheck-posframe-border-use-error-face t)))
-
-(load! "configs/dap-mode")
+(use-package flymake
+  :bind (:map flymake-mode-map
+              ("<f2>" . #'flymake-goto-next-error)
+              ("S-<f2>" . #'flymake-goto-prev-error))
+  :hook ((prog-mode text-mode) . flymake-mode)
+  :custom (;; (flymake-show-diagnostics-at-end-of-line t)
+           ))
 
 (use-package! mocha
   :custom (mocha-reporter "spec"))
@@ -483,10 +477,6 @@
   (defun aleksei/vterm-new-tab ()
     (interactive)
     (vterm 'new)))
-
-(use-package! tide
-  :bind (:map tide-mode-map
-              ("C-q" . tide-documentation-at-point)))
 
 (use-package! better-jumper
   :bind (("M-<left>" . better-jumper-jump-backward)
@@ -965,3 +955,10 @@
   (map! :map (typescript-ts-mode-map typescript-mode-map rjsx-mode-map)
         "C-c C-d"
         #'algus/javascript-console-dir))
+
+(use-package eldoc-box
+  :hook (prog-mode . eldoc-box-hover-at-point-mode)
+  :bind (:map prog-mode-map
+              ("C-q" . #'eldoc-box-help-at-point)
+              ("M-<up>" . #'eldoc-box-scroll-up)
+              ("M-<down>" . #'eldoc-box-scroll-down)))
