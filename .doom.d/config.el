@@ -371,7 +371,9 @@
 (use-package! flycheck
   :bind (:map flycheck-mode-map
               ("<f2>" . #'flycheck-next-error)
-              ("S-<f2>" . #'flycheck-previous-error)))
+              ("S-<f2>" . #'flycheck-previous-error))
+  :custom ((flycheck-posframe-border-width 1)
+           (flycheck-posframe-border-use-error-face t)))
 
 (load! "configs/dap-mode")
 
