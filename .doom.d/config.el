@@ -229,6 +229,12 @@
                                         (transient . t)
                                         nil)))
 
+(use-package! org-modern
+  :custom
+  (org-modern-todo nil)
+  (org-modern-progress nil)
+  (org-modern-timestamp nil))
+
 (use-package! emacs
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
