@@ -67,6 +67,7 @@ content, and select the window."
         ((or . ("\\*ChatGPT"
                 "^magit-log"
                 "^magit-revision"
+                (derived-mode . magit-status-mode)
                 "\\*Man"))
          (aleksei/display-buffer-in-side-window-if-wide))
 
