@@ -233,7 +233,8 @@
   :custom
   (org-modern-todo nil)
   (org-modern-progress nil)
-  (org-modern-timestamp nil))
+  (org-modern-timestamp nil)
+  (org-modern-tag nil))
 
 (use-package! emacs
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
