@@ -969,6 +969,5 @@
   (prog-mode . eldoc-box-hover-at-point-mode)
   :bind
   (:map prog-mode-map
-        ("C-q" . #'eldoc-box-help-at-point)
         ("M-<up>" . #'eldoc-box-scroll-up)
         ("M-<down>" . #'eldoc-box-scroll-down)))
