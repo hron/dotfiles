@@ -957,8 +957,12 @@
         #'algus/javascript-console-dir))
 
 (use-package eldoc-box
-  :hook (prog-mode . eldoc-box-hover-at-point-mode)
-  :bind (:map prog-mode-map
-              ("C-q" . #'eldoc-box-help-at-point)
-              ("M-<up>" . #'eldoc-box-scroll-up)
-              ("M-<down>" . #'eldoc-box-scroll-down)))
+  :init
+  (map! :leader :desc "Disable eldoc-mode" :g "t e" #'eldoc-mode)
+  :hook
+  (prog-mode . eldoc-box-hover-at-point-mode)
+  :bind
+  (:map prog-mode-map
+        ("C-q" . #'eldoc-box-help-at-point)
+        ("M-<up>" . #'eldoc-box-scroll-up)
+        ("M-<down>" . #'eldoc-box-scroll-down)))
