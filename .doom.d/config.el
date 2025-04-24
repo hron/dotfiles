@@ -184,9 +184,9 @@
                   org-agenda-start-day nil
                   org-agenda-span 'week
                   calendar-week-start-day 1
-                  org-capture-templates
-                  '(("i" "Todo" entry (file "~/org/inbox.org")
-                     "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))))
+                  org-capture-templates '(("i" "Todo" entry (file "~/org/inbox.org")
+                                           "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
+                  org-log-into-drawer t))
 
   :bind (:map org-mode-map
               ("S-<return>" . org-insert-heading-after-current)
