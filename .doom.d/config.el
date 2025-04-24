@@ -747,13 +747,17 @@
   :bind (:map global-map
          ("C-SPC" . completion-at-point)
          :map corfu-map
-         ("<tab>" . corfu-expand)
-         ("<home>" . corfu-first)
-         ("<end>" . corfu-last)
+         ("<tab>" . corfu-complete)
+         ;; ("<home>" . corfu-first)
+         ;; ("<end>" . corfu-last)
          ("<prior>" . corfu-scroll-down)
          ("<next>" . corfu-scroll-up)
          ("M-v" . nil)
-         ("C-v" . nil)))
+         ("C-v" . nil)
+         ("C-<end>" . nil)
+         ("M-<" . nil)
+         ("M-n" . nil)
+         ("M-p" . nil)))
 
 (use-package! kbd-mode)
 (use-package! yaml-mode
