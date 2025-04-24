@@ -519,7 +519,7 @@
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-pass-rwindow-to-system nil)
 
-(use-package! multiple-cursors-core
+(use-package! multiple-cursors
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
          ("M-J" . mc/skip-to-next-like-this)
