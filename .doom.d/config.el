@@ -880,36 +880,16 @@
 
 ;;; desktop-save-mode configuration
 (use-package desktop
-  :init
-  ;; (defun doom-highlight-non-default-indentation-h ()
-  ;;   "Highlight whitespace at odds with `indent-tabs-mode'.
-  ;; That is, highlight tabs if `indent-tabs-mode' is `nil', and highlight spaces at
-  ;; the beginnings of lines if `indent-tabs-mode' is `t'. The purpose is to make
-  ;; incorrect indentation in the current buffer obvious to you.
-  ;; 
-  ;; Does nothing if `whitespace-mode' or `global-whitespace-mode' is already active
-  ;; or if the current buffer is read-only or not file-visiting."
-  ;;   (unless (or (eq major-mode 'fundamental-mode)
-  ;;               (bound-and-true-p global-whitespace-mode)
-  ;;               (null buffer-file-name)
-  ;;               (and (boundp desktop-file-modtime)
-  ;;                    (not (eq desktop-file-modtime 0))))
-  ;;     (require 'whitespace)
-  ;;     (set (make-local-variable 'whitespace-style)
-  ;;          (cl-union (if indent-tabs-mode
-  ;;                        '(indentation)
-  ;;                      '(tabs tab-mark))
-  ;;                    (when whitespace-mode
-  ;;                      (remq 'face whitespace-active-style))))
-  ;;     (cl-pushnew 'face whitespace-style) ; must be first
-  ;;     (whitespace-mode +1)))
-
+  :config
   ;; This hook incorrectly enables whitespace-mode after desktop is restored.
-  (add-hook 'window-setup-hook
-            '(lambda ()
-               (remove-hook 'after-change-major-mode-hook #'doom-highlight-non-default-indentation-h))
-            100)
-  (desktop-save-mode +1)
+  (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h)
+
+  (add-hook 'doom-after-init-hook #'desktop-save-mode)
+  (add-hook! 'doom-after-init-hook :append
+    (when desktop-save-mode
+      (desktop-read)
+      (setq inhibit-startup-screen t)))
+
   :custom (desktop-path (list ".")))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
