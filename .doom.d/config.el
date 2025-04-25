@@ -883,7 +883,11 @@
 (use-package desktop
   :config
   ;; This hook incorrectly enables whitespace-mode after desktop is restored.
-  (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h)
+  ;; (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h)
+  (add-hook 'window-setup-hook
+            '(lambda ()
+               (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h))
+            100)
   (desktop-save-mode +1)
   :custom ((desktop-path (list "."))
            (desktop-save t)))
