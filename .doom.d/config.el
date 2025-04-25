@@ -22,7 +22,7 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-bold)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
-  "Returns font size depending on the environment"
+  "Return font size depending on the environment."
   13)
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size))
@@ -33,7 +33,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (use-package emacs
-  :init
+  :config
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
         modus-themes-common-palette-overrides
@@ -121,7 +121,7 @@
 
 ;;;###autoload
 (defun aleksei/org-gtd ()
-  "Prepare emacs frame to use as a GTD system."
+  "Prepare Emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
   ;; (dolist (f org-agenda-files)
@@ -877,24 +877,15 @@
   (consult-projectile-sources '(consult--source-buffer
                                 consult-projectile--source-projectile-file)))
 
-
-;;; desktop-save-mode configuration
 (use-package desktop
   :config
   ;; This hook incorrectly enables whitespace-mode after desktop is restored.
   (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h)
-
-  (add-hook 'doom-after-init-hook #'desktop-save-mode)
-  (add-hook! 'doom-after-init-hook :append
-    (when desktop-save-mode
-      (desktop-read)
-      (setq inhibit-startup-screen t)))
-
-  :custom (desktop-path (list ".")))
+  (desktop-save-mode +1)
+  :custom ((desktop-path (list "."))
+           (desktop-save t)))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
-
-
 
 (use-package emacs
   :init
