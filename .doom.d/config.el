@@ -1,9 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Aleksei Gusev"
@@ -32,9 +28,6 @@
       doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
 (use-package emacs
   :config
   (setq modus-themes-italic-constructs t
@@ -55,56 +48,91 @@
   :hook ((modus-themes-after-load-theme . #'algus/apply-theme-customizations)))
 
 (use-package auto-dark
-  :init
+  :config
   (add-hook 'desktop-after-read-hook #'doom/reload-theme)
   (after! doom-ui
-    (setq! auto-dark-dark-theme 'modus-vivendi-tinted
-           auto-dark-light-theme 'modus-operandi-tinted)
+    (setq! auto-dark-dark-theme 'modus-vivendi
+           auto-dark-light-theme 'modus-operandi)
     (auto-dark-mode 1)))
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org")
+(use-package emacs
+  :config
+  (setq-default cursor-type '(bar . 3))
+  (setq w32-pass-lwindow-to-system nil
+        w32-pass-rwindow-to-system nil)
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
-(setq-default cursor-type '(bar . 3))
+  (global-auto-revert-mode +1)
+  (global-subword-mode +1)
+  (blink-cursor-mode +1)
+  (context-menu-mode +1)
 
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
+  ;;;###autoload
+  (defun aleksei/comment-dwim (&optional arg)
+    "Replacement for `comment-dwim'.
+ If no region is selected and point is not at the end of the line,
+ comment or uncomment the current line. Otherwise, call `comment-dwim'."
+    (interactive "*P")
+    (if (and (not (use-region-p))
+             (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
+        (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+      (comment-dwim arg)))
 
-(map! "C-<f2>" 'list-processes)
+  :bind (("C-<f2>" . #'list-processes)
+         ("C-d" . #'duplicate-dwim)
+         ("C-s" . (lambda () (interactive) (save-some-buffers +1)))
+         ("M-<up>" . nil)
+         ("M-<down>" . nil)
+         ("M-S-<up>" . #'drag-stuff-up)
+         ("M-S-<down>" . #'drag-stuff-down)
+         ("<f6>" . #'toggle-truncate-lines)
+         ("C-j" . (lambda () (interactive) (forward-line) (join-line)))
+         ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
+         ("C-a" . #'mark-whole-buffer)
+         ("C-S-b" . #'switch-to-buffer)
+         ("C-p" . #'window-toggle-side-windows)
+         ("C-/" . aleksei/comment-dwim)
+         ("M-t" . aleksei/compile)
+         ("M-r" . recompile)
+         ("C-M-l" . +format/region-or-buffer)
+         ("M-C-." . +lookup/type-definition)
+         ("M-." . +lookup/definition)
+         ("M->" . +lookup/references)
+         ("C-q" . +lookup/documentation)
+         ("S-RET" . +default/diagnostics)
+         ("C-S-o" . imenu)
+         ("C-M-o" . consult-imenu-multi)
+         ("C-w" . delete-window)
 
-(map! "C-d" 'duplicate-dwim)
-(use-package! cc-mode
-  :bind (:map c-mode-base-map
-              ("C-d" . nil)))
+         ;; Folding
+         ("C-=" . +fold/toggle)
+         ("C-k" . +fold/toggle)
+         ("C-M-k" . +fold/open-all)
+         ("M-k" . +fold/close-all))
 
-(use-package! magit
-  :init
-  (setq +magit-fringe-size nil)
+  :custom
+  (display-line-numbers-type nil)
+  (confirm-kill-emacs nil)
+  (delete-by-moving-to-trash t))
+
+(use-package emacs
+  :config
+;;;###autoload
+  (defun aleksei/buffer-file-name-for-frame-title ()
+    (let ((doom-modeline-buffer-file-name-style 'relative-to-project))
+      (doom-modeline-buffer-file-name)))
+
+  (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
+                             (:eval (concat " - " (projectile-project-name))))
+        icon-title-format frame-title-format))
+
+(use-package magit
   :bind (:map magit-section-mode-map
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
          ("C-w" . #'delete-window)))
 
-(use-package! smartparens
+(use-package smartparens
   :config
   (defun aleksei/sp-beginning-or-end-of-sexp ()
     "Move to the beginning of sexp if not at the beginning, otherwise move to the end of sexp."
@@ -113,83 +141,82 @@
       (sp-beginning-of-sexp)
       (when (eq initial-point (point))
         (sp-end-of-sexp))))
-  (custom-set-variables
-   '(sp-override-key-bindings
-     '(("C-<right>" . nil)
-       ("C-<left>" . nil)
-       ("M-m" . aleksei/sp-beginning-or-end-of-sexp)
-       ("C-M-k"  . nil)
-       ("C-M-t" . nil)
-       ("C-M-e" . nil)))))
+  :custom ((sp-override-key-bindings
+            '(("C-<right>" . nil)
+              ("C-<left>" . nil)
+              ("M-m" . aleksei/sp-beginning-or-end-of-sexp)
+              ("C-M-k"  . nil)
+              ("C-M-t" . nil)
+              ("C-M-e" . nil)))))
 
-;;;###autoload
-(defun aleksei/org-gtd ()
-  "Prepare Emacs frame to use as a GTD system."
-  (interactive)
-  (require 'org)
-  ;; (dolist (f org-agenda-files)
-  ;;   (find-file (concat org-directory "/" f)))
-  (find-file (concat org-directory "/tasks.org" ))
-  (org-agenda-list))
-
-;;;###autoload
-(defun algus/org-todo-convert-to-project ()
-  (interactive)
-  (save-excursion
-    (org-todo "")
-    (goto-char (line-beginning-position))
-    (if (looking-at "\\(**+\\) ")
-        (replace-match "\\1 [/] ")))
-  (call-interactively 'org-insert-todo-subheading))
-
-;;;###autoload
-(defun aleksei/org-capture ()
-  "Opens a new frame with Org capture inbox template"
-  (interactive)
-  (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
-  (org-capture "" "i")
-  (delete-other-windows))
-
-(use-package! org
-  :init
-  (defun algus/org-update-parent-todo-statistics ()
-    (let ((current-prefix-arg t))
-      (call-interactively 'org-update-statistics-cookies)))
+(use-package org
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
                        (toggle-word-wrap +1)
                        (add-hook! 'before-save-hook :local t #'algus/org-update-parent-todo-statistics))))
-  :config (progn
-            (setq org-tag-alist '(("outside" . ?o)
-                                  ("read" . ?r)
-                                  ("games" . ?g)
-                                  ("shop" . ?s)
-                                  ("windows" . ?w)
-                                  ("laptop" . ?l)
-                                  ("meet" . ?m)
-                                  ("emacs" . ?e)
-                                  ("watch" . ?a)
-                                  (:startgroup)
-                                  ("Elena" . ?E)
-                                  (:endgroup))
+  :config
+  (defun algus/org-update-parent-todo-statistics ()
+    (let ((current-prefix-arg t))
+      (call-interactively 'org-update-statistics-cookies)))
 
-                  org-todo-keywords '((sequence "TODO" "DONE"))
-                  org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
-                  org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
-                  org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
-                  org-agenda-custom-commands
-                  '(("n" "NA" tags-tree org-agenda-na-expr))
-                  org-agenda-files '("tasks.org" "forenom.org" "tickler.org" "inbox.org")
-                  org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
-                  org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
-                  org-archive-default-command 'org-archive-subtree
-                  org-agenda-start-on-weekday 1
-                  org-agenda-start-day nil
-                  org-agenda-span 'week
-                  calendar-week-start-day 1
-                  org-capture-templates '(("i" "Todo" entry (file "~/org/inbox.org")
-                                           "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
-                  org-log-into-drawer t))
+;;;###autoload
+  (defun aleksei/org-gtd ()
+    "Prepare Emacs frame to use as a GTD system."
+    (interactive)
+    (require 'org)
+    ;; (dolist (f org-agenda-files)
+    ;;   (find-file (concat org-directory "/" f)))
+    (find-file (concat org-directory "/tasks.org" ))
+    (org-agenda-list))
+
+;;;###autoload
+  (defun algus/org-todo-convert-to-project ()
+    (interactive)
+    (save-excursion
+      (org-todo "")
+      (goto-char (line-beginning-position))
+      (if (looking-at "\\(**+\\) ")
+          (replace-match "\\1 [/] ")))
+    (call-interactively 'org-insert-todo-subheading))
+
+;;;###autoload
+  (defun aleksei/org-capture ()
+    "Opens a new frame with Org capture inbox template"
+    (interactive)
+    (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
+    (org-capture "" "i")
+    (delete-other-windows))
+
+  (setq org-provide-todo-statistics 'all-headlines
+        org-directory "~/org"
+        org-tag-alist '(("outside" . ?o)
+                        ("read" . ?r)
+                        ("games" . ?g)
+                        ("shop" . ?s)
+                        ("windows" . ?w)
+                        ("laptop" . ?l)
+                        ("meet" . ?m)
+                        ("emacs" . ?e)
+                        ("watch" . ?a)
+                        (:startgroup)
+                        ("Elena" . ?E)
+                        (:endgroup))
+        org-todo-keywords '((sequence "TODO" "DONE"))
+        org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
+        org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
+        org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
+        org-agenda-custom-commands '(("n" "NA" tags-tree org-agenda-na-expr))
+        org-agenda-files '("tasks.org"  "tickler.org" "inbox.org")
+        org-refile-targets '((org-agenda-files :maxlevel . 2) (("someday.org") :maxlevel . 1))
+        org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
+        org-archive-default-command 'org-archive-subtree
+        org-agenda-start-on-weekday 1
+        org-agenda-start-day nil
+        org-agenda-span 'week
+        calendar-week-start-day 1
+        org-capture-templates '(("i" "Todo" entry (file "~/org/inbox.org")
+                                 "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
+        org-log-into-drawer t)
 
   :bind (:map org-mode-map
               ("S-<return>" . org-insert-heading-after-current)
@@ -211,18 +238,15 @@
               ("M-S-<down>" . org-move-subtree-down)
               ("M-<left>" . nil)
               ("M-<right>" . nil)
-              ("C-c y" . yank-media)
-              )
-  :custom (org-provide-todo-statistics 'all-headlines)
-  )
+              ("C-c y" . yank-media)))
 
-(use-package! org-agenda
+(use-package org-agenda
   :bind* (:map org-agenda-mode-map
                ("z" . org-agenda-undo)
                ("C-z" . org-agenda-undo)
                ("C-<return>" . org-agenda-todo)))
 
-(use-package! org-capture
+(use-package org-capture
   :config
   (setq +org-capture-frame-parameters '((name . "doom-capture")
                                         (left . (+ 1142))
@@ -232,98 +256,79 @@
                                         (transient . t)
                                         nil)))
 
-(use-package! org-modern
+(use-package org-modern
   :custom
   (org-modern-todo nil)
   (org-modern-progress nil)
   (org-modern-timestamp nil)
   (org-modern-tag nil))
 
-(use-package! emacs
-  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
-
-(use-package! ert
+(use-package ert
   :bind (:map emacs-lisp-mode-map
               ("C-; f" . ert)))
 
-(use-package! expand-region
-  :init
-  (global-set-key (kbd "C-h") 'er/expand-region)
-  (global-set-key (kbd "C-S-h") (lambda () (interactive) (er/expand-region -1))))
+(use-package expand-region
+  :config
+  :bind (("C-h" . er/expand-region)
+         ("C-S-h" . (lambda () (interactive) (er/expand-region -1)))))
 
-(use-package! crux
+(use-package crux
   :bind (("<home>" . crux-move-beginning-of-line)))
 
-(global-set-key (kbd "C-M-l") 'indent-region)
-
-(global-set-key (kbd "C-s") (lambda () (interactive) (save-some-buffers +1)))
-
-(global-unset-key (kbd "M-<up>"))
-(global-unset-key (kbd "M-<down>"))
-(global-set-key (kbd "M-S-<up>") 'drag-stuff-up)
-(global-set-key (kbd "M-S-<down>") 'drag-stuff-down)
-
+(use-package isearch
+  :config
 ;;;###autoload
-(defun aleksei/isearch-region-or-forward ()
-  "Do incremental search forward, use region if it's active"
-  (interactive)
-  (if (use-region-p)
-      (isearch-forward-thing-at-point)
-    (isearch-forward)))
+  (defun aleksei/isearch-region-or-forward ()
+    "Do incremental search forward, use region if it's active"
+    (interactive)
+    (if (use-region-p)
+        (isearch-forward-thing-at-point)
+      (isearch-forward)))
 
-(setq search-exit-option 'edit)
-(global-set-key (kbd "C-f") 'aleksei/isearch-region-or-forward)
-(define-key isearch-mode-map "\C-f" 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "S-<return>") 'isearch-repeat-backward)
-(define-key isearch-mode-map [return] 'isearch-repeat-forward)
-(define-key isearch-mode-map (kbd "C-g") 'isearch-exit)
-(define-key isearch-mode-map (kbd "C-v") 'isearch-yank-kill)
-(define-key minibuffer-local-isearch-map (kbd "C-f") 'isearch-forward-exit-minibuffer)
-(define-key minibuffer-local-isearch-map (kbd "C-r") 'isearch-backward-exit-minibuffer)
-(define-key minibuffer-local-isearch-map (kbd "C-v") 'isearch-yank-kill)
-(remove-hook 'isearch-mode-hook 'isearch-yank-kill)
-(global-set-key (kbd "C-r") 'anzu-query-replace-regexp)
-(global-anzu-mode +1)
+  (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
 
-(global-set-key (kbd "M-f") '+default/search-buffer)
-(global-set-key (kbd "C-S-f") '+default/search-project)
+  (global-anzu-mode +1)
 
-(global-set-key (kbd "C-M-<down>") 'next-error)
-(global-set-key (kbd "C-M-<up>") (lambda () (interactive) (next-error -1)))
+  :bind (("C-f" . #'aleksei/isearch-region-or-forward)
+         ("C-r" . #'anzu-query-replace-regexp)
+         ("M-f" . #'+default/search-buffer)
+         ("C-S-f" . #'+default/search-project)
+         ("C-M-<down>" . #'next-error)
+         ("C-M-<up>" . (lambda () (interactive) (next-error -1)))
+         :map isearch-mode-map
+         ("C-f" . #'isearch-repeat-forward)
+         ("S-<return>" . #'isearch-repeat-backward)
+         ("<return>". #'isearch-repeat-forward)
+         ("C-g" . #'isearch-exit)
+         ("C-v" . #'isearch-yank-kill)
+         :map minibuffer-local-isearch-map
+         ("C-f" . #'isearch-forward-exit-minibuffer)
+         ("C-r" . #'isearch-backward-exit-minibuffer)
+         ("C-v" . #'isearch-yank-kill))
 
-(setq select-enable-clipboard t)
-(setq select-active-regions nil)
+  :custom ((search-exit-option 'edit)
+           (select-enable-clipboard t)
+           (select-active-regions nil)))
 
+(use-package winner
+  :bind (("<f3>" . #'winner-undo)
+         ("<f4>" . #'winner-redo)))
 
-(global-set-key [f6] 'toggle-truncate-lines)
-(use-package! winner
-  :init
-  (global-set-key [f3] 'winner-undo)
-  (global-set-key [f4] 'winner-redo))
-
-(global-set-key (kbd "C-j") #'(lambda () (interactive) (forward-line) (join-line)))
-(global-set-key (kbd "C-S-j") #'(lambda () (interactive) (forward-line) (join-line)))
-
-(global-set-key (kbd "C-a") 'mark-whole-buffer)
-(global-set-key (kbd "C-S-b") 'switch-to-buffer)
-
-(use-package! comint
+(use-package comint
   :bind (:map comint-mode-map
               ("C-d" . comint-delchar-or-maybe-eof)
               ("C-c" . nil)
               ("M-<up>" . comint-previous-prompt)
               ("M-<down>" . comint-next-prompt)))
 
-(use-package! python-mode
+(use-package python-mode
   :bind (:map python-mode-map
               ("<tab>" . python-indent-shift-right)
               ("<backtab>" . python-indent-shift-left)))
 
 (load! "configs/windows.el")
 
-(global-auto-revert-mode +1)
-
-(use-package! rst-mode
+(use-package rst-mode
   :bind (:map rst-mode-map
               ("<tab>" . indent-rigidly-right)
               ("<backtab>" . indent-rigidly-left)))
@@ -344,9 +349,9 @@
         (lsp-ui-doc-focus-frame)
       (lsp-ui-doc-glance)))
 
-  :hook ((lsp-mode-hook . (lambda ()
-                            (setq-local er/try-expand-list
-                                        (append er/try-expand-list '(lsp-extend-selection)))))
+  :hook (;; (lsp-mode-hook . (lambda ()
+         ;;                    (setq-local er/try-expand-list
+         ;;                                (append er/try-expand-list '(lsp-extend-selection)))))
          (lsp-ui-mode . (lambda ()
                           (setq lsp-ui-doc-border (modus-themes-get-color-value 'fg-main))
                           (modus-themes-with-colors
@@ -381,18 +386,18 @@
   :custom (;; (flymake-show-diagnostics-at-end-of-line t)
            ))
 
-(use-package! mocha
+(use-package mocha
   :custom (mocha-reporter "spec"))
 
-(use-package! diff-hl
+(use-package diff-hl
   :bind (:map diff-hl-mode-map
               ("C-M-z" . +vc-gutter/revert-hunk)
               ("M-[" . +vc-gutter/previous-hunk)
               ("M-]" . +vc-gutter/next-hunk)
               ("C-'" . diff-hl-show-hunk)))
 
-(use-package! projectile
-  :init
+(use-package projectile
+  :config
   (defun aleksei/compile ()
     "Run compilation command in project root or just in current dir"
     (interactive)
@@ -424,7 +429,7 @@
               ("C-S-r" . projectile-replace)))
 
 
-(use-package! emacs
+(use-package emacs
   :config
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
@@ -447,7 +452,7 @@
   (setq compilation-error-regexp-alist
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
-(use-package! vterm
+(use-package vterm
   :bind (:map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
@@ -488,7 +493,7 @@
     (interactive)
     (vterm 'new)))
 
-(use-package! better-jumper
+(use-package better-jumper
   :bind (("M-<left>" . better-jumper-jump-backward)
          ("M-<right>" . better-jumper-jump-forward))
   :config
@@ -514,15 +519,11 @@
              (when (bound-and-true-p better-jumper-local-mode)
                (better-jumper-set-jump))))))
 
-(use-package! shell
+(use-package shell
   :ensure nil
-  :init (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
+  :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
 
-
-(setq w32-pass-lwindow-to-system nil)
-(setq w32-pass-rwindow-to-system nil)
-
-(use-package! multiple-cursors
+(use-package multiple-cursors
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
          ("M-J" . mc/skip-to-next-like-this)
@@ -535,22 +536,15 @@
   :custom
   (mc/match-cursor-style nil))
 
-(use-package! ein-notebook
+(use-package ein-notebook
   :bind (:map ein:notebook-mode-map
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . ein:worksheet-move-cell-up)
               ("M-<down>" . ein:worksheet-move-cell-down)))
-;; (require 'ob-ein)
 
-(global-subword-mode +1)
-(blink-cursor-mode +1)
-
-(global-set-key (kbd "C-p") 'window-toggle-side-windows)
-
-;; (load! "configs/cua-modernized")
 (load! "configs/just-cua")
 
-(use-package! undo-fu
+(use-package undo-fu
   :bind (:map global-map
          ("C-_" . nil)
          ("M-_" . nil )
@@ -560,16 +554,16 @@
          ("C-_" . nil)
          ("C-M-_" . nil)))
 
-(use-package! consult
+(use-package consult
   :bind (:map global-map
          ("C-b" . consult-buffer)
          :map minibuffer-local-map
          ("C-f" . consult-history)
          ("C-r" . consult-history)))
 
-(use-package! vertico
-  :init
-
+(use-package vertico
+  :config
+;;;###autoload
   (defun algus/vertico-posframe-get-size (buffer)
     "Used by `vertico-posframe-size-function'."
     (let ((width (window-total-width)))
@@ -591,7 +585,7 @@
   :custom ((vertico-posframe-poshandler #'posframe-poshandler-window-bottom-center)
            (vertico-posframe-size-function #'algus/vertico-posframe-get-size)))
 
-(use-package! embark
+(use-package embark
   :bind (:map global-map
          ("M-<return>" . embark-act)
          ("C-;" . nil)
@@ -605,112 +599,73 @@
                        embark-isearch-highlight-indicator))
   (embark-prompter 'embark-completing-read-prompter))
 
-(use-package! info
+(use-package info
   :bind (:map Info-mode-map
               ("M-[" . Info-history-back)
               ("M-]" . Info-history-forward)))
 
-(use-package! emacs
-  :bind (:map global-map
-              ("C-/" . aleksei/comment-dwim)
-              ("M-t" . aleksei/compile)
-              ("M-r" . recompile)
-              ("C-M-l" . +format/region-or-buffer)
-              ("M-C-." . +lookup/type-definition)
-              ("M-." . +lookup/definition)
-              ("M->" . +lookup/references)
-              ("C-q" . +lookup/documentation)
-              ("S-RET" . +default/diagnostics)
-              ("C-S-o" . imenu)
-              ("C-M-o" . consult-imenu-multi)
-              ("C-w" . delete-window))
-  :config
-  ;;;###autoload
-  (defun aleksei/comment-dwim (&optional arg)
-    "Replacement for `comment-dwim'.
- If no region is selected and point is not at the end of the line,
- comment or uncomment the current line. Otherwise, call `comment-dwim'."
-    (interactive "*P")
-    (if (and (not (use-region-p))
-             (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
-        (comment-or-uncomment-region (line-beginning-position) (line-end-position))
-      (comment-dwim arg))))
-
-(setq confirm-kill-emacs nil)
-
 (load! "configs/doom-modeline")
 
-(load! "configs/eshell")
-
-(use-package! doom-modeline
+(use-package git-link
   :config
-  (setq doom-modeline-major-mode-icon t
-        doom-modeline-buffer-file-name-style 'file-name))
+;;;###autoload
+  (defun git-link-bitbucket-fsecure (_hostname dirname filename branch commit start end)
+    (let* ((remote-info (git-link--parse-remote (git-link--remote-url "origin")))
+           (hostname (car remote-info))
+           (project-with-repo (cadr remote-info))
+           (project (car (split-string project-with-repo "/")))
+           (repo (cadr (split-string project-with-repo "/"))))
+      (format "https://%s/projects/%s/repos/%s/browse/%s%s"
+              hostname
+              project
+              repo
+              filename
+              (concat (when branch (format "?at=refs/heads/%s" branch))
+                      (when start
+                        (if end
+                            (format "#%s-%s" start end)
+                          (format "#%s" start)))))))
 
-(defun aleksei/buffer-file-name-for-frame-title ()
-  (let ((doom-modeline-buffer-file-name-style 'relative-to-project))
-    (doom-modeline-buffer-file-name)))
-
-(use-package! emacs
-  :config
-  (setq frame-title-format '((:eval (aleksei/buffer-file-name-for-frame-title))
-                             (:eval (concat " - " (projectile-project-name))))
-        icon-title-format frame-title-format))
-
-
-;; (use-package! fd-dired
-;;   :config
-;;   (setq fd-dired-program "fdfind"))
-
-(use-package! dired
-  :config
-  (setq delete-by-moving-to-trash t))
-
-(load! "configs/git-link")
+  (add-to-list 'git-link-remote-alist '("advtp-upstream\\|stash.f-secure.com" git-link-bitbucket-fsecure))
+  (add-to-list 'git-link-commit-remote-alist '("advtp-upstream\\|stash.f-secure.com" git-link-commit-bitbucket-fsecure)))
 
 (add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
 
-(use-package! sql
+(use-package sql
   :custom
   (sql-connection-alist
    '(("local/spaceship:slap"
       (sql-product 'postgres)
       (sql-server "localhost")
       (sql-database "spaceship")
-      (sql-user "spaceship"))
-     )))
-
-(use-package! emacs
-  :bind (("C-=" . +fold/toggle)
-         ("C-k" . +fold/toggle)
-         ("C-M-k" . +fold/open-all)
-         ("M-k" . +fold/close-all)))
+      (sql-user "spaceship")))))
 
 
-(defun aleksei/string-inflection-cycle-auto ()
-  "switching by major-mode"
-  (interactive)
-  (cond
-   ;; for emacs-lisp-mode
-   ((eq major-mode 'emacs-lisp-mode)
-    (string-inflection-all-cycle))
-   ;; for python
-   ((eq major-mode 'python-mode)
-    (string-inflection-python-style-cycle))
-   ;; for java
-   ((eq major-mode 'java-mode)
-    (string-inflection-java-style-cycle))
-   ;; for elixir
-   ((eq major-mode 'elixir-mode)
-    (string-inflection-elixir-style-cycle))
-   (t
-    ;; default
-    (string-inflection-ruby-style-cycle))))
-
-(use-package! string-inflection
+(use-package string-inflection
+  :config
+;;;###autoload
+  (defun aleksei/string-inflection-cycle-auto ()
+    "switching by major-mode"
+    (interactive)
+    (cond
+     ;; for emacs-lisp-mode
+     ((eq major-mode 'emacs-lisp-mode)
+      (string-inflection-all-cycle))
+     ;; for python
+     ((eq major-mode 'python-mode)
+      (string-inflection-python-style-cycle))
+     ;; for java
+     ((eq major-mode 'java-mode)
+      (string-inflection-java-style-cycle))
+     ;; for elixir
+     ((eq major-mode 'elixir-mode)
+      (string-inflection-elixir-style-cycle))
+     (t
+      ;; default
+      (string-inflection-ruby-style-cycle))))
   :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
 
-(use-package! separedit
+(use-package separedit
   :bind (:map prog-mode-map
          ("C-c '" . separedit)
          :map minibuffer-local-map
@@ -721,27 +676,25 @@
          ("C-c '" . separedit)
          :map helpful-mode-map
          ("C-c '" . separedit))
-  :init
+  :config
   (setq separedit-save-key (kbd "C-s"))
   :custom
   (separedit-default-mode 'sql-mode))
 
-(context-menu-mode +1)
-
 (after! man
   (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
 
-(use-package! rustic
+(use-package rustic
   :hook
   ((rustic-mode . (lambda () (require 'rust-compile))))
   :bind (:map rustic-mode-map
               ("M-r" . rustic-cargo-test-rerun)))
 
-(use-package! rg
+(use-package rg
   :custom
   (rg-executable "rg"))
 
-(use-package! corfu
+(use-package corfu
   :config
   (setq corfu-preview-current nil
         corfu-preselect t
@@ -762,15 +715,11 @@
          ("M-n" . nil)
          ("M-p" . nil)))
 
-(use-package! kbd-mode)
-(use-package! yaml-mode
+(use-package yaml-mode
   :bind (:map yaml-mode-map
               ("<backspace>" . backward-delete-char-untabify)))
 
-(use-package! gptel
-  :init
-  ;; :key can be a function that returns the API key.
-  ;; (gptel-make-gemini "Gemini"  :stream t)
+(use-package gptel
   :bind (:map global-map
               ("C-S-q" . gptel-menu)
               ;; :map gptel-mode
@@ -778,11 +727,11 @@
               )
   :config (setq gptel-model "gpt-4o"))
 
-(use-package! docker
+(use-package docker
   :config
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
 
-(use-package! phpunit
+(use-package phpunit
   :bind-keymap* ("C-;" . aleksei/phpunit-mode-map)
   :config
   (defvar aleksei/phpunit-mode-map
@@ -845,11 +794,11 @@
 
   )
 
-(use-package! flyspell
+(use-package flyspell
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
 
-(use-package! apheleia
+(use-package apheleia
   :config
   (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml)))
 
@@ -861,21 +810,19 @@
   :config
   (global-treesit-auto-mode +1))
 
-(use-package! bookmark
+(use-package bookmark
   :ensure nil
   :custom
   (bookmark-watch-bookmark-file 'silent))
 
-(use-package! iflipb
-  :init
-  :bind (:map global-map
-              ("C-<tab>" . 'iflipb-next-buffer)
-              ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
+(use-package iflipb
+  :bind (("C-<tab>" . 'iflipb-next-buffer)
+         ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
   :custom
   (iflipb-wrap-around t)
   (iflipb-ignore-buffers '()))
 
-(use-package! consult-projectile
+(use-package consult-projectile
   :custom
   (consult-projectile-sources '(consult--source-buffer
                                 consult-projectile--source-projectile-file)))
@@ -895,7 +842,8 @@
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
 
 (use-package emacs
-  :init
+  :config
+;;;###autoload
   (defun algus/javascript-console-dir ()
     "Add console.dir calls one line above with the current region as the param."
     (interactive)
@@ -911,13 +859,12 @@
            region-text
            "\n);\n")))))
 
-  :config
   (map! :map (typescript-ts-mode-map typescript-mode-map rjsx-mode-map)
         "C-c C-d"
         #'algus/javascript-console-dir))
 
 (use-package eldoc-box
-  :init
+  :config
   (map! :leader :desc "Disable eldoc-mode" :g "t e" #'eldoc-mode)
   :hook
   (prog-mode . eldoc-box-hover-at-point-mode)

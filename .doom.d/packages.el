@@ -74,10 +74,6 @@
 
 ;; (package! vundo :pin "12862c673d274adab2b9232a281f64898016c3e4")
 
-(package! kbd-mode
-  :recipe (:host github
-           :repo "kmonad/kbd-mode"))
-
 (package! auto-dark)
 
 (package! gptel :recipe (:nonrecursive t))

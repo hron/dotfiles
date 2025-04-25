@@ -1,6 +1,6 @@
 ;;; ../src/dotfiles/.doom.d/configs/doom-modeline.el -*- lexical-binding: t; -*-
 
-(use-package! doom-modeline
+(use-package doom-modeline
   :config
   ;; Remove `compilation' segment from all modelines
   (doom-modeline-def-modeline 'main
@@ -48,4 +48,6 @@
     '(objed-state misc-info debug lsp minor-modes input-method indent-info buffer-encoding major-mode process time))
 
   :custom
-  (doom-modeline-lsp nil))
+  (doom-modeline-lsp nil)
+  (doom-modeline-major-mode-icon t)
+  (doom-modeline-buffer-file-name-style 'file-name))
