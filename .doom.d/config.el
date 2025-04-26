@@ -874,3 +874,5 @@
   (:map prog-mode-map
         ("M-<up>" . #'eldoc-box-scroll-up)
         ("M-<down>" . #'eldoc-box-scroll-down)))
+
+(load! "configs/eshell.el")
