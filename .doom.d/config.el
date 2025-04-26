@@ -568,7 +568,7 @@
 ;;;###autoload
   (defun algus/vertico-posframe-get-size (buffer)
     "Used by `vertico-posframe-size-function'."
-    (let ((width (window-total-width)))
+    (let ((width (- (window-total-width) 2)))
       (list
        :height (buffer-local-value 'vertico-posframe-height buffer)
        :width (or (buffer-local-value 'vertico-posframe-width buffer)
@@ -759,9 +759,9 @@
     (interactive)
     (let* (
            (args (s-concat " --filter '"
-			                     (phpunit-get-current-class)
-			                     "::"
-			                     (phpunit-get-current-test) "'"
+			   (phpunit-get-current-class)
+			   "::"
+			   (phpunit-get-current-test) "'"
                            " "
                            (concat (phpunit-test-file-prefix-path)
                                    (s-chop-prefix (phpunit-get-root-directory) buffer-file-name)))))
