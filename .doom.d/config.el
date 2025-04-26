@@ -216,7 +216,9 @@
         calendar-week-start-day 1
         org-capture-templates '(("i" "Todo" entry (file "~/org/inbox.org")
                                  "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
-        org-log-into-drawer t)
+        org-log-into-drawer t
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps t)
 
   :bind (:map org-mode-map
               ("S-<return>" . org-insert-heading-after-current)
