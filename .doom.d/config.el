@@ -28,6 +28,8 @@
       doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
+(setq use-package-always-defer t)
+
 (use-package emacs
   :config
   (setq modus-themes-italic-constructs t
@@ -48,6 +50,7 @@
   :hook ((modus-themes-after-load-theme . #'algus/apply-theme-customizations)))
 
 (use-package auto-dark
+  :defer nil
   :config
   (add-hook 'desktop-after-read-hook #'doom/reload-theme)
   (after! doom-ui
@@ -149,6 +152,24 @@
               ("C-M-t" . nil)
               ("C-M-e" . nil)))))
 
+;;;###autoload
+(defun aleksei/org-gtd ()
+  "Prepare Emacs frame to use as a GTD system."
+  (interactive)
+  (require 'org)
+  ;; (dolist (f org-agenda-files)
+  ;;   (find-file (concat org-directory "/" f)))
+  (find-file (concat org-directory "/tasks.org" ))
+  (org-agenda-list))
+
+;;;###autoload
+(defun aleksei/org-capture ()
+  "Opens a new frame with Org capture inbox template"
+  (interactive)
+  (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
+  (org-capture "" "i")
+  (delete-other-windows))
+
 (use-package org
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
@@ -159,17 +180,6 @@
     (let ((current-prefix-arg t))
       (call-interactively 'org-update-statistics-cookies)))
 
-;;;###autoload
-  (defun aleksei/org-gtd ()
-    "Prepare Emacs frame to use as a GTD system."
-    (interactive)
-    (require 'org)
-    ;; (dolist (f org-agenda-files)
-    ;;   (find-file (concat org-directory "/" f)))
-    (find-file (concat org-directory "/tasks.org" ))
-    (org-agenda-list))
-
-;;;###autoload
   (defun algus/org-todo-convert-to-project ()
     (interactive)
     (save-excursion
@@ -179,13 +189,7 @@
           (replace-match "\\1 [/] ")))
     (call-interactively 'org-insert-todo-subheading))
 
-;;;###autoload
-  (defun aleksei/org-capture ()
-    "Opens a new frame with Org capture inbox template"
-    (interactive)
-    (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
-    (org-capture "" "i")
-    (delete-other-windows))
+  ;; emacs -f 'aleksei/org-capture' --geometry 100x20+911+645
 
   (setq org-provide-todo-statistics 'all-headlines
         org-directory "~/org"
