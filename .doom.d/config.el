@@ -162,14 +162,6 @@
   (find-file (concat org-directory "/tasks.org" ))
   (org-agenda-list))
 
-;;;###autoload
-(defun aleksei/org-capture ()
-  "Opens a new frame with Org capture inbox template"
-  (interactive)
-  (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
-  (org-capture "" "i")
-  (delete-other-windows))
-
 (use-package org
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)

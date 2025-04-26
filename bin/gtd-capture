@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+emacsclient -c -e "\
+    (progn \
+      (add-hook 'org-capture-after-finalize-hook 'delete-frame) \
+      (org-capture \"\" \"i\") \
+      (delete-other-windows))" ||
+    emacs --eval "\
+    (progn
+      (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
+      (org-capture \"\" \"i\")
+      (delete-other-windows))"
