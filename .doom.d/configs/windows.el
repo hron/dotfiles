@@ -81,3 +81,45 @@
 ;;          (display-buffer-reuse-mode-window))
 
 ;;         ))
+
+(use-package emacs
+  :config
+;;;###autoload
+
+  (defun algus/split-window-sensibly (&optional window)
+    "Just like `split-window-sensibly', but prefers the left side."
+    (let ((window (or window (selected-window))))
+      (or (and (window-splittable-p window)
+	       ;; Split window vertically.
+	       (with-selected-window window
+	         (split-window-below)))
+	  (and (window-splittable-p window t)
+	       ;; Split window horizontally.
+	       (let ((new-window (with-selected-window window
+	                           (split-window-right))))
+                 (select-window new-window)
+                 window))
+	  (and
+           ;; If WINDOW is the only usable window on its frame (it is
+           ;; the only one or, not being the only one, all the other
+           ;; ones are dedicated) and is not the minibuffer window, try
+           ;; to split it vertically disregarding the value of
+           ;; `split-height-threshold'.
+           (let ((frame (window-frame window)))
+             (or
+              (eq window (frame-root-window frame))
+              (catch 'done
+                (walk-window-tree (lambda (w)
+                                    (unless (or (eq w window)
+                                                (window-dedicated-p w))
+                                      (throw 'done nil)))
+                                  frame nil 'nomini)
+                t)))
+	   (not (window-minibuffer-p window))
+	   (let ((split-height-threshold 0))
+	     (when (window-splittable-p window)
+	       (with-selected-window window
+	         (split-window-below))))))))
+
+  :custom
+  (split-window-preferred-function #'algus/split-window-sensibly))
