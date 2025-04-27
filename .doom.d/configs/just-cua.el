@@ -1,6 +1,8 @@
 ;;; ../src/dotfiles/.doom.d/configs/just-cua.el -*- lexical-binding: t; -*-
 
 (use-package emacs
+  :defer t
+  :ensure nil
   :custom
   (cua-remap-control-z nil)
   (cua-prefix-override-inhibit-delay 0.0000000001)

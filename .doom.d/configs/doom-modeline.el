@@ -1,6 +1,7 @@
 ;;; ../src/dotfiles/.doom.d/configs/doom-modeline.el -*- lexical-binding: t; -*-
 
 (use-package doom-modeline
+  :defer t
   :config
   ;; Remove `compilation' segment from all modelines
   (doom-modeline-def-modeline 'main

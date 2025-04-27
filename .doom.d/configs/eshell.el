@@ -2,6 +2,7 @@
 
 ;; (map! "C-`" #'project-eshell)
 
+;;;###autoload
 (defun aleksei/eshell-default-prompt-fn ()
   "Generate the prompt string for eshell. Use for `eshell-prompt-function'."
   (require 'shrink-path)
@@ -15,34 +16,6 @@
           (propertize " λ" 'face (if (zerop eshell-last-command-status) 'success 'error))
           " "))
 
-(after! eshell
-  (setq eshell-prompt-function #'aleksei/eshell-default-prompt-fn))
-
-(use-package! esh-mode
-  :bind (:map eshell-mode-map
-              ("<home>" . eshell-bol)
-              ("C-r" . consult-history))
-  :hook ((eshell-mode . (lambda () (eldoc-mode -1)))))
-
-(after! eshell
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
-
-
-(use-package! em-hist
-  :bind (:map eshell-hist-mode-map
-              ("<up>" . nil)
-              ("<down>" . nil)
-              ("C-<up>" . nil)
-              ("C-<down>" . nil)
-              ("M-<up>" . eshell-previous-matching-input-from-input)
-              ("M-<down>" . eshell-next-matching-input-from-input)))
-
-(use-package! em-prompt
-  :bind (:map eshell-prompt-mode-map
-              ("<home>" . eshell-bol)
-              ("M-r" . recompile)
-              ("M-<prior>" . eshell-previous-prompt)
-              ("M-<next>" . eshell-next-prompt)))
 
 ;; (defun eshell/less (&rest args)
 ;;   "Invoke `view-file' on a file. \"less +42 foo\" will go to line 42 in
@@ -62,4 +35,39 @@
 (setenv "AWS_PAGER" "")
 (setenv "PAGER" "")
 
-(map! "C-`" #'+eshell/toggle)
+(use-package eshell
+  :defer t
+  :ensure nil
+  :custom
+  (eshell-prompt-function #'aleksei/eshell-default-prompt-fn))
+
+(use-package esh-mode
+  :defer t
+  :ensure nil
+  :config
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+  :bind (("C-`" . #'+eshell/toggle)
+         :map eshell-mode-map
+         ("<home>" . eshell-bol)
+         ("C-r" . consult-history))
+  :hook ((eshell-mode . (lambda () (eldoc-mode -1)))))
+
+(use-package em-hist
+  :defer t
+  :ensure nil
+  :bind (:map eshell-hist-mode-map
+              ("<up>" . nil)
+              ("<down>" . nil)
+              ("C-<up>" . nil)
+              ("C-<down>" . nil)
+              ("M-<up>" . eshell-previous-matching-input-from-input)
+              ("M-<down>" . eshell-next-matching-input-from-input)))
+
+(use-package em-prompt
+  :defer t
+  :ensure nil
+  :bind (:map eshell-prompt-mode-map
+              ("<home>" . eshell-bol)
+              ("M-r" . recompile)
+              ("M-<prior>" . eshell-previous-prompt)
+              ("M-<next>" . eshell-next-prompt)))

@@ -28,9 +28,8 @@
       doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
-(setq use-package-always-defer t)
-
 (use-package emacs
+  :defer t
   :config
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs t
@@ -59,6 +58,7 @@
     (auto-dark-mode 1)))
 
 (use-package emacs
+  :defer t
   :config
   (setq-default cursor-type '(bar . 3))
   (setq w32-pass-lwindow-to-system nil
@@ -118,6 +118,7 @@
   (delete-by-moving-to-trash t))
 
 (use-package emacs
+  :defer t
   :config
 ;;;###autoload
   (defun aleksei/buffer-file-name-for-frame-title ()
@@ -129,6 +130,7 @@
         icon-title-format frame-title-format))
 
 (use-package magit
+  :defer t
   :bind (:map magit-section-mode-map
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
@@ -136,6 +138,7 @@
          ("C-w" . #'delete-window)))
 
 (use-package smartparens
+  :defer t
   :config
   (defun aleksei/sp-beginning-or-end-of-sexp ()
     "Move to the beginning of sexp if not at the beginning, otherwise move to the end of sexp."
@@ -163,6 +166,7 @@
   (org-agenda-list))
 
 (use-package org
+  :defer t
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
                        (toggle-word-wrap +1)
@@ -239,12 +243,14 @@
               ("C-c y" . yank-media)))
 
 (use-package org-agenda
+  :defer t
   :bind* (:map org-agenda-mode-map
                ("z" . org-agenda-undo)
                ("C-z" . org-agenda-undo)
                ("C-<return>" . org-agenda-todo)))
 
 (use-package org-capture
+  :defer t
   :config
   (setq +org-capture-frame-parameters '((name . "doom-capture")
                                         (left . (+ 1142))
@@ -255,6 +261,7 @@
                                         nil)))
 
 (use-package org-modern
+  :defer t
   :custom
   (org-modern-todo nil)
   (org-modern-progress nil)
@@ -262,18 +269,24 @@
   (org-modern-tag nil))
 
 (use-package ert
+  :defer t
+  :ensure nil
   :bind (:map emacs-lisp-mode-map
               ("C-; f" . ert)))
 
 (use-package expand-region
+  :defer t
   :config
   :bind (("C-h" . er/expand-region)
          ("C-S-h" . (lambda () (interactive) (er/expand-region -1)))))
 
 (use-package crux
+  :defer t
   :bind (("<home>" . crux-move-beginning-of-line)))
 
 (use-package isearch
+  :defer t
+  :ensure nil
   :config
 ;;;###autoload
   (defun aleksei/isearch-region-or-forward ()
@@ -309,10 +322,13 @@
            (select-active-regions nil)))
 
 (use-package winner
+  :defer t
+  :ensure nil
   :bind (("<f3>" . #'winner-undo)
          ("<f4>" . #'winner-redo)))
 
 (use-package comint
+  :defer t
   :bind (:map comint-mode-map
               ("C-d" . comint-delchar-or-maybe-eof)
               ("C-c" . nil)
@@ -320,6 +336,7 @@
               ("M-<down>" . comint-next-prompt)))
 
 (use-package python-mode
+  :defer t
   :bind (:map python-mode-map
               ("<tab>" . python-indent-shift-right)
               ("<backtab>" . python-indent-shift-left)))
@@ -327,11 +344,13 @@
 (load! "configs/windows.el")
 
 (use-package rst-mode
+  :defer t
   :bind (:map rst-mode-map
               ("<tab>" . indent-rigidly-right)
               ("<backtab>" . indent-rigidly-left)))
 
 (use-package lsp-mode
+  :defer t
   :bind (:map lsp-mode-map
               ("M-<RET>" . lsp-execute-code-action)
               ("C-t" . lsp-rename)
@@ -377,6 +396,8 @@
   (lsp-enable-suggest-server-download nil))
 
 (use-package flymake
+  :defer t
+  :ensure nil
   :bind (:map flymake-mode-map
               ("<f2>" . #'flymake-goto-next-error)
               ("S-<f2>" . #'flymake-goto-prev-error))
@@ -385,9 +406,11 @@
            ))
 
 (use-package mocha
+  :defer t
   :custom (mocha-reporter "spec"))
 
 (use-package diff-hl
+  :defer t
   :bind (:map diff-hl-mode-map
               ("C-M-z" . +vc-gutter/revert-hunk)
               ("M-[" . +vc-gutter/previous-hunk)
@@ -395,6 +418,7 @@
               ("C-'" . diff-hl-show-hunk)))
 
 (use-package projectile
+  :defer t
   :config
   (defun aleksei/compile ()
     "Run compilation command in project root or just in current dir"
@@ -428,6 +452,8 @@
 
 
 (use-package emacs
+  :defer t
+  :ensure nil
   :config
   ;; Add NodeJS error format
   (setq compilation-error-regexp-alist-alist
@@ -451,6 +477,7 @@
         (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 (use-package vterm
+  :defer t
   :bind (:map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
@@ -492,6 +519,7 @@
     (vterm 'new)))
 
 (use-package better-jumper
+  :defer t
   :bind (("M-<left>" . better-jumper-jump-backward)
          ("M-<right>" . better-jumper-jump-forward))
   :config
@@ -518,10 +546,12 @@
                (better-jumper-set-jump))))))
 
 (use-package shell
+  :defer t
   :ensure nil
   :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
 
 (use-package multiple-cursors
+  :defer t
   :bind (("M-j" . mc/mark-next-like-this)
          ("M-C-j" . mc/mark-all-like-this)
          ("M-J" . mc/skip-to-next-like-this)
@@ -535,6 +565,7 @@
   (mc/match-cursor-style nil))
 
 (use-package ein-notebook
+  :defer t
   :bind (:map ein:notebook-mode-map
               ("C-<return>" . ein:worksheet-execute-cell-km)
               ("M-<up>" . ein:worksheet-move-cell-up)
@@ -543,6 +574,7 @@
 (load! "configs/just-cua")
 
 (use-package undo-fu
+  :defer t
   :bind (:map global-map
          ("C-_" . nil)
          ("M-_" . nil )
@@ -553,6 +585,7 @@
          ("C-M-_" . nil)))
 
 (use-package consult
+  :defer t
   :bind (:map global-map
          ("C-b" . consult-buffer)
          :map minibuffer-local-map
@@ -560,6 +593,7 @@
          ("C-r" . consult-history)))
 
 (use-package vertico
+  :defer t
   :config
 ;;;###autoload
   (defun algus/vertico-posframe-get-size (buffer)
@@ -584,6 +618,7 @@
            (vertico-posframe-size-function #'algus/vertico-posframe-get-size)))
 
 (use-package embark
+  :defer t
   :bind (:map global-map
          ("M-<return>" . embark-act)
          ("C-;" . nil)
@@ -598,6 +633,8 @@
   (embark-prompter 'embark-completing-read-prompter))
 
 (use-package info
+  :defer t
+  :ensure nil
   :bind (:map Info-mode-map
               ("M-[" . Info-history-back)
               ("M-]" . Info-history-forward)))
@@ -605,6 +642,7 @@
 (load! "configs/doom-modeline")
 
 (use-package git-link
+  :defer t
   :config
 ;;;###autoload
   (defun git-link-bitbucket-fsecure (_hostname dirname filename branch commit start end)
@@ -630,6 +668,7 @@
 (add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
 
 (use-package sql
+  :defer t
   :custom
   (sql-connection-alist
    '(("local/spaceship:slap"
@@ -640,6 +679,7 @@
 
 
 (use-package string-inflection
+  :defer t
   :config
 ;;;###autoload
   (defun aleksei/string-inflection-cycle-auto ()
@@ -664,6 +704,7 @@
   :bind (("C-M-t" . aleksei/string-inflection-cycle-auto)))
 
 (use-package separedit
+  :defer t
   :bind (:map prog-mode-map
          ("C-c '" . separedit)
          :map minibuffer-local-map
@@ -683,16 +724,19 @@
   (remove-hook 'Man-mode-hook 'hide-mode-line-mode))
 
 (use-package rustic
+  :defer t
   :hook
   ((rustic-mode . (lambda () (require 'rust-compile))))
   :bind (:map rustic-mode-map
               ("M-r" . rustic-cargo-test-rerun)))
 
 (use-package rg
+  :defer t
   :custom
   (rg-executable "rg"))
 
 (use-package corfu
+  :defer t
   :config
   (setq corfu-preview-current nil
         corfu-preselect t
@@ -714,10 +758,12 @@
          ("M-p" . nil)))
 
 (use-package yaml-mode
+  :defer t
   :bind (:map yaml-mode-map
               ("<backspace>" . backward-delete-char-untabify)))
 
 (use-package gptel
+  :defer t
   :bind (:map global-map
               ("C-S-q" . gptel-menu)
               ;; :map gptel-mode
@@ -726,10 +772,12 @@
   :config (setq gptel-model "gpt-4o"))
 
 (use-package docker
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.Dockerfile\\'" . dockerfile-mode)))
 
 (use-package phpunit
+  :defer t
   :bind-keymap* ("C-;" . aleksei/phpunit-mode-map)
   :config
   (defvar aleksei/phpunit-mode-map
@@ -793,27 +841,36 @@
   )
 
 (use-package flyspell
+  :defer t
+  :ensure nil
   :bind (:map flyspell-mode-map
               ("C-;" . nil)))
 
 (use-package apheleia
+  :defer t
   :config
   (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml)))
 
 (use-package treesit
+  :defer t
+  :ensure nil
   :custom
   (treesit-font-lock-level 4))
 
 (use-package treesit-auto
+  :defer t
+  :ensure nil
   :config
   (global-treesit-auto-mode +1))
 
 (use-package bookmark
+  :defer t
   :ensure nil
   :custom
   (bookmark-watch-bookmark-file 'silent))
 
 (use-package iflipb
+  :defer t
   :bind (("C-<tab>" . 'iflipb-next-buffer)
          ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
   :custom
@@ -821,6 +878,7 @@
   (iflipb-ignore-buffers '()))
 
 (use-package consult-projectile
+  :defer t
   :custom
   (consult-projectile-sources '(consult--source-buffer
                                 consult-projectile--source-projectile-file)))
@@ -841,6 +899,8 @@
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
 
 (use-package emacs
+  :defer t
+  :ensure nil
   :config
 ;;;###autoload
   (defun algus/javascript-console-dir ()
@@ -863,6 +923,7 @@
         #'algus/javascript-console-dir))
 
 (use-package eldoc-box
+  :defer t
   :config
   (map! :leader :desc "Disable eldoc-mode" :g "t e" #'eldoc-mode)
   :hook

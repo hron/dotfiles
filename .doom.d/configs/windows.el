@@ -3,6 +3,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Choosing-Window.html#Choosing-Window
 
 (use-package! emacs
+  :defer t
+  :ensure nil
   :bind (("C-<next>" . other-window)
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("M-i" . delete-other-windows)))
@@ -83,6 +85,8 @@
 ;;         ))
 
 (use-package emacs
+  :defer t
+  :ensure nil
   :config
 ;;;###autoload
 
