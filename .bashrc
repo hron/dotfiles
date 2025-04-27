@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -31,7 +31,7 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 export AWS_DEFAULT_PROFILE=fdev
@@ -42,23 +42,22 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+xterm* | rxvt*)
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -79,7 +78,7 @@ alias bc='bc -l'
 
 alias protontricks='flatpak run com.github.Matoking.protontricks'
 
-function protontricks_by_name () {
+function protontricks_by_name() {
   protontricks $(protontricks -l | grep -i $1 | grep -oP '\(\K\d+(?=\))') $2
 }
 
@@ -89,9 +88,8 @@ function protontricks_by_name () {
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f $HOME/.bash_aliases ]; then
-    . $HOME/.bash_aliases
+  . $HOME/.bash_aliases
 fi
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -105,74 +103,79 @@ if ! shopt -oq posix; then
 fi
 
 if [ -n "$ZED_TERM" ]; then
-    export GIT_EDITOR='zed --wait'
+  export GIT_EDITOR='zed --wait'
 fi
-
 
 # function set_win_title(){
 #     echo -ne "\033]0; ${PWD//$HOME/\~} \007"
 # }
 function set_win_title() {
-    local cmd=" ($@)"
-    if [[ "$cmd" == " (starship_precmd)" || "$cmd" == " ()" ]]
-    then
-      cmd=""
-    fi
-    if [[ $PWD == $HOME ]]
-    then
-      if [[ $SSH_TTY ]]
-      then
-        echo -ne "\033]0; 🏛️ @ $HOSTNAME ~$cmd\a" < /dev/null
-      else
-        echo -ne "\033]0; 🏠 ~$cmd\a" < /dev/null
-      fi
+  local cmd=" ($@)"
+  if [[ "$cmd" == " (starship_precmd)" || "$cmd" == " ()" ]]; then
+    cmd=""
+  fi
+  if [[ $PWD == $HOME ]]; then
+    if [[ $SSH_TTY ]]; then
+      echo -ne "\033]0; 🏛️ @ $HOSTNAME ~$cmd\a" </dev/null
     else
-      BASEPWD=$(basename "$PWD")
-      if [[ $SSH_TTY ]]
-      then
-        echo -ne "\033]0; 🌩️ $BASEPWD @ $HOSTNAME $cmd\a" < /dev/null
-      else
-        echo -ne "\033]0; 📁 $BASEPWD $cmd\a" < /dev/null
-      fi
+      echo -ne "\033]0; 🏠 ~$cmd\a" </dev/null
     fi
+  else
+    BASEPWD=$(basename "$PWD")
+    if [[ $SSH_TTY ]]; then
+      echo -ne "\033]0; 🌩️ $BASEPWD @ $HOSTNAME $cmd\a" </dev/null
+    else
+      echo -ne "\033]0; 📁 $BASEPWD $cmd\a" </dev/null
+    fi
+  fi
 }
 STARSHIP_BIN=/usr/local/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/.cargo/bin/starship
 [ -x "$STARSHIP_BIN" ] || STARSHIP_BIN=$HOME/bin/starship
 if [ -x "$STARSHIP_BIN" ]; then
-    # starship_precmd_user_func="set_win_title"
-    starship_precmd_user_func="vterm_prompt_end"
-    eval "$($STARSHIP_BIN init bash)"
-    # trap "set_win_title \${BASH_COMMAND}" DEBUG
+  # starship_precmd_user_func="set_win_title"
+  starship_precmd_user_func="vterm_prompt_end"
+  eval "$($STARSHIP_BIN init bash)"
+  # trap "set_win_title \${BASH_COMMAND}" DEBUG
 fi
 
 ##
 ## vterm configuration
 ##
 vterm_printf() {
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
+  if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+    # Tell tmux to pass the escape sequences through
+    printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+  elif [ "${TERM%%-*}" = "screen" ]; then
+    # GNU screen (screen, screen-256color, screen-256color-bce)
+    printf "\eP\e]%s\007\e\\" "$1"
+  else
+    printf "\e]%s\e\\" "$1"
+  fi
 }
 
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-    function clear() {
-        vterm_printf "51;Evterm-clear-scrollback";
-        tput clear;
-    }
+  function clear() {
+    vterm_printf "51;Evterm-clear-scrollback"
+    tput clear
+  }
 fi
 
-vterm_prompt_end(){
-    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+vterm_prompt_end() {
+  vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
 }
 PS1=$PS1'\[$(vterm_prompt_end)\]'
 
+export BROWSER=sensible-browser
+export EDITOR='emacsclient -a "emacs" -c'
+#export ALTERNATE_EDITOR=""
+export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
+export DEBEMAIL="aleksei.gusev@gmail.com"
+export DEBFULLNAME="Aleksei Gusev"
+# export QT_SCALE_FACTOR=1.25
+export PGHOST=localhost
+export PGUSER=spaceship
+export PGDATABASE=spaceship
 
 # Nix Standalone
 nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh

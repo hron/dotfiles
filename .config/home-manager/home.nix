@@ -105,55 +105,55 @@ in
   xdg.enable = true;
   xdg.mime.enable = true;
 
-  xdg.desktopEntries = {
-    # We need to redefine StartupWMClass, otherwise the desktop entry is the same
-    emacs = {
-      name = "Emacs";
-      genericName = "Text Editor";
-      comment = "Edit text";
-      mimeType = [
-        "text/english"
-        "text/plain"
-        "text/x-makefile"
-        "text/x-c++hdr"
-        "text/x-c++src"
-        "text/x-chdr"
-        "text/x-csrc"
-        "text/x-java"
-        "text/x-moc"
-        "text/x-pascal"
-        "text/x-tcl"
-        "text/x-tex"
-        "application/x-shellscript"
-        "text/x-c"
-        "text/x-c++"
-      ];
-      exec = "emacs %F";
-      icon = "emacs";
-      type = "Application";
-      terminal = false;
-      categories = [
-        "Development"
-        "TextEditor"
-      ];
-      startupNotify = true;
-      settings = {
-        StartupWMClass = "emacs";
-      };
-    };
+  # xdg.desktopEntries = {
+  #   # We need to redefine StartupWMClass, otherwise the desktop entry is the same
+  #   emacs = {
+  #     name = "Emacs";
+  #     genericName = "Text Editor";
+  #     comment = "Edit text";
+  #     mimeType = [
+  #       "text/english"
+  #       "text/plain"
+  #       "text/x-makefile"
+  #       "text/x-c++hdr"
+  #       "text/x-c++src"
+  #       "text/x-chdr"
+  #       "text/x-csrc"
+  #       "text/x-java"
+  #       "text/x-moc"
+  #       "text/x-pascal"
+  #       "text/x-tcl"
+  #       "text/x-tex"
+  #       "application/x-shellscript"
+  #       "text/x-c"
+  #       "text/x-c++"
+  #     ];
+  #     exec = "emacs %F";
+  #     icon = "emacs";
+  #     type = "Application";
+  #     terminal = false;
+  #     categories = [
+  #       "Development"
+  #       "TextEditor"
+  #     ];
+  #     startupNotify = true;
+  #     settings = {
+  #       StartupWMClass = "emacs";
+  #     };
+  #   };
 
-    orgMode = {
-      name = "GTD";
-      comment = "Get Things Done with org-mode";
-      exec = "emacs  --no-desktop --name org-mode --eval \"(aleksei/org-gtd)\"";
-      icon = "org.gnome.Todo";
-      type = "Application";
-      terminal = false;
-      categories = [ "Utility" ];
-      startupNotify = true;
-      settings = {
-        StartupWMClass = "org-mode";
-      };
-    };
-  };
+  #   orgMode = {
+  #     name = "GTD";
+  #     comment = "Get Things Done with org-mode";
+  #     exec = "env EMACS_SERVER_NAME=gtd emacsclient -a \"emacs --no-desktop --name org-mode --eval '(aleksei/org-gtd)'\" -c --eval '(aleksei/org-gtd)";
+  #     icon = "org.gnome.Todo";
+  #     type = "Application";
+  #     terminal = false;
+  #     categories = [ "Utility" ];
+  #     startupNotify = true;
+  #     settings = {
+  #       StartupWMClass = "org-mode";
+  #     };
+  #   };
+  # };
 }

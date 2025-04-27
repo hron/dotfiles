@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility
+Comment=Get Things Done with org-mode
+Exec=/home/algus/bin/gtd
+Icon=org.gnome.Todo
+Name=GTD
+StartupNotify=true
+StartupWMClass=org-mode
+Terminal=false
+Type=Application
+Version=1.4

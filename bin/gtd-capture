@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-emacsclient -c -e "\
+export EMACS_SERVER_NAME=gtd
+
+emacsclient --socket-name=gtd --create-frame --eval "\
     (progn \
       (add-hook 'org-capture-after-finalize-hook 'delete-frame) \
       (org-capture \"\" \"i\") \
       (delete-other-windows))" ||
-    emacs --eval "\
+    emacs --no-desktop --name org-mode --eval "\
     (progn
       (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
       (org-capture \"\" \"i\")
