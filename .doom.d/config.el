@@ -886,18 +886,30 @@
   (consult-projectile-sources '(consult--source-buffer
                                 consult-projectile--source-projectile-file)))
 
-;; (use-package desktop
-;;   :defer nil
-;;   :config
-;;   ;; This hook incorrectly enables whitespace-mode after desktop is restored.
-;;   ;; (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h)
-;;   (add-hook 'window-setup-hook
-;;             '(lambda ()
-;;                (remove-hook 'after-change-major-mode-hook #'+emacs-highlight-non-default-indentation-h))
-;;             100)
-;;   (desktop-save-mode +1)
-;;   :custom ((desktop-path (list "."))
-;;            (desktop-save t)))
+(use-package desktop
+  :defer nil
+
+  :config
+  ;; Save Doom's lookup variables. Otherwise they are uninitialized after
+  ;; desktop is restored
+  (let ((lookup-types '(definition
+                        implementations
+                        type-definition
+                        references
+                        documentation
+                        file
+                        xref-backend)))
+    (dolist (type lookup-types)
+      (add-to-list 'desktop-locals-to-save (intern (format "+lookup-%s-functions" type)))))
+
+  (add-hook! 'doom-after-init-hook :append
+    (when (doom-project-p)
+      (desktop-read ".")
+      (desktop-save-mode +1)))
+
+  :custom
+  (desktop-path . ("."))
+  (desktop-save t))
 
 (add-hook! typescript-ts-mode-local-vars :append #'+javascript-init-lsp-or-tide-maybe-h)
 
