@@ -68,6 +68,7 @@
   (global-subword-mode +1)
   (blink-cursor-mode +1)
   (context-menu-mode +1)
+  (pixel-scroll-precision-mode +1)
 
   ;;;###autoload
   (defun aleksei/comment-dwim (&optional arg)
