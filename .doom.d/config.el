@@ -597,28 +597,11 @@
 
 (use-package vertico
   :defer t
-  :config
-;;;###autoload
-  (defun algus/vertico-posframe-get-size (buffer)
-    "Used by `vertico-posframe-size-function'."
-    (let ((width (- (window-total-width) 2)))
-      (list
-       :height (buffer-local-value 'vertico-posframe-height buffer)
-       :width (or (buffer-local-value 'vertico-posframe-width buffer)
-                  width)
-       :min-height (or (buffer-local-value 'vertico-posframe-min-height buffer)
-                       (let ((height (+ vertico-count 1)))
-                         (min height (or (buffer-local-value 'vertico-posframe-height buffer) height))))
-       :min-width (or (buffer-local-value 'vertico-posframe-min-width buffer)
-                      (min width (or (buffer-local-value 'vertico-posframe-width buffer) width))))))
-  
   :bind (:map minibuffer-local-map
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
-              ("C-j" . vertico-exit-input))
-  :custom ((vertico-posframe-poshandler #'posframe-poshandler-window-bottom-center)
-           (vertico-posframe-size-function #'algus/vertico-posframe-get-size)))
+              ("C-j" . vertico-exit-input)))
 
 (use-package embark
   :defer t
