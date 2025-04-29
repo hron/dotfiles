@@ -932,3 +932,22 @@
         ("M-<down>" . #'eldoc-box-scroll-down)))
 
 (load! "configs/eshell.el")
+
+(use-package minibuffer
+  :ensure nil
+  :config
+  (defvar algus/minibuffer-max-width 128)
+
+  (defun algus/setup-minibuffer-size-and-position (&optional win)
+    "Make minibuffer centered if the frame is too wide."
+    (let* ((win (or win (minibuffer-window)))
+           (width (window-width win))
+           (margin (/ (- width algus/minibuffer-max-width) 2)))
+      (when (> width algus/minibuffer-max-width)
+        (set-window-margins win margin margin))))
+
+  (add-hook! '(minibuffer-setup-hook window-size-change-functions)
+             #'algus/setup-minibuffer-size-and-position)
+  (add-hook! 'minibuffer-setup-hook
+    (add-hook! 'window-configuration-change-hook :local
+               #'algus/setup-minibuffer-size-and-position)))
