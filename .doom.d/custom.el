@@ -6,7 +6,8 @@
  '(custom-safe-themes
    '("5c7720c63b729140ed88cf35413f36c728ab7c70f8cd8422d9ee1cedeb618de5" default))
  '(safe-local-variable-values
-   '((eval font-lock-add-keywords nil
+   '((mangle-whitespace . t)
+     (eval font-lock-add-keywords nil
       `
       ((,(concat "("
                  (regexp-opt
