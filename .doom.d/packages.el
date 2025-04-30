@@ -92,3 +92,5 @@
 (package! consult-projectile)
 
 (package! eldoc-box)
+
+(package! hardhat)

@@ -963,3 +963,14 @@
   (add-hook 'minibuffer-setup-hook '(lambda () (set-window-fringes nil 0 0)))
 
   (add-hook 'window-size-change-functions 'algus/setup-minibuffer-size-and-position))
+
+(use-package hardhat
+  :config
+  (global-hardhat-mode +1)
+  :custom
+  (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/\\.local/straight/"))
+  :hook
+  (hardhat-mode . (lambda ()
+                    (eldoc-mode -1)
+                    (flyspell-mode -1)
+                    (flymake-mode -1))))
