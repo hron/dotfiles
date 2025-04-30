@@ -968,7 +968,7 @@
   :config
   (global-hardhat-mode +1)
   :custom
-  (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/\\.local/straight/"))
+  (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/"))
   :hook
   (hardhat-mode . (lambda ()
                     (eldoc-mode -1)
