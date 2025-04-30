@@ -941,25 +941,12 @@
     (let* ((win (minibuffer-window))
            (width (frame-width))
            (margin (/ (- width algus/minibuffer-max-width) 2)))
-      (when (> width algus/minibuffer-max-width)
-        (set-window-margins win margin margin))))
+      (set-window-fringes win 0 0 nil t)
+      (if (> width algus/minibuffer-max-width)
+          (set-window-margins win margin margin)
+        (set-window-margins win 0 0))))
 
-  ;; (add-hook 'window-configuration-change-hook #'algus/setup-minibuffer-size-and-position)
-  ;; (add-hook 'window-size-change-functions #'algus/setup-minibuffer-size-and-position)
-
-  ;; (add-hook! 'doom-switch-window-hook #'algus/setup-minibuffer-size-and-position)
-  ;; (add-hook! 'doom-switch-frame-hook #'algus/setup-minibuffer-size-and-position)
-
-  ;; (add-hook! '(minibuffer-setup-hook
-  ;;              after-make-frame-functions
-  ;;              after-delete-frame-functions
-  ;;              window-configuration-change-hook
-  ;;              window-size-change-functions
-  ;;              window-selection-change-functions)
-  ;;            #'algus/setup-minibuffer-size-and-position)
-
-  (add-hook 'minibuffer-setup-hook '(lambda () (set-window-fringes nil 0 0)))
-
+  (add-hook 'window-configuration-change-hook 'algus/setup-minibuffer-size-and-position)
   (add-hook 'window-size-change-functions 'algus/setup-minibuffer-size-and-position))
 
 (use-package hardhat
