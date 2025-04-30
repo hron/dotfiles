@@ -404,7 +404,7 @@
               ("S-<f2>" . #'flymake-goto-prev-error))
   :hook ((prog-mode text-mode) . flymake-mode)
   :custom (;; (flymake-show-diagnostics-at-end-of-line t)
-           ))
+           flymake-fringe-indicator-position 'right-fringe))
 
 (use-package mocha
   :defer t
