@@ -475,9 +475,7 @@
                 )
               compilation-error-regexp-alist-alist))
   (setq compilation-error-regexp-alist
-        (cons 'webpack-ts-error compilation-error-regexp-alist))
-
-  :hook (compilation-mode . (lambda () (toggle-truncate-lines -1))))
+        (cons 'webpack-ts-error compilation-error-regexp-alist)))
 
 (use-package vterm
   :defer t
