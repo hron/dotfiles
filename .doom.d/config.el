@@ -938,16 +938,28 @@
   :config
   (defvar algus/minibuffer-max-width 128)
 
-  (defun algus/setup-minibuffer-size-and-position (&optional win)
+  (defun algus/setup-minibuffer-size-and-position (&optional _)
     "Make minibuffer centered if the frame is too wide."
-    (let* ((win (or win (minibuffer-window)))
-           (width (window-width win))
+    (let* ((win (minibuffer-window))
+           (width (frame-width))
            (margin (/ (- width algus/minibuffer-max-width) 2)))
       (when (> width algus/minibuffer-max-width)
         (set-window-margins win margin margin))))
 
-  (add-hook! '(minibuffer-setup-hook window-size-change-functions)
-             #'algus/setup-minibuffer-size-and-position)
-  (add-hook! 'minibuffer-setup-hook
-    (add-hook! 'window-configuration-change-hook :local
-               #'algus/setup-minibuffer-size-and-position)))
+  ;; (add-hook 'window-configuration-change-hook #'algus/setup-minibuffer-size-and-position)
+  ;; (add-hook 'window-size-change-functions #'algus/setup-minibuffer-size-and-position)
+
+  ;; (add-hook! 'doom-switch-window-hook #'algus/setup-minibuffer-size-and-position)
+  ;; (add-hook! 'doom-switch-frame-hook #'algus/setup-minibuffer-size-and-position)
+
+  ;; (add-hook! '(minibuffer-setup-hook
+  ;;              after-make-frame-functions
+  ;;              after-delete-frame-functions
+  ;;              window-configuration-change-hook
+  ;;              window-size-change-functions
+  ;;              window-selection-change-functions)
+  ;;            #'algus/setup-minibuffer-size-and-position)
+
+  (add-hook 'minibuffer-setup-hook '(lambda () (set-window-fringes nil 0 0)))
+
+  (add-hook 'window-size-change-functions 'algus/setup-minibuffer-size-and-position))
