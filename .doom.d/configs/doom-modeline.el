@@ -51,4 +51,9 @@
   :custom
   (doom-modeline-lsp nil)
   (doom-modeline-major-mode-icon t)
-  (doom-modeline-buffer-file-name-style 'file-name))
+  (doom-modeline-buffer-file-name-style 'file-name)
+
+  :custom-face
+  (doom-modeline-info  ((t (:inherit (doom-modeline success) :weight normal))))
+  (doom-modeline-warning  ((t (:inherit (doom-modeline warning) :weight normal))))
+  (doom-modeline-urgent  ((t (:inherit (doom-modeline error) :weight normal)))))
