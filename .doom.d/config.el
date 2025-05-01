@@ -954,6 +954,7 @@
            (edges (window-edges win))
            (left (nth 0 edges))
            (half-frame (/ (frame-width) 2)))
+      (set-window-fringes minibuffer-win 0)
       (if  (and (> (frame-width) algus/minibuffer-max-width)
                 (>= left half-frame))
           (set-window-margins minibuffer-win (+ half-frame 2) 0)
