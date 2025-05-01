@@ -321,7 +321,8 @@
 
   :custom ((search-exit-option 'edit)
            (select-enable-clipboard t)
-           (select-active-regions nil)))
+           (select-active-regions nil)
+           (search-nonincremental-instead nil)))
 
 (use-package winner
   :defer t
