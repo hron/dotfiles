@@ -934,19 +934,32 @@
 (use-package minibuffer
   :ensure nil
   :config
-  (defvar algus/minibuffer-max-width 128)
+
+  (defun algus/last-window ()
+    "Get the last activated window before active minibuffer."
+    (let ((window (minibuffer-selected-window)))
+      (or (if (window-live-p window)
+              window
+            (next-window))
+          (selected-window))))
+
+  (defvar algus/minibuffer-max-width 160)
 
   (defun algus/setup-minibuffer-size-and-position (&optional _)
     "Make minibuffer centered if the frame is too wide."
-    (let* ((win (minibuffer-window))
-           (width (frame-width))
-           (margin (/ (- width algus/minibuffer-max-width) 2)))
-      (set-window-fringes win 0 0 nil t)
-      (if (> width algus/minibuffer-max-width)
-          (set-window-margins win margin margin)
-        (set-window-margins win 0 0))))
+    (let* ((minibuffer-win (minibuffer-window))
+           (win (if (minibufferp (window-buffer (selected-window)))
+                    (algus/last-window)
+                  (selected-window)))
+           (edges (window-edges win))
+           (left (nth 0 edges))
+           (half-frame (/ (frame-width) 2)))
+      (if  (and (> (frame-width) algus/minibuffer-max-width)
+                (>= left half-frame))
+          (set-window-margins minibuffer-win (+ half-frame 2) 0)
+        (set-window-margins minibuffer-win 0 0))))
 
-  (add-hook! '(window-configuration-change-hook window-size-change-functions minibuffer-setup-hook)
+  (add-hook! '(window-state-change-hook)
              #'algus/setup-minibuffer-size-and-position))
 
 (use-package hardhat
