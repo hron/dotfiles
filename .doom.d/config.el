@@ -958,7 +958,6 @@
 (use-package hardhat
   :config
   (defun algus/disable-checks-if-read-only ()
-    (message (format "algus/disable-checks-if-read-only -- buffer-read-only: %s" buffer-read-only))
     (when (or buffer-read-only hardhat-mode)
       (eldoc-mode -1)
       (flyspell-mode -1)
