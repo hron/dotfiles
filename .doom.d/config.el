@@ -946,8 +946,8 @@
           (set-window-margins win margin margin)
         (set-window-margins win 0 0))))
 
-  (add-hook 'window-configuration-change-hook 'algus/setup-minibuffer-size-and-position)
-  (add-hook 'window-size-change-functions 'algus/setup-minibuffer-size-and-position))
+  (add-hook! '(window-configuration-change-hook window-size-change-functions minibuffer-setup-hook)
+             #'algus/setup-minibuffer-size-and-position))
 
 (use-package hardhat
   :config
