@@ -951,11 +951,16 @@
 
 (use-package hardhat
   :config
+  (defun algus/disable-checks-if-read-only ()
+    (message (format "algus/disable-checks-if-read-only -- buffer-read-only: %s" buffer-read-only))
+    (when (or buffer-read-only hardhat-mode)
+      (eldoc-mode -1)
+      (flyspell-mode -1)
+      (flymake-mode -1)))
+
   (global-hardhat-mode +1)
   :custom
-  (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/"))
+  (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/"
+                                        "/share/emacs/30\\.1/lisp/"))
   :hook
-  (hardhat-mode . (lambda ()
-                    (eldoc-mode -1)
-                    (flyspell-mode -1)
-                    (flymake-mode -1))))
+  ((find-file hardhat-mode) . algus/disable-checks-if-read-only))
