@@ -883,10 +883,10 @@
     (dolist (type lookup-types)
       (add-to-list 'desktop-locals-to-save (intern (format "+lookup-%s-functions" type)))))
 
-  (add-hook! 'doom-after-init-hook :append
-    (when (doom-project-p)
-      (desktop-read ".")
-      (desktop-save-mode +1)))
+  ;; (add-hook! 'doom-after-init-hook :append
+  ;;   (when (doom-project-p)
+  ;;     (desktop-read ".")
+  ;;     (desktop-save-mode +1)))
 
   :custom
   (desktop-path . ("."))
