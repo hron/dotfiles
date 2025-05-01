@@ -116,7 +116,8 @@
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
-  (delete-by-moving-to-trash t))
+  (delete-by-moving-to-trash t)
+  (comment-empty-lines t))
 
 (use-package emacs
   :defer t
