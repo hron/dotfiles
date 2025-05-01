@@ -918,17 +918,6 @@
         "C-c C-d"
         #'algus/javascript-console-dir))
 
-(use-package eldoc-box
-  :defer t
-  :config
-  (map! :leader :desc "Disable eldoc-mode" :g "t e" #'eldoc-mode)
-  :hook
-  (prog-mode . eldoc-box-hover-at-point-mode)
-  :bind
-  (:map prog-mode-map
-        ("M-<up>" . #'eldoc-box-scroll-up)
-        ("M-<down>" . #'eldoc-box-scroll-down)))
-
 (load! "configs/eshell.el")
 
 (use-package minibuffer
