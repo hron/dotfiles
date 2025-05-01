@@ -952,7 +952,7 @@
           (set-window-margins minibuffer-win (+ half-frame 2) 0)
         (set-window-margins minibuffer-win 0 0))))
 
-  (add-hook! '(window-state-change-hook)
+  (add-hook! '(window-state-change-hook minibuffer-setup-hook)
              #'algus/setup-minibuffer-size-and-position))
 
 (use-package hardhat
