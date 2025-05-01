@@ -599,7 +599,10 @@
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
-              ("C-j" . vertico-exit-input)))
+              ("C-j" . vertico-exit-input))
+  :custom-face
+  ;; Avoid `bold' weight because of nerd-icons
+  (vertico-current ((t :inherit highlight :extend t :weight normal))))
 
 (use-package embark
   :defer t
