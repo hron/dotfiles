@@ -284,7 +284,9 @@
 
 (use-package crux
   :defer t
-  :bind (("<home>" . crux-move-beginning-of-line)))
+  :bind
+  (("<home>" . crux-move-beginning-of-line)
+   ("C-x 4 t" . crux-transpose-windows)))
 
 (use-package isearch
   :defer t
