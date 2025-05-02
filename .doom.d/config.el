@@ -623,6 +623,11 @@
                        embark-isearch-highlight-indicator))
   (embark-prompter 'embark-completing-read-prompter))
 
+(use-package grep
+  :ensure nil
+  :custom
+  (grep-use-headings t))
+
 (use-package info
   :defer t
   :ensure nil
