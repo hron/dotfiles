@@ -627,6 +627,13 @@
 
 (use-package grep
   :ensure nil
+  :config
+  (setq grep--heading-format
+        (eval-when-compile
+          (let ((title (propertize "\n%s"
+                                   'font-lock-face 'grep-heading
+                                   'outline-level 1)))
+            (propertize (concat title "\n") 'compilation-annotation t))))
   :custom
   (grep-use-headings t))
 
