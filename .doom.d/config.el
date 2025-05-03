@@ -445,8 +445,10 @@
     (or (doom-project-ignored-p dir)
         (algus/project-ignored-p dir)))
 
-  :custom ((projectile-ignored-project-function #'algus/projectile-project-p)
-           (project-list-exclude '(algus/project-ignored-p)))
+  :custom
+  (projectile-ignored-project-function #'algus/projectile-project-p)
+  (project-list-exclude '(algus/project-ignored-p))
+  (projectile-compile-use-comint-mode t)
 
   :bind (:map projectile-mode-map
               ("C-S-t" . projectile-toggle-between-implementation-and-test)
