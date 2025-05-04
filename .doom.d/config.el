@@ -105,13 +105,7 @@
          ("S-RET" . +default/diagnostics)
          ("C-S-o" . imenu)
          ("C-M-o" . consult-imenu-multi)
-         ("C-w" . delete-window)
-
-         ;; Folding
-         ("C-=" . +fold/toggle)
-         ("C-k" . +fold/toggle)
-         ("C-M-k" . +fold/open-all)
-         ("M-k" . +fold/close-all))
+         ("C-w" . delete-window))
 
   :custom
   (display-line-numbers-type nil)
