@@ -628,12 +628,31 @@
 (use-package grep
   :ensure nil
   :config
-  (setq grep--heading-format
-        (eval-when-compile
-          (let ((title (propertize "\n%s"
-                                   'font-lock-face 'grep-heading
-                                   'outline-level 1)))
-            (propertize (concat title "\n") 'compilation-annotation t))))
+  (defun grep--heading-filter ()
+    "Filter function to add headings to output of a grep process."
+    (unless grep--heading-state
+      (setq grep--heading-state (cons (point-min-marker) nil)))
+    (save-excursion
+      (let ((limit (car grep--heading-state)))
+        ;; Move point to the old limit and update limit marker.
+        (move-marker limit (prog1 (pos-bol) (goto-char limit)))
+        (while (re-search-forward grep-heading-regexp limit t)
+          (unless (get-text-property (point) 'compilation-annotation)
+            (let ((heading (match-string-no-properties 1))
+                  (start (match-beginning 2))
+                  (end (match-end 2)))
+              (when start
+                (put-text-property start end 'invisible t))
+              (when (and heading (not (equal heading (cdr grep--heading-state))))
+                (save-excursion
+                  (goto-char (pos-bol))
+                  (insert-before-markers
+                   "\n"
+                   (nerd-icons-icon-for-file heading)
+                   " "
+                   (format grep--heading-format heading)))
+                (setf (cdr grep--heading-state) heading))))))))
+
   :custom
   (grep-use-headings t))
 
