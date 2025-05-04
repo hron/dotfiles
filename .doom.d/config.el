@@ -623,6 +623,7 @@
 (use-package grep
   :ensure nil
   :config
+  ;; Modified version adds a nerd icon before each filename
   (defun grep--heading-filter ()
     "Filter function to add headings to output of a grep process."
     (unless grep--heading-state
