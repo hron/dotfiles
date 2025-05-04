@@ -105,7 +105,8 @@
          ("S-RET" . +default/diagnostics)
          ("C-S-o" . imenu)
          ("C-M-o" . consult-imenu-multi)
-         ("C-w" . delete-window))
+         ("C-w" . delete-window)
+         ("C-c t e" . eldoc-mode))
 
   :custom
   (display-line-numbers-type nil)
