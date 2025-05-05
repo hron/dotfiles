@@ -956,38 +956,10 @@
 
 (load! "configs/eshell.el")
 
-(use-package minibuffer
-  :ensure nil
+(load! "configs/too-wide-minibuffer-mode.el")
+(use-package too-wide-minibuffer-mode
   :config
-
-  (defun algus/last-window ()
-    "Get the last activated window before active minibuffer."
-    (let ((window (minibuffer-selected-window)))
-      (or (if (window-live-p window)
-              window
-            (next-window))
-          (selected-window))))
-
-  (defvar algus/minibuffer-max-width 160)
-
-  (defun algus/setup-minibuffer-size-and-position (&optional _)
-    "Make minibuffer centered if the frame is too wide."
-    (let* ((minibuffer-win (minibuffer-window))
-           (win (if (minibufferp (window-buffer (selected-window)))
-                    (algus/last-window)
-                  (selected-window)))
-           (edges (window-edges win))
-           (left (nth 0 edges))
-           (half-frame (/ (frame-total-cols) 2))
-           (half-frame (if (cl-oddp (frame-total-cols)) (1+ half-frame) half-frame)))
-      (set-window-fringes minibuffer-win 0)
-      (if  (and (> (frame-width) algus/minibuffer-max-width)
-                (>= left half-frame))
-          (set-window-margins minibuffer-win half-frame 0)
-        (set-window-margins minibuffer-win 0 0))))
-
-  (add-hook! '(window-state-change-hook minibuffer-setup-hook)
-             #'algus/setup-minibuffer-size-and-position))
+  (too-wide-minibuffer-mode +1))
 
 (use-package hardhat
   :config
