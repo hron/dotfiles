@@ -779,7 +779,7 @@
 
   :custom
   (corfu-preview-current nil)
-  (corfu-preselect t)
+  (corfu-preselect 'first)
   (corfu-auto nil)
   (corfu-auto-delay 0.01))
 
