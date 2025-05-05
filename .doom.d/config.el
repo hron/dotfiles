@@ -967,7 +967,6 @@
 
 (load! "configs/eshell.el")
 
-(load! "configs/too-wide-minibuffer-mode.el")
 (use-package too-wide-minibuffer-mode
   :config
   (defun algus/remove-fringe-from-minibuffer (&rest _)
