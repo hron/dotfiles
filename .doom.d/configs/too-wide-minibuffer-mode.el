@@ -33,7 +33,6 @@
          (left (nth 0 edges))
          (half-frame (/ (frame-total-cols) 2))
          (half-frame (if (cl-oddp (frame-total-cols)) (1+ half-frame) half-frame)))
-    (set-window-fringes minibuffer-win 0)
     (if  (and (> (frame-width) too-wide-minibuffer--max-width)
               (>= left half-frame))
         (set-window-margins minibuffer-win half-frame 0)

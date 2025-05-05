@@ -965,7 +965,12 @@
 (load! "configs/too-wide-minibuffer-mode.el")
 (use-package too-wide-minibuffer-mode
   :config
-  (too-wide-minibuffer-mode +1))
+  (defun algus/remove-fringe-from-minibuffer (&rest _)
+    (set-window-fringes (minibuffer-window) 0))
+  (too-wide-minibuffer-mode +1)
+
+  :hook
+  ((minibuffer-setup window-state-change) . algus/remove-fringe-from-minibuffer))
 
 (use-package hardhat
   :config
