@@ -24,7 +24,7 @@
   "The maximum allowed width for minibuffer window to display as is.")
 
 (defun too-wide-minibuffer--adjust-minibuffer (&optional _)
-  "Adjust the minibuffer window if the frame is too wide."
+  "Adjust the size/position of minibuffer window if the frame is too wide."
   (let* ((minibuffer-win (minibuffer-window))
          (win (if (minibufferp (window-buffer (selected-window)))
                   (too-wide-minibuffer--last-window)
@@ -40,7 +40,7 @@
       (set-window-margins minibuffer-win 0 0))))
 
 (define-minor-mode too-wide-minibuffer-mode
-  "Shrink the minibuffer window if the frame is too wide."
+  "Adjust minibuffer position/size if the frame is too wide."
   :global t
   (let ((trigger-hooks '(window-state-change-hook minibuffer-setup-hook)))
     (if too-wide-minibuffer-mode
