@@ -114,6 +114,21 @@
   (delete-by-moving-to-trash t)
   (comment-empty-lines t))
 
+(use-package anzu
+  :defer t
+  :config
+  (defun algus/anzu-query-replace-at-cursor ()
+    (interactive)
+    (let ((query-replace-history query-replace-history))
+      (add-to-history 'query-replace-history (thing-at-point 'symbol))
+      (call-interactively 'anzu-query-replace-at-cursor)))
+
+  (global-anzu-mode +1)
+
+  :bind
+  ("C-t" . #'algus/anzu-query-replace-at-cursor)
+  ("C-r" . #'anzu-query-replace-regexp))
+
 (use-package emacs
   :defer t
   :config
@@ -287,21 +302,10 @@
   :defer t
   :ensure nil
   :config
-;;;###autoload
-  (defun aleksei/isearch-region-or-forward ()
-    "Do incremental search forward, use region if it's active"
-    (interactive)
-    (if (use-region-p)
-        (isearch-forward-thing-at-point)
-      (isearch-forward)))
-
   (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
 
-  (global-anzu-mode +1)
-
-  :bind (("C-f" . #'aleksei/isearch-region-or-forward)
-         ("C-r" . #'anzu-query-replace-regexp)
-         ("M-f" . #'+default/search-buffer)
+  :bind (("C-f" . #'isearch-forward)
+         ("M-f" . #'isearch-forward-thing-at-point)
          ("C-S-f" . #'+default/search-project)
          ("C-M-<down>" . #'next-error)
          ("C-M-<up>" . (lambda () (interactive) (next-error -1)))
