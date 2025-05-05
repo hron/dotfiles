@@ -1,4 +1,4 @@
-;;; too-wide-minibuffer-mode.el --- shrink minibuffer is the frame is too wide  -*- lexical-binding: t; -*-
+;;; too-wide-minibuffer-mode.el --- shrink minibuffer if the frame is too wide  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025  Aleksei Gusev
 
