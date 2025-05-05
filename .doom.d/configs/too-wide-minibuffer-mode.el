@@ -20,7 +20,7 @@
           (next-window))
         (selected-window))))
 
-(defcustom too-wide-minibuffer--max-width 160
+(defcustom too-wide-minibuffer-max-width 160
   "The maximum allowed width for minibuffer window to display as is.")
 
 (defun too-wide-minibuffer--adjust-minibuffer (&optional _)
@@ -33,7 +33,7 @@
          (left (nth 0 edges))
          (half-frame (/ (frame-total-cols) 2))
          (half-frame (if (cl-oddp (frame-total-cols)) (1+ half-frame) half-frame)))
-    (if  (and (> (frame-width) too-wide-minibuffer--max-width)
+    (if  (and (> (frame-width) too-wide-minibuffer-max-width)
               (>= left half-frame))
         (set-window-margins minibuffer-win half-frame 0)
       (set-window-margins minibuffer-win 0 0))))
