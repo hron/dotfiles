@@ -176,6 +176,7 @@ export DEBFULLNAME="Aleksei Gusev"
 export PGHOST=localhost
 export PGUSER=spaceship
 export PGDATABASE=spaceship
+export QT_QPA_PLATFORMTHEME=gnome
 
 # Nix Standalone
 nix_profile=$HOME/.nix-profile/etc/profile.d/nix.sh
