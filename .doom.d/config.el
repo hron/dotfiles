@@ -760,6 +760,11 @@
   :config
   (remove-hook! corfu-mode '+corfu-mode-unbinds)
 
+  (setq corfu-preview-current nil
+        corfu-preselect 'first
+        corfu-auto nil)
+  ;; (corfu-auto-delay 0.01)
+
   :bind (:map global-map
          ("C-SPC" . completion-at-point)
          :map corfu-map
@@ -774,14 +779,10 @@
          ("M-<" . nil)
          ("M-n" . nil)
          ("M-p" . nil))
-  :hook
-  (prog-mode . (lambda () (setq-local corfu-auto t)))
 
-  :custom
-  (corfu-preview-current nil)
-  (corfu-preselect 'first)
-  (corfu-auto nil)
-  (corfu-auto-delay 0.01))
+  ;; :hook
+  ;; (prog-mode . (lambda () (setq-local corfu-auto t)))
+  )
 
 (use-package yaml-mode
   :defer t
