@@ -116,6 +116,7 @@
 
 (use-package anzu
   :defer t
+  :commands (algus/anzu-query-replace-at-cursor anzu-query-replace-at-cursor)
   :config
   (defun algus/anzu-query-replace-at-cursor ()
     (interactive)
