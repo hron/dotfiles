@@ -6,7 +6,12 @@
  '(custom-safe-themes
    '("5c7720c63b729140ed88cf35413f36c728ab7c70f8cd8422d9ee1cedeb618de5" default))
  '(safe-local-variable-values
-   '((mangle-whitespace . t)
+   '((eval and buffer-file-name (not (eq major-mode 'package-recipe-mode))
+      (or (require 'package-recipe-mode nil t)
+       (let ((load-path (cons "../package-build" load-path)))
+         (require 'package-recipe-mode nil t)))
+      (package-recipe-mode))
+     (mangle-whitespace . t)
      (eval font-lock-add-keywords nil
       `
       ((,(concat "("
