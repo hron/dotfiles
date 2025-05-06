@@ -93,3 +93,5 @@
 
 (package! too-wide-minibuffer-mode
   :recipe (:host github :repo "hron/too-wide-minibuffer-mode"))
+
+(package! package-lint-flymake)

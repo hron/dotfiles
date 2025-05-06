@@ -991,3 +991,9 @@
                                         "/share/emacs/30\\.1/lisp/"))
   :hook
   ((find-file hardhat-mode) . algus/disable-checks-if-read-only))
+
+(use-package package-lint-flymake
+  :defer t
+  :ensure nil
+  :hook
+  ((emacs-lisp-mode . package-lint-flymake-setup)))
