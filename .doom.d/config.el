@@ -545,6 +545,8 @@
           isearch-backward
           flycheck-next-error
           flycheck-previous-error
+          flymake-goto-next-error
+          flymake-goto-prev-error
           org-open-at-point-global))
 
   (dolist (func aleksei/better-jumper-advice-funcs)
@@ -797,7 +799,8 @@
 (use-package gptel
   :defer t
   :bind (:map global-map
-              ("C-S-q" . gptel-menu)
+              ("C-S-q" . gptel-rewrite)
+              ("C-S-M-q" . gptel-menu)
               ;; :map gptel-mode
               ;; ("C-<return>" . gptel-send)
               )
@@ -810,7 +813,7 @@
 
 (use-package phpunit
   :defer t
-  :bind-keymap* ("C-;" . aleksei/phpunit-mode-map)
+  ;; :bind-keymap* ("C-;" . aleksei/phpunit-mode-map)
   :config
   (defvar aleksei/phpunit-mode-map
     (let ((map (make-sparse-keymap)))
@@ -868,9 +871,7 @@
   ;; Add `Warning:' to the default php regexp
   (add-to-list 'compilation-error-regexp-alist-alist
                '(php-warning "\\(?:Warning\\): \\(.*\\) in \\(.*\\) on line \\([0-9]+\\)" 2 3 nil nil))
-  (add-to-list 'compilation-error-regexp-alist 'php-warning)
-
-  )
+  (add-to-list 'compilation-error-regexp-alist 'php-warning))
 
 (use-package flyspell
   :defer t
@@ -973,7 +974,8 @@
   (defun algus/remove-fringe-from-minibuffer (&rest _)
     (set-window-fringes (minibuffer-window) 0))
   (too-wide-minibuffer-mode +1)
-
+  :custom
+  (minibuffer-follows-selected-frame nil)
   :hook
   ((minibuffer-setup window-state-change) . algus/remove-fringe-from-minibuffer))
 
@@ -997,3 +999,12 @@
   :ensure nil
   :hook
   ((emacs-lisp-mode . package-lint-flymake-setup)))
+
+(def-project-mode! project:nerd-icons-grep-mode
+  :files ("nerd-icons-grep-mode.el")
+  :on-load
+  (global-set-key (kbd "M-r")
+                  (lambda ()
+                    (interactive)
+                    (eval-buffer "nerd-icons-grep-mode.el")
+                    (ert 't))))

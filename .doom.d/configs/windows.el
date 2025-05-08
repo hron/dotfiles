@@ -84,6 +84,11 @@
 
 ;;         ))
 
+;; (setq display-buffer-alist
+;;       '(("\\*ert\\*"
+;;          (display-buffer-reuse-window display-buffer-pop-up-window)
+;;          (post-command-select-window . nil))))
+
 (use-package emacs
   :defer t
   :ensure nil
