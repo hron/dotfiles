@@ -95,3 +95,6 @@
   :recipe (:host github :repo "hron/too-wide-minibuffer-mode"))
 
 (package! package-lint-flymake)
+
+(package! nerd-icons-grep
+  :recipe (:host github :repo "hron/nerd-icons-grep"))
