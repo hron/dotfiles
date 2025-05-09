@@ -9,126 +9,92 @@
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("M-i" . delete-other-windows)))
 
-;; (setq aleksei/default-side-window-width .5
-;;       aleksei/default-side-window-height .33)
+(defvar algus/default-side-window-width .5)
+(defvar algus/default-side-window-height .33)
 
-;; (defun aleksei/display-buffer-below-selected-then-fit-and-select (buffer &optional alist)
-;;   "Display BUFFER at the bottom of the window, fit the height to the
-;; content, and select the window."
-;;   (let ((window (display-buffer-below-selected buffer `((side . bottom)))))
-;;     (fit-window-to-buffer window (floor (frame-height) 2))
-;;     (select-window window)  ;; Select the window displaying the buffer
-;;     window))
+(defun algus/display-buffer-below-selected-then-fit-and-select (buffer &optional alist)
+  "Display BUFFER at the bottom of the window, apply ALIST.
 
-;; (defun aleksei/display-buffer-in-side-window (buffer &optional alist)
-;;   "Display BUFFER at the appropriate place depending on the current frame width"
-;;   (let* ((side-width (or (cdr (assq 'side-width alist)) aleksei/default-side-window-width))
-;;          (side-height (or (cdr (assq 'side-height alist)) aleksei/default-side-window-height))
-;;          (wide-frame-opts `(list
-;;                             (window-width . ,side-width)
-;;                             (side . left)))
-;;          (narrow-frame-opts `(list
-;;                               (window-height . ,side-height)
-;;                               (side . bottom))))
+Fit the height to the content, and select the window."
+  (let ((window (display-buffer-below-selected buffer `((side . bottom)))))
+    (fit-window-to-buffer window (floor (frame-height) 2))
+    (select-window window)  ;; Select the window displaying the buffer
+    window))
 
-;;     (display-buffer-in-side-window
-;;      buffer
-;;      (append alist
-;;              (if (aleksei/2-columns-layout-p) wide-frame-opts narrow-frame-opts))
-;;      )))
+(defun algus/display-buffer-in-side-window (buffer &optional alist)
+  "Display BUFFER at the appropriate place depending on the current frame width"
+  (let* ((side-width (or (cdr (assq 'side-width alist)) algus/default-side-window-width))
+         (side-height (or (cdr (assq 'side-height alist)) algus/default-side-window-height))
+         (wide-frame-opts `(list
+                            (window-width . ,side-width)
+                            (side . left)))
+         (narrow-frame-opts `(list
+                              (window-height . ,side-height)
+                              (side . bottom))))
 
-;; (defun aleksei/display-buffer-in-side-window-if-wide (buffer &optional alist)
-;;   (if (aleksei/2-columns-layout-p)
-;;       (display-buffer-in-side-window
-;;        buffer
-;;        (append alist  `(list (side . left)
-;;                         (window-width . ,aleksei/default-side-window-width))))
-;;     (display-buffer-same-window buffer alist)))
+    (display-buffer-in-side-window
+     buffer
+     (append alist
+             (if (algus/2-columns-layout-p) wide-frame-opts narrow-frame-opts))
+     )))
 
-;; (defun aleksei/2-columns-layout-p ()
-;;   (>= (frame-width) 200))
+(defun algus/display-buffer-in-side-window-if-wide (buffer &optional alist)
+  (if (algus/2-columns-layout-p)
+      (display-buffer-in-side-window
+       buffer
+       (append alist  `(list (side . left)
+                        (window-width . ,algus/default-side-window-width))))
+    (display-buffer-same-window buffer alist)))
 
-;; (defun aleksei/1-column-layout-p ()
-;;   (not (aleksei/2-columns-layout-p)))
+(defun algus/2-columns-layout-p ()
+  (>= (frame-width) 200))
 
-;; (setq display-buffer-alist
-;;       '(
-;;         ((or . ((derived-mode . process-menu-mode)
-;;                 (derived-mode . flycheck-error-list-mode)
-;;                 "\\*RE-Builder\\*"
-;;                 ;; "\\*diff-hl"
-;;                 ))
-;;          (display-buffer-reuse-mode-window
-;;           aleksei/display-buffer-below-selected-then-fit-and-select))
+(defun algus/1-column-layout-p ()
+  (not (algus/2-columns-layout-p)))
 
-;;         ((or . ("\\*Org Agenda"
-;;                 ))
-;;          (display-buffer-reuse-window
-;;           display-buffer-same-window))
+(setq display-buffer-alist
+      '(
+        ((or . ((derived-mode . process-menu-mode)
+                (derived-mode . flycheck-error-list-mode)
+                "\\*RE-Builder\\*"
+                ;; "\\*diff-hl"
+                ))
+         (display-buffer-reuse-mode-window
+          algus/display-buffer-below-selected-then-fit-and-select))
 
-;;         ((or . ("\\*ChatGPT"
-;;                 "^magit-log"
-;;                 "^magit-revision"
-;;                 (derived-mode . magit-status-mode)
-;;                 "\\*Man"))
-;;          (aleksei/display-buffer-in-side-window-if-wide))
+        ((or . ("\\*Org Agenda"
+                "\\*doom:scratch"
+                ))
+         (display-buffer-reuse-window
+          display-buffer-same-window))
 
-;;         ((or . ("^\\*"
-;;                 "Output\\*$"
-;;                 (derived-mode . compilation-mode)
-;;                 (derived-mode . comint-mode)))
-;;          (aleksei/display-buffer-in-side-window))
+        ((or . ("\\*ChatGPT"
+                "^magit-log"
+                "^magit-revision"
+                (derived-mode . magit-status-mode)
+                "\\*Man"))
+         (algus/display-buffer-in-side-window-if-wide))
 
-;;         (".*"
-;;          (display-buffer-reuse-mode-window))
+        ((or . ("^\\*"
+                "Output\\*$"
+                (derived-mode . compilation-mode)
+                (derived-mode . comint-mode)))
+         (display-buffer-reuse-window
+          algus/display-buffer-in-side-window))))
 
-;;         ))
+(defvar algus/redisplay-last-frame-width (frame-total-cols))
 
-;; (setq display-buffer-alist
-;;       '(("\\*ert\\*"
-;;          (display-buffer-reuse-window display-buffer-pop-up-window)
-;;          (post-command-select-window . nil))))
+(defun algus/redisplay-side-windows ()
+  (when (not (eq algus/redisplay-last-frame-width (frame-total-cols)))
+    (setq algus/redisplay-last-frame-width (frame-total-cols))
+    (let ((closed-bufs))
+      (dolist (win (window-list))
+        (when (and (window-parameter win 'window-side)
+                   (window-live-p win))
+          (push (window-buffer win) closed-bufs)
+          (delete-window win)))
+      (message "%s" closed-bufs)
+      (dolist (buf closed-bufs)
+        (pop-to-buffer buf)))))
 
-(use-package emacs
-  :defer t
-  :ensure nil
-  :config
-;;;###autoload
-
-  (defun algus/split-window-sensibly (&optional window)
-    "Just like `split-window-sensibly', but prefers the left side."
-    (let ((window (or window (selected-window))))
-      (or (and (window-splittable-p window)
-	       ;; Split window vertically.
-	       (with-selected-window window
-	         (split-window-below)))
-	  (and (window-splittable-p window t)
-	       ;; Split window horizontally.
-	       (let ((new-window (with-selected-window window
-	                           (split-window-right))))
-                 (select-window new-window)
-                 window))
-	  (and
-           ;; If WINDOW is the only usable window on its frame (it is
-           ;; the only one or, not being the only one, all the other
-           ;; ones are dedicated) and is not the minibuffer window, try
-           ;; to split it vertically disregarding the value of
-           ;; `split-height-threshold'.
-           (let ((frame (window-frame window)))
-             (or
-              (eq window (frame-root-window frame))
-              (catch 'done
-                (walk-window-tree (lambda (w)
-                                    (unless (or (eq w window)
-                                                (window-dedicated-p w))
-                                      (throw 'done nil)))
-                                  frame nil 'nomini)
-                t)))
-	   (not (window-minibuffer-p window))
-	   (let ((split-height-threshold 0))
-	     (when (window-splittable-p window)
-	       (with-selected-window window
-	         (split-window-below))))))))
-
-  :custom
-  (split-window-preferred-function #'algus/split-window-sensibly))
+(add-hook 'window-state-change-hook #'algus/redisplay-side-windows)
