@@ -114,22 +114,6 @@
   (delete-by-moving-to-trash t)
   (comment-empty-lines t))
 
-(use-package anzu
-  :defer t
-  :commands (algus/anzu-query-replace-at-cursor anzu-query-replace-at-cursor)
-  :config
-  (defun algus/anzu-query-replace-at-cursor ()
-    (interactive)
-    (let ((query-replace-history query-replace-history))
-      (add-to-history 'query-replace-history (thing-at-point 'symbol))
-      (call-interactively 'anzu-query-replace-at-cursor)))
-
-  (global-anzu-mode +1)
-
-  :bind
-  ("C-t" . #'algus/anzu-query-replace-at-cursor)
-  ("C-r" . #'anzu-query-replace-regexp))
-
 (use-package emacs
   :defer t
   :config
@@ -316,6 +300,8 @@
          ("<return>". #'isearch-repeat-forward)
          ("C-g" . #'isearch-exit)
          ("C-v" . #'isearch-yank-kill)
+         ("C-r" . #'isearch-query-replace)
+         ("M-C-r" . #'isearch-query-replace-regexp)
          :map minibuffer-local-isearch-map
          ("C-f" . #'isearch-forward-exit-minibuffer)
          ("C-r" . #'isearch-backward-exit-minibuffer)
@@ -325,6 +311,42 @@
            (select-enable-clipboard t)
            (select-active-regions nil)
            (search-nonincremental-instead nil)))
+
+(use-package anzu
+  :defer t
+  :commands (algus/anzu-query-replace-at-cursor
+             algus/anzu-query-replace
+             anzu-query-replace-at-cursor
+             isearch-forward
+             isearch-forward-thing-at-point)
+  :config
+  (defun algus/anzu-query-replace-at-cursor ()
+    (interactive)
+    (let ((query-replace-history query-replace-history))
+      (add-to-history 'query-replace-history (thing-at-point 'symbol))
+      (call-interactively 'anzu-query-replace-at-cursor)))
+
+  (defun algus/anzu-query-replace ()
+    (interactive)
+    (if (and (use-region-p)
+             (= (line-number-at-pos (region-beginning))
+                (line-number-at-pos (region-end))))
+        (let ((isearch-string (buffer-substring-no-properties (region-beginning) (region-end))))
+          (deactivate-mark)
+          (anzu--query-replace-common nil :isearch-p t)))
+    (call-interactively #'anzu-query-replace))
+
+  (global-anzu-mode +1)
+
+  :bind
+  (("C-t" . #'algus/anzu-query-replace-at-cursor)
+   ("C-r" . #'algus/anzu-query-replace)
+   ("C-M-r" . #'anzu-query-replace-regexp)
+   :map isearch-mode-map
+   ("C-r" . #'anzu-isearch-query-replace)
+   ("M-C-r" . #'anzu-isearch-query-replace-regexp)
+   ("M-%" . #'anzu-isearch-query-replace)
+   ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
 (use-package winner
   :defer t
