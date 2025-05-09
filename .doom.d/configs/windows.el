@@ -93,7 +93,6 @@ Fit the height to the content, and select the window."
                    (window-live-p win))
           (push (window-buffer win) closed-bufs)
           (delete-window win)))
-      (message "%s" closed-bufs)
       (dolist (buf closed-bufs)
         (pop-to-buffer buf)))))
 
