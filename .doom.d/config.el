@@ -19,7 +19,9 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Return font size depending on the environment."
-  13)
+  (cond ((equal 'x (window-system)) 26)
+        (t 13)))
+
 
 ;; (setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size (aleksei/font-size))
 ;;       doom-symbol-font doom-font
@@ -302,6 +304,8 @@
          ("C-v" . #'isearch-yank-kill)
          ("C-r" . #'isearch-query-replace)
          ("M-C-r" . #'isearch-query-replace-regexp)
+         ("C-<home>" . #'isearch-beginning-of-buffer)
+         ("C-<end>" . #'isearch-end-of-buffer)
          :map minibuffer-local-isearch-map
          ("C-f" . #'isearch-forward-exit-minibuffer)
          ("C-r" . #'isearch-backward-exit-minibuffer)
