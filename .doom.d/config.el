@@ -1001,8 +1001,8 @@
   :hook
   ((emacs-lisp-mode . package-lint-flymake-setup)))
 
-(def-project-mode! project:nerd-icons-grep-mode
-  :files ("nerd-icons-grep-mode.el")
+(def-project-mode! project:nerd-icons-grep
+  :files ("nerd-icons-grep.el")
   :on-load
   (global-set-key (kbd "M-r")
                   (lambda ()
