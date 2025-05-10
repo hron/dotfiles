@@ -33,12 +33,12 @@
       "ctrl-.": "editor::ToggleCodeActions",
       "ctrl-l": "editor::ScrollCursorCenter",
       "f1": "editor::ToggleSoftWrap",
-      "ctrl-alt-z": "git::Restore",
+      "ctrl-alt-z": "editor::RevertSelectedHunks",
       "alt-]": "editor::GoToHunk",
-      "alt-[": "editor::GoToPreviousHunk",
-      "ctrl-alt-[": "editor::ToggleSelectedDiffHunks",
+      "alt-[": "editor::GoToPrevHunk",
+      "ctrl-alt-[": "editor::ToggleHunkDiff",
       "f2": "editor::GoToDiagnostic",
-      "shift-f2": "editor::GoToPreviousDiagnostic",
+      "shift-f2": "editor::GoToPrevDiagnostic",
       "ctrl-alt-l": "editor::Format",
       "alt-.": "editor::GoToDefinition",
       "alt-ctrl-.": "editor::GoToTypeDefinition",
@@ -61,7 +61,7 @@
         }
       ],
       "alt-ctrl-j": "editor::SelectAllMatches",
-      "alt-shift-j": [
+      "ctrl-k alt-j": [
         "editor::SelectNext",
         {
           "replace_newest": true
@@ -73,11 +73,10 @@
           "replace_newest": true
         }
       ],
-      "ctrl-k alt-j": "editor::UndoSelection",
+      "alt-shift-j": "editor::UndoSelection",
       "alt-ctrl-f": null,
       "ctrl-shift-alt-f": null,
-      "ctrl-alt-shift-f": null,
-      "alt-shift-n": "workspace::ClearAllNotifications"
+      "ctrl-alt-shift-f": null
     }
   },
   {
@@ -96,8 +95,7 @@
       "alt-0": null,
       "ctrl-q": null,
       "alt-left": "pane::GoBack",
-      "alt-right": "pane::GoForward",
-      "ctrl-r": "search::ToggleReplace"
+      "alt-right": "pane::GoForward"
     }
   },
   {
@@ -108,7 +106,7 @@
       "alt-x": "command_palette::Toggle",
       "alt-t": "task::Spawn",
       "alt-r": "task::Rerun",
-      "alt-i": "workspace::CloseAllDocks",
+      "ctrl-i": "workspace::CloseAllDocks",
       "ctrl-p": null,
       "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
       "alt-1": "project_panel::ToggleFocus",
@@ -119,8 +117,8 @@
       "alt-6": null,
       "alt-7": null,
       "alt-8": null,
-      "ctrl-q": null,
-      "alt-9": "git_panel::ToggleFocus"
+      "alt-9": null,
+      "ctrl-q": null
     }
   },
   {
@@ -131,6 +129,7 @@
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
       "ctrl-e": null,
+      "ctrl-w": null,
       "ctrl-q": null
     }
   },
@@ -144,14 +143,14 @@
       "ctrl-shift-left": "project_panel::CollapseAllEntries",
       "f2": "project_panel::Rename",
       "f7": "project_panel::NewDirectory",
-      "ctrl-shift-c": "workspace::CopyPath",
-      "ctrl-shift-alt-c": "workspace::CopyRelativePath"
+      "ctrl-shift-c": "project_panel::CopyPath",
+      "ctrl-shift-alt-c": "project_panel::CopyRelativePath"
     }
   },
   {
     "context": "AssistantPanel",
     "bindings": {
-      "escape": "agent::ToggleFocus"
+      "escape": "assistant::ToggleFocus"
     }
   },
   {

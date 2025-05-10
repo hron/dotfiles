@@ -9,7 +9,7 @@
 {
   // "theme": {
   //   "dark": "Zedwaita Dark",
-  //   "light": "Zedwaita Light"k
+  //   "light": "Zedwaita Light"
   // },
   "language_models": {
     "openai": {
@@ -22,49 +22,6 @@
     "light": "Modus Operandi"
   },
   "experimental.theme_overrides": {
-    "search.match_background": "#3c3c3caa",
-    "players": [
-      {
-        "cursor": "#74ade8ff",
-        "background": "#240f55ff",
-        "selection": "#240f55ff"
-      },
-      {
-        "cursor": "#be5046ff",
-        "background": "#be5046ff",
-        "selection": "#be50463d"
-      },
-      {
-        "cursor": "#bf956aff",
-        "background": "#bf956aff",
-        "selection": "#bf956a3d"
-      },
-      {
-        "cursor": "#b477cfff",
-        "background": "#b477cfff",
-        "selection": "#b477cf3d"
-      },
-      {
-        "cursor": "#6eb4bfff",
-        "background": "#6eb4bfff",
-        "selection": "#6eb4bf3d"
-      },
-      {
-        "cursor": "#d07277ff",
-        "background": "#d07277ff",
-        "selection": "#d072773d"
-      },
-      {
-        "cursor": "#dec184ff",
-        "background": "#dec184ff",
-        "selection": "#dec1843d"
-      },
-      {
-        "cursor": "#a1c181ff",
-        "background": "#a1c181ff",
-        "selection": "#a1c1813d"
-      }
-    ],
     "syntax": {
       "comment": {
         "font_style": "italic"
@@ -77,7 +34,7 @@
       }
     }
   },
-  "ui_font_size": 16,
+  "ui_font_size": 18,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
@@ -88,15 +45,8 @@
     "liga": false
   },
   "autosave": "on_focus_change",
-  // Whether to use the system provided dialogs for Open and Save As.
-  // When set to false, Zed will use the built-in keyboard-first pickers.
-  "use_system_path_prompts": false,
-  // When enabled, automatically adjusts search case sensitivity based on your query.
-  // If your search query contains any uppercase letters, the search becomes case-sensitive;
-  // if it contains only lowercase letters, the search becomes case-insensitive.
-  "use_smartcase_search": true,
   "notification_panel": {
-    "dock": "left"
+    "dock": "right"
   },
   "chat_panel": {
     "dock": "left"
@@ -123,8 +73,8 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "bottom",
-    "default_width": 900,
+    "dock": "left",
+    "default_width": 650,
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
     "font_weight": 600
@@ -132,24 +82,25 @@
   },
   "project_panel": {
     "dock": "left",
-    "default_width": 900
+    "default_width": 650
   },
-  "agent": {
+  "assistant": {
     "default_model": {
       "provider": "openai",
       "model": "gpt-4o"
     },
+    "default_height": 650.0,
     "provider": null,
     "dock": "left",
-    "default_width": 900,
+    "default_width": 650,
     "version": "2",
     "enabled": true
   },
   "git_panel": {
-    "default_width": 900
+    "default_width": 650
   },
   "features": {
     // Which inline completion provider to use.
-    "edit_prediction_provider": "none"
+    "inline_completion_provider": "none"
   }
 }
