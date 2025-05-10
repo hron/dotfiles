@@ -656,7 +656,9 @@
 (use-package grep
   :ensure nil
   :custom
-  (grep-use-headings t))
+  (grep-use-headings t)
+  :bind (:map grep-mode-map
+              ("C-S-o" . consult-outline)))
 
 (use-package nerd-icons-grep)
 
