@@ -71,24 +71,35 @@ Fit the height to the content, and select the window."
         ((or . ("\\*ChatGPT"
                 "^magit-log"
                 "^magit-revision"
-                (derived-mode . magit-status-mode)
+                ;; (derived-mode . magit-status-mode)
+                ;; "^*magit-diff"
                 "\\*Man"))
          (algus/display-buffer-in-side-window-if-wide))
 
-        ((or . ("^\\*"
+        ((or . ("^\\*helpful"
                 "Output\\*$"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)))
          (display-buffer-reuse-window
           algus/display-buffer-in-side-window))))
 
-(defvar algus/redisplay-last-frame-width (frame-total-cols))
+(defvar algus/redisplay-last-frame-width nil)
 
-(defun algus/redisplay-side-windows ()
-  (when (not (eq algus/redisplay-last-frame-width (frame-total-cols)))
-    (setq algus/redisplay-last-frame-width (frame-total-cols))
+(defun algus/frame-size-changed-p ()
+  "Non-nil if a change in frame size is detected."
+  (let ((new-size (cons (frame-width) (frame-height))))
+    (cond ((null algus/redisplay-last-frame-width)
+           (setq algus/redisplay-last-frame-width new-size)
+           nil)
+          ((not (equal algus/redisplay-last-frame-width new-size))
+           (setq algus/redisplay-last-frame-width new-size)))))
+
+;;;###autoload
+(defun algus/redisplay-side-windows (&optional frame)
+  (interactive)
+  (when (and (algus/frame-size-changed-p))
     (let ((closed-bufs))
-      (dolist (win (window-list))
+      (dolist (win (window-list frame nil))
         (when (and (window-parameter win 'window-side)
                    (window-live-p win))
           (push (window-buffer win) closed-bufs)
@@ -96,4 +107,4 @@ Fit the height to the content, and select the window."
       (dolist (buf closed-bufs)
         (pop-to-buffer buf)))))
 
-(add-hook 'window-state-change-hook #'algus/redisplay-side-windows)
+(add-hook 'window-size-change-functions #'algus/redisplay-side-windows)
