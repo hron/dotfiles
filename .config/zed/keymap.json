@@ -28,7 +28,6 @@
       "ctrl-d": "editor::DuplicateLineDown",
       "alt-shift-up": "editor::MoveLineUp",
       "alt-shift-down": "editor::MoveLineDown",
-      "ctrl-j": null,
       "ctrl-shift-j": "editor::JoinLines",
       "ctrl-.": "editor::ToggleCodeActions",
       "ctrl-l": "editor::ScrollCursorCenter",
@@ -119,8 +118,8 @@
       "alt-6": null,
       "alt-7": null,
       "alt-8": null,
-      "ctrl-q": null,
-      "alt-9": "git_panel::ToggleFocus"
+      "alt-9": null,
+      "ctrl-q": null
     }
   },
   {
@@ -131,7 +130,9 @@
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
       "ctrl-e": null,
-      "ctrl-q": null
+      "ctrl-q": null,
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-delete": ["terminal::SendKeystroke", "alt-d"]
     }
   },
   {

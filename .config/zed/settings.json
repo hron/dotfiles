@@ -18,53 +18,53 @@
     }
   },
   "theme": {
-    "dark": "Modus Vivendi",
-    "light": "Modus Operandi"
+    "dark": "algus: Modus Vivendi",
+    "light": "algus: Modus Operandi"
   },
   "experimental.theme_overrides": {
-    "search.match_background": "#3c3c3caa",
-    "players": [
-      {
-        "cursor": "#74ade8ff",
-        "background": "#240f55ff",
-        "selection": "#240f55ff"
-      },
-      {
-        "cursor": "#be5046ff",
-        "background": "#be5046ff",
-        "selection": "#be50463d"
-      },
-      {
-        "cursor": "#bf956aff",
-        "background": "#bf956aff",
-        "selection": "#bf956a3d"
-      },
-      {
-        "cursor": "#b477cfff",
-        "background": "#b477cfff",
-        "selection": "#b477cf3d"
-      },
-      {
-        "cursor": "#6eb4bfff",
-        "background": "#6eb4bfff",
-        "selection": "#6eb4bf3d"
-      },
-      {
-        "cursor": "#d07277ff",
-        "background": "#d07277ff",
-        "selection": "#d072773d"
-      },
-      {
-        "cursor": "#dec184ff",
-        "background": "#dec184ff",
-        "selection": "#dec1843d"
-      },
-      {
-        "cursor": "#a1c181ff",
-        "background": "#a1c181ff",
-        "selection": "#a1c1813d"
-      }
-    ],
+    // "search.match_background": "#3c3c3caa",
+    // "players": [
+    //   {
+    //     "cursor": "#74ade8ff",
+    //     "background": "#240f55ff",
+    //     "selection": "#240f55ff"
+    //   },
+    //   {
+    //     "cursor": "#be5046ff",
+    //     "background": "#be5046ff",
+    //     "selection": "#be50463d"
+    //   },
+    //   {
+    //     "cursor": "#bf956aff",
+    //     "background": "#bf956aff",
+    //     "selection": "#bf956a3d"
+    //   },
+    //   {
+    //     "cursor": "#b477cfff",
+    //     "background": "#b477cfff",
+    //     "selection": "#b477cf3d"
+    //   },
+    //   {
+    //     "cursor": "#6eb4bfff",
+    //     "background": "#6eb4bfff",
+    //     "selection": "#6eb4bf3d"
+    //   },
+    //   {
+    //     "cursor": "#d07277ff",
+    //     "background": "#d07277ff",
+    //     "selection": "#d072773d"
+    //   },
+    //   {
+    //     "cursor": "#dec184ff",
+    //     "background": "#dec184ff",
+    //     "selection": "#dec1843d"
+    //   },
+    //   {
+    //     "cursor": "#a1c181ff",
+    //     "background": "#a1c181ff",
+    //     "selection": "#a1c1813d"
+    //   }
+    // ],
     "syntax": {
       "comment": {
         "font_style": "italic"
@@ -105,16 +105,20 @@
     "line_numbers": false
   },
   "tab_bar": {
-    "show": false
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "tabs": {
+    "git_status": true,
+    "close_position": "right",
+    "file_icons": true,
+    "show_close_button": "hidden",
+    "show_diagnostics": "all"
   },
   "indent_guides": {
     "active_line_width": 2
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
-  },
-  "tabs": {
-    "file_icons": true,
-    "git_status": true
   },
   "preview_tabs": {
     "enabled": true,
@@ -136,11 +140,11 @@
   },
   "agent": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
+      "provider": "google",
+      "model": "gemini-2.5-pro-exp-03-25"
     },
     "provider": null,
-    "dock": "left",
+    "dock": "right",
     "default_width": 900,
     "version": "2",
     "enabled": true
@@ -150,6 +154,6 @@
   },
   "features": {
     // Which inline completion provider to use.
-    "edit_prediction_provider": "none"
+    "edit_prediction_provider": "zed"
   }
 }
