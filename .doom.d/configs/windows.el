@@ -76,10 +76,15 @@ Fit the height to the content, and select the window."
                 "\\*Man"))
          (algus/display-buffer-in-side-window-if-wide))
 
+        ((or . ("\\*ert"))
+         (algus/display-buffer-in-side-window-if-wide)
+         (slot . 1))
+
         ((or . ("^\\*helpful"
                 "Output\\*$"
                 (derived-mode . compilation-mode)
-                (derived-mode . comint-mode)))
+                (derived-mode . comint-mode)
+                (derived-mode . grep-mode)))
          (display-buffer-reuse-window
           algus/display-buffer-in-side-window))))
 

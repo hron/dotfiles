@@ -26,7 +26,7 @@
 ;; (setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size (aleksei/font-size))
 ;;       doom-symbol-font doom-font
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'normal)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (aleksei/font-size) :weight 'semi-bold)
       doom-symbol-font doom-font
       doom-variable-pitch-font (font-spec :family "sans" :size (aleksei/font-size)))
 
@@ -1002,12 +1002,3 @@
   :ensure nil
   :hook
   ((emacs-lisp-mode . package-lint-flymake-setup)))
-
-(def-project-mode! project:nerd-icons-grep
-  :files ("nerd-icons-grep.el")
-  :on-load
-  (global-set-key (kbd "M-r")
-                  (lambda ()
-                    (interactive)
-                    (eval-buffer "nerd-icons-grep.el")
-                    (ert 't))))
