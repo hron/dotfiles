@@ -82,6 +82,7 @@ Fit the height to the content, and select the window."
 
         ((or . ("^\\*helpful"
                 "Output\\*$"
+                "^\\*lsp-help"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))
