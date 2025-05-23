@@ -426,15 +426,15 @@
   ;; a whole development environment for some ecosystems.
   (lsp-enable-suggest-server-download nil))
 
-(use-package flymake
+(use-package flycheck
   :defer t
   :ensure nil
-  :bind (:map flymake-mode-map
-              ("<f2>" . #'flymake-goto-next-error)
-              ("S-<f2>" . #'flymake-goto-prev-error))
-  :hook ((prog-mode text-mode) . flymake-mode)
-  :custom (;; (flymake-show-diagnostics-at-end-of-line t)
-           flymake-fringe-indicator-position 'right-fringe))
+  :bind (:map flycheck-mode-map
+              ("<f2>" . #'flycheck-next-error)
+              ("S-<f2>" . #'flycheck-previous-error))
+  :hook ((prog-mode text-mode) . flycheck-mode)
+  :custom (;; (flycheck-show-diagnostics-at-end-of-line t)
+           flycheck-fringe-indicator-position 'right-fringe))
 
 (use-package mocha
   :defer t
@@ -571,8 +571,8 @@
           isearch-backward
           flycheck-next-error
           flycheck-previous-error
-          flymake-goto-next-error
-          flymake-goto-prev-error
+          flycheck-goto-next-error
+          flycheck-goto-prev-error
           org-open-at-point-global))
 
   (dolist (func aleksei/better-jumper-advice-funcs)
@@ -988,7 +988,7 @@
     (when (or buffer-read-only hardhat-mode)
       (eldoc-mode -1)
       (flyspell-mode -1)
-      (flymake-mode -1)))
+      (flycheck-mode -1)))
 
   (global-hardhat-mode +1)
   :custom
@@ -997,8 +997,3 @@
   :hook
   ((find-file hardhat-mode) . algus/disable-checks-if-read-only))
 
-(use-package package-lint-flymake
-  :defer t
-  :ensure nil
-  :hook
-  ((emacs-lisp-mode . package-lint-flymake-setup)))
