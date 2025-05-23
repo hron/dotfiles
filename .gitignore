@@ -53,3 +53,4 @@
 /.config/emacs/straight
 /.config/emacs/transient
 /.config/emacs/projects
+/.config/zed/development_credentials

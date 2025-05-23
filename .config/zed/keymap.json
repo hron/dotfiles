@@ -44,8 +44,11 @@
       // "alt-shift->": "editor::FindAllReferences",
       // "alt-shift-&": "editor::FindAllReferences",
       // "alt-shift-f7": "editor::FindAllReferences",
+      "alt-m": "editor::MoveToEnclosingBracket",
       "alt->": "editor::FindAllReferences",
       "ctrl-q": "editor::Hover",
+      "alt-q": "editor::Rewrap",
+      "ctrl-alt-q": "editor::OpenDocs",
       "ctrl-t": "editor::Rename",
       "alt-j": [
         "editor::SelectNext",
@@ -73,10 +76,24 @@
         }
       ],
       "ctrl-k alt-j": "editor::UndoSelection",
-      "alt-ctrl-f": null,
       "ctrl-shift-alt-f": null,
       "ctrl-alt-shift-f": null,
-      "alt-shift-n": "workspace::ClearAllNotifications"
+      "alt-shift-n": "workspace::ClearAllNotifications",
+      "ctrl-alt-left": "editor::FoldAll",
+      "ctrl-alt-right": "editor::UnfoldAll"
+    }
+  },
+  {
+    "context": "Editor && !edit_prediction",
+    "bindings": {
+      "alt-\\": null,
+      "alt-/": "editor::ShowEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "alt-/": null
     }
   },
   {
@@ -91,12 +108,16 @@
       "alt-6": null,
       "alt-7": null,
       "alt-8": null,
-      "alt-9": null,
+      // "alt-9": null,
       "alt-0": null,
       "ctrl-q": null,
       "alt-left": "pane::GoBack",
       "alt-right": "pane::GoForward",
-      "ctrl-r": "search::ToggleReplace"
+      "ctrl-r": "search::ToggleReplace",
+      "alt-9": "git::Diff",
+      "ctrl-alt-up": "search::SelectPreviousMatch",
+      "ctrl-alt-down": "search::SelectNextMatch"
+      // "ctrl-alft-f": "project_search::ToggleFilters"
     }
   },
   {
@@ -118,8 +139,11 @@
       "alt-6": null,
       "alt-7": null,
       "alt-8": null,
-      "alt-9": null,
-      "ctrl-q": null
+      // "alt-9": null,
+      "ctrl-q": null,
+      "alt-9": "git::Diff",
+      "ctrl-k b": "git::Branch",
+      "alt-shift-ctrl-o": "project_symbols::Toggle"
     }
   },
   {
@@ -129,10 +153,13 @@
       "ctrl-l": "terminal::Clear",
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
-      "ctrl-e": null,
+      "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
       "ctrl-q": null,
       "ctrl-w": "pane::CloseActiveItem",
-      "ctrl-delete": ["terminal::SendKeystroke", "alt-d"]
+      "ctrl-delete": ["terminal::SendText", "\u001bd"],
+      "ctrl-f": "buffer_search::Deploy",
+      "ctrl-shift-f": "project_search::ToggleFocus",
+      "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"]
     }
   },
   {
