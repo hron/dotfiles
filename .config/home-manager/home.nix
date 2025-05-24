@@ -46,7 +46,6 @@ in
       nixd
       phpactor
       clojure-lsp
-      rust-analyzer
 
       # Code Formatters
       nixfmt-rfc-style
@@ -76,6 +75,8 @@ in
       gitlab-ci-local
 
       vial
+
+      rustup
     ]
     ++ [ emacs ];
 
@@ -157,3 +158,7 @@ in
   #   };
   # };
 }
+
+# Local Variables:
+# compile-command: "cd ~/.config/home-manager; home-manager switch --flake ."
+# End:
