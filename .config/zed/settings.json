@@ -18,7 +18,7 @@
     }
   },
   "theme": {
-    "dark": "Modus Vivendi",
+    "dark": "algus: Modus Vivendi",
     "light": "Modus Operandi"
   },
   "stable_size_docks": true,
@@ -174,18 +174,9 @@
     "default_width": 400
   },
   "agent": {
-    "inline_assistant_model": {
-      "provider": "google",
-      "model": "gemini-2.0-flash"
-    },
-    "default_profile": "write",
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-2.0-flash"
-    },
+    "version": "2",
     "dock": "right",
     "default_width": 900,
-    "version": "2",
     "enabled": true
   },
   "git_panel": {

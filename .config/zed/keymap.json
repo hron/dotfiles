@@ -143,7 +143,15 @@
       "ctrl-q": null,
       "alt-9": "git::Diff",
       "ctrl-k b": "git::Branch",
-      "alt-shift-ctrl-o": "project_symbols::Toggle"
+      "alt-shift-ctrl-o": "project_symbols::Toggle",
+      "ctrl-k e": "editor::ToggleEditPrediction"
+    }
+  },
+  {
+    "context": "!ContextEditor > Editor && mode == full",
+    "bindings": {
+      "ctrl-shift-e": null,
+      "ctrl-k e": "editor::ToggleEditPrediction"
     }
   },
   {
