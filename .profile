@@ -8,6 +8,18 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+export BROWSER=sensible-browser
+export EDITOR='emacsclient -a "emacs" -c'
+#export ALTERNATE_EDITOR=""
+export DEBEMAIL="aleksei.gusev@gmail.com"
+export DEBFULLNAME="Aleksei Gusev"
+# export QT_SCALE_FACTOR=1.25
+export PGHOST=localhost
+export PGUSER=spaceship
+export PGDATABASE=spaceship
+export QT_QPA_PLATFORMTHEME=gnome
+export AWS_DEFAULT_PROFILE=fdev
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -37,15 +49,5 @@ nix_home_manager_init=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 # Added by Toolbox App
 export PATH="$PATH:/home/algus/.local/share/JetBrains/Toolbox/scripts"
 
-export BROWSER=sensible-browser
-export EDITOR='emacsclient -a "emacs" -c'
-#export ALTERNATE_EDITOR=""
-export GTK2_RC_FILES=/home/aleksei/.gtkrc-2.0
-export DEBEMAIL="aleksei.gusev@gmail.com"
-export DEBFULLNAME="Aleksei Gusev"
-# export QT_SCALE_FACTOR=1.25
-export PGHOST=localhost
-export PGUSER=spaceship
-export PGDATABASE=spaceship
-export QT_QPA_PLATFORMTHEME=gnome
-export AWS_DEFAULT_PROFILE=fdev
+# rustup
+. "$HOME/.cargo/env"
