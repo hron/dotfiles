@@ -790,9 +790,8 @@
          ("M-n" . nil)
          ("M-p" . nil))
 
-  ;; :hook
-  ;; (prog-mode . (lambda () (setq-local corfu-auto t)))
-  )
+  :hook
+  (prog-mode . (lambda () (setq-local corfu-auto t))))
 
 (use-package yaml-mode
   :defer t
