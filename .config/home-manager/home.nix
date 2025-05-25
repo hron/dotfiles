@@ -77,6 +77,7 @@ in
       vial
 
       rustup
+      nushell
     ]
     ++ [ emacs ];
 

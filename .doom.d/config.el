@@ -511,7 +511,8 @@
 
 (use-package vterm
   :defer t
-  :bind (:map vterm-mode-map
+  :bind (("C-`" . +vterm/toggle)
+         :map vterm-mode-map
          ("C-z" . vterm-undo)
          ("C-v" . vterm-yank)
          ("C-<backspace>" . vterm-send-meta-backspace)
@@ -530,7 +531,7 @@
          ("M-<down>" . vterm-next-prompt)
          ("C-t" . aleksei/vterm-new-tab))
   :custom
-  (vterm-shell "/bin/bash -l")
+  (vterm-shell "/home/algus/.nix-profile/bin/nu")
   (vterm-max-scrollback 100000)
   :config
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)

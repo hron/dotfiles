@@ -46,7 +46,7 @@
   :ensure nil
   :config
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
-  :bind (("C-`" . #'+eshell/toggle)
+  :bind (;; ("C-`" . #'+eshell/toggle)
          :map eshell-mode-map
          ("<home>" . eshell-bol)
          ("C-r" . consult-history))
