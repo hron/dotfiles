@@ -95,6 +95,7 @@
          ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
          ("C-a" . #'mark-whole-buffer)
          ("C-S-b" . #'switch-to-buffer)
+         ("C-i" . #'window-toggle-side-windows)
          ("C-p" . #'window-toggle-side-windows)
          ("C-/" . aleksei/comment-dwim)
          ("M-t" . aleksei/compile)
