@@ -662,7 +662,11 @@
   :bind (:map grep-mode-map
               ("C-S-o" . consult-outline)))
 
-(use-package nerd-icons-grep)
+;; (load "/home/algus/src/nerd-icons-grep-mode/nerd-icons-grep.el")
+;; (nerd-icons-grep-mode)
+(use-package nerd-icons-grep
+  :init
+  (nerd-icons-grep-mode))
 
 (use-package info
   :defer t
