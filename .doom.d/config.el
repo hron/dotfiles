@@ -998,5 +998,7 @@
   ((find-file hardhat-mode) . algus/disable-checks-if-read-only))
 
 (use-package flycheck
+  :init
+  (remove-hook 'flycheck-mode-hook #'+syntax-init-popups-h)
   :custom
   (flycheck-indication-mode 'right-fringe))
