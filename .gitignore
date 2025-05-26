@@ -54,3 +54,4 @@
 /.config/emacs/transient
 /.config/emacs/projects
 /.config/zed/development_credentials
+/.config/nushell/nu-scripts.nu

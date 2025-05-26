@@ -1007,3 +1007,5 @@
   (remove-hook 'flycheck-mode-hook #'+syntax-init-popups-h)
   :custom
   (flycheck-indication-mode 'right-fringe))
+
+(use-package nushell-ts-mode)

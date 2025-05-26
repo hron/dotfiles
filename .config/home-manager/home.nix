@@ -8,6 +8,7 @@ let
       treesitGrammars
     ]
   );
+  nuScriptsDir = "${pkgs.nu_scripts}/share/nu_scripts";
 in
 {
   nixpkgs = {
@@ -109,6 +110,14 @@ in
 
   xdg.enable = true;
   xdg.mime.enable = true;
+
+  # programs.nushell = {
+  #   enable = true;
+  # };
+
+  xdg.configFile."nushell/nu-scripts.nu".text = ''
+    $env.NU_LIB_DIRS = ($env.NU_LIB_DIRS | default [] | append "${nuScriptsDir}")
+  '';
 
   # xdg.desktopEntries = {
   #   # We need to redefine StartupWMClass, otherwise the desktop entry is the same

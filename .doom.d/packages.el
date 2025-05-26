@@ -96,3 +96,5 @@
 
 (package! nerd-icons-grep
   :recipe (:host github :repo "hron/nerd-icons-grep"))
+
+(package! nushell-ts-mode)
