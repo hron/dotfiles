@@ -940,7 +940,7 @@
   :custom
   (consult-projectile-sources '(consult--source-buffer
                                 consult--source-bookmark
-                                consult-projectile--source-projectile-file)))
+                                algus/consult-projectile--source-projectile-file)))
 
 (use-package desktop
   :defer nil
