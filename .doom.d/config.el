@@ -920,8 +920,26 @@
 
 (use-package consult-projectile
   :defer t
+  :config
+  (defvar algus/consult-projectile--source-projectile-file
+    (list :name     "Project File"
+          :narrow   '(?f . "File")
+          :category 'file
+          :face     'consult-file
+          :history  'file-name-history
+          :action   (lambda (f) (consult--file-action (concat (projectile-acquire-root) f)))
+          :enabled  #'projectile-project-root
+          :items
+          (lambda ()
+            (let* ((project-root (projectile-acquire-root))
+                   (project-files (projectile-project-files project-root)))
+              (cl-remove-if
+               (lambda (file)
+                 (get-file-buffer (expand-file-name file project-root)))
+               project-files)))))
   :custom
   (consult-projectile-sources '(consult--source-buffer
+                                consult--source-bookmark
                                 consult-projectile--source-projectile-file)))
 
 (use-package desktop
