@@ -1,0 +1,33 @@
+#!/bin/bash
+# use /bin/zsh if macOS
+
+if ! [ -v TTY ]; then
+  TTY=/dev/tty
+fi
+STDIN=$TTY
+STDOUT=$TTY
+
+TMP="$(mktemp /tmp/kitty_scrollback_XXXX)"
+cat >"$TMP"
+
+# `--terminal/-t $TTY` or `0<$STDIN 1>$STDOUT`
+# Eliminate the "standard input is not a tty" error message when running Emacs in a pipe.
+emacs -t $TTY -nw --eval \
+  "(let ((b (create-file-buffer \"*kitty_scrollback*\")))
+            (menu-bar-mode -1)  \
+            (switch-to-buffer b) \
+            (insert-file-contents \"${TMP}\")  \
+            (delete-file \"${TMP}\")  \
+            (require 'ansi-color)  \
+            (ansi-color-apply-on-region (point-min) (point-max)) \
+            (read-only-mode)  \
+            (visual-line-mode) \
+            (set-window-start (selected-window) (line-beginning-position ${1})) \
+            (setq mode-line-format nil) \
+            (setq truncate-lines t) \
+            (defadvice kill-ring-save (before copy-to-system-in-tty activate) \
+                (pcase system-type  \
+                   ('gnu/linux (call-process-region (ad-get-arg 0) (ad-get-arg 1) \"xsel\" nil nil nil \"-ib\"))  \
+                   ('darwin (call-process-region (ad-get-arg 0) (ad-get-arg 1) \"pbcopy\" nil nil nil))  \
+                )) \
+)"
