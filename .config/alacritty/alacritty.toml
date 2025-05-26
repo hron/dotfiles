@@ -1,4 +1,3 @@
-import = ["/home/aleksei/.config/alacritty/konsole-light.toml"]
 
 [cursor.style]
 blinking = "Always"
@@ -7,7 +6,7 @@ blinking = "Always"
 blinking = "Off"
 
 [font]
-size = 11
+size = 10
 
 [font.bold]
 style = "extrabold"
@@ -61,12 +60,6 @@ action = "SearchForward"
 key = "F"
 mode = "~Alt"
 mods = "Control"
-
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "M"
-mode = "~Search"
-mods = "Shift|Control"
 
 [[keyboard.bindings]]
 action = "ToggleViMode"
@@ -166,9 +159,14 @@ mods = "Control"
 action = "Copy"
 mouse = "Right"
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/bin/bash"
 
 [window]
 dynamic_title = true
+
+[general]
+import = ["/home/aleksei/.config/alacritty/konsole-light.toml"]
+
+[terminal]
