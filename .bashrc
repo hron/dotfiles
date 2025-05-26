@@ -8,6 +8,10 @@ case $- in
 *) return ;;
 esac
 
+# if command -v blesh-share >/dev/null 2>&1; then
+#   source "$(blesh-share)/ble.sh"
+# fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -186,3 +190,5 @@ if which direnv >/dev/null; then
 fi
 
 which starship >/dev/null && eval "$(starship init bash)"
+
+# [[ ! ${BLE_VERSION-} ]] || ble-attach

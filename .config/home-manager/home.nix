@@ -77,7 +77,10 @@ in
       vial
 
       rustup
+
       nushell
+      nu_scripts
+      blesh
     ]
     ++ [ emacs ];
 
