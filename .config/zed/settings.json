@@ -166,11 +166,11 @@
     "default_width": 900,
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
-    "font_weight": 500,
+    "font_weight": 500
     // "line_height": "standard"
-    "shell": {
-      "program": "/home/algus/.nix-profile/bin/nu"
-    }
+    // "shell": {
+    //   "program": "/home/algus/.nix-profile/bin/nu"
+    // }
   },
   "project_panel": {
     "dock": "left",

@@ -4,10 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
-   '((eval and buffer-file-name (not (eq major-mode 'package-recipe-mode))
+   '((eval and (fboundp 'toc-org-mode) (toc-org-mode 1)) (toc-org-max-depth . 4)
+     (eval and buffer-file-name (not (eq major-mode 'package-recipe-mode))
       (or (require 'package-recipe-mode nil t)
-       (let ((load-path (cons "../package-build" load-path)))
-         (require 'package-recipe-mode nil t)))
+          (let ((load-path (cons "../package-build" load-path)))
+            (require 'package-recipe-mode nil t)))
       (package-recipe-mode))
      (+format-inhibit . t))))
 (put 'narrow-to-region 'disabled nil)
