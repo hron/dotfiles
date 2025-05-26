@@ -122,3 +122,5 @@ use custom-completions *
 use custom-completions/ack/ack-completions.nu 
 use custom-completions/git
 source custom-completions/git/git-completions.nu 
+source custom-completions/**/*
+source custom-completions/git/git-completions.nu 

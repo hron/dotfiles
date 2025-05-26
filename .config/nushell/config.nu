@@ -17,5 +17,4 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-# source ./nu-scripts.nu
-$env.NU_LIB_DIRS = ($env.NU_LIB_DIRS | default [] | append "/nix/store/8qna10fda99jk2a2vf0fiqzdsfmcf79p-nu_scripts-0-unstable-2025-03-13/share/nu_scripts")
+source ./nu-scripts.nu
