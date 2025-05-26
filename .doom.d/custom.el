@@ -3,6 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(safe-local-variable-directories
+   '("/home/algus/src/dotfiles/doom-emacs/.local/straight/repos/projectile/"
+     "/home/algus/.doom.d/" "~/.emacs.d/"))
  '(safe-local-variable-values
    '((eval and (fboundp 'toc-org-mode) (toc-org-mode 1)) (toc-org-max-depth . 4)
      (eval and buffer-file-name (not (eq major-mode 'package-recipe-mode))
