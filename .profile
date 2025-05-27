@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export BROWSER=sensible-browser
+export BROWSER=firefox
 export EDITOR='emacsclient -a "emacs" -c'
 #export ALTERNATE_EDITOR=""
 export DEBEMAIL="aleksei.gusev@gmail.com"
@@ -18,7 +18,6 @@ export PGHOST=localhost
 export PGUSER=spaceship
 export PGDATABASE=spaceship
 export QT_QPA_PLATFORMTHEME=gnome
-export AWS_DEFAULT_PROFILE=fdev
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then

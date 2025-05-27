@@ -513,7 +513,7 @@
   :defer t
   :bind (("C-`" . +vterm/toggle)
          :map vterm-mode-map
-         ("C-z" . vterm-undo)
+         ("C-S-z" . aleksei/vterm-redo)
          ("C-v" . vterm-yank)
          ("C-<backspace>" . vterm-send-meta-backspace)
          ("C-<delete>" . vterm--self-insert)
@@ -531,13 +531,19 @@
          ("M-<down>" . vterm-next-prompt)
          ("C-t" . aleksei/vterm-new-tab))
   :custom
-  ;; (vterm-shell "/home/algus/.nix-profile/bin/nu")
-  (vterm-shell "bash -l")
+  (vterm-shell "fish")
   (vterm-max-scrollback 100000)
+  (vterm-clear-scrollback-when-clearing t)
   :config
   (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local cua-mode nil)))
+  (add-hook 'vterm-mode-hook #'(lambda () (setq-local undo-fu-mode nil)))
   (remove-hook 'vterm-mode-hook #'hide-mode-line-mode)
+
+  (defun aleksei/vterm-redo ()
+    "Send `C-S-z' to the libvterm."
+    (interactive)
+    (vterm-send "C-S-z"))
 
   (defun aleksei/vterm-copy-mode-next-prompt ()
     (interactive)
@@ -1027,3 +1033,5 @@
   (flycheck-indication-mode 'right-fringe))
 
 (use-package nushell-ts-mode)
+
+(use-package fish-mode)

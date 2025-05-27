@@ -12,7 +12,8 @@ cat >"$TMP"
 
 # `--terminal/-t $TTY` or `0<$STDIN 1>$STDOUT`
 # Eliminate the "standard input is not a tty" error message when running Emacs in a pipe.
-emacs -t $TTY -nw --eval \
+# emacs -t $TTY -nw --eval \
+emacs --eval \
   "(let ((b (create-file-buffer \"*kitty_scrollback*\")))
             (menu-bar-mode -1)  \
             (switch-to-buffer b) \
