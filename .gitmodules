@@ -7,3 +7,6 @@
 [submodule ".config/kitty/kitty_grab"]
 	path = .config/kitty/kitty_grab
 	url = https://github.com/yurikhan/kitty_grab.git
+[submodule ".config/ghostty/modus-themes"]
+	path = .config/ghostty/modus-themes
+	url = https://github.com/anhsirk0/ghostty-themes/
