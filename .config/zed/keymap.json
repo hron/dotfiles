@@ -157,23 +157,31 @@
   {
     "context": "Terminal",
     "bindings": {
-      "escape": "terminal_panel::ToggleFocus",
-      "ctrl-l": "terminal::Clear",
+      "ctrl-escape": "terminal_panel::ToggleFocus",
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
       "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
       "ctrl-q": null,
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-delete": ["terminal::SendText", "\u001bd"],
-      "ctrl-f": "buffer_search::Deploy",
-      "ctrl-shift-f": "project_search::ToggleFocus",
-      "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"]
+      // "ctrl-f": "buffer_search::Deploy",
+      // "ctrl-shift-f": "project_search::ToggleFocus",
+      "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
+      "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
+      "ctrl-shift-z": ["terminal::SendKeystroke", "ctrl-shift-z"],
+      "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
+      "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
+      "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
+      "ctrl-alt-down": ["terminal::SendKeystroke", "ctrl-alt-down"],
+      "alt-up": ["terminal::SendKeystroke", "alt-up"],
+      "alt-down": ["terminal::SendKeystroke", "alt-down"],
+      "alt-space": ["terminal::SendKeystroke", "alt-space"]
     }
   },
   {
     "context": "ProjectPanel",
     "bindings": {
-      "escape": "project_panel::ToggleFocus",
+      "ctrl-escape": "project_panel::ToggleFocus",
       "enter": "project_panel::OpenPermanent",
       "ctrl-q": null,
       "ctrl-shift-f": "project_panel::NewSearchInDirectory",
@@ -187,7 +195,7 @@
   {
     "context": "AssistantPanel",
     "bindings": {
-      "escape": "agent::ToggleFocus"
+      "ctrl-escape": "agent::ToggleFocus"
     }
   },
   {
