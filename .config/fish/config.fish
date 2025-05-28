@@ -55,5 +55,7 @@ if status is-interactive
             printf "%b" (string join "\n" (tmux_old_fish_prompt))
             tmux_prompt_end
         end
+        # tmux + fish produces ctrl-h instead of ctrl-backspace
+        bind ctrl-h backward-kill-word
     end
 end
