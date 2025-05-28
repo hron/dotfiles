@@ -1,6 +1,6 @@
 font-family = "JetBrains Mono Nerd Font"
 font-size = "10"
-theme = dark:modus-videndi,light:modus-operandi
+theme = dark:modus-vivendi,light:modus-operandi
 command = tmux
 window-theme = auto
 gtk-tabs-location = hidden
