@@ -4,6 +4,8 @@ theme = dark:modus-vivendi,light:modus-operandi
 command = tmux
 window-theme = auto
 gtk-tabs-location = hidden
+shell-integration = fish
+confirm-close-surface = false
 
 keybind = clear
 keybind = ctrl+t=new_tab
