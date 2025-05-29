@@ -10,3 +10,6 @@
 [submodule ".config/ghostty/modus-themes"]
 	path = .config/ghostty/modus-themes
 	url = https://github.com/anhsirk0/ghostty-themes/
+[submodule ".config/tmux/plugins/tmux_super_fingers"]
+	path = .config/tmux/plugins/tmux_super_fingers
+	url = https://github.com/hron/tmux_super_fingers.git
