@@ -531,6 +531,7 @@
          ("C-M-<down>" . vterm--self-insert)
          ("S-<next>" . vterm--self-insert)
          ("S-<prior>" . vterm--self-insert)
+         ("C-q" . vterm--self-insert)
          ;; ("<next>" . vterm--self-insert)
          ;; ("<prior>" . vterm--self-insert)
          ("C-t" . aleksei/vterm-new-tab)
