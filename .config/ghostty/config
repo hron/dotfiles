@@ -16,3 +16,7 @@ keybind = alt+up=jump_to_prompt:-1
 keybind = alt+down=jump_to_prompt:1
 keybind = ctrl+shift+space=write_scrollback_file:open
 keybind = ctrl+shift+alt+space=write_scrollback_file:paste
+keybind = shift+page_up=scroll_page_up
+keybind = shift+end=scroll_to_bottom
+keybind = shift+page_down=scroll_page_down
+keybind = shift+home=scroll_to_top
