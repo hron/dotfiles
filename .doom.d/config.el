@@ -517,7 +517,7 @@
          ("C-v" . vterm-yank)
          ("C-<backspace>" . vterm-send-meta-backspace)
          ("C-<delete>" . vterm--self-insert)
-         ;; ("C-S-<SPC>" . vterm-copy-mode)
+         ("C-S-<SPC>" . vterm-copy-mode)
          ("C-w" . nil)
          ("C-p" . nil)
          ("M-i" . nil)
