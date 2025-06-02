@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 
 let
-  treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).treesit-grammars.with-all-grammars;
-  emacs = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).emacsWithPackages (
-    epkgs: with epkgs; [
-      vterm
-      treesitGrammars
-    ]
-  );
+  # treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).treesit-grammars.with-all-grammars;
+  # emacs = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).emacsWithPackages (
+  #   epkgs: with epkgs; [
+  #     vterm
+  #     treesitGrammars
+  #   ]
+  # );
   nuScriptsDir = "${pkgs.nu_scripts}/share/nu_scripts";
 in
 {
@@ -35,55 +35,53 @@ in
     };
   };
 
-  home.packages =
-    with pkgs;
-    [
-      direnv
-      nix-direnv
-      nix-index
+  home.packages = with pkgs; [
+    direnv
+    nix-direnv
+    nix-index
 
-      # LSP
-      nil
-      nixd
-      phpactor
-      clojure-lsp
+    # LSP
+    nil
+    nixd
+    phpactor
+    clojure-lsp
 
-      # Code Formatters
-      nixfmt-rfc-style
-      nixpkgs-fmt
-      nodePackages.prettier
-      # nodePackages.intelephense
-      yq-go
-      php83Packages.php-codesniffer
-      shfmt
+    # Code Formatters
+    nixfmt-rfc-style
+    nixpkgs-fmt
+    nodePackages.prettier
+    # nodePackages.intelephense
+    yq-go
+    php83Packages.php-codesniffer
+    shfmt
 
-      # linters
-      clj-kondo
+    # linters
+    clj-kondo
 
-      aws-vault
-      awscli2
-      kubectl
-      kubectx
-      eksctl
-      kustomize
-      gomplate
+    aws-vault
+    awscli2
+    kubectl
+    kubectx
+    eksctl
+    kustomize
+    gomplate
 
-      nodejs
-      pnpm
+    nodejs
+    pnpm
 
-      act
-      gh
-      gitlab-ci-local
+    act
+    gh
+    gitlab-ci-local
 
-      vial
+    vial
 
-      rustup
+    rustup
 
-      nushell
-      nu_scripts
-      blesh
-    ]
-    ++ [ emacs ];
+    nushell
+    nu_scripts
+    blesh
+  ];
+  # ++ [ emacs ];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

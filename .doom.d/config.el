@@ -1052,6 +1052,4 @@
   :custom
   (flycheck-indication-mode 'right-fringe))
 
-(use-package nushell-ts-mode)
-
 (use-package fish-mode)
