@@ -59,6 +59,9 @@
            auto-dark-light-theme 'modus-operandi)
     (auto-dark-mode 1)))
 
+(when (equal 'x (window-system))
+  (fringe-mode '(16 . 16)))
+
 (use-package emacs
   :defer t
   :config
