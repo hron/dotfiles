@@ -19,7 +19,7 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (defun aleksei/font-size ()
   "Return font size depending on the environment."
-  (cond ((equal 'x (window-system)) 26)
+  (cond ((equal 'x (window-system)) 27)
         (t 13)))
 
 
@@ -59,15 +59,15 @@
            auto-dark-light-theme 'modus-operandi)
     (auto-dark-mode 1)))
 
-(when (equal 'x (window-system))
-  (fringe-mode '(16 . 16)))
-
 (use-package emacs
   :defer t
   :config
-  (setq-default cursor-type '(bar . 3))
+  (setq-default cursor-type '(bar . 5))
   (setq w32-pass-lwindow-to-system nil
         w32-pass-rwindow-to-system nil)
+
+  (when (equal 'x (window-system))
+    (fringe-mode '(16 . 16)))
 
   (global-auto-revert-mode +1)
   (global-subword-mode +1)
