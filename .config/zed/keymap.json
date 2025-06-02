@@ -168,14 +168,40 @@
       // "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
       "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
-      "ctrl-shift-z": ["terminal::SendKeystroke", "ctrl-shift-z"],
-      "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
-      "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
-      "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
-      "ctrl-alt-down": ["terminal::SendKeystroke", "ctrl-alt-down"],
-      "alt-up": ["terminal::SendKeystroke", "alt-up"],
-      "alt-down": ["terminal::SendKeystroke", "alt-down"],
-      "alt-space": ["terminal::SendKeystroke", "alt-space"]
+      "ctrl-shift-z": ["terminal::SendKeystroke", "ctrl-shift-z"]
+      // "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
+      // "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
+      // "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
+      // "ctrl-alt-down": ["terminal::SendKeystroke", "ctrl-alt-down"],
+      // "alt-up": ["terminal::SendKeystroke", "alt-up"],
+      // "alt-down": ["terminal::SendKeystroke", "alt-down"],
+      // "alt-space": ["terminal::SendKeystroke", "alt-space"]
+    }
+  },
+  {
+    "context": "Terminal && vi_mode",
+    "bindings": {
+      "ctrl-left": ["terminal::SendKeystroke", "b"],
+      "ctrl-right": ["terminal::SendKeystroke", "w"],
+      "ctrl-up": ["terminal::SendKeystroke", "ctrl-u"],
+      "ctrl-down": ["terminal::SendKeystroke", "ctrl-d"],
+      "alt-up": ["terminal::SendKeystroke", "ctrl-u"],
+      "alt-down": ["terminal::SendKeystroke", "ctrl-d"],
+      "ctrl-home": ["terminal::SendKeystroke", "g"],
+      "ctrl-end": ["terminal::SendKeystroke", "shift-g"],
+      "pageup": ["terminal::SendKeystroke", "ctrl-b"],
+      "pagedown": ["terminal::SendKeystroke", "ctrl-f"],
+      "ctrl-space": ["terminal::SendKeystroke", "v"],
+      "ctrl-enter": ["terminal::SendKeystroke", "ctrl-v"],
+      "ctrl-c": ["terminal::SendKeystroke", "y"],
+      "enter": ["terminal::SendKeystroke", "y"],
+      "escape": ["terminal::SendKeystroke", "i"],
+      "ctrl-h": ["terminal::SendKeystroke", "alt-v"],
+      "home": ["terminal::SendKeystroke", "0"],
+      "end": ["terminal::SendKeystroke", "$"],
+      "ctrl-l": ["terminal::SendKeystroke", "z"],
+      "ctrl-m": ["terminal::SendKeystroke", "%"],
+      "alt-m": ["terminal::SendKeystroke", "%"]
     }
   },
   {

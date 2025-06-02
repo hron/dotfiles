@@ -4,7 +4,7 @@
 [core]
 	excludesfile = ~/.gitconfig_global_gitignore
 	pager =
-	editor = emacs --no-desktop --
+	editor = zed --wait --add
 
 [diff]
 	tool = emacs

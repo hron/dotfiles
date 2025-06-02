@@ -185,5 +185,6 @@
   "features": {
     // Which inline completion provider to use.
     "edit_prediction_provider": "zed"
-  }
+  },
+  "smooth_scroll": true
 }
