@@ -566,7 +566,7 @@
   (defun aleksei/vterm-redo ()
     "Send `C-S-z' to the libvterm."
     (interactive)
-    (vterm-send "C-M-z"))
+    (vterm-send "M-z"))
 
   (defun aleksei/vterm-copy-mode-next-prompt ()
     (interactive)

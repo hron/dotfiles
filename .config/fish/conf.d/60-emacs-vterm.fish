@@ -31,7 +31,4 @@ if status is-interactive && [ "$INSIDE_EMACS" = vterm ]
         printf "%b" (string join "\n" (vterm_old_fish_prompt))
         vterm_prompt_end
     end
-
-    # Emacs cannot pass `ctrl-shift-z` to fish, so we pass `ctrl-alt-z` instead and bind it here
-    bind ctrl-alt-z redo
 end
