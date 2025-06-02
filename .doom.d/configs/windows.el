@@ -10,7 +10,7 @@
          ("M-i" . delete-other-windows)))
 
 (defvar algus/default-side-window-width .5)
-(defvar algus/default-side-window-height .33)
+(defvar algus/default-side-window-height .5)
 
 (defun algus/display-buffer-below-selected-then-fit-and-select (buffer &optional alist)
   "Display BUFFER at the bottom of the window, apply ALIST.
@@ -83,6 +83,7 @@ Fit the height to the content, and select the window."
         ((or . ("^\\*helpful"
                 "Output\\*$"
                 "^\\*lsp-help"
+                "*magit-revision"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))
