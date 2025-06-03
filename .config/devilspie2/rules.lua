@@ -28,3 +28,7 @@ end
 if get_application_name() == "System Monitor" then
     set_window_geometry(764, 161, 2312, 1926)
 end
+
+if get_application_name() == "Emacs" then
+   set_window_geometry(980, 280, 1881, 1532)
+end
