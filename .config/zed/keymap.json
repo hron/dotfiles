@@ -164,14 +164,13 @@
       "ctrl-q": null,
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-delete": ["terminal::SendText", "\u001bd"],
-      // "ctrl-f": "buffer_search::Deploy",
-      // "ctrl-shift-f": "project_search::ToggleFocus",
+      "ctrl-f": "buffer_search::Deploy",
+      // "ctrl-f": ["terminal::SendKeystroke", "ctrl-f"],
+      "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
       "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
       // produces alt-z, so it could be used instead of ctrl-shift-z
       "ctrl-shift-z": ["terminal::SendText", "\u001bz"]
-      // "ctrl-shift-z": ["terminal::SendText", "\\e\\[122:90\\;6u"]
-      // "ctrl-shift-z": ["file_finder::Toggle", { "separate_history": true }]
       // "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
       // "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
       // "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
@@ -184,6 +183,7 @@
   {
     "context": "Terminal && vi_mode",
     "bindings": {
+      "ctrl-shift-space": ["terminal::SendKeystroke", "i"],
       "ctrl-left": ["terminal::SendKeystroke", "b"],
       "ctrl-right": ["terminal::SendKeystroke", "w"],
       "ctrl-up": ["terminal::SendKeystroke", "ctrl-u"],
@@ -198,13 +198,14 @@
       "ctrl-enter": ["terminal::SendKeystroke", "ctrl-v"],
       "ctrl-c": ["terminal::SendKeystroke", "y"],
       "enter": ["terminal::SendKeystroke", "y"],
-      "escape": ["terminal::SendKeystroke", "i"],
+      "escape": ["terminal::SendKeystroke", "escape"],
       "ctrl-h": ["terminal::SendKeystroke", "alt-v"],
       "home": ["terminal::SendKeystroke", "0"],
       "end": ["terminal::SendKeystroke", "$"],
       "ctrl-l": ["terminal::SendKeystroke", "z"],
       "ctrl-m": ["terminal::SendKeystroke", "%"],
       "alt-m": ["terminal::SendKeystroke", "%"]
+      // "/": ["terminal::SendKeystroke", "/"]
     }
   },
   {
