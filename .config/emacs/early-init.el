@@ -31,7 +31,9 @@
       inhibit-startup-buffer-menu nil)
 
 ;; straight.el bootstrap
-(setq straight-use-package-by-default t)
+(setq straight-use-package-by-default t
+      package-enable-at-startup nil
+      use-package-always-defer t)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -59,7 +61,8 @@
      (bg-region bg-ochre)
      (fg-region unspecified)))
   (modus-themes-italic-constructs t)
-  (modus-themes-bold-constructs t))
+  (modus-themes-bold-constructs t)
+  :unless noninteractive)
 
 (use-package auto-dark
   :init
@@ -68,13 +71,13 @@
   (auto-dark-themes '((modus-vivendi) (modus-operandi)))
   :unless noninteractive)
 
-(defun aleksei/define-global-key-translations (&optional frame)
-  "ESC according modern conventions"
+(defun early-init--define-global-key-translations (&optional frame)
+  "Configure ESC according modern conventions for FRAME."
   (with-selected-frame (or frame (selected-frame))
     ;; C-x
     ;; Escape
     (define-key key-translation-map (kbd "ESC") (kbd "C-g"))))
-(add-hook 'after-make-frame-functions 'aleksei/define-global-key-translations)
+(add-hook 'after-make-frame-functions 'early-init--define-global-key-translations)
 
 (provide 'early-init)
 ;;; early-init.el ends here
