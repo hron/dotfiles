@@ -173,7 +173,8 @@
     // }
     "toolbar": {
       "breadcrumbs": false
-    }
+    },
+    "activate_vimode_on_search": true
   },
   "project_panel": {
     "dock": "left",
