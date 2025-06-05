@@ -34,11 +34,6 @@
   (cua-prefix-override-inhibit-delay 0.0000000001)
   (cua-rectangle-mark-key [(control shift return)]))
 
-(use-package undo-fu
-  :bind (("C-z"   . #'undo-fu-only-undo)
-         ("C-S-z" . #'undo-fu-only-redo)))
-
-
 ;;;###autoload
 (defun aleksei/save-all-buffers ()
   "Save all modified buffers, literally (save-some-buffers +1)."
@@ -67,8 +62,6 @@
          ("C-S-b" . #'switch-to-buffer)
          ("C-p" . #'window-toggle-side-windows)
          ("C-/" . #'aleksei/comment-dwim)
-         ("M-t" . #'aleksei/compile)
-         ("M-r" . #'recompile)
          ;; ("C-M-l" . #'+format/region-or-buffer)
          ("M-C-." . #'eglot-find-typeDefinition)
          ("C->" . #'eglot-find-implementation)
@@ -78,7 +71,9 @@
          ("S-RET" . #'flymake-show-project-diagnostics)
          ("C-S-o" . #'imenu)
          ("C-w" . #'delete-window)
-         ("C-c t e" . #'eldoc-mode))
+         ("C-c t e" . #'eldoc-mode)
+         ("C-z" . #'undo-only)
+         ("C-S-z" . #'undo-redo))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -102,11 +97,74 @@
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
       icon-title-format frame-title-format)
 
+(use-package bookmark
+  :ensure nil
+  :custom
+  (bookmark-watch-bookmark-file 'silent))
+
+(use-package iflipb
+  :defer t
+  :bind (("C-<tab>" . 'iflipb-next-buffer)
+         ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
+  :custom
+  (iflipb-wrap-around t)
+  (iflipb-ignore-buffers '()))
+
 (use-package drag-stuff
   :bind (("M-<up>" . nil)
          ("M-<down>" . nil)
          ("M-S-<up>" . #'drag-stuff-up)
          ("M-S-<down>" . #'drag-stuff-down)))
+
+
+(push 'comint straight-built-in-pseudo-packages)
+(use-package comint
+  :ensure nil
+  :defer t
+  ;; :commands (comint-run compile)
+  :bind (("M-t" . #'project-compile)
+         ("M-r" . #'recompile)
+         :map comint-mode-map
+         ("C-d" . comint-delchar-or-maybe-eof)
+         ("C-c" . nil)
+         ("M-<up>" . comint-previous-prompt)
+         ("M-<down>" . comint-next-prompt)))
+
+(use-package winner
+  :ensure nil
+  :bind (("<f3>" . #'winner-undo)
+         ("<f4>" . #'winner-redo)))
+
+
+(push 'isearch straight-built-in-pseudo-packages)
+(use-package isearch
+  :ensure nil
+  :config
+  (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+
+  :bind (("C-f" . #'isearch-forward)
+         ("M-f" . #'isearch-forward-thing-at-point)
+         ("C-M-<down>" . #'next-error)
+         ("C-M-<up>" . (lambda () (interactive) (next-error -1)))
+         :map isearch-mode-map
+         ("C-f" . #'isearch-repeat-forward)
+         ("S-<return>" . #'isearch-repeat-backward)
+         ("<return>". #'isearch-repeat-forward)
+         ("C-g" . #'isearch-exit)
+         ("C-v" . #'isearch-yank-kill)
+         ("C-r" . #'isearch-query-replace)
+         ("M-C-r" . #'isearch-query-replace-regexp)
+         ("C-<home>" . #'isearch-beginning-of-buffer)
+         ("C-<end>" . #'isearch-end-of-buffer)
+         :map minibuffer-local-isearch-map
+         ("C-f" . #'isearch-forward-exit-minibuffer)
+         ("C-r" . #'isearch-backward-exit-minibuffer)
+         ("C-v" . #'isearch-yank-kill))
+
+  :custom ((search-exit-option 'edit)
+           (select-enable-clipboard t)
+           (select-active-regions nil)
+           (search-nonincremental-instead nil)))
 
 ;;;###autoload
 (defun aleksei/anzu-query-replace-at-cursor ()
@@ -134,8 +192,7 @@
              anzu-query-replace-at-cursor
              isearch-forward
              isearch-forward-thing-at-point)
-  :config
-
+  :init
   (global-anzu-mode +1)
 
   :bind
@@ -149,14 +206,58 @@
    ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
 (use-package consult
-  :bind (("C-b" . #'consult-buffer)
+  :bind (("C-S-f" . #'consult-ripgrep)
+         ("C-b" . #'consult-buffer)
          ("C-M-o" . #'consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
+         ("C-e" . #'aleksei/consult-project)
          :map minibuffer-local-map
          ("C-f" . #'consult-history)
          ("C-r" . #'consult-history)))
 
+(defvar aleksei/consult-source-not-opened-project-file
+  (list :name     "Project File"
+        :narrow   '(?f . "File")
+        :category 'file
+        :face     'consult-file
+        :history  'file-name-history
+        :action   (lambda (f) (consult--file-action (concat (project-root (project-current)) f)))
+        :enabled  #'project-current
+        :items
+        (lambda ()
+          (let* ((project-root (project-root (project-current)))
+                 (project-files-relative-names t)
+                 (project-files (project-files (project-current))))
+            (cl-remove-if
+             (lambda (file)
+               (get-file-buffer (expand-file-name file project-root)))
+             project-files)))))
+
+;;;###autoload
+(defun aleksei/consult-project ()
+  "Switch to a buffer, a bookmark or find project file."
+  (interactive)
+  (require 'consult)
+  (consult--multi '(consult--source-buffer
+                    consult--source-bookmark
+                    aleksei/consult-source-not-opened-project-file)
+                  :prompt "Switch to: "
+                  :history 'consult-projectile--project-history
+                  :sort nil))
+
+(use-package marginalia
+  :bind (:map minibuffer-mode-map
+              ("M-a" . #'marginalia-cycle))
+  :init
+  (marginalia-mode +1))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
 (use-package vertico
+  :init (vertico-mode +1)
   :bind (:map minibuffer-local-map
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
@@ -165,7 +266,9 @@
   :config
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom)))
   ;; (vertico-buffer-mode +1)
-  )
+  :custom-face
+  ;; Avoid `bold' weight because of nerd-icons
+  (vertico-current ((t :inherit highlight :extend t :weight normal))))
 
 (use-package embark
   :bind (:map global-map
@@ -180,6 +283,8 @@
                        embark-highlight-indicator
                        embark-isearch-highlight-indicator))
   (embark-prompter 'embark-completing-read-prompter))
+
+(use-package embark-consult)
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
@@ -205,6 +310,14 @@
          :map magit-mode-map
          ("C-w" . delete-window)))
 
+(use-package diff-hl
+  :init (diff-hl-mode +1)
+  :bind (:map diff-hl-mode-map
+              ("C-M-z" . #'diff-hl-revert-hunk)
+              ("M-[" . #'diff-hl-previous-hunk)
+              ("M-]" . #'diff-hl-next-hunk)
+              ("C-'" . diff-hl-show-hunk)))
+
 ;; emacs-lisp-mode
 (use-package emacs
   :bind (:map emacs-lisp-mode-map
@@ -221,6 +334,20 @@
 
 (use-package crux
   :bind (("<home>" . crux-move-beginning-of-line)))
+
+(defun aleksei/remove-fringe-from-minibuffer (&rest _)
+  "Remove fringes in minibuffer window."
+  (set-window-fringes (minibuffer-window) 0))
+
+(use-package too-wide-minibuffer-mode
+  :config
+  (too-wide-minibuffer-mode +1)
+  :custom
+  (minibuffer-follows-selected-frame nil)
+  :hook
+  ((minibuffer-setup window-state-change) . aleksei/remove-fringe-from-minibuffer))
+
+;; (use-package nerd-icons-grep)
 
 (require 'algus-org)
 

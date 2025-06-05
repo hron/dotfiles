@@ -33,7 +33,8 @@
 ;; straight.el bootstrap
 (setq straight-use-package-by-default t
       package-enable-at-startup nil
-      use-package-always-defer t)
+      use-package-always-defer t
+      native-comp-async-jobs-number 0)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
