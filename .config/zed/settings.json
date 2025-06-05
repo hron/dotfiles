@@ -21,7 +21,7 @@
     "dark": "algus: Modus Vivendi",
     "light": "Modus Operandi"
   },
-  "stable_size_docks": true,
+  "resize_all_panels_in_dock": ["left", "right", "bottom"],
   // "experimental.theme_overrides": {
   //   "scrollbar.thumb.background": "#0000ffaa"
   // },
