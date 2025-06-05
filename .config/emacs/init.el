@@ -35,27 +35,66 @@
   (cua-rectangle-mark-key [(control shift return)]))
 
 (use-package undo-fu
-  :bind (("C-z"   . undo-fu-only-undo)
-         ("C-S-z" . undo-fu-only-redo)))
+  :bind (("C-z"   . #'undo-fu-only-undo)
+         ("C-S-z" . #'undo-fu-only-redo)))
+
+
+;;;###autoload
+(defun aleksei/save-all-buffers ()
+  "Save all modified buffers, literally (save-some-buffers +1)."
+  (interactive)
+  (save-some-buffers +1))
+
+;;;###autoload
+(defun aleksei/comment-dwim (&optional arg)
+  "Replacement for `comment-dwim'.
+ If no region is selected and point is not at the end of the line,
+ comment or uncomment the current line. Otherwise, call `comment-dwim'."
+  (interactive "*P")
+  (if (and (not (use-region-p))
+           (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
 
 (use-package emacs
-  :init
-  (defun algus/save-all-buffers ()
-    "Saves all modified buffers, literally (save-some-buffers +1)"
-    (interactive)
-    (save-some-buffers +1))
-  :bind (("C-<f2>" . list-processes)
-         ("C-d" . duplicate-dwim)
-         ("C-M-l" . indent-region)
-         ("C-s" . algus/save-all-buffers)))
+  :bind (("C-<f2>" . #'list-processes)
+         ("C-d" . #'duplicate-dwim)
+         ("C-s" . #'aleksei/save-all-buffers)
+         ("<f6>" . #'toggle-truncate-lines)
+         ("C-j" . (lambda () (interactive) (forward-line) (join-line)))
+         ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
+         ("C-a" . #'mark-whole-buffer)
+         ("C-S-b" . #'switch-to-buffer)
+         ("C-p" . #'window-toggle-side-windows)
+         ("C-/" . #'aleksei/comment-dwim)
+         ("M-t" . #'aleksei/compile)
+         ("M-r" . #'recompile)
+         ;; ("C-M-l" . #'+format/region-or-buffer)
+         ("M-C-." . #'eglot-find-typeDefinition)
+         ("C->" . #'eglot-find-implementation)
+         ("M-." . #'xref-find-definitions)
+         ("M->" . #'xref-find-references)
+         ;; ("C-q" . #'+lookup/documentation)
+         ;; ("S-RET" . #'+default/diagnostics)
+         ("C-S-o" . #'imenu)
+         ("C-M-o" . #'consult-imenu-multi)
+         ("C-w" . #'delete-window)
+         ("C-c t e" . #'eldoc-mode)))
 
 (setq-default cursor-type '(bar . 3))
+(setq w32-pass-lwindow-to-system nil
+      w32-pass-rwindow-to-system nil)
 (modify-all-frames-parameters
  '((font . "JetBrainsMono Nerd Font-10")))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (fringe-mode (frame-char-width))
+(global-auto-revert-mode +1)
+(global-subword-mode +1)
+(blink-cursor-mode +1)
+(context-menu-mode +1)
+(pixel-scroll-precision-mode +1)
 
 (use-package drag-stuff
   :bind (("M-<up>" . nil)
