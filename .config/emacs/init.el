@@ -75,11 +75,15 @@
          ("M-." . #'xref-find-definitions)
          ("M->" . #'xref-find-references)
          ;; ("C-q" . #'+lookup/documentation)
-         ;; ("S-RET" . #'+default/diagnostics)
+         ("S-RET" . #'flymake-show-project-diagnostics)
          ("C-S-o" . #'imenu)
-         ("C-M-o" . #'consult-imenu-multi)
          ("C-w" . #'delete-window)
-         ("C-c t e" . #'eldoc-mode)))
+         ("C-c t e" . #'eldoc-mode))
+  :custom
+  (display-line-numbers-type nil)
+  (confirm-kill-emacs nil)
+  (delete-by-moving-to-trash t)
+  (comment-empty-lines t))
 
 (setq-default cursor-type '(bar . 3))
 (setq w32-pass-lwindow-to-system nil
@@ -95,6 +99,8 @@
 (blink-cursor-mode +1)
 (context-menu-mode +1)
 (pixel-scroll-precision-mode +1)
+(setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
+      icon-title-format frame-title-format)
 
 (use-package drag-stuff
   :bind (("M-<up>" . nil)
@@ -102,40 +108,53 @@
          ("M-S-<up>" . #'drag-stuff-up)
          ("M-S-<down>" . #'drag-stuff-down)))
 
+;;;###autoload
+(defun aleksei/anzu-query-replace-at-cursor ()
+  "Run `anzu-query-replace' for (thing-at-point 'symbol)."
+  (interactive)
+  (let ((query-replace-history query-replace-history))
+    (add-to-history 'query-replace-history (thing-at-point 'symbol))
+    (call-interactively 'anzu-query-replace-at-cursor)))
+
+;;;###autoload
+(defun aleksei/anzu-query-replace ()
+  "Run `anzu-query-replace' for with region if it's not multiline."
+  (interactive)
+  (if (and (use-region-p)
+           (= (line-number-at-pos (region-beginning))
+              (line-number-at-pos (region-end))))
+      (let ((isearch-string (buffer-substring-no-properties (region-beginning) (region-end))))
+        (deactivate-mark)
+        (anzu--query-replace-common nil :isearch-p t)))
+  (call-interactively #'anzu-query-replace))
+
 (use-package anzu
-  :init
-  ;;;###autoload
-  (defun aleksei/isearch-region-or-forward ()
-    "Do incremental search forward, use region if it's active"
-    (interactive)
-    (if (use-region-p)
-        (isearch-forward-thing-at-point)
-      (isearch-forward)))
-  (remove-hook 'isearch-mode-hook 'isearch-yank-kill)
+  :commands (aleksei/anzu-query-replace-at-cursor
+             aleksei/anzu-query-replace
+             anzu-query-replace-at-cursor
+             isearch-forward
+             isearch-forward-thing-at-point)
+  :config
+
   (global-anzu-mode +1)
 
-  :bind (("C-f" . #'aleksei/isearch-region-or-forward)
-         :map isearch-mode-map
-         ("C-f" . #'isearch-repeat-forward)
-         ("C-r" . #'anzu-query-replace-regexp)
-         ("S-<return>" . #'isearch-repeat-backward)
-         ("<return>" . #'isearch-repeat-forward)
-         ("C-g" . #'isearch-exit)
-         ("C-v" . #'isearch-yank-kill)
-         :map minibuffer-local-isearch-map
-         ("C-f" . #'isearch-forward-exit-minibuffer)
-         ("C-r" . #'isearch-backward-exit-minibuffer)
-         ("C-v" . #'isearch-yank-kill))
-
-  :custom (search-exit-option . 'edit))
-
+  :bind
+  (("C-t" . #'aleksei/anzu-query-replace-at-cursor)
+   ("C-r" . #'aleksei/anzu-query-replace)
+   ("C-M-r" . #'anzu-query-replace-regexp)
+   :map isearch-mode-map
+   ("C-r" . #'anzu-isearch-query-replace)
+   ("M-C-r" . #'anzu-isearch-query-replace-regexp)
+   ("M-%" . #'anzu-isearch-query-replace)
+   ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
 (use-package consult
-  :bind (:map global-map
-         ("C-b" . consult-buffer)
+  :bind (("C-b" . #'consult-buffer)
+         ("C-M-o" . #'consult-imenu-multi)
+         ("S-RET" . #'consult-flymake)
          :map minibuffer-local-map
-         ("C-f" . consult-history)
-         ("C-r" . consult-history)))
+         ("C-f" . #'consult-history)
+         ("C-r" . #'consult-history)))
 
 (use-package vertico
   :bind (:map minibuffer-local-map

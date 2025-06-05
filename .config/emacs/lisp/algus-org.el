@@ -23,7 +23,7 @@
 
 ;;;###autoload
 (defun aleksei/org-gtd ()
-  "Prepare emacs frame to use as a GTD system."
+  "Prepare Emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
   (find-file (concat org-directory "/tasks.org" ))
@@ -31,6 +31,7 @@
 
 ;;;###autoload
 (defun algus/org-todo-convert-to-project ()
+  "Convert a subheading to a project."
   (interactive)
   (save-excursion
     (org-todo "")
@@ -41,7 +42,7 @@
 
 ;;;###autoload
 (defun aleksei/org-capture ()
-  "Opens a new frame with Org capture inbox template"
+  "Open a new frame with Org capture inbox template."
   (interactive)
   (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
   (org-capture "" "i")
