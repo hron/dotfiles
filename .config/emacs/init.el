@@ -42,9 +42,10 @@
 
 ;;;###autoload
 (defun aleksei/comment-dwim (&optional arg)
-  "Replacement for `comment-dwim'.
- If no region is selected and point is not at the end of the line,
- comment or uncomment the current line. Otherwise, call `comment-dwim'."
+  "My replacement for `comment-dwim' (ARG is passed through).
+
+If no region is selected and point is not at the end of the line,
+comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (interactive "*P")
   (if (and (not (use-region-p))
            (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
@@ -60,7 +61,6 @@
          ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
          ("C-a" . #'mark-whole-buffer)
          ("C-S-b" . #'switch-to-buffer)
-         ("C-p" . #'window-toggle-side-windows)
          ("C-/" . #'aleksei/comment-dwim)
          ;; ("C-M-l" . #'+format/region-or-buffer)
          ("M-C-." . #'eglot-find-typeDefinition)
@@ -70,7 +70,6 @@
          ;; ("C-q" . #'+lookup/documentation)
          ("S-RET" . #'flymake-show-project-diagnostics)
          ("C-S-o" . #'imenu)
-         ("C-w" . #'delete-window)
          ("C-c t e" . #'eldoc-mode)
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo))
@@ -78,7 +77,8 @@
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
   (delete-by-moving-to-trash t)
-  (comment-empty-lines t))
+  (comment-empty-lines t)
+  (grep-use-headings t))
 
 (setq-default cursor-type '(bar . 3))
 (setq w32-pass-lwindow-to-system nil
@@ -94,6 +94,7 @@
 (blink-cursor-mode +1)
 (context-menu-mode +1)
 (pixel-scroll-precision-mode +1)
+(global-hl-line-mode +1)
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
       icon-title-format frame-title-format)
 
@@ -120,8 +121,6 @@
 (push 'comint straight-built-in-pseudo-packages)
 (use-package comint
   :ensure nil
-  :defer t
-  ;; :commands (comint-run compile)
   :bind (("M-t" . #'project-compile)
          ("M-r" . #'recompile)
          :map comint-mode-map
@@ -347,9 +346,30 @@
   :hook
   ((minibuffer-setup window-state-change) . aleksei/remove-fringe-from-minibuffer))
 
-;; (use-package nerd-icons-grep)
+(use-package nerd-icons)
+(use-package nerd-icons-completion
+  :init (nerd-icons-completion-mode +1))
+(use-package nerd-icons-dired
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+(use-package nerd-icons-grep
+  :straight (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
+  :init (nerd-icons-grep-mode +1))
+
+;; (push 'treesit straight-built-in-pseudo-packages)
+;; (use-package treesit
+;;   :ensure nil
+;;   :custom
+;;   (treesit-font-lock-level 4))
+;; (use-package treesit-auto
+;;   :custom
+;;   (treesit-auto-install 'prompt)
+;;   :config
+;;   (treesit-auto-add-to-auto-mode-alist 'all)
+;;   (global-treesit-auto-mode +1))
 
 (require 'algus-org)
+(require 'aleksei-windows)
 
 (provide 'init)
 ;;; init.el ends here

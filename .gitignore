@@ -55,3 +55,4 @@
 /.config/emacs/projects
 /.config/zed/development_credentials
 /.config/nushell/nu-scripts.nu
+/.config/emacs/tramp
