@@ -56,3 +56,10 @@
 /.config/zed/development_credentials
 /.config/nushell/nu-scripts.nu
 /.config/emacs/tramp
+/.config/emacs/bookmarks
+/.config/emacs/org-roam.db
+/.config/emacs/tree-sitter/
+/.config/emacs/elpa/
+/.config/emacs/session.*
+/.config/emacs/history
+/.config/emacs/recentf

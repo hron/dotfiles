@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 
 let
-  # treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).treesit-grammars.with-all-grammars;
-  # emacs = (pkgs.emacsPackagesFor pkgs.emacs30-pgtk).emacsWithPackages (
-  #   epkgs: with epkgs; [
-  #     vterm
-  #     treesitGrammars
-  #   ]
-  # );
+  treesitGrammars = (pkgs.emacsPackagesFor pkgs.emacs30-gtk3).treesit-grammars.with-all-grammars;
+  emacs = (pkgs.emacsPackagesFor pkgs.emacs30-gtk3).emacsWithPackages (
+    epkgs: with epkgs; [
+      vterm
+      treesitGrammars
+    ]
+  );
   nuScriptsDir = "${pkgs.nu_scripts}/share/nu_scripts";
 in
 {
@@ -80,8 +80,8 @@ in
     nushell
     nu_scripts
     blesh
-  ];
-  # ++ [ emacs ];
+  ]
+  ++ [ emacs ];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

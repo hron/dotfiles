@@ -2,5 +2,5 @@
 
 export EMACS_SERVER_NAME=gtd
 
-emacsclient --create-frame --socket-name=gtd --eval "(aleksei/org-gtd)" ||
-    emacs --no-desktop --name org-mode --eval "(aleksei/org-gtd)" --background=black
+emacsclient --create-frame --socket-name=gtd --eval "(aleksei-org-gtd)" ||
+    emacs --no-desktop --name org-mode --eval "(aleksei-org-gtd)"
