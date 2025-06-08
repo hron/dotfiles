@@ -40,15 +40,15 @@ Fit the height to the content, and select the window."
 		window))
 
 (defun aleksei-windows--display-buffer-in-side-window (buffer &optional alist)
-	"Display BUFFER at the appropriate place depending on the current frame width"
+	"Display BUFFER at the appropriate place depending on the current frame width."
 	(let* ((side-width (or (cdr (assq 'side-width alist)) aleksei-windows--default-side-window-width))
 				 (side-height (or (cdr (assq 'side-height alist)) aleksei-windows--default-side-window-height))
-				 (wide-frame-opts `(list
-														(window-width . ,side-width)
-														(side . left)))
-				 (narrow-frame-opts `(list
-															(window-height . ,side-height)
-															(side . bottom))))
+				 (wide-frame-opts (append
+													 `(list (window-width . ,side-width) (side . left))
+													 (cdr (assq 'wide-args alist))))
+				 (narrow-frame-opts (append
+														 `(list (window-height . ,side-height) (side . bottom))
+														 (cdr (assq 'narrow-args alist)))))
 
 		(display-buffer-in-side-window
 		 buffer
@@ -103,7 +103,7 @@ Fit the height to the content, and select the window."
 								"^\\*Help"))
 				 (display-buffer-reuse-window
 					aleksei-windows--display-buffer-in-side-window)
-				 (slot . 1))
+				 (wide-args . '(slot . 1)))
 
 				((or . ((derived-mode . compilation-mode)
 								(derived-mode . comint-mode)
