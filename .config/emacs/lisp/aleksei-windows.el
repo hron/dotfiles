@@ -32,13 +32,10 @@
   (interactive)
   (let ((current (selected-window)))
     (walk-windows (lambda (w)
-                    (unless (or (eq w current)
-                                (eq (window-parameter w 'window-side) 'left)
-                                (eq (window-parameter w 'window-side) 'right)
-                                (eq (window-parameter w 'window-side) 'top)
-                                (eq (window-parameter w 'window-side) 'bottom))
-                      (delete-window w)))
-                  nil 'visible)))
+                    (when (and (not (eq w current))
+                               (eq (window-parameter w 'window-side)
+                                   (window-parameter current 'window-side)))
+                      (delete-window w))))))
 
 (defun aleksei-windows--display-below-fit-and-select (buffer &optional _alist)
   "Display BUFFER at the bottom of the window, apply ALIST.
@@ -76,6 +73,7 @@ Fit the height to the content, and select the window."
                         "^magit-revision"
                         "^magit-diff"
                         "\\*Man"
+                        "^\\*vterm"
                         (derived-mode . compilation-mode)
                         (derived-mode . comint-mode)
                         (derived-mode . grep-mode)))))
@@ -111,6 +109,7 @@ Fit the height to the content, and select the window."
                 "^\\*lsp-help"
                 "^\\*eldoc\\*"
                 "^\\*Help"
+                "^\\*vterm"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))

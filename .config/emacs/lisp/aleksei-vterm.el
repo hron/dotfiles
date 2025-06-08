@@ -58,12 +58,14 @@
          ("M-<up>" . #'aleksei-vterm-copy-mode-previous-prompt)
          ("M-<down>" . #'aleksei-vterm-copy-mode-next-prompt)
          ("C-t" . #'aleksei-vterm-new-tab)
+         ("<f3>" . nil)
+         ("<f4>" . nil)
          :map vterm-copy-mode-map
          ("M-<up>" . #'vterm-previous-prompt)
          ("M-<down>" . #'vterm-next-prompt)
          ("C-t" . #'aleksei-vterm-new-tab))
   :custom
-	(vterm-shell "/usr/bin/fish")
+  (vterm-shell "/usr/bin/fish")
   (vterm-max-scrollback 100000)
   (vterm-clear-scrollback-when-clearing t)
   :config
@@ -72,7 +74,7 @@
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local undo-fu-mode nil)))
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local pixel-scroll-mode nil)))
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local pixel-scroll-precision-mode nil)))
-	(add-hook 'vterm-mode-hook #'(lambda () (setq-local global-hl-line-mode nil))))
+  (add-hook 'vterm-mode-hook #'(lambda () (setq-local global-hl-line-mode nil))))
 
 (provide 'aleksei-vterm)
 ;;; aleksei-vterm.el ends here

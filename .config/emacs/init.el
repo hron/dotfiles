@@ -61,9 +61,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (defun aleksei/eldoc ()
   "Run eldoc and switch to its buffer it is executed second time."
   (interactive)
-  (if (eq last-command 'aleksei/eldoc)
-      (window "*eldoc*")
-    (funcall-interactively 'eldoc)))
+  (if-let* ((eldoc-window (eq last-command 'aleksei/eldoc))
+            (eldoc-window (get-buffer-window-list "*eldoc*")))
+      (select-window (car eldoc-window))
+    (call-interactively 'eldoc)))
 
 (use-package emacs
   :bind (("C-<f2>" . #'list-processes)
@@ -110,7 +111,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (blink-cursor-mode +1)
 (context-menu-mode +1)
 (pixel-scroll-precision-mode +1)
-(global-hl-line-mode +1)
+;; (global-hl-line-mode +1)
 (savehist-mode +1)
 (recentf-mode +1)
 
@@ -273,7 +274,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :bind (("C-S-f" . #'consult-ripgrep)
          ("C-b" . #'consult-buffer)
          ("C-S-o" . #'consult-imenu)
-         ("C-M-o" . #'consult-imenu-multi)
+         ("M-o" . #'consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
          ("C-e" . #'aleksei/consult-project)
          :map minibuffer-local-map
@@ -662,15 +663,21 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
+(defvar aleksei-rust-dbg-compilation-regexp
+  '("\\[\\([^:]+\\):\\([0-9]+\\):\\([0-9]+\\)\\]" 1 2 3 0)
+  "Specifications for matching dbg! output.")
+
 (use-package rust-mode
-  :config
-  (setq rust-load-optional-libraries nil)
   :init
+  (setq rust-load-optional-libraries nil
+        rust-mode-treesitter-derive nil)
   (require 'rust-cargo)
   (require 'rust-compile)
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
-  (setq rust-mode-treesitter-derive t))
+  (add-to-list 'compilation-error-regexp-alist-alist
+               (cons 'rustc-dbg! aleksei-rust-dbg-compilation-regexp))
+  (add-to-list 'compilation-error-regexp-alist 'rustc-dbg!))
 
 (use-package gcmh
   :init (gcmh-mode +1))
