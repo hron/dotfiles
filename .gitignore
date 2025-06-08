@@ -50,7 +50,10 @@
 
 /.config/emacs/auto-save-list
 /.config/emacs/eln-cache
-/.config/emacs/straight
+/.config/emacs/straight/build
+/.config/emacs/straight/modified
+/.config/emacs/straight/repos
+/.config/emacs/straight/build-cache.el
 /.config/emacs/transient
 /.config/emacs/projects
 /.config/zed/development_credentials
