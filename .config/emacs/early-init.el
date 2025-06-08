@@ -19,6 +19,13 @@
 ;;
 ;;; Code:
 
+;; PERF: But make an exception for `gc-cons-threshold', which I think
+;;   all Emacs users and configs will benefit from. Still, setting it
+;;   to `most-positive-fixnum' is dangerous if downstream does not
+;;   reset it later to something reasonable, so I use 16mb as a best
+;;   fit guess. It's better than Emacs' 80kb default.
+(setq gc-cons-threshold (* 16 1024 1024))
+
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
       ring-bell-function 'ignore

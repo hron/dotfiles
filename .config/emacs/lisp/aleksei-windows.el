@@ -23,7 +23,7 @@
   :ensure nil
   :bind (("C-<next>" . #'other-window)
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
-         ("C-p" . #'window-toggle-side-windows)
+         ("C-j" . #'window-toggle-side-windows)
          ("C-w" . #'delete-window)
          ("M-i" . #'aleksei-windows--delete-other-windows)))
 

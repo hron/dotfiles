@@ -57,6 +57,14 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (interactive)
   (call-interactively #'apheleia-format-buffer))
 
+;;;###autoload
+(defun aleksei/eldoc ()
+  "Run eldoc and switch to its buffer it is executed second time."
+  (interactive)
+  (if (eq last-command 'aleksei/eldoc)
+      (window "*eldoc*")
+    (funcall-interactively 'eldoc)))
+
 (use-package emacs
   :bind (("C-<f2>" . #'list-processes)
          ("C-d" . #'duplicate-dwim)
@@ -76,7 +84,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-c t e" . #'eldoc-mode)
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
-         ("C-q" . #'eldoc))
+         ("C-q" . #'aleksei/eldoc))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -653,6 +661,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package rust-mode
   :init
   (require 'rust-compile))
+
+(use-package gcmh
+  :init (gcmh-mode +1))
 
 (require 'aleksei-org)
 (require 'aleksei-windows)
