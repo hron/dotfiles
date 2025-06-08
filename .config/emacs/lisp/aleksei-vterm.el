@@ -60,6 +60,7 @@
          ("C-t" . #'aleksei-vterm-new-tab)
          ("<f3>" . nil)
          ("<f4>" . nil)
+         ("C-j" . nil)
          :map vterm-copy-mode-map
          ("M-<up>" . #'vterm-previous-prompt)
          ("M-<down>" . #'vterm-next-prompt)

@@ -668,16 +668,20 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   "Specifications for matching dbg! output.")
 
 (use-package rust-mode
+  :straight (rust-mode :type git :host github :repo "rust-lang/rust-mode"
+                       :method fetch-from-remote
+                       :fork "hron" :branch "rust-compilation-dbg!")
   :init
   (setq rust-load-optional-libraries nil
-        rust-mode-treesitter-derive nil)
+        rust-mode-treesitter-derive t)
   (require 'rust-cargo)
   (require 'rust-compile)
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
-  (add-to-list 'compilation-error-regexp-alist-alist
-               (cons 'rustc-dbg! aleksei-rust-dbg-compilation-regexp))
-  (add-to-list 'compilation-error-regexp-alist 'rustc-dbg!))
+  ;; (add-to-list 'compilation-error-regexp-alist-alist
+  ;;              (cons 'rustc-dbg! aleksei-rust-dbg-compilation-regexp))
+  ;; (add-to-list 'compilation-error-regexp-alist 'rustc-dbg!)
+  )
 
 (use-package gcmh
   :init (gcmh-mode +1))
