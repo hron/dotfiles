@@ -70,7 +70,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-d" . #'duplicate-dwim)
          ("C-s" . #'aleksei/save-all-buffers)
          ("<f6>" . #'toggle-truncate-lines)
-         ("C-j" . (lambda () (interactive) (forward-line) (join-line)))
          ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
          ("C-a" . #'mark-whole-buffer)
          ("C-S-b" . #'switch-to-buffer)
@@ -94,6 +93,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (create-lockfiles nil)
   (make-backup-files nil)
   (indent-tabs-mode nil)
+  (vc-follow-symlinks t)
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type '(bar . 5))
@@ -471,11 +471,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package treesit-auto
   :defer nil
   :custom
+  (treesit-auto-langs
+   '(awk bash bibtex blueprint c c-sharp clojure cmake commonlisp cpp css
+         dart dockerfile elixir glsl go gomod heex html janet java
+         javascript json julia kotlin latex lua magik make markdown nix nu
+         org perl proto python r ruby scala sql surface toml tsx
+         typescript typst verilog vhdl vue wast wat wgsl yaml))
   (treesit-auto-install 'prompt)
   :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode +1))
-
 
 (use-package better-jumper
   :bind (("M-<left>" . better-jumper-jump-backward)
@@ -640,7 +644,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
-  :hook ((rust-ts-mode) . #'eglot-ensure)
+  :hook ((rust-ts-mode rust-mode) . #'eglot-ensure)
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions)))
@@ -659,8 +663,14 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package rust-mode
+  :config
+  (setq rust-load-optional-libraries nil)
   :init
-  (require 'rust-compile))
+  (require 'rust-cargo)
+  (require 'rust-compile)
+  ;; (require 'rust-playpen)
+  ;; (require 'rust-rustfmt)
+  (setq rust-mode-treesitter-derive t))
 
 (use-package gcmh
   :init (gcmh-mode +1))

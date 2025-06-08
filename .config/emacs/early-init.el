@@ -19,12 +19,15 @@
 ;;
 ;;; Code:
 
-;; PERF: But make an exception for `gc-cons-threshold', which I think
-;;   all Emacs users and configs will benefit from. Still, setting it
-;;   to `most-positive-fixnum' is dangerous if downstream does not
-;;   reset it later to something reasonable, so I use 16mb as a best
-;;   fit guess. It's better than Emacs' 80kb default.
-(setq gc-cons-threshold (* 16 1024 1024))
+(if noninteractive  ; in CLI sessions
+    ;; PERF: GC deferral is less important in the CLI, but still helps script
+    ;;   startup times. Just don't set it too high to avoid runaway memory
+    ;;   usage in long-running elisp shell scripts.
+    (setq gc-cons-threshold 134217728  ; 128mb
+          ;; Backported from 29 (see emacs-mirror/emacs@73a384a98698)
+          gc-cons-percentage 1.0)
+  ;; We rely on gmch-mode
+  (setq gc-cons-threshold most-positive-fixnum))
 
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
