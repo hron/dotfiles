@@ -20,114 +20,127 @@
 ;;; Code:
 
 (use-package emacs
-	:ensure nil
-	:bind (("C-<next>" . #'other-window)
-				 ("C-<prior>" . (lambda () (interactive) (other-window -1)))
-				 ("C-p" . #'window-toggle-side-windows)
-				 ("C-w" . #'delete-window)
-				 ("M-i" . #'delete-other-windows)))
+  :ensure nil
+  :bind (("C-<next>" . #'other-window)
+         ("C-<prior>" . (lambda () (interactive) (other-window -1)))
+         ("C-p" . #'window-toggle-side-windows)
+         ("C-w" . #'delete-window)
+         ("M-i" . #'aleksei-windows--delete-other-windows)))
+
+(defun aleksei-windows--delete-other-windows ()
+  "Delete all other windows except the current one and side windows."
+  (interactive)
+  (let ((current (selected-window)))
+    (walk-windows (lambda (w)
+                    (unless (or (eq w current)
+                                (eq (window-parameter w 'window-side) 'left)
+                                (eq (window-parameter w 'window-side) 'right)
+                                (eq (window-parameter w 'window-side) 'top)
+                                (eq (window-parameter w 'window-side) 'bottom))
+                      (delete-window w)))
+                  nil 'visible)))
 
 (defun aleksei-windows--display-below-fit-and-select (buffer &optional _alist)
-	"Display BUFFER at the bottom of the window, apply ALIST.
+  "Display BUFFER at the bottom of the window, apply ALIST.
 
 Fit the height to the content, and select the window."
-	(let ((window (display-buffer-below-selected buffer `((side . bottom)))))
-		(fit-window-to-buffer window (floor (frame-height) 2))
-		(select-window window)  ;; Select the window displaying the buffer
-		window))
+  (let ((window (display-buffer-below-selected buffer `((side . bottom)))))
+    (fit-window-to-buffer window (floor (frame-height) 2))
+    (select-window window)  ;; Select the window displaying the buffer
+    window))
 
 (defun aleksei-windows--2-columns-layout-p (&rest _args)
-	"Detect if there is enough width to use 2 columns layout."
-	(>= (frame-width) 200))
+  "Detect if there is enough width to use 2 columns layout."
+  (>= (frame-width) 200))
 
 (setq display-buffer-alist
-			'(
-				((or . ((derived-mode . process-menu-mode)
-								(derived-mode . flycheck-error-list-mode)
-								"\\*RE-Builder\\*"
-								;; "\\*diff-hl"
-								))
-				 (display-buffer-reuse-mode-window
-					aleksei-windows--display-below-fit-and-select))
+      '(
+        ((or . ((derived-mode . process-menu-mode)
+                (derived-mode . flycheck-error-list-mode)
+                "\\*RE-Builder\\*"
+                ;; "\\*diff-hl"
+                ))
+         (display-buffer-reuse-mode-window
+          aleksei-windows--display-below-fit-and-select))
 
-				((or . ("\\*Org Agenda"
-								"\\*doom:scratch"
-								(derived-mode . magit-status-mode)))
-				 (display-buffer-reuse-window
-					display-buffer-same-window))
+        ((or . ("\\*Org Agenda"
+                "\\*doom:scratch"
+                (derived-mode . magit-status-mode)))
+         (display-buffer-reuse-window
+          display-buffer-same-window))
 
-				;; 2 column layout
-				((and . (aleksei-windows--2-columns-layout-p
-								 (or . ("\\*ChatGPT"
-												"^magit-log"
-												"^magit-revision"
-												"^magit-diff"
-												"\\*Man"
-												(derived-mode . compilation-mode)
-												(derived-mode . comint-mode)
-												(derived-mode . grep-mode)))))
-				 (display-buffer-reuse-window
-					display-buffer-in-side-window)
-				 (side . left)
-				 (window-width . .5)
-				 (slot . 0))
+        ;; 2 column layout
+        ((and . (aleksei-windows--2-columns-layout-p
+                 (or . ("\\*ChatGPT"
+                        "^magit-log"
+                        "^magit-revision"
+                        "^magit-diff"
+                        "\\*Man"
+                        (derived-mode . compilation-mode)
+                        (derived-mode . comint-mode)
+                        (derived-mode . grep-mode)))))
+         (display-buffer-reuse-window
+          display-buffer-in-side-window)
+         (side . left)
+         (window-width . .5)
+         (slot . 0))
 
-				((and . (aleksei-windows--2-columns-layout-p
-								 (or . ("^\\*helpful"
-												"Output\\*$"
-												"^\\*lsp-help"
-												"^\\*eldoc\\*"
-												"^\\*Help"))))
-				 (display-buffer-reuse-window
-					display-buffer-in-side-window)
-				 (side . left)
-				 (window-width . .5)
-				 (slot . 1))
+        ((and . (aleksei-windows--2-columns-layout-p
+                 (or . ("^\\*helpful"
+                        "Output\\*$"
+                        "^\\*lsp-help"
+                        "^\\*eldoc\\*"
+                        "^\\*Help"))))
+         (display-buffer-reuse-window
+          display-buffer-in-side-window)
+         (side . left)
+         (window-width . .5)
+         (slot . 1))
 
-				;; 1 column layout
-				((or . ("\\*ChatGPT"
-								"^magit-log"
-								"^magit-revision"
-								;; "^*magit-diff"
-								"\\*Man"))
-				 (display-buffer-reuse-window
-					display-buffer-same-window))
+        ;; 1 column layout
+        ((or . ("\\*ChatGPT"
+                "^magit-log"
+                "^magit-revision"
+                ;; "^*magit-diff"
+                "\\*Man"))
+         (display-buffer-reuse-window
+          display-buffer-same-window))
 
-				((or . ("^\\*helpful"
-								"Output\\*$"
-								"^\\*lsp-help"
-								"^\\*eldoc\\*"
-								"^\\*Help"
-								(derived-mode . compilation-mode)
-								(derived-mode . comint-mode)
-								(derived-mode . grep-mode)))
-				 (display-buffer-reuse-window
-					display-buffer-in-side-window)
-				 (side . bottom)
-				 (window-height . .33))))
+        ((or . ("^\\*helpful"
+                "Output\\*$"
+                "^\\*lsp-help"
+                "^\\*eldoc\\*"
+                "^\\*Help"
+                (derived-mode . compilation-mode)
+                (derived-mode . comint-mode)
+                (derived-mode . grep-mode)))
+         (display-buffer-reuse-window
+          display-buffer-in-side-window)
+         (side . bottom)
+         (window-height . .33))))
 
 (defvar aleksei-windows--redisplay-last-frame-width nil)
 
 (defun aleksei-windows--frame-size-changed-p ()
-	"Non-nil if a change in frame size is detected."
-	(let ((new-size (cons (frame-width) (frame-height))))
-		(cond ((null aleksei-windows--redisplay-last-frame-width)
-					 (setq aleksei-windows--redisplay-last-frame-width new-size)
-					 nil)
-					((not (equal aleksei-windows--redisplay-last-frame-width new-size))
-					 (setq aleksei-windows--redisplay-last-frame-width new-size)))))
+  "Non-nil if a change in frame size is detected."
+  (let ((new-size (cons (frame-width) (frame-height))))
+    (cond ((null aleksei-windows--redisplay-last-frame-width)
+           (setq aleksei-windows--redisplay-last-frame-width new-size)
+           nil)
+          ((not (equal aleksei-windows--redisplay-last-frame-width new-size))
+           (setq aleksei-windows--redisplay-last-frame-width new-size)))))
 
 (defun aleksei-windows--redisplay-side-windows (&optional frame)
-	(interactive)
-	(when (and (aleksei-windows--frame-size-changed-p))
-		(let ((closed-bufs))
-			(dolist (win (window-list frame nil))
-				(when (and (window-parameter win 'window-side)
-									 (window-live-p win))
-					(push (window-buffer win) closed-bufs)
-					(delete-window win)))
-			(dolist (buf closed-bufs)
-				(pop-to-buffer buf)))))
+  (interactive)
+  (when (and (aleksei-windows--frame-size-changed-p))
+    (let ((closed-bufs))
+      (dolist (win (window-list frame nil))
+        (when (and (window-parameter win 'window-side)
+                   (window-live-p win))
+          (push (window-buffer win) closed-bufs)
+          (delete-window win)))
+      (dolist (buf closed-bufs)
+        (pop-to-buffer buf)))))
 
 (add-hook 'window-size-change-functions #'aleksei-windows--redisplay-side-windows)
 
