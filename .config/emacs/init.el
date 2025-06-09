@@ -496,16 +496,17 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (treesit-font-lock-level 4))
 (use-package treesit-auto
   :defer nil
-  :custom
-  (treesit-auto-langs
+  :init
+  (require 'treesit-auto)
+  (treesit-auto-add-to-auto-mode-alist
+   ;; all except rust
    '(awk bash bibtex blueprint c c-sharp clojure cmake commonlisp cpp css
          dart dockerfile elixir glsl go gomod heex html janet java
          javascript json julia kotlin latex lua magik make markdown nix nu
          org perl proto python r ruby scala sql surface toml tsx
          typescript typst verilog vhdl vue wast wat wgsl yaml))
-  (treesit-auto-install 'prompt)
-  :config
-  (global-treesit-auto-mode +1))
+  :custom
+  (treesit-auto-install nil))
 
 (use-package better-jumper
   :bind (("M-<left>" . better-jumper-jump-backward)

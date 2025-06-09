@@ -80,6 +80,8 @@ in
     nushell
     nu_scripts
     blesh
+
+    eask-cli
   ]
   ++ [ emacs ];
 

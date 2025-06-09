@@ -66,3 +66,4 @@
 /.config/emacs/session.*
 /.config/emacs/history
 /.config/emacs/recentf
+/.config/emacs/places
