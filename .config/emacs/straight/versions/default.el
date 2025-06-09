@@ -2,6 +2,7 @@
  ("apheleia" . "7eaaf3f45703d49e494f6dd0555633cf6b355817")
  ("auto-dark-emacs" . "1b6c1841c5b15388ee78cb03a4139fd14f42783b")
  ("better-jumper" . "b1bf7a3c8cb820d942a0305e0e6412ef369f819c")
+ ("cape" . "c9191ee9e13e86a7b40c3d25c8bf7907c085a1cf")
  ("compat" . "2aee8353772745bb18db1ca63729a7f5ea572a74")
  ("consult" . "30a42ac8f3d42f653eda234ee538c1960704f4f2")
  ("corfu" . "e032f32c7ff24f5aaa44946551920aa94cd2a7f9")

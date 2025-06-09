@@ -111,8 +111,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (blink-cursor-mode +1)
 (context-menu-mode +1)
 (pixel-scroll-precision-mode +1)
-;; (global-hl-line-mode +1)
+(global-hl-line-mode +1)
 (savehist-mode +1)
+;; (save-place-mode +1)
 (recentf-mode +1)
 
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
@@ -195,7 +196,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package winner
   :ensure nil
   :bind (("<f5>" . (lambda () (interactive) (funcall-interactively 'jump-to-register ?w)))
-         ("C-<f5>" . (lambda () (interactive) (funcall-interactively 'window-configuration-to-register ?w)))
+         ("C-<f5>" . (lambda ()
+                       (interactive)
+                       (funcall-interactively 'window-configuration-to-register ?w)
+                       (message "Window configuration is saved in ‘w’ register. Restore it with <f5>.")))
          ("<f3>" . #'winner-undo)
          ("<f4>" . #'winner-redo))
   :init
@@ -380,6 +384,27 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
   (global-corfu-mode +1))
+
+(use-package cape
+  ;; Bind prefix keymap providing all Cape commands under a mnemonic key.
+  ;; Press C-c p ? to for help.
+  :bind ("C-c p" . cape-prefix-map) ;; Alternative key: M-<tab>, M-p, M-+
+  ;; Alternatively bind Cape commands individually.
+  ;; :bind (("C-c p d" . cape-dabbrev)
+  ;;        ("C-c p h" . cape-history)
+  ;;        ("C-c p f" . cape-file)
+  ;;        ...)
+  :init
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.  The order of the functions matters, the
+  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; completion functions takes precedence over the global list.
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  ;; (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  ;; (add-hook 'completion-at-point-functions #'cape-history)
+  ;; ...
+  )
 
 (use-package doom-modeline
   :init (doom-modeline-mode +1)
