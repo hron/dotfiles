@@ -124,8 +124,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :custom
   (bookmark-watch-bookmark-file 'silent))
 
-
-
 (defun aleksei/eldoc-display-in-buffer (docs interactive)
   "Display DOCS in a dedicated buffer only if INTERACTIVE is t."
   (when interactive
@@ -149,7 +147,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("M-S-<up>" . #'drag-stuff-up)
          ("M-S-<down>" . #'drag-stuff-down)))
 
-
 (push 'comint straight-built-in-pseudo-packages)
 (use-package comint
   :ensure nil
@@ -160,8 +157,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-c" . nil)
          ("M-<up>" . comint-previous-prompt)
          ("M-<down>" . comint-next-prompt)))
-
-
 
 (use-package compile
   :ensure nil
@@ -660,6 +655,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
   :hook ((rust-ts-mode rust-mode) . #'eglot-ensure)
+  :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions)))
