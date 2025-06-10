@@ -326,8 +326,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package orderless
   :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  (completion-styles '(flex orderless)))
 
 (use-package vertico
   :init (vertico-mode +1)
@@ -383,7 +382,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook
   (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
-  (global-corfu-mode +1))
+  (global-corfu-mode +1)
+  (corfu-popupinfo-mode +1)
+  (corfu-history-mode +1))
 
 (use-package cape
   :bind ("C-c p" . cape-prefix-map)
