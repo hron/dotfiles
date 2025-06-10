@@ -1,4 +1,4 @@
-;;; algus-org.el --- Description -*- lexical-binding: t; -*-
+;;; aleksei-org.el --- Description -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2025 Aleksei Gusev
 ;;
@@ -8,7 +8,7 @@
 ;; Modified: April 10, 2025
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
-;; Homepage: https://github.com/hron/algus-org
+;; Homepage: https://github.com/hron/aleksei-org
 ;; Package-Requires: ((emacs "30.1"))
 ;;
 ;; This file is not part of GNU Emacs.
@@ -77,17 +77,17 @@
                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
                   org-agenda-custom-commands '(("n" "NA" tags-tree org-agenda-na-expr))
                   org-agenda-files '("tasks.org" "tickler.org" "inbox.org")
-									;; org-refile-use-outline-path t
-									org-refile-targets
-									'((nil :maxlevel . 3)
-										(org-agenda-files :maxlevel . 1)
-										(("someday.org") :maxlevel . 1))
-									;; Without this, completers like ivy/helm are only given the first level of
-									;; each outline candidates. i.e. all the candidates under the "Tasks" heading
-									;; are just "Tasks/". This is unhelpful. We want the full path to each refile
-									;; target! e.g. FILE/Tasks/heading/subheading
-									org-refile-use-outline-path 'file
-									org-outline-path-complete-in-steps nil
+                  ;; org-refile-use-outline-path t
+                  org-refile-targets
+                  '((nil :maxlevel . 3)
+                    (org-agenda-files :maxlevel . 1)
+                    (("someday.org") :maxlevel . 1))
+                  ;; Without this, completers like ivy/helm are only given the first level of
+                  ;; each outline candidates. i.e. all the candidates under the "Tasks" heading
+                  ;; are just "Tasks/". This is unhelpful. We want the full path to each refile
+                  ;; target! e.g. FILE/Tasks/heading/subheading
+                  org-refile-use-outline-path 'file
+                  org-outline-path-complete-in-steps nil
                   org-archive-location (concat "archive/" (format-time-string "%Y") ".org::")
                   org-archive-default-command 'org-archive-subtree
                   org-agenda-start-on-weekday 1
@@ -97,7 +97,7 @@
                      "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))))
 
   :bind (("C-c n a" . #'org-agenda)
-				 :map org-mode-map
+         :map org-mode-map
          ("S-<return>" . org-insert-heading-after-current)
          ("S-M-<return>" . org-insert-todo-heading-respect-content)
          ("S-C-<up>" . org-metaup)
@@ -119,18 +119,18 @@
          ("M-<right>" . nil)
          ("C-c y" . yank-media))
   :custom
-	(org-provide-todo-statistics 'all-headlines)
-	(org-insert-heading-respect-content t))
+  (org-provide-todo-statistics 'all-headlines)
+  (org-insert-heading-respect-content t))
 
 (use-package org-modern
-	:custom
-	(org-modern-star 'star)
-	(org-modern-hide-stars " ")
-	(org-modern-timestamp nil)
-	(org-modern-progress nil)
-	(org-modern-todo nil)
-	:init
-	(global-org-modern-mode))
+  :custom
+  (org-modern-star 'star)
+  (org-modern-hide-stars " ")
+  (org-modern-timestamp nil)
+  (org-modern-progress nil)
+  (org-modern-todo nil)
+  :init
+  (global-org-modern-mode))
 
 (use-package org-roam
   :custom
@@ -150,4 +150,4 @@
   (require 'org-roam-protocol))
 
 (provide 'aleksei-org)
-;;; algus-org.el ends here
+;;; aleksei-org.el ends here
