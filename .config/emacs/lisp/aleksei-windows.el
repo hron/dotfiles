@@ -88,7 +88,9 @@ Fit the height to the content, and select the window."
                         "Output\\*$"
                         "^\\*lsp-help"
                         "^\\*eldoc\\*"
-                        "^\\*Help"))))
+                        "^\\*ert"
+                        "^\\*Help"
+                        "^\\*Apropos\\*"))))
          (display-buffer-reuse-window
           display-buffer-in-side-window)
          (side . left)
@@ -109,7 +111,9 @@ Fit the height to the content, and select the window."
                 "^\\*lsp-help"
                 "^\\*eldoc\\*"
                 "^\\*Help"
+                "^\\*Apropos\\*"
                 "^\\*vterm"
+                "^\\*ert"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))

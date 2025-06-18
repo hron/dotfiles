@@ -84,6 +84,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-c t e" . #'eldoc-mode)
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
+         ("<f1> '" . #'describe-char)
          ("C-q" . #'aleksei/eldoc))
   :custom
   (display-line-numbers-type nil)
@@ -405,7 +406,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ;; :map gptel-mode
               ;; ("C-<return>" . gptel-send)
               )
-  :config (setq gptel-model "gpt-4o"))
+  :config
+  (setq gptel-model "gpt-4o"
+        gptel-default-mode #'gfm-mode))
 
 (use-package magit
   :bind (("M-9" . magit-status)
@@ -587,7 +590,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package emacs
   :init
   (electric-pair-mode +1)
-  (electric-quote-mode +1)
+  ;; (electric-quote-mode +1)
   (electric-indent-mode +1)
   (electric-layout-mode +1))
 

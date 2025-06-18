@@ -67,3 +67,4 @@
 /.config/emacs/history
 /.config/emacs/recentf
 /.config/emacs/places
+/.config/emacs/.org-id-locations
