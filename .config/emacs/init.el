@@ -628,28 +628,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook
   ((find-file hardhat-mode) . aleksei/disable-checks-if-read-only))
 
-(use-package smartparens
-  :init
-  (require 'smartparens)
 ;;;###autoload
-  (defun aleksei/sp-beginning-or-end-of-sexp ()
-    "Move to the beginning or to the end of sexp."
-    (interactive)
-    (let ((initial-point (point)))
-      (sp-beginning-of-sexp)
-      (when (eq initial-point (point))
-        (sp-end-of-sexp))))
-
-  :bind
-  (("M-m" . #'aleksei/sp-beginning-or-end-of-sexp))
-  :custom
-  (sp-override-key-bindings
-   '(("C-<right>" . nil)
-     ("C-<left>" . nil)
-     ("M-m" . aleksei/sp-beginning-or-end-of-sexp)
-     ("C-M-k"  . nil)
-     ("C-M-t" . nil)
-     ("C-M-e" . nil))))
+(defun aleksei-puni-matchit ()
+  "Jump between open and close parentheses."
+  (interactive)
+  (let ((travel-func (if (not (puni-strict-backward-sexp)) #'puni-strict-forward-sexp #'puni-strict-backward-sexp)))
+    (while (funcall travel-func))))
+(use-package puni
+  :defer nil
+  :bind (("M-m" . #'aleksei-puni-matchit)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
