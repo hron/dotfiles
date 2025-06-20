@@ -528,7 +528,13 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
                  diff-hl-next-hunk
                  diff-hl-previous-hunk
                  expand-region
-                 aleksei/sp-beginning-or-end-of-sexp)))
+                 aleksei-puni-matchit
+                 puni-forward-sexp
+                 puni-backward-sexp
+                 puni-beginning-of-sexp
+                 puni-end-of-sexp
+                 puni-syntactic-forward-punct
+                 puni-syntactic-backward-punct)))
     (dolist (func funcs)
       (eval `(defadvice ,func (before better-jumper activate)
                (when (bound-and-true-p better-jumper-local-mode)
@@ -636,7 +642,17 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
     (while (funcall travel-func))))
 (use-package puni
   :defer nil
-  :bind (("M-m" . #'aleksei-puni-matchit)))
+  :init (puni-mode)
+  :bind (:map puni-mode-map
+              ("M-m" . #'aleksei-puni-matchit)
+              ("DEL" . nil)
+              ("C-d" . nil)
+              ("M-d" . nil)
+              ("M-DEL" . nil)
+              ("C-k" . nil)
+              ("C-S-k" . nil)
+              ("C-c DEL" . nil)
+              ("C-w" . nil)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
