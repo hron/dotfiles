@@ -109,6 +109,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (fringe-mode (frame-char-width))
 (global-auto-revert-mode +1)
 (global-subword-mode +1)
+(which-key-mode +1)
 (blink-cursor-mode +1)
 (context-menu-mode +1)
 (pixel-scroll-precision-mode +1)
