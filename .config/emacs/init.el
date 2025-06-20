@@ -419,7 +419,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          :map magit-mode-map
          ("C-j" . nil)
          ("C-w" . delete-window))
-  :hook (magit-post-refresh . diff-hl-magit-post-refresh))
+  :hook (magit-post-refresh . diff-hl-magit-post-refresh)
+  :custom (git-commit-major-mode #'gfm-mode))
 
 (use-package diff-hl
   :init (global-diff-hl-mode +1)
