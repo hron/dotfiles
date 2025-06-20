@@ -113,6 +113,7 @@
          ("C-S-<down>" . nil)
          ("S-<up>" . nil)
          ("S-<down>" . nil)
+         ("C-j" . nil)
          ("M-S-<up>" . org-move-subtree-up)
          ("M-S-<down>" . org-move-subtree-down)
          ("M-<left>" . nil)
