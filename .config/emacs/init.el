@@ -699,6 +699,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package gcmh
   :init (gcmh-mode +1))
 
+(use-package nix-ts-mode
+  :mode "\\.nix\\'")
+
 (require 'aleksei-org)
 (require 'aleksei-windows)
 (require 'aleksei-vterm)
