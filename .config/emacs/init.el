@@ -416,6 +416,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-<tab>" . nil)
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
+         ("C-j" . nil)
          ("C-w" . delete-window))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh))
 
