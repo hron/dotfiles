@@ -599,7 +599,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package emacs
   :init
   (electric-pair-mode +1)
-  ;; (electric-quote-mode +1)
   (electric-indent-mode +1)
   (electric-layout-mode +1))
 
@@ -719,7 +718,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-directories '("/home/algus/src/zed/")))
+ '(safe-local-variable-directories
+   '("/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
+     "/home/algus/src/zed/")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
