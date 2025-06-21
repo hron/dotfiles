@@ -85,7 +85,9 @@ config.keys = {
   { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
   { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
   { key = 'Copy', mods = 'NONE', action = act.CopyTo 'Clipboard' },
-  { key = 'Paste', mods = 'NONE', action = act.PasteFrom 'Clipboard' }
+  { key = 'Paste', mods = 'NONE', action = act.PasteFrom 'Clipboard' },
+  { key = 'UpArrow', mods = 'ALT', action = act.ScrollToPrompt(-1) },
+  { key = 'DownArrow', mods = 'ALT', action = act.ScrollToPrompt(1) },
 }
 
 config.key_tables = {
