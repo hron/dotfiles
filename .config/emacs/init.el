@@ -271,8 +271,21 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
    ("M-%" . #'anzu-isearch-query-replace)
    ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
+(defun aleksei-bounds-of-region-or-symbol-at-point ()
+  "Return string of region if it's active otherwise symbols' at point."
+  (let ((bounds (if (use-region-p)
+                    (car (region-bounds))
+                  (bounds-of-thing-at-point 'symbol))))
+    (buffer-substring-no-properties (car bounds) (cdr bounds))))
+
+(defun aleksei-consult-rigrep-thing-at-point ()
+  "Search the project for the thing at point of region."
+  (interactive)
+  (funcall-interactively #'consult-ripgrep nil (aleksei-bounds-of-region-or-symbol-at-point)))
+
 (use-package consult
   :bind (("C-S-f" . #'consult-ripgrep)
+         ("M-F" . #'aleksei-consult-rigrep-thing-at-point)
          ("C-b" . #'consult-buffer)
          ("C-S-o" . #'consult-imenu)
          ("M-o" . #'consult-imenu-multi)
