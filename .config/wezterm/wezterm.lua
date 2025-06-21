@@ -111,7 +111,9 @@ config.key_tables = {
         { key = 'Enter', mods = 'CTRL|SHIFT', action = act.CopyMode{ SetSelectionMode =  'Block' } },
         { key = 'Escape', mods = 'NONE', action = act.CopyMode 'ClearSelectionMode' },
         { key = 'UpArrow', mods = 'CTRL|ALT', action = act.Multiple { {CopyMode = 'PriorMatch'}, { CopyMode = 'ClearSelectionMode'}} },
-        { key = 'DownArrow', mods = 'CTRL|ALT', action = act.Multiple { {CopyMode = 'NextMatch'}, { CopyMode = 'ClearSelectionMode'}} }
+        { key = 'DownArrow', mods = 'CTRL|ALT', action = act.Multiple { {CopyMode = 'NextMatch'}, { CopyMode = 'ClearSelectionMode'}} },
+        { key = 'UpArrow', mods = 'ALT', action = act.CopyMode { MoveBackwardZoneOfType = 'Prompt' } },
+        { key = 'DownArrow', mods = 'ALT', action = act.CopyMode  { MoveForwardZoneOfType = 'Prompt' } },
     },
 
   search_mode = {
