@@ -643,17 +643,18 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
     (while (funcall travel-func))))
 (use-package puni
   :defer nil
-  :init (puni-mode)
-  :bind (:map puni-mode-map
-              ("M-m" . #'aleksei-puni-matchit)
-              ("DEL" . nil)
-              ("C-d" . nil)
-              ("M-d" . nil)
-              ("M-DEL" . nil)
-              ("C-k" . nil)
-              ("C-S-k" . nil)
-              ("C-c DEL" . nil)
-              ("C-w" . nil)))
+  :init (puni-global-mode +1)
+  :bind (("M-m" . nil)
+         :map puni-mode-map
+         ("M-m" . #'aleksei-puni-matchit)
+         ("DEL" . nil)
+         ("C-d" . nil)
+         ("M-d" . nil)
+         ("M-DEL" . nil)
+         ("C-k" . nil)
+         ("C-S-k" . nil)
+         ("C-c DEL" . nil)
+         ("C-w" . nil)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
