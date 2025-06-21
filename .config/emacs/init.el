@@ -723,6 +723,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package fish-mode)
 
+(use-package string-inflection
+  :bind (("M-c" . #'string-inflection-all-cycle)))
+
 (require 'aleksei-org)
 (require 'aleksei-windows)
 (require 'aleksei-vterm)
