@@ -675,10 +675,17 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package debian-el)
 
+(defun aleksei-manually-activate-flymake ()
+  "Activate flymake-mode manually in eglot."
+  (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t)
+  (flymake-mode +1))
+
 (push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
   :hook ((rust-ts-mode rust-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
+  :hook (eglot-managed-mode-hook . aleksei-manually-activate-flymake)
+  :config (add-to-list 'eglot-stay-out-of 'flymake)
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions)))
@@ -696,10 +703,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
-(defvar aleksei-rust-dbg-compilation-regexp
-  '("\\[\\([^:]+\\):\\([0-9]+\\):\\([0-9]+\\)\\]" 1 2 3 0)
-  "Specifications for matching dbg! output.")
-
 (use-package rust-mode
   :straight (rust-mode :type git :host github :repo "rust-lang/rust-mode"
                        :method fetch-from-remote
@@ -711,10 +714,11 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (require 'rust-compile)
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
-  ;; (add-to-list 'compilation-error-regexp-alist-alist
-  ;;              (cons 'rustc-dbg! aleksei-rust-dbg-compilation-regexp))
-  ;; (add-to-list 'compilation-error-regexp-alist 'rustc-dbg!)
   )
+
+(use-package flymake-clippy
+  :hook ((rust-mode rust-ts-mode) . flymake-clippy-setup-backend)
+  :hook (rust-ts-mode . (lambda () (remove-hook 'flymake-diagnostic-functions #'rust-ts-flymake t))))
 
 (use-package gcmh
   :init (gcmh-mode +1))
