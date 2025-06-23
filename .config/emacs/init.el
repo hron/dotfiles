@@ -524,6 +524,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
                  consult-line-multi
                  consult-ripgrep
                  consult-grep
+                 consult-imenu-multi
                  aleksei/isearch-region-or-forward
                  isearch-forward
                  isearch-backward
