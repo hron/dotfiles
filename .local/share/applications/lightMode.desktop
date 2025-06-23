@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Toggle Light Mode
+Exec=gsettings set org.gnome.desktop.interface color-scheme 'default'
+Type=Application
+Terminal=false
+Icon=preferences-desktop-theme
+Categories=Utility;

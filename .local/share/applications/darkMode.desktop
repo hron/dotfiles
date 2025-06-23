@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Toggle Dark Mode
+Exec=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+Type=Application
+Terminal=false
+Icon=preferences-desktop-theme
+Categories=Utility;
