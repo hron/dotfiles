@@ -616,7 +616,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (desktop-save-mode +1)
   :custom
   (desktop-path (list "."))
-  (desktop-save t))
+  (desktop-save t)
+  (desktop-globals-to-save '(desktop-missing-file-warning
+                             tags-file-name
+                             tags-table-list
+                             search-ring
+                             regexp-search-ring
+                             register-alist
+                             file-name-history
+                             compile-history)))
 
 (use-package emacs
   :init
