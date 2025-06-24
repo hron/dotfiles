@@ -433,7 +433,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-j" . nil)
          ("C-w" . delete-window))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  :custom (git-commit-major-mode #'gfm-mode))
+  :custom
+  ;; (git-commit-major-mode #'gfm-mode)
+
+  ;; Don't use full frame width for transient windows, instead just
+  ;; fit the selected window
+  (transient-display-buffer-action '(display-buffer-below-selected
+                                     (side . bottom)
+                                     (dedicated . t)
+                                     (inhibit-same-window . t))))
 
 (use-package diff-hl
   :init (global-diff-hl-mode +1)
@@ -743,7 +751,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-directories
-   '("/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
+   '("/home/algus/.emacs.d/straight/build/magit/"
+     "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
