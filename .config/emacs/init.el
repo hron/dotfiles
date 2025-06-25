@@ -708,7 +708,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :config (add-to-list 'eglot-stay-out-of 'flymake)
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
-              ("C-." . #'eglot-code-actions)))
+              ("C-." . #'eglot-code-actions))
+  :custom-face (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil))))
 
 (use-package edit-indirect)
 (use-package markdown-mode
