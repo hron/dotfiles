@@ -1,13 +1,15 @@
-set -gx BROWSER firefox
-set -gx EDITOR 'emacsclient -a "emacs" -c'
-#set -gx ALTERNATE_EDITOR ""
-set -gx DEBEMAIL "aleksei.gusev@gmail.com"
-set -gx DEBFULLNAME "Aleksei Gusev"
-# set -gx QT_SCALE_FACTOR 1.25
-set -gx PGHOST localhost
-set -gx PGUSER spaceship
-set -gx PGDATABASE spaceship
-set -gx QT_QPA_PLATFORMTHEME gnome
+if status is-login
+    set -gx BROWSER firefox
+    set -gx EDITOR 'emacsclient -a "emacs" -c'
+    #set -gx ALTERNATE_EDITOR ""
+    set -gx DEBEMAIL "aleksei.gusev@gmail.com"
+    set -gx DEBFULLNAME "Aleksei Gusev"
+    # set -gx QT_SCALE_FACTOR 1.25
+    set -gx PGHOST localhost
+    set -gx PGUSER spaceship
+    set -gx PGDATABASE spaceship
+    set -gx QT_QPA_PLATFORMTHEME gnome
+end
 
 if status is-interactive
     alias ll="eza --long --icons --hyperlink"
