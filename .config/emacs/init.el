@@ -751,6 +751,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package string-inflection
   :bind (("M-c" . #'string-inflection-all-cycle)))
 
+(use-package package-lint-flymake
+  :hook (emacs-lisp-mode . package-lint-flymake-setup))
+
 (require 'aleksei-org)
 (require 'aleksei-windows)
 (require 'aleksei-vterm)
@@ -763,7 +766,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-directories
-   '("/home/algus/.emacs.d/straight/build/magit/"
+   '("/home/algus/src/melpa/"
+     "/home/algus/.emacs.d/straight/build/magit/"
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/")))
 (custom-set-faces
