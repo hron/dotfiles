@@ -75,6 +75,7 @@ Fit the height to the content, and select the window."
                         "\\*Man"
                         "^\\*vterm"
                         "^\\*Embark Export"
+                        "^\\*Occur\\*"
                         (derived-mode . compilation-mode)
                         (derived-mode . comint-mode)
                         (derived-mode . grep-mode)))))
@@ -118,6 +119,7 @@ Fit the height to the content, and select the window."
                 "^\\*ert"
                 "^\\*Embark Export"
                 "^\\*Backtrace\\*"
+                "^\\*Occur\\*"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))
