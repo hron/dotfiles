@@ -499,6 +499,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package nerd-icons-grep
   :straight (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
   :init (nerd-icons-grep-mode +1))
+(use-package nerd-icons-xref
+  :straight (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
+  :init (nerd-icons-xref-mode +1))
 
 (push 'treesit straight-built-in-pseudo-packages)
 (use-package treesit
