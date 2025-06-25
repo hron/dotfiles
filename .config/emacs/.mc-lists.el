@@ -3,10 +3,11 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-				crux-move-beginning-of-line
-				cua-paste
-				))
+        crux-move-beginning-of-line
+        cua-paste
+        org-self-insert-command
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-				))
+        ))

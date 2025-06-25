@@ -96,6 +96,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (make-backup-files nil)
   (indent-tabs-mode nil)
   (vc-follow-symlinks t)
+  (project-vc-ignores '("straight/repos"))
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type '(bar . 5))

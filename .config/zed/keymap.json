@@ -170,7 +170,7 @@
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
       "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
       // produces alt-z, so it could be used instead of ctrl-shift-z
-      "ctrl-shift-z": ["terminal::SendText", "\u001bz"]
+      "ctrl-shift-z": ["terminal::SendText", "\u001bz"],
       // "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
       // "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
       // "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
@@ -178,6 +178,7 @@
       // "alt-up": ["terminal::SendKeystroke", "alt-up"],
       // "alt-down": ["terminal::SendKeystroke", "alt-down"],
       // "alt-space": ["terminal::SendKeystroke", "alt-space"]
+      "ctrl-shift-space": "terminal_panel::ActivateViModeFromSearch"
     }
   },
   {

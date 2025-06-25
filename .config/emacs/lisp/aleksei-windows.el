@@ -91,7 +91,8 @@ Fit the height to the content, and select the window."
                         "^\\*eldoc\\*"
                         "^\\*ert"
                         "^\\*Help"
-                        "^\\*Apropos\\*"))))
+                        "^\\*Apropos\\*"
+                        "^\\*Backtrace\\*"))))
          (display-buffer-reuse-window
           display-buffer-in-side-window)
          (side . left)
@@ -116,6 +117,7 @@ Fit the height to the content, and select the window."
                 "^\\*vterm"
                 "^\\*ert"
                 "^\\*Embark Export"
+                "^\\*Backtrace\\*"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))
