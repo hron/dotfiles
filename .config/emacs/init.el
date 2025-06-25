@@ -734,7 +734,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (require 'rust-compile)
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
-  )
+  :bind (:map rust-mode-map
+              ("C-M-q" . nil)))
 
 (use-package flymake-clippy
   :hook ((rust-mode rust-ts-mode) . flymake-clippy-setup-backend)
@@ -753,6 +754,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package package-lint-flymake
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
+
+(use-package devdocs
+  :bind (("M-C-q" . devdocs-search)))
 
 (require 'aleksei-org)
 (require 'aleksei-windows)

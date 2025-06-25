@@ -39,7 +39,7 @@
  ("nerd-icons-completion" . "e15e21a263bad06424982c11e8d68ffe1372a4e7")
  ("nerd-icons-corfu" . "55b17ee20a5011c6a9be8beed6a9daf644815b5a")
  ("nerd-icons-dired" . "69b5d3176b7bb08ac1f477cf7c5a491b9b0b5b54")
- ("nerd-icons-grep" . "829b677b4cb7a45c9fd14f4457a2d0e42b184ce2")
+ ("nerd-icons-grep" . "7179ff3384efce53f7de2f3c1a98070a310a10da")
  ("nerd-icons.el" . "14f7278dd7eb5eca762a6ff32467c72c661c0aae")
  ("nix-ts-mode" . "62ce3a2dc39529c5db3516427e84b2c96b8efcfd")
  ("nongnu-elpa" . "56748b48bec8af70101edaa57e35b0ac4c5b0151")
