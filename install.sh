@@ -13,10 +13,10 @@ done
 # [ -e $HOME/.config/nvim ] || ln -nfs `pwd`/AstroNvim $HOME/.config/nvim
 # [ -e $astro_nvim_user_dir ] || mkdir -p $astro_nvim_user_dir && ln -nfs `pwd`/.nvim-astro $astro_nvim_user_dir
 
-if grep -v starship $HOME/.profile; then
-    curl -sS https://starship.rs/install.sh > $HOME/bin/install-starship.sh
-    chmod +x $HOME/bin/install-starship.sh
-    $HOME/bin/install-starship.sh -b $HOME/bin --yes
-    rm $HOME/bin/install-starship.sh
-    echo 'eval "$(starship init bash)"' >> $HOME/.profile
-fi
+# if grep -v starship $HOME/.profile; then
+#     curl -sS https://starship.rs/install.sh > $HOME/bin/install-starship.sh
+#     chmod +x $HOME/bin/install-starship.sh
+#     $HOME/bin/install-starship.sh -b $HOME/bin --yes
+#     rm $HOME/bin/install-starship.sh
+#     echo 'eval "$(starship init bash)"' >> $HOME/.profile
+# fi
