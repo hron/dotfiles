@@ -99,7 +99,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (project-vc-ignores '("straight/repos"))
   :hook (before-save . whitespace-cleanup))
 
-(setq-default cursor-type '(bar . 5))
+(setq-default cursor-type 'bar)
 (setq w32-pass-lwindow-to-system nil
       w32-pass-rwindow-to-system nil)
 (modify-all-frames-parameters
@@ -413,7 +413,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (doom-modeline-major-mode-icon t)
   (doom-modeline-buffer-encoding nil)
   (doom-modeline-buffer-file-name-style 'auto)
-  (doom-modeline-height (+ (frame-char-height) 8)))
+  (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
   :bind (:map global-map
