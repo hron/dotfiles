@@ -97,6 +97,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (indent-tabs-mode nil)
   (vc-follow-symlinks t)
   (project-vc-ignores '("straight/repos"))
+  (find-function-C-source-directory "~/src/emacs/src")
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type 'bar)
