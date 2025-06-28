@@ -418,8 +418,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ;; ("C-<return>" . gptel-send)
               )
   :config
-  (setq gptel-model "gpt-4o"
-        gptel-default-mode #'gfm-mode))
+  (setq
+   gptel-model 'gemini-2.5-flash
+   gptel-backend (gptel-make-gemini "Gemini" :stream t :key gptel-api-key)
+   gptel-default-mode #'gfm-mode))
 
 (use-package magit
   :bind (("M-9" . magit-status)

@@ -25,7 +25,7 @@
  ("f.el" . "931b6d0667fe03e7bf1c6c282d6d8d7006143c52")
  ("gcmh" . "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9")
  ("gnu-elpa-mirror" . "f498c07548b83e13ff9e2b9e2f772a19256affdf")
- ("gptel" . "c818ce3426a7ebac78c737cf6106282f26dcbb80")
+ ("gptel" . "8f8416b0b69fccfa559be4e05cb3214bd04edd6b")
  ("hardhat" . "908cb130be3d56921a3687a00b974ba5eef3a11f")
  ("iflipb" . "9ec1888335107bd314e8f40b3e113d525fed8083")
  ("ignoramus" . "f5e4a66191be12c2fc3cf42a5e0849fcc8518a3f")
