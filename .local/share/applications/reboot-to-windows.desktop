@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Utility;
+Comment[en_US]=
+Comment=
+Exec=systemctl reboot --boot-loader-entry=windows.conf
+GenericName[en_US]=
+GenericName=
+Icon=folder-windows-symbolic
+MimeType=
+Name[en_US]=Reboot To Windows
+Name=Reboot To Windows
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

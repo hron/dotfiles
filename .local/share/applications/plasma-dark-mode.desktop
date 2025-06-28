@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Toggle Dark Mode
-Exec=gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+Name=Dark Mode
+Exec=lookandfeeltool --apply org.kde.breezedark.desktop
 Type=Application
 Terminal=false
 Icon=preferences-desktop-theme
