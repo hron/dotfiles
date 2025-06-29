@@ -69,6 +69,7 @@ Fit the height to the content, and select the window."
         ;; 2 column layout
         ((and . (aleksei-windows--2-columns-layout-p
                  (or . ("\\*ChatGPT"
+                        "\\*Gemini"
                         "^magit-log"
                         "^magit-revision"
                         "^magit-diff"
@@ -102,6 +103,7 @@ Fit the height to the content, and select the window."
 
         ;; 1 column layout
         ((or . ("\\*ChatGPT"
+                "\\*Gemini"
                 "^magit-log"
                 "^magit-revision"
                 ;; "^*magit-diff"
