@@ -615,22 +615,22 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (unless (server-running-p)
     (server-start)))
 
-;; (use-package desktop
-;;   :init
-;;   (dolist (frame-param '(background-color foreground-color background-mode))
-;;     (push (cons frame-param :never) frameset-filter-alist))
-;;   (desktop-save-mode +1)
-;;   :custom
-;;   (desktop-path (list "."))
-;;   (desktop-save t)
-;;   (desktop-globals-to-save '(desktop-missing-file-warning
-;;                              tags-file-name
-;;                              tags-table-list
-;;                              search-ring
-;;                              regexp-search-ring
-;;                              register-alist
-;;                              file-name-history
-;;                              compile-history)))
+(use-package desktop
+  :init
+  (dolist (frame-param '(background-color foreground-color background-mode))
+    (push (cons frame-param :never) frameset-filter-alist))
+  (desktop-save-mode +1)
+  :custom
+  (desktop-path (list "."))
+  (desktop-save t)
+  (desktop-globals-to-save '(desktop-missing-file-warning
+                             tags-file-name
+                             tags-table-list
+                             search-ring
+                             regexp-search-ring
+                             register-alist
+                             file-name-history
+                             compile-history)))
 
 (use-package emacs
   :init
