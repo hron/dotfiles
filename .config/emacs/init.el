@@ -702,12 +702,21 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t)
   (flymake-mode +1))
 
+(defun aleksei-manually-activate-imenu ()
+  "Activate imenu manually in eglot."
+  (when (not (derived-mode-p 'rust-mode))
+    (add-function :before-until (local 'imenu-create-index-function)
+                  #'eglot-imenu)))
+
 (push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
   :hook ((rust-ts-mode rust-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-flymake)
-  :config (add-to-list 'eglot-stay-out-of 'flymake)
+  :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
+  :config
+  (add-to-list 'eglot-stay-out-of 'flymake)
+  (add-to-list 'eglot-stay-out-of 'imenu)
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions))
