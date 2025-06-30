@@ -121,7 +121,8 @@
          ("C-c y" . yank-media))
   :custom
   (org-provide-todo-statistics 'all-headlines)
-  (org-insert-heading-respect-content t))
+  (org-insert-heading-respect-content t)
+  (org-adapt-indentation t))
 
 (use-package org-modern
   :custom
