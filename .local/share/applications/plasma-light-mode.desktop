@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Light Mode
-Exec=lookandfeeltool --apply org.kde.breezetwilight.desktop
+# Exec=lookandfeeltool --apply org.kde.breezetwilight.desktop
+Exec=lookandfeeltool --apply org.kde.breeze.desktop
 Type=Application
 Terminal=false
 Icon=preferences-desktop-theme
