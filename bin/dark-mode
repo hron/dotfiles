@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+def set_plasma_theme(dark_mode):
+    if dark_mode:
+        theme = 'org.kde.breezedark.desktop'
+    else:
+        theme = 'org.kde.breeze.desktop'
+    subprocess.run(["/usr/bin/lookandfeeltool", "--apply", theme], check=False)
+
+
+def set_btop_theme(dark_mode):
+    if dark_mode:
+        theme = 'Default'
+    else:
+        theme = 'whiteout'
+    config = (
+        Path(os.path.expanduser("~"))
+        .joinpath(".config")
+        .joinpath("btop")
+        .joinpath("btop.conf")
+    )
+    # Read the config, replacing the `color_theme` statement based on the `dark_mode`
+    with config.open() as file:
+        lines = [
+            line if "color_theme" not in line else f'color_theme = "{theme}"\n'
+            for line in file
+        ]
+    # Write the new config
+    with config.open("w") as file:
+        for line in lines:
+            file.write(line)
+    subprocess.run(["pkill", "-SIGUSR2", "btop"], check=False)
+
+
+# Mode is the first command line argument
+# As an alternative, set mode based on gnome's theme type here
+if len(sys.argv) == 2 and sys.argv[1] == "on":
+    dark_mode = True
+else:
+    dark_mode = False
+
+set_plasma_theme(dark_mode)
+set_btop_theme(dark_mode)
