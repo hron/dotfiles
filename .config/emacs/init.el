@@ -710,7 +710,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
-  :hook ((rust-ts-mode rust-mode) . #'eglot-ensure)
+  :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-flymake)
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
@@ -771,7 +771,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :bind (("C-M-q" . devdocs-search)))
 
 (use-package python
-  :bind (:map python-mode-map
+  :bind (:map python-ts-mode-map
               ("C-M-q" . nil)))
 
 (require 'aleksei-org)
