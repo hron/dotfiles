@@ -48,7 +48,7 @@
  ("org-modern" . "a58534475b4312b0920aa9d3824272470c8e3500")
  ("org-roam" . "031ee63bee7ecffee2eebb0faae37a37e2b8a603")
  ("popup-el" . "24dd22186403a6566c26ce4996cdb1eedb1cc5cd")
- ("rust-mode" . "bf1b2d42f480a3d69dd63ba23ad8c0d06b1dbb21")
+ ("rust-mode" . "75cc63b6c19028c11e302c237a8ec64db3345780")
  ("s.el" . "dda84d38fffdaf0c9b12837b504b402af910d01d")
  ("seq" . "da86da9bf111f68fb81efd466d76d53af5aebc00")
  ("shrink-path.el" . "c14882c8599aec79a6e8ef2d06454254bb3e1e41")

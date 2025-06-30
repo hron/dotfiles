@@ -736,12 +736,12 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package rust-mode
-  :straight (rust-mode :type git :host github :repo "rust-lang/rust-mode"
-                       :method fetch-from-remote
-                       :fork "hron" :branch "rust-compilation-dbg!")
+  ;; :straight (rust-mode :type git :host github :repo "rust-lang/rust-mode"
+  ;;                      :method fetch-from-remote
+  ;;                      :fork "hron" :branch "rust-compilation-dbg!")
   :init
   (setq rust-load-optional-libraries nil
-        rust-mode-treesitter-derive nil)
+        rust-mode-treesitter-derive t)
   (require 'rust-cargo)
   (require 'rust-compile)
   ;; (require 'rust-playpen)
