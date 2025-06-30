@@ -99,7 +99,7 @@ Fit the height to the content, and select the window."
           display-buffer-in-side-window)
          (side . left)
          (window-width . .5)
-         (slot . 1))
+         (slot . 0))
 
         ;; 1 column layout
         ((or . ("\\*ChatGPT"
