@@ -1,0 +1,23 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Toggle Dark Mode
+Exec=dark-mode
+Icon=preferences-desktop-theme
+Name=Dark Mode
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+
+# [Desktop Entry]
+# Name=Dark Mode
+# Exec=dark-mode
+# Type=Application
+# Terminal=false
+# Icon=preferences-desktop-theme
+# Categories=Utility;
