@@ -11,7 +11,14 @@ btop_config = (
     .joinpath("btop")
     .joinpath("btop.conf")
 )
-btop_white_theme = 'whiteout'
+btop_dark_theme = 'tokyo-night.theme'
+btop_white_theme = 'whiteout.theme'
+btop_current_themes_dir = (Path(os.path.expanduser("~"))
+    .joinpath(".config")
+    .joinpath("btop")
+    .joinpath("themes")
+)
+btop_current_theme_path = btop_current_themes_dir.joinpath("current.theme")
 
 
 def set_plasma_theme(dark_mode):
@@ -24,17 +31,11 @@ def set_plasma_theme(dark_mode):
 
 def set_btop_theme(dark_mode):
     if dark_mode:
-        theme = 'Default'
+        theme = btop_dark_theme
     else:
         theme = btop_white_theme
-    with btop_config.open() as file:
-        lines = [
-            line if "color_theme" not in line else f'color_theme = "{theme}"\n'
-            for line in file
-        ]
-    with btop_config.open("w") as file:
-        for line in lines:
-            file.write(line)
+    os.remove(btop_current_theme_path)
+    os.symlink(btop_current_themes_dir.joinpath(theme), btop_current_theme_path)
     subprocess.Popen(["pkill", "-SIGUSR2", "btop"], preexec_fn=os.setsid)
 
 
@@ -44,8 +45,13 @@ def detect_dark_mode():
             return True
         else:
             return False
-    with btop_config.open() as file:
-        return file.read().find(btop_white_theme) > 0
+    try:
+        if btop_current_theme_path.is_symlink():
+            target_path = os.readlink(btop_current_theme_path)
+            target_filename = Path(target_path).name
+            return target_filename == btop_white_theme
+    except OSError:
+        return False
 
 
 dark_mode = detect_dark_mode()
