@@ -771,6 +771,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :bind (("C-M-q" . devdocs-search)))
 
 (use-package python
+  :config
+  ;; python.el modifies them after loading, so we have to fix it here
+  (add-to-list 'auto-mode-alist '("\\.py[iw]?\\'" . python-ts-mode))
+  (add-to-list 'interpreter-mode-alist '("python[0-9.]*" . python-ts-mode))
   :bind (:map python-ts-mode-map
               ("C-M-q" . nil)))
 
