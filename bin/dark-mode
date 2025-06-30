@@ -10,7 +10,7 @@ def set_plasma_theme(dark_mode):
         theme = 'org.kde.breezedark.desktop'
     else:
         theme = 'org.kde.breeze.desktop'
-    subprocess.run(["/usr/bin/lookandfeeltool", "--apply", theme], check=False)
+    subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", theme], preexec_fn=os.setsid)
 
 
 def set_btop_theme(dark_mode):
@@ -34,7 +34,7 @@ def set_btop_theme(dark_mode):
     with config.open("w") as file:
         for line in lines:
             file.write(line)
-    subprocess.run(["pkill", "-SIGUSR2", "btop"], check=False)
+    subprocess.Popen(["pkill", "-SIGUSR2", "btop"], preexec_fn=os.setsid)
 
 
 # Mode is the first command line argument
