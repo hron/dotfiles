@@ -768,7 +768,11 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
 
 (use-package devdocs
-  :bind (("M-C-q" . devdocs-search)))
+  :bind (("C-M-q" . devdocs-search)))
+
+(use-package python
+  :bind (:map python-mode-map
+              ("C-M-q" . nil)))
 
 (require 'aleksei-org)
 (require 'aleksei-windows)
