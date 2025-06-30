@@ -741,7 +741,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
                        :fork "hron" :branch "rust-compilation-dbg!")
   :init
   (setq rust-load-optional-libraries nil
-        rust-mode-treesitter-derive t)
+        rust-mode-treesitter-derive nil)
   (require 'rust-cargo)
   (require 'rust-compile)
   ;; (require 'rust-playpen)
