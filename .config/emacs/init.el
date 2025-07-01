@@ -105,7 +105,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (setq w32-pass-lwindow-to-system nil
       w32-pass-rwindow-to-system nil)
 (modify-all-frames-parameters
- '((font . "JetBrainsMono Nerd Font-10:weight=semibold")))
+ '((font . "JetBrains Mono-10:weight=regular")))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -348,6 +348,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
               ("C-j" . vertico-exit-input))
+  :custom-face
+  ;; Avoid `bold' weight because of nerd-icons
+  (vertico-current ((t :inherit highlight :extend t :weight normal)))
   :config
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom))))
 
@@ -411,7 +414,11 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (doom-modeline-major-mode-icon t)
   (doom-modeline-buffer-encoding nil)
   (doom-modeline-buffer-file-name-style 'auto)
-  (doom-modeline-height (+ (frame-char-height) 4)))
+  (doom-modeline-height (+ (frame-char-height) 4))
+  :custom-face
+  (doom-modeline-urgent ((t (:inherit (doom-modeline error) :weight normal))))
+  (doom-modeline-warning ((t (:inherit (doom-modeline warning) :weight normal))))
+  (doom-modeline-info ((t (:inherit (doom-modeline success) :weight normal)))))
 
 (use-package gptel
   :bind (:map global-map
@@ -488,8 +495,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ("C-S-o" . consult-outline)))
 
 (use-package nerd-icons
-  :custom
-  (nerd-icons-font-family "JetBrainsMono Nerd Font"))
+  ;; :custom
+  ;; (nerd-icons-font-family "JetBrainsMono Nerd Font")
+  )
 
 (use-package nerd-icons-completion
   :init (nerd-icons-completion-mode +1))
