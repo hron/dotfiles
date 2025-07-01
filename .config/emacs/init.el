@@ -9,7 +9,7 @@
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
 ;; Homepage: https://github.com/hron/dotfiles/.config/emacs
-;; Package-Requires: ((emacs "29.1"))
+;; Package-Requires: ((emacs "30.1"))
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -98,6 +98,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (vc-follow-symlinks t)
   (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
+  (tab-always-indent 'complete)
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type 'bar)
@@ -387,8 +388,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ("M-<" . nil)
               ("M-n" . nil)
               ("M-p" . nil))
-  :hook
-  (prog-mode . (lambda () (setq-local corfu-auto t)))
+  ;; :hook
+  ;; (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
   (global-corfu-mode +1)
   (corfu-popupinfo-mode +1)
