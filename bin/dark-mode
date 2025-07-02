@@ -2,23 +2,9 @@
 
 import os
 import subprocess
+from subprocess import PIPE
 import sys
 from pathlib import Path
-
-btop_config = (
-    Path(os.path.expanduser("~"))
-    .joinpath(".config")
-    .joinpath("btop")
-    .joinpath("btop.conf")
-)
-btop_dark_theme = 'tokyo-night.theme'
-btop_white_theme = 'whiteout.theme'
-btop_current_themes_dir = (Path(os.path.expanduser("~"))
-    .joinpath(".config")
-    .joinpath("btop")
-    .joinpath("themes")
-)
-btop_current_theme_path = btop_current_themes_dir.joinpath("current.theme")
 
 
 def set_plasma_theme(dark_mode):
@@ -31,11 +17,14 @@ def set_plasma_theme(dark_mode):
 
 def set_btop_theme(dark_mode):
     if dark_mode:
-        theme = btop_dark_theme
+        theme = 'tokyo-night.theme'
     else:
-        theme = btop_white_theme
-    os.remove(btop_current_theme_path)
-    os.symlink(btop_current_themes_dir.joinpath(theme), btop_current_theme_path)
+        theme = 'whiteout.theme'
+    themes_dir = Path(os.path.expanduser("~/.config/btop/themes"))
+    current_theme_path = Path(themes_dir).joinpath("current.theme")
+    if current_theme_path.exists():
+        os.remove(current_theme_path)
+    os.symlink(themes_dir.joinpath(theme), current_theme_path)
     subprocess.Popen(["pkill", "-SIGUSR2", "btop"], preexec_fn=os.setsid)
 
 
@@ -45,13 +34,8 @@ def detect_dark_mode():
             return True
         else:
             return False
-    try:
-        if btop_current_theme_path.is_symlink():
-            target_path = os.readlink(btop_current_theme_path)
-            target_filename = Path(target_path).name
-            return target_filename == btop_white_theme
-    except OSError:
-        return False
+    result = subprocess.run(["qdbus", "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Settings.Read", "org.freedesktop.appearance", "color-scheme"], check=False, stdout=PIPE, stderr=PIPE)
+    return result.stdout != b'1\n'
 
 
 dark_mode = detect_dark_mode()
