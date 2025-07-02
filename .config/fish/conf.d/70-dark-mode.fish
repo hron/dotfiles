@@ -1,9 +1,6 @@
-set -l BTOP_CURRENT_THEME_FILE "$HOME/.config/btop/themes/current.theme"
-set -l BTOP_WHITE_THEME_FILE "whiteout.theme"
-set -l WHITE_THEME_NAME "ayu Light"
+set -l WHITE_THEME_NAME
+set -l COLOR_SCHEME (qdbus org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings.Read org.freedesktop.appearance color-scheme)
 
-if test -L "$BTOP_CURRENT_THEME_FILE"
-    if test (basename (readlink "$BTOP_CURRENT_THEME_FILE")) = "$BTOP_WHITE_THEME_FILE"
-        fish_config theme choose "$WHITE_THEME_NAME"
-    end
+if test $COLOR_SCHEME != 1
+    fish_config theme choose "ayu Light"
 end
