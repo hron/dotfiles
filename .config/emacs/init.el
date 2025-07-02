@@ -418,7 +418,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :custom-face
   (doom-modeline-urgent ((t (:inherit (doom-modeline error) :weight normal))))
   (doom-modeline-warning ((t (:inherit (doom-modeline warning) :weight normal))))
-  (doom-modeline-info ((t (:inherit (doom-modeline success) :weight normal)))))
+  (doom-modeline-info ((t (:inherit (doom-modeline success) :weight normal))))
+  (doom-modeline-lsp-success ((t (:inherit doom-modeline-info :weight normal))))
+  (doom-modeline-lsp-error ((t (:inherit doom-modeline-urgent :weight normal))))
+  (doom-modeline-lsp-warning ((t (:inherit doom-modeline-warning :weight normal)))))
 
 (use-package gptel
   :bind (:map global-map
