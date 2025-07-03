@@ -1,6 +1,6 @@
 if status is-interactive
-    alias ll="eza --long --icons --hyperlink"
-    alias ls="eza"
+    alias ll="eza -ahl --group-directories-first --icons --hyperlink"
+    alias ls="eza -ah --group-directories-first"
 
     # Emacs and other editors cannot pass `ctrl-shift-z` to fish,
     # so we pass `alt-z` instead and bind it here
