@@ -442,7 +442,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("<C-iso-lefttab>" . nil)
          :map magit-mode-map
          ("C-j" . nil)
-         ("C-w" . delete-window))
+         ("C-w" . delete-window)
+         :map magit-hunk-section-map
+         ("C-j" . nil))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
   :custom
   ;; (git-commit-major-mode #'gfm-mode)
@@ -562,6 +564,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
                  flycheck-previous-error
                  flycheck-goto-next-error
                  flycheck-goto-prev-error
+                 next-error
                  org-open-at-point-global
                  xref-find-definitions
                  xref-find-references
