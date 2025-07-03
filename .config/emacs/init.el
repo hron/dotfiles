@@ -682,7 +682,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :custom
   (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/"
                                         "/straight/repos/"
-                                        "/share/emacs/.*/lisp/"))
+                                        "/share/emacs/.*/lisp/"
+                                        "/.cargo/registry/"))
   :hook
   ((find-file hardhat-mode) . aleksei/disable-checks-if-read-only))
 
