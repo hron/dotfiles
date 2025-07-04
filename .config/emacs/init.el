@@ -736,6 +736,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-flymake)
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
+  :custom
+  (eglot-events-buffer-config . (:size 0 :format full))
   :config
   (add-to-list 'eglot-stay-out-of 'flymake)
   (add-to-list 'eglot-stay-out-of 'imenu)
