@@ -815,7 +815,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-directories
-   '("/home/algus/src/melpa/"
+   '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/")))
