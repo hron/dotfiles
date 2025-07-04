@@ -452,7 +452,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          :map magit-hunk-section-map
          ("C-j" . nil))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  :custom
+  ;; :custom
   ;; (git-commit-major-mode #'gfm-mode)
 
   ;; Don't use full frame width for transient windows, instead just
