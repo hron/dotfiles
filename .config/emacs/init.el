@@ -752,6 +752,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :init (setq markdown-command "multimarkdown")
   :bind (:map markdown-mode-map
               ("C-c C-e" . markdown-do))
+  :hook (gfm-mode . (lambda () (toggle-word-wrap +1)))
   :custom
   (markdown-fontify-code-blocks-natively t))
 
