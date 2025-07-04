@@ -457,10 +457,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
   ;; Don't use full frame width for transient windows, instead just
   ;; fit the selected window
-  (transient-display-buffer-action '(display-buffer-below-selected
-                                     (side . bottom)
-                                     (dedicated . t)
-                                     (inhibit-same-window . t))))
+  ;; (transient-display-buffer-action '(display-buffer-below-selected
+  ;;                                    (side . bottom)
+  ;;                                    (dedicated . t)
+  ;;                                    (inhibit-same-window . t)))
+  ;; (transient-display-buffer-action '(display-buffer-in-direction
+  ;;                                    (direction . down)
+  ;;                                    (dedicated . t)
+  ;;                                    (inhibit-same-window . t)))
+  )
 
 (use-package diff-hl
   :init (global-diff-hl-mode +1)
