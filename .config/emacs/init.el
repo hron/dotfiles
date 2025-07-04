@@ -98,7 +98,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (vc-follow-symlinks t)
   (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
-  (tab-always-indent 'complete)
+  ;; (tab-always-indent 'complete)
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type 'bar)
@@ -378,21 +378,27 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (global-corfu-minibuffer t)
   :bind (:map global-map
               ("C-SPC" . #'completion-at-point)
+              ("C-y" . #'completion-at-point)
               :map corfu-map
+              ("C-y" . #'corfu-complete)
+              ("C-p" . #'corfu-previous)
+              ("C-n" . #'corfu-next)
               ("RET" . nil)
-              ("<tab>" . #'corfu-complete)
+              ("<tab>" . nil)
               ;; ("<home>" . #'corfu-first)
               ;; ("<end>" . #'corfu-last)
-              ("<prior>" . #'corfu-scroll-down)
-              ("<next>" . #'corfu-scroll-up)
+              ("<prior>" . nil)
+              ("<next>" . nil)
+              ("<up>" . nil)
+              ("<down>" . nil)
               ("M-v" . nil)
               ("C-v" . nil)
               ("C-<end>" . nil)
               ("M-<" . nil)
               ("M-n" . nil)
               ("M-p" . nil))
-  ;; :hook
-  ;; (prog-mode . (lambda () (setq-local corfu-auto t)))
+  :hook
+  (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
   (global-corfu-mode +1)
   (corfu-popupinfo-mode +1)
