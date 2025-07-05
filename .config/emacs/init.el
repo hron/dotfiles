@@ -793,6 +793,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :bind (:map python-ts-mode-map
               ("C-M-q" . nil)))
 
+(use-package qml-mode)
+
 (require 'aleksei-org)
 (require 'aleksei-windows)
 (require 'aleksei-vterm)
