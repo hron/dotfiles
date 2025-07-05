@@ -70,7 +70,7 @@
   (vterm-max-scrollback 100000)
   (vterm-clear-scrollback-when-clearing t)
   :config
-  (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
+  ;; (add-hook 'vterm-mode-hook 'compilation-shell-minor-mode)
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local cua-mode nil)))
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local undo-fu-mode nil)))
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local pixel-scroll-mode nil)))
