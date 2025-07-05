@@ -376,27 +376,20 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (corfu-preselect 'first)
   (corfu-auto nil)
   (global-corfu-minibuffer t)
+  :config
+  (setq corfu-map
+        (let ((map (make-sparse-keymap)))
+          (define-key map [(meta ?y)] #'corfu-complete)
+          (define-key map [(meta ?u)] #'corfu-expand)
+          (define-key map [(meta ?p)] #'corfu-previous)
+          (define-key map [(meta ?n)] #'corfu-next)
+          (define-key map [(meta ?g)] #'corfu-info-location)
+          (define-key map [(meta ?h)] #'corfu-info-documentation)
+          (define-key map "M-SPC" #'corfu-insert-separator)
+          map))
+
   :bind (:map global-map
-              ("C-SPC" . #'completion-at-point)
-              ("C-y" . #'completion-at-point)
-              :map corfu-map
-              ("C-y" . #'corfu-complete)
-              ("C-p" . #'corfu-previous)
-              ("C-n" . #'corfu-next)
-              ("RET" . nil)
-              ("<tab>" . nil)
-              ;; ("<home>" . #'corfu-first)
-              ;; ("<end>" . #'corfu-last)
-              ("<prior>" . nil)
-              ("<next>" . nil)
-              ("<up>" . nil)
-              ("<down>" . nil)
-              ("M-v" . nil)
-              ("C-v" . nil)
-              ("C-<end>" . nil)
-              ("M-<" . nil)
-              ("M-n" . nil)
-              ("M-p" . nil))
+              ("M-y" . #'completion-at-point))
   :hook
   (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
