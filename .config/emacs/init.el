@@ -466,7 +466,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ("C-M-z" . #'diff-hl-revert-hunk)
               ("M-[" . #'diff-hl-previous-hunk)
               ("M-]" . #'diff-hl-next-hunk)
-              ("C-'" . diff-hl-show-hunk)))
+              ("C-'" . #'diff-hl-show-hunk)))
 
 ;; emacs-lisp-mode
 (use-package emacs
