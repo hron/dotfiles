@@ -445,20 +445,12 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          :map magit-hunk-section-map
          ("C-j" . nil))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  ;; :custom
-  ;; (git-commit-major-mode #'gfm-mode)
-
-  ;; Don't use full frame width for transient windows, instead just
-  ;; fit the selected window
-  ;; (transient-display-buffer-action '(display-buffer-below-selected
-  ;;                                    (side . bottom)
-  ;;                                    (dedicated . t)
-  ;;                                    (inhibit-same-window . t)))
-  ;; (transient-display-buffer-action '(display-buffer-in-direction
-  ;;                                    (direction . down)
-  ;;                                    (dedicated . t)
-  ;;                                    (inhibit-same-window . t)))
-  )
+  :custom
+  (transient-display-buffer-action '(display-buffer-in-direction
+                                     (window . main)
+                                     (direction . below)
+                                     (dedicated . t)
+                                     (inhibit-same-window . t))))
 
 (use-package diff-hl
   :init (global-diff-hl-mode +1)
