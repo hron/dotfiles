@@ -152,10 +152,17 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("M-S-<up>" . #'drag-stuff-up)
          ("M-S-<down>" . #'drag-stuff-down)))
 
+
+;;;###autoload
+(defun aleksei-project-compile ()
+  "Run `compile' in the project root."
+  (interactive)
+  (call-interactively (if (project-current) #'project-compile #'compile)))
+
 (push 'comint straight-built-in-pseudo-packages)
 (use-package comint
   :ensure nil
-  :bind (("M-t" . #'project-compile)
+  :bind (("M-t" . #'aleksei-project-compile)
          ("M-r" . #'recompile)
          :map comint-mode-map
          ("C-d" . comint-delchar-or-maybe-eof)
