@@ -436,10 +436,14 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ;; ("C-<return>" . gptel-send)
               )
   :config
-  (setq
-   gptel-model 'gemini-2.5-flash
-   gptel-backend (gptel-make-gemini "Gemini" :stream t :key gptel-api-key)
-   gptel-default-mode #'gfm-mode))
+  (defvar gptel--gemini
+    (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
+  (setq-default gptel-backed gptel--gemini)
+
+  :custom
+  (gptel-model 'gemini-2.5-flash)
+  (gptel-default-mode #'gfm-mode)
+  (gptel-include-reasoning nil))
 
 (use-package magit
   :bind (("M-9" . magit-status)
