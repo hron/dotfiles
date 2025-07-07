@@ -102,10 +102,14 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook (before-save . whitespace-cleanup))
 
 (setq-default cursor-type 'bar)
-(setq w32-pass-lwindow-to-system nil
-      w32-pass-rwindow-to-system nil)
-(modify-all-frames-parameters
- '((font . "JetBrains Mono-10:weight=regular")))
+(when (eq system-type 'windows-nt)
+  (setq w32-pass-lwindow-to-system t
+        w32-pass-rwindow-to-system t))
+(if (eq system-type 'windows-nt)
+    (modify-all-frames-parameters
+     '((font . "JetBrains Mono-11:weight=regular")))
+  (modify-all-frames-parameters
+     '((font . "JetBrains Mono-10:weight=regular"))))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -806,9 +810,13 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package qml-mode)
 
-(require 'aleksei-org)
+(unless (eq system-type 'windows-nt)
+  (require 'aleksei-org))
+
 (require 'aleksei-windows)
-(require 'aleksei-vterm)
+
+(unless (eq system-type 'windows-nt)
+  (require 'aleksei-vterm))
 
 (provide 'init)
 ;;; init.el ends here
