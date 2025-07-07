@@ -442,10 +442,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :config
   (defvar gptel--gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
-  (setq-default gptel-backed gptel--gemini)
-
+  (setq-default gptel-backed gptel--gemini
+                gptel-model 'gemini-2.5-flash)
   :custom
-  (gptel-model 'gemini-2.5-flash)
   (gptel-default-mode #'gfm-mode)
   (gptel-include-reasoning nil))
 
