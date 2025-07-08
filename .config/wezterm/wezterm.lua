@@ -1,13 +1,12 @@
--- Pull in the wezterm API
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices.
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe', '-NoLogo' }
+end
 
--- For example, changing the initial geometry for new windows:
 config.initial_cols = 120
 config.initial_rows = 28
 
