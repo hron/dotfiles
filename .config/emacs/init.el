@@ -105,11 +105,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (when (eq system-type 'windows-nt)
   (setq w32-pass-lwindow-to-system t
         w32-pass-rwindow-to-system t))
-(if (eq system-type 'windows-nt)
-    (modify-all-frames-parameters
-     '((font . "JetBrains Mono-11:weight=regular")))
-  (modify-all-frames-parameters
-     '((font . "JetBrains Mono-10:weight=regular"))))
+(modify-all-frames-parameters
+     '((font . "JetBrains Mono-10:weight=regular")))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
