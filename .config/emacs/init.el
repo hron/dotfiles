@@ -571,6 +571,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
                  flycheck-previous-error
                  flycheck-goto-next-error
                  flycheck-goto-prev-error
+                 flymake-goto-next-error
+                 flymake-goto-prev-error
                  next-error
                  org-open-at-point-global
                  xref-find-definitions
