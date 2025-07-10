@@ -19,3 +19,4 @@ flycheck*.el
 .tool-versions
 .vscode/*
 /.zed/
+*.code-workspace

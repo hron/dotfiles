@@ -101,16 +101,22 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   ;; (tab-always-indent 'complete)
   :hook (before-save . whitespace-cleanup))
 
-(setq-default cursor-type 'bar)
+(setq-default cursor-type '(bar . 5))
 (when (eq system-type 'windows-nt)
   (setq w32-pass-lwindow-to-system t
-        w32-pass-rwindow-to-system t))
+        w32-pass-rwindow-to-system t)
+  (global-set-key (kbd "M-<f4>") #'save-buffers-kill-terminal))
+;; (if (eq system-type 'windows-nt)
+;;     (modify-all-frames-parameters
+;;      '((font . "JetBrains Mono SemiBold-10")))
+;;   (modify-all-frames-parameters
+;;    '((font . "JetBrains Mono-10:weight=regular"))))
 (modify-all-frames-parameters
-     '((font . "JetBrains Mono-10:weight=regular")))
+ '((font . "JetBrains Mono-10:weight=regular")))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(fringe-mode (frame-char-width))
+(fringe-mode 12)
 (global-auto-revert-mode +1)
 (global-subword-mode +1)
 (which-key-mode +1)
@@ -827,7 +833,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
-     "/home/algus/src/zed/")))
+     "/home/algus/src/zed/"))
+ '(safe-local-variable-values
+   '((flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
+                              "warnings"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

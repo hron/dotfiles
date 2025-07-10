@@ -10,4 +10,5 @@
 
 (setq mc/cmds-to-run-once
       '(
+        aleksei/save-all-buffers
         ))
