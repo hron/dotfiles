@@ -814,9 +814,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package qml-mode)
 
-(unless (eq system-type 'windows-nt)
-  (require 'aleksei-org))
-
+(require 'aleksei-org)
 (require 'aleksei-windows)
 
 (unless (eq system-type 'windows-nt)
