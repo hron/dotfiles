@@ -827,7 +827,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
+   '((checkdoc-allow-quoting-nil-and-t . t)
+     (flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
                               "warnings"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
