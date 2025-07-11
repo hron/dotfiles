@@ -5,6 +5,7 @@ local config = wezterm.config_builder()
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe', '-NoLogo' }
+  config.mux_enable_ssh_agent = false
 end
 
 config.initial_cols = 120
