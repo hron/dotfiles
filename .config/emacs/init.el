@@ -235,7 +235,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("<return>". #'isearch-repeat-forward)
          ("C-g" . #'isearch-exit)
          ("C-v" . #'isearch-yank-kill)
-         ("C-r" . #'isearch-query-replace)
+         ("M-w" . #'isearch-query-replace)
          ("M-C-r" . #'isearch-query-replace-regexp)
          ("C-<home>" . #'isearch-beginning-of-buffer)
          ("C-<end>" . #'isearch-end-of-buffer)
@@ -280,11 +280,11 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
   :bind
   (("C-t" . #'aleksei/anzu-query-replace-at-cursor)
-   ("C-r" . #'aleksei/anzu-query-replace)
-   ("C-M-r" . #'anzu-query-replace-regexp)
+   ("M-w" . #'aleksei/anzu-query-replace)
+   ("C-M-w" . #'anzu-query-replace-regexp)
    :map isearch-mode-map
-   ("C-r" . #'anzu-isearch-query-replace)
-   ("M-C-r" . #'anzu-isearch-query-replace-regexp)
+   ("M-w" . #'anzu-isearch-query-replace)
+   ("M-C-w" . #'anzu-isearch-query-replace-regexp)
    ("M-%" . #'anzu-isearch-query-replace)
    ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
