@@ -731,11 +731,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package debian-el)
 
-(defun aleksei-manually-activate-flymake ()
-  "Activate flymake-mode manually in eglot."
-  (add-hook 'flymake-diagnostic-functions #'eglot-flymake-backend nil t)
-  (flymake-mode +1))
-
 (defun aleksei-manually-activate-imenu ()
   "Activate imenu manually in eglot."
   (when (not (derived-mode-p 'rust-mode))
@@ -746,12 +741,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (use-package eglot
   :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
-  :hook (eglot-managed-mode-hook . aleksei-manually-activate-flymake)
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
   :custom
   (eglot-events-buffer-config . (:size 0 :format full))
   :config
-  (add-to-list 'eglot-stay-out-of 'flymake)
   (add-to-list 'eglot-stay-out-of 'imenu)
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
@@ -785,10 +778,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   ;; (require 'rust-rustfmt)
   :bind (:map rust-mode-map
               ("C-M-q" . nil)))
-
-(use-package flymake-clippy
-  :hook ((rust-mode rust-ts-mode) . flymake-clippy-setup-backend)
-  :hook (rust-ts-mode . (lambda () (remove-hook 'flymake-diagnostic-functions #'rust-ts-flymake t))))
 
 (use-package gcmh
   :init (gcmh-mode +1))
