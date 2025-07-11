@@ -1,6 +1,3 @@
-[submodule "AstroNvim"]
-        path = AstroNvim
-        url = https://github.com/AstroNvim/AstroNvim
 [submodule ".config/kitty/kitty_grab"]
         path = .config/kitty/kitty_grab
         url = https://github.com/yurikhan/kitty_grab.git
