@@ -1,15 +1,12 @@
-[submodule "doom-emacs"]
-	path = doom-emacs
-	url = https://github.com/hlissner/doom-emacs
 [submodule "AstroNvim"]
-	path = AstroNvim
-	url = https://github.com/AstroNvim/AstroNvim
+        path = AstroNvim
+        url = https://github.com/AstroNvim/AstroNvim
 [submodule ".config/kitty/kitty_grab"]
-	path = .config/kitty/kitty_grab
-	url = https://github.com/yurikhan/kitty_grab.git
+        path = .config/kitty/kitty_grab
+        url = https://github.com/yurikhan/kitty_grab.git
 [submodule ".config/ghostty/modus-themes"]
-	path = .config/ghostty/modus-themes
-	url = https://github.com/anhsirk0/ghostty-themes/
+        path = .config/ghostty/modus-themes
+        url = https://github.com/anhsirk0/ghostty-themes/
 [submodule ".config/tmux/plugins/tmux_super_fingers"]
-	path = .config/tmux/plugins/tmux_super_fingers
-	url = https://github.com/hron/tmux_super_fingers.git
+        path = .config/tmux/plugins/tmux_super_fingers
+        url = https://github.com/hron/tmux_super_fingers.git

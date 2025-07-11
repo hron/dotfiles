@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: it ...
-# key: itt
-# condition: t
-# --
-
-it("$1", () => {
-  $0
-});
