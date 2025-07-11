@@ -461,6 +461,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-j" . nil)
          ("C-w" . delete-window)
          :map magit-hunk-section-map
+         ("C-j" . nil)
+         :map magit-diff-section-map
          ("C-j" . nil))
   :hook (magit-post-refresh . diff-hl-magit-post-refresh)
   :custom
