@@ -205,7 +205,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :custom
   (compilation-always-kill t)
   (compilation-ask-about-save nil)
-  (compilation-scroll-output 'first-error))
+  (compilation-scroll-output 'first-error)
+  (compile-command ""))
 
 (use-package winner
   :ensure nil
@@ -213,7 +214,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
          ("C-<f5>" . (lambda ()
                        (interactive)
                        (funcall-interactively 'window-configuration-to-register ?w)
-                       (message "Window configuration is saved in ‘w’ register. Restore it with <f5>.")))
+                       (message "Window configuration is saved in  w  register. Restore it with <f5>.")))
          ("<f3>" . #'winner-undo)
          ("<f4>" . #'winner-redo))
   :init
@@ -537,8 +538,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :ensure nil
   :custom
   (treesit-font-lock-level 4))
+
 (use-package treesit-auto
   :defer nil
+  :if (not (eq system-type 'windows-nt))
   :init
   (require 'treesit-auto)
   (treesit-auto-add-to-auto-mode-alist
@@ -610,7 +613,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package shell
   :ensure nil
-  :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%>➜] *"))
+  :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%> ] *"))
 
 (use-package multiple-cursors
   :bind (("M-j" . mc/mark-next-like-this)
@@ -775,7 +778,7 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   ;;                      :fork "hron" :branch "rust-compilation-dbg!")
   :init
   (setq rust-load-optional-libraries nil
-        rust-mode-treesitter-derive t)
+        rust-mode-treesitter-derive (not (eq system-type 'windows-nt)))
   (require 'rust-cargo)
   (require 'rust-compile)
   ;; (require 'rust-playpen)

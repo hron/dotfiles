@@ -5,6 +5,7 @@
       '(
         crux-move-beginning-of-line
         cua-paste
+        electric-pair-delete-pair
         org-self-insert-command
         ))
 
