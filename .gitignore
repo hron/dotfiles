@@ -73,3 +73,4 @@
 /.config/emacs/straight/links/
 /.config/emacs/server/
 /.config/emacs/org-persist/
+/.config/emacs/eshell/history
