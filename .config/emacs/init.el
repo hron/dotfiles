@@ -101,7 +101,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   ;; (tab-always-indent 'complete)
   :hook (before-save . whitespace-cleanup))
 
-(setq-default cursor-type '(bar . 5))
+(if (eq system-type 'windows-nt)
+    (setq-default cursor-type '(bar . 5))
+  (setq-default cursor-type '(bar . 3)))
 (when (eq system-type 'windows-nt)
   (setq w32-pass-lwindow-to-system t
         w32-pass-rwindow-to-system t)
@@ -116,7 +118,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(fringe-mode 12)
+(if (eq system-type 'windows-nt)
+    (fringe-mode 12)
+  (fringe-mode 5))
 (global-auto-revert-mode +1)
 (global-subword-mode +1)
 (which-key-mode +1)
