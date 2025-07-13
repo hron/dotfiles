@@ -73,6 +73,7 @@ Fit the height to the content, and select the window."
                         "^magit-log"
                         "^magit-revision"
                         "^magit-diff"
+                        "^magit-process"
                         "\\*Man"
                         "^\\*vterm"
                         "^\\*Embark Export"
@@ -124,6 +125,7 @@ Fit the height to the content, and select the window."
                 "^\\*Embark Export"
                 "^\\*Backtrace\\*"
                 "^\\*Occur\\*"
+                "^magit-process"
                 (derived-mode . compilation-mode)
                 (derived-mode . comint-mode)
                 (derived-mode . grep-mode)))
