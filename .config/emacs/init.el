@@ -380,7 +380,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               :map minibuffer-local-map
               ("M-<return>" . embark-act)
               :map minibuffer-mode-map
-              ("M-<return>" . embark-act))
+              ("M-<return>" . embark-act)
+              :map embark-region-map
+              ("+" . #'gptel-add))
   :custom
   (embark-indicators '(embark--vertico-indicator
                        embark-highlight-indicator
@@ -442,19 +444,25 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   (doom-modeline-lsp-warning ((t (:inherit doom-modeline-warning :weight normal)))))
 
 (use-package gptel
-  :bind (:map global-map
-              ("C-<return>" . gptel-menu)
-              ;; :map gptel-mode
-              ;; ("C-<return>" . gptel-send)
-              )
+  :bind (("C-c C-<return>" . gptel-menu)
+         ("C-c <return>" . gptel-send)
+         ("C-c j" . gptel-menu)
+         ("C-c C-g" . gptel-abort)
+         :map gptel-mode-map
+         ("C-c C-x t" . gptel-set-topic))
   :config
   (defvar gptel--gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
-  (setq-default gptel-backed gptel--gemini
-                gptel-model 'gemini-2.5-flash)
+  (defvar gptel--anthropic
+    (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
+  (setq-default gptel-model 'gemini-2.5-flash
+                gptel-backend gptel--gemini)
   :custom
-  (gptel-default-mode #'gfm-mode)
-  (gptel-include-reasoning nil))
+  (gptel-default-mode #'org-mode)
+  (gptel-include-reasoning nil)
+  (gptel-track-media t)
+  (gptel-rewrite-default-action 'accept)
+  :commands (gptel gptel-send))
 
 (use-package magit
   :bind (("M-9" . magit-status)
@@ -487,7 +495,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 ;; emacs-lisp-mode
 (use-package emacs
   :bind (:map emacs-lisp-mode-map
-              ("C-q" . describe-symbol))
+              ("C-q" . describe-symbol)
+              :map lisp-interaction-mode-map
+              ("C-j" . nil))
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
 (use-package ert
@@ -748,10 +758,9 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
-  :custom
-  (eglot-events-buffer-config . (:size 0 :format full))
   :config
   (add-to-list 'eglot-stay-out-of 'imenu)
+  (setq eglot-events-buffer-config  '(:size 0 :format 'full))
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions))
@@ -780,10 +789,13 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
         rust-mode-treesitter-derive (not (eq system-type 'windows-nt)))
   (require 'rust-cargo)
   (require 'rust-compile)
+
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
   :bind (:map rust-mode-map
-              ("C-M-q" . nil)))
+              ("C-M-q" . nil))
+  :custom
+  (rust-ts-flymake-command '("cargo" "clippy")))
 
 (use-package gcmh
   :init (gcmh-mode +1))
@@ -811,6 +823,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
               ("C-M-q" . nil)))
 
 (use-package qml-mode)
+
+;; (push 'tramp straight-built-in-pseudo-packages)
+;; (use-package tramp
+;;   :config
+;;   (tramp-cleanup-all-connections)
+;;   (setq tramp-connection-properties nil)
+;;   (add-to-list 'tramp-connection-properties
+;;                '("algus@localhost"
+;;                   "remote-shell" "/c/tools/msys64/home/algus/bin/tramp-shell.sh")))
 
 (require 'aleksei-org)
 (require 'aleksei-windows)
