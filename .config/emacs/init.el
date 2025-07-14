@@ -24,8 +24,6 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
-(add-to-list 'load-path (locate-user-emacs-file "lisp"))
-
 (use-package emacs
   :init
   (cua-mode +1)
@@ -45,7 +43,7 @@
   "My replacement for `comment-dwim' (ARG is passed through).
 
 If no region is selected and point is not at the end of the line,
-comment or uncomment the current line. Otherwise, call `comment-dwim'."
+comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (interactive "*P")
   (if (and (not (use-region-p))
            (not (and (looking-back "^[[:blank:]]*") (looking-at "[[:blank:]]*$"))))
@@ -549,12 +547,6 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
   :straight (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
   :init (nerd-icons-xref-mode +1))
 
-(push 'treesit straight-built-in-pseudo-packages)
-(use-package treesit
-  :ensure nil
-  :custom
-  (treesit-font-lock-level 4))
-
 (use-package treesit-auto
   :defer nil
   :if (not (eq system-type 'windows-nt))
@@ -824,20 +816,15 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
 
 (use-package qml-mode)
 
-;; (push 'tramp straight-built-in-pseudo-packages)
-;; (use-package tramp
-;;   :config
-;;   (tramp-cleanup-all-connections)
-;;   (setq tramp-connection-properties nil)
-;;   (add-to-list 'tramp-connection-properties
-;;                '("algus@localhost"
-;;                   "remote-shell" "/c/tools/msys64/home/algus/bin/tramp-shell.sh")))
+(use-package gnus
+  :config
+  (setq gnus-select-method
+        '(nntp "news.gmane.io")))
 
-(require 'aleksei-org)
-(require 'aleksei-windows)
-
+(load (locate-user-emacs-file "lisp/aleksei-windows"))
+(load (locate-user-emacs-file "lisp/aleksei-org"))
 (unless (eq system-type 'windows-nt)
-  (require 'aleksei-vterm))
+  (load (locate-user-emacs-file "lisp/aleksei-vterm")))
 
 (provide 'init)
 ;;; init.el ends here
@@ -852,7 +839,10 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((checkdoc-allow-quoting-nil-and-t . t)
+   '((eval setq-local flymake-diagnostic-functions
+           (cl-remove 'package-lint-flymake
+                      flymake-diagnostic-functions :test 'eq))
+     (checkdoc-allow-quoting-nil-and-t . t)
      (flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
                               "warnings"))))
 (custom-set-faces
@@ -861,3 +851,8 @@ comment or uncomment the current line. Otherwise, call `comment-dwim'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(region ((t :extend nil))))
+
+
+;; Local Variables:
+;; eval: (setq-local flymake-diagnostic-functions (cl-remove 'package-lint-flymake flymake-diagnostic-functions :test 'eq))
+;; End:

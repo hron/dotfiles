@@ -75,3 +75,4 @@
 /.config/emacs/org-persist/
 /.config/emacs/eshell/history
 /.config/VSCodium/*
+/.config/emacs/network-security.data
