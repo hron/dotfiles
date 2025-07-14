@@ -83,7 +83,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
-         ("C-q" . #'aleksei/eldoc))
+         ("C-q" . #'aleksei/eldoc)
+         ("C-M-o" . nil))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -755,8 +756,12 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (setq eglot-events-buffer-config  '(:size 0 :format 'full))
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
-              ("C-." . #'eglot-code-actions))
+              ("C-." . #'eglot-code-actions)
+              ("C-M-o". #'consult-eglot-symbols))
   :custom-face (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil))))
+
+(push 'project straight-built-in-pseudo-packages)
+(use-package consult-eglot)
 
 (use-package edit-indirect)
 (use-package markdown-mode
