@@ -2,19 +2,12 @@
 Categories=Utility
 Comment[en_US]=Get Things Done with org-mode
 Comment=Get Things Done with org-mode
-Exec=/home/algus/bin/gtd
-GenericName[en_US]=
-GenericName=
-Icon=korg-todo
+Exec=emacsclient --create-frame --socket-name=gtd --eval "(aleksei-org-gtd)" || env EMACS_SERVER_NAME=gtd emacs --no-desktop --name org-mode --eval "(aleksei-org-gtd)"
+Icon=org-mode-unicorn
 MimeType=
-Name[en_US]=GTD
 Name=GTD
 Path=
 StartupNotify=true
 StartupWMClass=org-mode
 Terminal=false
-TerminalOptions=
 Type=Application
-Version=1.4
-X-KDE-SubstituteUID=false
-X-KDE-Username=
