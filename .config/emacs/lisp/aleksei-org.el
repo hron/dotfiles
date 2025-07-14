@@ -118,7 +118,8 @@
          ("M-S-<down>" . org-move-subtree-down)
          ("M-<left>" . nil)
          ("M-<right>" . nil)
-         ("C-c y" . yank-media))
+         ("C-c y" . yank-media)
+         ("M-b" . #'org-insert-structure-template))
   :custom
   (org-provide-todo-statistics 'all-headlines)
   (org-insert-heading-respect-content t)
