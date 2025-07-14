@@ -828,6 +828,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (gnus-always-read-dribble-file t))
 
+(use-package telega
+  :custom
+  (telega-server-libs-prefix "/usr"))
+
 (load (locate-user-emacs-file "lisp/aleksei-windows"))
 (load (locate-user-emacs-file "lisp/aleksei-org"))
 (unless (eq system-type 'windows-nt)
