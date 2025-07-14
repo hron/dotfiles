@@ -824,8 +824,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package gnus
   :config
-  (setq gnus-select-method
-        '(nntp "news.gmane.io")))
+  (setq gnus-select-method '(nntp "news.gmane.io"))
+  :custom
+  (gnus-always-read-dribble-file t))
 
 (load (locate-user-emacs-file "lisp/aleksei-windows"))
 (load (locate-user-emacs-file "lisp/aleksei-org"))
