@@ -1,4 +1,4 @@
-;;; aleksei-org.el --- Description -*- lexical-binding: t; -*-
+;;; init-org.el --- Description -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2025 Aleksei Gusev
 ;;
@@ -8,7 +8,7 @@
 ;; Modified: April 10, 2025
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
-;; Homepage: https://github.com/hron/aleksei-org
+;; Homepage: https://github.com/hron/init-org
 ;; Package-Requires: ((emacs "30.1"))
 ;;
 ;; This file is not part of GNU Emacs.
@@ -22,7 +22,7 @@
 (setq org-directory "~/org")
 
 ;;;###autoload
-(defun aleksei-org-gtd ()
+(defun init-org-gtd ()
   "Prepare Emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
@@ -30,7 +30,7 @@
   (org-agenda-list))
 
 ;;;###autoload
-(defun aleksei-org-todo-convert-to-project ()
+(defun init-org-todo-convert-to-project ()
   "Convert a subheading to a project."
   (interactive)
   (save-excursion
@@ -41,7 +41,7 @@
   (call-interactively 'org-insert-todo-subheading))
 
 ;;;###autoload
-(defun aleksei-org-org-capture ()
+(defun init-org-capture ()
   "Open a new frame with Org capture inbox template."
   (interactive)
   (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
@@ -102,7 +102,7 @@
          ("S-M-<return>" . org-insert-todo-heading-respect-content)
          ("S-C-<up>" . org-metaup)
          ("S-C-<down>" . org-metadown)
-         ("C-c C-e" . aleksei-org-todo-convert-to-project)
+         ("C-c C-e" . init-org-todo-convert-to-project)
          ("C-<return>" . org-todo)
          ("S-<return>" . org-insert-heading)
          ("C-S-<left>" . nil)
@@ -152,5 +152,5 @@
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
-(provide 'aleksei-org)
-;;; aleksei-org.el ends here
+(provide 'init-org)
+;;; init-org.el ends here

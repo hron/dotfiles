@@ -19,6 +19,8 @@
 ;;
 ;;; Code:
 
+(add-to-list 'load-path (locate-user-emacs-file "lisp"))
+
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Aleksei Gusev"
@@ -33,13 +35,13 @@
   (cua-rectangle-mark-key [(control shift return)]))
 
 ;;;###autoload
-(defun aleksei/save-all-buffers ()
+(defun init-save-all-buffers ()
   "Save all modified buffers, literally (save-some-buffers +1)."
   (interactive)
   (save-some-buffers +1))
 
 ;;;###autoload
-(defun aleksei/comment-dwim (&optional arg)
+(defun init-comment-dwim (&optional arg)
   "My replacement for `comment-dwim' (ARG is passed through).
 
 If no region is selected and point is not at the end of the line,
@@ -50,16 +52,16 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
       (comment-or-uncomment-region (line-beginning-position) (line-end-position) arg)
     (comment-dwim arg)))
 
-(defun aleksei/format-region-or-buffer ()
+(defun init-format-region-or-buffer ()
   "Format region or buffer."
   (interactive)
   (call-interactively #'apheleia-format-buffer))
 
 ;;;###autoload
-(defun aleksei/eldoc ()
+(defun init-eldoc ()
   "Run eldoc and switch to its buffer it is executed second time."
   (interactive)
-  (if-let* ((eldoc-window (eq last-command 'aleksei/eldoc))
+  (if-let* ((eldoc-window (eq last-command 'init-eldoc))
             (eldoc-window (get-buffer-window-list "*eldoc*")))
       (select-window (car eldoc-window))
     (call-interactively 'eldoc)))
@@ -67,13 +69,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package emacs
   :bind (("C-<f2>" . #'list-processes)
          ("C-d" . #'duplicate-dwim)
-         ("C-s" . #'aleksei/save-all-buffers)
+         ("C-s" . #'init-save-all-buffers)
          ("<f6>" . #'toggle-truncate-lines)
          ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
          ("C-a" . #'mark-whole-buffer)
          ("C-S-b" . #'switch-to-buffer)
-         ("C-/" . #'aleksei/comment-dwim)
-         ("C-M-l" . #'aleksei/format-region-or-buffer)
+         ("C-/" . #'init-comment-dwim)
+         ("C-M-l" . #'init-format-region-or-buffer)
          ("M-C-." . #'eglot-find-typeDefinition)
          ("C->" . #'eglot-find-implementation)
          ("M-." . #'xref-find-definitions)
@@ -83,7 +85,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
-         ("C-q" . #'aleksei/eldoc)
+         ("C-q" . #'init-eldoc)
          ("C-M-o" . nil))
   :custom
   (display-line-numbers-type nil)
@@ -139,14 +141,14 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (bookmark-watch-bookmark-file 'silent))
 
-(defun aleksei/eldoc-display-in-buffer (docs interactive)
+(defun init-eldoc-display-in-buffer (docs interactive)
   "Display DOCS in a dedicated buffer only if INTERACTIVE is t."
   (when interactive
     (eldoc--format-doc-buffer docs)
     (eldoc-doc-buffer t)))
 (use-package eldoc
   :config
-  (setq eldoc-display-functions '(eldoc-display-in-echo-area aleksei/eldoc-display-in-buffer)))
+  (setq eldoc-display-functions '(eldoc-display-in-echo-area init-eldoc-display-in-buffer)))
 
 (use-package iflipb
   :defer t
@@ -164,7 +166,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 
 ;;;###autoload
-(defun aleksei-project-compile ()
+(defun init-project-compile ()
   "Run `compile' in the project root."
   (interactive)
   (call-interactively (if (project-current) #'project-compile #'compile)))
@@ -172,7 +174,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (push 'comint straight-built-in-pseudo-packages)
 (use-package comint
   :ensure nil
-  :bind (("M-t" . #'aleksei-project-compile)
+  :bind (("M-t" . #'init-project-compile)
          ("M-r" . #'recompile)
          :map comint-mode-map
          ("C-d" . comint-delchar-or-maybe-eof)
@@ -254,7 +256,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
            (search-nonincremental-instead nil)))
 
 ;;;###autoload
-(defun aleksei/anzu-query-replace-at-cursor ()
+(defun init-anzu-query-replace-at-cursor ()
   "Run `anzu-query-replace' for (thing-at-point 'symbol)."
   (interactive)
   (let ((query-replace-history query-replace-history))
@@ -262,7 +264,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (call-interactively 'anzu-query-replace-at-cursor)))
 
 ;;;###autoload
-(defun aleksei/anzu-query-replace ()
+(defun init-anzu-query-replace ()
   "Run `anzu-query-replace' for with region if it's not multiline."
   (interactive)
   (if (and (use-region-p)
@@ -274,8 +276,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (call-interactively #'anzu-query-replace))
 
 (use-package anzu
-  :commands (aleksei/anzu-query-replace-at-cursor
-             aleksei/anzu-query-replace
+  :commands (init-anzu-query-replace-at-cursor
+             init-anzu-query-replace
              anzu-query-replace-at-cursor
              isearch-forward
              isearch-forward-thing-at-point)
@@ -283,8 +285,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (global-anzu-mode +1)
 
   :bind
-  (("C-t" . #'aleksei/anzu-query-replace-at-cursor)
-   ("M-w" . #'aleksei/anzu-query-replace)
+  (("C-t" . #'init-anzu-query-replace-at-cursor)
+   ("M-w" . #'init-anzu-query-replace)
    ("C-M-w" . #'anzu-query-replace-regexp)
    :map isearch-mode-map
    ("M-w" . #'anzu-isearch-query-replace)
@@ -292,26 +294,26 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
    ("M-%" . #'anzu-isearch-query-replace)
    ("M-C-%" . #'anzu-isearch-query-replace-regexp)))
 
-(defun aleksei-bounds-of-region-or-symbol-at-point ()
+(defun init-bounds-of-region-or-symbol-at-point ()
   "Return string of region if it's active otherwise symbols' at point."
   (let ((bounds (if (use-region-p)
                     (car (region-bounds))
                   (bounds-of-thing-at-point 'symbol))))
     (buffer-substring-no-properties (car bounds) (cdr bounds))))
 
-(defun aleksei-consult-rigrep-thing-at-point ()
+(defun init-consult-rigrep-thing-at-point ()
   "Search the project for the thing at point of region."
   (interactive)
-  (funcall-interactively #'consult-ripgrep nil (aleksei-bounds-of-region-or-symbol-at-point)))
+  (funcall-interactively #'consult-ripgrep nil (init-bounds-of-region-or-symbol-at-point)))
 
 (use-package consult
   :bind (("C-S-f" . #'consult-ripgrep)
-         ("M-F" . #'aleksei-consult-rigrep-thing-at-point)
+         ("M-F" . #'init-consult-rigrep-thing-at-point)
          ("C-b" . #'consult-buffer)
          ("C-S-o" . #'consult-imenu)
          ("M-o" . #'consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
-         ("C-e" . #'aleksei/consult-project)
+         ("C-e" . #'init-consult-project)
          :map minibuffer-local-map
          ("C-f" . #'consult-history)
          ("C-r" . #'consult-history))
@@ -319,7 +321,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (setq xref-show-xrefs-function       #'consult-xref
         xref-show-definitions-function #'consult-xref))
 
-(defvar aleksei/consult-source-not-opened-project-file
+(defvar init-consult-source-not-opened-project-file
   (list :name     "Project File"
         :narrow   '(?f . "File")
         :category 'file
@@ -338,13 +340,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
              project-files)))))
 
 ;;;###autoload
-(defun aleksei/consult-project ()
+(defun init-consult-project ()
   "Switch to a buffer, a bookmark or find project file."
   (interactive)
   (require 'consult)
   (consult--multi '(consult--source-buffer
                     consult--source-bookmark
-                    aleksei/consult-source-not-opened-project-file)
+                    init-consult-source-not-opened-project-file)
                   :prompt "Switch to: "
                   :history 'consult-projectile--project-history
                   :sort nil))
@@ -451,12 +453,12 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic))
   :config
-  (defvar gptel--gemini
+  (defvar init-gptel-gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
-  (defvar gptel--anthropic
+  (defvar init-gptel-anthropic
     (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
   (setq-default gptel-model 'gemini-2.5-flash
-                gptel-backend gptel--gemini)
+                gptel-backend init-gptel-gemini)
   :custom
   (gptel-default-mode #'org-mode)
   (gptel-include-reasoning nil)
@@ -511,7 +513,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package crux
   :bind (("<home>" . crux-move-beginning-of-line)))
 
-(defun aleksei/remove-fringe-from-minibuffer (&rest _)
+(defun init-remove-fringe-from-minibuffer (&rest _)
   "Remove fringes in minibuffer window."
   (set-window-fringes (minibuffer-window) 0))
 
@@ -521,7 +523,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (minibuffer-follows-selected-frame nil)
   :hook
-  ((minibuffer-setup window-state-change) . aleksei/remove-fringe-from-minibuffer))
+  ((minibuffer-setup window-state-change) . init-remove-fringe-from-minibuffer))
 
 (use-package grep
   :custom
@@ -579,13 +581,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                  consult-ripgrep
                  consult-grep
                  consult-imenu-multi
-                 aleksei/isearch-region-or-forward
+                 init-isearch-region-or-forward
                  isearch-forward
                  isearch-backward
                  query-replace
                  anzu-query-replace-at-cursor
-                 aleksei/anzu-query-replace-at-cursor
-                 aleksei/anzu-query-replace
+                 init-anzu-query-replace-at-cursor
+                 init-anzu-query-replace
                  flycheck-next-error
                  flycheck-previous-error
                  flycheck-goto-next-error
@@ -601,7 +603,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                  diff-hl-next-hunk
                  diff-hl-previous-hunk
                  expand-region
-                 aleksei-puni-matchit
+                 init-puni-matchit
                  puni-forward-sexp
                  puni-backward-sexp
                  puni-beginning-of-sexp
@@ -681,7 +683,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (electric-indent-mode +1)
   (electric-layout-mode +1))
 
-(defun aleksei-toggle-flyspell-mode ()
+(defun init-toggle-flyspell-mode ()
   (interactive)
   (if flyspell-mode
       (progn
@@ -689,7 +691,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (call-interactively (if (derived-mode-p 'prog-mode) #'flyspell-prog-mode #'flyspell-mode))))
 
 (use-package flyspell
-  :bind (("C-c t s" . #'aleksei-toggle-flyspell-mode)
+  :bind (("C-c t s" . #'init-toggle-flyspell-mode)
          :map flyspell-mode-map
          ("C-;" . nil))
   :hook ((text-mode . flyspell-mode)
@@ -700,7 +702,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package hardhat
   :config
-  (defun aleksei/disable-checks-if-read-only ()
+  (defun init-disable-checks-if-read-only ()
     (when (or buffer-read-only hardhat-mode)
       (eldoc-mode -1)
       (flyspell-mode -1)
@@ -713,10 +715,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                                         "/share/emacs/.*/lisp/"
                                         "/.cargo/registry/"))
   :hook
-  ((find-file hardhat-mode) . aleksei/disable-checks-if-read-only))
+  ((find-file hardhat-mode) . init-disable-checks-if-read-only))
 
 ;;;###autoload
-(defun aleksei-puni-matchit ()
+(defun init-puni-matchit ()
   "Jump between open and close parentheses."
   (interactive)
   (let ((travel-func (if (not (puni-strict-backward-sexp)) #'puni-strict-forward-sexp #'puni-strict-backward-sexp)))
@@ -726,7 +728,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :init (puni-global-mode +1)
   :bind (("M-m" . nil)
          :map puni-mode-map
-         ("M-m" . #'aleksei-puni-matchit)
+         ("M-m" . #'init-puni-matchit)
          ("DEL" . nil)
          ("C-d" . nil)
          ("M-d" . nil)
@@ -741,7 +743,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package debian-el)
 
-(defun aleksei-manually-activate-imenu ()
+(defun init-manually-activate-imenu ()
   "Activate imenu manually in eglot."
   (when (not (derived-mode-p 'rust-mode))
     (add-function :before-until (local 'imenu-create-index-function)
@@ -751,7 +753,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package eglot
   :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
-  :hook (eglot-managed-mode-hook . aleksei-manually-activate-imenu)
+  :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
   :config
   (add-to-list 'eglot-stay-out-of 'imenu)
   (setq eglot-events-buffer-config  '(:size 0 :format 'full))
@@ -832,10 +834,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (telega-server-libs-prefix "/usr"))
 
-(load (locate-user-emacs-file "lisp/aleksei-windows"))
-(load (locate-user-emacs-file "lisp/aleksei-org"))
+(require 'init-windows)
+(require 'init-org)
 (unless (eq system-type 'windows-nt)
-  (load (locate-user-emacs-file "lisp/aleksei-vterm")))
+  (require 'init-vterm))
 
 (provide 'init)
 ;;; init.el ends here
@@ -862,8 +864,3 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(region ((t :extend nil))))
-
-
-;; Local Variables:
-;; eval: (setq-local flymake-diagnostic-functions (cl-remove 'package-lint-flymake flymake-diagnostic-functions :test 'eq))
-;; End:

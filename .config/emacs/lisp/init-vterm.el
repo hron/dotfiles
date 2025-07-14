@@ -1,4 +1,4 @@
-;;; aleksei-vterm.el --- vterm configuration -*- lexical-binding: t; -*-
+;;; init-vterm.el --- vterm configuration -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2025 Aleksei Gusev
 ;;
@@ -17,35 +17,35 @@
 ;;
 ;;; Code:
 
-(defun aleksei-vterm-redo ()
+(defun init-vterm-redo ()
   "Send `C-S-z' to the libvterm."
   (interactive)
   (vterm-send "M-z"))
 
-(defun aleksei-vterm-copy-mode-next-prompt ()
+(defun init-vterm-copy-mode-next-prompt ()
   (interactive)
   (vterm-copy-mode)
   (call-interactively #'vterm-next-prompt))
 
-(defun aleksei-vterm-copy-mode-previous-prompt ()
+(defun init-vterm-copy-mode-previous-prompt ()
   (interactive)
   (vterm-copy-mode)
   (call-interactively #'vterm-previous-prompt))
 
-(defun aleksei-vterm-new-tab ()
+(defun init-vterm-new-tab ()
   (interactive)
   (vterm 'new))
 
-(defun aleksei-vterm-toggle ()
+(defun init-vterm-toggle ()
   (interactive)
   (if-let* ((win (get-buffer-window "*vterm*")))
       (delete-window win)
     (call-interactively #'vterm-other-window)))
 
 (use-package vterm
-  :bind (("C-`" . #'aleksei-vterm-toggle)
+  :bind (("C-`" . #'init-vterm-toggle)
          :map vterm-mode-map
-         ("C-S-z" . #'aleksei-vterm-redo)
+         ("C-S-z" . #'init-vterm-redo)
          ("C-v" . #'vterm-yank)
          ("C-<backspace>" . #'vterm-send-meta-backspace)
          ("C-<delete>" . #'vterm--self-insert)
@@ -55,16 +55,16 @@
          ("M-i" . nil)
          ("C-b" . #'switch-to-buffer)
          ("C-e" . #'aleksei/consult-project)
-         ("M-<up>" . #'aleksei-vterm-copy-mode-previous-prompt)
-         ("M-<down>" . #'aleksei-vterm-copy-mode-next-prompt)
-         ("C-t" . #'aleksei-vterm-new-tab)
+         ("M-<up>" . #'init-vterm-copy-mode-previous-prompt)
+         ("M-<down>" . #'init-vterm-copy-mode-next-prompt)
+         ("C-t" . #'init-vterm-new-tab)
          ("<f3>" . nil)
          ("<f4>" . nil)
          ("C-j" . nil)
          :map vterm-copy-mode-map
          ("M-<up>" . #'vterm-previous-prompt)
          ("M-<down>" . #'vterm-next-prompt)
-         ("C-t" . #'aleksei-vterm-new-tab))
+         ("C-t" . #'init-vterm-new-tab))
   :custom
   (vterm-shell "/usr/bin/fish")
   (vterm-max-scrollback 100000)
@@ -77,5 +77,5 @@
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local pixel-scroll-precision-mode nil)))
   (add-hook 'vterm-mode-hook #'(lambda () (setq-local global-hl-line-mode nil))))
 
-(provide 'aleksei-vterm)
-;;; aleksei-vterm.el ends here
+(provide 'init-vterm)
+;;; init-vterm.el ends here

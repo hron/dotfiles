@@ -1,4 +1,4 @@
-;;; aleksei-windows.el --- Defines windows related behavior for my taste -*- lexical-binding: t; -*-
+;;; init-windows.el --- Defines windows related behavior for my taste -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2025 Aleksei Gusev
 ;;
@@ -8,7 +8,7 @@
 ;; Modified: June 06, 2025
 ;; Version: 0.0.1
 ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
-;; Homepage: https://github.com/hron/aleksei-windows
+;; Homepage: https://github.com/hron/init-windows
 ;; Package-Requires: ((emacs "30.1"))
 ;;
 ;; This file is not part of GNU Emacs.
@@ -25,9 +25,9 @@
          ("C-<prior>" . (lambda () (interactive) (other-window -1)))
          ("C-j" . #'window-toggle-side-windows)
          ("C-w" . #'delete-window)
-         ("M-i" . #'aleksei-windows--delete-other-windows)))
+         ("M-i" . #'init-windows--delete-other-windows)))
 
-(defun aleksei-windows--delete-other-windows ()
+(defun init-windows--delete-other-windows ()
   "Delete all other windows except the current one and side windows."
   (interactive)
   (let ((current (selected-window)))
@@ -37,7 +37,7 @@
                                    (window-parameter current 'window-side)))
                       (delete-window w))))))
 
-(defun aleksei-windows--display-below-fit-and-select (buffer &optional _alist)
+(defun init-windows--display-below-fit-and-select (buffer &optional _alist)
   "Display BUFFER at the bottom of the window, apply ALIST.
 
 Fit the height to the content, and select the window."
@@ -46,7 +46,7 @@ Fit the height to the content, and select the window."
     (select-window window)  ;; Select the window displaying the buffer
     window))
 
-(defun aleksei-windows--2-columns-layout-p (&rest _args)
+(defun init-windows--2-columns-layout-p (&rest _args)
   "Detect if there is enough width to use 2 columns layout."
   (>= (frame-width) 200))
 
@@ -58,7 +58,7 @@ Fit the height to the content, and select the window."
                 ;; "\\*diff-hl"
                 ))
          (display-buffer-reuse-mode-window
-          aleksei-windows--display-below-fit-and-select))
+          init-windows--display-below-fit-and-select))
 
         ((or . ("\\*Org Agenda"
                 "\\*doom:scratch"
@@ -67,7 +67,7 @@ Fit the height to the content, and select the window."
           display-buffer-same-window))
 
         ;; 2 column layout
-        ((and . (aleksei-windows--2-columns-layout-p
+        ((and . (init-windows--2-columns-layout-p
                  (or . ("\\*ChatGPT"
                         "\\*Gemini"
                         "^magit-log"
@@ -87,7 +87,7 @@ Fit the height to the content, and select the window."
          (window-width . .5)
          (slot . 0))
 
-        ((and . (aleksei-windows--2-columns-layout-p
+        ((and . (init-windows--2-columns-layout-p
                  (or . ("^\\*helpful"
                         "Output\\*$"
                         "^\\*lsp-help"
@@ -134,20 +134,20 @@ Fit the height to the content, and select the window."
          (side . bottom)
          (window-height . .33))))
 
-(defvar aleksei-windows--redisplay-last-frame-width nil)
+(defvar init-windows--redisplay-last-frame-width nil)
 
-(defun aleksei-windows--frame-size-changed-p ()
+(defun init-windows--frame-size-changed-p ()
   "Non-nil if a change in frame size is detected."
   (let ((new-size (cons (frame-width) (frame-height))))
-    (cond ((null aleksei-windows--redisplay-last-frame-width)
-           (setq aleksei-windows--redisplay-last-frame-width new-size)
+    (cond ((null init-windows--redisplay-last-frame-width)
+           (setq init-windows--redisplay-last-frame-width new-size)
            nil)
-          ((not (equal aleksei-windows--redisplay-last-frame-width new-size))
-           (setq aleksei-windows--redisplay-last-frame-width new-size)))))
+          ((not (equal init-windows--redisplay-last-frame-width new-size))
+           (setq init-windows--redisplay-last-frame-width new-size)))))
 
-(defun aleksei-windows--redisplay-side-windows (&optional frame)
+(defun init-windows--redisplay-side-windows (&optional frame)
   (interactive)
-  (when (and (aleksei-windows--frame-size-changed-p))
+  (when (and (init-windows--frame-size-changed-p))
     (let ((closed-bufs))
       (dolist (win (window-list frame nil))
         (when (and (window-parameter win 'window-side)
@@ -157,7 +157,7 @@ Fit the height to the content, and select the window."
       (dolist (buf closed-bufs)
         (pop-to-buffer buf)))))
 
-(add-hook 'window-size-change-functions #'aleksei-windows--redisplay-side-windows)
+(add-hook 'window-size-change-functions #'init-windows--redisplay-side-windows)
 
-(provide 'aleksei-windows)
-;;; aleksei-windows.el ends here
+(provide 'init-windows)
+;;; init-windows.el ends here
