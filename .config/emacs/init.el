@@ -121,7 +121,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (tool-bar-mode -1)
 (if (eq system-type 'windows-nt)
     (fringe-mode 12)
-  (fringe-mode 5))
+  (fringe-mode 8))
 (global-auto-revert-mode +1)
 (global-subword-mode +1)
 (which-key-mode +1)
