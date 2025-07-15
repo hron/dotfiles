@@ -18,35 +18,108 @@
     }
   },
   "theme": {
-    "dark": "Modus Vivendi",
+    "dark": "algus: Modus Vivendi",
     "light": "Modus Operandi"
   },
-  "experimental.theme_overrides": {
-    "syntax": {
-      "comment": {
-        "font_style": "italic"
-      },
-      "comment.doc": {
-        "font_style": "italic"
-      },
-      "title": {
-        "font_weight": 800
-      }
+  "resize_all_panels_in_dock": ["left", "right", "bottom"],
+  // "experimental.theme_overrides": {
+  //   "scrollbar.thumb.background": "#0000ffaa"
+  // },
+  // "theme_overrides": {
+  //   "algus: Modus Operandi": {
+  //     // red
+  //     "scrollbar.thumb.background": "#ff0000aa"
+  //   },
+  //   "algus: Modus Vivendi": {
+  //     // yellow
+  //     "scrollbar.thumb.background": "#ffff00aa"
+  //     // "scrollbar.thumb.background": "#0000ffaa"
+  //   }
+  // },
+  //   // "algus: Modus Videndi": {
+  //   //   "search.match_background": "#ffffff40",
+  //   //   "editor.background": "#3c3c3caa"
+  //   // }
+  //   // "search.match_background": "#3c3c3caa",
+  //   // "players": [
+  //   //   {
+  //   //     "cursor": "#74ade8ff",
+  //   //     "background": "#240f55ff",
+  //   //     "selection": "#240f55ff"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#be5046ff",
+  //   //     "background": "#be5046ff",
+  //   //     "selection": "#be50463d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#bf956aff",
+  //   //     "background": "#bf956aff",
+  //   //     "selection": "#bf956a3d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#b477cfff",
+  //   //     "background": "#b477cfff",
+  //   //     "selection": "#b477cf3d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#6eb4bfff",
+  //   //     "background": "#6eb4bfff",
+  //   //     "selection": "#6eb4bf3d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#d07277ff",
+  //   //     "background": "#d07277ff",
+  //   //     "selection": "#d072773d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#dec184ff",
+  //   //     "background": "#dec184ff",
+  //   //     "selection": "#dec1843d"
+  //   //   },
+  //   //   {
+  //   //     "cursor": "#a1c181ff",
+  //   //     "background": "#a1c181ff",
+  //   //     "selection": "#a1c1813d"
+  //   //   }
+  //   // ],
+  //   // "syntax": {
+  //   //   "comment": {
+  //   //     "font_style": "italic"
+  //   //   },
+  //   //   "comment.doc": {
+  //   //     "font_style": "italic"
+  //   //   },
+  //   //   "title": {
+  //   //     "font_weight": 800
+  //   //   }
+  //   // }
+  // },
+  "scrollbar": {
+    "axes": {
+      "horizontal": false
     }
   },
-  "ui_font_size": 18,
+  "ui_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 600,
+  "buffer_font_weight": 500,
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
     "liga": false
   },
   "autosave": "on_focus_change",
+  // Whether to use the system provided dialogs for Open and Save As.
+  // When set to false, Zed will use the built-in keyboard-first pickers.
+  "use_system_path_prompts": false,
+  // When enabled, automatically adjusts search case sensitivity based on your query.
+  // If your search query contains any uppercase letters, the search becomes case-sensitive;
+  // if it contains only lowercase letters, the search becomes case-insensitive.
+  "use_smartcase_search": true,
   "notification_panel": {
-    "dock": "right"
+    "dock": "left"
   },
   "chat_panel": {
     "dock": "left"
@@ -55,16 +128,32 @@
     "line_numbers": false
   },
   "tab_bar": {
-    "show": false
+    "show": false,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "tabs": {
+    "git_status": true,
+    "close_position": "right",
+    "file_icons": true,
+    "show_close_button": "hidden",
+    "show_diagnostics": "all"
+  },
+  // Toolbar related settings
+  "toolbar": {
+    // Whether to show breadcrumbs.
+    "breadcrumbs": true,
+    // Whether to show quick action buttons.
+    "quick_actions": false,
+    // Whether to show the Selections menu in the editor toolbar.
+    "selections_menu": false,
+    // Whether to show agent review buttons in the editor toolbar.
+    "agent_review": false
   },
   "indent_guides": {
     "active_line_width": 2
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
-  },
-  "tabs": {
-    "file_icons": true,
-    "git_status": true
   },
   "preview_tabs": {
     "enabled": true,
@@ -73,34 +162,35 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "left",
-    "default_width": 650,
+    "dock": "bottom",
+    "default_width": 900,
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
-    "font_weight": 600
+    "font_weight": 500,
     // "line_height": "standard"
+    // "shell": {
+    //   "program": "bash"
+    // }
+    "toolbar": {
+      "breadcrumbs": false
+    }
   },
   "project_panel": {
     "dock": "left",
-    "default_width": 650
+    "default_width": 400
   },
-  "assistant": {
-    "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
-    },
-    "default_height": 650.0,
-    "provider": null,
-    "dock": "left",
-    "default_width": 650,
+  "agent": {
     "version": "2",
+    "dock": "right",
+    "default_width": 900,
     "enabled": true
   },
   "git_panel": {
-    "default_width": 650
+    "default_width": 400
   },
   "features": {
     // Which inline completion provider to use.
-    "inline_completion_provider": "none"
-  }
+    "edit_prediction_provider": "zed"
+  },
+  "smooth_scroll": true
 }
