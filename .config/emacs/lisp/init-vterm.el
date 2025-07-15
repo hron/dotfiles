@@ -54,7 +54,7 @@
          ("C-p" . nil)
          ("M-i" . nil)
          ("C-b" . #'switch-to-buffer)
-         ("C-e" . #'aleksei/consult-project)
+         ("C-e" . #'init-consult-project)
          ("M-<up>" . #'init-vterm-copy-mode-previous-prompt)
          ("M-<down>" . #'init-vterm-copy-mode-next-prompt)
          ("C-t" . #'init-vterm-new-tab)
