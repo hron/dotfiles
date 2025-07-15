@@ -834,6 +834,19 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (telega-server-libs-prefix "/usr"))
 
+(use-package dape
+  :hook
+  (kill-emacs . dape-breakpoint-save)
+  (after-init . dape-breakpoint-load)
+
+  :config
+  (dape-breakpoint-global-mode))
+
+;; Enable repeat mode for more ergonomic `dape' use
+(use-package repeat
+  :config
+  (repeat-mode))
+
 (require 'init-windows)
 (require 'init-org)
 (unless (eq system-type 'windows-nt)

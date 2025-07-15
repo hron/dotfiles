@@ -76,3 +76,4 @@
 /.config/emacs/eshell/history
 /.config/VSCodium/*
 /.config/emacs/network-security.data
+/.config/emacs/dape-breakpoints
