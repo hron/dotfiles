@@ -1,4 +1,13 @@
 // test
 {
-    "window.autoDetectColorScheme": true
+    "window.autoDetectColorScheme": true,
+    "window.customTitleBarVisibility": "never",
+    "window.titleBarStyle": "native",
+    "window.menuBarVisibility": "hidden",
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontSize": 15,
+    "files.simpleDialog.enable": true,
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.showTabs": "none",
+    "editor.minimap.enabled": false
 }
