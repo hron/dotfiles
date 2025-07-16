@@ -2,7 +2,7 @@
 Categories=Utility
 Comment[en_US]=Get Things Done with org-mode
 Comment=Get Things Done with org-mode
-Exec=emacsclient --create-frame --socket-name=gtd --eval "(aleksei-org-gtd)" || env EMACS_SERVER_NAME=gtd emacs --no-desktop --name org-mode --eval "(aleksei-org-gtd)"
+Exec=emacsclient --create-frame --socket-name=gtd --eval "(init-org-gtd)" || env EMACS_SERVER_NAME=gtd emacs --no-desktop --name org-mode --eval "(init-org-gtd)"
 Icon=org-mode-unicorn
 MimeType=
 Name=GTD
