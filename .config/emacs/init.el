@@ -272,6 +272,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
            (= (line-number-at-pos (region-beginning))
               (line-number-at-pos (region-end))))
       (let ((isearch-string (buffer-substring-no-properties (region-beginning) (region-end))))
+        (goto-char (region-beginning))
         (deactivate-mark)
         (anzu--query-replace-common nil :isearch-p t)))
   (call-interactively #'anzu-query-replace))
