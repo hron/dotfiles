@@ -21,25 +21,34 @@
 
 (setq org-directory "~/org")
 
-(defun init-org--update-todos-badge ()
-  "Update count badge on the taskbar icon of org-mode."
-  (let ((today-todos (init-org--count-today-todos)))
-    (launcher-api-update
-     "application://org-mode.desktop"
-     `((count . ,today-todos)
-       (count-visible . ,(> today-todos 0))))))
+(use-package unity-launcher-api
+  :if (featurep 'dbus)
+  :straight (unity-launcher-api :type git :host github :repo "hron/unity-launcher-api.el")
+  :init
+  (require 'unity-launcher-api)
 
-(defun init-org--count-today-todos ()
-  "Count the number of todos scheduled for today."
-  (seq-reduce
-   (lambda (count org-file)
-     (let* ((org-agenda-skip-scheduled-if-done t)
-            (org-file (concat org-directory "/" org-file ))
-            (today (calendar-current-date))
-            (today-todos (org-agenda-get-day-entries org-file today)))
-       (+ count (length today-todos))))
-   org-agenda-files
-   0))
+  (defun init-org--update-todos-badge ()
+    "Update count badge on the taskbar icon of org-mode."
+    (let ((today-todos (init-org--count-today-todos)))
+      (unity-launcher-api-update
+       "application://org-mode.desktop"
+       `((count . ,today-todos)
+         (count-visible . ,(> today-todos 0))))))
+
+  (defun init-org--count-today-todos ()
+    "Count the number of todos scheduled for today."
+    (seq-reduce
+     (lambda (count org-file)
+       (let* ((org-agenda-skip-scheduled-if-done t)
+              (org-file (concat org-directory "/" org-file ))
+              (today (calendar-current-date))
+              (today-todos (org-agenda-get-day-entries org-file today)))
+         (+ count (length today-todos))))
+     org-agenda-files
+     0))
+
+  (add-hook 'org-agenda-finalize-hook #'init-org--update-todos-badge)
+  (add-hook 'org-after-todo-state-change-hook #'init-org--update-todos-badge))
 
 ;;;###autoload
 (defun init-org-gtd ()
@@ -48,10 +57,9 @@
   (require 'org)
   (find-file (concat org-directory "/tasks.org" ))
   (org-agenda-list)
-  (when (featurep 'dbus)
-    (require 'launcher-api)
-    (init-org--update-todos-badge)
-    (add-hook 'org-after-todo-state-change-hook #'init-org--update-todos-badge)))
+  ;; (when (featurep 'dbus)
+  ;;   (init-org--update-todos-badge))
+  )
 
 ;;;###autoload
 (defun init-org-todo-convert-to-project ()
