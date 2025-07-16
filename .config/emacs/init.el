@@ -86,7 +86,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
          ("C-q" . #'init-eldoc)
-         ("C-M-o" . nil))
+         ("C-M-o" . nil)
+         ("C-M-r" . #'revert-buffer))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
