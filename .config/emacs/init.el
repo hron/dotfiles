@@ -32,7 +32,9 @@
   :custom
   (cua-remap-control-z nil)
   (cua-prefix-override-inhibit-delay 0.0000000001)
-  (cua-rectangle-mark-key [(control shift return)]))
+  (cua-rectangle-mark-key [(control shift return)])
+  :bind (:map cua--cua-keys-keymap
+              ("M-v" . nil)))
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -87,7 +89,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("<f1> '" . #'describe-char)
          ("C-q" . #'init-eldoc)
          ("C-M-o" . nil)
-         ("C-M-r" . #'revert-buffer))
+         ("C-M-r" . #'revert-buffer)
+         ("M-v" . #'yank-from-kill-ring))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
