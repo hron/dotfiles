@@ -137,6 +137,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
       icon-title-format frame-title-format)
 
+(setq-default tab-width 4)
+
 (use-package bookmark
   :ensure nil
   :custom
@@ -848,6 +850,11 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package repeat
   :config
   (repeat-mode))
+
+(use-package just-ts-mode)
+
+(use-package emacs
+  :hook (yaml-ts-mode . (lambda () (setq-default tab-width 2))))
 
 (require 'init-windows)
 (require 'init-org)
