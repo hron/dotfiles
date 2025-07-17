@@ -219,6 +219,26 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (compilation-scroll-output 'first-error)
   (compile-command ""))
 
+;; (use-package unity-launcher-api
+;;   :if (featurep 'dbus)
+;;   :straight (unity-launcher-api :type git :host github :repo "hron/unity-launcher-api.el")
+;;   :init
+;;   (require 'unity-launcher-api)
+;;   (add-hook 'compilation-finish-functions
+;;             (lambda (_buf _status)
+;;               (unity-launcher-api-update "application://emacs.desktop" '((urgent . t)))))
+;;   (add-hook 'focus-in-hook
+;;             (lambda ()
+;;               (unity-launcher-api-update "application://emacs.desktop" '((urgent . nil))))))
+(use-package dock
+  :if (featurep 'dbus)
+  :ensure t
+  :straight (dock :type git :host github :repo "hron/dock.el")
+  :init
+  (require 'dock)
+  ;; (add-function :after compilation-finish-functions #'dock-set-needs-attention)
+  (dock-track-urgency-mode +1))
+
 (use-package winner
   :ensure nil
   :bind (("<f5>" . (lambda () (interactive) (funcall-interactively 'jump-to-register ?w)))

@@ -21,19 +21,18 @@
 
 (setq org-directory "~/org")
 
-(use-package unity-launcher-api
+(use-package dock
   :if (featurep 'dbus)
-  :straight (unity-launcher-api :type git :host github :repo "hron/unity-launcher-api.el")
+  :straight (dock :type git :host github :repo "hron/dock.el")
   :init
-  (require 'unity-launcher-api)
+  (require 'dock)
 
   (defun init-org--update-todos-badge ()
     "Update count badge on the taskbar icon of org-mode."
     (let ((today-todos (init-org--count-today-todos)))
-      (unity-launcher-api-update
-       "application://org-mode.desktop"
-       `((count . ,today-todos)
-         (count-visible . ,(> today-todos 0))))))
+      (if (> today-todos 0)
+          (dock-set-count-badge today-todos)
+        (dock-remove-count-badge))))
 
   (defun init-org--count-today-todos ()
     "Count the number of todos scheduled for today."
@@ -48,18 +47,23 @@
      0))
 
   (add-hook 'org-agenda-finalize-hook #'init-org--update-todos-badge)
-  (add-hook 'org-after-todo-state-change-hook #'init-org--update-todos-badge))
+  (add-hook 'org-after-todo-state-change-hook #'init-org--update-todos-badge)
+  (add-hook 'after-save-hook
+            (lambda ()
+              (when (seq-contains-p org-agenda-files
+                                    (file-name-nondirectory (buffer-file-name)))
+                (init-org--update-todos-badge)))))
 
 ;;;###autoload
 (defun init-org-gtd ()
   "Prepare Emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
+  (when (featurep 'dbus)
+    (require 'dock)
+    (setq dock-desktop-file "org-mode.desktop"))
   (find-file (concat org-directory "/tasks.org" ))
-  (org-agenda-list)
-  ;; (when (featurep 'dbus)
-  ;;   (init-org--update-todos-badge))
-  )
+  (org-agenda-list))
 
 ;;;###autoload
 (defun init-org-todo-convert-to-project ()
