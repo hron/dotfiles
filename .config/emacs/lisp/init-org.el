@@ -7,7 +7,7 @@
 ;; Created: April 10, 2025
 ;; Modified: April 10, 2025
 ;; Version: 0.0.1
-;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
+;; Keywords: tools
 ;; Homepage: https://github.com/hron/init-org
 ;; Package-Requires: ((emacs "30.1"))
 ;;
