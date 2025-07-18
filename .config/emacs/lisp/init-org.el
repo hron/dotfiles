@@ -61,7 +61,7 @@
   (require 'org)
   (when (featurep 'dbus)
     (require 'dock)
-    (setq dock-desktop-file "org-mode.desktop"))
+    (setq dock-desktop-entry "org-mode"))
   (find-file (concat org-directory "/tasks.org" ))
   (org-agenda-list))
 
