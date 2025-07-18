@@ -54,21 +54,23 @@
   "Show a badge on the Emacs icon in the Dock with the number of TODOs scheduled for today."
   :global t
   :lighter nil
-  (remove-hook 'org-agenda-finalize-hook #'org-agenda-dock--update)
-  (remove-hook 'org-after-todo-state-change-hook #'org-agenda-dock--update)
-  (remove-hook 'after-save-hook #'org-agenda-dock--update-after-save)
-  (advice-remove 'org-schedule #'org-agenda-dock--update-after-reschedule)
-  (advice-remove 'org-deadline #'org-agenda-dock--update-after-reschedule)
-  (advice-remove 'org-agenda-do-date-later #'org-agenda-dock--update-after-reschedule)
-  (advice-remove 'org-agenda-do-date-earlier #'org-agenda-dock--update-after-reschedule)
-  (when org-agenda-dock-mode
-    (add-hook 'org-agenda-finalize-hook #'org-agenda-dock--update)
-    (add-hook 'org-after-todo-state-change-hook #'org-agenda-dock--update)
-    (add-hook 'after-save-hook #'org-agenda-dock--update-after-save)
-    (advice-add 'org-schedule :after #'org-agenda-dock--update-after-reschedule)
-    (advice-add 'org-deadline :after #'org-agenda-dock--update-after-reschedule)
-    (advice-add 'org-agenda-do-date-earlier :after #'org-agenda-dock--update-after-reschedule)
-    (advice-add 'org-agenda-do-date-later :after #'org-agenda-dock--update-after-reschedule)))
+  (let ((commands-to-advice '(org-schedule
+                              org-deadline
+                              org-agenda-do-date-earlier
+                              org-agenda-do-date-later)))
+
+    (remove-hook 'org-agenda-finalize-hook #'org-agenda-dock--update)
+    (remove-hook 'org-after-todo-state-change-hook #'org-agenda-dock--update)
+    (remove-hook 'after-save-hook #'org-agenda-dock--update-after-save)
+    (dolist (func commands-to-advice)
+      (advice-remove func #'org-agenda-dock--update-after-reschedule))
+
+    (when org-agenda-dock-mode
+      (add-hook 'org-agenda-finalize-hook #'org-agenda-dock--update)
+      (add-hook 'org-after-todo-state-change-hook #'org-agenda-dock--update)
+      (add-hook 'after-save-hook #'org-agenda-dock--update-after-save)
+      (dolist (func commands-to-advice)
+        (advice-add func :after #'org-agenda-dock--update-after-reschedule)))))
 
 (provide 'org-agenda-dock)
 ;;; org-agenda-dock.el ends here
