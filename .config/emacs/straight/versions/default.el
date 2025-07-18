@@ -11,7 +11,7 @@
  ("debian-el" . "bc36846aa2a185a580a7f06230b32d38459fb324")
  ("diff-hl" . "9b032018fda8eb6c241bba1ec0e5c354ad523b2c")
  ("doom-modeline" . "81f9991e19518cb263e2e20f0d34006c7d3e332a")
- ("dock" . "6e7487686416935de120c8c88e3776c37f9a924c")
+ ("dock" . "aa2e9ca58f06d6b34c208c3725b99667fe2b172d")
  ("drag-stuff.el" . "6d06d846cd37c052d79acd0f372c13006aa7e7c8")
  ("dumb-jump" . "42f97dea503367bf45c53a69de959177b06b0f59")
  ("edit-indirect" . "82a28d8a85277cfe453af464603ea330eae41c05")
