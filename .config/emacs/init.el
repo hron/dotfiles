@@ -414,6 +414,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (corfu-preview-current nil)
   (corfu-preselect 'first)
   (corfu-auto nil)
+  (corfu-auto-delay 0)
   (global-corfu-minibuffer t)
   :config
   (setq corfu-map
