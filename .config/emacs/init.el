@@ -90,7 +90,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-q" . #'init-eldoc)
          ("C-M-o" . nil)
          ("C-M-r" . #'revert-buffer)
-         ("M-v" . #'yank-from-kill-ring))
+         ("M-v" . #'yank-from-kill-ring)
+         ("M-y" . #'completion-at-point))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -103,7 +104,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (vc-follow-symlinks t)
   (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
-  ;; (tab-always-indent 'complete)
+  (tab-always-indent t)
   :hook (before-save . whitespace-cleanup))
 
 (if (eq system-type 'windows-nt)
@@ -427,9 +428,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
           (define-key map [(meta ?h)] #'corfu-info-documentation)
           (define-key map "M-SPC" #'corfu-insert-separator)
           map))
-
-  :bind (:map global-map
-              ("M-y" . #'completion-at-point))
   :hook
   (prog-mode . (lambda () (setq-local corfu-auto t)))
   :init
