@@ -475,8 +475,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
   (defvar init-gptel-anthropic
     (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
-  (setq-default gptel-model 'gemini-2.5-flash
-                gptel-backend init-gptel-gemini)
+  (defvar init-gptel-perplexity
+    (gptel-make-perplexity "Perplexity" :key gptel-api-key :stream t))
+  (setq-default gptel-backend init-gptel-perplexity)
   :custom
   (gptel-default-mode #'org-mode)
   (gptel-include-reasoning nil)
