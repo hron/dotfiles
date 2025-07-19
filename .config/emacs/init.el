@@ -382,8 +382,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package vertico
   :init
   (vertico-mode +1)
-  ;; Avoid `bold' weight because of nerd-icons
-  (set-face-attribute 'vertico-current nil :weight 'normal)
+
+  (defun init-fix-vertico-faces (&optional _theme)
+    "Avoid `bold' weight because of nerd-icons"
+    (set-face-attribute 'vertico-current nil :weight 'normal))
+  (init-fix-vertico-faces)
+  (add-hook 'enable-theme-functions #'init-fix-vertico-faces)
+
   :bind (:map minibuffer-local-map
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
@@ -446,15 +451,20 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package doom-modeline
   :init
   (doom-modeline-mode +1)
-  ;; Remove bold faces to avoid conflict with nerd-icons
-  (let ((bold-faces '(doom-modeline-urgent
-                      doom-modeline-warning
-                      doom-modeline-info
-                      doom-modeline-lsp-success
-                      doom-modeline-lsp-error
-                      doom-modeline-lsp-warning)))
-    (dolist (f bold-faces)
-      (set-face-attribute f nil :weight 'normal)))
+
+  (defun init-fix-doom-modeline-faces (&optional _theme)
+    "Remove bold faces to avoid conflict with nerd-icons"
+    (let ((bold-faces '(doom-modeline-urgent
+                        doom-modeline-warning
+                        doom-modeline-info
+                        doom-modeline-lsp-success
+                        doom-modeline-lsp-error
+                        doom-modeline-lsp-warning)))
+      (dolist (f bold-faces)
+        (set-face-attribute f nil :weight 'normal))))
+  (init-fix-doom-modeline-faces)
+  (add-hook 'enable-theme-functions #'init-fix-doom-modeline-faces)
+
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :custom
