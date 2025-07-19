@@ -814,8 +814,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (rust-ts-flymake-command '("cargo" "clippy")))
 
-(use-package gcmh
-  :init (gcmh-mode +1))
+(unless (featurep 'mps)
+  (use-package gcmh
+    :init (gcmh-mode +1)))
 
 (use-package nix-ts-mode
   :mode "\\.nix\\'")

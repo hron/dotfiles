@@ -19,15 +19,16 @@
 ;;
 ;;; Code:
 
-(if noninteractive  ; in CLI sessions
-    ;; PERF: GC deferral is less important in the CLI, but still helps script
-    ;;   startup times. Just don't set it too high to avoid runaway memory
-    ;;   usage in long-running elisp shell scripts.
-    (setq gc-cons-threshold 134217728  ; 128mb
-          ;; Backported from 29 (see emacs-mirror/emacs@73a384a98698)
-          gc-cons-percentage 1.0)
-  ;; We rely on gmch-mode
-  (setq gc-cons-threshold most-positive-fixnum))
+(unless (featurep 'mps)
+  (if noninteractive  ; in CLI sessions
+      ;; PERF: GC deferral is less important in the CLI, but still helps script
+      ;;   startup times. Just don't set it too high to avoid runaway memory
+      ;;   usage in long-running elisp shell scripts.
+      (setq gc-cons-threshold 134217728  ; 128mb
+            ;; Backported from 29 (see emacs-mirror/emacs@73a384a98698)
+            gc-cons-percentage 1.0)
+    ;; We rely on gmch-mode
+    (setq gc-cons-threshold most-positive-fixnum)))
 
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
