@@ -380,15 +380,15 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (completion-ignore-case t))
 
 (use-package vertico
-  :init (vertico-mode +1)
+  :init
+  (vertico-mode +1)
+  ;; Avoid `bold' weight because of nerd-icons
+  (set-face-attribute 'vertico-current nil :weight 'normal)
   :bind (:map minibuffer-local-map
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
               ("C-j" . vertico-exit-input))
-  :custom-face
-  ;; Avoid `bold' weight because of nerd-icons
-  (vertico-current ((t :inherit highlight :extend t :weight normal)))
   :config
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom))))
 
@@ -444,21 +444,24 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (add-hook 'completion-at-point-functions #'cape-history))
 
 (use-package doom-modeline
-  :init (doom-modeline-mode +1)
+  :init
+  (doom-modeline-mode +1)
+  ;; Remove bold faces to avoid conflict with nerd-icons
+  (let ((bold-faces '(doom-modeline-urgent
+                      doom-modeline-warning
+                      doom-modeline-info
+                      doom-modeline-lsp-success
+                      doom-modeline-lsp-error
+                      doom-modeline-lsp-warning)))
+    (dolist (f bold-faces)
+      (set-face-attribute f nil :weight 'normal)))
   :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
   :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :custom
   (doom-modeline-major-mode-icon t)
   (doom-modeline-buffer-encoding nil)
   (doom-modeline-buffer-file-name-style 'auto)
-  (doom-modeline-height (+ (frame-char-height) 4))
-  :custom-face
-  (doom-modeline-urgent ((t (:inherit (doom-modeline error) :weight normal))))
-  (doom-modeline-warning ((t (:inherit (doom-modeline warning) :weight normal))))
-  (doom-modeline-info ((t (:inherit (doom-modeline success) :weight normal))))
-  (doom-modeline-lsp-success ((t (:inherit doom-modeline-info :weight normal))))
-  (doom-modeline-lsp-error ((t (:inherit doom-modeline-urgent :weight normal))))
-  (doom-modeline-lsp-warning ((t (:inherit doom-modeline-warning :weight normal)))))
+  (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
   :bind (("C-c C-<return>" . gptel-menu)
@@ -892,9 +895,3 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
      (checkdoc-allow-quoting-nil-and-t . t)
      (flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
                               "warnings"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(region ((t :extend nil))))
