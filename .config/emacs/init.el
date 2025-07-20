@@ -693,7 +693,11 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :init
   (dolist (frame-param '(background-color foreground-color background-mode))
     (push (cons frame-param :never) frameset-filter-alist))
-  (desktop-save-mode +1)
+
+  (require 'desktop)
+  (when (file-exists-p (desktop-full-file-name "."))
+    (desktop-save-mode +1))
+
   :custom
   (desktop-path (list "."))
   (desktop-save t)
