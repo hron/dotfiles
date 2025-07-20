@@ -336,7 +336,18 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-r" . #'consult-history))
   :init
   (setq xref-show-xrefs-function       #'consult-xref
-        xref-show-definitions-function #'consult-xref))
+        xref-show-definitions-function #'consult-xref)
+  :custom
+  (completion-in-region-function #'consult-completion-in-region))
+
+(use-package emacs
+  :init (global-completion-preview-mode +1)
+  :bind (:map completion-preview-active-mode-map
+              ("C-i" . nil)
+              ("M-i" . nil)
+              ("C-y" . #'completion-preview-insert)
+              ("M-n" . #'completion-preview-next-candidate)
+              ("M-p" . #'completion-preview-prev-candidate)))
 
 (defvar init-consult-source-not-opened-project-file
   (list :name     "Project File"
@@ -414,31 +425,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (embark-prompter 'embark-completing-read-prompter))
 
 (use-package embark-consult)
-
-(use-package corfu
-  :custom
-  (corfu-preview-current nil)
-  (corfu-preselect 'first)
-  (corfu-auto nil)
-  (corfu-auto-delay 0)
-  (global-corfu-minibuffer t)
-  :config
-  (setq corfu-map
-        (let ((map (make-sparse-keymap)))
-          (define-key map [(meta ?y)] #'corfu-complete)
-          (define-key map [(meta ?u)] #'corfu-expand)
-          (define-key map [(meta ?p)] #'corfu-previous)
-          (define-key map [(meta ?n)] #'corfu-next)
-          (define-key map [(meta ?g)] #'corfu-info-location)
-          (define-key map [(meta ?h)] #'corfu-info-documentation)
-          (define-key map "M-SPC" #'corfu-insert-separator)
-          map))
-  :hook
-  (prog-mode . (lambda () (setq-local corfu-auto t)))
-  :init
-  (global-corfu-mode +1)
-  (corfu-popupinfo-mode +1)
-  (corfu-history-mode +1))
 
 (use-package cape
   :bind ("C-c p" . cape-prefix-map)
@@ -570,9 +556,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package nerd-icons-dired
   :hook
   (dired-mode . nerd-icons-dired-mode))
-(use-package nerd-icons-corfu
-  :init
-  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 (use-package nerd-icons-grep
   :straight (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
   :init (nerd-icons-grep-mode +1))
