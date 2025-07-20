@@ -656,19 +656,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :ensure nil
   :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%> ] *"))
 
-(use-package multiple-cursors
-  :bind (("M-j" . mc/mark-next-like-this)
-         ("M-C-j" . mc/mark-all-like-this)
-         ("M-J" . mc/skip-to-next-like-this)
-         :map mc/keymap
-         ("<return>" . nil)
-         ("C-v" . nil)
-         ("M-v" . nil)
-         ("M-n" . mc/cycle-forward)
-         ("M-p" . mc/cycle-backward))
-  :custom
-  (mc/match-cursor-style nil))
-
 (push 'flymake straight-built-in-pseudo-packages)
 (use-package flymake
   :ensure nil
