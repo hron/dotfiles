@@ -75,6 +75,7 @@ Fit the height to the content, and select the window."
                         "^magit-diff"
                         "^magit-process"
                         "\\*Man"
+                        "\\*Woman"
                         "^\\*vterm"
                         "^\\*Embark Export"
                         "^\\*Occur\\*"
@@ -109,6 +110,7 @@ Fit the height to the content, and select the window."
                 "^magit-log"
                 "^magit-revision"
                 ;; "^*magit-diff"
+                "\\*Woman"
                 "\\*Man"))
          (display-buffer-reuse-window
           display-buffer-same-window))

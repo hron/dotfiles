@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
 export EMACS_SERVER_NAME=gtd
+# export WINDOW_TITLE=inbox
 
-emacsclient --socket-name=gtd --create-frame --eval "\
-    (progn \
-      (add-hook 'org-capture-after-finalize-hook 'delete-frame) \
-      (org-capture \"\" \"i\") \
-      (delete-other-windows))" ||
-    emacs --no-desktop --name org-mode --eval "\
-    (progn
-      (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
-      (org-capture \"\" \"i\")
-      (delete-other-windows))"
+emacsclient --socket-name=gtd \
+            --create-frame \
+            --eval "\
+                (progn \
+                  (add-hook 'org-capture-after-finalize-hook 'delete-frame) \
+                  (org-capture \"\" \"i\") \
+                  (delete-other-windows))" ||
+    emacs --no-desktop \
+          --name org-mode \
+          --eval "\
+                (progn
+                  (add-hook 'org-capture-after-finalize-hook 'kill-emacs)
+                  (org-capture \"\" \"i\")
+                  (delete-other-windows))"

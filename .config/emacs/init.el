@@ -105,6 +105,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
   (tab-always-indent t)
+  (undo-limit 1600000)
+  (woman-fill-column 100)
   :hook (before-save . whitespace-cleanup))
 
 (if (eq system-type 'windows-nt)
