@@ -21,14 +21,16 @@
 
 (setq org-directory "~/org")
 
+(use-package org-agenda-dock
+  :if (featurep 'dbus)
+  :straight (org-agenda-dock :type git :host github :repo "hron/org-agenda-dock"))
+
 ;;;###autoload
 (defun init-org-gtd ()
   "Prepare Emacs frame to use as a GTD system."
   (interactive)
   (require 'org)
   (when (featurep 'dbus)
-    ;; (require 'dock)
-    (require 'org-agenda-dock)
     (setq dock-desktop-entry "org-mode")
     (org-agenda-dock-mode +1))
   (find-file (concat org-directory "/tasks.org" ))

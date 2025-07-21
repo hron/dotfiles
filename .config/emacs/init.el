@@ -225,7 +225,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package dock
   :if (featurep 'dbus)
   :ensure t
-  :straight (dock :type git :host github :repo "hron/dock.el")
   :init
   (require 'dock)
   (add-hook 'compilation-finish-functions (lambda (_buf _msg) (dock-set-needs-attention)))
