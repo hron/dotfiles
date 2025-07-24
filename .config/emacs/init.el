@@ -139,6 +139,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (savehist-mode +1)
 ;; (save-place-mode +1)
 (recentf-mode +1)
+(minibuffer-depth-indicate-mode +1)
 
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
       icon-title-format frame-title-format)
@@ -332,6 +333,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-o" . #'consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
          ("C-e" . #'init-consult-project)
+         ("M-g M-g" . #'consult-goto-line)
+         ("M-g e" . #'consult-compile-error)
          :map minibuffer-local-map
          ("C-f" . #'consult-history)
          ("C-r" . #'consult-history))
