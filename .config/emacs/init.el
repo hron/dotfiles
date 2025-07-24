@@ -569,13 +569,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :if (not (eq system-type 'windows-nt))
   :init
   (require 'treesit-auto)
-  (treesit-auto-add-to-auto-mode-alist
-   ;; all except rust
-   '(awk bash bibtex blueprint c c-sharp clojure cmake commonlisp cpp css
-         dart dockerfile elixir glsl go gomod heex html janet java
-         javascript json julia kotlin latex lua magik make markdown nix nu
-         org perl proto python r ruby scala sql surface toml tsx
-         typescript typst verilog vhdl vue wast wat wgsl yaml))
   :custom
   (treesit-auto-install nil))
 
@@ -791,9 +784,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :init
   (setq rust-load-optional-libraries nil
         rust-mode-treesitter-derive (not (eq system-type 'windows-nt)))
-  (require 'rust-cargo)
+  ;; (require 'rust-cargo)
   (require 'rust-compile)
-
   ;; (require 'rust-playpen)
   ;; (require 'rust-rustfmt)
   :bind (:map rust-mode-map
