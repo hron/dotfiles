@@ -26,15 +26,18 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
-(use-package emacs
-  :init
-  (cua-mode +1)
-  :custom
-  (cua-remap-control-z nil)
-  (cua-prefix-override-inhibit-delay 0.0000000001)
-  (cua-rectangle-mark-key [(control shift return)])
-  :bind (:map cua--cua-keys-keymap
-              ("M-v" . nil)))
+;; (use-package emacs
+;;   :init
+;;   (cua-mode +1)
+;;   :custom
+;;   (cua-remap-control-z nil)
+;;   (cua-prefix-override-inhibit-delay 0.0000000001)
+;;   (cua-rectangle-mark-key [(control shift return)])
+;;   :bind (:map cua--cua-keys-keymap
+;;               ("M-v" . nil)))
+
+(global-set-key (kbd "C-b") mode-specific-map)
+(global-set-key (kbd "C-d") ctl-x-map)
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -68,9 +71,26 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
       (select-window (car eldoc-window))
     (call-interactively 'eldoc)))
 
+(defun init-copy-line-or-region ()
+  "Copy region if active, otherwise copy current line."
+  (interactive)
+  (if (use-region-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position)
+                    (line-beginning-position 2))))
+
+;; Enhanced cut function
+(defun init-cut-line-or-region ()
+  "Cut region if active, otherwise cut current line."
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position)
+                 (line-beginning-position 2))))
+
 (use-package emacs
   :bind (("C-<f2>" . #'list-processes)
-         ("C-d" . #'duplicate-dwim)
+         ("M-d" . #'duplicate-dwim)
          ("C-s" . #'init-save-all-buffers)
          ("<f6>" . #'toggle-truncate-lines)
          ("C-S-j" . (lambda () (interactive) (forward-line) (join-line)))
@@ -83,7 +103,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-." . #'xref-find-definitions)
          ("M->" . #'xref-find-references)
          ("S-RET" . #'flymake-show-project-diagnostics)
-         ("C-c t e" . #'eldoc-mode)
+         ("C-b t e" . #'eldoc-mode)
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
@@ -92,7 +112,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-M-r" . #'revert-buffer)
          ("M-v" . #'yank-from-kill-ring)
          ("M-y" . #'completion-at-point)
-         ("C-k" . nil))
+         ("C-k" . nil)
+         ("C-c" . #'init-copy-line-or-region)
+         ("C-x" . #'init-cut-line-or-region))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -276,6 +298,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
   :custom ((search-exit-option 'edit)
            (select-enable-clipboard t)
+           (select-enable-primary t)
            (select-active-regions nil)
            (search-nonincremental-instead nil)))
 
@@ -334,7 +357,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package consult
   :bind (("C-S-f" . #'consult-ripgrep)
          ("M-F" . #'init-consult-rigrep-thing-at-point)
-         ("C-b" . #'consult-buffer)
          ("C-S-o" . #'consult-imenu)
          ("M-o" . #'consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
@@ -437,7 +459,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package embark-consult)
 
 (use-package cape
-  :bind ("C-c p" . cape-prefix-map)
+  :bind ("C-b p" . cape-prefix-map)
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-file)
@@ -470,13 +492,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
-  :bind (("C-c C-<return>" . gptel-menu)
-         ("C-c <return>" . gptel-send)
-         ("C-c j" . gptel-menu)
-         ("C-c J" . gptel)
-         ("C-c C-g" . gptel-abort)
+  :bind (("C-b C-<return>" . gptel-menu)
+         ("C-b <return>" . gptel-send)
+         ("C-b j" . gptel-menu)
+         ("C-b J" . gptel)
+         ("C-b C-g" . gptel-abort)
          :map gptel-mode-map
-         ("C-c C-x t" . gptel-set-topic))
+         ("C-b C-x t" . gptel-set-topic))
   :config
   (defvar init-gptel-gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
@@ -519,7 +541,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
               ("C-M-z" . #'diff-hl-revert-hunk)
               ("M-[" . #'diff-hl-previous-hunk)
               ("M-]" . #'diff-hl-next-hunk)
-              ("C-'" . #'diff-hl-show-hunk)))
+              ("C-'" . #'diff-hl-show-hunk))
+  :custom
+  (diff-hl-command-prefix "C-d v"))
 
 ;; emacs-lisp-mode
 (use-package emacs
@@ -647,7 +671,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (push 'flymake straight-built-in-pseudo-packages)
 (use-package flymake
   :ensure nil
-  :bind (("C-c t f" . #'flymake-mode)
+  :bind (("C-b t f" . #'flymake-mode)
          :map flymake-mode-map
          ("<f2>" . #'flymake-goto-next-error)
          ("S-<f2>" . #'flymake-goto-prev-error))
@@ -699,7 +723,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (call-interactively (if (derived-mode-p 'prog-mode) #'flyspell-prog-mode #'flyspell-mode))))
 
 (use-package flyspell
-  :bind (("C-c t s" . #'init-toggle-flyspell-mode)
+  :bind (("C-b t s" . #'init-toggle-flyspell-mode)
          :map flyspell-mode-map
          ("C-;" . nil))
   :hook ((text-mode . flyspell-mode)
@@ -744,7 +768,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-DEL" . nil)
          ("C-k" . nil)
          ("C-S-k" . nil)
-         ("C-c DEL" . nil)
+         ("C-b DEL" . nil)
          ("C-w" . nil)))
 
 (use-package envrc
@@ -780,7 +804,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
   :bind (:map markdown-mode-map
-              ("C-c C-e" . markdown-do))
+              ("C-b C-e" . markdown-do))
   :hook (gfm-mode . (lambda () (toggle-word-wrap +1)))
   :custom
   (markdown-fontify-code-blocks-natively t))
@@ -843,13 +867,14 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (telega-server-libs-prefix "/usr"))
 
-(use-package dape
-  :hook
-  (kill-emacs . dape-breakpoint-save)
-  (after-init . dape-breakpoint-load)
-
-  :config
-  (dape-breakpoint-global-mode))
+;; (use-package dape
+;;   :hook
+;;   (kill-emacs . dape-breakpoint-save)
+;;   (after-init . dape-breakpoint-load)
+;;   :config
+;;   (dape-breakpoint-global-mode)
+;;   :custom
+;;   (dape-key-prefix "\C-d\C-a"))
 
 ;; Enable repeat mode for more ergonomic `dape' use
 (use-package repeat
