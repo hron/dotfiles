@@ -156,7 +156,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 ;; (save-place-mode +1)
 (recentf-mode +1)
 (minibuffer-depth-indicate-mode +1)
-
+(delete-selection-mode +1)
 (setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
       icon-title-format frame-title-format)
 
