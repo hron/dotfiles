@@ -223,6 +223,11 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (compilation-scroll-output 'first-error)
   (compile-command ""))
 
+(use-package compile-plus
+  :ensure t
+  :straight (compile-plus :type git :host github :repo "hron/compile-plus")
+  :init (compile-plus-mode +1))
+
 (use-package dock
   :if (featurep 'dbus)
   :ensure t
