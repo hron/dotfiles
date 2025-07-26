@@ -28,8 +28,8 @@
 
 (define-key key-translation-map (kbd "C-c") (kbd "C-b"))
 (define-key key-translation-map (kbd "C-b") (kbd "C-c"))
-(define-key key-translation-map (kbd "C-x") (kbd "C-d"))
-(define-key key-translation-map (kbd "C-d") (kbd "C-x"))
+(keyboard-translate ?\C-d ?\C-x)
+(keyboard-translate ?\C-x ?\C-d)
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -106,7 +106,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-y" . #'completion-at-point)
          ("C-k" . nil)
          ("C-b" . #'init-copy-line-or-region)
-         ("C-d" . #'init-cut-line-or-region))
+         ("C-d" . #'init-cut-line-or-region)
+         ("C-v" . #'yank))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -533,9 +534,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
               ("C-M-z" . #'diff-hl-revert-hunk)
               ("M-[" . #'diff-hl-previous-hunk)
               ("M-]" . #'diff-hl-next-hunk)
-              ("C-'" . #'diff-hl-show-hunk))
-  :custom
-  (diff-hl-command-prefix "C-x v"))
+              ("C-'" . #'diff-hl-show-hunk)))
 
 ;; emacs-lisp-mode
 (use-package emacs
@@ -761,7 +760,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-k" . nil)
          ("C-S-k" . nil)
          ("C-c DEL" . nil)
-         ("C-w" . nil)))
+         ("C-w" . nil)
+         ("C-d" . nil)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
