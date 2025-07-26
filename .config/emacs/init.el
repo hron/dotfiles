@@ -91,7 +91,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-M-o" . #'consult-eglot-symbols)
          ("C-M-r" . #'revert-buffer)
          ("M-v" . #'yank-from-kill-ring)
-         ("M-y" . #'completion-at-point))
+         ("M-y" . #'completion-at-point)
+         ("C-k" . nil))
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
@@ -472,6 +473,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . gptel-send)
          ("C-c j" . gptel-menu)
+         ("C-c J" . gptel)
          ("C-c C-g" . gptel-abort)
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic))
@@ -729,6 +731,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (interactive)
   (let ((travel-func (if (not (puni-strict-backward-sexp)) #'puni-strict-forward-sexp #'puni-strict-backward-sexp)))
     (while (funcall travel-func))))
+
 (use-package puni
   :defer nil
   :init (puni-global-mode +1)
