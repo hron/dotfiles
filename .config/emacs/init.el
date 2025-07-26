@@ -66,10 +66,12 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (defun init-copy-line-or-region ()
   "Copy region if active, otherwise copy current line."
   (interactive)
-  (if (use-region-p)
-      (kill-ring-save (region-beginning) (region-end))
-    (kill-ring-save (line-beginning-position)
-                    (line-beginning-position 2))))
+  (let ((bounds (if (use-region-p)
+                    (list (region-beginning) (region-end))
+                  (list (line-beginning-position)
+                        (line-beginning-position 2)))))
+    (apply #'pulse-momentary-highlight-region bounds)
+    (apply #'kill-ring-save bounds)))
 
 ;; Enhanced cut function
 (defun init-cut-line-or-region ()
