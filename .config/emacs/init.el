@@ -414,7 +414,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package orderless
   :custom
-  (completion-styles '(flex orderless))
+  (completion-styles '(orderless))
   (completion-ignore-case t))
 
 (use-package vertico
