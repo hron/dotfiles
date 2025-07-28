@@ -546,6 +546,53 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
               ("C-j" . nil))
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
+(push 'autoinsert straight-built-in-pseudo-packages)
+(use-package autoinsert
+  :init (auto-insert-mode +1)
+  :config
+  (add-to-list
+   'auto-insert-alist
+   `(("\\.el\\'" . "Emacs Lisp header")
+     "Short description: "
+     ";;; " (file-name-nondirectory (buffer-file-name)) " --- " str
+     (make-string (max 2 (- 80 (current-column) 27)) ?\s)
+     "-*- lexical-binding: t; -*-" '(setq lexical-binding t)
+     ";;
+;;
+;; Copyright (C) " (format-time-string "%Y") "  "
+     (getenv "ORGANIZATION") | (progn user-full-name) "
+;;
+;; Author: " (user-full-name)
+     '(if (search-backward "&" (line-beginning-position) t)
+          (replace-match (capitalize (user-login-name)) t t))
+     '(end-of-line 1) " <" (progn user-mail-address) ">
+;; Keywords: "
+     '(require 'finder)
+     ;;'(setq v1 (apply 'vector (mapcar 'car finder-known-keywords)))
+     '(setq v1 (mapcar ,(lambda (x) (list (symbol-name (car x))))
+                       finder-known-keywords)
+            v2 (mapconcat (lambda (x) (format "%12s:  %s" (car x) (cdr x)))
+                          finder-known-keywords
+                          "\n"))
+     ((let ((minibuffer-help-form v2))
+        (completing-read "Keyword, C-h: " v1 nil t))
+      str ", ")
+     & -2 "
+\;; SPDX-License-Identifier: GPL
+\;;
+\;;; Commentary:
+\;;
+\;; " _ "
+\;;
+\;;; Code:
+
+
+
+\(provide '"
+     (file-name-base (buffer-file-name))
+     ")
+\;;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")))
+
 (use-package ert
   :bind (:map emacs-lisp-mode-map
               ("C-; f" . ert)))
