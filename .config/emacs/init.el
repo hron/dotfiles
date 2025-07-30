@@ -647,6 +647,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :if (not (eq system-type 'windows-nt))
   :init
   (require 'treesit-auto)
+  (require 'yaml-ts-mode)
   :custom
   (treesit-auto-install nil))
 
