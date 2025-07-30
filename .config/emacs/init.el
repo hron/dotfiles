@@ -693,7 +693,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                  puni-beginning-of-sexp
                  puni-end-of-sexp
                  puni-syntactic-forward-punct
-                 puni-syntactic-backward-punct)))
+                 puni-syntactic-backward-punct
+                 project-query-replace-regexp)))
     (dolist (func funcs)
       (eval `(defadvice ,func (before better-jumper activate)
                (when (bound-and-true-p better-jumper-local-mode)
