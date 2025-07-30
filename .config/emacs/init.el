@@ -463,6 +463,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package doom-modeline
   :init
+  (column-number-mode +1)
   (doom-modeline-mode +1)
 
   (defun init-fix-doom-modeline-faces (&optional _theme)
@@ -478,8 +479,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (init-fix-doom-modeline-faces)
   (add-hook 'enable-theme-functions #'init-fix-doom-modeline-faces)
 
-  :hook (doom-modeline-mode . size-indication-mode) ; filesize in modeline
-  :hook (doom-modeline-mode . column-number-mode)   ; cursor column in modeline
   :custom
   (doom-modeline-major-mode-icon t)
   (doom-modeline-buffer-encoding nil)
