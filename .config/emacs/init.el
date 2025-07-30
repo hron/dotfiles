@@ -431,7 +431,11 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
               ("C-s" . nil)
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
-              ("C-j" . vertico-exit-input))
+              ("C-j" . vertico-exit-input)
+              ("TAB" . nil)
+              ("C-y" . #'vertico-insert)
+              :map minibuffer-local-shell-command-map
+              ("TAB" . nil))
   :config
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom))))
 
