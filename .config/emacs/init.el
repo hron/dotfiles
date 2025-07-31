@@ -110,6 +110,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-b" . #'init-copy-line-or-region)
          ("C-d" . #'init-cut-line-or-region)
          ("C-v" . #'yank))
+  :config
+  (advice-add 'duplicate-dwim :after #'deactivate-mark)
   :custom
   (display-line-numbers-type nil)
   (confirm-kill-emacs nil)
