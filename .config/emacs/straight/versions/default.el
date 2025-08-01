@@ -4,7 +4,7 @@
  ("better-jumper" . "b1bf7a3c8cb820d942a0305e0e6412ef369f819c")
  ("cape" . "c9191ee9e13e86a7b40c3d25c8bf7907c085a1cf")
  ("compat" . "2aee8353772745bb18db1ca63729a7f5ea572a74")
- ("compile-plus" . "6ec0cca5c46716a06969f26bd825b19df8d3520e")
+ ("compile-plus" . "e691a2303394670c2f41f9948eb87b84692ff0e7")
  ("consult" . "30a42ac8f3d42f653eda234ee538c1960704f4f2")
  ("consult-eglot" . "2816f8aad7d6a1e6d5e5b4a5e04c1d74b82b26b8")
  ("crux" . "c83c54d3d746e83861bcb22b0309c66a2d4db17f")
