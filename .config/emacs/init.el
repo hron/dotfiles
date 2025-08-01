@@ -958,3 +958,5 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
      (checkdoc-allow-quoting-nil-and-t . t)
      (flymake-clippy-bin-args "--tests" "--workspace" "--" "-D"
                               "warnings"))))
+(put 'scroll-left 'disabled nil)
+(put 'scroll-right 'disabled nil)
