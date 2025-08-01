@@ -101,7 +101,8 @@
                   calendar-week-start-day 1
                   org-capture-templates
                   '(("i" "Todo" entry (file "~/org/inbox.org")
-                     "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))))
+                     "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
+                  org-log-into-drawer t))
 
   :bind (("C-c n a" . #'org-agenda)
          :map org-mode-map
