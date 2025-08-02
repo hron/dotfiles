@@ -131,7 +131,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (if (eq system-type 'windows-nt)
     (setq-default cursor-type '(bar . 5))
-  (setq-default cursor-type '(bar . 3)))
+  (setq-default cursor-type 'bar))
 (when (eq system-type 'windows-nt)
   (setq w32-pass-lwindow-to-system t
         w32-pass-rwindow-to-system t)
