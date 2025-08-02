@@ -374,7 +374,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :bind (:map completion-preview-active-mode-map
               ("C-i" . nil)
               ("M-i" . nil)
-              ("C-y" . #'completion-preview-insert)
+              ("C-y" . #'completion-preview-complete)
+              ("C-/" . #'completion-preview-insert)
               ("M-n" . #'completion-preview-next-candidate)
               ("M-p" . #'completion-preview-prev-candidate)))
 
