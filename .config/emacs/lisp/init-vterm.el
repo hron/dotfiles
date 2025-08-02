@@ -36,14 +36,8 @@
   (interactive)
   (vterm 'new))
 
-(defun init-vterm-toggle ()
-  (interactive)
-  (if-let* ((win (get-buffer-window "*vterm*")))
-      (delete-window win)
-    (call-interactively #'vterm-other-window)))
-
 (use-package vterm
-  :bind (("C-`" . #'init-vterm-toggle)
+  :bind (("C-`" . #'vterm)
          :map vterm-mode-map
          ("C-S-z" . #'init-vterm-redo)
          ("C-v" . #'vterm-yank)
