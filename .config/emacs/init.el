@@ -542,7 +542,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                                      (window . main)
                                      (direction . below)
                                      (dedicated . t)
-                                     (inhibit-same-window . t))))
+                                     (inhibit-same-window . t)))
+  (git-commit-summary-max-length 50))
 
 (use-package diff-hl
   :init (global-diff-hl-mode +1)
