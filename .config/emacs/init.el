@@ -161,7 +161,15 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (recentf-mode +1)
 (minibuffer-depth-indicate-mode +1)
 (delete-selection-mode +1)
-(setq frame-title-format '("%b" (:eval (concat " - " (project-name (project-current)))))
+
+(defun init-desktop-base-dirname ()
+  "Return base directory with desktop file for modeline."
+  (if-let* ((dir (file-name-nondirectory (directory-file-name desktop-dirname))))
+      (concat " / " dir)
+    ""))
+
+(setq frame-title-format
+      '("%b" (:eval (concat " - " (project-name (project-current)) (init-desktop-base-dirname))))
       icon-title-format frame-title-format)
 
 (setq-default tab-width 4)
