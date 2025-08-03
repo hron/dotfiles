@@ -962,7 +962,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((eval setq-local flymake-diagnostic-functions
+   '((lsp-enabled-clients jsts-ls)
+     (eval setq-local flymake-diagnostic-functions
            (cl-remove 'package-lint-flymake
                       flymake-diagnostic-functions :test 'eq))
      (checkdoc-allow-quoting-nil-and-t . t)
