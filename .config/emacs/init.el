@@ -949,6 +949,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (unless (eq system-type 'windows-nt)
   (require 'init-vterm))
 
+(use-package eask-mode)
+
 (provide 'init)
 ;;; init.el ends here
 (custom-set-variables

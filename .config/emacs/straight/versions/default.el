@@ -16,6 +16,8 @@
  ("doom-modeline" . "81f9991e19518cb263e2e20f0d34006c7d3e332a")
  ("drag-stuff.el" . "6d06d846cd37c052d79acd0f372c13006aa7e7c8")
  ("dumb-jump" . "42f97dea503367bf45c53a69de959177b06b0f59")
+ ("eask" . "6125fc4782a388a387f787108850074db5381ab5")
+ ("eask-mode" . "df33ddd52e90de52f33382b6bf9beda698a1edfa")
  ("edit-indirect" . "82a28d8a85277cfe453af464603ea330eae41c05")
  ("el-get" . "8d3edab760ff84baf4ce36c0b33bfb8668c6d212")
  ("eldoc" . "1d11743436e9ce0d11529bfdf1e548e64f31a92e")
