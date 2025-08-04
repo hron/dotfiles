@@ -104,13 +104,13 @@
                      "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
                   org-log-into-drawer t))
 
-  :bind (("C-b n a" . #'org-agenda)
+  :bind (("C-c n a" . #'org-agenda)
          :map org-mode-map
          ("S-<return>" . org-insert-heading-after-current)
          ("S-M-<return>" . org-insert-todo-heading-respect-content)
          ("S-C-<up>" . org-metaup)
          ("S-C-<down>" . org-metadown)
-         ("C-b C-e" . init-org-todo-convert-to-project)
+         ("C-c C-e" . init-org-todo-convert-to-project)
          ("C-<return>" . org-todo)
          ("S-<return>" . org-insert-heading)
          ("C-S-<left>" . nil)
@@ -126,7 +126,7 @@
          ("M-S-<down>" . org-move-subtree-down)
          ("M-<left>" . nil)
          ("M-<right>" . nil)
-         ("C-b y" . yank-media)
+         ("C-c y" . yank-media)
          ("M-b" . #'org-insert-structure-template))
   :custom
   (org-provide-todo-statistics 'all-headlines)
@@ -146,13 +146,13 @@
 (use-package org-roam
   :custom
   (org-roam-directory (file-truename (concat org-directory "/roam/")))
-  :bind (("C-b n l" . org-roam-buffer-toggle)
-         ("C-b n f" . org-roam-node-find)
-         ("C-b n g" . org-roam-graph)
-         ("C-b n i" . org-roam-node-insert)
-         ("C-b n c" . org-roam-capture)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
          ;; Dailies
-         ("C-b n j" . org-roam-dailies-capture-today))
+         ("C-c n j" . org-roam-dailies-capture-today))
   :config
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))

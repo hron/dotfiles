@@ -26,8 +26,10 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
-(global-set-key (kbd "C-b") mode-specific-map)
-(global-set-key (kbd "C-d") ctl-x-map)
+(define-key key-translation-map (kbd "C-c") (kbd "C-b"))
+(define-key key-translation-map (kbd "C-b") (kbd "C-c"))
+(keyboard-translate ?\C-d ?\C-x)
+(keyboard-translate ?\C-x ?\C-d)
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -95,7 +97,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-." . #'xref-find-definitions)
          ("M->" . #'xref-find-references)
          ("S-RET" . #'flymake-show-project-diagnostics)
-         ("C-b t e" . #'eldoc-mode)
+         ("C-c t e" . #'eldoc-mode)
          ("C-z" . #'undo-only)
          ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
@@ -105,8 +107,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-v" . #'yank-from-kill-ring)
          ("M-y" . #'completion-at-point)
          ("C-k" . nil)
-         ("C-c" . #'init-copy-line-or-region)
-         ("C-x" . #'init-cut-line-or-region)
+         ("C-b" . #'init-copy-line-or-region)
+         ("C-d" . #'init-cut-line-or-region)
          ("C-v" . #'yank))
   :config
   (advice-add 'duplicate-dwim :after #'deactivate-mark)
@@ -214,10 +216,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-r" . #'recompile)
          :map comint-mode-map
          ("C-x" . comint-delchar-or-maybe-eof)
+         ("C-c" . nil)
          ("M-<up>" . comint-previous-prompt)
-         ("M-<down>" . comint-next-prompt))
-  :config
-  (define-key comint-mode-map (kbd "C-c") nil))
+         ("M-<down>" . comint-next-prompt)))
 
 (use-package compile
   :ensure nil
@@ -270,12 +271,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                        (interactive)
                        (funcall-interactively 'window-configuration-to-register ?w)
                        (message "Window configuration is saved in  w  register. Restore it with <f5>.")))
-         :map winner-mode-map
          ("<f3>" . #'winner-undo)
          ("<f4>" . #'winner-redo))
   :init
-  (winner-mode +1)
-  (define-key winner-mode-map (kbd "C-c") nil))
+  (winner-mode +1))
 
 (push 'isearch straight-built-in-pseudo-packages)
 (use-package isearch
@@ -470,7 +469,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package embark-consult)
 
 (use-package cape
-  :bind ("C-b p" . cape-prefix-map)
+  :bind ("C-c p" . cape-prefix-map)
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-file)
@@ -502,13 +501,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
-  :bind (("C-b C-<return>" . gptel-menu)
-         ("C-b <return>" . gptel-send)
-         ("C-b j" . gptel-menu)
-         ("C-b J" . gptel)
-         ("C-b C-g" . gptel-abort)
+  :bind (("C-c C-<return>" . gptel-menu)
+         ("C-c <return>" . gptel-send)
+         ("C-c j" . gptel-menu)
+         ("C-c J" . gptel)
+         ("C-c C-g" . gptel-abort)
          :map gptel-mode-map
-         ("C-b C-x t" . gptel-set-topic))
+         ("C-c C-x t" . gptel-set-topic))
   :config
   (defvar init-gptel-gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
@@ -547,27 +546,20 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (git-commit-summary-max-length 50))
 
 (use-package diff-hl
-  :init
-  (setq diff-hl-command-prefix "C-d v")
-  (global-diff-hl-mode +1)
+  :init (global-diff-hl-mode +1)
   :bind (:map diff-hl-mode-map
               ("C-M-z" . #'diff-hl-revert-hunk)
               ("M-[" . #'diff-hl-previous-hunk)
               ("M-]" . #'diff-hl-next-hunk)
               ("C-'" . #'diff-hl-show-hunk)))
 
-(push 'elisp-mode straight-built-in-pseudo-packages)
-(use-package elisp-mode
+;; emacs-lisp-mode
+(use-package emacs
   :bind (:map emacs-lisp-mode-map
               ("C-q" . describe-symbol)
-              ("C-b C-e" . #'elisp-eval-region-or-buffer)
-              ("C-b C-f" . #'elisp-byte-compile-file)
-              ("C-b C-b" . #'elisp-byte-compile-buffer)
               :map lisp-interaction-mode-map
               ("C-j" . nil))
-  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2))))
-  :config
-  (define-key emacs-lisp-mode-map (kbd "C-c") nil))
+  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
 
 (push 'autoinsert straight-built-in-pseudo-packages)
 (use-package autoinsert
@@ -736,7 +728,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (push 'flymake straight-built-in-pseudo-packages)
 (use-package flymake
   :ensure nil
-  :bind (("C-b t f" . #'flymake-mode)
+  :bind (("C-c t f" . #'flymake-mode)
          :map flymake-mode-map
          ("<f2>" . #'flymake-goto-next-error)
          ("S-<f2>" . #'flymake-goto-prev-error))
@@ -788,13 +780,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (call-interactively (if (derived-mode-p 'prog-mode) #'flyspell-prog-mode #'flyspell-mode))))
 
 (use-package flyspell
-  :bind (("C-b t s" . #'init-toggle-flyspell-mode)
+  :bind (("C-c t s" . #'init-toggle-flyspell-mode)
          :map flyspell-mode-map
-         ("C-;" . nil)
-         ("C-b $" . #'flyspell-correct-word-before-point))
-  :config
-  (keymap-unset flyspell-mode-map "C-c $" 'remove)
-  (define-key flyspell-mode-map (kbd "C-c") nil)
+         ("C-;" . nil))
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode)))
 (use-package emacs
@@ -837,10 +825,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-DEL" . nil)
          ("C-k" . nil)
          ("C-S-k" . nil)
+         ("C-c DEL" . nil)
          ("C-w" . nil)
-         ("C-d" . nil))
-  :config
-  (define-key puni-mode-map (kbd "C-c") nil))
+         ("C-d" . nil)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
@@ -875,7 +862,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
   :bind (:map markdown-mode-map
-              ("C-b C-e" . markdown-do))
+              ("C-c C-e" . markdown-do))
   :hook (gfm-mode . (lambda () (toggle-word-wrap +1)))
   :custom
   (markdown-fontify-code-blocks-natively t))
