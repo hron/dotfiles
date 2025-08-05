@@ -450,13 +450,15 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (corfu-preview-current nil)
   (corfu-preselect 'first)
   (global-corfu-minibuffer t)
-  :bind (:map corfu-map
-              ("TAB" . #'corfu-complete)
-              ("C-y" . #'corfu-expand)
-              ("<prior>" . #'corfu-scroll-down)
-              ("<next>" . #'corfu-scroll-up)
-              ("<home>" . #'corfu-first)
-              ("<end>" . #'corfu-last))
+  :bind (("M-/" . #'dabbrev-completion)
+         ("C-M-/" . #'dabbrev-expand)
+         :map corfu-map
+         ("TAB" . #'corfu-complete)
+         ("C-y" . #'corfu-expand)
+         ("<prior>" . #'corfu-scroll-down)
+         ("<next>" . #'corfu-scroll-up)
+         ("<home>" . #'corfu-first)
+         ("<end>" . #'corfu-last))
   :init
   (global-corfu-mode +1)
   (corfu-popupinfo-mode +1)
