@@ -483,13 +483,12 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
-  :bind (("C-c C-<return>" . gptel-menu)
-         ("C-c <return>" . gptel-send)
-         ("C-c j" . gptel-menu)
-         ("C-c J" . gptel)
-         ("C-c C-g" . gptel-abort)
+  :bind (("C-k C-<return>" . #'gptel-send)
+         ("C-k <return>" . #'gptel-menu)
+         ("C-k C-g" . #'gptel-abort)
          :map gptel-mode-map
-         ("C-c C-x t" . gptel-set-topic))
+         ("C-c C-c" . #'gptel-send)
+         ("C-c C-x t" . #'gptel-set-topic))
   :config
   (defvar init-gptel-gemini
     (gptel-make-gemini "Gemini" :stream t :key gptel-api-key))
