@@ -26,10 +26,15 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
-(define-key key-translation-map (kbd "C-c") (kbd "C-b"))
-(define-key key-translation-map (kbd "C-b") (kbd "C-c"))
-(keyboard-translate ?\C-d ?\C-x)
-(keyboard-translate ?\C-x ?\C-d)
+(use-package emacs
+  :init
+  (cua-mode +1)
+  :custom
+  (cua-remap-control-z nil)
+  (cua-prefix-override-inhibit-delay nil)
+  (cua-rectangle-mark-key [(control shift return)])
+  :bind (("C-z" . #'undo-only)
+         ("C-S-z" . #'undo-redo)))
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -63,25 +68,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
       (select-window (car eldoc-window))
     (call-interactively 'eldoc)))
 
-(defun init-copy-line-or-region ()
-  "Copy region if active, otherwise copy current line."
-  (interactive)
-  (let ((bounds (if (use-region-p)
-                    (list (region-beginning) (region-end))
-                  (list (line-beginning-position)
-                        (line-beginning-position 2)))))
-    (apply #'pulse-momentary-highlight-region bounds)
-    (apply #'kill-ring-save bounds)))
-
-;; Enhanced cut function
-(defun init-cut-line-or-region ()
-  "Cut region if active, otherwise cut current line."
-  (interactive)
-  (if (use-region-p)
-      (kill-region (region-beginning) (region-end))
-    (kill-region (line-beginning-position)
-                 (line-beginning-position 2))))
-
 (use-package emacs
   :bind (("C-<f2>" . #'list-processes)
          ("M-d" . #'duplicate-dwim)
@@ -98,17 +84,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M->" . #'xref-find-references)
          ("S-RET" . #'flymake-show-project-diagnostics)
          ("C-c t e" . #'eldoc-mode)
-         ("C-z" . #'undo-only)
-         ("C-S-z" . #'undo-redo)
          ("<f1> '" . #'describe-char)
          ("C-q" . #'init-eldoc)
          ("C-M-o" . #'consult-eglot-symbols)
          ("C-M-r" . #'revert-buffer)
-         ("M-v" . #'yank-from-kill-ring)
+         ("M-C-v" . #'yank-from-kill-ring)
          ("M-y" . #'completion-at-point)
          ("C-k" . nil)
-         ("C-b" . #'init-copy-line-or-region)
-         ("C-d" . #'init-cut-line-or-region)
          ("C-v" . #'yank))
   :config
   (advice-add 'duplicate-dwim :after #'deactivate-mark)
@@ -826,8 +808,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-k" . nil)
          ("C-S-k" . nil)
          ("C-c DEL" . nil)
-         ("C-w" . nil)
-         ("C-d" . nil)))
+         ("C-w" . nil)))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
