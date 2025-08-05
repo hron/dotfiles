@@ -89,7 +89,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("C-M-o" . #'consult-eglot-symbols)
          ("C-M-r" . #'revert-buffer)
          ("M-C-v" . #'yank-from-kill-ring)
-         ("M-y" . #'completion-at-point)
          ("C-k" . nil)
          ("C-v" . #'yank))
   :config
@@ -454,11 +453,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :bind (:map corfu-map
               ("TAB" . #'corfu-complete)
               ("C-y" . #'corfu-expand)
-              ("M-p" . #'corfu-previous)
-              ("M-n" . #'corfu-next)
-              ("M-g" . #'corfu-info-location)
-              ("M-h" . #'corfu-info-documentation)
-              ("M-SPC" . #'corfu-insert-separator))
+              ("<prior>" . #'corfu-scroll-down)
+              ("<next>" . #'corfu-scroll-up)
+              ("<home>" . #'corfu-first)
+              ("<end>" . #'corfu-last))
   :init
   (global-corfu-mode +1)
   (corfu-popupinfo-mode +1)
