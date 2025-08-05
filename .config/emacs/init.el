@@ -351,7 +351,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("M-g M-g" . #'consult-goto-line)
          ("M-g e" . #'consult-compile-error)
          :map minibuffer-local-map
-         ("C-f" . #'consult-history)
          ("C-r" . #'consult-history))
   :init
   (setq xref-show-xrefs-function       #'consult-xref
@@ -425,10 +424,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
               ("<prior>" . vertico-scroll-down)
               ("<next>" . vertico-scroll-up)
               ("C-j" . vertico-exit-input)
-              ("TAB" . nil)
-              ("C-y" . #'vertico-insert)
-              :map minibuffer-local-shell-command-map
-              ("TAB" . nil))
+              ("C-y" . #'vertico-insert))
   :config
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom))))
 
@@ -486,6 +482,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :bind (("C-k C-<return>" . #'gptel-send)
          ("C-k <return>" . #'gptel-menu)
          ("C-k C-g" . #'gptel-abort)
+         ("C-k k" . #'gptel)
          :map gptel-mode-map
          ("C-c C-c" . #'gptel-send)
          ("C-c C-x t" . #'gptel-set-topic))
