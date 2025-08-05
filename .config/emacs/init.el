@@ -898,9 +898,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package package-lint-flymake
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
 
-(use-package devdocs
-  :bind (("C-M-q" . devdocs-search)))
-
 (use-package python
   :config
   ;; python.el modifies them after loading, so we have to fix it here
