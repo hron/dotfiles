@@ -106,7 +106,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (vc-follow-symlinks t)
   (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
-  (tab-always-indent t)
+  (tab-always-indent 'complete)
   (undo-limit 1600000)
   (woman-fill-column 100)
   :hook (before-save . whitespace-cleanup))
@@ -446,6 +446,24 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package embark-consult)
 
+(use-package corfu
+  :custom
+  (corfu-preview-current nil)
+  (corfu-preselect 'first)
+  (global-corfu-minibuffer t)
+  :bind (:map corfu-map
+              ("TAB" . #'corfu-complete)
+              ("C-y" . #'corfu-expand)
+              ("M-p" . #'corfu-previous)
+              ("M-n" . #'corfu-next)
+              ("M-g" . #'corfu-info-location)
+              ("M-h" . #'corfu-info-documentation)
+              ("M-SPC" . #'corfu-insert-separator))
+  :init
+  (global-corfu-mode +1)
+  (corfu-popupinfo-mode +1)
+  (corfu-history-mode +1))
+
 (use-package cape
   :bind ("C-c p" . cape-prefix-map)
   :init
@@ -625,6 +643,9 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (use-package nerd-icons-dired
   :hook
   (dired-mode . nerd-icons-dired-mode))
+(use-package nerd-icons-corfu
+  :init
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 (use-package nerd-icons-grep
   :straight (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
   :init (nerd-icons-grep-mode +1))
