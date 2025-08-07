@@ -918,14 +918,20 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :custom
   (telega-server-libs-prefix "/usr"))
 
-;; (use-package dape
-;;   :hook
-;;   (kill-emacs . dape-breakpoint-save)
-;;   (after-init . dape-breakpoint-load)
-;;   :config
-;;   (dape-breakpoint-global-mode)
-;;   :custom
-;;   (dape-key-prefix "\C-x\C-a"))
+(use-package dape
+  :hook
+  (kill-emacs . dape-breakpoint-save)
+  (after-init . dape-breakpoint-load)
+  :config
+  (dape-breakpoint-global-mode)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  :custom
+  (dape-key-prefix "\C-k\C-l")
+  (dape-info-hide-mode-line nil)
+  (dape-info-buffer-window-groups
+   '((dape-info-scope-mode dape-info-watch-mode dape-info-stack-mode dape-info-modules-mode dape-info-sources-mode dape-info-breakpoints-mode dape-info-threads-mode)))
+  :bind (:map dape-repl-mode-map
+              ("TAB" . #'completion-at-point)))
 
 ;; Enable repeat mode for more ergonomic `dape' use
 (use-package repeat
