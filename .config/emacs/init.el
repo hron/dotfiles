@@ -813,6 +813,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
          ("DEL" . nil)
          ("C-x" . nil)
          ("M-d" . nil)
+         ("C-d" . nil)
          ("M-DEL" . nil)
          ("C-k" . nil)
          ("C-S-k" . nil)
