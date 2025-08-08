@@ -631,10 +631,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :bind (:map grep-mode-map
               ("C-S-o" . consult-outline)))
 
-(use-package nerd-icons
-  ;; :custom
-  ;; (nerd-icons-font-family "JetBrainsMono Nerd Font")
-  )
+(use-package nerd-icons)
 
 (use-package nerd-icons-completion
   :init (nerd-icons-completion-mode +1))
@@ -651,14 +648,11 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :straight (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
   :init (nerd-icons-xref-mode +1))
 
-(use-package treesit-auto
-  :defer nil
-  :if (not (eq system-type 'windows-nt))
+(use-package lua-ts-mode
+  :ensure nil  ; Built into Emacs 31+
+  :mode "\\.lua\\'"
   :init
-  (require 'treesit-auto)
-  (require 'yaml-ts-mode)
-  :custom
-  (treesit-auto-install nil))
+  (treesit-ensure-installed 'lua))
 
 (use-package better-jumper
   :bind (("M-<left>" . better-jumper-jump-backward)
