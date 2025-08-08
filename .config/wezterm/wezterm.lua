@@ -135,7 +135,7 @@ config.key_tables = {
 }
 
 -- Until https://github.com/wezterm/wezterm/issues/6645 is sorted
-config.enable_wayland = false
+config.enable_wayland = true
 
 
 -- Finally, return the configuration to wezterm:
