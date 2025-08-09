@@ -340,13 +340,20 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (interactive)
   (funcall-interactively #'consult-ripgrep nil (init-bounds-of-region-or-symbol-at-point)))
 
+(defun init-consult-imenu-multi (arg)
+  "Select item from the imenus of all buffers.
+Filter by current project if ARG is supplied."
+  (interactive "P")
+  (let ((query (if arg
+                   nil
+                 (list (list :sort 'alpha)))))
+    (funcall-interactively #'consult-imenu-multi query)))
+
 (use-package consult
   :bind (("C-S-f" . #'consult-ripgrep)
          ("M-F" . #'init-consult-rigrep-thing-at-point)
          ("C-S-o" . #'consult-imenu)
-         ("M-o" . (lambda ()
-                    (interactive)
-                    (funcall-interactively #'consult-imenu-multi (list (list :sort 'alpha)))))
+         ("M-o" . #'init-consult-imenu-multi)
          ("S-RET" . #'consult-flymake)
          ("C-e" . #'init-consult-project)
          ("M-g M-g" . #'consult-goto-line)
