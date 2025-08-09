@@ -967,3 +967,4 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                               "warnings"))))
 (put 'scroll-left 'disabled nil)
 (put 'scroll-right 'disabled nil)
+(put 'list-timers 'disabled nil)
