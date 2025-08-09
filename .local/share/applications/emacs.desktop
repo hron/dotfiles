@@ -1,6 +1,7 @@
 [Desktop Entry]
 Categories=Development;TextEditor
 Comment=Edit text
+Comment[en_US]=Edit text
 Exec=emacs --no-desktop %F
 GenericName=Text Editor
 Icon=emacs
