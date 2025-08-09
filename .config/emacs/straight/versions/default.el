@@ -54,7 +54,7 @@
  ("nongnu-elpa" . "ff2a2f7e04468e70545f5de5abe54f7a6e30dbf4")
  ("orderless" . "254f2412489bbbf62700f9d3d5f18e537841dcc3")
  ("org" . "ed64e94eaf7a1683a13fd39372a4d0a0672b611f")
- ("org-agenda-dock" . "ffd759b4d9a6c6d495291ac8c54fc5886f42079a")
+ ("org-agenda-dock" . "1a0d37f471b6a8f5e9320b6bc97c5932ff83743b")
  ("org-modern" . "a58534475b4312b0920aa9d3824272470c8e3500")
  ("org-roam" . "031ee63bee7ecffee2eebb0faae37a37e2b8a603")
  ("package-lint" . "29ccfea319ee6bac4b80045aa473b3aa2b77d074")
