@@ -19,7 +19,7 @@
 ;;
 ;;; Code:
 
-(setq org-directory "~/org")
+(setq org-directory "~/Sync/org")
 
 (use-package org-agenda-dock
   :if (featurep 'dbus)
@@ -100,7 +100,7 @@
                   org-agenda-start-on-weekday 1
                   calendar-week-start-day 1
                   org-capture-templates
-                  '(("i" "Todo" entry (file "~/org/inbox.org")
+                  '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
                      "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
                   org-log-into-drawer t))
 
