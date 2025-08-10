@@ -669,6 +669,8 @@ Filter by current project if ARG is supplied."
   :config
   (let ((funcs '(beginning-of-buffer
                  end-of-buffer
+                 beginning-of-defun
+                 end-of-defun
                  mark-whole-buffer
                  imenu
                  consult-lsp-symbols
