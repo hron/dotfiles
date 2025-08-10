@@ -64,7 +64,10 @@
          (org-agenda-mode . (lambda ()
                               (define-key org-agenda-mode-map (kbd "z") #'org-agenda-undo)
                               (define-key org-agenda-mode-map (kbd "C-z") #'org-agenda-undo)
-                              (define-key org-agenda-mode-map (kbd "C-<return>") #'org-agenda-todo))))
+                              (define-key org-agenda-mode-map (kbd "C-<return>") #'org-agenda-todo)))
+         (before-save . (lambda ()
+                          (when (derived-mode-p 'org-mode)
+                            (org-update-statistics-cookies t)))))
   :config (progn
             (setq org-tag-alist '(("outside" . ?o)
                                   ("read" . ?r)
