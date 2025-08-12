@@ -232,10 +232,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (compilation-scroll-output 'first-error)
   (compile-command ""))
 
-(use-package compile-plus
-  :ensure t
-  :straight (compile-plus :type git :host github :repo "hron/compile-plus")
-  :init (compile-plus-mode +1))
+;; (use-package compile-plus
+;;   :ensure t
+;;   :straight (compile-plus :type git :host github :repo "hron/compile-plus")
+;;   :init (compile-plus-mode +1))
 
 (use-package dock
   :if (featurep 'dbus)
@@ -661,6 +661,7 @@ Filter by current project if ARG is supplied."
   :ensure nil  ; Built into Emacs 31+
   :mode "\\.lua\\'"
   :init
+  (require 'treesit)
   (treesit-ensure-installed 'lua))
 
 (use-package better-jumper
@@ -905,7 +906,7 @@ Filter by current project if ARG is supplied."
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
 
 (use-package python
-  :config
+  :init
   ;; python.el modifies them after loading, so we have to fix it here
   (add-to-list 'auto-mode-alist '("\\.py[iw]?\\'" . python-ts-mode))
   (add-to-list 'interpreter-mode-alist '("python[0-9.]*" . python-ts-mode))
