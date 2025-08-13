@@ -342,9 +342,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   "Select item from the imenus of all buffers.
 Filter by current project if ARG is supplied."
   (interactive "P")
-  (let ((query (if arg
-                   nil
-                 (list (list :sort 'alpha)))))
+  (let ((query (if arg nil (list :sort 'alpha))))
     (funcall-interactively #'consult-imenu-multi query)))
 
 (use-package consult
