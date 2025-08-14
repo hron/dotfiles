@@ -8,8 +8,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.mux_enable_ssh_agent = false
 end
 
-config.initial_cols = 120
-config.initial_rows = 28
+config.initial_cols = 117
+config.initial_rows = 55
 
 config.font = wezterm.font_with_fallback {
     {family='JetBrainsMono Nerd Font', weight="Regular"},
@@ -18,7 +18,7 @@ config.font = wezterm.font_with_fallback {
 config.font_size = 10
 
 config.enable_tab_bar = false
-config.adjust_window_size_when_changing_font_size = false
+config.adjust_window_size_when_changing_font_size = true
 
 local modus_videndi = wezterm.color.get_builtin_schemes()['Modus Videndi (Gogh)']
 local modus_opernadi = wezterm.color.get_builtin_schemes()['Modus Operandi (Gogh)']
@@ -134,8 +134,9 @@ config.key_tables = {
   },
 }
 
--- Until https://github.com/wezterm/wezterm/issues/6645 is sorted
-config.enable_wayland = true
+-- Until https://github.com/wezterm/wezterm/issues/6645 is sorted (patched by myself for now)
+-- Also, settings this to true prevent KDE from applying the window rule to set proper geometry
+config.enable_wayland = false
 
 
 -- Finally, return the configuration to wezterm:
