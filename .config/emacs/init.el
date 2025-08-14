@@ -558,7 +558,7 @@ Filter by current project if ARG is supplied."
               ("C-q" . describe-symbol)
               :map lisp-interaction-mode-map
               ("C-q" . describe-symbol))
-  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 2)))))
+  :hook ((emacs-lisp-mode . (lambda () (setq tab-width 8)))))
 
 (push 'autoinsert straight-built-in-pseudo-packages)
 (use-package autoinsert
