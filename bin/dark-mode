@@ -5,6 +5,9 @@ import subprocess
 from subprocess import PIPE
 import sys
 from pathlib import Path
+import subprocess
+import os
+import time
 
 
 def set_plasma_theme(dark_mode):
@@ -12,6 +15,8 @@ def set_plasma_theme(dark_mode):
         theme = 'org.kde.breezedark.desktop'
     else:
         theme = 'org.kde.breeze.desktop'
+    subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", 'org.kde.oxygen'], preexec_fn=os.setsid)
+    time.sleep(0.5)
     subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", theme], preexec_fn=os.setsid)
 
 
