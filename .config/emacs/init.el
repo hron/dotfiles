@@ -661,13 +661,34 @@ Filter by current project if ARG is supplied."
   (treesit-ensure-installed 'lua))
 
 (use-package better-jumper
-  :bind (("M-<left>" . better-jumper-jump-backward)
-         ("M-<right>" . better-jumper-jump-forward))
+  :preface
+  (defun init-beginning-of-defun ()
+    "Set better-jumper jump and call \\[beginning-of-defun].
+It seems `beginning-of-defun' is used internally by
+\\[xref-find-definitions], so when it's advices with
+`better-jumper-set-jump' the better jumper ring becomes broken."
+    (interactive)
+    (better-jumper-set-jump)
+    (call-interactively #'beginning-of-defun))
+
+  (defun init-end-of-defun ()
+    "Set better-jumper jump and call \\[end-of-defun].
+It seems `end-of-defun' is used internally by
+\\[xref-find-definitions], so when it's advices with
+`better-jumper-set-jump' the better jumper ring becomes broken."
+    (interactive)
+    (better-jumper-set-jump)
+    (call-interactively #'end-of-defun))
+
+  :bind
+  ("M-<left>" . better-jumper-jump-backward)
+  ("M-<right>" . better-jumper-jump-forward)
+  ("C-M-<home>" . #'init-beginning-of-defun)
+  ("C-M-<end>" . #'init-end-of-defun)
+
   :config
   (let ((funcs '(beginning-of-buffer
                  end-of-buffer
-                 beginning-of-defun
-                 end-of-defun
                  mark-whole-buffer
                  imenu
                  consult-lsp-symbols
@@ -706,7 +727,9 @@ Filter by current project if ARG is supplied."
                  puni-end-of-sexp
                  puni-syntactic-forward-punct
                  puni-syntactic-backward-punct
-                 project-query-replace-regexp)))
+                 project-query-replace-regexp
+                 compilation-next-error
+                 compilation-previous-error)))
     (dolist (func funcs)
       (eval `(defadvice ,func (before better-jumper activate)
                (when (bound-and-true-p better-jumper-local-mode)
