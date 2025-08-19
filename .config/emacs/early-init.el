@@ -85,8 +85,10 @@
 
 ;; Install use-package support
 (elpaca elpaca-use-package
-        ;; Enable use-package :ensure support for Elpaca.
-        (elpaca-use-package-mode))
+  ;; Enable use-package :ensure support for Elpaca.
+  (elpaca-use-package-mode))
+
+(add-hook 'elpaca-log-mode-hook #'elpaca-log-update-mode)
 
 (use-package emacs
   :ensure nil
