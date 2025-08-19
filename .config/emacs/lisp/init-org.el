@@ -23,7 +23,7 @@
 
 (use-package org-agenda-dock
   :if (featurep 'dbus)
-  :straight (org-agenda-dock :type git :host github :repo "hron/org-agenda-dock"))
+  :ensure (org-agenda-dock :type git :host github :repo "hron/org-agenda-dock"))
 
 ;;;###autoload
 (defun init-org-gtd ()
@@ -56,6 +56,7 @@
   (delete-other-windows))
 
 (use-package org
+  :ensure nil
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
                        (toggle-word-wrap +1)))

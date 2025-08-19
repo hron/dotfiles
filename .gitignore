@@ -78,3 +78,4 @@
 /.config/emacs/network-security.data
 /.config/emacs/dape-breakpoints
 /.config/emacs/debug-adapters/
+/.config/emacs/elpaca/

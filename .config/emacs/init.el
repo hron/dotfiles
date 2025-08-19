@@ -27,6 +27,7 @@
       user-mail-address "aleksei.gusev@gmail.com")
 
 (use-package emacs
+  :ensure nil
   :init
   (cua-mode +1)
   :custom
@@ -69,6 +70,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     (call-interactively 'eldoc)))
 
 (use-package emacs
+  :ensure nil
   :bind (("C-<f2>" . #'list-processes)
          ("M-d" . #'duplicate-dwim)
          ("C-s" . #'init-save-all-buffers)
@@ -166,12 +168,13 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (when interactive
     (eldoc--format-doc-buffer docs)
     (eldoc-doc-buffer t)))
+
 (use-package eldoc
+  :ensure nil
   :config
   (setq eldoc-display-functions '(eldoc-display-in-echo-area init-eldoc-display-in-buffer)))
 
 (use-package iflipb
-  :defer t
   :bind (("C-<tab>" . 'iflipb-next-buffer)
          ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
   :custom
@@ -191,7 +194,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (interactive)
   (call-interactively (if (project-current) #'project-compile #'compile)))
 
-(push 'comint straight-built-in-pseudo-packages)
 (use-package comint
   :ensure nil
   :bind (("M-t" . #'init-project-compile)
@@ -240,7 +242,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 
 (use-package dock
   :if (featurep 'dbus)
-  :ensure t
   :init
   (require 'dock)
   (add-hook 'compilation-finish-functions (lambda (_buf _msg) (dock-set-needs-attention)))
@@ -258,7 +259,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :init
   (winner-mode +1))
 
-(push 'isearch straight-built-in-pseudo-packages)
 (use-package isearch
   :ensure nil
   :config
@@ -366,6 +366,7 @@ Filter by current project if ARG is supplied."
   (completion-in-region-function #'consult-completion-in-region))
 
 (use-package emacs
+  :ensure nil
   :init (global-completion-preview-mode +1)
   :bind (:map completion-preview-active-mode-map
               ("C-i" . nil)
@@ -557,14 +558,15 @@ Filter by current project if ARG is supplied."
 
 ;; emacs-lisp-mode
 (use-package emacs
+  :ensure nil
   :bind (:map emacs-lisp-mode-map
               ("C-q" . describe-symbol)
               :map lisp-interaction-mode-map
               ("C-q" . describe-symbol))
   :hook ((emacs-lisp-mode . (lambda () (setq tab-width 8)))))
 
-(push 'autoinsert straight-built-in-pseudo-packages)
 (use-package autoinsert
+  :ensure nil
   :init (auto-insert-mode +1)
   :config
   (add-to-list
@@ -611,6 +613,7 @@ Filter by current project if ARG is supplied."
 \;;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")))
 
 (use-package ert
+  :ensure nil
   :bind (:map emacs-lisp-mode-map
               ("C-; f" . ert)))
 
@@ -634,6 +637,7 @@ Filter by current project if ARG is supplied."
   ((minibuffer-setup window-state-change) . init-remove-fringe-from-minibuffer))
 
 (use-package grep
+  :ensure nil
   :custom
   (grep-use-headings t)
   :bind (:map grep-mode-map
@@ -650,10 +654,10 @@ Filter by current project if ARG is supplied."
   :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 (use-package nerd-icons-grep
-  :straight (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
+  :ensure (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
   :init (nerd-icons-grep-mode +1))
 (use-package nerd-icons-xref
-  :straight (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
+  :ensure (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
   :init (nerd-icons-xref-mode +1))
 
 (use-package lua-ts-mode
@@ -750,7 +754,6 @@ It seems `end-of-defun' is used internally by
   :ensure nil
   :config (setq shell-prompt-pattern "^[^#$%>\n]*[#$%> ] *"))
 
-(push 'flymake straight-built-in-pseudo-packages)
 (use-package flymake
   :ensure nil
   :bind (("C-c t f" . #'flymake-mode)
@@ -762,6 +765,7 @@ It seems `end-of-defun' is used internally by
            flymake-fringe-indicator-position 'right-fringe))
 
 (use-package server
+  :ensure nil
   :when (display-graphic-p)
   :defer 1
   :config
@@ -771,13 +775,17 @@ It seems `end-of-defun' is used internally by
     (server-start)))
 
 (use-package desktop
+  :ensure nil
   :init
   (dolist (frame-param '(background-color foreground-color background-mode))
     (push (cons frame-param :never) frameset-filter-alist))
 
-  (require 'desktop)
-  (when (file-exists-p (desktop-full-file-name "."))
-    (desktop-save-mode +1))
+  :hook
+  (elpaca-after-init
+   . (lambda ()
+       (when (and (file-exists-p (desktop-full-file-name ".")))
+         (desktop-read)
+         (desktop-save-mode +1))))
 
   :custom
   (desktop-path (list "."))
@@ -789,9 +797,11 @@ It seems `end-of-defun' is used internally by
                              regexp-search-ring
                              register-alist
                              file-name-history
-                             compile-history)))
+                             compile-history))
+  )
 
 (use-package emacs
+  :ensure nil
   :init
   (electric-pair-mode +1)
   (electric-indent-mode +1)
@@ -805,12 +815,15 @@ It seems `end-of-defun' is used internally by
     (call-interactively (if (derived-mode-p 'prog-mode) #'flyspell-prog-mode #'flyspell-mode))))
 
 (use-package flyspell
+  :ensure nil
   :bind (("C-c t s" . #'init-toggle-flyspell-mode)
          :map flyspell-mode-map
          ("C-;" . nil))
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode)))
+
 (use-package emacs
+  :ensure nil
   :custom
   (ispell-silently-savep t))
 
@@ -826,6 +839,7 @@ It seems `end-of-defun' is used internally by
   :custom
   (hardhat-fullpath-protected-regexps '("~/src/dotfiles/doom-emacs/"
                                         "/straight/repos/"
+                                        "/elpaca/repos/"
                                         "/share/emacs/.*/lisp/"
                                         "/.cargo/registry/"))
   :hook
@@ -865,8 +879,8 @@ It seems `end-of-defun' is used internally by
     (add-function :before-until (local 'imenu-create-index-function)
                   #'eglot-imenu)))
 
-(push 'eglot straight-built-in-pseudo-packages)
 (use-package eglot
+  :ensure nil
   :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
@@ -879,7 +893,6 @@ It seems `end-of-defun' is used internally by
               ("C-M-o". #'consult-eglot-symbols))
   :custom-face (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil))))
 
-(push 'project straight-built-in-pseudo-packages)
 (use-package consult-eglot)
 
 (use-package edit-indirect)
@@ -897,7 +910,7 @@ It seems `end-of-defun' is used internally by
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (use-package rust-mode
-  ;; :straight (rust-mode :type git :host github :repo "rust-lang/rust-mode"
+  ;; :ensure (rust-mode :type git :host github :repo "rust-lang/rust-mode"
   ;;                      :method fetch-from-remote
   ;;                      :fork "hron" :branch "rust-compilation-dbg!")
   :init
@@ -928,6 +941,7 @@ It seems `end-of-defun' is used internally by
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
 
 (use-package python
+  :ensure nil
   :init
   ;; python.el modifies them after loading, so we have to fix it here
   (add-to-list 'auto-mode-alist '("\\.py[iw]?\\'" . python-ts-mode))
@@ -938,6 +952,7 @@ It seems `end-of-defun' is used internally by
 (use-package qml-mode)
 
 (use-package gnus
+  :ensure nil
   :config
   (setq gnus-select-method '(nntp "news.gmane.io"))
   :custom
@@ -964,12 +979,14 @@ It seems `end-of-defun' is used internally by
 
 ;; Enable repeat mode for more ergonomic `dape' use
 (use-package repeat
+  :ensure nil
   :config
   (repeat-mode))
 
 (use-package just-ts-mode)
 
 (use-package emacs
+  :ensure nil
   :hook (yaml-ts-mode . (lambda () (setq-default tab-width 2))))
 
 (require 'init-windows)
