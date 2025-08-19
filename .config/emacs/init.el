@@ -144,11 +144,14 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (defun init-desktop-base-dirname ()
   "Return base directory with desktop file for modeline."
   (if-let* ((dir (file-name-nondirectory (directory-file-name desktop-dirname))))
-      (concat " / " dir)
+      (concat " || " dir)
     ""))
 
 (setq frame-title-format
-      '("%b" (:eval (concat " - " (project-name (project-current)) (init-desktop-base-dirname))))
+      '((:eval (format  "%s - %s" (buffer-name) (project-name (project-current))))
+        (:eval (if-let* ((dir (file-name-nondirectory (directory-file-name desktop-dirname))))
+                   (concat " ┃ " dir)
+                 "")))
       icon-title-format frame-title-format)
 
 (setq-default tab-width 4)
