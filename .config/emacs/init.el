@@ -201,14 +201,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :config
   (setq eldoc-display-functions '(eldoc-display-in-echo-area init-eldoc-display-in-buffer)))
 
-(use-package drag-stuff
-  :pin "melpa"
-  :bind (("M-<up>" . nil)
-         ("M-<down>" . nil)
-         ("M-S-<up>" . #'drag-stuff-up)
-         ("M-S-<down>" . #'drag-stuff-down)))
-
-
 ;;;###autoload
 (defun init-project-compile ()
   "Run `compile' in the project root."
@@ -1047,14 +1039,13 @@ It seems `end-of-defun' is used internally by
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(anzu apheleia auto-dark better-jumper cape consult-eglot corfu crux
-          dape diff-hl doom-modeline drag-stuff dumb-jump eask-mode
-          edit-indirect embark-consult envrc expand-region fish-mode
-          gptel hardhat magit marginalia markdown-mode
-          nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-          nerd-icons-grep nerd-icons-xref nix-ts-mode orderless
-          org-agenda-dock org-modern org-roam package-lint-flymake
-          puni rust-mode string-inflection too-wide-minibuffer-mode
-          vertico vterm))
+          dape diff-hl doom-modeline dumb-jump eask-mode edit-indirect
+          embark-consult envrc expand-region fish-mode gptel hardhat
+          magit marginalia markdown-mode nerd-icons-completion
+          nerd-icons-corfu nerd-icons-dired nerd-icons-grep
+          nerd-icons-xref nix-ts-mode orderless org-agenda-dock
+          org-modern org-roam package-lint-flymake puni rust-mode
+          string-inflection too-wide-minibuffer-mode vertico vterm))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
