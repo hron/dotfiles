@@ -201,14 +201,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   :config
   (setq eldoc-display-functions '(eldoc-display-in-echo-area init-eldoc-display-in-buffer)))
 
-(use-package iflipb
-  :pin "melpa"
-  :bind (("C-<tab>" . 'iflipb-next-buffer)
-         ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
-  :custom
-  (iflipb-wrap-around t)
-  (iflipb-ignore-buffers '()))
-
 (use-package drag-stuff
   :pin "melpa"
   :bind (("M-<up>" . nil)
@@ -1057,7 +1049,7 @@ It seems `end-of-defun' is used internally by
    '(anzu apheleia auto-dark better-jumper cape consult-eglot corfu crux
           dape diff-hl doom-modeline drag-stuff dumb-jump eask-mode
           edit-indirect embark-consult envrc expand-region fish-mode
-          gptel hardhat iflipb magit marginalia markdown-mode
+          gptel hardhat magit marginalia markdown-mode
           nerd-icons-completion nerd-icons-corfu nerd-icons-dired
           nerd-icons-grep nerd-icons-xref nix-ts-mode orderless
           org-agenda-dock org-modern org-roam package-lint-flymake
