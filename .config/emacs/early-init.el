@@ -105,12 +105,33 @@
   (modus-themes-bold-constructs t)
   :unless noninteractive)
 
+
+(unless noninteractive
+  (add-to-list 'load-path (expand-file-name "elpaca/builds/auto-dark" user-emacs-directory))
+  (when (require 'auto-dark nil t)
+    (customize-set-variable 'auto-dark-themes '((modus-vivendi) (modus-operandi)))
+
+    (defun auto-dark--current-mode-dbus ()
+      "Use Emacs built-in D-Bus function to determine if dark theme is enabled."
+      (pcase (caar (dbus-ignore-errors
+                     (dbus-call-method
+                      :session
+                      "org.freedesktop.portal.Desktop"
+                      "/org/freedesktop/portal/desktop"
+                      "org.freedesktop.portal.Settings" "Read"
+                      "org.freedesktop.appearance" "color-scheme")))
+        (1 'dark)
+        (t 'light)))
+
+    (auto-dark-mode +1)))
+
 (use-package auto-dark
-  :init
-  (auto-dark-mode)
-  :custom
-  (auto-dark-themes '((modus-vivendi) (modus-operandi)))
-  :unless noninteractive)
+  ;; :init
+  ;; (auto-dark-mode)
+  ;; :custom
+  ;; (auto-dark-themes '((modus-vivendi) (modus-operandi)))
+  ;; :unless noninteractive
+  )
 
 (defun early-init--define-global-key-translations (&optional frame)
   "Configure ESC according modern conventions for FRAME."
