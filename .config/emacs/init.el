@@ -26,6 +26,31 @@
 (setq user-full-name "Aleksei Gusev"
       user-mail-address "aleksei.gusev@gmail.com")
 
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(use-package emacs
+  :ensure nil
+  :init
+  ;; Do not extend it to the end of the line
+  (custom-set-faces
+   '(region ((t :extend nil))))
+  :custom
+  (modus-themes-common-palette-overrides
+   '(;; Make the region to change only the background
+     (bg-region bg-ochre)
+     (fg-region unspecified)))
+  (modus-themes-italic-constructs t)
+  (modus-themes-bold-constructs t)
+  :unless noninteractive)
+
+(use-package auto-dark
+  :pin "melpa"
+  :init
+  (auto-dark-mode +1)
+  :custom
+  (auto-dark-themes '((modus-vivendi) (modus-operandi)))
+  :unless noninteractive)
+
 (use-package emacs
   :ensure nil
   :init
@@ -177,6 +202,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (setq eldoc-display-functions '(eldoc-display-in-echo-area init-eldoc-display-in-buffer)))
 
 (use-package iflipb
+  :pin "melpa"
   :bind (("C-<tab>" . 'iflipb-next-buffer)
          ("C-<iso-lefttab>" . 'iflipb-previous-buffer))
   :custom
@@ -184,6 +210,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (iflipb-ignore-buffers '()))
 
 (use-package drag-stuff
+  :pin "melpa"
   :bind (("M-<up>" . nil)
          ("M-<down>" . nil)
          ("M-S-<up>" . #'drag-stuff-up)
@@ -243,6 +270,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 ;;   :init (compile-plus-mode +1))
 
 (use-package dock
+  :pin "melpa"
   :if (featurep 'dbus)
   :init
   (require 'dock)
@@ -351,6 +379,7 @@ Filter by current project if ARG is supplied."
     (funcall-interactively #'consult-imenu-multi query)))
 
 (use-package consult
+  :pin "melpa"
   :bind (("C-S-f" . #'consult-ripgrep)
          ("M-F" . #'init-consult-rigrep-thing-at-point)
          ("C-S-o" . #'consult-imenu)
@@ -409,17 +438,20 @@ Filter by current project if ARG is supplied."
                   :sort nil))
 
 (use-package marginalia
+  :pin "melpa"
   :bind (:map minibuffer-mode-map
               ("M-a" . #'marginalia-cycle))
   :init
   (marginalia-mode +1))
 
 (use-package orderless
+  :pin "melpa"
   :custom
   (completion-styles '(orderless))
   (completion-ignore-case t))
 
 (use-package vertico
+  :pin "melpa"
   :init
   (vertico-mode +1)
 
@@ -439,6 +471,7 @@ Filter by current project if ARG is supplied."
   (setq vertico-buffer-display-action '(display-buffer-below-selected (side . bottom))))
 
 (use-package embark
+  :pin "melpa"
   :bind (:map global-map
               ("M-<return>" . embark-act)
               ("C-;" . nil)
@@ -454,9 +487,11 @@ Filter by current project if ARG is supplied."
                        embark-isearch-highlight-indicator))
   (embark-prompter 'embark-completing-read-prompter))
 
-(use-package embark-consult)
+(use-package embark-consult
+  :pin "melpa")
 
 (use-package corfu
+  :pin "melpa"
   :custom
   (corfu-preview-current nil)
   (corfu-preselect 'first)
@@ -474,6 +509,7 @@ Filter by current project if ARG is supplied."
   (corfu-history-mode +1))
 
 (use-package cape
+  :pin "melpa"
   :bind ("C-c p" . cape-prefix-map)
   :init
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
@@ -482,6 +518,7 @@ Filter by current project if ARG is supplied."
   (add-hook 'completion-at-point-functions #'cape-history))
 
 (use-package doom-modeline
+  :pin "melpa"
   :init
   (column-number-mode +1)
   (doom-modeline-mode +1)
@@ -551,6 +588,7 @@ Filter by current project if ARG is supplied."
   (git-commit-summary-max-length 50))
 
 (use-package diff-hl
+  :pin "melpa"
   :init (global-diff-hl-mode +1)
   :bind (:map diff-hl-mode-map
               ("C-M-z" . #'diff-hl-revert-hunk)
@@ -620,6 +658,7 @@ Filter by current project if ARG is supplied."
               ("C-; f" . ert)))
 
 (use-package expand-region
+  :pin "melpa"
   :bind (("C-h" . er/expand-region)
          ("C-S-h" . er/contract-region)))
 
@@ -631,6 +670,7 @@ Filter by current project if ARG is supplied."
   (set-window-fringes (minibuffer-window) 0))
 
 (use-package too-wide-minibuffer-mode
+  :pin "melpa"
   :init
   (too-wide-minibuffer-mode +1)
   :custom
@@ -645,21 +685,27 @@ Filter by current project if ARG is supplied."
   :bind (:map grep-mode-map
               ("C-S-o" . consult-outline)))
 
-(use-package nerd-icons)
+(use-package nerd-icons
+  :pin "melpa")
 
 (use-package nerd-icons-completion
+  :pin "melpa"
   :init (nerd-icons-completion-mode +1))
 (use-package nerd-icons-dired
+  :pin "melpa"
   :hook
   (dired-mode . nerd-icons-dired-mode))
 (use-package nerd-icons-corfu
+  :pin "melpa"
   :init
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 (use-package nerd-icons-grep
-  :ensure (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
+  :pin "melpa"
+  ;; :ensure (nerd-icons-grep :type git :host github :repo "hron/nerd-icons-grep")
   :init (nerd-icons-grep-mode +1))
 (use-package nerd-icons-xref
-  :ensure (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
+  :pin "melpa"
+  ;; :ensure (nerd-icons-xref :type git :host github :repo "hron/nerd-icons-xref")
   :init (nerd-icons-xref-mode +1))
 
 (use-package lua-ts-mode
@@ -747,6 +793,7 @@ It seems `end-of-defun' is used internally by
   (better-jumper-mode +1))
 
 (use-package apheleia
+  :pin "melpa"
   :init
   (apheleia-global-mode +1)
   :config
@@ -830,6 +877,7 @@ It seems `end-of-defun' is used internally by
   (ispell-silently-savep t))
 
 (use-package hardhat
+  :pin "melpa"
   :config
   (defun init-disable-checks-if-read-only ()
     (when (or buffer-read-only hardhat-mode)
@@ -855,6 +903,7 @@ It seems `end-of-defun' is used internally by
     (while (funcall travel-func))))
 
 (use-package puni
+  :pin "melpa"
   :defer nil
   :init (puni-global-mode +1)
   :bind (("M-m" . nil)
@@ -871,9 +920,8 @@ It seems `end-of-defun' is used internally by
          ("C-w" . nil)))
 
 (use-package envrc
+  :pin "melpa"
   :hook (after-init . envrc-global-mode))
-
-(use-package debian-el)
 
 (defun init-manually-activate-imenu ()
   "Activate imenu manually in eglot."
@@ -895,7 +943,8 @@ It seems `end-of-defun' is used internally by
               ("C-M-o". #'consult-eglot-symbols))
   :custom-face (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil))))
 
-(use-package consult-eglot)
+(use-package consult-eglot
+  :pin "melpa")
 
 (use-package edit-indirect)
 (use-package markdown-mode
@@ -908,6 +957,7 @@ It seems `end-of-defun' is used internally by
   (markdown-fontify-code-blocks-natively t))
 
 (use-package dumb-jump
+  :pin "melpa"
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
@@ -932,14 +982,18 @@ It seems `end-of-defun' is used internally by
     :init (gcmh-mode +1)))
 
 (use-package nix-ts-mode
+  :pin "melpa"
   :mode "\\.nix\\'")
 
-(use-package fish-mode)
+(use-package fish-mode
+  :pin "melpa")
 
 (use-package string-inflection
+  :pin "melpa"
   :bind (("M-c" . #'string-inflection-all-cycle)))
 
 (use-package package-lint-flymake
+  :pin "melpa"
   :hook (emacs-lisp-mode . package-lint-flymake-setup))
 
 (use-package python
@@ -951,7 +1005,8 @@ It seems `end-of-defun' is used internally by
   :bind (:map python-ts-mode-map
               ("C-M-q" . nil)))
 
-(use-package qml-mode)
+(use-package qml-mode
+  :pin "melpa")
 
 (use-package gnus
   :ensure nil
@@ -960,11 +1015,8 @@ It seems `end-of-defun' is used internally by
   :custom
   (gnus-always-read-dribble-file t))
 
-(use-package telega
-  :custom
-  (telega-server-libs-prefix "/usr"))
-
 (use-package dape
+  :pin "gnu"
   :hook
   (kill-emacs . dape-breakpoint-save)
   (after-init . dape-breakpoint-load)
@@ -985,18 +1037,17 @@ It seems `end-of-defun' is used internally by
   :config
   (repeat-mode))
 
-(use-package just-ts-mode)
-
 (use-package emacs
   :ensure nil
   :hook (yaml-ts-mode . (lambda () (setq-default tab-width 2))))
+
+(use-package eask-mode
+  :pin "melpa")
 
 (require 'init-windows)
 (require 'init-org)
 (unless (eq system-type 'windows-nt)
   (require 'init-vterm))
-
-(use-package eask-mode)
 
 (provide 'init)
 ;;; init.el ends here
@@ -1005,6 +1056,7 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil)
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
@@ -1021,3 +1073,9 @@ It seems `end-of-defun' is used internally by
 (put 'scroll-left 'disabled nil)
 (put 'scroll-right 'disabled nil)
 (put 'list-timers 'disabled nil)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(region ((t :extend nil))))

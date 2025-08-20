@@ -22,8 +22,10 @@
 (setq org-directory "~/Sync/org")
 
 (use-package org-agenda-dock
+  :pin "melpa"
   :if (featurep 'dbus)
-  :ensure (org-agenda-dock :type git :host github :repo "hron/org-agenda-dock"))
+  ;; :ensure (org-agenda-dock :type git :host github :repo "hron/org-agenda-dock")
+  )
 
 ;;;###autoload
 (defun init-org-gtd ()
@@ -138,6 +140,7 @@
   (org-adapt-indentation t))
 
 (use-package org-modern
+  :pin "melpa"
   :custom
   (org-modern-star 'star)
   (org-modern-hide-stars " ")
@@ -148,6 +151,7 @@
   (global-org-modern-mode))
 
 (use-package org-roam
+  :pin "melpa"
   :custom
   (org-roam-directory (file-truename (concat org-directory "/roam/")))
   :bind (("C-c n l" . org-roam-buffer-toggle)

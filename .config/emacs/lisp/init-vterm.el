@@ -37,6 +37,7 @@
   (vterm 'new))
 
 (use-package vterm
+  :pin "melpa"
   :bind (("C-`" . #'vterm)
          :map vterm-mode-map
          ("C-S-z" . #'init-vterm-redo)
