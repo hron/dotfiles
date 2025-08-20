@@ -141,6 +141,7 @@
 
 (use-package org-modern
   :pin "melpa"
+  :defer t
   :custom
   (org-modern-star 'star)
   (org-modern-hide-stars " ")

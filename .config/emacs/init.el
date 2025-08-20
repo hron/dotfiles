@@ -31,17 +31,18 @@
 (use-package emacs
   :ensure nil
   :init
-  ;; Do not extend it to the end of the line
-  (custom-set-faces
-   '(region ((t :extend nil))))
+  (cua-mode +1)
   :custom
-  (modus-themes-common-palette-overrides
-   '(;; Make the region to change only the background
-     (bg-region bg-ochre)
-     (fg-region unspecified)))
-  (modus-themes-italic-constructs t)
-  (modus-themes-bold-constructs t)
-  :unless noninteractive)
+  (cua-remap-control-z nil)
+  (cua-prefix-override-inhibit-delay nil)
+  (cua-rectangle-mark-key [(control shift return)])
+  :bind (("C-z" . #'undo-only)
+         ("C-S-z" . #'undo-redo)))
+
+;; (use-package benchmark-init
+;;   :pin "melpa"
+;;   :config
+;;   (add-hook 'after-init-hook #'benchmark-init/deactivate))
 
 (use-package auto-dark
   :pin "melpa"
@@ -50,17 +51,6 @@
   :custom
   (auto-dark-themes '((modus-vivendi) (modus-operandi)))
   :unless noninteractive)
-
-(use-package emacs
-  :ensure nil
-  :init
-  (cua-mode +1)
-  :custom
-  (cua-remap-control-z nil)
-  (cua-prefix-override-inhibit-delay nil)
-  (cua-rectangle-mark-key [(control shift return)])
-  :bind (("C-z" . #'undo-only)
-         ("C-S-z" . #'undo-redo)))
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -642,11 +632,6 @@ Filter by current project if ARG is supplied."
      ")
 \;;; " (file-name-nondirectory (buffer-file-name)) " ends here\n")))
 
-(use-package ert
-  :ensure nil
-  :bind (:map emacs-lisp-mode-map
-              ("C-; f" . ert)))
-
 (use-package expand-region
   :pin "melpa"
   :bind (("C-h" . er/expand-region)
@@ -1044,15 +1029,15 @@ It seems `end-of-defun' is used internally by
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(anzu apheleia auto-dark better-jumper cape consult-eglot corfu crux
-          dape diff-hl doom-modeline dumb-jump eask-mode edit-indirect
-          embark-consult envrc expand-region fish-mode gptel hardhat
-          magit marginalia markdown-mode move-text
-          nerd-icons-completion nerd-icons-corfu nerd-icons-dired
-          nerd-icons-grep nerd-icons-xref nix-ts-mode orderless
-          org-agenda-dock org-modern org-roam package-lint-flymake
-          puni rust-mode string-inflection too-wide-minibuffer-mode
-          vertico vterm))
+   '(anzu apheleia auto-dark benchmark-init better-jumper cape
+          consult-eglot corfu crux dape diff-hl doom-modeline
+          dumb-jump eask-mode edit-indirect embark-consult envrc
+          expand-region fish-mode gptel hardhat magit marginalia
+          markdown-mode move-text nerd-icons-completion
+          nerd-icons-corfu nerd-icons-dired nerd-icons-grep
+          nerd-icons-xref nix-ts-mode orderless org-agenda-dock
+          org-modern org-roam package-lint-flymake puni rust-mode
+          string-inflection too-wide-minibuffer-mode vertico vterm))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
