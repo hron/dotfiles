@@ -51,6 +51,8 @@
     (define-key key-translation-map (kbd "ESC") (kbd "C-g"))))
 (add-hook 'after-make-frame-functions 'early-init--define-global-key-translations)
 
+;; Configure theme in early-init to allow auto-dark-mode to kick in
+;; before a frame is created.
 (custom-set-faces
  '(region ((t :extend nil))))
 (custom-set-variables
@@ -62,8 +64,12 @@
  '(modus-themes-bold-constructs t)
  '(auto-dark-themes '((modus-vivendi) (modus-operandi))))
 
-(add-to-list 'load-path (expand-file-name "elpa/auto-dark-20250812.10" user-emacs-directory))
-(when (require 'auto-dark nil t)
+;; Avoid flashing of white background when light theme is active and wise-weather
+(when-let*
+    ((elpa-dir (expand-file-name "elpa" user-emacs-directory))
+     (auto-dark-dir (car-safe (directory-files elpa-dir t "\\`auto-dark-[0-9]+\\.[0-9]+\\'" t)))
+     (load-path (append load-path (list auto-dark-dir)))
+     (_ (require 'auto-dark nil t)))
   (unless auto-dark-detection-method
     (setq auto-dark-detection-method
           (auto-dark--determine-detection-method)))
