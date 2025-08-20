@@ -150,8 +150,10 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     ""))
 
 (setq frame-title-format
-      '((:eval (format  "%s - %s" (buffer-name) (project-name (project-current))))
-        (:eval (if-let* ((dir (file-name-nondirectory (directory-file-name desktop-dirname))))
+      '("%b"
+        (:eval (when (project-current) (format  " - %s" (project-name (project-current)))))
+        (:eval (if-let* ((dir desktop-dirname)
+                         (dir (file-name-nondirectory (directory-file-name dir))))
                    (concat " ┃ " dir)
                  "")))
       icon-title-format frame-title-format)
