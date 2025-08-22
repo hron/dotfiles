@@ -11,6 +11,9 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "debugger": {
+    "dock": "left"
+  },
   "language_models": {
     "openai": {
       "version": "1",
@@ -180,7 +183,6 @@
     "default_width": 400
   },
   "agent": {
-    "version": "2",
     "dock": "right",
     "default_width": 900,
     "enabled": true
@@ -191,6 +193,5 @@
   "features": {
     // Which inline completion provider to use.
     "edit_prediction_provider": "zed"
-  },
-  "smooth_scroll": true
+  }
 }

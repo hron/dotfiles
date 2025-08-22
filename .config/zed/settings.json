@@ -11,9 +11,11 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "debugger": {
+    "dock": "left"
+  },
   "language_models": {
     "openai": {
-      "version": "1",
       "available_models": []
     }
   },
@@ -162,7 +164,7 @@
   },
   "terminal": {
     // "dock": "bottom",
-    "dock": "bottom",
+    "dock": "left",
     "default_width": 900,
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
