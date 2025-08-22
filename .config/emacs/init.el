@@ -120,7 +120,6 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (make-backup-files nil)
   (indent-tabs-mode nil)
   (vc-follow-symlinks t)
-  (project-vc-ignores '("straight/repos"))
   (find-function-C-source-directory "~/src/emacs/src")
   (tab-always-indent 'complete)
   (undo-limit 1600000)
