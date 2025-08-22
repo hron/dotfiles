@@ -111,7 +111,7 @@ parameters (as plist keys) and values supported by the API.  Use
 these to set parameters that gptel does not provide user options
 for.
 
-(fn NAME &key CURL-ARGS STREAM KEY REQUEST-PARAMS (HEADER (lambda nil (when-let* ((key (gptel--get-api-key))) \\=`((\"x-api-key\" \\=\\, key) (\"anthropic-version\" . \"2023-06-01\") (\"anthropic-beta\" . \"pdfs-2024-09-25\") (\"anthropic-beta\" . \"prompt-caching-2024-07-31\"))))) (MODELS gptel--anthropic-models) (HOST \"api.anthropic.com\") (PROTOCOL \"https\") (ENDPOINT \"/v1/messages\"))")
+(fn NAME &key CURL-ARGS STREAM KEY REQUEST-PARAMS (HEADER (lambda nil (when-let* ((key (gptel--get-api-key))) \\=`((\"x-api-key\" \\=\\, key) (\"anthropic-version\" . \"2023-06-01\") (\"anthropic-beta\" . \"extended-cache-ttl-2025-04-11\"))))) (MODELS gptel--anthropic-models) (HOST \"api.anthropic.com\") (PROTOCOL \"https\") (ENDPOINT \"/v1/messages\"))")
 (function-put 'gptel-make-anthropic 'lisp-indent-function 1)
 (register-definition-prefixes "gptel-anthropic" '("gptel--anthropic-"))
 
@@ -128,8 +128,10 @@ MODELS - The list of models supported by this backend
 MODEL-REGION - one of apac, eu, us or nil
 CURL-ARGS - additional curl args
 STREAM - Whether to use streaming responses or not.
+REQUEST-PARAMS - a plist of additional HTTP request
+parameters (as plist keys) and values supported by the API.
 
-(fn NAME &key REGION (MODELS gptel--bedrock-models) (MODEL-REGION nil) (STREAM nil) CURL-ARGS (PROTOCOL \"https\"))")
+(fn NAME &key REGION (MODELS gptel--bedrock-models) (MODEL-REGION nil) STREAM CURL-ARGS REQUEST-PARAMS (PROTOCOL \"https\"))")
 (function-put 'gptel-make-bedrock 'lisp-indent-function 1)
 (register-definition-prefixes "gptel-bedrock" '("gptel-"))
 
@@ -634,7 +636,7 @@ false.
 The other keyword arguments are all optional.  For their meanings
 see `gptel-make-openai'.
 
-(fn NAME &key CURL-ARGS STREAM KEY REQUEST-PARAMS (HEADER (lambda nil (when-let* ((key (gptel--get-api-key))) \\=`((\"Authorization\" \\=\\, (concat \"Bearer \" key)))))) (HOST \"api.x.ai\") (PROTOCOL \"https\") (ENDPOINT \"/v1/chat/completions\") (MODELS \\='((grok-3-latest :description \"Grok 3\" :capabilities \\='(tool-use json) :context-window 131072 :input-cost 3 :output-cost 15) (grok-3-fast-latest :description \"Faster Grok 3\" :capabilities \\='(tool-use json) :context-window 131072 :input-cost 5 :output-cost 25) (grok-3-mini-latest :description \"Mini Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131072 :input-cost 0.3 :output-cost 0.5) (grok-3-mini-fast-latest :description \"Faster mini Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131072 :input-cost 0.6 :output-cost 4) (grok-2-vision-1212 :description \"Grok 2 Vision\" :capabilities \\='(tool-use json) :mime-types \\='(\"image/jpeg\" \"image/png\" \"image/gif\" \"image/webp\") :context-window 32768 :input-cost 2 :output-cost 10))))")
+(fn NAME &key CURL-ARGS STREAM KEY REQUEST-PARAMS (HEADER (lambda nil (when-let* ((key (gptel--get-api-key))) \\=`((\"Authorization\" \\=\\, (concat \"Bearer \" key)))))) (HOST \"api.x.ai\") (PROTOCOL \"https\") (ENDPOINT \"/v1/chat/completions\") (MODELS \\='((grok-4 :description \"Grok Flagship model\" :capabilities \\='(tool-use json reasoning) :context-window 256 :input-cost 3 :output-cost 15) (grok-3 :description \"Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131 :input-cost 3 :output-cost 15) (grok-3-fast :description \"Faster Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131 :input-cost 5 :output-cost 25) (grok-3-mini :description \"Mini Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131 :input-cost 0.3 :output-cost 0.5) (grok-3-mini-fast :description \"Faster mini Grok 3\" :capabilities \\='(tool-use json reasoning) :context-window 131072 :input-cost 0.6 :output-cost 4) (grok-2-vision-1212 :description \"Grok 2 Vision\" :capabilities \\='(tool-use json media) :mime-types \\='(\"image/jpeg\" \"image/png\" \"image/gif\" \"image/webp\") :context-window 32768 :input-cost 2 :output-cost 10))))")
 (function-put 'gptel-make-xai 'lisp-indent-function 1)
 (register-definition-prefixes "gptel-openai-extras" '("gptel--p"))
 

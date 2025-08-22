@@ -3,8 +3,9 @@
 ;; Copyright (C) 2023-2025  Karthik Chikmagalur
 
 ;; Author: Karthik Chikmagalur <karthik.chikmagalur@gmail.com>
-;; Version: 0.9.8.5
-;; Package-Requires: ((emacs "27.1") (transient "0.7.4") (compat "29.1.4.1"))
+;; Package-Version: 20250818.648
+;; Package-Revision: ca6086888ced
+;; Package-Requires: ((emacs "27.1") (transient "0.7.4") (compat "30.1.0.0"))
 ;; Keywords: convenience, tools
 ;; URL: https://github.com/karthink/gptel
 
@@ -35,7 +36,7 @@
 ;; gptel supports:
 ;;
 ;; - The services ChatGPT, Azure, Gemini, Anthropic AI, Together.ai, Perplexity,
-;;   Anyscale, OpenRouter, Groq, PrivateGPT, DeepSeek, Cerebras, Github Models,
+;;   AI/ML API, Anyscale, OpenRouter, Groq, PrivateGPT, DeepSeek, Cerebras, Github Models,
 ;;   GitHub Copilot chat, AWS Bedrock, Novita AI, xAI, Sambanova, Mistral Le
 ;;   Chat and Kagi (FastGPT & Summarizer).
 ;; - Local models via Ollama, Llama.cpp, Llamafiles or GPT4All
@@ -73,7 +74,7 @@
 ;; - For Gemini: define a gptel-backend with `gptel-make-gemini', which see.
 ;; - For Anthropic (Claude): define a gptel-backend with `gptel-make-anthropic',
 ;;   which see.
-;; - For Together.ai, Anyscale, Groq, OpenRouter, DeepSeek, Cerebras or
+;; - For AI/ML API, Together.ai, Anyscale, Groq, OpenRouter, DeepSeek, Cerebras or
 ;;   Github Models: define a gptel-backend with `gptel-make-openai', which see.
 ;; - For PrivateGPT: define a backend with `gptel-make-privategpt', which see.
 ;; - For Perplexity: define a backend with `gptel-make-perplexity', which see.
@@ -643,6 +644,30 @@ the same as t."
      :input-cost 30
      :output-cost 60
      :cutoff-date "2023-11")
+    (gpt-5
+     :description "Flagship model for coding, reasoning, and agentic tasks across domains"
+     :capabilities (media tool-use json url)
+     :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
+     :context-window 400
+     :input-cost 1.25
+     :output-cost 10
+     :cutoff-date "2024-09")
+    (gpt-5-mini
+     :description "Faster, more cost-efficient version of GPT-5"
+     :capabilities (media tool-use json url)
+     :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
+     :context-window 400
+     :input-cost 0.25
+     :output-cost 2.0
+     :cutoff-date "2024-09")
+    (gpt-5-nano
+     :description "Fastest, cheapest version of GPT-5"
+     :capabilities (media tool-use json url)
+     :mime-types ("image/jpeg" "image/png" "image/gif" "image/webp")
+     :context-window 400
+     :input-cost 0.05
+     :output-cost 0.40
+     :cutoff-date "2024-09")
     (o1
      :description "Reasoning model designed to solve hard problems across domains"
      :capabilities (media reasoning)
@@ -817,17 +842,16 @@ always handled separately."
 (defcustom gptel-track-media nil
   "Whether supported media in chat buffers should be sent.
 
-When the active `gptel-model' supports it, gptel can send images
-or other media from links in chat buffers to the LLM.  To use
-this, the following steps are required.
+When the active `gptel-model' supports it, gptel can send text, images
+or other media from links in chat buffers to the LLM.  To use this, the
+following steps are required.
 
 1. `gptel-track-media' (this variable) should be non-nil
 
-2. The LLM should provide vision or document support.  Currently,
-only the OpenAI, Anthropic and Ollama APIs are supported.  See
-the documentation of `gptel-make-openai', `gptel-make-anthropic'
-and `gptel-make-ollama' resp. for details on how to specify media
-support for models.
+2. The LLM should provide vision or document support.  (See
+`gptel-make-openai', `gptel-make-anthropic', `gptel-make-ollama' or
+`gptel-make-gemini' for details on how to specify media support for
+models.)
 
 3. Only \"standalone\" links in chat buffers are considered.
 These are links on their own line with no surrounding text.
@@ -906,6 +930,19 @@ or
 Each entry has the form (PROCESS . (FSM ABORT-CLOSURE))
 If the ABORT-CLOSURE is called, it must abort the PROCESS.")
 
+(defvar gptel--request-params nil
+  "Extra parameters sent with each gptel request.
+
+These parameters are combined with model-specific and backend-specific
+:request-params before sending a request, which see.  Warning: values
+incompatible with the active backend can break gptel.  Do not use this
+variable unless you know what you're doing!")
+
+(defconst gptel--ersatz-json-tool "response_json"
+  "Name of ersatz tool used to force JSON output.
+
+Some APIs, like Anthropic, use a tool to produce structured JSON output.")
+
 
 ;;; Utility functions
 
@@ -976,13 +1013,14 @@ Later plists in the sequence take precedence over earlier ones."
   (condition-case nil
       (with-temp-buffer
         (insert-file-contents path nil 1 512 'replace)
-        (eq buffer-file-coding-system 'no-conversion))
+        (memq buffer-file-coding-system
+              '(no-conversion no-conversion-multibyte)))
     (file-missing (message "File \"%s\" is not readable." path)
                   nil)))
 
 (defun gptel--insert-file-string (path)
   "Insert at point the contents of the file at PATH as context."
-  (insert (format "In file `%s`:" (file-name-nondirectory path))
+  (insert (format "In file `%s`:" (abbreviate-file-name path))
           "\n\n```\n")
   (let ((pm (point-marker)))
     (set-marker-insertion-type pm t)
@@ -1073,6 +1111,7 @@ Compatibility macro for Emacs 27.1."
   "Copy gptel's local variables from BUF to a temp buffer and run BODY.
 
 If positions START and END are provided, insert that part of BUF first."
+  (declare (indent 3))
   `(gptel--with-buffer-copy-internal ,buf ,start ,end (lambda () ,@body)))
 
 (defun gptel--with-buffer-copy-internal (buf start end body-thunk)
@@ -1083,9 +1122,9 @@ For BUF, START, END and BODY-THUNK see `gptel--with-buffer-copy'."
     (with-current-buffer temp-buffer
       (dolist (sym '( gptel-backend gptel--system-message gptel-model
                       gptel-mode gptel-track-response gptel-track-media
-                      gptel-use-tools gptel-tools gptel-use-curl
+                      gptel-use-tools gptel-tools gptel-use-curl gptel--schema
                       gptel-use-context gptel--num-messages-to-send
-                      gptel-stream gptel-include-reasoning
+                      gptel-stream gptel-include-reasoning gptel--request-params
                       gptel-temperature gptel-max-tokens gptel-cache))
         (set (make-local-variable sym) (buffer-local-value sym buf)))
       (when (and start end) (insert-buffer-substring buf start end))
@@ -1431,6 +1470,16 @@ file."
 ;; NOTE: It's not clear that this is the best strategy:
 (add-to-list 'text-property-default-nonsticky '(gptel . t))
 
+(defun gptel--inherit-stickiness (beg end pre)
+  "Mark any change to an LLM response region as a response.
+
+Intended to be added to `after-change-functions' in gptel chat buffers,
+which see for BEG, END and PRE."
+  (and (= pre 0) (< end (point-max))
+       (and-let* ((val (get-text-property end 'gptel)))
+         (add-text-properties
+          beg end `(gptel ,val front-sticky (gptel))))))
+
 ;;;###autoload
 (define-minor-mode gptel-mode
   "Minor mode for interacting with LLMs."
@@ -1445,6 +1494,7 @@ file."
           (gptel-mode -1)
           (user-error (format "`gptel-mode' is not supported in `%s'." major-mode)))
         (add-hook 'before-save-hook #'gptel--save-state nil t)
+        (add-hook 'after-change-functions 'gptel--inherit-stickiness nil t)
         (gptel--prettify-preset)
         (when (derived-mode-p 'org-mode)
           ;; Work around bug in `org-fontify-extend-region'.
@@ -1539,6 +1589,7 @@ file."
                          (buttonize (gptel--model-name gptel-model)
                             (lambda (&rest _) (gptel-menu))))))))
     (remove-hook 'before-save-hook #'gptel--save-state t)
+    (remove-hook 'after-change-functions 'gptel--inherit-stickiness t)
     (gptel--prettify-preset)
     (if gptel-use-header-line
         (setq header-line-format gptel--old-header-line
@@ -1566,6 +1617,129 @@ file."
     (force-mode-line-update)))
 
 (declare-function gptel-context--wrap "gptel-context")
+
+
+;;; Structured output
+(defvar gptel--schema nil
+  "Response output schema for backends that support it.")
+
+(cl-defgeneric gptel--parse-schema (_backend _schema)
+  "Parse JSON schema in a backend-appropriate way.")
+
+(defun gptel--dispatch-schema-type (schema)
+  "Convert SCHEMA to a valid elisp representation.
+
+SCHEMA can be specified in several ways:
+- As a plist readable by `gptel--json-encode'
+  Ex: (:type object :properties (:key1 (:type number :description \"...\")
+                                 :key2 (:type string)))
+
+- As a serialized JSON string, which will be passed as-is.
+
+- In shorthand form #1, a single-line comma-separated string with object
+  keys and (optionally) types:
+  Ex: \"key1, key2 number\"
+  Ex: \"key1 string, key2 int\"
+  The default type is string, and types can be shortened (integer -> int) as
+  long as they match a JSON schema type uniquely.
+
+- In shorthand form #2, a multi-line string with keys, (optionally) types and
+  (optionally) descriptions
+  Ex: \"key1: description 1 here
+       key2 integer: description 2 here\"
+
+- Shorthand forms can be placed inside [ and ] to specify an array of
+  objects:
+  Ex: \"[key1, key2 number]\"
+  Ex: \"[key1: description 1 here
+        key2 int: description 2 here]\""
+  (when (stringp schema)  ;Two possibilities: serialized JSON, or shorthand form
+    (let (wrap-in-array)  ;Flag to wrap the object type in an array
+      (with-temp-buffer   ;Parser for (possibly) shorthand forms
+        (insert schema)
+        (goto-char (point-min)) (skip-chars-forward " \n\r\t")
+        (if (= (char-after) ?{)
+            (setq schema (gptel--json-read)) ;Assume serialized JSON schema, we're done
+          (when (= (char-after) ?\[)    ;Shorthand: assume array top-level type
+            (save-excursion (goto-char (point-max)) (delete-char -1))
+            (delete-char 1)             ;Delete array markers [ and ]
+            (setq wrap-in-array t))
+          (let ( props types descriptions ;Nested object and array types are disallowed in shorthand
+                 (all-types '("number" "string" "integer" "boolean" "null")))
+            (if (= (point-max) (line-end-position)) ; Single or multi-line?
+                ;; Single line format (type optional): "key1 type, key2, ..."
+                (while (re-search-forward ",?\\([^ ,]+\\) *\\([^ ,]*\\]?\\)" nil t)
+                  (push (match-string 1) props)
+                  (push (if (string-empty-p (match-string 2))
+                            "string" (car (all-completions (match-string 2) all-types)))
+                        types)
+                  (push nil descriptions))
+              ;; Multi-line format (type, description optional):
+              ;; "key1 type: description1 \n key2: description2..."
+              (while (re-search-forward "\\([^ :]+\\) *\\([^ :]*\\):?"
+                                        (line-end-position) t)
+                (push (match-string 1) props)
+                (push (if (string-empty-p (match-string 2))
+                          "string" (car (all-completions (match-string 2) all-types)))
+                      types)
+                (skip-chars-forward " \t")
+                (push (if (eolp) nil (buffer-substring-no-properties
+                                      (point) (line-end-position)))
+                      descriptions)
+                (forward-line 1)))
+            (let ((object
+                   (list :type "object"
+                         :properties
+                         (cl-mapcan
+                          (lambda (prop type desc)
+                            `(,(intern (concat ":" prop))
+                              (:type ,type ,@(when desc (list :description desc)))))
+                          (nreverse props) (nreverse types) (nreverse descriptions)))))
+              (setq schema
+                    (if wrap-in-array (list :type "array" :items object) object))))))))
+  ;; The OpenAI and Anthropic APIs don't allow arrays at the root of the schema.
+  ;; Work around this by wrapping it in an object with the field "items".
+  ;; TODO(schema): Find some way to strip this extra layer from the response.
+  (if (member (plist-get schema :type) '("array" array))
+      (list :type "object"
+            :properties (list :items schema)
+            :required ["items"]
+            :additionalProperties :json-false)
+    schema))
+
+(defun gptel--preprocess-schema (spec)
+  "Set additionalProperties for objects in SPEC destructively.
+
+Convert symbol :types to strings."
+  ;; NOTE: Do not use `sequencep' here, as that covers strings too and breaks
+  ;; things.
+  (when (or (listp spec) (vectorp spec))
+    (cond
+     ((vectorp spec)
+      (cl-loop for element across spec
+               for idx upfrom 0
+               do (aset spec idx (gptel--preprocess-schema element))))
+     ((keywordp (car spec))
+      (let ((tail spec))
+        (while tail
+          (when (eq (car tail) :type)
+            (when (symbolp (cadr tail)) ;Convert symbol :type to string
+              (setcar (cdr tail) (symbol-name (cadr tail))))
+            (when (equal (cadr tail) "object") ;Add additional object fields
+              (plist-put tail :additionalProperties :json-false)
+              (let ((vprops (vconcat
+                             (cl-loop
+                              for prop in (plist-get tail :properties) by #'cddr
+                              collect (substring (symbol-name prop) 1)))))
+                (plist-put tail :required vprops)
+                (plist-put tail :propertyOrdering vprops))))
+          (when (or (listp (cadr tail)) (vectorp (cadr tail)))
+            (gptel--preprocess-schema (cadr tail)))
+          (setq tail (cddr tail)))))
+     ((listp spec) (dolist (element spec)
+                     (when (listp element)
+                       (gptel--preprocess-schema element))))))
+  spec)
 
 
 ;;; Tool use
@@ -1858,7 +2032,7 @@ implementation, used by OpenAI-compatible APIs and Ollama."
                                               (plist-get arg :name)))
                                 (gptel-tool-args tool))))
                     :additionalProperties :json-false))
-          (list :parameters :null)))))
+          (list :parameters (list :type "object" :properties nil))))))
     (ensure-list tools))))
 
 (cl-defgeneric gptel--parse-tool-results (backend results)
@@ -2233,7 +2407,12 @@ Run post-response hooks."
                                   (cons 'tool-result result-alist) info)
                          (gptel--fsm-transition fsm)))))
              (if (null tool-spec)
-                 (message "Unknown tool called by model: %s" name)
+                 (if (equal name gptel--ersatz-json-tool) ;Could be a JSON response
+                     ;; Handle structured JSON output supplied as tool call
+                     (funcall (plist-get info :callback)
+                              (gptel--json-encode (plist-get tool-call :args))
+                              info)
+                   (message "Unknown tool called by model: %s" name))
                (setq arg-values
                      (mapcar
                       (lambda (arg)
@@ -2268,11 +2447,9 @@ Run post-response hooks."
 
 (defun gptel--error-p (info) (plist-get info :error))
 
-(defun gptel--tool-use-p (info)
-  (and (plist-get info :tools) (plist-get info :tool-use)))
+(defun gptel--tool-use-p (info) (plist-get info :tool-use))
 
-(defun gptel--tool-result-p (info)
-  (and (plist-get info :tools) (plist-get info :tool-success)))
+(defun gptel--tool-result-p (info) (plist-get info :tool-success))
 
 ;; TODO(prompt-list): Document new prompt input format to `gptel-request'.
 
@@ -2283,7 +2460,7 @@ Run post-response hooks."
                position context dry-run
                (stream nil) (in-place nil)
                (system gptel--system-message)
-               transforms (fsm (gptel-make-fsm)))
+               schema transforms (fsm (gptel-make-fsm)))
   "Request a response from the `gptel-backend' for PROMPT.
 
 The request is asynchronous, this function returns immediately.
@@ -2435,6 +2612,16 @@ additional information (such as from a RAG engine).
 
 See `gptel-prompt-transform-functions' for more.
 
+If provided, SCHEMA forces the LLM to generate JSON output.  Its value
+is a JSON schema, which can be provided as
+- an elisp object, a nested plist structure.
+- A JSON schema serialized to a string
+- A shorthand object/array description, see `gptel--dispatch-schema-type'.
+See the manual or the wiki for examples.
+
+Note: SCHEMA is presently experimental and subject to change, and not
+all providers support structured output.
+
 FSM is the state machine driving the request.  This can be used
 to define a custom request control flow, see `gptel-fsm' for
 details.  You can safely ignore this -- FSM is an unstable
@@ -2461,10 +2648,11 @@ be used to rerun or continue the request at a later time."
            ((markerp position) position)
            ((integerp position)
             (set-marker (make-marker) position buffer))))
+         (gptel--schema schema)
          (prompt-buffer
           (cond                       ;prompt from buffer or explicitly supplied
            ((null prompt)
-            (gptel--create-prompt-buffer start-marker))
+            (gptel--create-prompt-buffer (point)))
            ((stringp prompt)
             (gptel--with-buffer-copy buffer nil nil
               (insert prompt)
@@ -2583,8 +2771,7 @@ Initiate the request when done."
         (when (and gptel-use-tools gptel-tools)
           (plist-put info :tools gptel-tools))
         (plist-put info :data
-                   (gptel--request-data gptel-backend full-prompt))
-        (run-hooks 'gptel-augment-post-modify-hook))
+                   (gptel--request-data gptel-backend full-prompt)))
       (kill-buffer (current-buffer)))
     ;; INIT -> WAIT
     (unless (plist-get info :dry-run) (gptel--fsm-transition fsm))
@@ -2647,6 +2834,7 @@ waiting for the response."
       (message "Querying %s..."
                (thread-first (gptel-fsm-info fsm)
                              (plist-get :backend)
+                             (or gptel-backend)
                              (gptel-backend-name))))
     (gptel--update-status " Waiting..." 'warning)))
 
@@ -2693,6 +2881,8 @@ JSON query instead of the Lisp structure gptel uses."
          (make-composed-keymap
           (define-keymap
             "C-c C-c" #'gptel--continue-query
+            "C-c C-w" (lambda () "Copy Curl command for query."
+                        (interactive) (gptel--continue-query 'copy))
             "C-c C-k" #'quit-window)
           (current-local-map)))
         (unless header-line-format
@@ -2701,17 +2891,24 @@ JSON query instead of the Lisp structure gptel uses."
                  (concat
                   "Edit request: \\[read-only-mode],"
                   " Send request: \\[gptel--continue-query],"
+                  (format " Copy Curl: %s"
+                          (propertize "C-c C-w" 'face 'help-key-binding))
                   " Quit: \\[quit-window]"))))
         (display-buffer (current-buffer) gptel-display-buffer-action)))))
 
-(defun gptel--continue-query ()
+(declare-function gptel-curl--get-args "gptel-curl")
+
+(defun gptel--continue-query (&optional copy)
   "Continue sending the gptel query displayed in this buffer.
 
 The request is continued with the same parameters as originally
-specified."
-  (interactive nil lisp-data-mode fundamental-mode)
+specified.
+
+With prefix arg COPY, copy the Curl command for the request to the
+kill ring instead."
+  (interactive "P" lisp-data-mode fundamental-mode)
   (unless (equal (buffer-name) "*gptel-query*")
-    (user-error "This command is meant for use in a gptel dry-run buffer."))
+    (user-error "This command is meant for use in a gptel dry-run buffer"))
   (save-excursion
     (goto-char (point-min))
     (condition-case-unless-debug nil
@@ -2720,8 +2917,16 @@ specified."
                             (gptel--json-read))))
           (cl-assert (cl-typep gptel--fsm-last 'gptel-fsm))
           (plist-put (gptel-fsm-info gptel--fsm-last) :data data)
-          (gptel--fsm-transition gptel--fsm-last)   ;INIT -> WAIT
-          (quit-window))
+          (if copy                 ;Copy Curl command instead of sending request
+              (let ((args (and (require 'gptel-curl)
+                               (gptel-curl--get-args (gptel-fsm-info gptel--fsm-last)
+                                                     (md5 (format "%s" (random)))))))
+                (kill-new
+                 (mapconcat #'shell-quote-argument
+                            (cons (gptel--curl-path) args) " \\\n"))
+                (message "Curl command for request copied to kill-ring"))
+            (gptel--fsm-transition gptel--fsm-last) ;INIT -> WAIT
+            (quit-window)))
       (error
        (user-error "Can not resume request: could not read data from buffer!")))))
 
@@ -3096,8 +3301,11 @@ See `gptel-curl--get-response' for its contents.")
                          ((not (string-blank-p resp))))
                 (string-trim resp))
               http-status http-msg))
-       ((plist-get response :error)
-        (list nil http-status http-msg (plist-get response :error)))
+       ((and-let* ((error-data
+                    (cond ((plistp response) (plist-get response :error))
+                          ((arrayp response)
+                           (cl-some (lambda (el) (plist-get el :error)) response)))))
+          (list nil http-status http-msg error-data)))
        ((eq response 'json-read-error)
         (list nil http-status (concat "(" http-msg ") Malformed JSON in response.") "json-read-error"))
        (t (list nil http-status (concat "(" http-msg ") Could not parse HTTP response.")
@@ -3584,8 +3792,8 @@ kill-ring."
 (defun gptel--apply-preset (preset &optional setter)
   "Apply gptel PRESET with SETTER.
 
-PRESET is the name of a preset, or a spec of the form
- (NAME :KEY1 VAL1 :KEY2 VAL2 ...).
+PRESET is the name of a preset, or a spec (plist) of the form
+ (:KEY1 VAL1 :KEY2 VAL2 ...).
 
 SETTER is the function used to set the gptel options.  It must accept
 two arguments, the symbol being set and the value to set it to.  It
@@ -3595,10 +3803,10 @@ example) apply the preset buffer-locally."
     (let ((spec (or (gptel-get-preset preset)
                     (user-error "gptel preset \"%s\": Cannot find preset."
                                 preset))))
-      (setq preset (cons preset spec))))
+      (setq preset spec)))
   (unless setter (setq setter #'set))
-  (when-let* ((func (plist-get (cdr preset) :pre))) (funcall func))
-  (when-let* ((parents (plist-get (cdr preset) :parents)))
+  (when-let* ((func (plist-get preset :pre))) (funcall func))
+  (when-let* ((parents (plist-get preset :parents)))
     (mapc #'gptel--apply-preset (ensure-list parents)))
   (map-do
    (lambda (key val)
@@ -3610,16 +3818,14 @@ example) apply the preset buffer-locally."
           (if (and (symbolp val) (not (functionp val)))
               (if-let* ((directive (alist-get val gptel-directives)))
                   (funcall setter sym directive)
-                (user-error "gptel preset \"%s\": Cannot find directive %s"
-                            (car preset) val))
+                (user-error "gptel preset: Cannot find directive %s" val))
             (funcall setter sym val))))
        (:backend
         (setq val (cl-etypecase val
                     (gptel-backend val)
                     (string (gptel-get-backend val))))
         (unless val
-          (user-error "gptel preset \"%s\": Cannot find backend %s."
-                      (car preset) val))
+          (user-error "gptel preset: Cannot find backend %s." val))
         (funcall setter 'gptel-backend val))
        (:tools                          ;TEMP Confirm this `:append' convention
         (let* ((append (when (eq (car-safe val) :append) (setq val (cdr val)) t))
@@ -3631,8 +3837,7 @@ example) apply the preset buffer-locally."
                                        (string (ignore-errors
                                                  (gptel-get-tool tool-name))))
                           do (unless tool
-                               (user-error "gptel preset \"%s\": Cannot find tool %s."
-                                           (car preset) val))
+                               (user-error "gptel preset: Cannot find tool %s." val))
                           collect tool))))
           (funcall setter 'gptel-tools ;append makes a copy of gptel-tools, intentional
                    (if append (delete-dups (append gptel-tools tools)) tools))))
@@ -3644,21 +3849,26 @@ example) apply the preset buffer-locally."
         (funcall setter sym val))
        (_ (display-warning
            '(gptel presets)
-           (format "gptel preset \"%s\": setting for %s not found, ignoring."
-                   (car preset) key)))))
-   (cdr preset))
-  (when-let* ((func (plist-get (cdr preset) :post))) (funcall func)))
+           (format "gptel preset: setting for %s not found, ignoring." key)))))
+   preset)
+  (when-let* ((func (plist-get preset :post))) (funcall func)))
 
 (defun gptel--preset-syms (preset)
   "Return a list of gptel variables (symbols) set by PRESET.
 
-PRESET is a spec (plist) of keys and values."
+PRESET is the name of a preset, or a spec (plist) of the form
+ (:KEY1 VAL1 :KEY2 VAL2 ...)."
+  (when (memq (type-of preset) '(string symbol))
+    (let ((spec (or (gptel-get-preset preset)
+                    (user-error "gptel preset \"%s\": Cannot find preset."
+                                preset))))
+      (setq preset spec)))
   (let* ((index preset)
          syms key val)
     (while index
       (setq key (pop index) val (pop index))
       (pcase key
-        (:description)
+        ((or :description :pre :post))
         (:parents
          (mapc (lambda (parent-preset)
                  (nconc syms (gptel--preset-syms
@@ -3676,24 +3886,33 @@ PRESET is a spec (plist) of keys and values."
                       (car preset) key))))))
     (cl-delete-duplicates syms)))
 
+;; This is identical to `cl-progv', only we let-bind symbols SYM from the preset
+;; to their current values instead of evaluating the values explicitly. (#1005)
 (defmacro gptel-with-preset (name &rest body)
   "Run BODY with gptel preset NAME applied.
 
 This macro can be used to create `gptel-request' command with settings
-from a gptel preset applied.  NAME is the preset name, typically a
-symbol."
+from a gptel preset applied.
+
+NAME is the name of a preset, or a spec (plist) of the form
+ (:KEY1 VAL1 :KEY2 VAL2 ...).  It must be quoted."
   (declare (indent 1))
-  `(cl-progv (gptel--preset-syms
-              (gptel-get-preset ,(if (symbolp name) `',name name)))
-       nil
-     (gptel--apply-preset ,(if (symbolp name) `',name name))
-     ,@body))
+  (let ((syms (make-symbol "syms"))
+        (binds (make-symbol "binds"))
+        (bodyfun (make-symbol "body")))
+    `(let* ((,syms (gptel--preset-syms ,name))
+            (,bodyfun (lambda () (gptel--apply-preset ,name) ,@body))
+            (,binds nil))
+       (while ,syms (push (list (car ,syms) (pop ,syms)) ,binds))
+       (eval (list 'let (nreverse ,binds) (list 'funcall (list 'quote ,bodyfun)))))))
 
 ;;;; Presets in-buffer UI
 (defun gptel--transform-apply-preset (_fsm)
   "Apply a gptel preset to the buffer depending on the prompt.
 
-If the user prompt begins with @foo, the preset foo is applied."
+If the last user prompt includes @foo, the preset foo is applied.
+Before applying the preset, \"@foo\" is removed from the prompt and
+point is placed at its position."
   (when gptel--known-presets
     (text-property-search-backward 'gptel nil t)
     (while (re-search-forward "@\\([^[:blank:]]+\\)\\_>" nil t)
@@ -3705,7 +3924,9 @@ If the user prompt begins with @foo, the preset foo is applied."
                     (preset (or (gptel-get-preset (intern-soft name))
                                 (gptel-get-preset name))))
           (delete-region (match-beginning 0) (match-end 0))
-          (gptel--apply-preset (cons name preset)
+          ;; Point must be after @foo when the preset is applied to allow for
+          ;; more advanced transformations.
+          (gptel--apply-preset preset
                                (lambda (sym val)
                                  (set (make-local-variable sym) val))))))))
 

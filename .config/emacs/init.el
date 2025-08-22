@@ -522,6 +522,7 @@ Filter by current project if ARG is supplied."
   (doom-modeline-height (+ (frame-char-height) 4)))
 
 (use-package gptel
+  :pin "melpa"
   :bind (("C-k C-<return>" . #'gptel-send)
          ("C-k <return>" . #'gptel-menu)
          ("C-k C-g" . #'gptel-abort)
@@ -1026,6 +1027,7 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auto-dark-themes '((modus-vivendi) (modus-operandi)) nil nil "Customized with use-package auto-dark")
  '(modus-themes-bold-constructs t)
  '(modus-themes-common-palette-overrides '((bg-region bg-ochre) (fg-region unspecified)))
  '(modus-themes-italic-constructs t)
