@@ -804,7 +804,7 @@ It seems `end-of-defun' is used internally by
     (push (cons frame-param :never) frameset-filter-alist))
 
   :hook
-  (elpaca-after-init
+  (after-init
    . (lambda ()
        (when (and (file-exists-p (desktop-full-file-name ".")))
          (desktop-read)
