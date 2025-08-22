@@ -820,8 +820,7 @@ It seems `end-of-defun' is used internally by
                              regexp-search-ring
                              register-alist
                              file-name-history
-                             compile-history))
-  )
+                             compile-history)))
 
 (use-package emacs
   :ensure nil
@@ -1027,6 +1026,9 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(modus-themes-bold-constructs t)
+ '(modus-themes-common-palette-overrides '((bg-region bg-ochre) (fg-region unspecified)))
+ '(modus-themes-italic-constructs t)
  '(package-selected-packages
    '(anzu apheleia auto-dark benchmark-init better-jumper cape
           consult-eglot corfu crux dape diff-hl doom-modeline
