@@ -20,83 +20,33 @@
     }
   },
   "theme": {
-    "dark": "algus: Modus Vivendi",
+    "dark": "Modus Vivendi",
     "light": "Modus Operandi"
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
-  // "experimental.theme_overrides": {
-  //   "scrollbar.thumb.background": "#0000ffaa"
-  // },
-  // "theme_overrides": {
-  //   "algus: Modus Operandi": {
-  //     // red
-  //     "scrollbar.thumb.background": "#ff0000aa"
-  //   },
-  //   "algus: Modus Vivendi": {
-  //     // yellow
-  //     "scrollbar.thumb.background": "#ffff00aa"
-  //     // "scrollbar.thumb.background": "#0000ffaa"
-  //   }
-  // },
-  //   // "algus: Modus Videndi": {
-  //   //   "search.match_background": "#ffffff40",
-  //   //   "editor.background": "#3c3c3caa"
-  //   // }
-  //   // "search.match_background": "#3c3c3caa",
-  //   // "players": [
-  //   //   {
-  //   //     "cursor": "#74ade8ff",
-  //   //     "background": "#240f55ff",
-  //   //     "selection": "#240f55ff"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#be5046ff",
-  //   //     "background": "#be5046ff",
-  //   //     "selection": "#be50463d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#bf956aff",
-  //   //     "background": "#bf956aff",
-  //   //     "selection": "#bf956a3d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#b477cfff",
-  //   //     "background": "#b477cfff",
-  //   //     "selection": "#b477cf3d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#6eb4bfff",
-  //   //     "background": "#6eb4bfff",
-  //   //     "selection": "#6eb4bf3d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#d07277ff",
-  //   //     "background": "#d07277ff",
-  //   //     "selection": "#d072773d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#dec184ff",
-  //   //     "background": "#dec184ff",
-  //   //     "selection": "#dec1843d"
-  //   //   },
-  //   //   {
-  //   //     "cursor": "#a1c181ff",
-  //   //     "background": "#a1c181ff",
-  //   //     "selection": "#a1c1813d"
-  //   //   }
-  //   // ],
-  //   // "syntax": {
-  //   //   "comment": {
-  //   //     "font_style": "italic"
-  //   //   },
-  //   //   "comment.doc": {
-  //   //     "font_style": "italic"
-  //   //   },
-  //   //   "title": {
-  //   //     "font_weight": 800
-  //   //   }
-  //   // }
-  // },
+  "selection_highlight": true,
+  "theme_overrides": {
+    "Modus Operandi": {
+      "search.match_background": "#bfefff",
+      "editor.document_highlight.read_background": "#bfefff",
+      "players": [
+        {
+          "background": "#e8dfd1ff",
+          "selection": "#e8dfd1ff"
+        }
+      ]
+    },
+    "Modus Vivendi": {
+      "search.match_background": "#004065",
+      "editor.document_highlight.read_background": "#004065",
+      "players": [
+        {
+          "background": "#462f20ff",
+          "selection": "#462f20ff"
+        }
+      ]
+    }
+  },
   "scrollbar": {
     "axes": {
       "horizontal": false
