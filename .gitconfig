@@ -11,6 +11,8 @@
     cmd = emacs --no-desktop --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [difftool "vscode"]
     cmd = "code --wait --diff  "
+[difftool "zed"]
+    cmd = "zeditor --diff "
 
 [merge]
     tool = emacs

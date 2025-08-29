@@ -25,7 +25,7 @@
       "ctrl-shift-down": "editor::SelectToEndOfParagraph",
       "ctrl-h": "editor::SelectLargerSyntaxNode",
       "ctrl-shift-h": "editor::SelectSmallerSyntaxNode",
-      "ctrl-d": "editor::DuplicateLineDown",
+      "alt-d": "editor::DuplicateLineDown",
       "alt-shift-up": "editor::MoveLineUp",
       "alt-shift-down": "editor::MoveLineDown",
       "ctrl-shift-j": "editor::JoinLines",
@@ -91,12 +91,6 @@
     }
   },
   {
-    "context": "Editor && edit_prediction",
-    "bindings": {
-      "alt-/": null
-    }
-  },
-  {
     "context": "Pane",
     "bindings": {
       // "alt-1": null,
@@ -143,7 +137,7 @@
       "ctrl-q": null,
       "alt-9": "git::Diff",
       "ctrl-k b": "git::Branch",
-      "alt-shift-ctrl-o": "project_symbols::Toggle",
+      "alt-o": "project_symbols::Toggle",
       "ctrl-k e": "editor::ToggleEditPrediction"
     }
   },
@@ -170,7 +164,7 @@
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
       "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
       // produces alt-z, so it could be used instead of ctrl-shift-z
-      "ctrl-shift-z": ["terminal::SendText", "\u001bz"]
+      "ctrl-shift-z": ["terminal::SendText", "\u001bz"],
       // "shift-pageup": ["terminal::SendKeystroke", "shift-pageup"],
       // "shift-pagedown": ["terminal::SendKeystroke", "shift-pagedown"],
       // "ctrl-alt-up": ["terminal::SendKeystroke", "ctrl-alt-up"],
@@ -178,6 +172,8 @@
       // "alt-up": ["terminal::SendKeystroke", "alt-up"],
       // "alt-down": ["terminal::SendKeystroke", "alt-down"],
       // "alt-space": ["terminal::SendKeystroke", "alt-space"]
+      "alt-t": "task::Spawn",
+      "alt-r": "task::Rerun"
     }
   },
   {
@@ -232,6 +228,100 @@
     "context": "OutlinePanel",
     "bindings": {
       "shift-escape": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-alt-z": "editor::RevertSelectedHunks"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-r": "terminal::RerunTask"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-r": null
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-alt-r": null
+    }
+  },
+  {
+    "context": "(GitPanel && ChangesList)",
+    "bindings": {
+      "ctrl-alt-z": [
+        "git::RestoreFile",
+        {
+          "skip_prompt": false
+        }
+      ]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-r": "terminal::RerunTask"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-l": "terminal::Clear"
+    }
+  },
+  {
+    "context": "(Editor && edit_prediction)",
+    "bindings": {
+      "alt-/": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "(Editor && edit_prediction_conflict)",
+    "bindings": {
+      "alt-/": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "GitCommit > Editor",
+    "bindings": {
+      "alt-/": "git::GenerateCommitMessage"
+    }
+  },
+  {
+    "context": "CommitEditor > Editor",
+    "bindings": {
+      "alt-/": "git::GenerateCommitMessage"
+    }
+  },
+  {
+    "context": "(Editor && edit_prediction_conflict)",
+    "bindings": {
+      "alt-l": null
+    }
+  },
+  {
+    "context": "(Editor && edit_prediction)",
+    "bindings": {
+      "alt-l": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-backspace": "editor::DeleteLine"
+    }
+  },
+  {
+    "context": "DebugPanel",
+    "bindings": {
+      "ctrl-escape": "debug_panel::ToggleFocus"
     }
   }
 ]

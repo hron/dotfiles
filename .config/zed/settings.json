@@ -11,6 +11,18 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "file_scan_exclusions": [
+    "**/.git/**/*",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/.repo",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings"
+  ],
   "debugger": {
     "dock": "left"
   },
@@ -108,7 +120,7 @@
     // "background_coloring": "indent_aware"
   },
   "preview_tabs": {
-    "enabled": true,
+    "enabled": false,
     "enable_preview_from_file_finder": true,
     "enable_preview_from_code_navigation": true
   },
@@ -132,7 +144,7 @@
     "default_width": 400
   },
   "agent": {
-    "dock": "right",
+    "dock": "left",
     "default_width": 900,
     "enabled": true
   },
@@ -142,5 +154,8 @@
   "features": {
     // Which inline completion provider to use.
     "edit_prediction_provider": "zed"
+  },
+  "file_types": {
+    "ini": ["desktop"]
   }
 }
