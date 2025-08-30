@@ -168,7 +168,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
         (:eval (when (project-current) (format  " - %s" (project-name (project-current)))))
         (:eval (if-let* ((dir desktop-dirname)
                          (dir (file-name-nondirectory (directory-file-name dir))))
-                   (concat " ┃ " dir)
+                   (concat "   " dir)
                  "")))
       icon-title-format frame-title-format)
 
@@ -686,9 +686,10 @@ Filter by current project if ARG is supplied."
 (use-package lua-ts-mode
   :ensure nil  ; Built into Emacs 31+
   :mode "\\.lua\\'"
-  :init
-  (require 'treesit)
-  (treesit-ensure-installed 'lua))
+  ;; :init
+  ;; (require 'treesit)
+  ;; (treesit-ensure-installed 'lua)
+  )
 
 (use-package better-jumper
   :preface
@@ -951,9 +952,10 @@ It seems `end-of-defun' is used internally by
   :custom
   (rust-ts-flymake-command '("cargo" "clippy")))
 
-(unless (featurep 'mps)
-  (use-package gcmh
-    :init (gcmh-mode +1)))
+(use-package gcmh
+  :if (not (featurep 'mps))
+  :pin "melpa"
+  :init (gcmh-mode +1))
 
 (use-package nix-ts-mode
   :pin "melpa"
@@ -1027,16 +1029,11 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(anzu apheleia auto-dark benchmark-init better-jumper cape
-          consult-eglot corfu crux dape diff-hl doom-modeline
-          dumb-jump eask-mode edit-indirect embark-consult envrc
-          expand-region fish-mode gptel hardhat magit marginalia
-          markdown-mode move-text nerd-icons-completion
-          nerd-icons-corfu nerd-icons-dired nerd-icons-grep
-          nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern org-roam package-lint-flymake puni rust-mode
-          string-inflection too-wide-minibuffer-mode vertico vterm))
+ '(auto-dark-themes '((modus-vivendi) (modus-operandi)) nil nil "Customized with use-package auto-dark")
+ '(modus-themes-bold-constructs t)
+ '(modus-themes-common-palette-overrides '((bg-region bg-ochre) (fg-region unspecified)))
+ '(modus-themes-italic-constructs t)
+ '(package-selected-packages nil)
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
