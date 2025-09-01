@@ -136,7 +136,7 @@ config.key_tables = {
 
 -- Until https://github.com/wezterm/wezterm/issues/6645 is sorted (patched by myself for now)
 -- Also, settings this to true prevent KDE from applying the window rule to set proper geometry
-config.enable_wayland = false
+config.enable_wayland = true
 
 
 -- Finally, return the configuration to wezterm:
