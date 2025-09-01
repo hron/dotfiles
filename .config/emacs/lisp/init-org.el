@@ -108,7 +108,8 @@
                   org-capture-templates
                   '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
                      "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
-                  org-log-into-drawer t))
+                  org-log-into-drawer t
+                  org-indirect-buffer-display 'current-window))
 
   :bind (("C-c n a" . #'org-agenda)
          :map org-mode-map
