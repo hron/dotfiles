@@ -168,7 +168,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
         (:eval (when (project-current) (format  " - %s" (project-name (project-current)))))
         (:eval (if-let* ((dir desktop-dirname)
                          (dir (file-name-nondirectory (directory-file-name dir))))
-                   (concat "   " dir)
+                   (format " [%s]" dir)
                  "")))
       icon-title-format frame-title-format)
 
