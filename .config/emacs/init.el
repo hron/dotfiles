@@ -773,7 +773,9 @@ It seems `end-of-defun' is used internally by
   :init
   (apheleia-global-mode +1)
   :config
-  (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml)))
+  (add-to-list 'apheleia-mode-alist '(nxml-mode . yq-xml))
+  :bind
+  ("C-c t o" . #'apheleia-mode))
 
 (use-package shell
   :ensure nil
