@@ -1031,10 +1031,6 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-dark-themes '((modus-vivendi) (modus-operandi)) nil nil "Customized with use-package auto-dark")
- '(modus-themes-bold-constructs t)
- '(modus-themes-common-palette-overrides '((bg-region bg-ochre) (fg-region unspecified)))
- '(modus-themes-italic-constructs t)
  '(package-selected-packages nil)
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
@@ -1052,9 +1048,3 @@ It seems `end-of-defun' is used internally by
 (put 'scroll-left 'disabled nil)
 (put 'scroll-right 'disabled nil)
 (put 'list-timers 'disabled nil)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(region ((t :extend nil))))
