@@ -186,8 +186,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
     "C-z"   #'undo-only
     "C-S-z" #'undo-redo
     "C-S-<return>"   #'rectangle-mark-mode
-    "<home>"   #'standard-keys-move-beginning-of-line-or-indentation
-    "<escape>" #'standard-keys-keyboard-quit))
+    "<home>"   #'standard-keys-move-beginning-of-line-or-indentation))
 
 (use-package auto-dark
   :pin "melpa"
