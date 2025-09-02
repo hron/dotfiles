@@ -28,29 +28,22 @@
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-(use-package emacs
-  :ensure nil
-  :init
-  (cua-mode +1)
-  :custom
-  (cua-remap-control-z nil)
-  (cua-prefix-override-inhibit-delay nil)
-  (cua-rectangle-mark-key [(control shift return)])
-  :bind (("C-z" . #'undo-only)
-         ("C-S-z" . #'undo-redo)))
+;; (use-package emacs
+;;   :ensure nil
+;;   :init
+;;   (cua-mode +1)
+;;   :custom
+;;   (cua-remap-control-z nil)
+;;   (cua-prefix-override-inhibit-delay nil)
+;;   (cua-rectangle-mark-key [(control shift return)])
+;;   :bind (("C-z" . #'undo-only)
+;;          ("C-S-z" . #'undo-redo)))
+
 
 ;; (use-package benchmark-init
 ;;   :pin "melpa"
 ;;   :config
 ;;   (add-hook 'after-init-hook #'benchmark-init/deactivate))
-
-(use-package auto-dark
-  :pin "melpa"
-  :init
-  (auto-dark-mode +1)
-  :custom
-  (auto-dark-themes '((modus-vivendi) (modus-operandi)))
-  :unless noninteractive)
 
 ;;;###autoload
 (defun init-save-all-buffers ()
@@ -156,6 +149,53 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (recentf-mode +1)
 (minibuffer-depth-indicate-mode +1)
 (delete-selection-mode +1)
+
+(defun init-copy-line-or-region ()
+  "Copy region if active, otherwise copy current line."
+  (interactive)
+  (let ((bounds (if (use-region-p)
+                    (list (region-beginning) (region-end))
+                  (list (line-beginning-position)
+                        (line-beginning-position 2)))))
+    (apply #'pulse-momentary-highlight-region bounds)
+    (apply #'kill-ring-save bounds)))
+
+;; Enhanced cut function
+(defun init-cut-line-or-region ()
+  "Cut region if active, otherwise cut current line."
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position)
+                 (line-beginning-position 2))))
+
+(use-package standard-keys-mode
+  :vc ( :url "https://github.com/DevelopmentCool2449/standard-keys-mode"
+        :rev :newest)
+  :hook after-init
+  :custom
+  (standard-keys-override-new-C-x-and-C-c-commands t)
+  (standard-keys-map-style 'init-standard-keys-map)
+  :config
+  (defvar-keymap init-standard-keys-map
+    "C-d"   standard-keys-C-x-dynamic-prefix
+    "C-b"   standard-keys-C-c-dynamic-prefix
+    "C-x"   #'init-cut-line-or-region
+    "C-c"   #'init-copy-line-or-region
+    "C-v"   #'yank
+    "C-z"   #'undo-only
+    "C-S-z" #'undo-redo
+    "C-S-<return>"   #'rectangle-mark-mode
+    "<home>"   #'standard-keys-move-beginning-of-line-or-indentation
+    "<escape>" #'standard-keys-keyboard-quit))
+
+(use-package auto-dark
+  :pin "melpa"
+  :init
+  (auto-dark-mode +1)
+  :custom
+  (auto-dark-themes '((modus-vivendi) (modus-operandi)))
+  :unless noninteractive)
 
 (defun init-desktop-base-dirname ()
   "Return base directory with desktop file for modeline."
@@ -637,8 +677,8 @@ Filter by current project if ARG is supplied."
   :bind (("C-h" . er/expand-region)
          ("C-S-h" . er/contract-region)))
 
-(use-package crux
-  :bind (("<home>" . crux-move-beginning-of-line)))
+;; (use-package crux
+;;   :bind (("<home>" . crux-move-beginning-of-line)))
 
 (defun init-remove-fringe-from-minibuffer (&rest _)
   "Remove fringes in minibuffer window."
@@ -999,7 +1039,7 @@ It seems `end-of-defun' is used internally by
   (dape-breakpoint-global-mode)
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
   :custom
-  (dape-key-prefix "\C-k\C-l")
+  ;; (dape-key-prefix "\C-k\C-l")
   (dape-info-hide-mode-line nil)
   (dape-info-buffer-window-groups
    '((dape-info-scope-mode dape-info-watch-mode dape-info-stack-mode dape-info-modules-mode dape-info-sources-mode dape-info-breakpoints-mode dape-info-threads-mode)))
