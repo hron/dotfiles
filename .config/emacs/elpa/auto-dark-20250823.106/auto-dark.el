@@ -6,8 +6,8 @@
 ;;         Jonathan Arnett <jonathan.arnett@protonmail.com>
 ;;         Greg Pfeil <greg@technomadic.org>
 ;; Created: July 16 2019
-;; Package-Version: 20250812.10
-;; Package-Revision: 2edc31d42c8f
+;; Package-Version: 20250823.106
+;; Package-Revision: 8d3f559c832b
 ;; Keywords: macos, windows, linux, themes, tools, faces
 ;; URL: https://github.com/LionyxML/auto-dark-emacs
 ;; Package-Requires: ((emacs "24.4"))
@@ -129,17 +129,14 @@ this is less efficient, but works for non-GUI Emacs."
                   "/org/freedesktop/portal/desktop"
                   "org.freedesktop.portal.Settings" "Read"
                   "org.freedesktop.appearance" "color-scheme")))
-    (0 nil)
     (1 'dark)
-    (2 'light)))
+    ((or 0 2) 'light)))
 
 (defun auto-dark--is-dark-mode-powershell ()
   "Invoke powershell using Emacs using external shell command."
-  (string-equal "0"
-                (string-trim (shell-command-to-string
-                              "powershell -noprofile -noninteractive \
+  (string-equal "0" (string-trim (shell-command-to-string "powershell.exe -noprofile -noninteractive \
 -nologo -ex bypass -command Get-ItemPropertyValue \
-HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize \
+'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' \
 -Name AppsUseLightTheme"))))
 
 (defun auto-dark--is-dark-mode-winreg ()
@@ -359,6 +356,10 @@ Remove theme change callback registered with D-Bus."
                     (shell-command-to-string "command -v termux-fix-shebang")))
     'termux)
    ((and (eq system-type 'windows-nt)
+         auto-dark-allow-powershell)
+    'powershell)
+   ((and (eq system-type 'gnu/linux)
+         (string-match "-[Mm]icrosoft" operating-system-release)
          auto-dark-allow-powershell)
     'powershell)
    ((eq system-type 'windows-nt)
