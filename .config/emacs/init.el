@@ -1058,6 +1058,12 @@ It seems `end-of-defun' is used internally by
 (use-package eask-mode
   :pin "melpa")
 
+(use-package rude
+  :ensure nil
+  :vc t
+  :load-path "/home/algus/src/rude"
+  :init (rude-mode +1))
+
 (require 'init-windows)
 (require 'init-org)
 (unless (eq system-type 'windows-nt)
