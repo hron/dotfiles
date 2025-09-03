@@ -150,28 +150,31 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 (minibuffer-depth-indicate-mode +1)
 (delete-selection-mode +1)
 
-(defun init-copy-line-or-region ()
-  "Copy region if active, otherwise copy current line."
-  (interactive)
-  (let ((bounds (if (use-region-p)
-                    (list (region-beginning) (region-end))
-                  (list (line-beginning-position)
-                        (line-beginning-position 2)))))
-    (apply #'pulse-momentary-highlight-region bounds)
-    (apply #'kill-ring-save bounds)))
-
-;; Enhanced cut function
-(defun init-cut-line-or-region ()
-  "Cut region if active, otherwise cut current line."
-  (interactive)
-  (if (use-region-p)
-      (kill-region (region-beginning) (region-end))
-    (kill-region (line-beginning-position)
-                 (line-beginning-position 2))))
+;; (defun init-copy-line-or-region ()
+;;   "Copy region if active, otherwise copy current line."
+;;   (interactive)
+;;   (let ((bounds (if (use-region-p)
+;;                     (list (region-beginning) (region-end))
+;;                   (list (line-beginning-position)
+;;                         (line-beginning-position 2)))))
+;;     (apply #'pulse-momentary-highlight-region bounds)
+;;     (apply #'kill-ring-save bounds)))
+;;
+;; ;; Enhanced cut function
+;; (defun init-cut-line-or-region ()
+;;   "Cut region if active, otherwise cut current line."
+;;   (interactive)
+;;   (if (use-region-p)
+;;       (kill-region (region-beginning) (region-end))
+;;     (kill-region (line-beginning-position)
+;;                  (line-beginning-position 2))))
 
 (use-package standard-keys-mode
-  :vc ( :url "https://github.com/DevelopmentCool2449/standard-keys-mode"
-        :rev :newest)
+  ;; :vc ( :url "https://github.com/hron/standard-keys-mode"
+  ;;       :branch "copy-cut-line-or-region"
+  ;;       :rev :newest)
+  :vc t
+  :load-path "~/src/standard-keys-mode/"
   :hook after-init
   :custom
   (standard-keys-override-new-C-x-and-C-c-commands t)
@@ -180,8 +183,8 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (defvar-keymap init-standard-keys-map
     "C-d"   standard-keys-C-x-dynamic-prefix
     "C-b"   standard-keys-C-c-dynamic-prefix
-    "C-x"   #'init-cut-line-or-region
-    "C-c"   #'init-copy-line-or-region
+    "C-x"   #'standard-keys-kill-region-or-line
+    "C-c"   #'standard-keys-copy-region-or-line
     "C-v"   #'yank
     "C-z"   #'undo-only
     "C-S-z" #'undo-redo
@@ -1077,7 +1080,16 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(anzu apheleia auto-dark benchmark-init better-jumper cape
+          consult-eglot corfu diff-hl doom-modeline dumb-jump
+          eask-mode edit-indirect embark-consult envrc expand-region
+          fish-mode gcmh gptel hardhat magit marginalia markdown-mode
+          move-text nerd-icons-completion nerd-icons-corfu
+          nerd-icons-dired nerd-icons-grep nerd-icons-xref nix-ts-mode
+          orderless org-agenda-dock org-modern org-roam
+          package-lint-flymake puni rude rust-mode standard-keys-mode
+          string-inflection too-wide-minibuffer-mode vertico vterm))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
