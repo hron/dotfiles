@@ -53,16 +53,13 @@
 
 ;; Configure theme in early-init to allow auto-dark-mode to kick in
 ;; before a frame is created.
-(custom-set-faces
- '(region ((t :extend nil))))
-(custom-set-variables
- '(modus-themes-common-palette-overrides
-   '(;; Make the region to change only the background
-     (bg-region bg-ochre)
-     (fg-region unspecified)))
- '(modus-themes-italic-constructs t)
- '(modus-themes-bold-constructs t)
- '(auto-dark-themes '((modus-vivendi) (modus-operandi))))
+(set-face-attribute 'region nil :extend nil)
+(setq
+ modus-themes-common-palette-overrides '((bg-region bg-ochre)
+                                         (fg-region unspecified))
+ modus-themes-italic-constructs t
+ modus-themes-bold-constructs t
+ auto-dark-themes '((modus-vivendi) (modus-operandi)))
 
 ;; Avoid flashing of white background when light theme is active and wise-weather
 (when-let*

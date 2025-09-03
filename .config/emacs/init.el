@@ -1065,12 +1065,22 @@ It seems `end-of-defun' is used internally by
 
 (provide 'init)
 ;;; init.el ends here
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(anzu apheleia benchmark-init better-jumper cape consult-eglot corfu
+          dape diff-hl doom-modeline dumb-jump eask-mode edit-indirect
+          embark-consult envrc expand-region fish-mode gcmh gptel
+          hardhat magit marginalia markdown-mode move-text
+          nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+          nerd-icons-grep nerd-icons-xref nix-ts-mode orderless
+          org-agenda-dock org-modern org-roam package-lint-flymake
+          puni rust-mode standard-keys-mode string-inflection
+          too-wide-minibuffer-mode vertico vterm))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
