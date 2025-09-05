@@ -565,10 +565,10 @@ Filter by current project if ARG is supplied."
 
 (use-package gptel
   :pin "melpa"
-  :bind (("C-k C-<return>" . #'gptel-send)
-         ("C-k <return>" . #'gptel-menu)
-         ("C-k C-g" . #'gptel-abort)
-         ("C-k k" . #'gptel)
+  :bind (("C-c C-<return>" . #'gptel-send)
+         ("C-c <return>" . #'gptel-menu)
+         ("C-c C-g" . #'gptel-abort)
+         ("C-c k" . #'gptel)
          :map gptel-mode-map
          ("C-c C-c" . #'gptel-send)
          ("C-c C-x t" . #'gptel-set-topic))
@@ -1096,7 +1096,8 @@ It seems `end-of-defun' is used internally by
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((lsp-enabled-clients jsts-ls)
+   '((eval and (fboundp 'toc-org-mode) (toc-org-mode 1))
+     (toc-org-max-depth . 4) (lsp-enabled-clients jsts-ls)
      (eval setq-local flymake-diagnostic-functions
            (cl-remove 'package-lint-flymake
                       flymake-diagnostic-functions :test 'eq))

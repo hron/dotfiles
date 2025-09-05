@@ -225,9 +225,8 @@ will toggle its visibility state."
 (defun gptel--read-minibuffer-prompt (&optional read-prompt)
   "Read a user prompt from the minibuffer.
 
-Prompt with READ-PROMPT if supplied.  Optionally return the
-concatenation of the buffer region (if active) and the provided
-instructions."
+Prompt with READ-PROMPT if supplied.  Return a cons cell of the buffer
+region (if included) and the provided instructions."
   (let* ((include-region (use-region-p))
          (cb (current-buffer))
          (get-region (lambda () (with-current-buffer cb
@@ -279,9 +278,7 @@ instructions."
                                     "): ")
                             ": ")))
               nil 'gptel--minibuffer-prompt-history))))
-      (if include-region
-          (concat (funcall get-region) "\n" user-prompt)
-        user-prompt))))
+      (cons (funcall get-region) user-prompt))))
 
 (defun gptel--transient-read-number (prompt _initial-input history)
   "Read a numeric value from the minibuffer.
@@ -424,11 +421,11 @@ which see."
             (pth (s) (propertize s 'face 'transient-heading)))
     (let* ((args (or (and transient-current-command
                           (transient-args transient-current-command))
-	             ;; Not yet exported, simulate.  HACK: We are accessing
-	             ;; Transient's internal variables here for live updates.
-	             (let* ((transient-current-command (oref transient--prefix command))
-	                    (transient-current-suffixes transient--suffixes))
-	               (transient-args transient-current-command))))
+                     ;; Not yet exported, simulate.  HACK: We are accessing
+                     ;; Transient's internal variables here for live updates.
+                     (let* ((transient-current-command (oref transient--prefix command))
+                            (transient-current-suffixes transient--suffixes))
+                       (transient-args transient-current-command))))
            (lbeg (line-number-at-pos (if (use-region-p) (region-beginning)
                                        (point-min))))
            (lend (line-number-at-pos (if (use-region-p) (region-end)
@@ -457,22 +454,22 @@ which see."
                        (concat (pth ", insert response at point")))))
             ((member "y" args)
              (concat (pth "Send prompt from ")
-		     (concat (ptv "kill-ring (")
-			     (if-let* ((val (car-safe kill-ring))
-				       (val (substring-no-properties val))
-				       (len (length val)))
-				 (ptv (concat
+                     (concat (ptv "kill-ring (")
+                             (if-let* ((val (current-kill 0))
+                                       (val (substring-no-properties val))
+                                       (len (length val)))
+                                 (ptv (concat
                                        "\"" (string-replace
-					     "\n" "⮐"
-					     (truncate-string-to-width
-					      val 20 nil nil t))
-				       "\"" (when (> len 20)
-					      (concat
-					       ", "
-					       (file-size-human-readable len 'si " ")
-					       " chars"))))
-			     (propertize "empty" 'face 'error))
-			   (ptv ")"))
+                                             "\n" "⮐"
+                                             (truncate-string-to-width
+                                              val 20 nil nil t))
+                                       "\"" (when (> len 20)
+                                              (concat
+                                               ", "
+                                               (file-size-human-readable len 'si " ")
+                                               " chars"))))
+                               (propertize "empty" 'face 'error))
+                             (ptv ")"))
                      context
                      (if dest (concat (pth ", response to ") dest)
                        (concat (pth ", insert response at point")))))
@@ -1626,15 +1623,25 @@ This sets the variable `gptel-include-tool-results', which see."
               (if (buffer-live-p gptel-buffer)
                   (buffer-local-value 'major-mode gptel-buffer)
                 gptel-default-mode)))
-        ;; Add code fences or Org block around prompt
+        ;; Add code fences or Org src markers around the reduced-prompt
         (cond ((eq major-mode gptel-buffer-mode))
               ((provided-mode-derived-p gptel-buffer-mode 'org-mode)
                (setq reduced-prompt
-                     (concat "#+begin_src " (gptel--strip-mode-suffix major-mode)
-                             "\n" reduced-prompt "\n#+end_src")))
+                     (if (consp reduced-prompt);either (region . prompt) or prompt
+                         (concat (and (car reduced-prompt)
+                                      (concat "#+begin_src " (gptel--strip-mode-suffix major-mode)
+                                              "\n" (car reduced-prompt) "\n#+end_src\n\n"))
+                                 (cdr reduced-prompt))
+                       (concat "#+begin_src " (gptel--strip-mode-suffix major-mode)
+                               "\n" (or (cdr-safe reduced-prompt) reduced-prompt) "\n#+end_src"))))
               (t (setq reduced-prompt
-                       (concat "``` " (gptel--strip-mode-suffix major-mode) "\n"
-                               reduced-prompt "\n```" ))))
+                       (if (consp reduced-prompt);either (region . prompt) or prompt
+                           (concat (and (car reduced-prompt)
+                                        (concat  "``` " (gptel--strip-mode-suffix major-mode) "\n"
+                                                 (car reduced-prompt) "\n```\n\n"))
+                                   (cdr reduced-prompt))
+                         (concat "``` " (gptel--strip-mode-suffix major-mode) "\n"
+                                 (or (cdr-safe reduced-prompt) reduced-prompt) "\n```" )))))
         (cond
          ((buffer-live-p gptel-buffer)
           ;; Insert into existing gptel session
@@ -1674,6 +1681,10 @@ This sets the variable `gptel-include-tool-results', which see."
       (setq output-to-other-buffer-p t)
       (setq buffer (get-buffer-create gptel-buffer-name))
       (with-current-buffer buffer (setq position (point)))))
+
+    ;; MAYBE: This is no a good way to handle two-part (region + instruction) prompts
+    ;; If the prompt is a cons (region-text . instructions), collapse it
+    (when (consp prompt) (setq prompt (concat (car prompt) "\n\n" (cdr prompt))))
 
     (prog1 (gptel-request prompt
              :buffer (or buffer (current-buffer))

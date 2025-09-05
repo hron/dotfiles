@@ -3,8 +3,8 @@
 ;; Copyright (C) 2023-2025  Karthik Chikmagalur
 
 ;; Author: Karthik Chikmagalur <karthik.chikmagalur@gmail.com>
-;; Package-Version: 20250818.648
-;; Package-Revision: ca6086888ced
+;; Package-Version: 20250903.525
+;; Package-Revision: 81618f24e219
 ;; Package-Requires: ((emacs "27.1") (transient "0.7.4") (compat "30.1.0.0"))
 ;; Keywords: convenience, tools
 ;; URL: https://github.com/karthink/gptel
@@ -46,7 +46,6 @@
 ;;
 ;; Features:
 ;;
-;; - It’s async and fast, streams responses.
 ;; - Interact with LLMs from anywhere in Emacs (any buffer, shell, minibuffer,
 ;;   wherever).
 ;; - LLM responses are in Markdown or Org markup.
@@ -1661,7 +1660,8 @@ SCHEMA can be specified in several ways:
         (if (= (char-after) ?{)
             (setq schema (gptel--json-read)) ;Assume serialized JSON schema, we're done
           (when (= (char-after) ?\[)    ;Shorthand: assume array top-level type
-            (save-excursion (goto-char (point-max)) (delete-char -1))
+            (save-excursion
+              (goto-char (point-max)) (skip-chars-backward " \n\r\t") (delete-char -1))
             (delete-char 1)             ;Delete array markers [ and ]
             (setq wrap-in-array t))
           (let ( props types descriptions ;Nested object and array types are disallowed in shorthand
@@ -1693,7 +1693,8 @@ SCHEMA can be specified in several ways:
                          (cl-mapcan
                           (lambda (prop type desc)
                             `(,(intern (concat ":" prop))
-                              (:type ,type ,@(when desc (list :description desc)))))
+                              (:type ,type ,@(when desc
+                                               (list :description (string-trim desc))))))
                           (nreverse props) (nreverse types) (nreverse descriptions)))))
               (setq schema
                     (if wrap-in-array (list :type "array" :items object) object))))))))
@@ -3202,10 +3203,10 @@ the response is inserted into the current buffer after point."
          (backend (plist-get info :backend))
          (callback (or (plist-get info :callback) ;if not the first run
                        #'gptel--insert-response)) ;default callback
+         ;; NOTE: We don't need the decode-coding-string dance here since we
+         ;; don't pass it to the OS environment and Curl.
          (url-request-data
-          (encode-coding-string
-           (gptel--json-encode (plist-get info :data))
-           'utf-8)))
+          (gptel--json-encode (plist-get info :data))))
     (when (with-current-buffer (plist-get info :buffer)
             (and (derived-mode-p 'org-mode)
                  gptel-org-convert-response))
@@ -3235,8 +3236,8 @@ the response is inserted into the current buffer after point."
                              (gptel--fsm-transition fsm) ;WAIT -> TYPE
                              (when error (plist-put info :error error))
                              (when response ;Look for a reasoning block
-                               (if (string-match-p "^ *<think>\n" response)
-                                   (when-let* ((idx (string-search "</think>\n" response)))
+                               (if (string-match-p "^\\s-*<think>" response)
+                                   (when-let* ((idx (string-search "</think>" response)))
                                      (with-demoted-errors "gptel callback error: %S"
                                        (funcall callback
                                                 (cons 'reasoning
