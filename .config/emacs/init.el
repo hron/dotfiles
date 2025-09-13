@@ -1058,6 +1058,10 @@ It seems `end-of-defun' is used internally by
   :load-path "/home/algus/src/rude"
   :init (rude-mode +1))
 
+(use-package consult-gh
+  :pin "melpa"
+  :after consult)
+
 (require 'init-windows)
 (require 'init-org)
 (unless (eq system-type 'windows-nt)
@@ -1071,7 +1075,17 @@ It seems `end-of-defun' is used internally by
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(anzu apheleia auto-dark benchmark-init better-jumper cape
+          consult-eglot consult-gh corfu diff-hl doom-modeline
+          dumb-jump eask-mode edit-indirect embark-consult envrc
+          expand-region fish-mode gcmh gptel hardhat magit marginalia
+          markdown-mode move-text nerd-icons-completion
+          nerd-icons-corfu nerd-icons-dired nerd-icons-grep
+          nerd-icons-xref nix-ts-mode orderless org-agenda-dock
+          org-modern org-roam package-lint-flymake puni rude rust-mode
+          standard-keys-mode string-inflection
+          too-wide-minibuffer-mode vertico vterm))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
