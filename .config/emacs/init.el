@@ -1058,6 +1058,9 @@ It seems `end-of-defun' is used internally by
   :load-path "/home/algus/src/rude"
   :init (rude-mode +1))
 
+(eval-when-compile
+  (add-to-list 'native-comp-jit-compilation-deny-list "consult-gh"))
+
 (use-package consult-gh
   :pin "melpa"
   :after consult)
