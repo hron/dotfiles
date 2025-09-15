@@ -1067,6 +1067,8 @@ It seems `end-of-defun' is used internally by
 (unless (eq system-type 'windows-nt)
   (require 'init-vterm))
 
+(add-to-list 'auto-mode-alist '("\\.service\\'" . conf-windows-mode))
+
 (provide 'init)
 ;;; init.el ends here
 
