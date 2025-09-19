@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+
+URL="$1"
+
+CURRENT_DESKTOP=$(kdotool get_desktop)
+BROWSER_WINDOW=$(kdotool search --desktop "$CURRENT_DESKTOP" --class "brave-browser" | head -n1)
+
+if [ -n "$BROWSER_WINDOW" ]; then
+    kdotool windowactivate "$BROWSER_WINDOW"
+    brave --new-tab "$URL"
+else
+    brave --new-window "$URL" &
+fi
