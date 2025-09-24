@@ -1024,8 +1024,8 @@ It seems `end-of-defun' is used internally by
   :ensure nil
   :init
   ;; python.el modifies them after loading, so we have to fix it here
-  (add-to-list 'auto-mode-alist '("\\.py[iw]?\\'" . python-ts-mode))
-  (add-to-list 'interpreter-mode-alist '("python[0-9.]*" . python-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+
   :bind (:map python-ts-mode-map
               ("C-M-q" . nil)))
 
