@@ -718,11 +718,7 @@ Filter by current project if ARG is supplied."
 
 (use-package lua-ts-mode
   :ensure nil  ; Built into Emacs 31+
-  :mode "\\.lua\\'"
-  ;; :init
-  ;; (require 'treesit)
-  ;; (treesit-ensure-installed 'lua)
-  )
+  :mode "\\.lua\\'")
 
 (use-package better-jumper
   :preface
@@ -986,6 +982,11 @@ It seems `end-of-defun' is used internally by
   :pin "melpa"
   :init
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
+(use-package treesit
+  :ensure nil
+  :init
+  (setq treesit-font-lock-level '((rust-mode . 3) (t . 4))))
 
 (use-package rust-mode
   ;; :ensure (rust-mode :type git :host github :repo "rust-lang/rust-mode"
