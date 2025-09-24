@@ -949,6 +949,7 @@ It seems `end-of-defun' is used internally by
 
 (use-package eglot
   :ensure nil
+
   :hook ((c-mode c-ts-mode rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
@@ -957,14 +958,16 @@ It seems `end-of-defun' is used internally by
   (add-to-list 'eglot-stay-out-of 'imenu)
   (setq eglot-events-buffer-config  '(:size 0 :format 'full))
 
-  (add-to-list 'eglot-server-programs
-               '((c-mode c-ts-mode c++-mode c++-ts-mode objc-mode) . ("ccls")))
-
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions)
               ("C-M-o". #'consult-eglot-symbols))
-  :custom-face (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil))))
+
+  :custom-face
+  (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil)))
+
+  :custom
+  (eglot-ignored-server-capabilities '(:documentOnTypeFormattingProvider)))
 
 (use-package consult-eglot
   :pin "melpa")
