@@ -132,7 +132,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
 ;;   (modify-all-frames-parameters
 ;;    '((font . "JetBrains Mono-10:weight=regular"))))
 (modify-all-frames-parameters
- '((font . "JetBrains Mono-10:weight=regular")))
+ '((font . "JetBrains Mono-10:weight=semibold")))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
