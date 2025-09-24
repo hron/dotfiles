@@ -939,14 +939,27 @@ It seems `end-of-defun' is used internally by
     (add-function :before-until (local 'imenu-create-index-function)
                   #'eglot-imenu)))
 
+;; Use c-ts-mode
+(use-package emacs
+  :config
+  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
+  (add-to-list 'major-mode-remap-alist
+               '(c-or-c++-mode . c-or-c++-ts-mode)))
+
 (use-package eglot
   :ensure nil
-  :hook ((rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
+  :hook ((c-mode c-ts-mode rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
+
   :config
   (add-to-list 'eglot-stay-out-of 'imenu)
   (setq eglot-events-buffer-config  '(:size 0 :format 'full))
+
+  (add-to-list 'eglot-server-programs
+               '((c-mode c-ts-mode c++-mode c++-ts-mode objc-mode) . ("ccls")))
+
   :bind (:map eglot-mode-map
               ("C-t" . #'eglot-rename)
               ("C-." . #'eglot-code-actions)
