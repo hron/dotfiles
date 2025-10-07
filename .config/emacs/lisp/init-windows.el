@@ -136,7 +136,7 @@ Fit the height to the content, and select the window."
          (display-buffer-reuse-window
           display-buffer-in-side-window)
          (side . bottom)
-         (window-height . .33))))
+         (window-height . .5))))
 
 (defvar init-windows--redisplay-last-frame-width nil)
 
