@@ -40,8 +40,7 @@
       inhibit-startup-screen t
       inhibit-x-resources t
       inhibit-startup-buffer-menu nil
-      use-package-always-ensure t
-      use-package-always-pin "nongnu")
+      use-package-always-ensure t)
 
 (defun early-init--define-global-key-translations (&optional frame)
   "Configure ESC according modern conventions for FRAME."

@@ -166,6 +166,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
                (use-region-p)))
 
 (use-package standard-keys-mode
+  :pin "nongnu"
   :hook after-init
   :custom
   (standard-keys-override-new-C-x-and-C-c-commands t)
@@ -353,6 +354,7 @@ comment or uncomment the current line.  Otherwise, call `comment-dwim'."
   (call-interactively #'anzu-query-replace))
 
 (use-package anzu
+  :pin "nongnu"
   :commands (init-anzu-query-replace-at-cursor
              init-anzu-query-replace
              anzu-query-replace-at-cursor
@@ -580,6 +582,7 @@ Filter by current project if ARG is supplied."
   :commands (gptel gptel-send))
 
 (use-package magit
+  :pin "nongnu"
   :bind (("M-9" . magit-status)
          :map magit-section-mode-map
          ("C-<tab>" . nil)
@@ -721,6 +724,7 @@ Filter by current project if ARG is supplied."
   :mode "\\.lua\\'")
 
 (use-package better-jumper
+  :pin "nongnu"
   :preface
   (defun init-beginning-of-defun ()
     "Set better-jumper jump and call \\[beginning-of-defun].
@@ -968,8 +972,11 @@ It seems `end-of-defun' is used internally by
 (use-package consult-eglot
   :pin "melpa")
 
-(use-package edit-indirect)
+(use-package edit-indirect
+  :pin "nongnu")
+
 (use-package markdown-mode
+  :pin "nongnu"
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown")
   :bind (:map markdown-mode-map
@@ -989,6 +996,7 @@ It seems `end-of-defun' is used internally by
   (setq treesit-font-lock-level '((rust-mode . 3) (t . 4))))
 
 (use-package rust-mode
+  :pin "nongnu"
   ;; :ensure (rust-mode :type git :host github :repo "rust-lang/rust-mode"
   ;;                      :method fetch-from-remote
   ;;                      :fork "hron" :branch "rust-compilation-dbg!")
@@ -1105,9 +1113,12 @@ It seems `end-of-defun' is used internally by
           markdown-mode move-text nerd-icons-completion
           nerd-icons-corfu nerd-icons-dired nerd-icons-grep
           nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern org-roam package-lint-flymake puni rude rust-mode
-          standard-keys-mode string-inflection
-          too-wide-minibuffer-mode vertico vterm))
+          org-modern org-roam package-lint-flymake
+          package-upgrade-guard puni rude rust-mode standard-keys-mode
+          string-inflection too-wide-minibuffer-mode vertico vterm))
+ '(package-vc-selected-packages
+   '((package-upgrade-guard :url
+                            "https://github.com/kn66/package-upgrade-guard.el.git")))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
      "/home/algus/.emacs.d/straight/build/magit/"
