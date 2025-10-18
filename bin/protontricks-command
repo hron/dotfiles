@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+
+GAME=$(protontricks --list | tail -n +7 | head -n -6 | fzf)
+APPID=$(echo "$GAME" | sed 's/.*(\([^)]*\))/\1/')
+NAME="${GAME%\ (*}"
+COMMAND=${1:-winecfg}
+
+protontricks $APPID $COMMAND
