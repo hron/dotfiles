@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=Intelligent browser handler that opens URLs in current workspace
 Comment=Intelligent browser handler that opens URLs in current workspace
-Exec=/home/algus/bin/browse-url %u
+Exec=/home/algus/.local/bin/browse-url %u
 GenericName[en_US]=
 GenericName=
 Icon=konqueror
