@@ -1091,11 +1091,20 @@ It seems `end-of-defun' is used internally by
   :after consult)
 
 (require 'init-windows)
-(require 'init-org)
+;; (require 'init-org)
 (unless (eq system-type 'windows-nt)
   (require 'init-vterm))
 
 (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-windows-mode))
+
+(use-package org-todoist
+  :pin manual
+  :vc (:url "https://github.com/Lillenne/org-todoist.git"
+            :main-file "org-todoist.el")
+  :config
+  (setq org-todoist-api-token "b7d2d2e7b4518297a422d19001572130d9f0151b"
+        org-todoist-use-v1-api t))
+
 
 (provide 'init)
 ;;; init.el ends here
@@ -1113,11 +1122,13 @@ It seems `end-of-defun' is used internally by
           markdown-mode move-text nerd-icons-completion
           nerd-icons-corfu nerd-icons-dired nerd-icons-grep
           nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern org-roam package-lint-flymake
+          org-modern org-roam org-todoist package-lint-flymake
           package-upgrade-guard puni rude rust-mode standard-keys-mode
           string-inflection too-wide-minibuffer-mode vertico vterm))
  '(package-vc-selected-packages
-   '((package-upgrade-guard :url
+   '((org-todoist :url "https://github.com/Lillenne/org-todoist.git"
+                  :main-file "org-todoist.el")
+     (package-upgrade-guard :url
                             "https://github.com/kn66/package-upgrade-guard.el.git")))
  '(safe-local-variable-directories
    '("/home/algus/src/rune/" "/home/algus/src/melpa/"
