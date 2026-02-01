@@ -1091,7 +1091,7 @@ It seems `end-of-defun' is used internally by
   :after consult)
 
 (require 'init-windows)
-;; (require 'init-org)
+(require 'init-org)
 (unless (eq system-type 'windows-nt)
   (require 'init-vterm))
 
