@@ -1097,15 +1097,6 @@ It seems `end-of-defun' is used internally by
 
 (add-to-list 'auto-mode-alist '("\\.service\\'" . conf-windows-mode))
 
-(use-package org-todoist
-  :pin manual
-  :vc (:url "https://github.com/Lillenne/org-todoist.git"
-            :main-file "org-todoist.el")
-  :config
-  (setq org-todoist-api-token "b7d2d2e7b4518297a422d19001572130d9f0151b"
-        org-todoist-use-v1-api t))
-
-
 (provide 'init)
 ;;; init.el ends here
 
@@ -1122,7 +1113,7 @@ It seems `end-of-defun' is used internally by
           markdown-mode move-text nerd-icons-completion
           nerd-icons-corfu nerd-icons-dired nerd-icons-grep
           nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern org-roam org-todoist package-lint-flymake
+          org-modern org-roam package-lint-flymake
           package-upgrade-guard puni rude rust-mode standard-keys-mode
           string-inflection too-wide-minibuffer-mode vertico vterm))
  '(package-vc-selected-packages
@@ -1136,7 +1127,8 @@ It seems `end-of-defun' is used internally by
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((eval and (fboundp 'toc-org-mode) (toc-org-mode 1))
+   '((org-list-indent-offset . 2)
+     (eval and (fboundp 'toc-org-mode) (toc-org-mode 1))
      (toc-org-max-depth . 4) (lsp-enabled-clients jsts-ls)
      (eval setq-local flymake-diagnostic-functions
            (cl-remove 'package-lint-flymake
