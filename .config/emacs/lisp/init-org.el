@@ -57,6 +57,11 @@
   (org-capture "" "i")
   (delete-other-windows))
 
+(defface aleksei-org-progress-cookie-done
+  '((t (:inherit org-done :weight bold)))
+  "Face to show completed heading with progress cookie."
+  :group 'org--faces)
+
 (use-package org
   :ensure nil
   :hook ((org-mode . (lambda ()
@@ -70,7 +75,12 @@
                               (define-key org-agenda-mode-map (kbd "C-<return>") #'org-agenda-todo)))
          (before-save . (lambda ()
                           (when (derived-mode-p 'org-mode)
-                            (org-update-statistics-cookies t)))))
+                            (org-update-statistics-cookies t))))
+         (org-font-lock . (lambda (limit)
+                            (while (re-search-forward "\\[\\([0-9]+\\)%\\]\\|\\[\\([0-9]+\\)/\\2\\]" limit t)
+                              (add-face-text-property
+                               (match-beginning 0) (line-end-position)
+                               'aleksei-org-progress-cookie-done 'prepend)))))
   :config (progn
             (setq org-tag-alist '(("outside" . ?o)
                                   ("read" . ?r)
@@ -88,7 +98,7 @@
                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
                   org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
-                  org-agenda-custom-commands '(("n" "NA" tags-tree org-agenda-na-expr))
+                  ;; org-agenda-custom-commands '(("n" "Agenda and all TODOs" ((agenda "") (alltodo "")) ("-tickler")))
                   org-agenda-files '("tasks.org" "tickler.org" "inbox.org")
                   ;; org-refile-use-outline-path t
                   org-refile-targets
@@ -109,7 +119,11 @@
                   '(("i" "Todo" entry (file "~/Sync/org/inbox.org")
                      "* TODO %?\n:PROPERTIES:\n:Added: %U\n:END:\n%i\n%a"))
                   org-log-into-drawer t
-                  org-indirect-buffer-display 'current-window))
+                  org-indirect-buffer-display 'current-window
+                  org-icalendar-store-UID t
+                  org-icalendar-combined-agenda-file "~/Sync/org/org-agenda.ics"
+                  org-icalendar-include-todo t))
+
 
   :bind (("C-c n a" . #'org-agenda)
          :map org-mode-map

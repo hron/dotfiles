@@ -1127,7 +1127,9 @@ It seems `end-of-defun' is used internally by
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((org-list-indent-offset . 2)
+   '((eval add-hook 'after-save-hook #'org-icalendar-combine-agenda-files
+           nil t)
+     (org-list-indent-offset . 2)
      (eval and (fboundp 'toc-org-mode) (toc-org-mode 1))
      (toc-org-max-depth . 4) (lsp-enabled-clients jsts-ls)
      (eval setq-local flymake-diagnostic-functions
