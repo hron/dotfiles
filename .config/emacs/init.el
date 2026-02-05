@@ -1127,8 +1127,9 @@ It seems `end-of-defun' is used internally by
      "/home/algus/src/dotfiles/.config/emacs/straight/repos/magit/"
      "/home/algus/src/zed/"))
  '(safe-local-variable-values
-   '((eval add-hook 'after-save-hook #'org-icalendar-combine-agenda-files
-           nil t)
+   '((goal-column . 0)
+     (eval add-hook 'after-save-hook
+           #'org-icalendar-combine-agenda-files nil t)
      (org-list-indent-offset . 2)
      (eval and (fboundp 'toc-org-mode) (toc-org-mode 1))
      (toc-org-max-depth . 4) (lsp-enabled-clients jsts-ls)
@@ -1147,3 +1148,4 @@ It seems `end-of-defun' is used internally by
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'set-goal-column 'disabled nil)

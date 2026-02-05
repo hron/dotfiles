@@ -66,7 +66,8 @@
   :ensure nil
   :hook ((org-mode . (lambda ()
                        (toggle-truncate-lines -1)
-                       (toggle-word-wrap +1)))
+                       (toggle-word-wrap +1)
+                       (org-cycle-hide-drawers 'all)))
          ;; `org-agenda' and `use-package' seem to be incompatible, so bind the keys the old way
          ;; https://emacs.stackexchange.com/questions/72816/un-bind-keys-for-org-agenda-in-use-package
          (org-agenda-mode . (lambda ()
