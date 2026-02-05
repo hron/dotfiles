@@ -102,7 +102,7 @@
                   org-agenda-custom-commands
                   '(("n" "Agenda + Next Actions"
                      (
-                      (agenda "" ((org-agenda-span 'day)))
+                      (agenda "")
                       (todo "TODO"
                             ((org-agenda-files (remove "someday.org" org-agenda-files))
                              (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled)))))))
