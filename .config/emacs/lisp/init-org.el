@@ -99,7 +99,13 @@
                   org-agenda-scheduled-later-expr "-SCHEDULED>=\"<tomorrow>\"-someday-tickler/"
                   org-agenda-na-expr (concat org-agenda-scheduled-later-expr "TODO")
                   org-agenda-active-expr (concat org-agenda-scheduled-later-expr "-DONE")
-                  ;; org-agenda-custom-commands '(("n" "Agenda and all TODOs" ((agenda "") (alltodo "")) ("-tickler")))
+                  org-agenda-custom-commands
+                  '(("n" "Agenda + Next Actions"
+                     (
+                      (agenda "" ((org-agenda-span 'day)))
+                      (todo "TODO"
+                            ((org-agenda-files (remove "someday.org" org-agenda-files))
+                             (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled)))))))
                   org-agenda-files '("tasks.org" "tickler.org" "inbox.org")
                   ;; org-refile-use-outline-path t
                   org-refile-targets
