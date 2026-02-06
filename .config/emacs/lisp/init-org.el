@@ -36,7 +36,7 @@
     (setq dock-desktop-entry "org-mode")
     (org-agenda-dock-mode +1))
   (find-file (concat org-directory "/tasks.org" ))
-  (org-agenda-list))
+  (org-agenda nil "n"))
 
 ;;;###autoload
 (defun init-org-todo-convert-to-project ()
