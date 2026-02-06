@@ -128,7 +128,8 @@
                   org-indirect-buffer-display 'current-window
                   org-icalendar-store-UID t
                   org-icalendar-combined-agenda-file "~/Sync/org/org-agenda.ics"
-                  org-icalendar-include-todo t))
+                  org-icalendar-include-todo t
+                  org-startup-folded 'fold))
 
 
   :bind (("C-c n a" . #'org-agenda)
