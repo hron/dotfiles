@@ -1113,9 +1113,9 @@ It seems `end-of-defun' is used internally by
           markdown-mode move-text nerd-icons-completion
           nerd-icons-corfu nerd-icons-dired nerd-icons-grep
           nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern org-roam package-lint-flymake
-          package-upgrade-guard puni rude rust-mode standard-keys-mode
-          string-inflection too-wide-minibuffer-mode vertico vterm))
+          org-modern package-lint-flymake package-upgrade-guard puni
+          rude rust-mode standard-keys-mode string-inflection
+          too-wide-minibuffer-mode vertico vterm))
  '(package-vc-selected-packages
    '((org-todoist :url "https://github.com/Lillenne/org-todoist.git"
                   :main-file "org-todoist.el")
