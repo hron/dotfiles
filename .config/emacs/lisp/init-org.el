@@ -23,7 +23,7 @@
 
 (use-package org-agenda-dock
   :pin "melpa"
-  :load-path "~/src/org-agenda-dock"
+  ;; :load-path "~/src/org-agenda-dock"
   :if (featurep 'dbus))
 
 ;;;###autoload
