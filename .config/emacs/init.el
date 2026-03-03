@@ -1090,6 +1090,10 @@ It seems `end-of-defun' is used internally by
   :pin "melpa"
   :after consult)
 
+(use-package emacs
+  :config
+  (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode)))
+
 (require 'init-windows)
 (require 'init-org)
 (unless (eq system-type 'windows-nt)
