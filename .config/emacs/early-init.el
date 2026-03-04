@@ -69,7 +69,7 @@
   (unless auto-dark-detection-method
     (setq auto-dark-detection-method
           (auto-dark--determine-detection-method)))
-  (auto-dark--set-theme (if (eq (auto-dark--current-system-mode) 'dark) 'dark 'light)))
+  (load-theme (car (auto-dark--themes-for-mode (auto-dark--current-system-mode))) t))
 
 (provide 'early-init)
 ;;; early-init.el ends here
