@@ -1092,7 +1092,11 @@ It seems `end-of-defun' is used internally by
 
 (use-package emacs
   :config
-  (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode)))
+  (add-to-list 'major-mode-remap-alist '(java-mode . java-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode)))
+
+(use-package kotlin-ts-mode
+  :mode "\\.kt\\'")
 
 (require 'init-windows)
 (require 'init-org)
@@ -1113,13 +1117,13 @@ It seems `end-of-defun' is used internally by
    '(anzu apheleia auto-dark benchmark-init better-jumper cape
           consult-eglot consult-gh corfu diff-hl doom-modeline
           dumb-jump eask-mode edit-indirect embark-consult envrc
-          expand-region fish-mode gcmh gptel hardhat magit marginalia
-          markdown-mode move-text nerd-icons-completion
-          nerd-icons-corfu nerd-icons-dired nerd-icons-grep
-          nerd-icons-xref nix-ts-mode orderless org-agenda-dock
-          org-modern package-lint-flymake package-upgrade-guard puni
-          rude rust-mode standard-keys-mode string-inflection
-          too-wide-minibuffer-mode vertico vterm))
+          expand-region fish-mode gcmh gptel hardhat kotlin-ts-mode
+          magit marginalia markdown-mode move-text
+          nerd-icons-completion nerd-icons-corfu nerd-icons-dired
+          nerd-icons-grep nerd-icons-xref nix-ts-mode orderless
+          org-agenda-dock org-modern package-lint-flymake
+          package-upgrade-guard puni rude rust-mode standard-keys-mode
+          string-inflection too-wide-minibuffer-mode vertico vterm))
  '(package-vc-selected-packages
    '((org-todoist :url "https://github.com/Lillenne/org-todoist.git"
                   :main-file "org-todoist.el")
