@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export BROWSER=firefox
+export BROWSER=brave
 export EDITOR='emacsclient -a "emacs" -c'
 #export ALTERNATE_EDITOR=""
 export DEBEMAIL="aleksei.gusev@gmail.com"
