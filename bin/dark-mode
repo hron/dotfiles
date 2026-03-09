@@ -12,12 +12,9 @@ import time
 
 def set_plasma_theme(dark_mode):
     if dark_mode:
-        theme = 'org.kde.breezedark.desktop'
+        theme = "org.kde.breezedark.desktop"
     else:
-        theme = 'org.kde.breeze.desktop'
-    subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", 'org.kde.oxygen'], preexec_fn=os.setsid)
-    time.sleep(0.5)
-    subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", theme], preexec_fn=os.setsid)
+        theme = "org.kde.breeze.desktop"
     # subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", 'org.kde.oxygen'], preexec_fn=os.setsid)
     # time.sleep(0.5)
     subprocess.Popen(
@@ -27,9 +24,9 @@ def set_plasma_theme(dark_mode):
 
 def set_btop_theme(dark_mode):
     if dark_mode:
-        theme = 'tokyo-night.theme'
+        theme = "tokyo-night.theme"
     else:
-        theme = 'whiteout.theme'
+        theme = "whiteout.theme"
     themes_dir = Path(os.path.expanduser("~/.config/btop/themes"))
     current_theme_path = Path(themes_dir).joinpath("current.theme")
     if current_theme_path.exists():
@@ -44,8 +41,20 @@ def detect_dark_mode():
             return True
         else:
             return False
-    result = subprocess.run(["qdbus", "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Settings.Read", "org.freedesktop.appearance", "color-scheme"], check=False, stdout=PIPE, stderr=PIPE)
-    return result.stdout != b'1\n'
+    result = subprocess.run(
+        [
+            "qdbus",
+            "org.freedesktop.portal.Desktop",
+            "/org/freedesktop/portal/desktop",
+            "org.freedesktop.portal.Settings.Read",
+            "org.freedesktop.appearance",
+            "color-scheme",
+        ],
+        check=False,
+        stdout=PIPE,
+        stderr=PIPE,
+    )
+    return result.stdout != b"1\n"
 
 
 dark_mode = detect_dark_mode()
