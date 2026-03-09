@@ -950,7 +950,7 @@ It seems `end-of-defun' is used internally by
 (use-package eglot
   :ensure nil
 
-  :hook ((c-mode c-ts-mode rust-ts-mode rust-mode python-mode python-ts-mode) . #'eglot-ensure)
+  :hook ((c-mode c-ts-mode rust-ts-mode rust-mode python-mode python-ts-mode typescript-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
 
