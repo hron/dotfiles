@@ -18,6 +18,11 @@ def set_plasma_theme(dark_mode):
     subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", 'org.kde.oxygen'], preexec_fn=os.setsid)
     time.sleep(0.5)
     subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", theme], preexec_fn=os.setsid)
+    # subprocess.Popen(["/usr/bin/lookandfeeltool", "--apply", 'org.kde.oxygen'], preexec_fn=os.setsid)
+    # time.sleep(0.5)
+    subprocess.Popen(
+        ["/usr/bin/lookandfeeltool", "--apply", theme], preexec_fn=os.setsid
+    )
 
 
 def set_btop_theme(dark_mode):
