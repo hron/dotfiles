@@ -14,7 +14,7 @@
   "diff_view_style": "unified",
   "icon_theme": "Zed (Default)",
   "edit_predictions": {
-    "provider": "zed"
+    "provider": "zed",
   },
   "file_scan_exclusions": [
     "**/.git/**/*",
@@ -26,19 +26,15 @@
     "**/.DS_Store",
     "**/Thumbs.db",
     "**/.classpath",
-    "**/.settings"
+    "**/.settings",
   ],
   "debugger": {
-    "dock": "left"
+    "dock": "right",
   },
   "language_models": {
     "openai": {
-      "available_models": []
-    }
-  },
-  "theme": {
-    "dark": "One Dark",
-    "light": "algus: Modus Operandi"
+      "available_models": [],
+    },
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
@@ -49,9 +45,9 @@
       "players": [
         {
           "background": "#e8dfd1ff",
-          "selection": "#e8dfd1ff"
-        }
-      ]
+          "selection": "#e8dfd1ff",
+        },
+      ],
     },
     "Modus Vivendi": {
       "search.match_background": "#004065",
@@ -59,15 +55,15 @@
       "players": [
         {
           "background": "#462f20ff",
-          "selection": "#462f20ff"
-        }
-      ]
-    }
+          "selection": "#462f20ff",
+        },
+      ],
+    },
   },
   "scrollbar": {
     "axes": {
-      "horizontal": false
-    }
+      "horizontal": false,
+    },
   },
   "ui_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -77,7 +73,7 @@
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
-    "liga": false
+    "liga": false,
   },
   "autosave": "on_focus_change",
   // Whether to use the system provided dialogs for Open and Save As.
@@ -88,25 +84,22 @@
   // if it contains only lowercase letters, the search becomes case-insensitive.
   "use_smartcase_search": true,
   "notification_panel": {
-    "dock": "left"
-  },
-  "chat_panel": {
-    "dock": "left"
+    "dock": "right",
   },
   "gutter": {
-    "line_numbers": false
+    "line_numbers": false,
   },
   "tab_bar": {
     "show": false,
     "show_nav_history_buttons": false,
-    "show_tab_bar_buttons": false
+    "show_tab_bar_buttons": false,
   },
   "tabs": {
     "git_status": true,
     "close_position": "right",
     "file_icons": true,
     "show_close_button": "hidden",
-    "show_diagnostics": "all"
+    "show_diagnostics": "all",
   },
   // Toolbar related settings
   "toolbar": {
@@ -117,22 +110,20 @@
     // Whether to show the Selections menu in the editor toolbar.
     "selections_menu": false,
     // Whether to show agent review buttons in the editor toolbar.
-    "agent_review": false
+    "agent_review": false,
   },
   "indent_guides": {
-    "active_line_width": 2
+    "active_line_width": 2,
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
   },
   "preview_tabs": {
     "enabled": false,
     "enable_preview_from_file_finder": true,
-    "enable_keep_preview_on_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true,
   },
   "terminal": {
-    // "dock": "bottom",
-    "dock": "left",
-    "default_width": 900,
+    "dock": "bottom",
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
     "font_weight": 500,
@@ -141,22 +132,34 @@
     //   "program": "bash"
     // }
     "toolbar": {
-      "breadcrumbs": false
-    }
-  },
-  "project_panel": {
-    "dock": "left",
-    "default_width": 400
+      "breadcrumbs": false,
+    },
   },
   "agent": {
-    "dock": "left",
-    "default_width": 900,
-    "enabled": true
+    "dock": "bottom",
+    "enabled": true,
   },
   "git_panel": {
-    "default_width": 400
+    "dock": "bottom",
   },
   "file_types": {
-    "ini": ["desktop"]
-  }
+    "ini": ["desktop"],
+  },
+  "profiles": {
+    "wide": {
+      "diff_view_style": "split",
+      "terminal": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "git_panel": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "agent": {
+        "dock": "left",
+        "default_width": 900,
+      },
+    },
+  },
 }
