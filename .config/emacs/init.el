@@ -950,7 +950,12 @@ It seems `end-of-defun' is used internally by
 (use-package eglot
   :ensure nil
 
-  :hook ((c-mode c-ts-mode rust-ts-mode rust-mode python-mode python-ts-mode typescript-ts-mode) . #'eglot-ensure)
+  :hook ((c-mode c-ts-mode
+                 rust-ts-mode rust-mode
+                 python-mode python-ts-mode
+                 typescript-mode typescript-ts-mode
+                 kotlin-mode kotlin-ts-mode
+                 java-mode java-ts-mode) . #'eglot-ensure)
   :hook (eglot-managed-mode-hook . (lambda () (eglot-inlay-hints-mode -1)))
   :hook (eglot-managed-mode-hook . init-manually-activate-imenu)
 
@@ -967,7 +972,8 @@ It seems `end-of-defun' is used internally by
   (eglot-diagnostic-tag-unnecessary-face ((t :inherit nil)))
 
   :custom
-  (eglot-ignored-server-capabilities '(:documentOnTypeFormattingProvider)))
+  (eglot-ignored-server-capabilities '(:documentOnTypeFormattingProvider))
+  (eglot-max-file-watches 50000))
 
 (use-package consult-eglot
   :pin "melpa")
@@ -1097,6 +1103,9 @@ It seems `end-of-defun' is used internally by
 
 (use-package kotlin-ts-mode
   :mode "\\.kt\\'")
+
+;; (setq eglot-events-buffer-config '(:size 2000000 :format full))
+;; (add-to-list 'eglot-server-programs '(kotlin-ts-mode . ("/usr/bin/kotlin-lsp")))
 
 (require 'init-windows)
 (require 'init-org)
