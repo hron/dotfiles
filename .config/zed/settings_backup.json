@@ -28,12 +28,11 @@
   },
   "language_models": {
     "openai": {
-      "version": "1",
       "available_models": []
     }
   },
   "theme": {
-    "dark": "Modus Vivendi",
+    "dark": "Ayu Dark",
     "light": "Modus Operandi"
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
@@ -93,7 +92,7 @@
     "line_numbers": false
   },
   "tab_bar": {
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false,
     "show_tab_bar_buttons": false
   },
@@ -155,5 +154,8 @@
   "features": {
     // Which inline completion provider to use.
     "edit_prediction_provider": "zed"
+  },
+  "file_types": {
+    "ini": ["desktop"]
   }
 }

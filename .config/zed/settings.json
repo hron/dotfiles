@@ -11,6 +11,11 @@
   //   "dark": "Zedwaita Dark",
   //   "light": "Zedwaita Light"
   // },
+  "diff_view_style": "unified",
+  "icon_theme": "Zed (Default)",
+  "edit_predictions": {
+    "provider": "zed"
+  },
   "file_scan_exclusions": [
     "**/.git/**/*",
     "**/.svn",
@@ -32,8 +37,8 @@
     }
   },
   "theme": {
-    "dark": "Modus Vivendi",
-    "light": "Modus Operandi"
+    "dark": "One Dark",
+    "light": "algus: Modus Operandi"
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
@@ -122,7 +127,7 @@
   "preview_tabs": {
     "enabled": false,
     "enable_preview_from_file_finder": true,
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true
   },
   "terminal": {
     // "dock": "bottom",
@@ -150,10 +155,6 @@
   },
   "git_panel": {
     "default_width": 400
-  },
-  "features": {
-    // Which inline completion provider to use.
-    "edit_prediction_provider": "zed"
   },
   "file_types": {
     "ini": ["desktop"]
