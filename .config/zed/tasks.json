@@ -3,11 +3,11 @@
 // Example:
 [
   {
-    "label": "magit",
-    "command": "magit",
-    //"args": [],
+    "label": "git commit",
+    "command": "git",
+    "args": ["commit"],
     // Env overrides for the command, will be appended to the terminal's environment from the settings.
-    // "env": { "foo": "bar" },
+    "env": { "EDITOR": "zeditor --wait" },
     // Current working directory to spawn the command into, defaults to current project root.
     //"cwd": "/path/to/working/directory",
     // Whether to use a new terminal tab or reuse the existing one to spawn the process, defaults to `false`.
@@ -17,6 +17,6 @@
     // What to do with the terminal pane and tab, after the command was started:
     // * `always` — always show the terminal pane, add and focus the corresponding task's tab in it (default)
     // * `never` — avoid changing current terminal pane focus, but still add/reuse the task's tab there
-    "reveal": "never"
-  }
+    "reveal": "never",
+  },
 ]
