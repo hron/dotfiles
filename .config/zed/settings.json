@@ -8,8 +8,8 @@
 // from the command palette or from `Zed` application menu.
 {
   "theme": {
-    "dark": "Modus Operandi",
-    "light": "Modus Vivendi",
+    "dark": "Modus Vivendi",
+    "light": "Modus Operandi",
   },
   "diff_view_style": "unified",
   "edit_predictions": {
@@ -36,7 +36,8 @@
   "selection_highlight": true,
   "theme_overrides": {
     "Modus Operandi": {
-      "search.match_background": "#bfefff",
+      "search.match_background": "#bfefff00",
+      "search.active_match_background": "#f3d000ff",
       "editor.document_highlight.read_background": "#bfefff",
       "players": [
         {
@@ -46,7 +47,8 @@
       ],
     },
     "Modus Vivendi": {
-      "search.match_background": "#004065",
+      "search.match_background": "#2266ae00",
+      "search.active_match_background": "#7a6100ff",
       "editor.document_highlight.read_background": "#004065",
       "players": [
         {
