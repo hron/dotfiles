@@ -7,12 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  // "theme": {
-  //   "dark": "Zedwaita Dark",
-  //   "light": "Zedwaita Light"
-  // },
+  "theme": {
+    "dark": "Modus Operandi",
+    "light": "Modus Vivendi",
+  },
   "diff_view_style": "unified",
-  "icon_theme": "Zed (Default)",
   "edit_predictions": {
     "provider": "zed",
   },
@@ -28,9 +27,6 @@
     "**/.classpath",
     "**/.settings",
   ],
-  "debugger": {
-    "dock": "right",
-  },
   "language_models": {
     "openai": {
       "available_models": [],
@@ -83,8 +79,21 @@
   // If your search query contains any uppercase letters, the search becomes case-sensitive;
   // if it contains only lowercase letters, the search becomes case-insensitive.
   "use_smartcase_search": true,
+  "project_panel": {
+    "dock": "right",
+    "default_width": 200,
+  },
   "notification_panel": {
     "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "debugger": {
+    "dock": "bottom",
   },
   "gutter": {
     "line_numbers": false,
@@ -140,7 +149,7 @@
     "enabled": true,
   },
   "git_panel": {
-    "dock": "bottom",
+    "dock": "right",
   },
   "file_types": {
     "ini": ["desktop"],
@@ -148,6 +157,10 @@
   "profiles": {
     "wide": {
       "diff_view_style": "split",
+      "project_panel": {
+        "dock": "left",
+        "default_width": 900,
+      },
       "terminal": {
         "dock": "left",
         "default_width": 900,
@@ -157,6 +170,10 @@
         "default_width": 900,
       },
       "agent": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "collaboration_panel": {
         "dock": "left",
         "default_width": 900,
       },
