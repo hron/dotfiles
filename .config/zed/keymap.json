@@ -5,8 +5,9 @@
       // "ctrl-\"": "workspace::ActivateNextPane",
       // "ctrl-q": null
       "alt-up": "workspace::ActivatePreviousPane",
-      "alt-down": "workspace::ActivateNextPane"
-    }
+      "alt-down": "workspace::ActivateNextPane",
+      "shift-escape": null,
+    },
   },
   {
     "context": "Editor",
@@ -53,42 +54,42 @@
       "alt-j": [
         "editor::SelectNext",
         {
-          "replace_newest": false
-        }
+          "replace_newest": false,
+        },
       ],
       "alt-ctrl-shift-j": [
         "editor::SelectPrevious",
         {
-          "replace_newest": false
-        }
+          "replace_newest": false,
+        },
       ],
       "alt-ctrl-j": "editor::SelectAllMatches",
       "alt-shift-j": [
         "editor::SelectNext",
         {
-          "replace_newest": true
-        }
+          "replace_newest": true,
+        },
       ],
       "ctrl-k alt-ctrl-shift-j": [
         "editor::SelectPrevious",
         {
-          "replace_newest": true
-        }
+          "replace_newest": true,
+        },
       ],
       "ctrl-k alt-j": "editor::UndoSelection",
       "ctrl-shift-alt-f": null,
       "ctrl-alt-shift-f": null,
       "alt-shift-n": "workspace::ClearAllNotifications",
       "ctrl-alt-left": "editor::FoldAll",
-      "ctrl-alt-right": "editor::UnfoldAll"
-    }
+      "ctrl-alt-right": "editor::UnfoldAll",
+    },
   },
   {
     "context": "Editor && !edit_prediction",
     "bindings": {
       "alt-\\": null,
-      "alt-/": "editor::ShowEditPrediction"
-    }
+      "alt-/": "editor::ShowEditPrediction",
+    },
   },
   {
     "context": "Pane",
@@ -110,9 +111,9 @@
       "ctrl-r": "search::ToggleReplace",
       "alt-9": "git::Diff",
       "ctrl-alt-up": "search::SelectPreviousMatch",
-      "ctrl-alt-down": "search::SelectNextMatch"
+      "ctrl-alt-down": "search::SelectNextMatch",
       // "ctrl-alft-f": "project_search::ToggleFilters"
-    }
+    },
   },
   {
     "context": "Workspace",
@@ -138,20 +139,21 @@
       "alt-9": "git::Diff",
       "ctrl-k b": "git::Branch",
       "alt-o": "project_symbols::Toggle",
-      "ctrl-k e": "editor::ToggleEditPrediction"
-    }
+      "ctrl-k e": "editor::ToggleEditPrediction",
+      "ctrl-alt-shift-p": "settings_profile_selector::Toggle",
+    },
   },
   {
     "context": "!ContextEditor > Editor && mode == full",
     "bindings": {
       "ctrl-shift-e": null,
-      "ctrl-k e": "editor::ToggleEditPrediction"
-    }
+      "ctrl-k e": "editor::ToggleEditPrediction",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-escape": "terminal_panel::ToggleFocus",
+      "shift-escape": "terminal_panel::ToggleFocus",
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-v": "terminal::Paste",
       "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
@@ -173,8 +175,8 @@
       // "alt-down": ["terminal::SendKeystroke", "alt-down"],
       // "alt-space": ["terminal::SendKeystroke", "alt-space"]
       "alt-t": "task::Spawn",
-      "alt-r": "task::Rerun"
-    }
+      "alt-r": "task::Rerun",
+    },
   },
   {
     "context": "Terminal && vi_mode",
@@ -200,14 +202,14 @@
       "end": ["terminal::SendKeystroke", "$"],
       "ctrl-l": ["terminal::SendKeystroke", "z"],
       "ctrl-m": ["terminal::SendKeystroke", "%"],
-      "alt-m": ["terminal::SendKeystroke", "%"]
+      "alt-m": ["terminal::SendKeystroke", "%"],
       // "/": ["terminal::SendKeystroke", "/"]
-    }
+    },
   },
   {
     "context": "ProjectPanel",
     "bindings": {
-      "ctrl-escape": "project_panel::ToggleFocus",
+      "shift-escape": "project_panel::ToggleFocus",
       "enter": "project_panel::OpenPermanent",
       "ctrl-q": null,
       "ctrl-shift-f": "project_panel::NewSearchInDirectory",
@@ -215,43 +217,43 @@
       "f2": "project_panel::Rename",
       "f7": "project_panel::NewDirectory",
       "ctrl-shift-c": "workspace::CopyPath",
-      "ctrl-shift-alt-c": "workspace::CopyRelativePath"
-    }
+      "ctrl-shift-alt-c": "workspace::CopyRelativePath",
+    },
   },
   {
     "context": "AssistantPanel",
     "bindings": {
-      "ctrl-escape": "agent::ToggleFocus"
-    }
+      "shift-escape": "agent::ToggleFocus",
+    },
   },
   {
     "context": "OutlinePanel",
     "bindings": {
-      "shift-escape": "outline_panel::ToggleFocus"
-    }
+      "shift-escape": "outline_panel::ToggleFocus",
+    },
   },
   {
     "bindings": {
-      "ctrl-alt-z": "editor::RevertSelectedHunks"
-    }
+      "ctrl-alt-z": "editor::RevertSelectedHunks",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "alt-r": "terminal::RerunTask"
-    }
+      "alt-r": "terminal::RerunTask",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-alt-r": null
-    }
+      "ctrl-alt-r": null,
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-alt-r": null
-    }
+      "ctrl-alt-r": null,
+    },
   },
   {
     "context": "(GitPanel && ChangesList)",
@@ -259,69 +261,69 @@
       "ctrl-alt-z": [
         "git::RestoreFile",
         {
-          "skip_prompt": false
-        }
-      ]
-    }
+          "skip_prompt": false,
+        },
+      ],
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "alt-r": "terminal::RerunTask"
-    }
+      "alt-r": "terminal::RerunTask",
+    },
   },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-l": "terminal::Clear"
-    }
+      "ctrl-l": "terminal::Clear",
+    },
   },
   {
     "context": "(Editor && edit_prediction)",
     "bindings": {
-      "alt-/": "editor::AcceptEditPrediction"
-    }
+      "alt-/": "editor::AcceptEditPrediction",
+    },
   },
   {
     "context": "(Editor && edit_prediction_conflict)",
     "bindings": {
-      "alt-/": "editor::AcceptEditPrediction"
-    }
+      "alt-/": "editor::AcceptEditPrediction",
+    },
   },
   {
     "context": "GitCommit > Editor",
     "bindings": {
-      "alt-/": "git::GenerateCommitMessage"
-    }
+      "alt-/": "git::GenerateCommitMessage",
+    },
   },
   {
     "context": "CommitEditor > Editor",
     "bindings": {
-      "alt-/": "git::GenerateCommitMessage"
-    }
+      "alt-/": "git::GenerateCommitMessage",
+    },
   },
   {
     "context": "(Editor && edit_prediction_conflict)",
     "bindings": {
-      "alt-l": null
-    }
+      "alt-l": null,
+    },
   },
   {
     "context": "(Editor && edit_prediction)",
     "bindings": {
-      "alt-l": null
-    }
+      "alt-l": null,
+    },
   },
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-shift-backspace": "editor::DeleteLine"
-    }
+      "ctrl-shift-backspace": "editor::DeleteLine",
+    },
   },
   {
     "context": "DebugPanel",
     "bindings": {
-      "ctrl-escape": "debug_panel::ToggleFocus"
-    }
-  }
+      "shift-escape": "debug_panel::ToggleFocus",
+    },
+  },
 ]
