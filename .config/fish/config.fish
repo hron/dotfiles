@@ -9,4 +9,6 @@ if status is-interactive
 
     # wezterm + fish produces ctrl-h instead of ctrl-backspace
     bind ctrl-h backward-kill-word
+
+    bind alt-/ end-of-line
 end
