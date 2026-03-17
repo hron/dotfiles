@@ -7,10 +7,14 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  // "theme": {
-  //   "dark": "Zedwaita Dark",
-  //   "light": "Zedwaita Light"
-  // },
+  "theme": {
+    "dark": "Modus Vivendi",
+    "light": "Modus Operandi",
+  },
+  "diff_view_style": "unified",
+  "edit_predictions": {
+    "provider": "zed",
+  },
   "file_scan_exclusions": [
     "**/.git/**/*",
     "**/.svn",
@@ -21,48 +25,41 @@
     "**/.DS_Store",
     "**/Thumbs.db",
     "**/.classpath",
-    "**/.settings"
+    "**/.settings",
   ],
-  "debugger": {
-    "dock": "left"
-  },
   "language_models": {
     "openai": {
-      "available_models": []
-    }
-  },
-  "theme": {
-    "dark": "Ayu Dark",
-    "light": "Modus Operandi"
+      "available_models": [],
+    },
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
   "theme_overrides": {
     "Modus Operandi": {
-      "search.match_background": "#bfefff",
-      "editor.document_highlight.read_background": "#bfefff",
+      "search.active_match_background": "#f3d000ff",
+      // "editor.document_highlight.read_background": "#bfefff",
       "players": [
         {
-          "background": "#e8dfd1ff",
-          "selection": "#e8dfd1ff"
-        }
-      ]
+          // "background": "#e8dfd1",
+          "selection": "#bdae873d",
+        },
+      ],
     },
     "Modus Vivendi": {
-      "search.match_background": "#004065",
-      "editor.document_highlight.read_background": "#004065",
-      "players": [
-        {
-          "background": "#462f20ff",
-          "selection": "#462f20ff"
-        }
-      ]
-    }
+      "search.active_match_background": "#7a6100ff",
+      // "editor.document_highlight.read_background": "#004065",
+      // "players": [
+      //   {
+      //     "background": "#462f20ff",
+      //     "selection": "#462f20ff",
+      //   },
+      // ],
+    },
   },
   "scrollbar": {
     "axes": {
-      "horizontal": false
-    }
+      "horizontal": false,
+    },
   },
   "ui_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -72,7 +69,7 @@
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
-    "liga": false
+    "liga": false,
   },
   "autosave": "on_focus_change",
   // Whether to use the system provided dialogs for Open and Save As.
@@ -82,26 +79,36 @@
   // If your search query contains any uppercase letters, the search becomes case-sensitive;
   // if it contains only lowercase letters, the search becomes case-insensitive.
   "use_smartcase_search": true,
-  "notification_panel": {
-    "dock": "left"
+  "project_panel": {
+    "dock": "right",
+    "default_width": 200,
   },
-  "chat_panel": {
-    "dock": "left"
+  "notification_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "debugger": {
+    "dock": "bottom",
   },
   "gutter": {
-    "line_numbers": false
+    "line_numbers": false,
   },
   "tab_bar": {
     "show": false,
     "show_nav_history_buttons": false,
-    "show_tab_bar_buttons": false
+    "show_tab_bar_buttons": false,
   },
   "tabs": {
     "git_status": true,
     "close_position": "right",
     "file_icons": true,
     "show_close_button": "hidden",
-    "show_diagnostics": "all"
+    "show_diagnostics": "all",
   },
   // Toolbar related settings
   "toolbar": {
@@ -112,22 +119,20 @@
     // Whether to show the Selections menu in the editor toolbar.
     "selections_menu": false,
     // Whether to show agent review buttons in the editor toolbar.
-    "agent_review": false
+    "agent_review": false,
   },
   "indent_guides": {
-    "active_line_width": 2
+    "active_line_width": 2,
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
   },
   "preview_tabs": {
     "enabled": false,
     "enable_preview_from_file_finder": true,
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true,
   },
   "terminal": {
-    // "dock": "bottom",
-    "dock": "left",
-    "default_width": 900,
+    "dock": "bottom",
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
     "font_weight": 500,
@@ -136,26 +141,48 @@
     //   "program": "bash"
     // }
     "toolbar": {
-      "breadcrumbs": false
-    }
-  },
-  "project_panel": {
-    "dock": "left",
-    "default_width": 400
+      "breadcrumbs": false,
+    },
   },
   "agent": {
-    "dock": "left",
-    "default_width": 900,
-    "enabled": true
+    "dock": "bottom",
+    "enabled": true,
   },
   "git_panel": {
-    "default_width": 400
-  },
-  "features": {
-    // Which inline completion provider to use.
-    "edit_prediction_provider": "zed"
+    "dock": "right",
   },
   "file_types": {
-    "ini": ["desktop"]
-  }
+    "ini": ["desktop"],
+  },
+  "agent_servers": {
+    "OpenCode": {
+      "command": "opencode",
+      "args": ["acp"],
+    },
+  },
+  "profiles": {
+    "wide": {
+      "diff_view_style": "split",
+      "project_panel": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "terminal": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "git_panel": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "agent": {
+        "dock": "left",
+        "default_width": 900,
+      },
+      "collaboration_panel": {
+        "dock": "left",
+        "default_width": 900,
+      },
+    },
+  },
 }

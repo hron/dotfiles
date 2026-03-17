@@ -7,6 +7,17 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "buffer_line_height": "standard",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
   "theme": {
     "dark": "Modus Vivendi",
     "light": "Modus Operandi",
@@ -34,30 +45,26 @@
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
-  "theme_overrides": {
-    "Modus Operandi": {
-      "search.match_background": "#bfefff00",
-      "search.active_match_background": "#f3d000ff",
-      "editor.document_highlight.read_background": "#bfefff",
-      "players": [
-        {
-          "background": "#e8dfd1ff",
-          "selection": "#e8dfd1ff",
-        },
-      ],
-    },
-    "Modus Vivendi": {
-      "search.match_background": "#2266ae00",
-      "search.active_match_background": "#7a6100ff",
-      "editor.document_highlight.read_background": "#004065",
-      "players": [
-        {
-          "background": "#462f20ff",
-          "selection": "#462f20ff",
-        },
-      ],
-    },
-  },
+  // "theme_overrides": {
+  //   "Modus Operandi": {
+  //     // "search.active_match_background": "#f3d000ff",
+  //     // "editor.document_highlight.read_background": "#bfefff",
+  //     "players": [
+  //       {
+  //         // "background": "#e8dfd1",
+  //         "selection": "#bdae873d",
+  //       },
+  //     ],
+  //   },
+  //   "Modus Vivendi": {
+  //     "players": [
+  //       {
+  //         // "background": "#e8dfd1",
+  //         "selection": "#bdae873d",
+  //       },
+  //     ],
+  //   },
+  // },
   "scrollbar": {
     "axes": {
       "horizontal": false,
@@ -67,7 +74,7 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 500,
+  "buffer_font_weight": 500.0,
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
@@ -124,7 +131,7 @@
     "agent_review": false,
   },
   "indent_guides": {
-    "active_line_width": 2,
+    // "active_line_width": 2,
     // "coloring": "indent_aware",
     // "background_coloring": "indent_aware"
   },
@@ -147,6 +154,16 @@
     },
   },
   "agent": {
+    "tool_permissions": {
+      "default": "confirm",
+      "tools": {},
+    },
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
+      "enable_thinking": true,
+    },
     "dock": "bottom",
     "enabled": true,
   },
@@ -156,6 +173,12 @@
   "file_types": {
     "ini": ["desktop"],
   },
+  // "agent_servers": {
+  //   "OpenCode": {
+  //     "command": "opencode",
+  //     "args": ["acp"],
+  //   },
+  // },
   "profiles": {
     "wide": {
       "diff_view_style": "split",
