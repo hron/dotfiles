@@ -20,3 +20,4 @@ flycheck*.el
 .vscode/*
 /.zed/
 *.code-workspace
+codebook.toml

@@ -7,6 +7,43 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "outline_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "project_panel": {
+    "dock": "right",
+  },
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "high",
+    },
+    "play_sound_when_agent_done": true,
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1",
+    },
+    "dock": "left",
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5-mini",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": true,
+      },
+    ],
+    "model_parameters": [],
+  },
   "buffer_line_height": "standard",
   "icon_theme": {
     "mode": "system",
@@ -14,7 +51,16 @@
     "dark": "Catppuccin Mocha",
   },
   "agent_servers": {
-    "opencode": {
+    "github-copilot-cli": {
+      "default_mode": "Plan",
+      "default_model": "claude-sonnet-4.6",
+      "favorite_config_option_values": {
+        "mode": [
+          "https://agentclientprotocol.com/protocol/session-modes#agent",
+          "https://agentclientprotocol.com/protocol/session-modes#plan",
+        ],
+        "model": ["gpt-5-mini", "claude-sonnet-4.6"],
+      },
       "type": "registry",
     },
   },
@@ -24,8 +70,25 @@
   },
   "diff_view_style": "unified",
   "edit_predictions": {
-    "provider": "zed",
+    "provider": "copilot",
+    // "mode": "subtle",
+    "copilot": {
+      "enable_next_edit_suggestions": false,
+    },
   },
+  // "edit_predictions": {
+  //   "provider": "open_ai_compatible_api",
+  //   "open_ai_compatible_api": {
+  //     "api_url": "https://opencode.ai/zen/v1/chat/completions",
+  //     "model": "gpt-5.4-mini",
+  //     // "prompt_format": "deepseek_coder",
+  //     // "prompt_format": "glm",
+  //   },
+  //   "mode": "eager",
+  //   // "copilot": {
+  //   //   "enable_next_edit_suggestions": false,
+  //   // },
+  // },
   "file_scan_exclusions": [
     "**/.git/**/*",
     "**/.svn",
@@ -45,6 +108,29 @@
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
+  "theme_overrides": {
+    // "Modus Vivendi": {
+    //   // "syntax": {
+    //   //   "comment": {
+    //   //     "color": "#ff0000",
+    //   //     "font_style": "italic",
+    //   //   },
+    //   // },
+    //   // "players": [
+    //   //   {
+    //   //     "selection": "#00ff00",
+    //   //   },
+    //   // ],
+    // },
+    // "Modus Vivendi Tinted": {
+    //   "syntax": {
+    //     "comment": {
+    //       "color": "#989898",
+    //       "font_style": "italic",
+    //     },
+    //   },
+    // },
+  },
   // "theme_overrides": {
   //   "Modus Operandi": {
   //     // "search.active_match_background": "#f3d000ff",
@@ -74,7 +160,7 @@
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
   "buffer_font_size": 13,
-  "buffer_font_weight": 500.0,
+  // "buffer_font_weight": 400,
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
     "calt": false,
@@ -88,22 +174,6 @@
   // If your search query contains any uppercase letters, the search becomes case-sensitive;
   // if it contains only lowercase letters, the search becomes case-insensitive.
   "use_smartcase_search": true,
-  "project_panel": {
-    "dock": "right",
-    "default_width": 200,
-  },
-  "notification_panel": {
-    "dock": "right",
-  },
-  "collaboration_panel": {
-    "dock": "right",
-  },
-  "outline_panel": {
-    "dock": "right",
-  },
-  "debugger": {
-    "dock": "bottom",
-  },
   "gutter": {
     "line_numbers": false,
   },
@@ -141,10 +211,9 @@
     "enable_keep_preview_on_code_navigation": true,
   },
   "terminal": {
-    "dock": "bottom",
     // "font_family": "BlexMonoNF"
     // "font_size": 20,
-    "font_weight": 500,
+    // "font_weight": 400,
     // "line_height": "standard"
     // "shell": {
     //   "program": "bash"
@@ -153,34 +222,12 @@
       "breadcrumbs": false,
     },
   },
-  "agent": {
-    "tool_permissions": {
-      "default": "confirm",
-      "tools": {},
-    },
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview",
-      "enable_thinking": true,
-    },
-    "dock": "bottom",
-    "enabled": true,
-  },
-  "git_panel": {
-    "dock": "right",
-  },
   "file_types": {
     "ini": ["desktop"],
+    "Shell Script": [".envrc", "~/.config/environment.d/**/*"],
   },
-  // "agent_servers": {
-  //   "OpenCode": {
-  //     "command": "opencode",
-  //     "args": ["acp"],
-  //   },
-  // },
   "profiles": {
-    "wide": {
+    "Wide": {
       "diff_view_style": "split",
       "project_panel": {
         "dock": "left",

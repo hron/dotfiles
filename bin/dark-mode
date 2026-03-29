@@ -2,12 +2,10 @@
 
 import os
 import subprocess
-from subprocess import PIPE
 import sys
-from pathlib import Path
-import subprocess
-import os
 import time
+from pathlib import Path
+from subprocess import PIPE
 
 
 def set_plasma_theme(dark_mode):
