@@ -88,6 +88,7 @@ config.keys = {
   { key = 'Paste', mods = 'NONE', action = act.PasteFrom 'Clipboard' },
   { key = 'UpArrow', mods = 'ALT', action = act.ScrollToPrompt(-1) },
   { key = 'DownArrow', mods = 'ALT', action = act.ScrollToPrompt(1) },
+  { key = 'Backspace', mods = 'CTRL', action = act.SendKey { key = 'Backspace', mods = 'ALT' } },
 }
 
 config.key_tables = {

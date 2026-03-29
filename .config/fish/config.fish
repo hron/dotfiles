@@ -7,8 +7,5 @@ if status is-interactive
     # so we pass `alt-z` instead and bind it here
     bind alt-z redo
 
-    # wezterm + fish produces ctrl-h instead of ctrl-backspace
-    bind ctrl-h backward-kill-word
-
     bind alt-/ end-of-line
 end
