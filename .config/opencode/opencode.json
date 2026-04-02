@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "github-copilot/claude-sonnet-4.6",
+  "provider": {
+    "ollama": {
+      "models": {
+        "qwen3.5": {
+          "_launch": true,
+          "name": "qwen3.5"
+        }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      }
+    }
+  },
+  "permission": {
+    "external_directory": { "~/.cargo/git/**": "allow" },
+    "read": { "~/.cargo/git/**": "allow" }
+  }
+}
