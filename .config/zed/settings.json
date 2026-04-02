@@ -14,10 +14,10 @@
     "dock": "left",
   },
   "git_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "project_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "agent": {
     "default_profile": "ask",
@@ -229,7 +229,7 @@
     // "shell": {
     //   "program": "bash"
     // }
-    "dock": "bottom",
+    "dock": "left",
     "toolbar": {
       "breadcrumbs": false,
     },
