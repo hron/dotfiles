@@ -19,4 +19,11 @@
     // * `never` — avoid changing current terminal pane focus, but still add/reuse the task's tab there
     "reveal": "never",
   },
+  {
+    "label": "cargo nextest run --workspace",
+    "command": "cargo",
+    "args": ["nextest", "run", "--workspace", "--no-fail-fast"],
+    "allow_concurrent_runs": false,
+    "use_new_terminal": false,
+  },
 ]

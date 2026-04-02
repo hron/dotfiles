@@ -12,12 +12,12 @@
 [difftool "vscode"]
     cmd = "code --wait --diff  "
 [difftool "zed"]
-    cmd = zeditor --diff "$LOCAL" "$REMOTE"
+    cmd = zed --reuse --diff "$LOCAL" "$REMOTE"
 
 [merge]
     tool = zed
 [mergetool "zed"]
-    cmd = zeditor --wait "$MERGED"
+    cmd = zed  --reuse --wait "$MERGED"
 [mergetool "emacs"]
     cmd = "emacs --no-desktop "
 [mergetool "vscode"]

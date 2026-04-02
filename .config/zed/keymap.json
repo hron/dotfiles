@@ -4,8 +4,9 @@
       "ctrl-\"": "workspace::ToggleZoom",
       // "ctrl-\"": "workspace::ActivateNextPane",
       // "ctrl-q": null
-      "alt-up": "workspace::ActivatePreviousPane",
-      "alt-down": "workspace::ActivateNextPane",
+      // "alt-up": "workspace::ActivatePreviousPane",
+      // "alt-down": "workspace::ActivateNextPane",
+      "alt-o": "workspace::ActivateNextPane",
       "shift-escape": null,
     },
   },
@@ -343,18 +344,24 @@
       "ctrl-.": "agent::ToggleProfileSelector",
       "ctrl-'": "agent::ToggleModelSelector",
       "ctrl-shift-h": "agent::OpenHistory",
-      "ctrl-alt-up": "agent::FocusUp",
-      "ctrl-alt-down": "agent::FocusDown",
-      "ctrl-alt-left": "agent::FocusLeft",
-      "ctrl-alt-right": "agent::FocusRight",
+      // "ctrl-alt-up": "agent::FocusUp",
+      // "ctrl-alt-down": "agent::FocusDown",
+      // "ctrl-alt-left": "agent::FocusLeft",
+      // "ctrl-alt-right": "agent::FocusRight",
+      "alt-up": "agent::ScrollOutputLineUp",
+      "alt-down": "agent::ScrollOutputLineDown",
       "alt-f": "agent::Follow",
       "alt-y": "agent::AllowOnce",
       "ctrl-alt-y": "agent::AllowAlways",
       "alt-n": "agent::RejectOnce",
       "ctrl-alt-n": "agent::RejectAll",
+      // "ctrl-t": [
+      //   "agent::NewExternalAgentThread",
+      //   { "agent": { "custom": { "name": "github-copilot-cli" } } },
+      // ],
       "ctrl-t": [
         "agent::NewExternalAgentThread",
-        { "agent": { "custom": { "name": "github-copilot-cli" } } },
+        { "agent": { "custom": { "name": "opencode" } } },
       ],
     },
   },
@@ -385,4 +392,19 @@
       "alt-\\": "workspace::NewFile",
     },
   },
+  {
+    "bindings": {
+      "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
+    },
+  },
+  {
+    "unbind": {
+      "ctrl-alt-l": "lsp_tool::ToggleMenu",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-g u": "git::Push"
+    }
+  }
 ]

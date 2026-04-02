@@ -7,8 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "debugger": {
+    "dock": "left"
+  },
   "outline_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "git_panel": {
     "dock": "right",
@@ -27,7 +30,7 @@
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1",
+      "model": "gpt-5-mini",
     },
     "dock": "left",
     "favorite_models": [
@@ -51,6 +54,14 @@
     "dark": "Catppuccin Mocha",
   },
   "agent_servers": {
+    "opencode": {
+      "default_mode": "plan",
+      "favorite_models": [
+        "github-copilot/gpt-5-mini",
+        "github-copilot/claude-sonnet-4.6",
+      ],
+      "type": "registry",
+    },
     "github-copilot-cli": {
       "default_mode": "Plan",
       "default_model": "claude-sonnet-4.6",
@@ -218,6 +229,7 @@
     // "shell": {
     //   "program": "bash"
     // }
+    "dock": "bottom",
     "toolbar": {
       "breadcrumbs": false,
     },
