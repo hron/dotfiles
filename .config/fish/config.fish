@@ -8,4 +8,6 @@ if status is-interactive
     bind alt-z redo
 
     bind alt-/ end-of-line
+
+    bind ctrl-w backward-kill-word
 end
