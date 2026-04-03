@@ -404,12 +404,18 @@
   },
   {
     "bindings": {
-      "ctrl-g u": "git::Push"
+      "ctrl-k h": "git::FileHistory"
     }
   },
   {
-    "bindings": {
-      "ctrl-k h": "git::FileHistory"
+    "context": "Pane",
+    "unbind": {
+      "ctrl-k u": [
+        "pane::CloseCleanItems",
+        {
+          "close_pinned": false
+        }
+      ]
     }
   }
 ]
