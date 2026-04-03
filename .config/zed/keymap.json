@@ -406,5 +406,10 @@
     "bindings": {
       "ctrl-g u": "git::Push"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-k h": "git::FileHistory"
+    }
   }
 ]
