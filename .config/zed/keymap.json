@@ -417,5 +417,11 @@
         }
       ]
     }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "new": "workspace::NewFile"
+    }
   }
 ]

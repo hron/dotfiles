@@ -9,5 +9,5 @@ if status is-interactive
 
     bind alt-/ end-of-line
 
-    bind ctrl-w backward-kill-word
+    bind alt-backspace backward-kill-word
 end

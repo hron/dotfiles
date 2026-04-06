@@ -8,10 +8,10 @@
 // from the command palette or from `Zed` application menu.
 {
   "notification_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "debugger": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
     "dock": "left",
@@ -84,6 +84,7 @@
   },
   "diff_view_style": "unified",
   "edit_predictions": {
+    "mode": "subtle",
     "provider": "copilot",
     // "mode": "subtle",
     "copilot": {
@@ -244,25 +245,9 @@
   "profiles": {
     "Wide": {
       "diff_view_style": "split",
-      "project_panel": {
-        "dock": "left",
-        "default_width": 900,
-      },
       "terminal": {
         "dock": "left",
-        "default_width": 900,
-      },
-      "git_panel": {
-        "dock": "left",
-        "default_width": 900,
-      },
-      "agent": {
-        "dock": "left",
-        "default_width": 900,
-      },
-      "collaboration_panel": {
-        "dock": "left",
-        "default_width": 900,
+        "default_width": 100,
       },
     },
   },
