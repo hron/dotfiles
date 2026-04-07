@@ -344,12 +344,6 @@
       "ctrl-.": "agent::ToggleProfileSelector",
       "ctrl-'": "agent::ToggleModelSelector",
       "ctrl-shift-h": "agent::OpenHistory",
-      // "ctrl-alt-up": "agent::FocusUp",
-      // "ctrl-alt-down": "agent::FocusDown",
-      // "ctrl-alt-left": "agent::FocusLeft",
-      // "ctrl-alt-right": "agent::FocusRight",
-      "alt-up": "agent::ScrollOutputLineUp",
-      "alt-down": "agent::ScrollOutputLineDown",
       "alt-f": "agent::Follow",
       "alt-y": "agent::AllowOnce",
       "ctrl-alt-y": "agent::AllowAlways",
@@ -404,8 +398,8 @@
   },
   {
     "bindings": {
-      "ctrl-k h": "git::FileHistory"
-    }
+      "ctrl-k h": "git::FileHistory",
+    },
   },
   {
     "context": "Pane",
@@ -413,15 +407,15 @@
       "ctrl-k u": [
         "pane::CloseCleanItems",
         {
-          "close_pinned": false
-        }
-      ]
-    }
+          "close_pinned": false,
+        },
+      ],
+    },
   },
   {
     "context": "Workspace",
     "unbind": {
-      "new": "workspace::NewFile"
-    }
-  }
+      "new": "workspace::NewFile",
+    },
+  },
 ]
