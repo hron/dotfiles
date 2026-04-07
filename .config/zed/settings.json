@@ -8,19 +8,19 @@
 // from the command palette or from `Zed` application menu.
 {
   "notification_panel": {
-    "dock": "left",
+    "dock": "right",
   },
   "debugger": {
-    "dock": "left",
+    "dock": "right",
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "right",
   },
   "git_panel": {
-    "dock": "left",
+    "dock": "right",
   },
   "project_panel": {
-    "dock": "left",
+    "dock": "right",
   },
   "agent": {
     "default_profile": "ask",
@@ -57,6 +57,9 @@
     "dark": "Catppuccin Mocha",
   },
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry",
+    },
     "opencode": {
       "default_mode": "plan",
       "favorite_models": [
@@ -248,6 +251,21 @@
       "terminal": {
         "dock": "left",
         "default_width": 100,
+      },
+      "notification_panel": {
+        "dock": "left",
+      },
+      "debugger": {
+        "dock": "left",
+      },
+      "outline_panel": {
+        "dock": "left",
+      },
+      "git_panel": {
+        "dock": "left",
+      },
+      "project_panel": {
+        "dock": "left",
       },
     },
   },
