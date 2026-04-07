@@ -1,0 +1,4 @@
+#!/bin/sh
+
+npx --package=@mariozechner/pi-coding-agent \
+    -- pi "$@"
