@@ -9,20 +9,23 @@
 {
   "notification_panel": {
     "dock": "right",
-  },
-  "debugger": {
-    "dock": "right",
+    "default_width": 200,
   },
   "outline_panel": {
     "dock": "right",
+    "default_width": 200,
   },
   "git_panel": {
     "dock": "right",
+    "default_width": 200,
   },
   "project_panel": {
     "dock": "right",
+    "default_width": 200,
   },
   "agent": {
+    "dock": "right",
+    "default_width": 200,
     "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
@@ -30,12 +33,11 @@
       "enable_thinking": true,
       "effort": "high",
     },
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gpt-5-mini",
     },
-    "dock": "left",
     "favorite_models": [
       {
         "provider": "copilot_chat",
@@ -247,25 +249,28 @@
   },
   "profiles": {
     "Wide": {
-      "diff_view_style": "split",
-      "terminal": {
-        "dock": "left",
-        "default_width": 100,
-      },
-      "notification_panel": {
-        "dock": "left",
-      },
-      "debugger": {
-        "dock": "left",
-      },
-      "outline_panel": {
-        "dock": "left",
-      },
-      "git_panel": {
-        "dock": "left",
-      },
-      "project_panel": {
-        "dock": "left",
+      "settings": {
+        "diff_view_style": "split",
+        "terminal": {
+          "dock": "left",
+          "default_width": 900,
+        },
+        "notification_panel": {
+          "dock": "left",
+          "default_width": 900,
+        },
+        "outline_panel": {
+          "dock": "left",
+          "default_width": 900,
+        },
+        "git_panel": {
+          "dock": "left",
+          "default_width": 900,
+        },
+        "project_panel": {
+          "dock": "left",
+          "default_width": 900,
+        },
       },
     },
   },

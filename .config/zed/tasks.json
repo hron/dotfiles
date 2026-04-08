@@ -26,4 +26,18 @@
     "allow_concurrent_runs": false,
     "use_new_terminal": false,
   },
+  {
+    "label": "wezterm",
+    "command": "wezterm start --cwd $ZED_WORKTREE_ROOT",
+    "args": [],
+    "reveal": "never",
+    "hide": "always",
+  },
+  {
+    "label": "opencode",
+    "command": "wezterm start --cwd $ZED_WORKTREE_ROOT -- opencode",
+    "args": [],
+    "reveal": "never",
+    "hide": "always",
+  },
 ]

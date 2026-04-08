@@ -341,7 +341,7 @@
     "use_key_equivalents": true,
     "bindings": {
       "ctrl-i": "agent::ToggleFocus",
-      "ctrl-.": "agent::ToggleProfileSelector",
+      "ctrl-.": "agent::CycleModeSelector",
       "ctrl-'": "agent::ToggleModelSelector",
       "ctrl-shift-h": "agent::OpenHistory",
       "alt-f": "agent::Follow",
@@ -416,6 +416,11 @@
     "context": "Workspace",
     "unbind": {
       "new": "workspace::NewFile",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-g h": "git_graph::Open",
     },
   },
 ]
