@@ -9,7 +9,7 @@
     "light": null,
     "dark": {
       "name": "Bonofix Theme",
-      "url": "assets:///home/algus/.logseq/plugins/logseq-bonofix-theme/custom.css",
+      "url": "file:///home/algus/.logseq/plugins/logseq-bonofix-theme/custom.css",
       "description": "A clean theme",
       "pid": "logseq-bonofix-theme",
       "group-first": true,
@@ -20,7 +20,7 @@
   },
   "externals": [],
   "pinnedToolbarItems": [
-    "logseq-agenda:Agenda3",
-    "logseq-agenda:Agenda2-Legacy"
+    "logseq-agenda:Agenda2-Legacy",
+    "logseq-agenda:Agenda3"
   ]
 }
