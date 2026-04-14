@@ -7,6 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "show_edit_predictions": false,
   "notification_panel": {
     "dock": "right",
     "default_width": 200,
@@ -26,7 +30,7 @@
   "agent": {
     "dock": "right",
     "default_width": 200,
-    "default_profile": "ask",
+    "default_profile": "plan",
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.6",
@@ -63,6 +67,9 @@
       "type": "registry",
     },
     "opencode": {
+      "favorite_config_option_values": {
+        "model": ["github-copilot/claude-sonnet-4.6", "github-copilot/gpt-5.1"],
+      },
       "default_mode": "plan",
       "favorite_models": [
         "github-copilot/gpt-5-mini",
