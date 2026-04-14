@@ -8,6 +8,10 @@
       // "alt-down": "workspace::ActivateNextPane",
       "alt-o": "workspace::ActivateNextPane",
       "shift-escape": null,
+      "ctrl-k l": "git_graph::Open",
+      "ctrl-k f": "git::FileHistory",
+      "ctrl-k u": "git::Push",
+      "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
     },
   },
   {
@@ -387,11 +391,6 @@
     },
   },
   {
-    "bindings": {
-      "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
-    },
-  },
-  {
     "unbind": {
       "ctrl-alt-l": "lsp_tool::ToggleMenu",
     },
@@ -416,11 +415,6 @@
     "context": "Workspace",
     "unbind": {
       "new": "workspace::NewFile",
-    },
-  },
-  {
-    "bindings": {
-      "ctrl-g h": "git_graph::Open",
     },
   },
 ]
