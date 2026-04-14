@@ -11,6 +11,8 @@
       "ctrl-k l": "git_graph::Open",
       "ctrl-k f": "git::FileHistory",
       "ctrl-k u": "git::Push",
+      "ctrl-k U": "git::ForcePush",
+      "ctrl-k p": "git::Pull",
       "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
     },
   },
