@@ -7,8 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_ui_font_size": 17.0,
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "show_edit_predictions": false,
   "notification_panel": {
@@ -28,6 +29,94 @@
     "default_width": 200,
   },
   "agent": {
+    "profiles": {
+      "build": {
+        "name": "Build",
+        "enable_all_context_servers": true,
+        "tools": {
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "restore_file_from_disk": true,
+          "save_file": true,
+          "open": true,
+          "grep": true,
+          "spawn_agent": true,
+          "terminal": true,
+          "thinking": true,
+          "update_plan": true,
+          "search_web": true,
+        },
+      },
+      "plan": {
+        "name": "Plan",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "spawn_agent": true,
+          "thinking": true,
+          "update_plan": true,
+          "search_web": true,
+        },
+      },
+    },
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "\\bgrep\\b",
+            },
+            {
+              "pattern": "\\bcat\\b",
+            },
+            {
+              "pattern": "\\bgit\\b",
+            },
+          ],
+        },
+        "search_web": {
+          "default": "allow",
+        },
+        "fetch": {
+          "default": "allow",
+        },
+        "save_file": {
+          "default": "allow",
+        },
+        "create_directory": {
+          "default": "allow",
+        },
+        "move_path": {
+          "default": "allow",
+        },
+        "copy_path": {
+          "default": "allow",
+        },
+        "edit_file": {
+          "default": "allow",
+        },
+        "restore_file_from_disk": {
+          "default": "allow",
+        },
+      },
+    },
     "dock": "right",
     "default_width": 200,
     "default_profile": "plan",
@@ -35,7 +124,7 @@
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.6",
       "enable_thinking": true,
-      "effort": "high",
+      "effort": "medium",
     },
     "play_sound_when_agent_done": "always",
     "inline_assistant_model": {
@@ -183,10 +272,10 @@
       "horizontal": false,
     },
   },
-  "ui_font_size": 16,
+  "ui_font_size": 16.0,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // "buffer_font_family": "BlexMono Nerd Font",
-  "buffer_font_size": 13,
+  "buffer_font_size": 13.0,
   // "buffer_font_weight": 400,
   // "buffer_line_height": "comfortable",
   "buffer_font_features": {
@@ -254,10 +343,15 @@
     "ini": ["desktop"],
     "Shell Script": [".envrc", "~/.config/environment.d/**/*"],
   },
+  "languages": {
+    "Nix": {
+      "language_servers": ["!nixd", "!nil"],
+    },
+  },
   "profiles": {
     "Wide": {
       "settings": {
-        "diff_view_style": "split",
+        // "diff_view_style": "split",
         "terminal": {
           "dock": "left",
           "default_width": 900,

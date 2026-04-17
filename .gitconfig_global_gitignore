@@ -21,3 +21,4 @@ flycheck*.el
 /.zed/
 *.code-workspace
 codebook.toml
+.direnv/

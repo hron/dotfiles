@@ -35,7 +35,7 @@
 [rerere]
     enabled = true
 [alias]
-    zdiff = difftool --dir-diff
+    zdiff = difftool --dir-diff --no-symlinks
 [credential "https://github.com"]
     helper =
     helper = !/home/algus/.nix-profile/bin/gh auth git-credential
