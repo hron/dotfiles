@@ -29,53 +29,6 @@
     "default_width": 200,
   },
   "agent": {
-    "profiles": {
-      "build": {
-        "name": "Build",
-        "enable_all_context_servers": true,
-        "tools": {
-          "copy_path": true,
-          "create_directory": true,
-          "delete_path": true,
-          "diagnostics": true,
-          "edit_file": true,
-          "fetch": true,
-          "list_directory": true,
-          "project_notifications": false,
-          "move_path": true,
-          "now": true,
-          "find_path": true,
-          "read_file": true,
-          "restore_file_from_disk": true,
-          "save_file": true,
-          "open": true,
-          "grep": true,
-          "spawn_agent": true,
-          "terminal": true,
-          "thinking": true,
-          "update_plan": true,
-          "search_web": true,
-        },
-      },
-      "plan": {
-        "name": "Plan",
-        "tools": {
-          "diagnostics": true,
-          "fetch": true,
-          "list_directory": true,
-          "project_notifications": false,
-          "now": true,
-          "find_path": true,
-          "read_file": true,
-          "open": true,
-          "grep": true,
-          "spawn_agent": true,
-          "thinking": true,
-          "update_plan": true,
-          "search_web": true,
-        },
-      },
-    },
     "tool_permissions": {
       "tools": {
         "terminal": {
@@ -88,6 +41,12 @@
             },
             {
               "pattern": "\\bgit\\b",
+            },
+            {
+              "pattern": "\\bgh\\b",
+            },
+            {
+              "pattern": "\\btrue\\b",
             },
           ],
         },
@@ -122,9 +81,9 @@
     "default_profile": "plan",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
-      "enable_thinking": true,
-      "effort": "medium",
+      "model": "gpt-5-mini",
+      "enable_thinking": false,
+      "effort": "high",
     },
     "play_sound_when_agent_done": "always",
     "inline_assistant_model": {

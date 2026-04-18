@@ -360,10 +360,11 @@
       //   "agent::NewExternalAgentThread",
       //   { "agent": { "custom": { "name": "github-copilot-cli" } } },
       // ],
-      "ctrl-t": [
-        "agent::NewExternalAgentThread",
-        { "agent": { "custom": { "name": "opencode" } } },
-      ],
+      // "ctrl-t": [
+      //   "agent::NewExternalAgentThread",
+      //   { "agent": { "custom": { "name": "opencode" } } },
+      // ],
+      "ctrl-t": "agent::NewExternalAgentThread",
     },
   },
   {
