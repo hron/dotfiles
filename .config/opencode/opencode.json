@@ -3,12 +3,14 @@
   "model": "github-copilot/claude-sonnet-4.6",
   "lsp": false,
   "permission": {
-    "external_directory": {
-      "~/.cargo/git/**": "allow"
-    },
-    "read": {
-      "~/.cargo/git/**": "allow"
-    }
+    "*": "allow",
+    "doom_loop": "deny"
+    // "external_directory": {
+    //   "~/.cargo/git/**": "allow"
+    // },
+    // "read": {
+    //   "~/.cargo/git/**": "allow"
+    // }
   },
   "disabled_providers": ["ollama"],
   "mcp": {
