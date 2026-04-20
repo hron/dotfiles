@@ -3,12 +3,11 @@ set -eu
 
 PROJECT_DIR="${PWD}"
 
-PI_DIR="${HOME}/.pi"
-CACHE_DIR="${HOME}/.cache"
-STATE_DIR="${HOME}/.local/state"
-SHARE_DIR="${HOME}/.local/share"
+PI_ROOT="${HOME}/.pi"
+PI_AGENT_DIR="${HOME}/.pi/agent"
+PI_NPM_DIR="${PI_AGENT_DIR}/npm"   # Pi’s own npm path
 
-mkdir -p "$PI_DIR" "$CACHE_DIR" "$STATE_DIR" "$SHARE_DIR"
+mkdir -p "$PI_ROOT" "$PI_AGENT_DIR" "$PI_NPM_DIR"
 
 exec bwrap \
   --die-with-parent \
@@ -29,20 +28,16 @@ exec bwrap \
   --ro-bind /etc/hosts /etc/hosts \
   --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
   --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
-  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
-  --bind "$PI_DIR" "$HOME/.pi" \
-  --bind "$CACHE_DIR" "$HOME/.cache" \
-  --bind "$STATE_DIR" "$HOME/.local/state" \
-  --bind "$SHARE_DIR" "$HOME/.local/share" \
-  --dir "$HOME" \
-  --setenv HOME "$HOME" \
-  --setenv PI_CONFIG_DIR "$HOME/.pi" \
-  --setenv XDG_CACHE_HOME "$HOME/.cache" \
-  --setenv XDG_STATE_HOME "$HOME/.local/state" \
-  --setenv XDG_DATA_HOME "$HOME/.local/share" \
-  --setenv npm_config_cache "$HOME/.cache/npm" \
+  --bind "${PROJECT_DIR}" "${PROJECT_DIR}" \
+  --bind "${PI_ROOT}" "${HOME}/.pi" \
+  --bind "${PI_NPM_DIR}" "${HOME}/.pi/agent/npm" \
+  --dir "${HOME}" \
+  --setenv HOME "${HOME}" \
+  --setenv PI_CONFIG_DIR "${HOME}/.pi" \
+  --setenv PI_CODING_AGENT_DIR "${HOME}/.pi/agent" \
+  --setenv npm_config_cache "${HOME}/.pi/agent/npm" \
   --setenv USER "${USER:-user}" \
   --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
   --setenv TMPDIR /tmp \
-  --chdir "$PROJECT_DIR" \
+  --chdir "${PROJECT_DIR}" \
   /usr/bin/env npx --package=@mariozechner/pi-coding-agent -- pi "$@"
