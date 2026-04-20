@@ -1,0 +1,57 @@
+#!/bin/sh
+set -eu
+
+PROJECT_DIR="${PWD}"
+
+OPENCODE_HOME_CONFIG="${HOME}/.opencode.json"
+OPENCODE_CONFIG_DIR="${HOME}/.config/opencode"
+OPENCODE_CACHE_DIR="${HOME}/.cache/opencode"
+OPENCODE_STATE_DIR="${HOME}/.local/state/opencode"
+OPENCODE_DATA_DIR="${HOME}/.local/share/opencode"
+
+mkdir -p \
+  "${OPENCODE_CONFIG_DIR}" \
+  "${OPENCODE_CACHE_DIR}" \
+  "${OPENCODE_STATE_DIR}" \
+  "${OPENCODE_DATA_DIR}"
+
+if [ ! -e "${OPENCODE_HOME_CONFIG}" ]; then
+  : > "${OPENCODE_HOME_CONFIG}"
+fi
+
+exec bwrap \
+  --die-with-parent \
+  --new-session \
+  --unshare-pid \
+  --unshare-ipc \
+  --unshare-uts \
+  --dev /dev \
+  --proc /proc \
+  --tmpfs /tmp \
+  --ro-bind /bin /bin \
+  --ro-bind /lib /lib \
+  --ro-bind /lib64 /lib64 \
+  --ro-bind /usr /usr \
+  --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind /etc/ca-certificates /etc/ca-certificates \
+  --ro-bind /etc/resolv.conf /etc/resolv.conf \
+  --ro-bind /etc/hosts /etc/hosts \
+  --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
+  --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
+  --bind "${PROJECT_DIR}" "${PROJECT_DIR}" \
+  --bind "${OPENCODE_HOME_CONFIG}" "${HOME}/.opencode.json" \
+  --bind "${OPENCODE_CONFIG_DIR}" "${HOME}/.config/opencode" \
+  --bind "${OPENCODE_CACHE_DIR}" "${HOME}/.cache/opencode" \
+  --bind "${OPENCODE_STATE_DIR}" "${HOME}/.local/state/opencode" \
+  --bind "${OPENCODE_DATA_DIR}" "${HOME}/.local/share/opencode" \
+  --dir "${HOME}" \
+  --setenv HOME "${HOME}" \
+  --setenv XDG_CONFIG_HOME "${HOME}/.config" \
+  --setenv XDG_CACHE_HOME "${HOME}/.cache" \
+  --setenv XDG_STATE_HOME "${HOME}/.local/state" \
+  --setenv XDG_DATA_HOME "${HOME}/.local/share" \
+  --setenv USER "${USER:-user}" \
+  --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
+  --setenv TMPDIR /tmp \
+  --chdir "${PROJECT_DIR}" \
+  /usr/bin/env opencode "$@"
