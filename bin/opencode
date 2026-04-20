@@ -1,23 +1,29 @@
 #!/bin/sh
 set -eu
 
-PROJECT_DIR="${PWD}"
+HOME_DIR="${HOME}"
+SRC_ROOT="${HOME_DIR}/src"
+PROJECT_DIR="$(pwd -P)"
 
-OPENCODE_HOME_CONFIG="${HOME}/.opencode.json"
-OPENCODE_CONFIG_DIR="${HOME}/.config/opencode"
-OPENCODE_CACHE_DIR="${HOME}/.cache/opencode"
-OPENCODE_STATE_DIR="${HOME}/.local/state/opencode"
-OPENCODE_DATA_DIR="${HOME}/.local/share/opencode"
+OPENCODE_CONFIG_HOME="${HOME_DIR}/.config/opencode"
+OPENCODE_CACHE_HOME="${HOME_DIR}/.cache/opencode"
+OPENCODE_STATE_HOME="${HOME_DIR}/.local/state/opencode"
+OPENCODE_DATA_HOME="${HOME_DIR}/.local/share/opencode"
+AGENTS_DIR="${HOME_DIR}/.agents"
+
+case "$PROJECT_DIR" in
+  "$SRC_ROOT"/*) ;;
+  *)
+    echo "opencode: refusing to start outside ${SRC_ROOT}" >&2
+    exit 1
+    ;;
+esac
 
 mkdir -p \
-  "${OPENCODE_CONFIG_DIR}" \
-  "${OPENCODE_CACHE_DIR}" \
-  "${OPENCODE_STATE_DIR}" \
-  "${OPENCODE_DATA_DIR}"
-
-if [ ! -e "${OPENCODE_HOME_CONFIG}" ]; then
-  : > "${OPENCODE_HOME_CONFIG}"
-fi
+  "$OPENCODE_CONFIG_HOME" \
+  "$OPENCODE_CACHE_HOME" \
+  "$OPENCODE_STATE_HOME" \
+  "$OPENCODE_DATA_HOME"
 
 exec bwrap \
   --die-with-parent \
@@ -38,20 +44,21 @@ exec bwrap \
   --ro-bind /etc/hosts /etc/hosts \
   --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
   --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
-  --bind "${PROJECT_DIR}" "${PROJECT_DIR}" \
-  --bind "${OPENCODE_HOME_CONFIG}" "${HOME}/.opencode.json" \
-  --bind "${OPENCODE_CONFIG_DIR}" "${HOME}/.config/opencode" \
-  --bind "${OPENCODE_CACHE_DIR}" "${HOME}/.cache/opencode" \
-  --bind "${OPENCODE_STATE_DIR}" "${HOME}/.local/state/opencode" \
-  --bind "${OPENCODE_DATA_DIR}" "${HOME}/.local/share/opencode" \
-  --dir "${HOME}" \
-  --setenv HOME "${HOME}" \
-  --setenv XDG_CONFIG_HOME "${HOME}/.config" \
-  --setenv XDG_CACHE_HOME "${HOME}/.cache" \
-  --setenv XDG_STATE_HOME "${HOME}/.local/state" \
-  --setenv XDG_DATA_HOME "${HOME}/.local/share" \
+  --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
+  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
+  --bind "$OPENCODE_CONFIG_HOME" "$HOME_DIR/.config/opencode" \
+  --bind "$OPENCODE_CACHE_HOME" "$HOME_DIR/.cache/opencode" \
+  --bind "$OPENCODE_STATE_HOME" "$HOME_DIR/.local/state/opencode" \
+  --bind "$OPENCODE_DATA_HOME" "$HOME_DIR/.local/share/opencode" \
+  --dir "$HOME_DIR" \
+  --setenv HOME "$HOME_DIR" \
+  --setenv XDG_CONFIG_HOME "$HOME_DIR/.config" \
+  --setenv XDG_CACHE_HOME "$HOME_DIR/.cache" \
+  --setenv XDG_STATE_HOME "$HOME_DIR/.local/state" \
+  --setenv XDG_DATA_HOME "$HOME_DIR/.local/share" \
+  --setenv OPENCODE_CONFIG_DIR "$HOME_DIR/.config/opencode" \
   --setenv USER "${USER:-user}" \
   --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
   --setenv TMPDIR /tmp \
-  --chdir "${PROJECT_DIR}" \
+  --chdir "$PROJECT_DIR" \
   /usr/bin/env opencode "$@"

@@ -1,13 +1,26 @@
 #!/bin/sh
 set -eu
 
-PROJECT_DIR="${PWD}"
+HOME_DIR="${HOME}"
+SRC_ROOT="${HOME_DIR}/src"
+PROJECT_DIR="$(pwd -P)"
+PI_ROOT="${HOME_DIR}/.pi"
+PI_AGENT_DIR="${HOME_DIR}/.pi/agent"
+PI_NPM_DIR="${PI_AGENT_DIR}/npm"
+AGENTS_DIR="${HOME_DIR}/.agents"
 
-PI_ROOT="${HOME}/.pi"
-PI_AGENT_DIR="${HOME}/.pi/agent"
-PI_NPM_DIR="${PI_AGENT_DIR}/npm"   # Pi’s own npm path
+case "$PROJECT_DIR" in
+  "$SRC_ROOT"/*) ;;
+  *)
+    echo "pi: refusing to start outside ${SRC_ROOT}" >&2
+    exit 1
+    ;;
+esac
 
-mkdir -p "$PI_ROOT" "$PI_AGENT_DIR" "$PI_NPM_DIR"
+mkdir -p \
+  "$PI_ROOT" \
+  "$PI_AGENT_DIR" \
+  "$PI_NPM_DIR"
 
 exec bwrap \
   --die-with-parent \
@@ -28,16 +41,17 @@ exec bwrap \
   --ro-bind /etc/hosts /etc/hosts \
   --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
   --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
-  --bind "${PROJECT_DIR}" "${PROJECT_DIR}" \
-  --bind "${PI_ROOT}" "${HOME}/.pi" \
-  --bind "${PI_NPM_DIR}" "${HOME}/.pi/agent/npm" \
-  --dir "${HOME}" \
-  --setenv HOME "${HOME}" \
-  --setenv PI_CONFIG_DIR "${HOME}/.pi" \
-  --setenv PI_CODING_AGENT_DIR "${HOME}/.pi/agent" \
-  --setenv npm_config_cache "${HOME}/.pi/agent/npm" \
+  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
+  --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
+  --bind "$PI_ROOT" "$HOME_DIR/.pi" \
+  --bind "$PI_NPM_DIR" "$HOME_DIR/.pi/agent/npm" \
+  --dir "$HOME_DIR" \
+  --setenv HOME "$HOME_DIR" \
+  --setenv PI_CONFIG_DIR "$HOME_DIR/.pi" \
+  --setenv PI_CODING_AGENT_DIR "$HOME_DIR/.pi/agent" \
+  --setenv npm_config_cache "$HOME_DIR/.pi/agent/npm" \
   --setenv USER "${USER:-user}" \
   --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
   --setenv TMPDIR /tmp \
-  --chdir "${PROJECT_DIR}" \
+  --chdir "$PROJECT_DIR" \
   /usr/bin/env npx --package=@mariozechner/pi-coding-agent -- pi "$@"
