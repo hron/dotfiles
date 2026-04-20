@@ -145,7 +145,7 @@
       "ctrl-q": null,
       "alt-9": "git::Diff",
       "ctrl-k b": "git::Branch",
-      "alt-o": "project_symbols::Toggle",
+      "ctrl-alt-shift-o": "project_symbols::Toggle",
       "ctrl-k e": "editor::ToggleEditPrediction",
       "ctrl-alt-shift-p": "settings_profile_selector::Toggle",
     },

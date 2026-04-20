@@ -32,6 +32,7 @@
     "tool_permissions": {
       "tools": {
         "terminal": {
+          "default": "allow",
           "always_allow": [
             {
               "pattern": "\\bgrep\\b",
@@ -47,6 +48,24 @@
             },
             {
               "pattern": "\\btrue\\b",
+            },
+            {
+              "pattern": "\\bmkdir\\b",
+            },
+            {
+              "pattern": "\\bhead\\b",
+            },
+            {
+              "pattern": "\\btail\\b",
+            },
+            {
+              "pattern": "\\bfind\\b",
+            },
+            {
+              "pattern": "\\bxargs grep\\b",
+            },
+            {
+              "pattern": "\\bls\\b",
             },
           ],
         },
@@ -78,12 +97,12 @@
     },
     "dock": "right",
     "default_width": 200,
-    "default_profile": "plan",
+    "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini",
-      "enable_thinking": false,
-      "effort": "high",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+      "effort": "medium",
     },
     "play_sound_when_agent_done": "always",
     "inline_assistant_model": {
