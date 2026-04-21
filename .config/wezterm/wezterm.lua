@@ -3,6 +3,7 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
+config.default_prog = { "/usr/bin/tmux" }
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe', '-NoLogo' }
     config.mux_enable_ssh_agent = false
@@ -16,7 +17,6 @@ config.font = wezterm.font_with_fallback {
     'Monospace'
 }
 config.font_size = 10
-
 
 config.enable_tab_bar = false
 config.adjust_window_size_when_changing_font_size = true
@@ -63,8 +63,11 @@ config.keys = {
     { key = '=',          mods = 'CTRL',       action = act.IncreaseFontSize },
     -- { key = 'F', mods = 'CTRL', action = act.Search 'CurrentSelectionOrEmptyString' },
     -- { key = 'F', mods = 'CTRL', action = act.Search { CaseInSensitiveString = 'CurrentSelectionOrEmptyString' } },
-    { key = 'f',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
-    { key = 'F',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
+
+    -- Disabled for tmux
+    -- { key = 'f',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
+    -- { key = 'F',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
+
     { key = 'u',          mods = 'CTRL',       action = act.CopyMode 'ClearPattern' },
     { key = 'U',          mods = 'CTRL',       action = act.CopyMode 'ClearPattern' },
     { key = 'l',          mods = 'CTRL',       action = act.ClearScrollback 'ScrollbackAndViewport' },
