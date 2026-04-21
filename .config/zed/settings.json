@@ -310,8 +310,8 @@
     // "font_weight": 400,
     // "line_height": "standard"
     // "shell": {
-    //   "program": "bash"
-    // }
+    //   "program": "tmux",
+    // },
     "dock": "bottom",
     "toolbar": {
       "breadcrumbs": false,

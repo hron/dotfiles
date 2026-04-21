@@ -3,7 +3,6 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.default_prog = { "/usr/bin/tmux" }
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe', '-NoLogo' }
     config.mux_enable_ssh_agent = false
@@ -63,11 +62,8 @@ config.keys = {
     { key = '=',          mods = 'CTRL',       action = act.IncreaseFontSize },
     -- { key = 'F', mods = 'CTRL', action = act.Search 'CurrentSelectionOrEmptyString' },
     -- { key = 'F', mods = 'CTRL', action = act.Search { CaseInSensitiveString = 'CurrentSelectionOrEmptyString' } },
-
-    -- Disabled for tmux
-    -- { key = 'f',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
-    -- { key = 'F',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
-
+    { key = 'f',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
+    { key = 'F',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },
     { key = 'u',          mods = 'CTRL',       action = act.CopyMode 'ClearPattern' },
     { key = 'U',          mods = 'CTRL',       action = act.CopyMode 'ClearPattern' },
     { key = 'l',          mods = 'CTRL',       action = act.ClearScrollback 'ScrollbackAndViewport' },
@@ -119,7 +115,32 @@ config.key_tables = {
         { key = 'DownArrow',  mods = 'CTRL|ALT',   action = act.Multiple { { CopyMode = 'NextMatch' }, { CopyMode = 'ClearSelectionMode' } } },
         { key = 'UpArrow',    mods = 'ALT',        action = act.CopyMode { MoveBackwardZoneOfType = 'Prompt' } },
         { key = 'DownArrow',  mods = 'ALT',        action = act.CopyMode { MoveForwardZoneOfType = 'Prompt' } },
+        -- { key = 'UpArrow',    mods = 'CTRL',       action = act.CopyMode { MoveBackwardZoneOfType = 'Paragraph' } },
+        -- { key = 'DownArrow',  mods = 'CTRL',       action = act.CopyMode { MoveForwardZoneOfType = 'Paragraph' } },
+        { key = 'UpArrow',    mods = 'CTRL',       action = act.CopyMode { MoveByPage = -0.33 } },
+        { key = 'DownArrow',  mods = 'CTRL',       action = act.CopyMode { MoveByPage = 0.33 } },
+        -- {
+        --     key = 'UpArrow',
+        --     mods = 'CTRL',
+        --     action = act.Multiple {
+        --         act.Search { Regex = "^\\s*$", },
+        --         act.CopyMode("PriorMatch"),
+        --         act.CopyMode("AcceptPattern"),
+        --         act.CopyMode("ClearSelectionMode"),
+        --     }
+        -- },
+        -- {
+        --     key = 'DownArrow',
+        --     mods = 'CTRL',
+        --     action = act.Multiple {
+        --         act.Search { Regex = "^\\s*$", },
+        --         act.CopyMode("NextMatch"),
+        --         act.CopyMode("AcceptPattern"),
+        --         act.CopyMode("ClearSelectionMode"),
+        --     }
+        -- },
     },
+
 
     search_mode = {
         { key = 'Enter',     mods = 'SHIFT',      action = act.CopyMode 'PriorMatch' },
