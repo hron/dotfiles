@@ -79,3 +79,4 @@
 /.config/emacs/debug-adapters/
 /.config/emacs/elpaca/
 /.config/emacs/recentf.eld
+/.config/environment.d/secrets.conf
