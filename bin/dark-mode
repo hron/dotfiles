@@ -33,6 +33,34 @@ def set_btop_theme(dark_mode):
     subprocess.Popen(["pkill", "-SIGUSR2", "btop"], preexec_fn=os.setsid)
 
 
+def set_pi_theme(dark_mode):
+    import json
+
+    settings_path = Path(os.path.expanduser("~/.pi/agent/settings.json"))
+    settings_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Read existing settings if present
+    settings = {}
+    try:
+        if settings_path.exists():
+            with open(settings_path, "r", encoding="utf-8") as f:
+                try:
+                    settings = json.load(f) or {}
+                except json.JSONDecodeError:
+                    # If the file is corrupted or empty, overwrite with a fresh dict
+                    settings = {}
+    except Exception:
+        # If we cannot read the file for some reason, proceed with defaults
+        settings = {}
+    settings["theme"] = "dark" if dark_mode else "light"
+
+    # Write atomically to avoid leaving a partial file
+    tmp_path = settings_path.with_suffix(".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(settings, f, indent=2)
+    os.replace(tmp_path, settings_path)
+
+
 def detect_dark_mode():
     if len(sys.argv) == 2:
         if sys.argv[1] == "on":
@@ -58,3 +86,4 @@ def detect_dark_mode():
 dark_mode = detect_dark_mode()
 set_plasma_theme(dark_mode)
 set_btop_theme(dark_mode)
+set_pi_theme(dark_mode)
