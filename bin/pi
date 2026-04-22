@@ -5,8 +5,6 @@ HOME_DIR="${HOME}"
 SRC_ROOT="${HOME_DIR}/src"
 PROJECT_DIR="$(pwd -P)"
 PI_ROOT="${HOME_DIR}/.pi"
-PI_AGENT_DIR="${HOME_DIR}/.pi/agent"
-PI_NPM_DIR="${PI_AGENT_DIR}/npm"
 AGENTS_DIR="${HOME_DIR}/.agents"
 
 case "$PROJECT_DIR" in
@@ -17,10 +15,7 @@ case "$PROJECT_DIR" in
     ;;
 esac
 
-mkdir -p \
-  "$PI_ROOT" \
-  "$PI_AGENT_DIR" \
-  "$PI_NPM_DIR"
+mkdir -p "$PI_ROOT"
 
 exec bwrap \
   --die-with-parent \
@@ -47,7 +42,6 @@ exec bwrap \
   --bind "$PROJECT_DIR" "$PROJECT_DIR" \
   --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
   --bind "$PI_ROOT" "$HOME_DIR/.pi" \
-  --bind "$PI_NPM_DIR" "$HOME_DIR/.pi/agent/npm" \
   --dir "$HOME_DIR" \
   --setenv HOME "$HOME_DIR" \
   --setenv PI_CONFIG_DIR "$HOME_DIR/.pi" \
