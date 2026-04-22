@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import re
 import subprocess
 import sys
 import time
@@ -61,6 +62,24 @@ def set_pi_theme(dark_mode):
     os.replace(tmp_path, settings_path)
 
 
+def set_alacritty_theme(dark_mode):
+    if dark_mode:
+        theme_filename = "modus-vivendi.toml"
+    else:
+        theme_filename = "modus-operandi.toml"
+    config_dir = Path(os.path.expanduser("~/.config/alacritty"))
+
+    # Prefer alacritty.toml, but fall back to alacritty.yml if that's what the user has.
+    config_path = config_dir.joinpath("alacritty.toml")
+    content = config_path.read_text(encoding="utf-8")
+    pattern = re.compile(r"modus-(?:operandi|vivendi)(?:\.toml)?")
+    new_content, num_subs = pattern.subn(theme_filename, content)
+    tmp_path = config_path.with_suffix(config_path.suffix + ".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    os.replace(tmp_path, config_path)
+
+
 def detect_dark_mode():
     if len(sys.argv) == 2:
         if sys.argv[1] == "on":
@@ -87,3 +106,4 @@ dark_mode = detect_dark_mode()
 set_plasma_theme(dark_mode)
 set_btop_theme(dark_mode)
 set_pi_theme(dark_mode)
+set_alacritty_theme(dark_mode)
