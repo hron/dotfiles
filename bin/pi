@@ -35,12 +35,15 @@ exec bwrap \
   --ro-bind /lib /lib \
   --ro-bind /lib64 /lib64 \
   --ro-bind /usr /usr \
+  --ro-bind /opt /opt \
   --ro-bind /etc/ssl /etc/ssl \
   --ro-bind /etc/ca-certificates /etc/ca-certificates \
   --ro-bind /etc/resolv.conf /etc/resolv.conf \
   --ro-bind /etc/hosts /etc/hosts \
   --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
   --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
+  --ro-bind "$HOME_DIR/.cargo" "$HOME_DIR/.cargo" \
+  --ro-bind "$HOME_DIR/.rustup" "$HOME_DIR/.rustup" \
   --bind "$PROJECT_DIR" "$PROJECT_DIR" \
   --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
   --bind "$PI_ROOT" "$HOME_DIR/.pi" \
@@ -53,5 +56,4 @@ exec bwrap \
   --setenv USER "${USER:-user}" \
   --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
   --setenv TMPDIR /tmp \
-  --chdir "$PROJECT_DIR" \
-  /usr/bin/env npx --package=@mariozechner/pi-coding-agent -- pi "$@"
+  /usr/bin/env pi "$@"

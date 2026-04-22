@@ -119,7 +119,22 @@
       "alt-9": "git::Diff",
       "ctrl-alt-up": "search::SelectPreviousMatch",
       "ctrl-alt-down": "search::SelectNextMatch",
+      "ctrl-alt-t": null,
+      "ctrl-alt-shift-t": [
+        "pane::CloseOtherItems",
+        {
+          "close_pinned": false,
+        },
+      ],
       // "ctrl-alft-f": "project_search::ToggleFilters"
+    },
+    "unbind": {
+      "ctrl-k u": [
+        "pane::CloseCleanItems",
+        {
+          "close_pinned": false,
+        },
+      ],
     },
   },
   {
@@ -402,17 +417,6 @@
   {
     "bindings": {
       "ctrl-k h": "git::FileHistory",
-    },
-  },
-  {
-    "context": "Pane",
-    "unbind": {
-      "ctrl-k u": [
-        "pane::CloseCleanItems",
-        {
-          "close_pinned": false,
-        },
-      ],
     },
   },
   {
