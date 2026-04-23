@@ -30,6 +30,7 @@ mouse.mods = "None"
 bindings = [
   { action = "CreateNewWindow", key = "T", mods = "Control" },
   { action = "Paste", key = "V", mods = "Control" },
+  {  chars = "\u001b\u007f", key = "Back", mods = "Control" },
   # Force Alacritty to send the CSI-u sequence for Shift+Enter
   { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
   # Force Alacritty to send the CSI-u sequence for Control+Enter
@@ -136,6 +137,6 @@ program = "/usr/bin/tmux"
 dynamic_title = true
 
 [general]
-import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
+import = ["~/.config/alacritty/themes/modus-operandi.toml"]
 
 [terminal]
