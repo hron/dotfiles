@@ -167,7 +167,7 @@
   "diff_view_style": "unified",
   "edit_predictions": {
     "mode": "eager",
-    "provider": "copilot",
+    "provider": "zed",
     // "mode": "subtle",
     "copilot": {
       "enable_next_edit_suggestions": false,
