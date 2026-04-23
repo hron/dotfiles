@@ -37,6 +37,10 @@ mods = "Control|Shift"
 enabled = true
 mods = "None"
 
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "T"
+mods = "Control"
 
 [[keyboard.bindings]]
 action = "Paste"
