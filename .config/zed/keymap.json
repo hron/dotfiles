@@ -182,9 +182,9 @@
       "ctrl-q": null,
       "ctrl-w": "pane::CloseActiveItem",
       // "ctrl-delete": ["terminal::SendText", "\u001bd"],
-      "ctrl-delete": ["terminal::SendText", "\u001b[3;5~"],
-      "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
-      "ctrl-f": "buffer_search::Deploy",
+      // "ctrl-delete": ["terminal::SendText", "\u001b[3;5~"],
+      // "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
+      // "ctrl-f": "buffer_search::Deploy",
       "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
       "ctrl-z": ["terminal::SendKeystroke", "ctrl-z"],
@@ -200,35 +200,36 @@
       "alt-t": "task::Spawn",
       "alt-r": "task::Rerun",
     },
+    // "unbind": ["ctrl-alt-r"],
   },
-  {
-    "context": "Terminal && vi_mode",
-    "bindings": {
-      "ctrl-shift-space": ["terminal::SendKeystroke", "i"],
-      "ctrl-left": ["terminal::SendKeystroke", "b"],
-      "ctrl-right": ["terminal::SendKeystroke", "w"],
-      "ctrl-up": ["terminal::SendKeystroke", "ctrl-u"],
-      "ctrl-down": ["terminal::SendKeystroke", "ctrl-d"],
-      "alt-up": ["terminal::SendKeystroke", "ctrl-u"],
-      "alt-down": ["terminal::SendKeystroke", "ctrl-d"],
-      "ctrl-home": ["terminal::SendKeystroke", "g"],
-      "ctrl-end": ["terminal::SendKeystroke", "shift-g"],
-      "pageup": ["terminal::SendKeystroke", "ctrl-b"],
-      "pagedown": ["terminal::SendKeystroke", "ctrl-f"],
-      "ctrl-space": ["terminal::SendKeystroke", "v"],
-      "ctrl-enter": ["terminal::SendKeystroke", "ctrl-v"],
-      "ctrl-c": ["terminal::SendKeystroke", "y"],
-      "enter": ["terminal::SendKeystroke", "y"],
-      "escape": ["terminal::SendKeystroke", "escape"],
-      "ctrl-h": ["terminal::SendKeystroke", "alt-v"],
-      "home": ["terminal::SendKeystroke", "0"],
-      "end": ["terminal::SendKeystroke", "$"],
-      "ctrl-l": ["terminal::SendKeystroke", "z"],
-      "ctrl-m": ["terminal::SendKeystroke", "%"],
-      "alt-m": ["terminal::SendKeystroke", "%"],
-      // "/": ["terminal::SendKeystroke", "/"]
-    },
-  },
+  // {
+  //   "context": "Terminal && vi_mode",
+  //   "bindings": {
+  //     "ctrl-shift-space": ["terminal::SendKeystroke", "i"],
+  //     "ctrl-left": ["terminal::SendKeystroke", "b"],
+  //     "ctrl-right": ["terminal::SendKeystroke", "w"],
+  //     "ctrl-up": ["terminal::SendKeystroke", "ctrl-u"],
+  //     "ctrl-down": ["terminal::SendKeystroke", "ctrl-d"],
+  //     "alt-up": ["terminal::SendKeystroke", "ctrl-u"],
+  //     "alt-down": ["terminal::SendKeystroke", "ctrl-d"],
+  //     "ctrl-home": ["terminal::SendKeystroke", "g"],
+  //     "ctrl-end": ["terminal::SendKeystroke", "shift-g"],
+  //     "pageup": ["terminal::SendKeystroke", "ctrl-b"],
+  //     "pagedown": ["terminal::SendKeystroke", "ctrl-f"],
+  //     "ctrl-space": ["terminal::SendKeystroke", "v"],
+  //     "ctrl-enter": ["terminal::SendKeystroke", "ctrl-v"],
+  //     "ctrl-c": ["terminal::SendKeystroke", "y"],
+  //     "enter": ["terminal::SendKeystroke", "y"],
+  //     "escape": ["terminal::SendKeystroke", "escape"],
+  //     "ctrl-h": ["terminal::SendKeystroke", "alt-v"],
+  //     "home": ["terminal::SendKeystroke", "0"],
+  //     "end": ["terminal::SendKeystroke", "$"],
+  //     "ctrl-l": ["terminal::SendKeystroke", "z"],
+  //     "ctrl-m": ["terminal::SendKeystroke", "%"],
+  //     "alt-m": ["terminal::SendKeystroke", "%"],
+  //     // "/": ["terminal::SendKeystroke", "/"]
+  //   },
+  // },
   {
     "context": "ProjectPanel",
     "bindings": {
@@ -263,19 +264,7 @@
     },
   },
   {
-    "context": "Terminal",
-    "bindings": {
-      "alt-r": "terminal::RerunTask",
-    },
-  },
-  {
     "context": "Workspace",
-    "bindings": {
-      "ctrl-alt-r": null,
-    },
-  },
-  {
-    "context": "Terminal",
     "bindings": {
       "ctrl-alt-r": null,
     },
@@ -295,18 +284,6 @@
           "skip_prompt": false,
         },
       ],
-    },
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "alt-r": "terminal::RerunTask",
-    },
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-l": "terminal::Clear",
     },
   },
   {
