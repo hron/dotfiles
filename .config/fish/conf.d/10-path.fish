@@ -1,11 +1,7 @@
 if status is-login
-    # set PATH so it includes user's private bin if it exists
-    if [ -d "$HOME/bin" ]
-        set -gx PATH "$HOME/bin:$PATH"
-    end
-
-    # set PATH so it includes user's private bin if it exists
-    if [ -d "$HOME/.local/bin" ]
-        set -gx PATH "$HOME/.local/bin:$PATH"
+    for path in $HOME/bin $HOME/.local/bin $HOME/.cargo/bin
+        if test -d $path
+            fish_add_path $path
+        end
     end
 end
