@@ -1,0 +1,49 @@
+#!/bin/sh
+set -eu
+
+HOME_DIR="${HOME}"
+SRC_ROOT="${HOME_DIR}/src"
+PROJECT_DIR="$(pwd -P)"
+GEMINI_ROOT="${HOME_DIR}/.gemini"
+
+case "$PROJECT_DIR" in
+  "$SRC_ROOT"/*) ;;
+  *)
+    echo "gemini: refusing to start outside ${SRC_ROOT}" >&2
+    exit 1
+    ;;
+esac
+
+mkdir -p "$GEMINI_ROOT"
+
+exec bwrap \
+  --die-with-parent \
+  --new-session \
+  --unshare-pid \
+  --unshare-ipc \
+  --unshare-uts \
+  --dev /dev \
+  --proc /proc \
+  --tmpfs /tmp \
+  --ro-bind /bin /bin \
+  --ro-bind /lib /lib \
+  --ro-bind /lib64 /lib64 \
+  --ro-bind /usr /usr \
+  --ro-bind /opt /opt \
+  --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind /etc/ca-certificates /etc/ca-certificates \
+  --ro-bind /etc/resolv.conf /etc/resolv.conf \
+  --ro-bind /etc/hosts /etc/hosts \
+  --ro-bind /etc/nsswitch.conf /etc/nsswitch.conf \
+  --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
+  --ro-bind "$HOME_DIR/.cargo" "$HOME_DIR/.cargo" \
+  --ro-bind "$HOME_DIR/.rustup" "$HOME_DIR/.rustup" \
+  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
+  --bind "$GEMINI_ROOT" "$HOME_DIR/.gemini" \
+  --dir "$HOME_DIR" \
+  --setenv HOME "$HOME_DIR" \
+  --setenv GEMINI_CONFIG_DIR "$HOME_DIR/.gemini" \
+  --setenv USER "${USER:-user}" \
+  --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
+  --setenv TMPDIR /tmp \
+  /usr/bin/env gemini "$@"
