@@ -14,6 +14,7 @@
       "ctrl-k U": "git::ForcePush",
       "ctrl-k p": "git::Pull",
       "ctrl-k c": ["task::Spawn", { "task_name": "git commit" }],
+      "ctrl-k C": ["task::Spawn", { "task_name": "git commit --amend" }],
       "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
     },
   },
@@ -274,6 +275,21 @@
     "context": "GitPanel",
     "bindings": {
       "ctrl-i": "git_panel::ToggleFocus",
+      "ctrl-enter": ["task::Spawn", { "task_name": "git commit" }],
+      "ctrl-shift-enter": [
+        "task::Spawn",
+        { "task_name": "git commit --amend" },
+      ],
+    },
+  },
+  {
+    "context": "GitDiff > Editor",
+    "bindings": {
+      "ctrl-enter": ["task::Spawn", { "task_name": "git commit" }],
+      "ctrl-shift-enter": [
+        "task::Spawn",
+        { "task_name": "git commit --amend" },
+      ],
     },
   },
   {
