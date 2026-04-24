@@ -12,10 +12,6 @@
     "dock": "left",
   },
   "show_edit_predictions": true,
-  "notification_panel": {
-    "dock": "right",
-    "default_width": 200,
-  },
   "outline_panel": {
     "dock": "right",
     "default_width": 200,
@@ -321,8 +317,8 @@
     },
   },
   "file_types": {
+    "Shell Script": ["*.conf", ".envrc", "~/.config/environment.d/**/*"],
     "ini": ["desktop"],
-    "Shell Script": [".envrc", "~/.config/environment.d/**/*"],
   },
   "languages": {
     "Nix": {
@@ -334,10 +330,6 @@
       "settings": {
         // "diff_view_style": "split",
         "terminal": {
-          "dock": "left",
-          "default_width": 900,
-        },
-        "notification_panel": {
           "dock": "left",
           "default_width": 900,
         },

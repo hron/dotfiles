@@ -183,7 +183,7 @@
       "ctrl-w": "pane::CloseActiveItem",
       // "ctrl-delete": ["terminal::SendText", "\u001bd"],
       // "ctrl-delete": ["terminal::SendText", "\u001b[3;5~"],
-      // "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
+      "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
       // "ctrl-f": "buffer_search::Deploy",
       "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],

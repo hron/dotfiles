@@ -137,6 +137,6 @@ program = "/usr/bin/tmux"
 dynamic_title = true
 
 [general]
-import = ["~/.config/alacritty/themes/modus-operandi.toml"]
+import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
 
 [terminal]
