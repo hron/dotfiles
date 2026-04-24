@@ -6,18 +6,18 @@
     pager =
 
 [diff]
-    tool = zed
+    tool = zeditor
 [difftool "emacs"]
     cmd = emacs --no-desktop --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [difftool "vscode"]
     cmd = "code --wait --diff  "
 [difftool "zed"]
-    cmd = zed --reuse --diff "$LOCAL" "$REMOTE"
+    cmd = zeditor --reuse --diff "$LOCAL" "$REMOTE"
 
 [merge]
     tool = zed
 [mergetool "zed"]
-    cmd = zed  --reuse --wait "$MERGED"
+    cmd = zeditor  --reuse --wait "$MERGED"
 [mergetool "emacs"]
     cmd = "emacs --no-desktop "
 [mergetool "vscode"]

@@ -18,6 +18,9 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 10
 
+-- config.default_cursor_style = "BlinkingBlock"
+-- config.cursor_blink_rate = 300
+
 config.enable_tab_bar = false
 config.adjust_window_size_when_changing_font_size = true
 
@@ -61,6 +64,12 @@ config.keys = {
     { key = ')',         mods = 'CTRL',     action = act.DecreaseFontSize },
     { key = '0',         mods = 'CTRL',     action = act.ResetFontSize },
     { key = '=',         mods = 'CTRL',     action = act.IncreaseFontSize },
+
+    -- Force WezTerm to send the CSI-u sequence for Shift+Enter
+    { key = 'Enter',     mods = 'SHIFT',    action = act.SendString('\x1b[13;2u') },
+    -- Force WezTerm to send the CSI-u sequence for Control+Enter
+    { key = 'Enter',     mods = 'CTRL',     action = act.SendString('\x1b[13;5u') },
+
     -- { key = 'F', mods = 'CTRL', action = act.Search 'CurrentSelectionOrEmptyString' },
     -- { key = 'F', mods = 'CTRL', action = act.Search { CaseInSensitiveString = 'CurrentSelectionOrEmptyString' } },
     -- { key = 'f',          mods = 'CTRL',       action = act.Search { CaseInSensitiveString = '' } },

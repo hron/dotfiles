@@ -13,6 +13,7 @@
       "ctrl-k u": "git::Push",
       "ctrl-k U": "git::ForcePush",
       "ctrl-k p": "git::Pull",
+      "ctrl-k c": ["task::Spawn", { "task_name": "git commit" }],
       "ctrl-alt-shift-l": "lsp_tool::ToggleMenu",
     },
   },
@@ -32,7 +33,7 @@
       "ctrl-shift-up": "editor::SelectToStartOfParagraph",
       "ctrl-shift-down": "editor::SelectToEndOfParagraph",
       "ctrl-h": "editor::SelectLargerSyntaxNode",
-      "ctrl-shift-h": "editor::SelectSmallerSyntaxNode",
+      // "ctrl-shift-h": "editor::SelectSmallerSyntaxNode",
       "alt-d": "editor::DuplicateLineDown",
       "alt-shift-up": "editor::MoveLineUp",
       "alt-shift-down": "editor::MoveLineDown",
@@ -126,7 +127,6 @@
           "close_pinned": false,
         },
       ],
-      // "ctrl-alft-f": "project_search::ToggleFilters"
     },
     "unbind": {
       "ctrl-k u": [
@@ -163,6 +163,7 @@
       "ctrl-alt-shift-o": "project_symbols::Toggle",
       "ctrl-k e": "editor::ToggleEditPrediction",
       "ctrl-alt-shift-p": "settings_profile_selector::Toggle",
+      "ctrl-shift-h": "multi_workspace::ToggleWorkspaceSidebar",
     },
   },
   {
@@ -342,7 +343,6 @@
       "ctrl-'": "agent::ToggleModelSelector",
       // "ctrl-.": "agent::ToggleProfileSelector",
       "ctrl-.": "agent::CycleModeSelector",
-      "ctrl-shift-h": "agent::OpenHistory",
       "alt-f": "agent::Follow",
       "alt-y": "agent::AllowOnce",
       "ctrl-alt-y": "agent::AllowAlways",
