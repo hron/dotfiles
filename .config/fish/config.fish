@@ -11,3 +11,10 @@ if status is-interactive
 
     bind alt-backspace backward-kill-word
 end
+
+function fish_title
+    # If a command is running, show "command @ folder"
+    # If idle, just show "folder"
+    set -l current_cmd (set -q argv[1]; and echo "$argv[1] @ "; or echo "")
+    echo $current_cmd(prompt_pwd)
+end
