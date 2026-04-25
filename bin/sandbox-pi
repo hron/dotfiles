@@ -39,9 +39,10 @@ exec bwrap \
   --ro-bind /usr/share/zoneinfo /usr/share/zoneinfo \
   --ro-bind "$HOME_DIR/.cargo" "$HOME_DIR/.cargo" \
   --ro-bind "$HOME_DIR/.rustup" "$HOME_DIR/.rustup" \
-  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
   --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
+  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
   --bind "$PI_ROOT" "$HOME_DIR/.pi" \
+  --bind "$HOME_DIR/.agent-browser" "$HOME_DIR/.agent-browser" \
   --dir "$HOME_DIR" \
   --setenv HOME "$HOME_DIR" \
   --setenv PI_CONFIG_DIR "$HOME_DIR/.pi" \
