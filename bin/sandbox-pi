@@ -40,6 +40,7 @@ exec bwrap \
   --ro-bind "$HOME_DIR/.cargo" "$HOME_DIR/.cargo" \
   --ro-bind "$HOME_DIR/.rustup" "$HOME_DIR/.rustup" \
   --ro-bind "$AGENTS_DIR" "$AGENTS_DIR" \
+  --ro-bind "$HOME_DIR/.npm-global" "$HOME_DIR/.npm-global" \
   --bind "$PROJECT_DIR" "$PROJECT_DIR" \
   --bind "$PI_ROOT" "$HOME_DIR/.pi" \
   --bind "$HOME_DIR/.agent-browser" "$HOME_DIR/.agent-browser" \
@@ -51,4 +52,4 @@ exec bwrap \
   --setenv USER "${USER:-user}" \
   --setenv LOGNAME "${LOGNAME:-${USER:-user}}" \
   --setenv TMPDIR /tmp \
-  /usr/bin/env pi "$@"
+  $HOME/.npm-global/bin/pi "$@"
