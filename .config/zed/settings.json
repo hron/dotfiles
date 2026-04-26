@@ -310,9 +310,9 @@
     // "font_size": 20,
     // "font_weight": 400,
     // "line_height": "standard"
-    "shell": {
-      "program": "tmux",
-    },
+    // "shell": {
+    //   "program": "tmux",
+    // },
     "dock": "bottom",
     "toolbar": {
       "breadcrumbs": false,

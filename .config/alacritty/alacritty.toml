@@ -1,8 +1,10 @@
 [cursor]
-style.blinking = "Always"
+style.blinking = "Off"
 # style.shape = "Beam"
-# thickness = 0.25
-vi_mode_style.blinking = "Off"
+thickness = 0.25
+# vi_mode_style.shape = "Beam"
+# vi_mode_style.thickness = 0.25
+# vi_mode_style.blinking = "On"
 
 [font]
 size = 10
@@ -22,121 +24,71 @@ post_processing = true
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
 mouse.enabled = true
 mouse.mods = "None"
-# [hints.enabled.binding]
-# key = "U"
-# mods = "Control|Shift"
+binding = { key = "U", mods = "Control|Shift" }
 
 [keyboard]
 bindings = [
-  { action = "CreateNewWindow", key = "T", mods = "Control" },
-  { action = "Paste", key = "V", mods = "Control" },
-  {  chars = "\u001b\u007f", key = "Back", mods = "Control" },
-  # Force Alacritty to send the CSI-u sequence for Shift+Enter
-  { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
-  # Force Alacritty to send the CSI-u sequence for Control+Enter
-  { chars = "\u001b[13;5u", key = "Enter", mods = "Control" },
-  # Disable all bindings so I can use tmux keybinds
-  { action = "None", key = "Paste" },
-  { action = "None", key = "Copy" },
-  { action = "None", key = "L", mods = "Control" },
-  { action = "None", key = "Paste", mode = "Vi|Search" },
-  { action = "None", key = "L", mods = "Control", mode = "~Vi|~Search" },
-  { action = "None", key = "PageUp", mods = "Shift", mode = "~Alt" },
-  { action = "None", key = "PageDown", mods = "Shift", mode = "~Alt" },
-  { action = "None", key = "Home", mods = "Shift", mode = "~Alt" },
-  { action = "None", key = "End", mods = "Shift", mode = "~Alt" },
-  { action = "None", key = "Space", mods = "Shift|Control", mode = "~Search" },
-  { action = "None", key = "Space", mods = "Shift|Control", mode = "Vi|~Search" },
-  { action = "None", key = "Escape", mode = "Vi|~Search" },
-  { action = "None", key = "I", mode = "Vi|~Search" },
-  { action = "None", key = "C", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "Y", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "E", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "G", mode = "Vi|~Search" },
-  { action = "None", key = "G", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "B", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "F", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "U", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "D", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "Y", mode = "Vi|~Search" },
-  { action = "None", key = "Copy", mode = "Vi|~Search" },
-  { action = "None", key = "Y", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "V", mode = "Vi|~Search" },
-  { action = "None", key = "V", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "V", mods = "Control", mode = "Vi|~Search" },
-  { action = "None", key = "V", mods = "Alt", mode = "Vi|~Search" },
-  { action = "None", key = "Enter", mode = "Vi|~Search" },
-  { action = "None", key = "Z", mode = "Vi|~Search" },
-  { action = "None", key = "F", mode = "Vi|~Search" },
-  { action = "None", key = "F", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "T", mode = "Vi|~Search" },
-  { action = "None", key = "T", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = ";", mode = "Vi|~Search" },
-  { action = "None", key = ",", mode = "Vi|~Search" },
-  { action = "None", key = "*", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "#", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "K", mode = "Vi|~Search" },
-  { action = "None", key = "J", mode = "Vi|~Search" },
-  { action = "None", key = "H", mode = "Vi|~Search" },
-  { action = "None", key = "L", mode = "Vi|~Search" },
-  { action = "None", key = "ArrowUp", mode = "Vi|~Search" },
-  { action = "None", key = "ArrowDown", mode = "Vi|~Search" },
-  { action = "None", key = "ArrowLeft", mode = "Vi|~Search" },
-  { action = "None", key = "ArrowRight", mode = "Vi|~Search" },
-  { action = "None", key = "0", mode = "Vi|~Search" },
-  { action = "None", key = "$", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "Home", mode = "Vi|~Search" },
-  { action = "None", key = "End", mode = "Vi|~Search" },
-  { action = "None", key = "^", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "H", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "M", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "L", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "B", mode = "Vi|~Search" },
-  { action = "None", key = "W", mode = "Vi|~Search" },
-  { action = "None", key = "E", mode = "Vi|~Search" },
-  { action = "None", key = "B", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "W", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "E", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "%", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "{", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "}", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "/", mode = "Vi|~Search" },
-  { action = "None", key = "?", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "N", mode = "Vi|~Search" },
-  { action = "None", key = "N", mods = "Shift", mode = "Vi|~Search" },
-  { action = "None", key = "Enter", mode = "Search|Vi" },
-  { action = "None", key = "Escape", mode = "Search" },
-  { action = "None", key = "C", mods = "Control", mode = "Search" },
-  { action = "None", key = "U", mods = "Control", mode = "Search" },
-  { action = "None", key = "W", mods = "Control", mode = "Search" },
-  { action = "None", key = "P", mods = "Control", mode = "Search" },
-  { action = "None", key = "N", mods = "Control", mode = "Search" },
-  { action = "None", key = "ArrowUp", mode = "Search" },
-  { action = "None", key = "ArrowDown", mode = "Search" },
-  { action = "None", key = "Enter", mode = "Search|~Vi" },
-  { action = "None", key = "V", mods = "Control|Shift", mode = "~Vi" },
-  { action = "None", key = "V", mods = "Control|Shift", mode = "Vi|Search" },
-  { action = "None", key = "C", mods = "Control|Shift" },
-  { action = "None", key = "F", mods = "Control|Shift", mode = "~Search" },
-  { action = "None", key = "B", mods = "Control|Shift", mode = "~Search" },
-  { action = "None", key = "C", mods = "Control|Shift", mode = "Vi|~Search" },
-  { action = "None", key = "Insert", mods = "Shift" },
-  { action = "None", key = "0", mods = "Control" },
-  { action = "None", key = "=", mods = "Control" },
-  { action = "None", key = "+", mods = "Control" },
-  { action = "None", key = "NumpadAdd", mods = "Control" },
-  { action = "None", key = "-", mods = "Control" },
-  { action = "None", key = "NumpadSubtract", mods = "Control" },
-  { action = "None", key = "Enter", mods = "Alt" },
+    # Normal Mode
+    { action = "CreateNewWindow", key = "T", mods = "Control" },
+    { action = "Paste", key = "V", mods = "Control" },
+    { chars = "\u001b\u007f", key = "Back", mods = "Control" },
+    # # Force Alacritty to send the CSI-u sequence for Shift+Enter
+    # { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
+    # # Force Alacritty to send the CSI-u sequence for Control+Enter
+    # { chars = "\u001b[13;5u", key = "Enter", mods = "Control" },
+    { action = "ScrollToTop", key = "Home", mode = "~Alt", mods = "Control" },
+    { action = "ScrollToBottom", key = "End", mode = "~Alt", mods = "Control" },
+    { action = "SearchForward", key = "F", mode = "~Alt", mods = "Control" },
+    { action = "ToggleViMode", key = "F7", mode = "~Search" },
+    { action = "ScrollPageUp", key = "PageUp", mode = "Vi|~Search" },
+    { action = "ScrollPageDown", key = "PageDown", mode = "Vi|~Search" },
+    { action = "ScrollHalfPageUp", key = "Up", mods ="Control", mode = "Vi|~Search" },
+    { action = "ScrollHalfPageDown", key = "Down", mods ="Control", mode = "Vi|~Search" },
+
+    # ctrl-c: copy and remove selection
+    { action = "Copy", key = "C", mode = "Vi|~Search", mods = "Control" },
+    { action = "ClearSelection", key = "C", mode = "Vi|~Search", mods = "Control" },
+
+    # Copy and Exit Vi Mode
+    # { action = "Copy", key = "Return", mode = "Vi|~Search" },
+    # { action = "ToggleViMode", key = "Return", mode = "Vi|~Search" },
+    # { action = "ScrollToBottom", key = "Return", mode = "Vi|~Search" },
+
+
+    { action = "SearchDeleteWord", key = "Backspace", mods = "Control", mode = "Search"},
+    { action = "SearchClear", key = "A", mods = "Control", mode = "Search"},
+    { action = "ToggleNormalSelection", key = "Space", mode = "Vi|~Search", mods = "Control" },
+    { action = "ToggleBlockSelection", key = "Enter", mode = "Vi|~Search", mods = "Control" },
+    { action = "CenterAroundViCursor", key = "L", mode = "Vi|~Search", mods = "Control" },
+    { action = "First", key = "Home", mode = "Vi|~Search", mods = "Shift" },
+    { action = "Last", key = "End", mode = "Vi|~Search", mods = "Shift" },
+    { action = "FirstOccupied", key = "Home", mode = "Vi|~Search" },
+    { action = "Last", key = "End", mode = "Vi|~Search" },
+    { action = "SemanticLeft", key = "Left", mode = "Vi|~Search", mods = "Control" },
+    { action = "SemanticRightEnd", key = "Right", mode = "Vi|~Search", mods = "Control" },
+    { action = "SearchNext", key = "Down", mode = "Vi|~Search", mods = "Control|Alt" },
+    { action = "SearchPrevious", key = "Up", mode = "Vi|~Search", mods = "Control|Alt" },
+    { action = "SearchForward", key = "F", mode = "Vi|~Search", mods = "Control" },
+    # { action = "ParagraphUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
+    # { action = "ParagraphDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
+    { action = "ScrollHalfPageUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
+    { action = "ScrollHalfPageDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
+    { action = "Open", key = "O", mods = "Control", mode = "Vi|~Search" },
 ]
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "/usr/bin/fish"
 
 [window]
 dynamic_title = true
 
 [general]
 import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
+
+[colors.search]
+matches.foreground = "#000000"
+matches.background = "#ffff00"
+focused_match.foreground = "#000000"
+focused_match.background = "#fd9435"
 
 [terminal]
