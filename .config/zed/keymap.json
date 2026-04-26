@@ -34,7 +34,7 @@
       "ctrl-shift-up": "editor::SelectToStartOfParagraph",
       "ctrl-shift-down": "editor::SelectToEndOfParagraph",
       "ctrl-h": "editor::SelectLargerSyntaxNode",
-      // "ctrl-shift-h": "editor::SelectSmallerSyntaxNode",
+      "ctrl-shift-h": "editor::SelectSmallerSyntaxNode",
       "alt-d": "editor::DuplicateLineDown",
       "alt-shift-up": "editor::MoveLineUp",
       "alt-shift-down": "editor::MoveLineDown",
@@ -164,7 +164,7 @@
       "ctrl-alt-shift-o": "project_symbols::Toggle",
       "ctrl-k e": "editor::ToggleEditPrediction",
       "ctrl-alt-shift-p": "settings_profile_selector::Toggle",
-      "ctrl-shift-h": "multi_workspace::ToggleWorkspaceSidebar",
+      "ctrl-alt-?": "multi_workspace::ToggleWorkspaceSidebar",
     },
   },
   {
@@ -415,6 +415,12 @@
     "context": "Workspace",
     "unbind": {
       "new": "workspace::NewFile",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-alt-shift-h": "search::ToggleReplace",
     },
   },
 ]
