@@ -36,8 +36,6 @@ bindings = [
     # { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
     # # Force Alacritty to send the CSI-u sequence for Control+Enter
     # { chars = "\u001b[13;5u", key = "Enter", mods = "Control" },
-    { action = "ScrollToTop", key = "Home", mode = "~Alt", mods = "Control" },
-    { action = "ScrollToBottom", key = "End", mode = "~Alt", mods = "Control" },
     { action = "SearchForward", key = "F", mode = "~Alt", mods = "Control" },
     { action = "ToggleViMode", key = "F7", mode = "~Search" },
     { action = "ScrollLineUp", key = "Up", mods = "Shift" },
@@ -72,6 +70,8 @@ bindings = [
     { action = "SearchForward", key = "F", mode = "Vi|~Search", mods = "Control" },
     # { action = "ParagraphUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
     # { action = "ParagraphDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
+    { action = "ScrollToTop", key = "Home", mode = "~Alt", mods = "Control" },
+    { action = "ScrollToBottom", key = "End", mode = "~Alt", mods = "Control" },
     { action = "ScrollHalfPageUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
     { action = "ScrollHalfPageDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
     { action = "Open", key = "O", mods = "Control", mode = "Vi|~Search" },
