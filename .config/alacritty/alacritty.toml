@@ -1,7 +1,7 @@
 [cursor]
 style.blinking = "Off"
 # style.shape = "Beam"
-thickness = 0.25
+# thickness = 0.25
 # vi_mode_style.shape = "Beam"
 # vi_mode_style.thickness = 0.25
 # vi_mode_style.blinking = "On"
@@ -9,10 +9,10 @@ thickness = 0.25
 [font]
 size = 10
 normal.family = "JetBrainsMono Nerd Font"
-normal.style = "semibold"
-bold.style = "extrabold"
-bold_italic.style = "extrabolditalic"
-italic.style = "bolditalic"
+# normal.style = "semibold"
+# bold.style = "extrabold"
+# bold_italic.style = "extrabolditalic"
+# italic.style = "bolditalic"
 
 [hints]
 alphabet = "jfkdls;ahgurieowpq"
@@ -24,7 +24,7 @@ post_processing = true
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
 mouse.enabled = true
 mouse.mods = "None"
-binding = { key = "U", mods = "Control|Shift" }
+binding = { key = "O", mods = "Control|Shift" }
 
 [keyboard]
 bindings = [
@@ -40,6 +40,8 @@ bindings = [
     { action = "ScrollToBottom", key = "End", mode = "~Alt", mods = "Control" },
     { action = "SearchForward", key = "F", mode = "~Alt", mods = "Control" },
     { action = "ToggleViMode", key = "F7", mode = "~Search" },
+    { action = "ScrollLineUp", key = "Up", mods = "Shift" },
+    { action = "ScrollLineDown", key = "Down", mods = "Shift" },
     { action = "ScrollPageUp", key = "PageUp", mode = "Vi|~Search" },
     { action = "ScrollPageDown", key = "PageDown", mode = "Vi|~Search" },
     { action = "ScrollHalfPageUp", key = "Up", mods ="Control", mode = "Vi|~Search" },
@@ -53,7 +55,6 @@ bindings = [
     # { action = "Copy", key = "Return", mode = "Vi|~Search" },
     # { action = "ToggleViMode", key = "Return", mode = "Vi|~Search" },
     # { action = "ScrollToBottom", key = "Return", mode = "Vi|~Search" },
-
 
     { action = "SearchDeleteWord", key = "Backspace", mods = "Control", mode = "Search"},
     { action = "SearchClear", key = "A", mods = "Control", mode = "Search"},
@@ -81,6 +82,8 @@ program = "/usr/bin/fish"
 
 [window]
 dynamic_title = true
+padding = { x = 4, y = 4 }
+
 
 [general]
 import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
