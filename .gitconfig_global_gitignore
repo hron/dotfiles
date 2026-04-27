@@ -22,3 +22,17 @@ flycheck*.el
 *.code-workspace
 codebook.toml
 .direnv/
+
+# Ignore the files Anthropic's Sandbox Runtime creates while an agent is running
+/.bash_profile
+/.bashrc
+/.claude/
+/.gitconfig
+/.gitmodules
+/.idea
+/.mcp.json
+/.profile
+/.ripgreprc
+/.vscode
+/.zprofile
+/.zshrc
