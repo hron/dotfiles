@@ -53,7 +53,7 @@ def set_pi_theme(dark_mode):
     except Exception:
         # If we cannot read the file for some reason, proceed with defaults
         settings = {}
-    settings["theme"] = "dark" if dark_mode else "light"
+    settings["theme"] = "modus-vivendi" if dark_mode else "modus-operandi"
 
     # Write atomically to avoid leaving a partial file
     tmp_path = settings_path.with_suffix(".tmp")

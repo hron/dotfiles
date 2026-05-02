@@ -35,9 +35,14 @@
   },
   {
     "label": "pi",
-    "command": "kstart alacritty -- --working-directory $ZED_WORKTREE_ROOT --command pi",
+    "command": "kstart --application pi --url file://$ZED_WORKTREE_ROOT",
     "args": [],
     "reveal": "never",
     "hide": "always",
   },
+  // {
+  //   "label": "pi",
+  //   "command": "pi",
+  //   "args": [],
+  // },
 ]

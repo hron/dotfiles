@@ -7,12 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "colorize_brackets": false,
   "cli_default_open_behavior": "new_window",
   "agent_ui_font_size": 17.0,
   "collaboration_panel": {
     "dock": "left",
   },
-  "show_edit_predictions": true,
+  "show_edit_predictions": false,
   "outline_panel": {
     "dock": "right",
     "default_width": 200,
@@ -26,6 +27,7 @@
     "default_width": 200,
   },
   "agent": {
+    "single_file_review": true,
     "sidebar_side": "right",
     "tool_permissions": {
       "tools": {
@@ -102,7 +104,7 @@
       "enable_thinking": true,
       "effort": "medium",
     },
-    "play_sound_when_agent_done": "always",
+    "play_sound_when_agent_done": "when_hidden",
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gpt-5-mini",
@@ -156,6 +158,12 @@
         "model": ["gpt-5-mini", "claude-sonnet-4.6"],
       },
       "type": "registry",
+    },
+    "pi-acp-test": {
+      "type": "custom",
+      "command": "node",
+      "args": ["/home/algus/src/pi-acp/dist/index.js"],
+      "env": {},
     },
   },
   "theme": {

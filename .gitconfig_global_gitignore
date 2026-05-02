@@ -22,6 +22,7 @@ flycheck*.el
 *.code-workspace
 codebook.toml
 .direnv/
+node_modules/
 
 # Ignore the files Anthropic's Sandbox Runtime creates while an agent is running
 /.bash_profile
