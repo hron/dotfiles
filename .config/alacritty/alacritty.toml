@@ -18,6 +18,8 @@ normal.family = "JetBrainsMono Nerd Font"
 alphabet = "jfkdls;ahgurieowpq"
 
 [[hints.enabled]]
+mouse.enabled = true
+mouse.mods = "None"
 command = "xdg-open"
 hyperlinks = true
 post_processing = true
@@ -25,8 +27,6 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|g
 binding = { key = "O", mods = "Control|Shift" }
 
 [mouse]
-enabled = true
-mods = "None"
 bindings = [
     { mouse = "Right", action = "Copy", },
     { mouse = "Right", action = "ClearSelection", },
