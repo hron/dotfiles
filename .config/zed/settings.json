@@ -8,7 +8,6 @@
 // from the command palette or from `Zed` application menu.
 {
   "colorize_brackets": false,
-  "cli_default_open_behavior": "new_window",
   "agent_ui_font_size": 17.0,
   "collaboration_panel": {
     "dock": "left",
