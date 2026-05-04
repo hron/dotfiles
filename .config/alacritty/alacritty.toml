@@ -48,8 +48,8 @@ bindings = [
     { action = "ScrollLineDown", key = "Down", mods = "Shift" },
     { action = "ScrollPageUp", key = "PageUp", mode = "Vi|~Search" },
     { action = "ScrollPageDown", key = "PageDown", mode = "Vi|~Search" },
-    { action = "ScrollHalfPageUp", key = "Up", mods ="Control", mode = "Vi|~Search" },
-    { action = "ScrollHalfPageDown", key = "Down", mods ="Control", mode = "Vi|~Search" },
+    # { action = "ScrollHalfPageUp", key = "Up", mods ="Control", mode = "~Alt" },
+    # { action = "ScrollHalfPageDown", key = "Down", mods ="Control", mode = "~Alt" },
 
     # ctrl-c: copy and remove selection
     { action = "Copy", key = "C", mode = "Vi|~Search", mods = "Control" },
@@ -74,12 +74,10 @@ bindings = [
     { action = "SearchNext", key = "Down", mode = "Vi|~Search", mods = "Control|Alt" },
     { action = "SearchPrevious", key = "Up", mode = "Vi|~Search", mods = "Control|Alt" },
     { action = "SearchForward", key = "F", mode = "Vi|~Search", mods = "Control" },
-    # { action = "ParagraphUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
-    # { action = "ParagraphDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
     { action = "ScrollToTop", key = "Home", mode = "~Alt", mods = "Control" },
     { action = "ScrollToBottom", key = "End", mode = "~Alt", mods = "Control" },
-    { action = "ScrollHalfPageUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
-    { action = "ScrollHalfPageDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
+    { action = "ParagraphUp", key = "Up", mode = "Vi|~Search", mods = "Control" },
+    { action = "ParagraphDown", key = "Down", mode = "Vi|~Search", mods = "Control" },
     { action = "Open", key = "O", mods = "Control", mode = "Vi|~Search" },
 ]
 

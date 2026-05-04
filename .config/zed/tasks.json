@@ -2,22 +2,22 @@
 //
 // Example:
 [
-  {
-    "label": "git commit",
-    "command": "git",
-    "args": ["commit"],
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "never",
-  },
-  {
-    "label": "git commit --amend",
-    "command": "git",
-    "args": ["commit", "--amend"],
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "never",
-  },
+  // {
+  //   "label": "git commit",
+  //   "command": "git",
+  //   "args": ["commit"],
+  //   "use_new_terminal": false,
+  //   "allow_concurrent_runs": false,
+  //   "reveal": "never",
+  // },
+  // {
+  //   "label": "git commit --amend",
+  //   "command": "git",
+  //   "args": ["commit", "--amend"],
+  //   "use_new_terminal": false,
+  //   "allow_concurrent_runs": false,
+  //   "reveal": "never",
+  // },
   // {
   //   "label": "cargo nextest run --workspace",
   //   "command": "cargo",
