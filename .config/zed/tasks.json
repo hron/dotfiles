@@ -40,6 +40,13 @@
     "reveal": "never",
     "hide": "always",
   },
+  {
+    "label": "gemini-cli",
+    "command": "kstart --application gemini-cli --url file://$ZED_WORKTREE_ROOT",
+    "args": [],
+    "reveal": "never",
+    "hide": "always",
+  },
   // {
   //   "label": "pi",
   //   "command": "pi",
