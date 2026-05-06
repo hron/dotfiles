@@ -8,4 +8,4 @@ for each in $(find bin/ -mindepth 1 | egrep -v '#$|~$') $( ls -a1 | egrep -v '(^
     [ -e $HOME/$each ] || ln -nfs `pwd`/$each $HOME/$each;
 done
 
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
