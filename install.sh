@@ -2,7 +2,6 @@
 
 set -e
 
-mkdir -p $HOME/bin;
 
 rm -f $HOME/.bashrc
 for each in $(find bin/ -mindepth 1 | egrep -v '#$|~$') $( ls -a1 | egrep -v '(^AstoNvim$|^install.sh$|^bin$|\.git$|\.gitignore$|\.gitmodules|^\.\.?$|\~$|#$)'); do
