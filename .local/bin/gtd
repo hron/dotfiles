@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-export EMACS_SERVER_NAME=gtd
-
-emacsclient --create-frame --socket-name=gtd --eval "(init-org-gtd)" ||
-    emacs --no-desktop --name org-mode --eval "(init-org-gtd)"

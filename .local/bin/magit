@@ -1,6 +1,0 @@
-#! /bin/sh
-
-GIT_DIR=${1}
-GIT_DIR=${GIT_DIR:=$(pwd)}
-
-emacs --execute "(progn (setq confirm-kill-emacs nil) (magit \"${GIT_DIR}\"))"

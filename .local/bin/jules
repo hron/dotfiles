@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-npx --package=@google/jules -- jules "$@"

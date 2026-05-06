@@ -1,2 +1,0 @@
-;; Generated package description from better-jumper.el  -*- no-byte-compile: t -*-
-(define-package "better-jumper" "1.0.1" "configurable jump list" '((emacs "25.1")) :commit "17821e7f55aeaa40c9337b766bfb991625436de4" :authors '(("Bryan Gilbert" . "http://github/gilbertw1")) :maintainer '("Bryan Gilbert" . "bryan@bryan.sh") :keywords '("convenience" "jump" "history" "evil") :url "https://github.com/gilbertw1/better-jumper")

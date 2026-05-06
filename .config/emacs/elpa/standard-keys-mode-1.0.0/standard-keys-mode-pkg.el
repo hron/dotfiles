@@ -1,2 +1,0 @@
-;; Generated package description from standard-keys-mode.el  -*- no-byte-compile: t -*-
-(define-package "standard-keys-mode" "1.0.0" "Emulate standard keybindings from modern editors" '((emacs "24.4") (compat "29.1")) :commit "c54440dfbed35ffea4d56e8a88467cceab8337d0" :authors '(("Elias G. Pérez" . "eg642616@gmail.com")) :maintainer '("Elias G. Pérez" . "eg642616@gmail.com") :keywords '("emulations" "convenience") :url "https://github.com/DevelopmentCool2449/standard-keys-mode")
