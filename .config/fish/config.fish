@@ -1,7 +1,17 @@
 if status is-interactive
-    alias ll="eza -ahl --group-directories-first --icons --hyperlink"
-    alias ls="eza -ah --group-directories-first"
-    alias cat=bat
+    if command -q eza
+        alias ll="eza -ahl --group-directories-first --icons --hyperlink"
+        alias ls="eza -ah --group-directories-first"
+    else
+        alias ll="ls -Ahl --group-directories-first"
+        alias ls="ls -Ah --group-directories-first"
+    end
+
+    if command -q bat
+        alias cat=bat
+    else if command -q batcat
+        alias cat=batcat
+    end
 
     # Emacs and other editors cannot pass `ctrl-shift-z` to fish,
     # so we pass `alt-z` instead and bind it here
