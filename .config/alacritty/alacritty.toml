@@ -38,10 +38,11 @@ bindings = [
     { action = "CreateNewWindow", key = "T", mods = "Control" },
     { action = "Paste", key = "V", mods = "Control" },
     { chars = "\u001b\u007f", key = "Back", mods = "Control" },
-    # # Force Alacritty to send the CSI-u sequence for Shift+Enter
-    # { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
-    # # Force Alacritty to send the CSI-u sequence for Control+Enter
-    # { chars = "\u001b[13;5u", key = "Enter", mods = "Control" },
+    { chars = "\u001b[3;3~", key = "Delete", mods = "Control" },
+    # Force Alacritty to send the CSI-u sequence for Shift+Enter
+    { chars = "\u001b[13;2u", key = "Enter", mods = "Shift" },
+    # Force Alacritty to send the CSI-u sequence for Control+Enter
+    { chars = "\u001b[13;5u", key = "Enter", mods = "Control" },
     { action = "SearchForward", key = "F", mode = "~Alt", mods = "Control" },
     { action = "ToggleViMode", key = "F7", mode = "~Search" },
     { action = "ScrollLineUp", key = "Up", mods = "Shift" },
