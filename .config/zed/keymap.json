@@ -136,6 +136,8 @@
           "close_pinned": false,
         },
       ],
+      "ctrl-alt-shift-h": "search::ToggleReplace",
+      "ctrl-alt--": "pane::GoBack",
     },
   },
   {
@@ -146,7 +148,8 @@
       "alt-x": "command_palette::Toggle",
       "alt-t": "task::Spawn",
       "alt-r": "task::Rerun",
-      "alt-i": "workspace::CloseAllDocks",
+      // "alt-i": "workspace::CloseAllDocks",
+      "alt-i": "workspace::ToggleAllDocks",
       "ctrl-p": null,
       "ctrl-e": ["file_finder::Toggle", { "separate_history": true }],
       "alt-1": "project_panel::ToggleFocus",
@@ -358,8 +361,8 @@
     "bindings": {
       "ctrl-i": "agent::ToggleFocus",
       "ctrl-'": "agent::ToggleModelSelector",
-      // "ctrl-.": "agent::ToggleProfileSelector",
-      "ctrl-.": "agent::CycleModeSelector",
+      "ctrl-.": "agent::ToggleProfileSelector",
+      // "ctrl-.": "agent::Toggle,
       "alt-f": "agent::Follow",
       "alt-y": "agent::AllowOnce",
       "ctrl-alt-y": "agent::AllowAlways",
@@ -417,12 +420,6 @@
     "context": "Workspace",
     "unbind": {
       "new": "workspace::NewFile",
-    },
-  },
-  {
-    "context": "Pane",
-    "unbind": {
-      "ctrl-alt-shift-h": "search::ToggleReplace",
     },
   },
 ]

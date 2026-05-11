@@ -23,6 +23,7 @@
     "default_width": 200,
   },
   "project_panel": {
+    "starts_open": false,
     "dock": "right",
     "default_width": 200,
   },
@@ -95,7 +96,7 @@
         },
       },
     },
-    "dock": "right",
+    "dock": "bottom",
     "default_width": 200,
     "default_profile": "ask",
     "default_model": {
@@ -125,11 +126,17 @@
   },
   "buffer_line_height": "standard",
   "icon_theme": {
-    "mode": "system",
+    "mode": "light",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
   },
   "agent_servers": {
+    "claude-acp": {
+      "favorite_config_option_values": {
+        "mode": ["acceptEdits", "plan"],
+      },
+      "type": "registry",
+    },
     "gemini": {
       "type": "registry",
     },
@@ -212,48 +219,55 @@
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "selection_highlight": true,
   "theme_overrides": {
-    // "Modus Vivendi": {
-    //   // "syntax": {
-    //   //   "comment": {
-    //   //     "color": "#ff0000",
-    //   //     "font_style": "italic",
-    //   //   },
-    //   // },
-    //   // "players": [
-    //   //   {
-    //   //     "selection": "#00ff00",
-    //   //   },
-    //   // ],
-    // },
-    // "Modus Vivendi Tinted": {
-    //   "syntax": {
-    //     "comment": {
-    //       "color": "#989898",
-    //       "font_style": "italic",
-    //     },
-    //   },
-    // },
+    "Modus Operandi": {
+      "editor.diff_hunk.added.background": "#00670040",
+      "editor.diff_hunk.added.hollow_background": "#0067001a",
+      "editor.diff_hunk.added.hollow_border": "#00670099",
+      "editor.diff_hunk.deleted.background": "#aa222240",
+      "editor.diff_hunk.deleted.hollow_background": "#aa22221a",
+      "editor.diff_hunk.deleted.hollow_border": "#aa222299",
+      "version_control.word_added": "#00670040",
+      "version_control.word_deleted": "#aa222240",
+      "syntax": {
+        "keyword": {
+          "font_weight": 600,
+        },
+        "title": {
+          "font_weight": 600,
+        },
+        "type": {
+          "font_weight": 600,
+        },
+        "variable.special": {
+          "font_weight": 600,
+        },
+      },
+    },
+    "Modus Vivendi": {
+      "editor.diff_hunk.added.background": "#80e080cc",
+      "editor.diff_hunk.added.hollow_background": "#80e0801a",
+      "editor.diff_hunk.added.hollow_border": "#80e080e5",
+      "editor.diff_hunk.deleted.background": "#ff9095cc",
+      "editor.diff_hunk.deleted.hollow_background": "#ff90951a",
+      "editor.diff_hunk.deleted.hollow_border": "#ff9095e5",
+      "version_control.word_added": "#80e08040",
+      "version_control.word_deleted": "#ff909540",
+      "syntax": {
+        "keyword": {
+          "font_weight": 600,
+        },
+        "title": {
+          "font_weight": 600,
+        },
+        "type": {
+          "font_weight": 600,
+        },
+        "variable.special": {
+          "font_weight": 600,
+        },
+      },
+    },
   },
-  // "theme_overrides": {
-  //   "Modus Operandi": {
-  //     // "search.active_match_background": "#f3d000ff",
-  //     // "editor.document_highlight.read_background": "#bfefff",
-  //     "players": [
-  //       {
-  //         // "background": "#e8dfd1",
-  //         "selection": "#bdae873d",
-  //       },
-  //     ],
-  //   },
-  //   "Modus Vivendi": {
-  //     "players": [
-  //       {
-  //         // "background": "#e8dfd1",
-  //         "selection": "#bdae873d",
-  //       },
-  //     ],
-  //   },
-  // },
   "scrollbar": {
     "axes": {
       "horizontal": false,
