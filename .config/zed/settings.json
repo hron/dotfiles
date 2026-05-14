@@ -26,6 +26,7 @@
     "starts_open": false,
     "dock": "right",
     "default_width": 200,
+    "sort_mode": "directories_first",
   },
   "agent": {
     "single_file_review": true,
@@ -125,11 +126,6 @@
     "model_parameters": [],
   },
   "buffer_line_height": "standard",
-  "icon_theme": {
-    "mode": "light",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha",
-  },
   "agent_servers": {
     "claude-acp": {
       "favorite_config_option_values": {

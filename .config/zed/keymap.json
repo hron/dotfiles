@@ -376,7 +376,7 @@
       //   "agent::NewExternalAgentThread",
       //   { "agent": { "custom": { "name": "opencode" } } },
       // ],
-      "ctrl-t": "agent::NewExternalAgentThread",
+      // "ctrl-t": "agent::NewExternalAgentThread",
     },
   },
   {

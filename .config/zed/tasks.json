@@ -49,7 +49,7 @@
   // },
   {
     "label": "claude",
-    "command": "kstart --application claude --url file://$ZED_WORKTREE_ROOT",
+    "command": "kstart --application claude-code --url file://$ZED_WORKTREE_ROOT",
     "args": [],
     "reveal": "never",
     "hide": "always",
