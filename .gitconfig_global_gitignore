@@ -39,3 +39,5 @@ node_modules/
 /.vscode
 /.zprofile
 /.zshrc
+
+CLAUDE.local.md

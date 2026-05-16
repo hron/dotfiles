@@ -240,10 +240,10 @@
       },
     },
     "Modus Vivendi": {
-      "editor.diff_hunk.added.background": "#80e080cc",
+      "editor.diff_hunk.added.background": "#80e08040",
       "editor.diff_hunk.added.hollow_background": "#80e0801a",
       "editor.diff_hunk.added.hollow_border": "#80e080e5",
-      "editor.diff_hunk.deleted.background": "#ff9095cc",
+      "editor.diff_hunk.deleted.background": "#ff909540",
       "editor.diff_hunk.deleted.hollow_background": "#ff90951a",
       "editor.diff_hunk.deleted.hollow_border": "#ff9095e5",
       "version_control.word_added": "#80e08040",
