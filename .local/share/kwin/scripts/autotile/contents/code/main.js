@@ -3,19 +3,10 @@ console.log("Autotile has been loaded");
 const rightTiled = [
   /^dev.zed.Zed-.*$/,
   /brave-fjpjbebpkgbjfpebjkjkgijdmhpeflpn-Default/, // VueTorrent
+  /^Alacritty$/,
 ];
 
-// Gmail
-// "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default"
-
 function shouldBeOnRight(window) {
-  // return window.resourceClass === "dev.zed.Zed-Nightly";
-  // console.log(
-  //   "shouldBeOnRight -- window.resourceClass: " +
-  //     window.resourceClass +
-  //     "; result: " +
-  //     rightTiled.some((regexp) => regexp.test(window.resourceClass)),
-  // );
   return rightTiled.some((regexp) => regexp.test(window.resourceClass));
 }
 
@@ -25,12 +16,6 @@ const skipped = [
 ];
 
 function shouldBeSkipped(window) {
-  // console.log(
-  //   "shouldBeSkipped -- window.resourceClass: " +
-  //     window.resourceClass +
-  //     "; result: " +
-  //     skipped.some((regexp) => regexp.test(window.resourceClass)),
-  // );
   return skipped.some((regexp) => regexp.test(window.resourceClass));
 }
 
@@ -62,6 +47,7 @@ function isTileable(window) {
 }
 
 workspace.windowAdded.connect(function (window) {
+  console.log("window.resourceClass: " + window.resourceClass);
   if (!isTileable(window)) {
     // console.log("Skipping because it's not tileable");
     return;
