@@ -3,7 +3,11 @@
     "Id": "autotile",
     "Name": "AutoTile",
     "Description": "Auto quick-tile specific windows on open",
-    "Version": "1.0"
+    "Version": "1.0",
+    "Icon": "preferences-system-windows-script-test"
   },
-  "KPackageStructure": "KWin/Script"
+  "KPackageStructure": "KWin/Script",
+  "X-Plasma-MainScript": "code/main.js",
+  "X-Plasma-API": "javascript",
+  "X-Plasma-API-Minimum-Version": "6.0"
 }
