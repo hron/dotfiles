@@ -34,29 +34,10 @@
     "hide": "always",
   },
   {
-    "label": "pi",
-    "command": "kstart --application pi --url file://$ZED_WORKTREE_ROOT",
-    "args": [],
-    "reveal": "never",
-    "hide": "always",
-  },
-  // {
-  //   "label": "gemini-cli",
-  //   "command": "kstart --application gemini-cli --url file://$ZED_WORKTREE_ROOT",
-  //   "args": [],
-  //   "reveal": "never",
-  //   "hide": "always",
-  // },
-  {
     "label": "claude",
-    "command": "kstart --application claude-code --url file://$ZED_WORKTREE_ROOT",
+    "command": "kstart alacritty -- --working-directory $ZED_WORKTREE_ROOT --command claude",
     "args": [],
     "reveal": "never",
     "hide": "always",
   },
-  // {
-  //   "label": "pi",
-  //   "command": "pi",
-  //   "args": [],
-  // },
 ]
