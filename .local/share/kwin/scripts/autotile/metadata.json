@@ -1,0 +1,8 @@
+{
+  "KPlugin": {
+    "Name": "AutoTile",
+    "Description": "Auto quick-tile specific windows on open",
+    "Version": "1.0"
+  },
+  "KPackageStructure": "KWin/Script"
+}
