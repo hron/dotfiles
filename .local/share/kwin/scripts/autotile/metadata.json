@@ -1,5 +1,6 @@
 {
   "KPlugin": {
+    "Id": "autotile",
     "Name": "AutoTile",
     "Description": "Auto quick-tile specific windows on open",
     "Version": "1.0"
