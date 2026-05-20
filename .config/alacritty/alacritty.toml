@@ -17,6 +17,16 @@ normal.family = "JetBrainsMono Nerd Font"
 [hints]
 alphabet = "jfkdls;ahgurieowpq"
 
+# [[hints.enabled]]
+# mouse.enabled = true
+# mouse.mods = "None"
+# command = "xdg-open"
+# hyperlinks = true
+# post_processing = true
+# binding = { key = "O", mods = "Control|Shift" }
+# regex = '(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\s{-}\^⟨⟩`]+|[./~][^\u0000-\u001F\u007F\s"<>(){}[]^⟨⟩`]*[^\u0000-\u001F\u007F\s"<>(){}[]^⟨⟩`.,:;!?](?::\d+){0,2}|[a-zA-Z0-9_.-]+/[a-zA-Z0-9_./-]+(?::\d+){0,2}|[a-zA-Z0-9_-]+.[a-zA-Z0-9]{1,10}(?::\d+){1,2}'
+
+
 [[hints.enabled]]
 mouse.enabled = true
 mouse.mods = "None"
@@ -25,6 +35,15 @@ hyperlinks = true
 post_processing = true
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
 binding = { key = "O", mods = "Control|Shift" }
+
+[[hints.enabled]]
+mouse.enabled = true
+mouse.mods = "Control"
+command = "zeditor"
+hyperlinks = false
+post_processing = true
+regex = '[./~][^\s"<>]+|[a-zA-Z0-9_.-]+/[a-zA-Z0-9_./-]+(?::\d+(?::\d+)?)?|[a-zA-Z0-9_-]+.[a-zA-Z0-9]{1,10}:\d+(?::\d+)?'
+binding = { key = "O", mods = "Control|Shift|Alt" }
 
 [mouse]
 bindings = [
@@ -91,7 +110,7 @@ padding = { x = 4, y = 4 }
 
 
 [general]
-import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
+import = ["~/.config/alacritty/themes/modus-operandi.toml"]
 
 [colors.search]
 matches.foreground = "#000000"
