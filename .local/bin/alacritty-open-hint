@@ -1,0 +1,62 @@
+#!/bin/bash
+set -euo pipefail
+
+# The input captured by Alacritty's hint
+INPUT="$1"
+
+if [ -z "$INPUT" ]; then
+    exit 0
+fi
+
+# Split the input into filepath and optional suffix (line:column)
+# Matches formats like:
+#   file.rs
+#   file.rs:12
+#   file.rs:12:50
+if [[ "$INPUT" =~ ^([^:]+)(:[0-9]+)?(:[0-9]+)?$ ]]; then
+    FILE_PATH="${BASH_REMATCH[1]}"
+    SUFFIX="${BASH_REMATCH[2]}${BASH_REMATCH[3]}"
+else
+    FILE_PATH="$INPUT"
+    SUFFIX=""
+fi
+
+# Trim multiple leading slashes (e.g., ///home/user -> /home/user, //google.com -> /google.com)
+CLEAN_PATH=$(echo "$FILE_PATH" | sed -E 's/^\/{2,}/\//')
+
+# Resolve the file path if it is relative
+if [[ ! "$CLEAN_PATH" =~ ^/ ]]; then
+    # Expand home directory symbol `~/` if present
+    if [[ "$CLEAN_PATH" =~ ^~/(.*) ]]; then
+        CLEAN_PATH="$HOME/${BASH_REMATCH[1]}"
+    else
+        # Find the active shell running under the Alacritty window.
+        # Alacritty is the parent process ($PPID). We find the other child (shell) of Alacritty.
+        # Filtering out our own PID ($$).
+        SHELL_PID=$(pgrep -P "$PPID" | grep -v "$$" | head -n 1)
+        if [ -n "$SHELL_PID" ] && [ -d "/proc/$SHELL_PID/cwd" ]; then
+            CWD=$(readlink "/proc/$SHELL_PID/cwd")
+            CLEAN_PATH="$CWD/$CLEAN_PATH"
+        fi
+    fi
+fi
+
+# Heuristic to detect if it is a URL or domain that does not exist locally
+# 1. It is 'localhost' or an IP address
+# 2. It matches a standard domain format (.com, .org, .net, etc.) and is NOT an existing local file/folder
+if [[ "$FILE_PATH" == "localhost" || "$FILE_PATH" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || \
+   ([[ "$FILE_PATH" =~ \.(com|org|net|io|dev|gov|edu|me|co|info)(/|$) ]] && [ ! -e "$CLEAN_PATH" ]); then
+    
+    # Reconstruct the URL
+    URL_TO_OPEN="$INPUT"
+    if [[ ! "$URL_TO_OPEN" =~ ^[a-zA-Z0-9]+:// ]]; then
+        # Trim leading slashes and prepend https://
+        URL_TO_OPEN="https://$(echo "$URL_TO_OPEN" | sed -E 's/^\/+//')"
+    fi
+    
+    # Open in default browser
+    exec browse-url "$URL_TO_OPEN"
+fi
+
+# Run zeditor to open the file at the correct location
+exec zeditor "$CLEAN_PATH$SUFFIX"

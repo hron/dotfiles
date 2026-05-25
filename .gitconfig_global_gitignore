@@ -26,6 +26,8 @@ node_modules/
 
 .devcontainer/
 
+.antigravitycli/
+
 # Ignore the files Anthropic's Sandbox Runtime creates while an agent is running
 /.bash_profile
 /.bashrc

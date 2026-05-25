@@ -7,6 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "disable_ai": true,
+  "window_decorations": "client",
   "cli_default_open_behavior": "existing_window",
   "colorize_brackets": false,
   "agent_ui_font_size": 17.0,
@@ -127,13 +129,7 @@
   },
   "buffer_line_height": "standard",
   "agent_servers": {
-    "claude-acp": {
-      "favorite_config_option_values": {
-        "mode": ["acceptEdits", "plan"],
-      },
-      "type": "registry",
-    },
-    "gemini": {
+    "codex-acp": {
       "type": "registry",
     },
     "pi-acp": {
@@ -175,7 +171,14 @@
   },
   "diff_view_style": "unified",
   "edit_predictions": {
-    "mode": "eager",
+    "ollama": {
+      "model": "qwen2.5-coder:7b-base",
+      "api_url": "http://localhost:11434",
+    },
+    "codestral": {
+      "api_url": "https://codestral.mistral.ai",
+    },
+    "mode": "subtle",
     "provider": "zed",
     // "mode": "subtle",
     "copilot": {
@@ -351,24 +354,45 @@
         // "diff_view_style": "split",
         "terminal": {
           "dock": "left",
-          "default_width": 900,
         },
         "outline_panel": {
           "dock": "left",
-          "default_width": 900,
         },
         "git_panel": {
           "dock": "left",
-          "default_width": 900,
         },
         "project_panel": {
           "dock": "left",
-          "default_width": 900,
         },
         "agent": {
           "dock": "left",
-          "default_width": 900,
         },
+      },
+    },
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "procMacro": {
+          "processes": 4,
+        },
+        "diagnostics": {
+          "experimental": {
+            "enable": false,
+          },
+        },
+        // "cargo": {
+        //   "features": [],
+        //   "allTargets": false,
+        // },
+        "references": {
+          "excludeImports": true,
+        },
+        "cachePriming": {
+          "enable": false,
+          "numThreads": 2,
+        },
+        "numThreads": 4,
       },
     },
   },

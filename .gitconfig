@@ -1,44 +1,52 @@
 [user]
     name = Aleksei Gusev
     email = aleksei.gusev@gmail.com
+
 [core]
     excludesfile = ~/.gitconfig_global_gitignore
-    pager =
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    line-numbers = false
 
 [diff]
     tool = zeditor
-[difftool "emacs"]
-    cmd = emacs --no-desktop --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-[difftool "vscode"]
-    cmd = "code --wait --diff  "
+
 [difftool "zed"]
     cmd = zeditor --reuse --diff "$LOCAL" "$REMOTE"
 
 [merge]
     tool = zed
+
 [mergetool "zed"]
     cmd = zeditor  --reuse --wait "$MERGED"
-[mergetool "emacs"]
-    cmd = "emacs --no-desktop "
-[mergetool "vscode"]
-    cmd = "code --wait "
-
 
 [color]
     ui = true
+
 [push]
     default = matching
+
 [github]
     user = hron
+
 [init]
     defaultBranch = main
+
 [rerere]
     enabled = true
+
 [alias]
     zdiff = difftool --dir-diff --no-symlinks
+
 [credential "https://github.com"]
     helper =
     helper = !/home/algus/.nix-profile/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
     helper =
     helper = !/home/algus/.nix-profile/bin/gh auth git-credential

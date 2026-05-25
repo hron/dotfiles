@@ -194,3 +194,7 @@ fi
 which starship >/dev/null && eval "$(starship init bash)"
 
 # [[ ! ${BLE_VERSION-} ]] || ble-attach
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/algus/.local/bin:$PATH"
