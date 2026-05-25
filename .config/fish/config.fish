@@ -28,3 +28,5 @@ function fish_title
     set -l current_cmd (set -q argv[1]; and echo "$argv[1] @ "; or echo "")
     echo $current_cmd(prompt_pwd)
 end
+
+set -g fish_greeting
