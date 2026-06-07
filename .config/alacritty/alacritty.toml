@@ -110,7 +110,7 @@ padding = { x = 4, y = 4 }
 
 
 [general]
-import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
+import = ["~/.config/alacritty/themes/modus-operandi.toml"]
 
 [colors.search]
 matches.foreground = "#000000"

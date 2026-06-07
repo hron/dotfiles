@@ -14,7 +14,7 @@
     line-numbers = false
 
 [diff]
-    tool = zeditor
+    tool = zed
 
 [difftool "zed"]
     cmd = zeditor --reuse --diff "$LOCAL" "$REMOTE"
@@ -29,7 +29,7 @@
     ui = true
 
 [push]
-    default = matching
+	default = current
 
 [github]
     user = hron

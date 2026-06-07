@@ -91,6 +91,8 @@
       "alt-shift-n": "workspace::ClearAllNotifications",
       "ctrl-alt-left": "editor::FoldAll",
       "ctrl-alt-right": "editor::UnfoldAll",
+      "ctrl-shift-left": "editor::SelectToPreviousSubwordStart",
+      "ctrl-shift-right": "editor::SelectToNextSubwordEnd",
     },
   },
   {
@@ -178,7 +180,7 @@
     },
   },
   {
-    "context": "Terminal",
+    "context": "!AgentPanel > Terminal",
     "bindings": {
       "ctrl-i": "terminal_panel::ToggleFocus",
       "ctrl-t": "workspace::NewTerminal",
