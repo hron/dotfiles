@@ -11,7 +11,10 @@ function shouldBeOnRight(window) {
 }
 
 const skipped = [
-  /brave-cinhimbnkkaeohfgghhklpknlkffjgod-Default/, // Youtube Music
+  // Youtube Music
+  /brave-cinhimbnkkaeohfgghhklpknlkffjgod-Default/,
+  /firefox-nightly.webapp-f274150b-9c03-46e2-afd2-318192b848af/,
+  // btop
   /^btop$/,
 ];
 
@@ -47,15 +50,25 @@ function isTileable(window) {
 }
 
 workspace.windowAdded.connect(function (window) {
-  console.log("window.resourceClass: " + window.resourceClass);
-  if (!isTileable(window)) {
+  // console.log("window.resourceClass: " + window.resourceClass);
+
+  if (
+    window.resourceClass ===
+    "firefox-nightly.webapp-f274150b-9c03-46e2-afd2-318192b848af"
+  ) {
+    window.skipSwitcher = true;
+    window.onAllDesktops = true;
+    window.setMaximize(true, true);
+
+    return;
+  }
+
+  if (!isTileable(window) || shouldBeSkipped(window)) {
     // console.log("Skipping because it's not tileable");
     return;
   }
 
-  if (shouldBeSkipped(window)) {
-    // do nothing
-  } else if (shouldBeOnRight(window)) {
+  if (shouldBeOnRight(window)) {
     tileToRight();
   } else {
     tileToLeft();
