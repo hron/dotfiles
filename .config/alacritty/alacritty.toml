@@ -9,7 +9,7 @@ style.blinking = "Off"
 [font]
 size = 10
 normal.family = "JetBrainsMono Nerd Font"
-# normal.style = "semibold"
+normal.style = "semibold"
 # bold.style = "extrabold"
 # bold_italic.style = "extrabolditalic"
 # italic.style = "bolditalic"
@@ -110,7 +110,7 @@ padding = { x = 4, y = 4 }
 
 
 [general]
-import = ["~/.config/alacritty/themes/modus-operandi.toml"]
+import = ["~/.config/alacritty/themes/modus-vivendi.toml"]
 
 [colors.search]
 matches.foreground = "#000000"

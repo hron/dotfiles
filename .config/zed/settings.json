@@ -7,13 +7,17 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "vim_mode": false,
+  "helix_mode": false,
+  "buffer_font_weight": 550.0,
+  "ui_font_weight": 500.0,
   "icon_theme": {
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
   },
   "disable_ai": false,
   "window_decorations": "client",
-  "cli_default_open_behavior": "existing_window",
+  "cli_default_open_behavior": "new_window",
   "colorize_brackets": false,
   "agent_ui_font_size": 17.0,
   "collaboration_panel": {
@@ -342,7 +346,7 @@
     // "shell": {
     //   "program": "tmux",
     // },
-    "show_tabs": false,
+    "font_weight": 500.0,
     "dock": "bottom",
     "toolbar": {
       "breadcrumbs": false,

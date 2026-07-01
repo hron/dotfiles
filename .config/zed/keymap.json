@@ -40,7 +40,7 @@
       "alt-shift-down": "editor::MoveLineDown",
       "ctrl-shift-j": "editor::JoinLines",
       "ctrl-.": "editor::ToggleCodeActions",
-      "ctrl-l": "editor::ScrollCursorCenter",
+      "ctrl-l": "editor::ScrollCursorCenterTopBottom",
       "f1": "editor::ToggleSoftWrap",
       "ctrl-alt-z": "git::Restore",
       "alt-]": "editor::GoToHunk",
@@ -190,7 +190,7 @@
       "ctrl-w": "pane::CloseActiveItem",
       // "ctrl-delete": ["terminal::SendText", "\u001bd"],
       // "ctrl-delete": ["terminal::SendText", "\u001b[3;5~"],
-      // "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
+      "ctrl-backspace": ["terminal::SendKeystroke", "alt-backspace"],
       "ctrl-f": "buffer_search::Deploy",
       "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
@@ -428,6 +428,25 @@
     "context": "Workspace",
     "unbind": {
       "new": "workspace::NewFile",
+    },
+  },
+
+  {
+    "context": "TextFinder || TextFinder > Picker > Editor || TextFinder > Picker > menu",
+    "unbind": {
+      "ctrl-alt-f": "text_finder::ToProjectSearch",
+    },
+  },
+  {
+    "context": "TextFinder || TextFinder > Picker > Editor || TextFinder > Picker > menu",
+    "unbind": {
+      "ctrl-alt-f": "text_finder::ToProjectSearch",
+    },
+  },
+  {
+    "context": "ProjectSearchBar",
+    "unbind": {
+      "ctrl-alt-f": "project_search::OpenTextFinder",
     },
   },
 ]
