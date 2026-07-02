@@ -1,0 +1,18 @@
+{
+  "KPackageStructure": "KSysguard/SensorFace",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "aleksei.gusev@gmail.com",
+        "Name": "Aleksei Gusev"
+      }
+    ],
+    "Icon": "office-chart-pie",
+    "Id": "algus.ksysguard.piechart",
+    "License": "LGPLv2+",
+    "Name": "Pie Chart (algus)",
+    "Version": "1.0",
+    "Website": "https://kde.org"
+  },
+  "X-KDE-ParentApp": "org.kde.plasmashell"
+}
